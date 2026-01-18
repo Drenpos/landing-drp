@@ -1,15 +1,15 @@
 import cloudflare from "@astrojs/cloudflare";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
 import clerk from "@clerk/astro";
 import tailwindcss from "@tailwindcss/vite";
 import AutoImport from "astro-auto-import";
-import { defineConfig } from "astro/config";
+import icon from "astro-icon";
+import { defineConfig, passthroughImageService } from "astro/config";
 import remarkCollapse from "remark-collapse";
 import remarkToc from "remark-toc";
 import config from "./src/config/config.json";
-import sitemap from "@astrojs/sitemap";
-import icon from "astro-icon";
 
 let highlighter;
 async function getHighlighter() {
@@ -62,6 +62,9 @@ export default defineConfig({
     highlighter: getHighlighter,
   },
   output: "server",
+  image: {
+    service: passthroughImageService(),
+  },
   adapter: cloudflare({
     imageService: "passthrough",
   }),
