@@ -62,10 +62,7 @@ export default defineConfig({
     highlighter: getHighlighter,
   },
   output: "server",
-  image: {
-    service: passthroughImageService(),
-  },
   adapter: cloudflare({
-    imageService: "passthrough",
+    imageService: "cloudflare",
   }),
 });
