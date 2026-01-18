@@ -1,0 +1,27 @@
+---
+import Base from "@/layouts/Base.astro";
+import PostSingle from "@/layouts/PostSingle.astro";
+import { getEntry } from "astro:content";
+
+// En modo SSR no usamos getStaticPaths, obtenemos el contenido dinámicamente
+const { single } = Astro.params;
+
+// Intentar obtener el post
+const post = await getEntry("blog", single as string);
+
+// Si no existe, redirigir a 404
+if (!post) {
+  return Astro.redirect("/404");
+}
+
+const { title, meta_title, description, image } = post.data;
+---
+
+<Base
+  title={title}
+  meta_title={meta_title}
+  description={description}
+  image={image}
+>
+  <PostSingle post={post} />
+</Base>

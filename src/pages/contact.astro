@@ -1,0 +1,163 @@
+---
+import config from "@/config/config.json";
+import Base from "@/layouts/Base.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import CallToAction from "@/partials/CallToAction.astro";
+import Faq from "@/partials/Faq.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import { Icon } from "astro-icon/components";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+
+const contact = (await getEntry(
+  "contact",
+  "-index",
+)) as CollectionEntry<"contact">;
+
+const { contact_form_action }: { contact_form_action: string } = config.params;
+const { title, description, meta_title, contact_section } = contact.data;
+
+// Check if message was sent
+const messageSent = Astro.url.searchParams.get("sended") === "true";
+const SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "";
+---
+
+<Base title={title} meta_title={meta_title} description={description}>
+  <PageHeader
+    title={contact_section.title}
+    description={contact_section.description}
+  />
+
+  <section class="section-up">
+    <div class="container">
+      <div class="row g-5 space-x-4 justify-center">
+        <div
+          class="col-11 md:col-5 border border-dark/10 rounded-[30px] bg-light!"
+          data-aos="fade-left-sm"
+        >
+          <div class="p-7">
+            <h3 set:html={markdownify(contact_section.form.title)} />
+            <p
+              class="pt-5 pb-14"
+              set:html={markdownify(contact_section.form.description)}
+            />
+
+            <div class="space-y-4">
+              {
+                contact_section.list?.map(
+                  (item: {
+                    title: string;
+                    description: string;
+                    icon: string;
+                  }) => (
+                    <div class="flex items-center gap-4 pt-5 first:pt-0">
+                      <div class="w-[60px] h-[60px] rounded-full">
+                        <Icon name={item.icon} class={"w-full h-full"} />
+                      </div>
+
+                      <div>
+                        <h3
+                          class="h6 font-medium"
+                          set:html={markdownify(item.title)}
+                        />
+                        <p set:html={markdownify(item.description, true)} />
+                      </div>
+                    </div>
+                  ),
+                )
+              }
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="col-11 md:col-5 border rounded-[30px] bg-dark text-text-light"
+          data-aos-delay="200"
+        >
+          {
+            messageSent ? (
+              <div class="p-8 text-center">
+                <div class="mb-6">
+                  <Icon
+                    name="random/circleCheck"
+                    class="w-20 h-20 mx-auto text-green-500"
+                  />
+                </div>
+                <h3 class="text-2xl font-bold mb-4 text-primary">
+                  ¡Mensaje enviado con éxito!
+                </h3>
+                <p class="text-lg mb-6">
+                  Gracias por contactarnos. Hemos recibido tu mensaje y nuestro
+                  equipo se pondrá en contacto contigo.
+                </p>
+                <a
+                  href="/contact"
+                  class="inline-block bg-primary text-text-dark py-3 px-8 rounded-full font-medium transition hover:opacity-80"
+                >
+                  Enviar otro mensaje
+                </a>
+              </div>
+            ) : (
+              <form action={contact_form_action} method="POST" class="p-8">
+                <div class="mb-6">
+                  <label for="name" class="form-label">
+                    Nombre completo <span class="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    class="form-input"
+                    placeholder="Juan Pérez"
+                    type="text"
+                    required
+                  />
+                </div>
+                <div class="mb-6">
+                  <label for="email" class="form-label">
+                    Correo electrónico <span class="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    class="form-input"
+                    placeholder="juan.perez@email.com"
+                    type="email"
+                    required
+                  />
+                </div>
+                <div class="mb-6">
+                  <label for="message" class="form-label">
+                    Cuéntanos más sobre tu consulta{" "}
+                    <span class="text-red-500">*</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    class="form-input"
+                    placeholder="Escribe tu mensaje aquí..."
+                    style={{ resize: "none" }}
+                    required
+                    rows="4"
+                  />
+                </div>
+                <button
+                  id="btnSubmit"
+                  type="submit"
+                  data-sitekey={SITE_KEY}
+                  data-callback="onContactSubmit"
+                  data-action="submit"
+                  class="g-recaptcha inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-base font-semibold text-white bg-primary transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                >
+                  Enviar
+                </button>
+              </form>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Faq />
+  <CallToAction />
+</Base>

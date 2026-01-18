@@ -1,0 +1,31 @@
+    <svg
+      viewBox="0 0 1440 180"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <path
+        id="theMotionPathBottom"
+        d="M1440 180H1278.08C1270.9 180 1265.08 174.18 1265.08 167V14C1265.08 6.8203 1259.26 1 1252.08 1H187.143C179.963 1 174.143 6.8203 174.143 14V165.287C174.143 172.467 168.323 178.287 161.143 178.287H0"
+        stroke="#EAEAEA"></path>
+      <style>
+        .line {
+          stroke: #9b59b6;
+          stroke-width: 2;
+        }
+      </style>
+      <g>
+        <line x1="8" y1="0" x2="0" y2="0" class="line">
+          <animateMotion
+            dur="15s"
+            begin="0s"
+            fill="freeze"
+            repeatCount="indefinite"
+            rotate="auto"
+          >
+            <mpath xlink:href="#theMotionPathBottom"></mpath>
+          </animateMotion>
+        </line>
+      </g>
+    </svg>
+

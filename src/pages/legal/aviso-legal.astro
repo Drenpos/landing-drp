@@ -1,0 +1,102 @@
+---
+import Base from "@/layouts/Base.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+
+const title = "Aviso Legal";
+const meta_title = "Aviso Legal | Drenpos Tech, S.L.";
+const description =
+  "Condiciones generales de acceso y uso del sitio web drenpos.com. Información del titular: Drenpos Tech, S.L. (B22872501).";
+---
+
+<Base {title} {meta_title} {description}>
+  <PageHeader
+    title="Aviso Legal"
+    description="Información legal sobre Drenpos Tech, S.L."
+    hasSmallHeight="h-[600px]"
+  />
+  <section class="section-up">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <div
+            class="content bg-body p-5 first:rounded-t-[30px]"
+            data-aos="fade-up-sm"
+            data-aos-delay="200"
+          >
+            <h1>Aviso legal</h1>
+            <p>Última actualización: 30/08/2025</p>
+
+            <h2>1. Titular del sitio web</h2>
+            <p>
+              Este sitio web es operado por <strong>Drenpos Tech, S.L.</strong> (en
+              adelante, el «Titular»). A continuación se facilitan los datos identificativos:
+            </p>
+
+            <ul>
+              <li><strong>Denominación social:</strong> Drenpos Tech, S.L.</li>
+              <li><strong>NIF:</strong> B22872501</li>
+              <li>
+                <strong>Domicilio social:</strong>
+                C/ Badajoz 4, 06209, Solana de los Barros, Badajoz (España)
+              </li>
+              <li>
+                <strong>Dominio:</strong>
+                <a href="https://www.drenpos.com" rel="external"
+                  >www.drenpos.com</a>
+              </li>
+              <li>
+                <strong>Contacto:</strong>
+                Tel. <a href="tel:+34616850899">616 850 899</a> ·
+                <a href="mailto:administracion@drenpos.com"
+                  >administracion@drenpos.com</a
+                >
+              </li>
+            </ul>
+
+            <h2>2. Condiciones de uso</h2>
+            <p>
+              Revisar Terminos y condiciones de uso: <a
+                href="/legal/terminos-y-condiciones"
+                >/legal/terminos-y-condiciones</a
+              >
+            </p>
+
+            <h2>3. Propiedad intelectual e industrial</h2>
+            <p>
+              Los contenidos, diseños, logotipos, textos, imágenes, software y
+              demás elementos de este sitio están protegidos por derechos de
+              propiedad intelectual e industrial. Queda prohibida su
+              reproducción, distribución, comunicación pública o transformación
+              sin autorización expresa del Titular o de sus legítimos
+              propietarios.
+            </p>
+
+            <h2>4. Responsabilidad</h2>
+            <p>
+              El Titular no garantiza la inexistencia de interrupciones o
+              errores de acceso al sitio, si bien adoptará las medidas
+              necesarias para evitarlos o subsanarlos. Los enlaces a sitios de
+              terceros se facilitan únicamente como referencia; el Titular no
+              controla su contenido ni asume responsabilidad alguna derivada de
+              su uso.
+            </p>
+
+            <h2>5. Normativa y jurisdicción aplicable</h2>
+            <p>
+              Este Aviso legal se rige por la normativa española. Salvo que la
+              legislación aplicable disponga otra cosa, para cualquier
+              controversia las partes se someten a los juzgados y tribunales
+              competentes del domicilio del Titular.
+            </p>
+
+            <p class="text-sm opacity-70">
+              Nota: Mantén actualizados los datos registrales y de contacto. Si
+              ofreces servicios regulados, añade la información específica que
+              exija tu normativa sectorial.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

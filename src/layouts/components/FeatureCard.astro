@@ -1,0 +1,39 @@
+---
+import { humanize, plainify } from "@/lib/utils/textConverter";
+import ImageMod from "./ImageMod.astro";
+
+const { data } = Astro.props;
+const { title, image, categories } = data.data;
+---
+
+<div>
+  <ImageMod
+    src={image}
+    alt="feature"
+    class="rounded-[14px] mx-auto mb-8 w-full object-cover object-top"
+    width={375}
+    height={273}
+  />
+
+  <div>
+    <p class="px-2 py-1 text-sm bg-dark inline-block rounded-full text-body">
+      {
+        categories.slice(0, 1).map((category: string, index: number) => (
+          <span>
+            {humanize(category)}
+            {index !== categories.length - 1 && ","}
+          </span>
+        ))
+      }
+    </p>
+    <h4 class="py-4">
+      <a
+        class="u-underline"
+        href={`/${"features"}/${data.id.replace(".md", "")}`}
+      >
+        <span class="s-underline">{title}</span>
+      </a>
+    </h4>
+    <p class="mt-[10px] line-clamp-2" set:html={plainify(data.body)} />
+  </div>
+</div>

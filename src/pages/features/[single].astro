@@ -1,0 +1,54 @@
+---
+import ImageMod from "@/components/ImageMod.astro";
+import Base from "@/layouts/Base.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import PageHeader from "@/partials/PageHeader.astro";
+import { getEntry, render } from "astro:content";
+
+const { single } = Astro.params;
+const feature = await getEntry("features", single as string);
+
+if (!feature) {
+  return Astro.redirect("/404");
+}
+
+const { title, meta_title, description, image } = feature.data;
+const { Content } = await render(feature);
+---
+
+<Base
+  title={title}
+  meta_title={meta_title}
+  description={description}
+  image={image}
+>
+  <PageHeader title={title} />
+  <section
+    class="mt-[-33rem] md:mt-[-24rem] lg:mt-[-18rem] section pt-0 relative z-10"
+  >
+    <div class="container">
+      <div class="row justify-center">
+        <article class="col-11 lg:col-10">
+          {
+            image && (
+              <div class="mb-16">
+                <ImageMod
+                  src={image}
+                  height={500}
+                  width={1000}
+                  alt={title}
+                  class="w-[800px] rounded-2xl border border-dark/10 mx-auto pointer-events-none"
+                  format="webp"
+                />
+              </div>
+            )
+          }
+          <h1 set:html={markdownify(title)} class="h2 mb-4" />
+          <div class="content mb-10">
+            <Content />
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</Base>

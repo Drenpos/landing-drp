@@ -1,0 +1,40 @@
+---
+const { isAuthenticated, userId } = Astro.locals.auth();
+let user = null;
+let userImg = null;
+if (isAuthenticated) {
+  user = await Astro.locals.currentUser()
+  userImg = user?.imageUrl || null;
+  if(user?.externalAccounts.length||0>0){
+    const externalAccount = user?.externalAccounts[0];
+    if(externalAccount?.imageUrl){
+      userImg = externalAccount.imageUrl;
+    }
+
+  }
+}
+---
+
+{user ? (
+  <!-- Usuario logueado: mostrar avatar y link -->
+  <a 
+    href="https://contract.drenpos.com/home" 
+    class="flex items-center gap-2 hover:opacity-80 transition"
+  >
+  
+    <img 
+      src={userImg} 
+      alt={user.fullName || 'Usuario'}
+      class="w-10 h-10 rounded-full border-2 border-gray-300"
+    />
+    {/* <span class="hidden md:inline">Mi cuenta</span> */}
+  </a>
+) : (
+  <!-- Usuario NO logueado: mostrar botón para ir a login -->
+  <a 
+    href="https://contract.drenpos.com/auth" 
+    class="btn-primary"
+  >
+    Iniciar sesión
+  </a>
+)}

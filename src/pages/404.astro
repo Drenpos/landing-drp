@@ -1,0 +1,49 @@
+---
+import ImageMod from "@/components/ImageMod.astro";
+import DynamicIcon from "@/helpers/DynamicIcon";
+import Base from "@/layouts/Base.astro";
+---
+
+<Base title="Page Not Found">
+  <section class="section text-center relative z-10">
+    <div class="container" data-aos="fade-up-sm">
+      <div class="row justify-center">
+        <div class="sm:col-10 md:col-8 lg:col-7 text-center">
+          <ImageMod
+            class="mx-auto mb-16 block w-[480px]"
+            src="/images/404.png"
+            alt="404 image"
+            width={480}
+            height={480}
+          />
+          <div class="content">
+            <p>
+              Your Trusted Partner in Data Protection with Cutting-Edge
+              Solutions for <br /> Comprehensive Data Security.
+            </p>
+          </div>
+          <a href="/" class="btn btn-dark mt-8">
+            Back to home
+            <span class="icon-wrapper">
+              <span class="icon">
+                <DynamicIcon icon={"FaArrowRight"} />
+              </span>
+              <span class="icon" aria-hidden="true">
+                <DynamicIcon icon={"FaArrowRight"} />
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<!-- Add the grainy background -->
+<div class="absolute inset-0 z-0">
+  <img
+    src="/images/grainy.svg"
+    alt="Grainy background"
+    class="w-full h-full object-cover opacity-[.08] pointer-events-none"
+  />
+</div>

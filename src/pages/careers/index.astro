@@ -1,0 +1,109 @@
+---
+import ImageMod from "@/components/ImageMod.astro";
+import Base from "@/layouts/Base.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import PageHeader from "@/partials/PageHeader.astro";
+import { Icon } from "astro-icon/components";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+
+const CAREERS_FOLDER = "careers";
+
+const careersIndex = (await getEntry(
+  CAREERS_FOLDER,
+  "-index"
+)) as CollectionEntry<"careers">;
+const { title, description, meta_title, image, hero, section } =
+  careersIndex.data;
+
+const careers = await getSinglePage(CAREERS_FOLDER);
+---
+
+<Base
+  title={title}
+  meta_title={meta_title}
+  image={image}
+  description={description}
+>
+  <PageHeader title={hero!.title} description={hero!.description} />
+  <section class="section-up pb-0" data-aos="fade-up-sm" data-aos-delay="200">
+    <div class="container">
+      {
+        image && (
+          <div class="row justify-center">
+            <div class="col-10 xl:col-8">
+              <ImageMod
+                src={image}
+                alt={hero!.title}
+                width={1063}
+                height={500}
+                class="rounded-2xl w-full object-cover"
+              />
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <div class="col-10 xl:col-8" data-aos="fade-up-sm">
+          <p set:html={markdownify(section!.badge)} />
+          <h2 set:html={markdownify(section!.title)} />
+          <p set:html={markdownify(section!.description)} />
+        </div>
+      </div>
+
+      <div class="row g-4 justify-center">
+        {
+          careers?.map((career, i: number) => (
+            <div
+              class="col-10 md:col-6"
+              data-aos="fade-up-sm"
+              data-aos-delay={i * 100}
+            >
+              <div class="border border-dark/10 rounded-3xl p-6">
+                <h4 class="h5" set:html={markdownify(career.data.title)} />
+                <div class="flex gap-[10px] mt-2 mb-4">
+                  <div class="flex gap-2 items-center">
+                    <Icon name="careers/locationSolid" />
+                    <p
+                      class="text-sm"
+                      set:html={markdownify(career.data.location!)}
+                    />
+                  </div>
+
+                  <p
+                    class="text-sm bg-primary/10 text-primary px-2 py-0 rounded-full"
+                    set:html={markdownify(career.data.duration!)}
+                  />
+                </div>
+                <p set:html={markdownify(career.data.summary!)} />
+
+                <a
+                  class={`btn-light btn hover:bg-dark border-border drop-shadow-xs hover:border-dark mt-4`}
+                  href={`/${CAREERS_FOLDER}/${career.id}`}
+                  rel="noopener"
+                >
+                  {"View Job"}
+                  <span class="sr-only">Details</span>
+                  <span class="icon-wrapper">
+                    <span class="icon">
+                      <Icon name="arrowRight" width="19" height="12" />
+                    </span>
+                    <span class="icon" aria-hidden="true">
+                      <Icon name="arrowRight" width="19" height="12" />
+                    </span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>

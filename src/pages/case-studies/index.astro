@@ -1,0 +1,29 @@
+---
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+import CaseStudySection from "@/partials/CaseStudySection.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+
+const BLOG_FOLDER = "case-studies";
+
+const postIndex = (await getEntry(
+  BLOG_FOLDER,
+  "-index"
+)) as CollectionEntry<"case-studies">;
+---
+
+<Base
+  title={postIndex.data.title}
+  meta_title={postIndex.data.meta_title}
+  image={postIndex.data.image}
+  description={postIndex.data.description}
+>
+  <PageHeader
+    title={postIndex.data.hero?.title}
+    description={postIndex.data.hero?.description}
+  />
+  <CaseStudySection />
+  <CallToAction />
+</Base>

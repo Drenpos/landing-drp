@@ -1,0 +1,36 @@
+---
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+import CustomersLogo from "@/partials/CustomersLogo.astro";
+import FAQ from "@/partials/Faq.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import PricingSection from "@/partials/PricingSection.astro";
+import Testimonial from "@/partials/Testimonial.astro";
+import { getEntry, type CollectionEntry } from "astro:content";
+
+const pricingIndex = (await getEntry(
+  "pricing",
+  "-index",
+)) as CollectionEntry<"pricing">;
+
+const { title, description, meta_title, image, hero } = pricingIndex.data;
+---
+
+<Base
+  title={title}
+  meta_title={meta_title}
+  image={image}
+  description={description}
+>
+  <PageHeader title={hero.title} description={hero.description} />
+  <div class="section-up pb-0">
+    <PricingSection isSection={false} />
+  </div>
+  <!-- <CustomersLogo isGrayscale={true} sectionGap={"section"} /> -->
+  <!-- <Testimonial />-->
+  <br />
+  <br />
+  <br />
+  <FAQ />
+  <!-- <CallToAction /> -->
+</Base>

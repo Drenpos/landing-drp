@@ -1,0 +1,34 @@
+---
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+  rating: number | undefined;
+}
+
+const { rating } = Astro.props;
+
+// Ensure rating is a number and between 0 and 5
+const safeRating =
+  typeof rating === "number" && !isNaN(rating)
+    ? Math.max(0, Math.min(5, rating))
+    : 0;
+
+const roundedRating = Math.round(safeRating * 2) / 2; // Round to nearest 0.5
+const fullStars = Math.floor(roundedRating);
+const hasHalfStar = roundedRating % 1 !== 0;
+const emptyStars = Math.max(0, 5 - fullStars - (hasHalfStar ? 1 : 0));
+
+const starTypes = [
+  ...Array(fullStars).fill("random/starFull"),
+  ...(hasHalfStar ? ["random/starHalf"] : []),
+  ...Array(emptyStars).fill("random/starEmpty"),
+];
+---
+
+<div class="flex justify-start gap-x-1">
+  {
+    starTypes.map((starType) => (
+      <Icon name={starType} class="text-[#FF7A28] text-lg" />
+    ))
+  }
+</div>

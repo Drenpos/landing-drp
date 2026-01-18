@@ -1,0 +1,104 @@
+---
+import ImageMod from "@/components/ImageMod.astro";
+import Base from "@/layouts/Base.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import CallToAction from "@/partials/CallToAction.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+
+const changelog = (await getEntry(
+  "changelog",
+  "-index"
+)) as CollectionEntry<"changelog">;
+
+const { title, description, meta_title, image, list, hero } = changelog.data;
+---
+
+<Base
+  title={title}
+  meta_title={meta_title}
+  description={description}
+  image={image}
+>
+  <PageHeader
+    title={hero.title}
+    description={hero.description}
+    hasSmallHeight={true}
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div
+          class="lg:col-8 mx-auto"
+          data-aos="fade-up-sm"
+          data-aos-delay="200"
+        >
+          {
+            list?.map(
+              (
+                item: {
+                  version: string;
+                  title: string;
+                  date: string;
+                  image: string;
+                  content: string;
+                },
+                i: number
+              ) => (
+                <div
+                  class="rounded-3xl border-t border-border/90 shadow-md p-5 mb-14 last:mb-0"
+                  data-aos="fade-up-sm"
+                  data-aos-delay={i * 100}
+                >
+                  <div class="row">
+                    <div class="md:col-4">
+                      <div class="mb-2.5 md:mb-0 relative">
+                        {item.date && (
+                          <p
+                            class="absolute top-3 left-3 bg-body px-3 py-1 rounded-full text-sm"
+                            set:html={markdownify(`Released ${item.date}`)}
+                          />
+                        )}
+
+                        <ImageMod
+                          src={item.image}
+                          alt="changelog"
+                          width={200}
+                          height={200}
+                          class="object-cover rounded-2xl"
+                        />
+                      </div>
+                    </div>
+                    <div class="md:col-8">
+                      {item.version && (
+                        <h3
+                          class="h6 font-medium text-base mb-4 border px-2 py-1 inline-block rounded-full"
+                          set:html={markdownify(item.version)}
+                        />
+                      )}
+                      {item.title && (
+                        <h2
+                          class="text-lg font-medium"
+                          set:html={markdownify(item.title)}
+                        />
+                      )}
+                      {item.content && (
+                        <div
+                          class="content prose-p:text-lg/inherit"
+                          set:html={markdownify(item.content, true)}
+                        />
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+  <CallToAction />
+</Base>

@@ -1,0 +1,25 @@
+---
+import Base from "@/layouts/Base.astro";
+import CaseStudySingle from "@/layouts/CaseStudySingle.astro";
+import { getEntry } from "astro:content";
+import CallToAction from "@/partials/CallToAction.astro";
+
+const { single } = Astro.params;
+const caseStudy = await getEntry("case-studies", single as string);
+
+if (!caseStudy) {
+  return Astro.redirect("/404");
+}
+
+const { title, meta_title, description, image } = caseStudy.data;
+---
+
+<Base
+  title={title}
+  meta_title={meta_title}
+  description={description}
+  image={image}
+>
+  <CaseStudySingle post={caseStudy} />
+  <CallToAction />
+</Base>

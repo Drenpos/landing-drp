@@ -1,0 +1,111 @@
+{
+  "main": [
+    {
+      "name": "Drenpos",
+      "url": "/",
+      "blank": false,
+      "data-cc": ""
+    },
+    {
+      "name": "Precios",
+      "url": "/pricing",
+      "blank": false,
+      "data-cc": ""
+    }
+  ],
+  "footer": [
+    {
+      "name": "Elements",
+      "url": "/elements",
+      "blank": false,
+      "data-cc": ""
+    },
+    {
+      "name": "Privacy Policy",
+      "url": "/privacy-policy",
+      "blank": false,
+      "data-cc": ""
+    }
+  ],
+  "footer_menu_links": [],
+  "footer_info_links": [
+    {
+      "name": "Blog",
+      "url": "/blog",
+      "blank": false,
+      "data-cc": ""
+    },
+    {
+      "name": "Blog Details",
+      "url": "/blog/post-1",
+      "blank": false,
+      "data-cc": ""
+    },
+    {
+      "name": "Contact",
+      "url": "/contact",
+      "blank": false,
+      "data-cc": ""
+    }
+  ],
+  "footer_legal_links": [
+    {
+      "name": "Aviso Legal",
+      "url": "/legal/aviso-legal",
+      "blank": false,
+      "data-cc": ""
+    },
+    {
+      "name": "Términos y Condiciones",
+      "url": "/legal/terminos-y-condiciones",
+      "blank": false,
+      "data-cc": ""
+    },
+    {
+      "name": "Políticas de Privacidad",
+      "url": "/legal/privacidad",
+      "blank": false,
+      "data-cc": ""
+    },
+    {
+      "name": "Políticas de Cookies",
+      "url": "/legal/cookies",
+      "blank": false,
+      "data-cc": ""
+    },
+    {
+      "name": "Preferencias de Cookies",
+      "url": "",
+      "blank": false,
+      "data-cc": "show-preferencesModal"
+    }
+  ],
+  "footer_rec_links": [
+    {
+      "name": "Blog",
+      "url": "/blog",
+      "blank": false,
+      "data-cc": ""
+    },
+    {
+      "name": "Declaración Verifactu",
+      "url": "https://api.drenpos.com/api/verifactu-consult/dr-latest",
+      "blank": true,
+      "data-cc": ""
+    }
+  ],
+  "footer_company_links": [
+    {
+      "name": "Sobre Nosotros",
+      "url": "/blog/about",
+      "blank": false,
+      "data-cc": ""
+    },
+    {
+      "name": "Contacto",
+      "url": "/contact",
+      "blank": false,
+      "data-cc": ""
+    }
+  ]
+}

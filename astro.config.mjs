@@ -1,17 +1,70 @@
-// @ts-check
-import { defineConfig } from "astro/config";
-import mdx from "@astrojs/mdx";
-import sitemap from "@astrojs/sitemap";
-
 import cloudflare from "@astrojs/cloudflare";
+import mdx from "@astrojs/mdx";
+import react from "@astrojs/react";
+import clerk from "@clerk/astro";
+import tailwindcss from "@tailwindcss/vite";
+import AutoImport from "astro-auto-import";
+import { defineConfig } from "astro/config";
+import remarkCollapse from "remark-collapse";
+import remarkToc from "remark-toc";
+import config from "./src/config/config.json";
+import sitemap from "@astrojs/sitemap";
+import icon from "astro-icon";
+
+let highlighter;
+async function getHighlighter() {
+  if (!highlighter) {
+    const { getHighlighter } = await import("shiki");
+    highlighter = await getHighlighter({ theme: "one-dark-pro" });
+  }
+  return highlighter;
+}
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://example.com",
-	integrations: [mdx(), sitemap()],
-	adapter: cloudflare({
-		platformProxy: {
-			enabled: true,
-		},
-	}),
+  site: config.site.base_url ? config.site.base_url : "http://examplesite.com",
+  base: config.site.base_path ? config.site.base_path : "/",
+  trailingSlash: config.site.trailing_slash ? "always" : "never",
+  vite: { plugins: [tailwindcss()] },
+  integrations: [
+    clerk(),
+    react(),
+    sitemap(),
+    AutoImport({
+      imports: [
+        "@/shortcodes/Button",
+        "@/shortcodes/Accordion",
+        "@/shortcodes/Notice",
+        "@/shortcodes/Video",
+        "@/shortcodes/Youtube",
+        "@/shortcodes/Tabs",
+        "@/shortcodes/Tab",
+      ],
+    }),
+    mdx(),
+    icon(),
+  ],
+  markdown: {
+    remarkPlugins: [
+      remarkToc,
+      [
+        remarkCollapse,
+        {
+          test: "Table of contents",
+        },
+      ],
+    ],
+    shikiConfig: {
+      theme: "one-dark-pro",
+      wrap: true,
+    },
+    extendDefaultPlugins: true,
+    highlighter: getHighlighter,
+  },
+  output: "server",
+  adapter: cloudflare({
+    platformProxy: {
+      enabled: true,
+    },
+  }),
 });

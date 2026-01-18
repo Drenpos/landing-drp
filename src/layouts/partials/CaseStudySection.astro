@@ -1,0 +1,31 @@
+---
+import CaseStudyCard from "@/components/CaseStudyCard.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+
+interface CaseStudySection {
+  title: string;
+  description: string;
+}
+
+const caseStudies = await getSinglePage("case-studies");
+---
+
+{
+  (
+    <section class="section-up">
+      <div class="container">
+        <div class="row g-5 justify-center">
+          {caseStudies?.map((item, i) => (
+            <div
+              class="lg:col-10"
+              data-aos="fade-up-sm"
+              data-aos-delay={i * 100}
+            >
+              <CaseStudyCard content={item} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

@@ -1,0 +1,106 @@
+---
+import ImageMod from "@/components/ImageMod.astro";
+import DynamicIcon from "@/helpers/DynamicIcon";
+import { markdownify } from "@/lib/utils/textConverter";
+import { getEntry } from "astro:content";
+
+const cta = await getEntry("cta", "call-to-action");
+
+if (!cta) {
+  return;
+}
+const { enable, title, description, image, button, button_secondary } =
+  cta.data;
+---
+
+{
+  enable && (
+    <section class="section pt-0">
+      <div class="container">
+        <div class="bg-light px-10 py-16 xl:p-20 rounded-[38px] relative overflow-hidden">
+          <ImageMod
+            class="object-cover size-full inset-0 opacity-15 absolute"
+            src={"/images/grainy.svg"}
+            alt="cta-image"
+            width={641}
+            height={641}
+          />
+          <div
+            class="absolute -bottom-10 -left-20 z-0 pointer-events-none"
+            data-aos="fade-in"
+            data-aos-delay="200"
+          >
+            <ImageMod
+              class=" h-[641px] w-auto"
+              src={image}
+              alt="cta-image"
+              width={641}
+              height={641}
+            />
+          </div>
+          <div class="row items-center justify-center relative z-10">
+            <div class="lg:col-8 text-center">
+              <h2
+                set:html={markdownify(title)}
+                class="mb-4"
+                data-aos="fade-up-sm"
+              />
+              <p
+                set:html={markdownify(description)}
+                class="text-lg/[inherit] mb-6"
+                data-aos="fade-up-sm"
+                data-aos-delay="50"
+              />
+              <div class="flex flex-wrap gap-4 justify-center items-center">
+                {button.enable && (
+                  <a
+                    class="btn btn-dark"
+                    href={button.link}
+                    target={button.link.startsWith("http") ? "_blank" : "_self"}
+                    rel="noopener"
+                    data-aos="fade-up-sm"
+                    data-aos-delay="200"
+                  >
+                    {button.label}
+                    <span class="icon-wrapper">
+                      <span class="icon">
+                        <DynamicIcon icon={"FaArrowRight"} />
+                      </span>
+                      <span class="icon" aria-hidden="true">
+                        <DynamicIcon icon={"FaArrowRight"} />
+                      </span>
+                    </span>
+                  </a>
+                )}
+                {button_secondary?.enable && (
+                  <a
+                    class="btn btn-outline-dark"
+                    href={button_secondary.link}
+                    target={
+                      button_secondary.link.startsWith("http")
+                        ? "_blank"
+                        : "_self"
+                    }
+                    rel="noopener"
+                    data-aos="fade-up-sm"
+                    data-aos-delay="250"
+                  >
+                    {button_secondary.label}
+                    <span class="icon-wrapper">
+                      <span class="icon">
+                        <DynamicIcon icon={"FaArrowRight"} />
+                      </span>
+                      <span class="icon" aria-hidden="true">
+                        <DynamicIcon icon={"FaArrowRight"} />
+                      </span>
+                    </span>
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

@@ -1,0 +1,113 @@
+---
+import { humanize, markdownify, plainify } from "@/lib/utils/textConverter";
+import { Icon } from "astro-icon/components";
+import ImageMod from "./ImageMod.astro";
+
+const {
+  content: { data, id, body },
+} = Astro.props;
+
+const { title, image, author, categories } = data;
+---
+
+<div
+  class="bg-body drop-shadow-lg border-t border-border/80 rounded-[32px] group p-5"
+>
+  <div class="md:flex justify-between items-center gap-5">
+    {
+      image && (
+        <div class="md:col-5 overflow-hidden rounded-2xl">
+          <ImageMod
+            class={`object-cover size-full rounded-2xl group-hover:scale-110 transition duration-500`}
+            src={image}
+            alt={title}
+            width={460}
+            height={300}
+            format="webp"
+          />
+        </div>
+      )
+    }
+
+    <div class="md:col-7">
+      <div class="md:pr-8">
+        {
+          categories
+            .slice(0, 1)
+            .map((category: string) => (
+              <p class="text-primary text-sm bg-primary/10 px-[10px] py-1 inline-block rounded-full uppercase">
+                {humanize(category)}
+              </p>
+            ))
+        }
+        {
+          title && (
+            <h3 class="h4 pb-5 pt-[10px]">
+              <a
+                class="u-underline"
+                href={`/case-studies/${id.replace(".md", "")}`}
+              >
+                <span class="s-underline">{title}</span>
+              </a>
+            </h3>
+          )
+        }
+        {
+          body && (
+            <p class="" set:html={plainify(body?.slice(0, 280) + "...")} />
+          )
+        }
+
+        {
+          id && author && (
+            <div class="sm:flex justify-between mt-10">
+              <div class="flex gap-4">
+                {author.avatar && (
+                  <div class="flex h-[58px] w-[58px] items-center overflow-hidden rounded-full">
+                    <ImageMod
+                      class="h-full w-full object-cover"
+                      src={author.avatar}
+                      alt={`avatar of the ${author.name}`}
+                      width={58}
+                      height={58}
+                    />
+                  </div>
+                )}
+                <div>
+                  {author.name && (
+                    <strong
+                      class="mb-2 text-lg/[inherit] font-medium"
+                      set:html={markdownify(author.name)}
+                    />
+                  )}
+                  {author.designation && (
+                    <p set:html={markdownify(author.designation)} />
+                  )}
+                </div>
+              </div>
+
+              <div class="max-sm:mt-4">
+                <a
+                  class={`btn btn-dark bg-body border-none text-text-dark [&_svg]:text-text-dark [&:hover_svg]:text-text-dark hover:bg-body`}
+                  href={`/case-studies/${id}`}
+                  rel="noopener"
+                >
+                  {"Continue Reading"}
+                  <span class="sr-only">Details</span>
+                  <span class="icon-wrapper">
+                    <span class="icon ">
+                      <Icon name="arrowRight" width="19" height="12" />
+                    </span>
+                    <span class="icon" aria-hidden="true">
+                      <Icon name="arrowRight" width="19" height="12" />
+                    </span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</div>

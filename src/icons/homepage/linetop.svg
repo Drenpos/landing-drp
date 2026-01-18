@@ -1,0 +1,30 @@
+  <svg
+      viewBox="0 0 1440 180"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <path
+        id="theMotionPathTop"
+        d="M1440 1H1305.86C1298.68 1 1292.86 6.8203 1292.86 14V166C1292.86 173.18 1287.04 179 1279.86 179H126.292C119.113 179 113.292 173.18 113.292 166V15.7033C113.292 8.52363 107.472 2.70335 100.292 2.70335H0"
+        stroke="#EAEAEA"></path>
+      <style>
+        .line {
+          stroke: #9c59b676;
+          stroke-width: 2;
+        }
+      </style>
+      <g>
+        <line x1="5" y1="0" x2="0" y2="0" class="line">
+          <animateMotion
+            dur="12s"
+            begin="0s"
+            fill="freeze"
+            repeatCount="indefinite"
+            rotate="auto"
+          >
+            <mpath xlink:href="#theMotionPathTop"></mpath>
+          </animateMotion>
+        </line>
+      </g>
+    </svg>

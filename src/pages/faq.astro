@@ -1,0 +1,26 @@
+---
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+import FaqPertial from "@/partials/Faq.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import { getEntry, type CollectionEntry } from "astro:content";
+
+const changelog = (await getEntry(
+  "changelog",
+  "-index"
+)) as CollectionEntry<"changelog">;
+const { title, description, meta_title, image, hero } = changelog.data;
+---
+
+<Base
+  title={title}
+  meta_title={meta_title}
+  description={description}
+  image={image}
+>
+  <PageHeader title={hero.title} description={hero.description} />
+  <div class="section-up pb-0">
+    <FaqPertial />
+  </div>
+  <CallToAction />
+</Base>

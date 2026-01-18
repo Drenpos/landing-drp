@@ -1,0 +1,38 @@
+{
+  "site": {
+    "title": "Drenpos - Tu ecosistema de gestión empresarial",
+    "base_url": "https://drenpos.com",
+    "base_path": "/",
+    "trailing_slash": false,
+    "favicon": "/images/favicon.ico",
+    "logo": "/images/logo.svg",
+    "logo_footer": "/images/logo-footer.svg",
+    "logo_width": "170",
+    "logo_height": "40",
+    "logo_text": "Drenpos"
+  },
+  "settings": {
+    "pagination": 2,
+    "summary_length": 200,
+    "blog_folder": "blog"
+  },
+  "params": {
+    "contact_form_action": "https://n8n.drenpos.org/webhook/cce7a567-a214-4746-a550-c59db48bd845",
+    "footer_description": "Optimiza operaciones con soluciones innovadoras que preparan tu negocio para el futuro.",
+    "copyright": "Copyright © {year} [Drenpos](https://drenpos.com/). &nbsp; Todos los derechos reservados"
+  },
+  "navigation_button": {
+    "enable": true,
+    "label": "Acceder",
+    "link": "https://contract.drenpos.com/"
+  },
+  "subscription": {
+    "enable": false,
+    "form_action": "#"
+  },
+  "metadata": {
+    "meta_author": "zeon.studio",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "astro and tailwind theme"
+  }
+}

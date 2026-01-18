@@ -1,0 +1,200 @@
+---
+import config from "@/config/config.json";
+import Base from "@/layouts/Base.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import CallToAction from "@/partials/CallToAction.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import { Icon } from "astro-icon/components";
+import { getEntry, render } from "astro:content";
+
+const { single } = Astro.params;
+const career = await getEntry("careers", single as string);
+
+if (!career) {
+  return Astro.redirect("/404");
+}
+
+const {
+  title,
+  meta_title,
+  description,
+  image,
+  location,
+  duration,
+  salary,
+  benefits,
+} = career.data;
+const { Content } = await render(career);
+
+// Array of job details and corresponding icons
+const jobDetails = [
+  { value: location, icon: "careers/location" },
+  { value: duration, icon: "careers/clock" },
+  { value: salary, icon: "careers/salary" },
+  { value: benefits, icon: "careers/benefit" },
+];
+---
+
+<Base
+  title={title}
+  meta_title={meta_title}
+  description={description}
+  image={image}
+>
+  <PageHeader title={title} />
+  <section
+    class="mt-[-33rem] md:mt-[-24rem] lg:mt-[-18rem] section pt-0 relative z-10"
+    data-aos="fade-up-sm"
+    data-aos-delay="200"
+  >
+    <div class="container">
+      <div class="row justify-center">
+        <article
+          class="col-11 lg:col-10 bg-body py-12 px-8 rounded-t-[32px] border-b"
+        >
+          <div>
+            <h3>Job Information</h3>
+            <div class="flex justify-between items-center gap-8">
+              <div
+                class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2 lg:w-[60%] max-lg:mt-6"
+              >
+                {
+                  jobDetails?.map((item) => (
+                    <div class="flex gap-2 items-center">
+                      {" "}
+                      <Icon name={item.icon} width={24} height={24} />
+                      <p class="text-lg" set:html={markdownify(item.value!)} />
+                    </div>
+                  ))
+                }
+              </div>
+              <div class="ml-auto">
+                <a class={`btn btn-dark`} href={`#apply-form`} rel="noopener">
+                  {"View Job"}
+                  <span class="sr-only">Details</span>
+                  <span class="icon-wrapper">
+                    <span class="icon">
+                      <Icon name="arrowRight" width="19" height="12" />
+                    </span>
+                    <span class="icon" aria-hidden="true">
+                      <Icon name="arrowRight" width="19" height="12" />
+                    </span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="content mb-10">
+            <Content />
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pt-0" id="apply-form" data-aos="fade-up-sm">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="col-10 md:col-6">
+          <div>
+            <h2 class="mb-10 text-center">Apply for position</h2>
+            <form action={config.params.contact_form_action}>
+              <div class="space-y-6">
+                <div>
+                  <label class="form-label" for="name"
+                    >Full Name <span class="text-red-500">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="form-input"
+                    placeholder="Your full name"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label class="form-label" for="email"
+                    >Email <span class="text-red-500">*</span></label
+                  >
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="email"
+                    name="email"
+                    placeholder="Your email address"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label class="form-label" for="address"
+                    >Address <span class="text-red-500">*</span></label
+                  >
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="address"
+                    name="address"
+                    placeholder="Your Location"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label class="form-label" for="phone"
+                    >Phone <span class="text-red-500">*</span></label
+                  >
+                  <input
+                    class="form-input"
+                    type="tel"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    id="phone"
+                    name="phone"
+                    placeholder="Your Location"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label class="form-label" for="url"
+                    >Website, Blog, or Portfolio <span class="text-red-500"
+                      >*</span
+                    ></label
+                  >
+                  <input
+                    class="form-input"
+                    type="url"
+                    id="url"
+                    name="url"
+                    placeholder="dribbble.com/uihut"
+                    required
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                class={`btn btn-dark mt-8 w-full flex justify-center`}
+              >
+                {"Apply Now"}
+                <span class="sr-only">Details</span>
+                <span class="icon-wrapper">
+                  <span class="icon">
+                    <Icon name="arrowRight" width="19" height="12" />
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <Icon name="arrowRight" width="19" height="12" />
+                  </span>
+                </span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>

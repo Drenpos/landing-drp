@@ -1,0 +1,119 @@
+---
+import ImageMod from "@/components/ImageMod.astro";
+import DynamicIcon from "@/helpers/DynamicIcon";
+import Base from "@/layouts/Base.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import CallToAction from "@/partials/CallToAction.astro";
+import Faq from "@/partials/Faq.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+
+const integrations = (await getEntry(
+  "integrations",
+  "-index"
+)) as CollectionEntry<"integrations">;
+
+const { title, description, meta_title, image, hero, integrations_section } =
+  integrations.data;
+---
+
+<Base
+  title={title}
+  meta_title={meta_title}
+  description={description}
+  image={image}
+>
+  <PageHeader
+    title={hero.title}
+    description={hero.description}
+    hasSmallHeight={true}
+  />
+
+  {
+    hero.image && (
+      <div class="flex justify-center mt-[-53px]">
+        <ImageMod
+          src={hero.image}
+          class="absolute z-10"
+          width={408}
+          height={100}
+          alt={hero.title}
+        />
+      </div>
+    )
+  }
+
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 pt-20" data-aos="fade-up-sm" data-aos-delay={200}>
+          <div class="section-title">
+            <div class="col-10 xl:col-8" data-aos="fade-up-sm">
+              <p set:html={markdownify(integrations_section.badge)} />
+              <h2 set:html={markdownify(integrations_section.title)} />
+              <p set:html={markdownify(integrations_section.description)} />
+            </div>
+          </div>
+
+          <div class="row g-4 justify-center">
+            {
+              integrations_section?.list?.map((item, i: number) => (
+                <div
+                  class="md:col-6 lg:col-4"
+                  data-aos="fade-up-sm"
+                  data-aos-delay={i * 100}
+                >
+                  <div class="group border border-dark/10 relative min-h-full rounded-3xl px-6 py-8 transition duration-300 hover:-translate-y-1 md:rounded-3xl">
+                    <div class="flex justify-between pb-6">
+                      {item.image && (
+                        <ImageMod
+                          class="mb-3 w-12 h-12 rounded-full"
+                          src={item.image}
+                          alt={`${item.name}`}
+                          width={48}
+                          height={48}
+                        />
+                      )}
+
+                      {item.button && item.button.enable && (
+                        <a
+                          class="btn btn-icon !w-12 !h-12 rounded-full border-primary/15 -rotate-45"
+                          href={item.button.link}
+                          target={
+                            item.button.link.startsWith("http")
+                              ? "_blank"
+                              : "_self"
+                          }
+                        >
+                          {markdownify(item.button.label!)}
+                          <span class="icon-wrapper">
+                            <span class="icon">
+                              <DynamicIcon icon={"FaArrowRight"} />
+                            </span>
+                            <span class="icon" aria-hidden="true">
+                              <DynamicIcon icon={"FaArrowRight"} />
+                            </span>
+                          </span>
+                        </a>
+                      )}
+                    </div>
+
+                    {item.name && (
+                      <h3 class="h5 mb-2" set:html={markdownify(item.name)} />
+                    )}
+                    {item.description && (
+                      <p set:html={markdownify(item.description)} />
+                    )}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <Faq />
+  <CallToAction />
+</Base>

@@ -1,0 +1,42 @@
+---
+import { render } from "astro:content";
+import ImageMod from "./components/ImageMod.astro";
+import PageHeader from "./partials/PageHeader.astro";
+
+const { post } = Astro.props;
+
+const { Content } = await render(post);
+const { title, image, author, date } = post.data;
+
+const blogData = { author, date };
+---
+
+<PageHeader title={title} blogData={blogData} />
+
+<section class="section-up">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 pt-12" data-aos="fade-up-sm" data-aos-delay="200">
+        {
+          image && (
+            <div class="mb-10">
+              <ImageMod
+                src={image}
+                height={500}
+                width={1200}
+                alt={title}
+                class="h-auto w-full rounded-2xl object-cover md:h-[700px]"
+              />
+            </div>
+          )
+        }
+      </div>
+
+      <article class="pb-10 lg:col-10 mx-auto" data-aos="fade-up-sm">
+        <div class="content">
+          <Content />
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

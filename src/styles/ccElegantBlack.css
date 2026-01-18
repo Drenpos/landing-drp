@@ -1,0 +1,58 @@
+.cc--elegant-black {
+    --cc-bg: #fff;
+    /* fondo principal - blanco para integrar con la página */
+    --cc-primary-color: #101828;
+    /* texto principal oscuro */
+    --cc-secondary-color: #791b46;
+    /* color secundario primary */
+
+    --cc-btn-primary-bg: #791b46;
+    /* botón aceptar - color primary */
+    --cc-btn-primary-color: #fff;
+    --cc-btn-primary-hover-bg: #d17b87;
+    --cc-btn-primary-hover-color: #fff;
+    --cc-btn-primary-border-color: #791b46;
+
+    --cc-btn-secondary-bg: transparent;
+    --cc-btn-secondary-color: #791b46;
+    --cc-btn-secondary-border-color: #d3a776;
+    --cc-btn-secondary-hover-bg: #d3a776;
+    --cc-btn-secondary-hover-color: #fff;
+    --cc-btn-secondary-hover-border-color: #d3a776;
+
+    --cc-cookie-category-block-bg: #F9F9F9;
+    --cc-cookie-category-block-border: #e5e5e5;
+    --cc-cookie-category-block-hover-bg: #f0f0f0;
+    --cc-cookie-category-block-hover-border: #d3a776;
+    --cc-cookie-category-expanded-block-hover-bg: #f5f5f5;
+    --cc-cookie-category-expanded-block-bg: #fafafa;
+
+    --cc-toggle-readonly-bg: #e5e5e5;
+    --cc-overlay-bg: rgba(16, 25, 40, 0.5);
+
+    --cc-toggle-on-bg: #791b46;
+    --cc-toggle-off-bg: #cbd5e1;
+    --cc-toggle-on-knob-bg: #fff;
+    --cc-toggle-off-knob-bg: #fff;
+    --cc-toggle-readonly-knob-bg: #fff;
+    --cc-toggle-enabled-icon-color: #fff;
+    --cc-toggle-disabled-icon-color: #64748b;
+    --cc-toggle-readonly-knob-icon-color: #64748b;
+
+    --cc-section-category-border: #e5e5e5;
+
+    --cc-webkit-scrollbar-bg: #e5e5e5;
+    --cc-webkit-scrollbar-hover-bg: #791b46;
+
+    --cc-separator-border-color: #e5e5e5;
+
+    --cc-footer-bg: #F9F9F9;
+    --cc-footer-color: #791b46;
+    --cc-footer-border-color: #e5e5e5;
+}
+
+.cc--elegant-black #cc-main .cm,
+.cc--elegant-black #cc-main .pm {
+    color-scheme: light;
+    border: 1px solid var(--cc-separator-border-color);
+}

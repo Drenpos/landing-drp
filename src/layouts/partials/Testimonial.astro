@@ -1,0 +1,132 @@
+---
+import { markdownify } from "@/lib/utils/textConverter";
+import ImageMod from "@/components/ImageMod.astro";
+import StarRatings from "@/components/StarRatings.astro";
+import { getEntry, type CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
+
+const contentEntry = (await getEntry(
+  "testimonialSection",
+  "testimonial"
+)) as CollectionEntry<"testimonialSection">;
+
+let { enable, title, badge, description, list } = contentEntry.data;
+---
+
+{
+  enable && (
+    <section class="section pt-0 overflow-x-hidden">
+      <div>
+        <div class="row">
+          <div class="section-title">
+            <div class="col-10 xl:col-8" data-aos="fade-up-sm">
+              <p set:html={markdownify(badge)} />
+              <h2 set:html={markdownify(title)} />
+              <p set:html={markdownify(description)} />
+            </div>
+          </div>
+
+          <div
+            class="swiper testimonial-slider"
+            data-aos="fade-up-sm"
+            data-aos-delay="200"
+          >
+            <div class="swiper-wrapper">
+              {list?.map((item) => (
+                <div class="swiper-slide">
+                  <div class="flex min-h-full flex-col justify-start rounded-xl bg-light p-6 md:rounded-3xl mb-10">
+                    <div>
+                      {item.content && (
+                        <>
+                          <div
+                            class="content prose-strong:text-xl"
+                            set:html={markdownify(item.content, true)}
+                          />
+
+                          <div class="flex justify-start items-center gap-x-2">
+                            <StarRatings rating={item.rating} />
+                            <span class="text-lg font-medium ml-[10px]">
+                              {item.rating}
+                            </span>
+                          </div>
+                        </>
+                      )}
+                    </div>
+
+                    <div class="flex justify-between mt-auto">
+                      <div class="flex gap-4">
+                        {item.avatar && (
+                          <div class="flex h-[58px] w-[58px] items-center overflow-hidden rounded-full">
+                            <ImageMod
+                              class="h-full w-full object-cover"
+                              src={item.avatar}
+                              alt={`avatar of the ${item.name}`}
+                              width={58}
+                              height={58}
+                            />
+                          </div>
+                        )}
+                        <div>
+                          {item.name && (
+                            <strong
+                              class="mb-2 text-lg/[inherit] font-medium"
+                              set:html={markdownify(item.name)}
+                            />
+                          )}
+                          {item.designation && (
+                            <p set:html={markdownify(item.designation)} />
+                          )}
+                        </div>
+                      </div>
+
+                      <div class="flex items-center">
+                        <Icon name={"random/quote"} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<script>
+  import { Swiper } from "swiper";
+  import "swiper/css";
+  import "swiper/css/pagination";
+  import { Autoplay, Pagination } from "swiper/modules";
+
+  // astro:page-load event is fired when the page is loaded
+  document.addEventListener("astro:page-load", () => {
+    new Swiper(".testimonial-slider", {
+      modules: [Pagination, Autoplay],
+      spaceBetween: 24,
+      loop: true,
+      centeredSlides: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".testimonial-slider-pagination",
+        type: "bullets",
+        clickable: true,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+        1280: {
+          slidesPerView: 4,
+        },
+      },
+    });
+  });
+</script>

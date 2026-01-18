@@ -1,0 +1,88 @@
+---
+import ImageMod from "@/components/ImageMod.astro";
+import LineAnimation from "@/components/LineAnimation.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import { Icon } from "astro-icon/components";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+
+const homepage = (await getEntry(
+  "homepage",
+  "-index"
+)) as CollectionEntry<"homepage">;
+const { data } = homepage;
+const { banner } = data;
+---
+
+<section class="section-sm pb-0 relative z-10 overflow-hidden">
+  <!-- Add the grainy background -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="/images/grainy.svg"
+      alt="Grainy background"
+      class="w-full h-full object-cover opacity-[.08]"
+    />
+  </div>
+
+  <div class="relative">
+    <div class="container relative z-10">
+      <div class="row justify-center">
+        <div class="lg:col-7 md:col-9 text-center">
+          <h1
+            set:html={markdownify(banner.title)}
+            data-aos="fade-up-sm"
+            class="mb-4 text-h3 lg:text-h1"
+          />
+          <p
+            set:html={markdownify(banner.content)}
+            class="mb-8 text-balance"
+            data-aos="fade-up-sm"
+          />
+          {
+            banner.buttons.length > 0 && (
+              <ul class="flex flex-wrap justify-center gap-4">
+                {banner.buttons.map(({ label, link }, index) => (
+                  <li data-aos="fade-up-sm" data-aos-delay={100 + index * 50}>
+                    <a
+                      class={`${index === 0 ? "btn-dark" : "btn-light"} btn`}
+                      href={link}
+                      target={link.startsWith("http") ? "_blank" : "_self"}
+                      rel="noopener"
+                    >
+                      {label}
+                      <span class="sr-only">Details</span>
+                      <span class="icon-wrapper">
+                        <span class="icon">
+                          <Icon name="arrowRight" width="19" height="12" />
+                        </span>
+                        <span class="icon" aria-hidden="true">
+                          <Icon name="arrowRight" width="19" height="12" />
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )
+          }
+        </div>
+        {
+          banner.main_image && (
+            <div class="col-12">
+              <ImageMod
+                src={banner.main_image.src}
+                height={718}
+                width={1010}
+                alt={banner.main_image.alt}
+                format="webp"
+                class="mx-auto mt-20"
+              />
+            </div>
+          )
+        }
+      </div>
+    </div>
+
+    <LineAnimation />
+  </div>
+</section>
