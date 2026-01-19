@@ -1,0 +1,42 @@
+---
+import FeatureCard from "@/components/FeatureCard.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { markdownify } from "@/lib/utils/textConverter";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+
+const featureIndex = (await getEntry(
+  "features",
+  "-index"
+)) as CollectionEntry<"features">;
+
+const features = await getSinglePage("features");
+---
+
+{
+  true && (
+    <section class="section pt-0">
+      <div class="container">
+        <div class="section-title mb-14">
+          <div class="col-10 xl:col-8" data-aos="fade-up-sm">
+            <p set:html={markdownify(featureIndex.data.section!.badge)} />
+            <h2 set:html={markdownify(featureIndex.data.section!.title)} />
+            <p set:html={markdownify(featureIndex.data.section!.description)} />
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {features.map((feature, index) => (
+            <div
+              class="feature-card-bgcolor max-w-[450px] md:max-w-full mx-auto"
+              data-aos="fade-up-sm"
+              data-aos-delay={index * 100}
+            >
+              <FeatureCard data={feature} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

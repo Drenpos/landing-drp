@@ -40,6 +40,19 @@ const homepageCollection = defineCollection({
         }),
       ),
     }),
+    problems_section: z.object({
+      enable: z.boolean(),
+      title: z.string(),
+      content: z.string(),
+      badge: z.string(),
+      cards: z.array(
+        z.object({
+          title: z.string(),
+          content: z.string(),
+          icon: z.string(),
+        }),
+      ),
+    }),
     features: z.array(
       z.object({
         title: z.string(),
@@ -257,7 +270,7 @@ const pagesCollection = defineCollection({
 // feature section collection
 const featureListCollection = defineCollection({
   loader: glob({
-    pattern: "features.{md,mdx}",
+    pattern: "feature**.{md,mdx}",
     base: "src/content/sections",
   }),
   schema: z.object({

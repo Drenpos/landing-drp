@@ -2,7 +2,7 @@
 # Banner
 banner:
   title: "El ERP modular para pymes que quieren ganar control real sobre su negocio"
-  content: "100% en la nube, accede desde cualquier dispositivo y lugar. Empieza por lo que más te duele hoy y añade módulos cuando tu negocio lo pida. Verifactu sin dramas, implantación rápida y soporte cercano."
+  content: "100% en la nube, accede desde cualquier dispositivo y lugar. Empieza por lo que más te duele hoy y añade módulos cuando tu negocio lo pida. Sin dramas, implantación rápida y soporte cercano."
   main_image:
     src: "/images/ventas.png"
     alt: "Dashboard Drenpos"
@@ -21,15 +21,34 @@ solution_section:
   content: "Un solo sitio para cualquier necesidad. Implantación rápida, sin proyectos eternos."
   badge: "Cómo funciona"
   cards:
-    - title: "Diagnóstico de tu negocio"
-      content: "Analizamos cómo trabajas ahora y qué módulos necesitas activar primero para resolver tus problemas más urgentes. Y creces cuando tu negocio lo pida."
+    - title: "Modularidad real"
+      content: "Activar primero los módulos para resolver tus problemas más urgentes. Y creces cuando tu negocio lo pida. O desactivas lo que no uses."
       icon: "homepage/detection"
     - title: "Siempre actualizado"
-      content: "Drenpos evoluciona constantemente para adaptarse a las necesidades de las pymes y a los cambios normativos, sin que tú tengas que preocuparte por nada."
+      content: "Drenpos evoluciona constantemente para adaptarse a las necesidades de las pymes y a los cambios normativos, sin que tú tengas que preocuparte por nada, actualizaciones continuas y sin costes ocultos."
       icon: "homepage/flow"
     - title: "Sin limites"
       content: "Drenpos es 100% propio, sin dependencias externas. Si necesitas algo especial, lo desarrollamos y si es común para todos se implementa sin coste adicional o se crea una instancia unica para para vosotros."
       icon: "homepage/update"
+#Problems
+problems_section:
+  enable: true
+  title: "Si ves esto cada día, Drenpos es para ti"
+  content: ""
+  badge: "Te suena esto"
+  cards:
+    - content: ""
+      title: "Excel eternos que nadie se atreve a tocar."
+      icon: "0219ad42-caf7-4aec-abf8-fd7a9d7dd23a/YVmERYIezU"
+    - content: ""
+      title: "El comercial ve una cosa, almacén ve otra y contabilidad otra distinta."
+      icon: "480fc886-cdb5-4834-8b3a-85111feb6e3a/zEaPCcoMbn"
+    - content: ""
+      title: "No sabes realmente qué productos son rentables."
+      icon: "262783ad-33bb-4a97-be2d-d1717daddab7/mZLsr7Ln43"
+    - content: ""
+      title: "Para cerrar el mes necesitas revisar varias hojas y programas."
+      icon: "f310b4dd-f455-48a5-860d-57498a8afb31/XUaijxHTcb"
 
 # Features
 features:

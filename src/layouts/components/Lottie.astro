@@ -1,0 +1,16 @@
+---
+const { lott_id } = Astro.props;
+---
+
+<canvas id={lott_id} style="width: 300px; height: 200px;"></canvas>
+
+<script type="module" define:vars={{ lott_id }}>
+  import { DotLottie } from "https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-web/+esm";
+  console.log("cargando lottie");
+  new DotLottie({
+    autoplay: true,
+    loop: true,
+    canvas: document.getElementById(lott_id),
+    src: `https://lottie.host/${lott_id}.lottie`,
+  });
+</script>

@@ -125,6 +125,20 @@
   }
 }
 
+/* Specific layout tweaks for the Problems component: 2 cards per row and larger cards for Lottie */
+.problems-section .section-cards .card-container {
+  @apply col-10 md:col-6 lg:col-6;
+}
+.problems-section .section-cards .card {
+  @apply min-h-[300px] py-12 px-8;
+}
+.problems-section .section-cards .icon-container {
+  @apply w-[96px] h-[96px];
+}
+.problems-section .section-cards .icon {
+  @apply text-[40px];
+}
+
 .feature-card-bgcolor {
   @apply p-6 rounded-2xl;
 
