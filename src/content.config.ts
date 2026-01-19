@@ -1,5 +1,6 @@
 import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
+import { ZodAny } from "astro:schema";
 
 // homepage
 const homepageCollection = defineCollection({
@@ -279,6 +280,8 @@ const featureListCollection = defineCollection({
     badge: z.string(),
     list_columns: z.array(
       z.object({
+        w: z.string().optional(),
+        h: z.string().optional(),
         title: z.string(),
         images: z.array(z.string()),
         description: z.string(),

@@ -4,29 +4,30 @@ description: "Lo que antes estaba repartido en varios programas y hojas, ahora v
 badge: "Un solo sitio para todo"
 
 list_columns:
-  - title: "Control total de stock <br> sin inventarios eternos"
+  - title: "Tu negocio en un <br> único lugar"
+    w: "300px"
+    h: "300px"
     images:
-      - "/images/random/so1.png"
-    description: "Gestiona tu almacén con ubicaciones, movimientos en tiempo real y alertas automáticas. Reduce hasta un 35% el tiempo en inventarios."
+      - "e2216ba0-46bc-4e3e-b243-b9aea6ff988d/m8e5QzGWqZ"
+    description: "Drenpos centraliza la información de tu negocio. Ventas, stock, finanzas... todo conectado para que no tengas que andar saltando entre programas."
     list:
-      - icon: "random/code"
-        title: "Multi-almacén con ubicaciones"
-        description: "Organiza tu stock por almacén, zona y ubicación específica para encontrar productos al instante."
-      - icon: "random/code"
-        title: "Trazabilidad completa"
-        description: "Histórico de entradas, salidas y movimientos con registro de usuario y fecha para auditorías."
-
-  - title: "Verifactu listo desde el primer día"
+      - icon: "homepage/flow"
+        title: "Todo conectado"
+        description: "Cada acción actualiza lo que tiene que actualizar. Sin duplicar datos, sin reescribir la misma información en varios sitios."
+      - icon: "homepage/flexi"
+        title: "Se adapta a ti"
+        description: "Usa lo que necesites ahora y añade más cuando te haga falta. El sistema crece contigo, a tu ritmo."
+  - title: "Un sistema que tu equipo <br> no odia"
+    w: "500px"
+    h: "300px"
     images:
-      - "/images/random/so2.png"
-    description: "Cumple con la normativa sin complicaciones. Registro inalterable, QR automático en facturas y tranquilidad garantizada."
-    list_check:
-      - "Registro inalterable de todas las facturas"
-      - "Generación automática de QR de verificación"
-      - "Trazabilidad completa para inspecciones"
-      - "Actualizado con cambios normativos"
-    button:
-      enable: true
-      label: "Solicitar Demo"
-      link: "/contact/"
+      - "a152dbae-b560-4564-b3e5-c44dda40c5f3/7xyoE1FBaL"
+    description: "Pantallas simples, diseñadas para el día a día. Si sabes usar un navegador, puedes usar Drenpos."
+    list:
+      - icon: "homepage/efficiency"
+        title: "Simple y directo"
+        description: "Nada de pantallas complicadas. Cada función donde la esperas, sin más vueltas."
+      - icon: "homepage/security"
+        title: "Cada uno lo suyo"
+        description: "Roles por usuario: almacén ve almacén, ventas ve ventas, administración ve todo. Solo lo que necesita cada persona."
 ---

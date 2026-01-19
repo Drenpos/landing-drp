@@ -1,5 +1,6 @@
 ---
 import ImageMod from "@/components/ImageMod.astro";
+import Lottie from "@/components/Lottie.astro";
 import { markdownify, plainify } from "@/lib/utils/textConverter";
 import { Icon } from "astro-icon/components";
 import type { CollectionEntry } from "astro:content";
@@ -42,13 +43,7 @@ const { list_columns, title, description, badge } = features.data;
                   <div class={`rounded-2xl p-8 pl-24 pb-0`}>
                     {item.images &&
                       item.images.map((image: string, imageIndex: number) => (
-                        <ImageMod
-                          class={`drop-shadow-xl rounded-t-sm ${imageIndex === 1 ? "h-[412px] object-cover object-top" : "pb-8"}`}
-                          src={image}
-                          alt={`image related to ${plainify(item.title)}`}
-                          width={396}
-                          height={424}
-                        />
+                        <Lottie lott_id={image} />
                       ))}
                   </div>
                 </div>
