@@ -3,7 +3,6 @@ title: "Soluciones ERP y Programas de Facturación en Almendralejo: guía práct
 meta_title: "ERP y Programa de Facturación en Almendralejo | Drenpos"
 description: "Qué es un ERP, diferencias con CRM, checklist de funciones, Ley Antifraude/Veri*Factu, seguridad y cómo elegir. Drenpos: modular, en la nube, soporte personal y mejoras continuas sin coste."
 date: 2025-09-20
-image: "/images/local/erp-almendralejo.webp"
 author:
   name: "Alonso Bermejo Pérez"
   designation: "CEO & Founder"

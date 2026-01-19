@@ -4,9 +4,10 @@ import PostSingle from "@/layouts/PostSingle.astro";
 import { getEntry } from "astro:content";
 
 // En modo SSR no usamos getStaticPaths, obtenemos el contenido dinámicamente
+const { single } = Astro.params;
 
 // Intentar obtener el post
-const post = await getEntry("blog", "about");
+const post = await getEntry("local", single as string);
 
 // Si no existe, redirigir a 404
 if (!post) {
