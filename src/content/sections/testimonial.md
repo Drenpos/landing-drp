@@ -18,7 +18,7 @@ list:
     avatar: "/images/avatar/I.png"
     rating: 5
     content: |
-      **Sitema sencillo, agil y con unas personas que te guían, configuración con TPV inmejorable para nuestro día a día**
+      ****
 
   - name: "Pedro Miguel Lavado Campos"
     designation: "Lc Soluciones"
