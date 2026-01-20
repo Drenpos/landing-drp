@@ -6,52 +6,38 @@ enable: true
 
 # Testimonials
 list:
-  - name: "María González"
-    designation: "Gerente de Distribuciones López"
-    avatar: "/images/avatar/1.png"
+  - name: "Raquel Jiménez Fuentes"
+    designation: "Palets Palvi SL"
+    avatar: "/images/avatar/R.png"
     rating: 5
     content: |
-      **Antes cerrábamos el mes con 3 hojas de cálculo. Ahora tenemos todo en un panel y tardamos la mitad.**
+      **Programa fácil de aprender. Atención rápida y muy satisfactoria. Excelente programa para llevar todo de tu empresa.**
 
-      Drenpos nos ha ayudado a centralizar ventas, stock y facturación sin complicarnos la vida. El equipo de soporte es muy cercano y siempre responden rápido.
-  - name: "Carlos Martín"
-    designation: "Director en Retail Fashion SL"
-    avatar: "/images/avatar/2.jpg"
+  - name: "Irene Diaz calvo"
+    designation: "Mi Rirual"
+    avatar: "/images/avatar/I.png"
     rating: 5
     content: |
-      **Reducimos un 35% el tiempo en inventarios gracias a las ubicaciones y la trazabilidad en tiempo real.**
+      **Sitema sencillo, agil y con unas personas que te guían, configuración con TPV inmejorable para nuestro día a día**
 
-      Lo que más valoro es que podemos activar módulos según vamos creciendo. Empezamos con stock y ahora también usamos ventas y finanzas. Todo conectado.
-  - name: "Ana Ruiz"
-    designation: "Responsable Administración en Clínica Dental"
-    avatar: "/images/avatar/3.jpg"
-    rating: 4.5
-    content: |
-      **Verifactu listo desde el primer día, sin dramas ni configuraciones eternas.**
-
-      Teníamos miedo al cambio normativo pero con Drenpos fue muy sencillo. El QR se genera automático y todo queda registrado para inspecciones.
-  - name: "Jorge Fernández"
-    designation: "Propietario de Ferretería Industrial"
-    avatar: "/images/avatar/4.png"
+  - name: "Pedro Miguel Lavado Campos"
+    designation: "Lc Soluciones"
+    avatar: "/images/avatar/P.png"
     rating: 5
     content: |
-      **De tener Excel eternos a ver todo en un solo sitio. Mis comerciales y yo vemos la misma información actualizada.**
+      **Un servicio de 10!**
 
-      La implantación fue rápida, en una semana estábamos operando. Y cuando tenemos dudas, el soporte nos ayuda en menos de 24 horas.
-  - name: "Laura Pérez"
-    designation: "Gerente de Almacén Logístico"
-    avatar: "/images/avatar/5.png"
-    rating: 4.8
-    content: |
-      **Ahora sabemos exactamente qué productos son rentables y cuáles no. Antes era intuición, ahora son datos.**
-
-      Los informes de Drenpos nos dan visibilidad real del negocio. Podemos tomar decisiones sobre qué comprar o dejar de comprar con datos reales.
-  - name: "Miguel Sánchez"
-    designation: "Director Comercial en Distribuciones del Sur"
-    avatar: "/images/avatar/6.png"
+  - name: "Laura Castaño"
+    designation: "Barrolivas Romale"
+    avatar: "/images/avatar/B.png"
     rating: 5
     content: |
-      **The comprehensive risk analysis and impact visualization tools are exceptional.**
+      **Gran trabajo con personas competentes y atentas**
 
-      The comprehensive risk analysis and impact visualization tools are exceptional. We can quickly identify and mitigate potential threats before they become serious issues.
+  - name: "Fatima Carretero"
+    designation: "Mascotas Dimar"
+    avatar: "/images/avatar/F.png"
+    rating: 5
+    content: |
+      **PROGRAMA FÁCIL, CON TODO LO QUE NECESITAS PARA LA GESTIÓN DE UNA EMPRESA. TRATO INMEJORABLE, AYUDA INMEDIATA Y SOLUCIONES RÁPIDAS ANTE CUALQUIER DUDA. RECOMIENDO 100%**
 ---

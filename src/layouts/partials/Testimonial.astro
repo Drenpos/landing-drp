@@ -7,7 +7,7 @@ import { Icon } from "astro-icon/components";
 
 const contentEntry = (await getEntry(
   "testimonialSection",
-  "testimonial"
+  "testimonial",
 )) as CollectionEntry<"testimonialSection">;
 
 let { enable, title, badge, description, list } = contentEntry.data;
@@ -118,13 +118,13 @@ let { enable, title, badge, description, list } = contentEntry.data;
       },
       breakpoints: {
         768: {
-          slidesPerView: 2,
+          slidesPerView: 1,
         },
         1024: {
-          slidesPerView: 3,
+          slidesPerView: 2,
         },
         1280: {
-          slidesPerView: 4,
+          slidesPerView: 3,
         },
       },
     });
