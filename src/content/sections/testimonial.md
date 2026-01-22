@@ -48,13 +48,6 @@ list:
     content: |
       **Gran trabajo con personas competentes y atentas**
 
-  - name: "Cervecero Enmascarado"
-    designation: ""
-    avatar: "https://lh3.googleusercontent.com/a-/ALV-UjUvwbg5xeny3P98JFRKSXGXJ6VsibtsusQi29cpnn8VW_vKhx-Crg=s120-c-rp-mo-ba2-br100"
-    rating: 5
-    content: |
-      **Muy atentos y rapidez en solucionar cualquier tipo de dudas.**
-
   - name: "Fatima Carretero"
     designation: ""
     avatar: "https://lh3.googleusercontent.com/a/ACg8ocKpcC762QOl-De8VdTd03a13unNEaQOjlnW_SYAA4vhQvI5JQ=s120-c-rp-mo-br100"
