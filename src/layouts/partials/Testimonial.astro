@@ -57,12 +57,10 @@ let { enable, title, badge, description, list } = contentEntry.data;
                       <div class="flex gap-4">
                         {item.avatar && (
                           <div class="flex h-[58px] w-[58px] items-center overflow-hidden rounded-full">
-                            <ImageMod
+                            <img
                               class="h-full w-full object-cover"
                               src={item.avatar}
                               alt={`avatar of the ${item.name}`}
-                              width={58}
-                              height={58}
                             />
                           </div>
                         )}
