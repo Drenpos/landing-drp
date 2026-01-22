@@ -34,6 +34,4 @@ list:
     description: Por módulos y usuarios, para que pagues solo por lo que usas. Cuéntanos tu caso y te enviamos una propuesta clara. Solicita una demo para ver encaje y presupuesto.
   - title: ¿Hay demo o prueba?
     description: Sí, ofrecemos demo guiada para evaluar encaje y resolver dudas de procesos, datos y trazabilidad. Si te interesa, solicita una demo desde el botón de la página.
-  - title: ¿Y el módulo TPV?
-    description: Está en desarrollo. Hoy puedes explotar informes y gestionar stock, ventas y facturación con Verifactu. Si el TPV es clave para ti, te avisamos cuando esté listo.
 ---

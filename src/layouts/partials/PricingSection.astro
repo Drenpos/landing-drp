@@ -18,7 +18,10 @@ if (content) {
   ({ title, badge, description } = content);
 }
 
-const { isSection = true }: { isSection?: boolean } = Astro.props;
+const {
+  isSection = true,
+  compact = false,
+}: { isSection?: boolean; compact?: boolean } = Astro.props;
 ---
 
 {
@@ -121,7 +124,7 @@ const { isSection = true }: { isSection?: boolean } = Astro.props;
                         )}
                     </div>
 
-                    {item.features && (
+                    {!compact && item.features && (
                       <ul
                         class={`list ${(index + 1) % 2 === 0 ? "list-dark " : "list-tertiary"}`}
                       >
@@ -134,7 +137,7 @@ const { isSection = true }: { isSection?: boolean } = Astro.props;
                       </ul>
                     )}
 
-                    {item.button && item.button.enable && (
+                    {!compact && item.button && item.button.enable && (
                       <a
                         class={`${(index + 1) % 2 === 0 ? "btn-light" : "btn-dark"} btn mt-auto`}
                         href={item.button.link}
@@ -154,6 +157,21 @@ const { isSection = true }: { isSection?: boolean } = Astro.props;
                 </div>
               ))}
             </div>
+            {compact && (
+              <div class="col-12 mt-8 text-center" data-aos="fade-up-sm">
+                <a class="btn btn-dark" href="/pricing">
+                  Ver todos los detalles
+                  <span class="icon-wrapper">
+                    <span class="icon">
+                      <DynamicIcon icon={"FaArrowRight"} />
+                    </span>
+                    <span class="icon" aria-hidden="true">
+                      <DynamicIcon icon={"FaArrowRight"} />
+                    </span>
+                  </span>
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>

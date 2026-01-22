@@ -16,30 +16,39 @@ import "@/styles/ccElegantBlack.css";
   import * as CookieConsent from "vanilla-cookieconsent";
   import { config } from "./CookieConsentConfig";
 
-  let initialized = false;
-
   function initCookieConsent() {
     // toggle custom black theme
     document.body.classList.add("cc--elegant-black");
 
-    // Solo inicializar una vez
-    if (!initialized) {
-      console.log("Initializing cookie consent for the first time");
+    // Solo inicializar CookieConsent una vez
+    if (!window.__cookieConsentInitialized) {
+      console.log("Initializing CookieConsent for the first time");
       CookieConsent.run(config);
-      initialized = true;
+      window.__cookieConsentInitialized = true;
     } else {
-      console.log("Cookie consent already initialized, attaching listeners");
-      // Re-adjuntar event listeners para elementos con data-cc
-      attachCookieListeners();
+      console.log("CookieConsent already initialized");
     }
+    
+    // Siempre re-adjuntar event listeners en cada navegación
+    attachCookieListeners();
   }
 
   function attachCookieListeners() {
     // Buscar todos los elementos con data-cc y adjuntar listeners manualmente
     const ccElements = document.querySelectorAll("[data-cc]");
+    console.log("Found", ccElements.length, "elements with data-cc");
+    
     ccElements.forEach((element) => {
+      // Evitar duplicar listeners
+      if (element.dataset.ccListenerAttached === 'true') {
+        console.log("Listener already attached to element");
+        return;
+      }
+      
+      element.dataset.ccListenerAttached = 'true';
       element.addEventListener("click", (e) => {
         const action = element.getAttribute("data-cc");
+        console.log("Click detected, action:", action);
         if (action === "show-preferencesModal") {
           e.preventDefault();
           CookieConsent.showPreferences();
@@ -53,7 +62,7 @@ import "@/styles/ccElegantBlack.css";
 
   // Ejecutar cada vez que Astro carga una nueva página (view transitions)
   document.addEventListener("astro:page-load", () => {
-    console.log("astro:page-load - re-attaching cookie consent listeners");
+    console.log("astro:page-load - re-initializing cookie consent");
     initCookieConsent();
   });
 </script>

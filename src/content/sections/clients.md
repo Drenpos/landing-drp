@@ -16,7 +16,7 @@ brands:
     alt: "dimar-logo"
   - src: "/images/brands/formetal.png"
     alt: "formetal-logo"
-  - src: "/images/brands/ddedesgn.jpg"
+  - src: "/images/brands/ddedesign.jpg"
     alt: "ddedesign-logo"
   - src: "/images/brands/barroso.webp"
     alt: "barroso-logo"

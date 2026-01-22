@@ -28,51 +28,66 @@ const {
 >
   import { DotLottie } from "https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-web/+esm";
 
-  const container = document.getElementById(`container-${lott_id}`);
-  const canvas = document.getElementById(lott_id);
+  function initializeLottie() {
+    const container = document.getElementById(`container-${lott_id}`);
+    const canvas = document.getElementById(lott_id);
 
-  // Función para aplicar tamaños según viewport
-  const applySize = () => {
-    const width = window.innerWidth;
-    let w, h;
+    // Si no existen los elementos, salir
+    if (!container || !canvas) return;
 
-    if (width < 640) {
-      // Móvil
-      w = w_mobile;
-      h = h_mobile;
-    } else if (width < 1024) {
-      // Tablet
-      w = w_tablet;
-      h = h_tablet;
-    } else {
-      // Desktop
-      w = w_desktop;
-      h = h_desktop;
-    }
+    // Evitar inicializar dos veces
+    if (canvas.dataset.initialized === "true") return;
+    canvas.dataset.initialized = "true";
 
-    container.style.width = w;
-    container.style.height = h;
-    canvas.style.width = "100%";
-    canvas.style.height = "100%";
-  };
+    // Función para aplicar tamaños según viewport
+    const applySize = () => {
+      const width = window.innerWidth;
+      let w, h;
 
-  // Aplicar tamaño inicial
-  applySize();
+      if (width < 640) {
+        // Móvil
+        w = w_mobile;
+        h = h_mobile;
+      } else if (width < 1024) {
+        // Tablet
+        w = w_tablet;
+        h = h_tablet;
+      } else {
+        // Desktop
+        w = w_desktop;
+        h = h_desktop;
+      }
 
-  // Reajustar en resize
-  let resizeTimeout;
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(applySize, 100);
-  });
+      container.style.width = w;
+      container.style.height = h;
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
+    };
 
-  // Inicializar Lottie
-  new DotLottie({
-    autoplay: true,
-    loop: true,
-    canvas: canvas,
-    src: `https://lottie.host/${lott_id}.lottie`,
-  });
+    // Aplicar tamaño inicial
+    applySize();
+
+    // Reajustar en resize
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(applySize, 100);
+    });
+
+    // Inicializar Lottie
+    new DotLottie({
+      autoplay: true,
+      loop: true,
+      canvas: canvas,
+      src: `https://lottie.host/${lott_id}.lottie`,
+    });
+  }
+
+  // Ejecutar en carga inicial
+  initializeLottie();
+
+  // Ejecutar después de navegaciones del lado del cliente
+  document.addEventListener("astro:page-load", initializeLottie);
 </script>
 
 <style>
