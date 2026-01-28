@@ -6,6 +6,20 @@ enable: true
 
 # Testimonials
 list:
+  - name: "Rocío González"
+    designation: ""
+    avatar: "https://lh3.googleusercontent.com/a-/ALV-UjW8qjEczQ8s9OPJGksL5Ei7QnjrVu7FIRlx0000WxQj6ntTiC0U=s120-c-rp-mo-br100"
+    rating: 5
+    content: |-
+      **Drenpos es una herramienta muy práctica para la gestión empresarial. Todo es sencillo, ordenado y fácil de entender desde el primer momento. Muy buena experiencia.**
+
+  - name: "Findiur"
+    designation: ""
+    avatar: "https://lh3.googleusercontent.com/a-/ALV-UjWGK_iJCcTL2qEJ1H0-PAzk4zoAYVk5S5WwLelJqqXfDzdLBw=s120-c-rp-mo-br100"
+    rating: 5
+    content: |-
+      **Herramienta brutal para la gestión interna de la empresa. En Findiur a usamos y estamos muy contentos. Atención personalizada (que hoy en día falta)**
+
   - name: "Francisco Bermejo"
     designation: ""
     avatar: "https://lh3.googleusercontent.com/a/ACg8ocLTpGG7_DGcnXPfuyX9OZPnc7x8Roou-wCYELADEC7TG-cNFw=s120-c-rp-mo-br100"
