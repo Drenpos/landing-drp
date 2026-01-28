@@ -3,10 +3,13 @@ import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import CustomersLogo from "@/partials/CustomersLogo.astro";
 import FAQ from "@/partials/Faq.astro";
+import ModulesTable from "@/partials/ModulesTable.astro";
 import PageHeader from "@/partials/PageHeader.astro";
 import PricingSection from "@/partials/PricingSection.astro";
 import Testimonial from "@/partials/Testimonial.astro";
 import { getEntry, type CollectionEntry } from "astro:content";
+import PlansComparison from "@/partials/PlansComparison.astro";
+import ModulesTableCollapsible from "@/partials/ModulesTableCollapsible.astro";
 
 const pricingIndex = (await getEntry(
   "pricing",
@@ -24,7 +27,9 @@ const { title, description, meta_title, image, hero } = pricingIndex.data;
 >
   <PageHeader title={hero.title} description={hero.description} />
   <div class="section-up pb-0">
-    <PricingSection isSection={false} />
+    <PricingSection isSection={true} />
+    <PlansComparison isSection={true} />
+    <ModulesTableCollapsible isSection={true} />
   </div>
   <!-- <CustomersLogo isGrayscale={true} sectionGap={"section"} /> -->
   <!-- <Testimonial />-->

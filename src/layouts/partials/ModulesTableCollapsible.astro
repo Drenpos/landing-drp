@@ -1,0 +1,446 @@
+---
+import { markdownify } from "@/lib/utils/textConverter";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+import DynamicIcon from "@/helpers/DynamicIcon";
+
+const modulesData = (await getEntry(
+  "modulesSection",
+  "modules",
+)) as CollectionEntry<"modulesSection">;
+
+const { title, badge, description, modules, notes } = modulesData.data;
+
+const {
+  isSection = true,
+  showPricing = true,
+}: { isSection?: boolean; showPricing?: boolean } = Astro.props;
+---
+
+{
+  (
+    <section class={`${isSection ? "section pt-0" : ""}`}>
+      <div class="container">
+        <div class="row">
+          <div class="section-title">
+            <div class="col-10 xl:col-8" data-aos="fade-up-sm">
+              <p set:html={markdownify(badge)} />
+              <h2 set:html={markdownify(title)} />
+              <p set:html={markdownify(description)} />
+            </div>
+          </div>
+
+          {/* Toggle para mostrar/ocultar precios */}
+          {showPricing && (
+            <div
+              class="col-12 pb-10"
+              data-aos="fade-up-sm"
+              data-aos-delay="200"
+            >
+              <div class="flex items-center justify-center gap-x-3">
+                <span class="select-none font-medium order-0">Mensual</span>
+                <label class="relative inline-block h-8 w-16 cursor-pointer order-1 rounded-full bg-dark/10">
+                  <span class="sr-only">Módulos Pricing Switcher</span>
+                  <input
+                    type="checkbox"
+                    id="modules-checkbox"
+                    class="modules-pricing-check peer w-full cursor-pointer opacity-0"
+                  />
+                  <span class="absolute left-0 top-0 cursor-pointer before:absolute before:left-1 before:top-1 before:h-6 before:w-6 before:translate-x-0 before:rounded-full before:bg-primary before:transition-all before:delay-75 before:duration-300 peer-checked:before:translate-x-8" />
+                </label>
+                <span class="select-none font-medium order-3">Anual</span>
+              </div>
+            </div>
+          )}
+
+          {/* Tabla colapsable de módulos - Vista Desktop */}
+          <div class="col-12 hidden lg:block" data-aos="fade-up-sm">
+            <div class="overflow-x-auto">
+              <div class="bg-body border border-dark/10 rounded-3xl overflow-hidden">
+                <table class="w-full">
+                  <thead class="bg-light border-b border-dark/10">
+                    <tr>
+                      <th class="text-left px-6 py-4 font-semibold text-text-dark w-16">
+                        {/* Columna para el botón de colapsar */}
+                      </th>
+                      <th class="text-left px-6 py-4 font-semibold text-text-dark">
+                        Módulo
+                      </th>
+                      {showPricing && (
+                        <th class="text-center px-6 py-4 font-semibold text-text-dark w-40">
+                          Precio
+                        </th>
+                      )}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {modules.map((module, index) => (
+                      <>
+                        <tr
+                          class={`border-b border-dark/10 hover:bg-light/50 transition-colors duration-200 cursor-pointer module-row ${index % 2 === 0 ? "" : "bg-light/30"}`}
+                          data-module-index={index}
+                        >
+                          <td class="px-6 py-5">
+                            <button
+                              class="module-toggle-btn text-text-dark hover:text-primary transition-colors"
+                              aria-label="Expandir módulo"
+                            >
+                              <span class="text-xl chevron-icon transition-transform duration-300">
+                                <DynamicIcon icon={"FaChevronRight"} />
+                              </span>
+                            </button>
+                          </td>
+                          <td class="px-6 py-5">
+                            <div class="flex items-start gap-3">
+                              <div
+                                class={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1
+                                  ${index % 6 === 0 ? "bg-[#D1FADF]" : ""}
+                                  ${index % 6 === 1 ? "bg-[#FFEAFF]" : ""}
+                                  ${index % 6 === 2 ? "bg-[#FFFBF9]" : ""}
+                                  ${index % 6 === 3 ? "bg-[#FDF2F2]" : ""}
+                                  ${index % 6 === 4 ? "bg-[#EEF4FF]" : ""}
+                                  ${index % 6 === 5 ? "bg-[#F1EAFF]" : ""}
+                                `}
+                              >
+                                <span
+                                  class={`text-xl
+                                    ${index % 6 === 0 ? "text-[#00FF99]" : ""}
+                                    ${index % 6 === 1 ? "text-[#D735D7]" : ""}
+                                    ${index % 6 === 2 ? "text-[#FF7A28]" : ""}
+                                    ${index % 6 === 3 ? "text-[#FF7575]" : ""}
+                                    ${index % 6 === 4 ? "text-[#5C96FF]" : ""}
+                                    ${index % 6 === 5 ? "text-[#9966FF]" : ""}
+                                  `}
+                                >
+                                  <DynamicIcon icon={"FaCube"} />
+                                </span>
+                              </div>
+                              <div class="flex-1">
+                                <h5 class="font-semibold text-text-dark">
+                                  {module.name}
+                                </h5>
+                              </div>
+                            </div>
+                          </td>
+                          {showPricing && (
+                            <td class="px-6 py-5 text-center">
+                              <div class="font-semibold text-lg text-text-dark">
+                                <span
+                                  class="module-price-monthly"
+                                  data-monthly={module.price_monthly}
+                                  data-yearly={module.price_yearly}
+                                >
+                                  {module.price_monthly}
+                                </span>
+                              </div>
+                              {module.price_monthly !== "Incluido" &&
+                                module.price_monthly !==
+                                  "Incluido hasta fin 2026" && (
+                                  <>
+                                    <span class="text-sm text-text/60 module-price-desc-monthly">
+                                      /mes
+                                    </span>
+                                    <span class="text-sm text-text/60 module-price-desc-yearly hidden">
+                                      /mes (dto. 10%)
+                                    </span>
+                                  </>
+                                )}
+                            </td>
+                          )}
+                        </tr>
+                        {/* Fila expandible con detalles */}
+                        <tr
+                          class={`module-details border-b border-dark/10 ${index % 2 === 0 ? "" : "bg-light/30"}`}
+                          data-module-details={index}
+                          style="display: none;"
+                        >
+                          <td
+                            colspan={showPricing ? "3" : "2"}
+                            class="px-6 py-0"
+                          >
+                            <div class="module-details-content overflow-hidden transition-all duration-300 max-h-0">
+                              <div class="py-5 px-12">
+                                <p class="text-text/80 mb-4">
+                                  {module.description}
+                                </p>
+                                <h6 class="font-semibold text-text-dark mb-3 text-sm uppercase tracking-wide">
+                                  Características incluidas:
+                                </h6>
+                                <ul class="grid md:grid-cols-2 gap-2">
+                                  {module.features.map((feature) => (
+                                    <li class="text-sm text-text/70 flex items-start gap-2">
+                                      <span class="text-primary mt-0.5 flex-shrink-0">
+                                        <DynamicIcon icon={"FaCheck"} />
+                                      </span>
+                                      <span>{feature}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          {/* Vista móvil/tablet: Tarjetas colapsables */}
+          <div class="col-12 lg:hidden">
+            <div class="grid gap-4">
+              {modules.map((module, index) => (
+                <div
+                  class="bg-body border border-dark/10 rounded-3xl overflow-hidden module-card-mobile"
+                  data-aos="fade-up-sm"
+                  data-aos-delay={100 + index * 50}
+                >
+                  {/* Header de la tarjeta (siempre visible) */}
+                  <div
+                    class="flex items-start gap-3 p-5 cursor-pointer mobile-module-header"
+                    data-mobile-index={index}
+                  >
+                    <div
+                      class={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0
+                        ${index % 6 === 0 ? "bg-[#D1FADF]" : ""}
+                        ${index % 6 === 1 ? "bg-[#FFEAFF]" : ""}
+                        ${index % 6 === 2 ? "bg-[#FFFBF9]" : ""}
+                        ${index % 6 === 3 ? "bg-[#FDF2F2]" : ""}
+                        ${index % 6 === 4 ? "bg-[#EEF4FF]" : ""}
+                        ${index % 6 === 5 ? "bg-[#F1EAFF]" : ""}
+                      `}
+                    >
+                      <span
+                        class={`text-2xl
+                          ${index % 6 === 0 ? "text-[#00FF99]" : ""}
+                          ${index % 6 === 1 ? "text-[#D735D7]" : ""}
+                          ${index % 6 === 2 ? "text-[#FF7A28]" : ""}
+                          ${index % 6 === 3 ? "text-[#FF7575]" : ""}
+                          ${index % 6 === 4 ? "text-[#5C96FF]" : ""}
+                          ${index % 6 === 5 ? "text-[#9966FF]" : ""}
+                        `}
+                      >
+                        <DynamicIcon icon={"FaCube"} />
+                      </span>
+                    </div>
+                    <div class="flex-1">
+                      <h5 class="font-semibold text-text-dark text-lg mb-1">
+                        {module.name}
+                      </h5>
+                      {showPricing && (
+                        <div class="font-semibold text-primary">
+                          <span
+                            class="module-price-monthly"
+                            data-monthly={module.price_monthly}
+                            data-yearly={module.price_yearly}
+                          >
+                            {module.price_monthly}
+                          </span>
+                          {module.price_monthly !== "Incluido" &&
+                            module.price_monthly !==
+                              "Incluido hasta fin 2026" && (
+                              <>
+                                <span class="text-sm module-price-desc-monthly">
+                                  {" "}
+                                  /mes
+                                </span>
+                                <span class="text-sm module-price-desc-yearly hidden">
+                                  {" "}
+                                  /mes (dto. 10%)
+                                </span>
+                              </>
+                            )}
+                        </div>
+                      )}
+                    </div>
+                    <button
+                      class="text-text-dark hover:text-primary transition-colors mobile-toggle-btn"
+                      aria-label="Expandir módulo"
+                    >
+                      <span class="text-xl chevron-icon-mobile transition-transform duration-300">
+                        <DynamicIcon icon={"FaChevronDown"} />
+                      </span>
+                    </button>
+                  </div>
+
+                  {/* Contenido colapsable */}
+                  <div
+                    class="mobile-module-details overflow-hidden transition-all duration-300 max-h-0"
+                    data-mobile-details={index}
+                  >
+                    <div class="px-5 pb-5 pt-2 border-t border-dark/10">
+                      <p class="text-text/80 text-sm mb-4">
+                        {module.description}
+                      </p>
+                      <h6 class="font-semibold text-text-dark mb-3 text-xs uppercase tracking-wide">
+                        Características incluidas:
+                      </h6>
+                      <ul class="space-y-2">
+                        {module.features.map((feature) => (
+                          <li class="text-sm text-text/70 flex items-start gap-2">
+                            <span class="text-primary mt-0.5 flex-shrink-0">
+                              <DynamicIcon icon={"FaCheck"} />
+                            </span>
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Notas al pie */}
+          {notes && notes.length > 0 && (
+            <div class="col-12 mt-8" data-aos="fade-up-sm">
+              <div class="bg-light/50 border border-dark/10 rounded-2xl p-6">
+                <ul class="space-y-2">
+                  {notes.map((note) => (
+                    <li class="text-sm text-text/70 flex items-start gap-2">
+                      <span class="text-primary mt-0.5 flex-shrink-0">
+                        <DynamicIcon icon={"FaCircleInfo"} />
+                      </span>
+                      <span>{note}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<script>
+  function modulesInit() {
+    // Toggle de precios mensual/anual
+    const toggleSwitch = document.querySelector<HTMLInputElement>(
+      ".modules-pricing-check",
+    );
+
+    if (toggleSwitch) {
+      toggleSwitch.addEventListener("change", function () {
+        const priceElements = document.querySelectorAll<HTMLSpanElement>(
+          ".module-price-monthly",
+        );
+        const descMonthly = document.querySelectorAll(
+          ".module-price-desc-monthly",
+        );
+        const descYearly = document.querySelectorAll(
+          ".module-price-desc-yearly",
+        );
+
+        priceElements.forEach(function (element) {
+          const monthlyPrice = element.getAttribute("data-monthly");
+          const yearlyPrice = element.getAttribute("data-yearly");
+
+          if (toggleSwitch.checked) {
+            element.textContent = yearlyPrice || monthlyPrice || "";
+            descMonthly.forEach((el) => el.classList.add("hidden"));
+            descYearly.forEach((el) => el.classList.remove("hidden"));
+          } else {
+            element.textContent = monthlyPrice || "";
+            descMonthly.forEach((el) => el.classList.remove("hidden"));
+            descYearly.forEach((el) => el.classList.add("hidden"));
+          }
+        });
+      });
+    }
+
+    // Toggle de colapsar/descolapsar módulos en desktop
+    const moduleRows = document.querySelectorAll<HTMLElement>(".module-row");
+    moduleRows.forEach((row) => {
+      const toggleBtn = row.querySelector(".module-toggle-btn");
+      const index = row.getAttribute("data-module-index");
+      const detailsRow = document.querySelector(
+        `[data-module-details="${index}"]`,
+      ) as HTMLElement;
+      const detailsContent = detailsRow?.querySelector(
+        ".module-details-content",
+      ) as HTMLElement;
+      const chevron = toggleBtn?.querySelector(".chevron-icon") as HTMLElement;
+
+      if (toggleBtn && detailsRow && detailsContent) {
+        // Variable para rastrear el estado
+        let isOpen = false;
+
+        const toggleModule = (e?: Event) => {
+          if (e) {
+            e.stopPropagation();
+          }
+
+          if (isOpen) {
+            // Cerrar
+            isOpen = false;
+            detailsContent.style.maxHeight = "0px";
+            chevron.style.transform = "rotate(0deg)";
+            setTimeout(() => {
+              detailsRow.style.display = "none";
+            }, 300);
+          } else {
+            // Abrir
+            isOpen = true;
+            detailsRow.style.display = "table-row";
+            chevron.style.transform = "rotate(90deg)";
+            setTimeout(() => {
+              detailsContent.style.maxHeight =
+                detailsContent.scrollHeight + "px";
+            }, 10);
+          }
+        };
+
+        toggleBtn.addEventListener("click", toggleModule);
+        row.addEventListener("click", toggleModule);
+      }
+    });
+
+    // Toggle de colapsar/descolapsar módulos en móvil
+    const mobileHeaders = document.querySelectorAll<HTMLElement>(
+      ".mobile-module-header",
+    );
+    mobileHeaders.forEach((header) => {
+      const index = header.getAttribute("data-mobile-index");
+      const detailsDiv = document.querySelector(
+        `[data-mobile-details="${index}"]`,
+      ) as HTMLElement;
+      const chevron = header.querySelector(
+        ".chevron-icon-mobile",
+      ) as HTMLElement;
+
+      if (detailsDiv && chevron) {
+        // Variable para rastrear el estado
+        let isOpen = false;
+
+        const toggleMobile = (e: Event) => {
+          e.stopPropagation();
+
+          if (isOpen) {
+            // Cerrar
+            isOpen = false;
+            detailsDiv.style.maxHeight = "0px";
+            chevron.style.transform = "rotate(0deg)";
+          } else {
+            // Abrir
+            isOpen = true;
+            detailsDiv.style.maxHeight = detailsDiv.scrollHeight + "px";
+            chevron.style.transform = "rotate(180deg)";
+          }
+        };
+
+        header.addEventListener("click", toggleMobile);
+      }
+    });
+  }
+
+  // Initialize on page load
+  modulesInit();
+
+  // Re-initialize after navigation (for SPAs or view transitions)
+  document.addEventListener("astro:page-load", modulesInit);
+</script>

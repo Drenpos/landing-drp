@@ -1,0 +1,28 @@
+---
+import Base from "@/layouts/Base.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import ModulesTableCollapsible from "@/partials/ModulesTableCollapsible.astro";
+import PlansComparison from "@/partials/PlansComparison.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+---
+
+<Base
+  title="Módulos Drenpos"
+  meta_title="Módulos disponibles para Drenpos ERP"
+  description="Descubre todos los módulos disponibles para personalizar tu sistema Drenpos según las necesidades de tu empresa."
+>
+  <PageHeader
+    title="Módulos y Planes Drenpos"
+    description="Descubre todos los módulos disponibles y compara qué incluye cada plan. Personaliza tu ERP según las necesidades de tu negocio."
+  />
+
+  {/* Tabla colapsable de módulos con precios */}
+  <div class="section-up pb-0">
+    <ModulesTableCollapsible isSection={false} showPricing={true} />
+  </div>
+
+  {/* Tabla de comparación de planes */}
+  <PlansComparison isSection={true} />
+
+  <CallToAction />
+</Base>

@@ -578,6 +578,74 @@ const faqSectionCollection = defineCollection({
   }),
 });
 
+// modulesSectionCollection
+const modulesSectionCollection = defineCollection({
+  loader: glob({
+    pattern: "modules.{md,mdx}",
+    base: "src/content/sections",
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    badge: z.string(),
+    modules: z.array(
+      z.object({
+        name: z.string(),
+        description: z.string(),
+        price_monthly: z.string(),
+        price_yearly: z.string(),
+        included_in: z.array(z.string()),
+        features: z.array(z.string()),
+      }),
+    ),
+    notes: z.array(z.string()).optional(),
+  }),
+});
+
+// plansComparisonCollection
+const plansComparisonCollection = defineCollection({
+  loader: glob({
+    pattern: "plans-comparison.{md,mdx}",
+    base: "src/content/sections",
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    badge: z.string(),
+    plans: z.array(
+      z.object({
+        id: z.string(),
+        name: z.string(),
+      }),
+    ),
+    features: z.array(
+      z.object({
+        category: z.string(),
+        items: z.array(
+          z.object({
+            name: z.string(),
+            financiero: z.union([z.boolean(), z.number(), z.string()]),
+            pyme: z.union([z.boolean(), z.number(), z.string()]),
+          }),
+        ),
+      }),
+    ),
+    modules: z.array(
+      z.object({
+        category: z.string(),
+        items: z.array(
+          z.object({
+            name: z.string(),
+            financiero: z.union([z.boolean(), z.number(), z.string()]),
+            pyme: z.union([z.boolean(), z.number(), z.string()]),
+          }),
+        ),
+      }),
+    ),
+    notes: z.array(z.string()).optional(),
+  }),
+});
+
 // Export collections
 export const collections = {
   // pages
@@ -602,4 +670,6 @@ export const collections = {
   testimonialSection: testimonialCollection,
   faq: faqSectionCollection,
   teamSection: teamPageCollection,
+  modulesSection: modulesSectionCollection,
+  plansComparison: plansComparisonCollection,
 };

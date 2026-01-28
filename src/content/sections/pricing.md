@@ -8,10 +8,10 @@ plans_labels:
   - "Anual"
 plans:
   - title: "Plan Financiero"
-    description: "Ideal para autónomos y pequeños negocios que necesitan control básico de facturación y contabilidad."
+    description: "Acceso a módulo financiero para un usuario. Ideal para autónomos y pequeños negocios."
     price_prefix: "€"
-    price_monthly: "13.9"
-    price_yearly: "12.51"
+    price_monthly: "11.49"
+    price_yearly: "10.34"
     price_description_monthly: "al mes con IVA incluido"
     price_description_yearly: "al mes (10% dto. anual)"
     features:
@@ -21,7 +21,7 @@ plans:
       - Soporte básico por email
       - 1 Usuario incluido
       - Módulo Financiero
-      - Módulo Informes básicos
+      - Módulo Informes
       - Envíos de documentos por email sin salir del sistema
     badge:
       enable: false
@@ -31,10 +31,10 @@ plans:
       label: "Activar"
       link: "https://contract.drenpos.com/auth"
   - title: "Plan Pyme"
-    description: "Perfecto para pymes que necesitan un ERP completo con facturación, inventario, contabilidad y CRM."
+    description: "Acceso a módulos financiero, inventario y 2 usuarios. Perfecto para pymes en crecimiento."
     price_prefix: "€"
-    price_monthly: "24.9"
-    price_yearly: "22.41"
+    price_monthly: "20.58"
+    price_yearly: "18.52"
     price_description_monthly: "al mes con IVA incluido"
     price_description_yearly: "al mes (10% dto. anual)"
     features:
@@ -44,10 +44,10 @@ plans:
       - Soporte básico por email
       - 2 Usuarios incluidos
       - Módulo Financiero
-      - Módulo Informes básicos
-      - Módulo Almacén e Inventario
+      - Módulo Informes
+      - Módulo Inventario
+      - Módulo TPV
       - Envíos de documentos por email sin salir del sistema
-      - Módulo TPV (incluido hasta finales de 2026)
 
     badge:
       enable: true
