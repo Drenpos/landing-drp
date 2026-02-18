@@ -1,5 +1,5 @@
 ---
-import Lottie from "@/components/Lottie.astro";
+import LottieProblem from "@/components/LottieProblem.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 import { Icon } from "astro-icon/components";
 import type { CollectionEntry } from "astro:content";
@@ -33,11 +33,11 @@ const { enable, title, content, badge, cards } = problems_section;
               data-aos-delay={index * 100}
             >
               <div class="card relative min-h-full overflow-hidden ">
-                <div class="w-full flex justify-center align-middle">
-                  <Lottie lott_id={icon} />
+                <h5 set:html={markdownify(title)} class="mb-3 font-bold" />
+                <p class="mb-4" set:html={markdownify(content)} />
+                <div class="w-full flex justify-center align-middle mt-auto">
+                  <LottieProblem lott_id={icon} />
                 </div>
-                <h5 set:html={markdownify(title)} />
-                <p class="mt-[10px]" set:html={markdownify(content)} />
 
                 <div class="pointer-events-none absolute bottom-[-22%] right-[-40%] h-[180px] w-[335px] rotate-[-20deg] from-dark/0 to-primary opacity-0 blur-[80px] transition-opacity duration-300 bg-primary/15 group-hover:opacity-100" />
               </div>

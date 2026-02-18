@@ -11,7 +11,7 @@ const pricing = (await getEntry(
   "pricing",
 )) as CollectionEntry<"pricingSection">;
 
-let { title, badge, description, plans, plans_labels } = pricing.data;
+let { title, badge, description, plans, plans_labels, help_cta } = pricing.data;
 
 // Override default blog data (Title, Subtitle & Description) with props if provided
 if (content) {
@@ -170,6 +170,32 @@ const {
                     </span>
                   </span>
                 </a>
+              </div>
+            )}
+            {!compact && help_cta?.enable && (
+              <div
+                class="col-12 mt-12"
+                data-aos="fade-up-sm"
+                data-aos-delay="300"
+              >
+                <div class="bg-light rounded-3xl px-8 py-10 md:px-12 md:py-12 text-center">
+                  <h3 class="h4 mb-4" set:html={markdownify(help_cta.title)} />
+                  <p
+                    class="text-lg mb-6"
+                    set:html={markdownify(help_cta.description)}
+                  />
+                  <a class="btn btn-dark" href={help_cta.button.link}>
+                    {help_cta.button.label}
+                    <span class="icon-wrapper">
+                      <span class="icon">
+                        <DynamicIcon icon={"FaArrowRight"} />
+                      </span>
+                      <span class="icon" aria-hidden="true">
+                        <DynamicIcon icon={"FaArrowRight"} />
+                      </span>
+                    </span>
+                  </a>
+                </div>
               </div>
             )}
           </div>

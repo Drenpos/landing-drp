@@ -317,6 +317,17 @@ const pricingPlanCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     badge: z.string(),
+    help_cta: z
+      .object({
+        enable: z.boolean(),
+        title: z.string(),
+        description: z.string(),
+        button: z.object({
+          label: z.string(),
+          link: z.string(),
+        }),
+      })
+      .optional(),
     plans_labels: z.array(z.string()),
     plans: z.array(
       z.object({

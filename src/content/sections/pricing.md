@@ -3,6 +3,14 @@ title: "Elige el plan que mejor se adapte a tu negocio"
 description: "Planes claros y módulos a la carta, sin letra pequeña. Paga solo por lo que usas y crece cuando lo necesites."
 badge: "Precios & Planes"
 
+help_cta:
+  enable: true
+  title: "¿No tienes claro qué necesitas?"
+  description: "Contáctanos y te ayudamos a encontrar la mejor solución para tu negocio"
+  button:
+    label: "Hablar con un experto"
+    link: "/contact"
+
 plans_labels:
   - "Mensual"
   - "Anual"
@@ -28,7 +36,7 @@ plans:
       label: "Recomendado"
     button:
       enable: true
-      label: "Activar"
+      label: "Regístrate y activa el plan"
       link: "https://contract.drenpos.com/auth"
   - title: "Plan Pyme"
     description: "Acceso a módulos financiero, inventario y 2 usuarios. Perfecto para pymes en crecimiento."
@@ -54,7 +62,7 @@ plans:
       label: "Recomendado"
     button:
       enable: true
-      label: "Activar"
+      label: "Regístrate y activa el plan"
       link: "https://contract.drenpos.com/auth"
   - title: "Plan a Medida"
     description: "Realizamos un estudio integral de tu empresa, medimos tus necesidades y desarrollamos una integración completamente personalizada."

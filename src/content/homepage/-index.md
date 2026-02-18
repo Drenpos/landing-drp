@@ -1,8 +1,8 @@
 ---
 # Banner
 banner:
-  title: "El ERP modular para pymes que quieren ganar control real sobre su negocio"
-  content: "100% en la nube, accede desde cualquier dispositivo y lugar. Empieza por lo que más te duele hoy y añade módulos cuando tu negocio lo pida. Sin dramas, implantación rápida y soporte cercano."
+  title: "El software que te hará ganar control real sobre tu negocio"
+  content: "100% en la nube, accede desde cualquier dispositivo y lugar. Control de stock, ventas, facturación y finanzas en tiempo real. Añade los módulos que necesites en el futuro de manera fácil, con implantación rápida y soporte **humano**."
   main_image:
     src: "/images/ventas.png"
     alt: "Dashboard Drenpos"
@@ -11,7 +11,7 @@ banner:
     alt: "hero_blob"
   buttons:
     - enable: true
-      label: "Pruebalo gratis"
+      label: "Regístrate y empieza gratis"
       link: "https://contract.drenpos.com"
 
 #solution
