@@ -73,40 +73,28 @@ function renderCellValue(value: boolean | number | string) {
                             class={`border-b border-dark/10 last:border-0 hover:bg-light/30 transition-colors ${itemIdx % 2 === 0 ? "" : "bg-light/10"}`}
                           >
                             <td class="px-6 py-4 text-text/80">{item.name}</td>
-                            <td class="px-6 py-4 text-center">
-                              {typeof item.financiero === "boolean" ? (
-                                item.financiero ? (
-                                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary">
-                                    <DynamicIcon icon={"FaCheck"} />
-                                  </span>
-                                ) : (
-                                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-dark/5 text-text/30">
-                                    <DynamicIcon icon={"FaXmark"} />
-                                  </span>
-                                )
-                              ) : (
-                                <span class="font-semibold text-text-dark">
-                                  {item.financiero}
-                                </span>
-                              )}
-                            </td>
-                            <td class="px-6 py-4 text-center">
-                              {typeof item.pyme === "boolean" ? (
-                                item.pyme ? (
-                                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary">
-                                    <DynamicIcon icon={"FaCheck"} />
-                                  </span>
-                                ) : (
-                                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-dark/5 text-text/30">
-                                    <DynamicIcon icon={"FaXmark"} />
-                                  </span>
-                                )
-                              ) : (
-                                <span class="font-semibold text-text-dark">
-                                  {item.pyme}
-                                </span>
-                              )}
-                            </td>
+                            {plans.map((plan) => {
+                              const val = (item as any)[plan.id];
+                              return (
+                                <td class="px-6 py-4 text-center">
+                                  {typeof val === "boolean" ? (
+                                    val ? (
+                                      <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary">
+                                        <DynamicIcon icon={"FaCheck"} />
+                                      </span>
+                                    ) : (
+                                      <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-dark/5 text-text/30">
+                                        <DynamicIcon icon={"FaXmark"} />
+                                      </span>
+                                    )
+                                  ) : (
+                                    <span class="font-semibold text-text-dark">
+                                      {val}
+                                    </span>
+                                  )}
+                                </td>
+                              );
+                            })}
                           </tr>
                         ))}
                       </>
@@ -128,40 +116,28 @@ function renderCellValue(value: boolean | number | string) {
                             class={`border-b border-dark/10 last:border-0 hover:bg-light/30 transition-colors ${itemIdx % 2 === 0 ? "" : "bg-light/10"}`}
                           >
                             <td class="px-6 py-4 text-text/80">{item.name}</td>
-                            <td class="px-6 py-4 text-center">
-                              {typeof item.financiero === "boolean" ? (
-                                item.financiero ? (
-                                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary">
-                                    <DynamicIcon icon={"FaCheck"} />
-                                  </span>
-                                ) : (
-                                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-dark/5 text-text/30">
-                                    <DynamicIcon icon={"FaXmark"} />
-                                  </span>
-                                )
-                              ) : (
-                                <span class="font-semibold text-text-dark text-sm">
-                                  {item.financiero}
-                                </span>
-                              )}
-                            </td>
-                            <td class="px-6 py-4 text-center">
-                              {typeof item.pyme === "boolean" ? (
-                                item.pyme ? (
-                                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary">
-                                    <DynamicIcon icon={"FaCheck"} />
-                                  </span>
-                                ) : (
-                                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-dark/5 text-text/30">
-                                    <DynamicIcon icon={"FaXmark"} />
-                                  </span>
-                                )
-                              ) : (
-                                <span class="font-semibold text-text-dark text-sm">
-                                  {item.pyme}
-                                </span>
-                              )}
-                            </td>
+                            {plans.map((plan) => {
+                              const val = (item as any)[plan.id];
+                              return (
+                                <td class="px-6 py-4 text-center">
+                                  {typeof val === "boolean" ? (
+                                    val ? (
+                                      <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary">
+                                        <DynamicIcon icon={"FaCheck"} />
+                                      </span>
+                                    ) : (
+                                      <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-dark/5 text-text/30">
+                                        <DynamicIcon icon={"FaXmark"} />
+                                      </span>
+                                    )
+                                  ) : (
+                                    <span class="font-semibold text-text-dark text-sm">
+                                      {val}
+                                    </span>
+                                  )}
+                                </td>
+                              );
+                            })}
                           </tr>
                         ))}
                       </>
@@ -197,10 +173,7 @@ function renderCellValue(value: boolean | number | string) {
                         </h5>
                         <ul class="space-y-2">
                           {section.items.map((item) => {
-                            const value =
-                              plan.id === "financiero"
-                                ? item.financiero
-                                : item.pyme;
+                            const value = (item as any)[plan.id];
                             return (
                               <li class="flex items-center justify-between text-sm py-2 border-b border-dark/5 last:border-0">
                                 <span class="text-text/70">{item.name}</span>
@@ -234,10 +207,7 @@ function renderCellValue(value: boolean | number | string) {
                         </h5>
                         <ul class="space-y-2">
                           {section.items.map((item) => {
-                            const value =
-                              plan.id === "financiero"
-                                ? item.financiero
-                                : item.pyme;
+                            const value = (item as any)[plan.id];
                             return (
                               <li class="flex items-center justify-between text-sm py-2 border-b border-dark/5 last:border-0">
                                 <span class="text-text/70">{item.name}</span>

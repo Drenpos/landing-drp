@@ -635,8 +635,9 @@ const plansComparisonCollection = defineCollection({
         items: z.array(
           z.object({
             name: z.string(),
-            financiero: z.union([z.boolean(), z.number(), z.string()]),
-            pyme: z.union([z.boolean(), z.number(), z.string()]),
+            essential: z.union([z.boolean(), z.number(), z.string()]),
+            pro: z.union([z.boolean(), z.number(), z.string()]),
+            full: z.union([z.boolean(), z.number(), z.string()]),
           }),
         ),
       }),
@@ -647,8 +648,9 @@ const plansComparisonCollection = defineCollection({
         items: z.array(
           z.object({
             name: z.string(),
-            financiero: z.union([z.boolean(), z.number(), z.string()]),
-            pyme: z.union([z.boolean(), z.number(), z.string()]),
+            essential: z.union([z.boolean(), z.number(), z.string()]),
+            pro: z.union([z.boolean(), z.number(), z.string()]),
+            full: z.union([z.boolean(), z.number(), z.string()]),
           }),
         ),
       }),
