@@ -27,7 +27,7 @@ pipeline {
                     ],
                     userRemoteConfigs: [[
                         credentialsId: 'GITHUB-SSH',
-                        url: 'git@github.com:Drenpos/landing.git'
+                        url: 'git@github.com:Drenpos/landing_drp.git'
                     ]]
                 ])
                 sh 'git branch'
