@@ -65,7 +65,7 @@ pipeline {
                     // Deploy contract 
                     sh '''
                         cd dist
-                        wrangler pages deploy . --project-name=landing --branch=$BRANCH_NAME
+                        wrangler pages deploy . --project-name=landing-drp --branch=$BRANCH_NAME
                     '''
                     
                     
