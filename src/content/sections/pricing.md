@@ -15,34 +15,11 @@ plans_labels:
   - "Mensual"
   - "Anual"
 plans:
-  - title: "Plan Financiero"
-    description: "Acceso a módulo financiero para un usuario. Ideal para autónomos y pequeños negocios."
+  - title: "Essential"
+    description: "Autónomos y gestión administrativa básica."
     price_prefix: "€"
-    price_monthly: "11.49"
-    price_yearly: "10.34"
-    price_description_monthly: "al mes con IVA incluido"
-    price_description_yearly: "al mes (10% dto. anual)"
-    features:
-      - Sistema en la nube 100% accesible
-      - Copias de seguridad diarias (últimos 5 días)
-      - Multidispositivo y multiusuario sin límites
-      - Soporte básico por email
-      - 1 Usuario incluido
-      - Módulo Financiero
-      - Módulo Informes
-      - Envíos de documentos por email sin salir del sistema
-    badge:
-      enable: false
-      label: "Recomendado"
-    button:
-      enable: true
-      label: "Regístrate y activa el plan"
-      link: "https://contract.drenpos.com/auth"
-  - title: "Plan Pyme"
-    description: "Acceso a módulos financiero, inventario y 2 usuarios. Perfecto para pymes en crecimiento."
-    price_prefix: "€"
-    price_monthly: "20.58"
-    price_yearly: "18.52"
+    price_monthly: "22.99"
+    price_yearly: "20.69"
     price_description_monthly: "al mes con IVA incluido"
     price_description_yearly: "al mes (10% dto. anual)"
     features:
@@ -53,12 +30,61 @@ plans:
       - 2 Usuarios incluidos
       - Módulo Financiero
       - Módulo Informes
-      - Módulo Inventario
-      - Módulo TPV
+      - Módulo Fichajes
       - Envíos de documentos por email sin salir del sistema
-
+    badge:
+      enable: false
+      label: "Recomendado"
+    button:
+      enable: true
+      label: "Regístrate y activa el plan"
+      link: "https://contract.drenpos.com/auth"
+  - title: "Pro"
+    description: "Negocios que necesitan control de stock pero no venta física."
+    price_prefix: "€"
+    price_monthly: "35.09"
+    price_yearly: "31.58"
+    price_description_monthly: "al mes con IVA incluido"
+    price_description_yearly: "al mes (10% dto. anual)"
+    features:
+      - Sistema en la nube 100% accesible
+      - Copias de seguridad diarias (últimos 5 días)
+      - Multidispositivo y multiusuario sin límites
+      - Soporte básico por email
+      - 3 Usuarios incluidos
+      - Módulo Financiero
+      - Módulo Informes
+      - Módulo Inventario
+      - Módulo Fichajes
+      - Envíos de documentos por email sin salir del sistema
     badge:
       enable: true
+      label: "Recomendado"
+    button:
+      enable: true
+      label: "Regístrate y activa el plan"
+      link: "https://contract.drenpos.com/auth"
+  - title: "Full"
+    description: "Negocios con local físico que requieren rapidez en caja (TPV)."
+    price_prefix: "€"
+    price_monthly: "47.19"
+    price_yearly: "42.47"
+    price_description_monthly: "al mes con IVA incluido"
+    price_description_yearly: "al mes (10% dto. anual)"
+    features:
+      - Sistema en la nube 100% accesible
+      - Copias de seguridad diarias (últimos 5 días)
+      - Multidispositivo y multiusuario sin límites
+      - Soporte básico por email
+      - 5 Usuarios incluidos
+      - Módulo Financiero
+      - Módulo Informes
+      - Módulo Inventario
+      - Módulo TPV
+      - Módulo Fichajes
+      - Envíos de documentos por email sin salir del sistema
+    badge:
+      enable: false
       label: "Recomendado"
     button:
       enable: true

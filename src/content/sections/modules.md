@@ -6,11 +6,12 @@ badge: "Módulos disponibles"
 modules:
   - name: "Módulo Financiero"
     description: "Ofertas, pedidos, facturación, gestión de clientes y proveedores y mucho más"
-    price_monthly: "16.45 €"
-    price_yearly: "14.81 €"
+    price_monthly: "19.90 €"
+    price_yearly: "17.91 €"
     included_in:
-      - "Plan Financiero"
-      - "Plan Pyme"
+      - "Essential"
+      - "Pro"
+      - "Full"
     features:
       - "VERIFACTU"
       - "Gestión de ofertas, pedidos, albaranes y facturas"
@@ -22,10 +23,11 @@ modules:
 
   - name: "Módulo Inventario"
     description: "Artículos, almacenes, stock, lotes y mucho más"
-    price_monthly: "16.45 €"
-    price_yearly: "14.81 €"
+    price_monthly: "19.90 €"
+    price_yearly: "17.91 €"
     included_in:
-      - "Plan Pyme"
+      - "Pro"
+      - "Full"
     features:
       - "Gestión de artículos"
       - "Control de almacenes y ubicaciones"
@@ -34,19 +36,19 @@ modules:
 
   - name: "Módulo TPV"
     description: "TPV, una forma más rápida y sencilla de vender"
-    price_monthly: "20.58 €"
-    price_yearly: "18.52 €"
+    price_monthly: "24.90 €"
+    price_yearly: "22.41 €"
     included_in:
-      - "Plan Pyme"
+      - "Full"
     features:
-      - "Terminal punto de venta "
+      - "Terminal punto de venta"
       - "Gestión de tickets y cajas"
       - "Cierre de caja diario"
 
   - name: "Módulo Comercial"
     description: "Gestiona comisiones, ofertas y agentes comerciales"
-    price_monthly: "16.45 €"
-    price_yearly: "14.81 €"
+    price_monthly: "19.90 €"
+    price_yearly: "17.91 €"
     included_in: []
     features:
       - "Gestión de agentes comerciales"
@@ -55,9 +57,12 @@ modules:
 
   - name: "Módulo Fichajes"
     description: "Control de jornada laboral y sistema de fichajes para empleados"
-    price_monthly: "0.90 €"
-    price_yearly: "0.81 €"
-    included_in: []
+    price_monthly: "1.09 €"
+    price_yearly: "0.98 €"
+    included_in:
+      - "Essential"
+      - "Pro"
+      - "Full"
     features:
       - "Registro de jornada laboral"
       - "Control de asistencia"
@@ -66,8 +71,8 @@ modules:
 
   - name: "Módulo Usuarios"
     description: "Usuarios adicionales del sistema"
-    price_monthly: "3.22 €"
-    price_yearly: "2.90 €"
+    price_monthly: "3.90 €"
+    price_yearly: "3.51 €"
     included_in: []
     features:
       - "Usuario adicional al sistema"
@@ -77,11 +82,12 @@ modules:
 
   - name: "Módulo Informes"
     description: "Obtén información detallada y adicional de tus datos (en desarrollo potenciado con IA)"
-    price_monthly: "5.70 €"
-    price_yearly: "5.13 €"
+    price_monthly: "6.90 €"
+    price_yearly: "6.21 €"
     included_in:
-      - "Plan Financiero"
-      - "Plan Pyme"
+      - "Essential"
+      - "Pro"
+      - "Full"
     features:
       - "Informes avanzados"
       - "Análisis de datos"
@@ -90,11 +96,12 @@ modules:
 
   - name: "Envío por correo"
     description: "Envío de documentos por correo electrónico sin salir del sistema"
-    price_monthly: "4.05 €"
-    price_yearly: "3.65 €"
+    price_monthly: "4.90 €"
+    price_yearly: "4.41 €"
     included_in:
-      - "Plan Financiero"
-      - "Plan Pyme"
+      - "Essential"
+      - "Pro"
+      - "Full"
     features:
       - "Envío de facturas por email"
       - "Plantillas personalizables"
@@ -103,8 +110,8 @@ modules:
 
   - name: "Módulo Cloud Storage"
     description: "Conecta con tu Dropbox para guardar tus anexos en la nube"
-    price_monthly: "4.05 €"
-    price_yearly: "3.65 €"
+    price_monthly: "4.90 €"
+    price_yearly: "4.41 €"
     included_in: []
     features:
       - "Integración con Dropbox"

@@ -4,59 +4,78 @@ description: "Compara qué incluye cada plan y elige el que mejor se adapte a tu
 badge: "Comparativa"
 
 plans:
-  - id: "financiero"
-    name: "Plan Financiero"
-  - id: "pyme"
-    name: "Plan Pyme"
+  - id: "essential"
+    name: "Essential"
+  - id: "pro"
+    name: "Pro"
+  - id: "full"
+    name: "Full"
 
 # Características generales (no son módulos)
 features:
   - category: "Características generales"
     items:
       - name: "Sistema en la nube 100% accesible"
-        financiero: true
-        pyme: true
+        essential: true
+        pro: true
+        full: true
       - name: "Copias de seguridad diarias"
-        financiero: true
-        pyme: true
+        essential: true
+        pro: true
+        full: true
       - name: "Multidispositivo y multiusuario"
-        financiero: true
-        pyme: true
+        essential: true
+        pro: true
+        full: true
       - name: "Soporte básico por email"
-        financiero: true
-        pyme: true
+        essential: true
+        pro: true
+        full: true
       - name: "Usuarios incluidos"
-        financiero: 1
-        pyme: 2
+        essential: 2
+        pro: 3
+        full: 5
 
 # Módulos incluidos
 modules:
   - category: "Módulos incluidos"
     items:
       - name: "Módulo Financiero"
-        financiero: true
-        pyme: true
+        essential: true
+        pro: true
+        full: true
       - name: "Módulo Informes"
-        financiero: true
-        pyme: true
-      - name: "Módulo Inventario"
-        financiero: false
-        pyme: true
-      - name: "Módulo TPV"
-        financiero: false
-        pyme: true
-      - name: "Módulo Comercial"
-        financiero: false
-        pyme: false
+        essential: true
+        pro: true
+        full: true
+      - name: "Envío por correo"
+        essential: true
+        pro: true
+        full: true
       - name: "Módulo Fichajes"
-        financiero: false
-        pyme: false
+        essential: true
+        pro: true
+        full: true
+      - name: "Módulo Inventario"
+        essential: false
+        pro: true
+        full: true
+      - name: "Módulo TPV"
+        essential: false
+        pro: false
+        full: true
+      - name: "Módulo Comercial"
+        essential: false
+        pro: false
+        full: false
       - name: "Módulo Usuarios adicional"
-        financiero: false
-        pyme: false
+        essential: false
+        pro: false
+        full: false
       - name: "Módulo Cloud Storage"
-        financiero: false
-        pyme: false
+        essential: false
+        pro: false
+        full: false
 
 notes:
   - "Los módulos no incluidos se pueden añadir como módulos adicionales"
