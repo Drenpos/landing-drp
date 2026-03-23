@@ -93,34 +93,42 @@ const {
                         set:html={markdownify(item.description)}
                       />
                     )}
-                    <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
-                      {item.price_monthly && item.price_yearly && (
-                        <strong class="h2 group-[.has-dark-bg]:text-text-light">
-                          {markdownify(item.price_prefix)}
-                          <span
-                            class="data-count"
-                            data-count-yearly={item.price_yearly}
-                            data-count-monthly={item.price_monthly}
-                            set:html={markdownify(item.price_monthly)}
-                          />
-                        </strong>
-                      )}
-                      {item.price_description_monthly &&
-                        item.price_description_yearly && (
-                          <>
+                    <div class="flex flex-col gap-1">
+                      <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
+                        {item.price_monthly && item.price_yearly && (
+                          <strong class="h2 group-[.has-dark-bg]:text-text-light">
+                            {markdownify(item.price_prefix)}
                             <span
-                              class="text-monthly text-lg/[inherit] group-[.has-dark-bg]:text-text-light"
-                              set:html={markdownify(
-                                item.price_description_monthly,
-                              )}
+                              class="data-count"
+                              data-count-yearly={item.price_yearly}
+                              data-count-monthly={item.price_monthly}
+                              set:html={markdownify(item.price_monthly)}
                             />
-                            <span
-                              class="text-yearly hidden text-lg/[inherit] group-[.has-dark-bg]:text-text-light"
-                              set:html={markdownify(
-                                item.price_description_yearly,
-                              )}
-                            />
-                          </>
+                          </strong>
+                        )}
+                        {item.price_description_monthly &&
+                          item.price_description_yearly && (
+                            <>
+                              <span
+                                class="text-monthly text-lg/[inherit] group-[.has-dark-bg]:text-text-light"
+                                set:html={markdownify(
+                                  item.price_description_monthly,
+                                )}
+                              />
+                              <span
+                                class="text-yearly hidden text-lg/[inherit] group-[.has-dark-bg]:text-text-light"
+                                set:html={markdownify(
+                                  item.price_description_yearly,
+                                )}
+                              />
+                            </>
+                          )}
+                      </div>
+                      {item.price_monthly &&
+                        item.price_monthly !== "Personalizado" && (
+                          <p class="text-sm opacity-40 group-[.has-dark-bg]:text-text-light">
+                            * No incluye IVA
+                          </p>
                         )}
                     </div>
 

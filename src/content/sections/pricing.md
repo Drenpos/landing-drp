@@ -18,10 +18,10 @@ plans:
   - title: "Essential"
     description: "Autónomos y gestión administrativa básica."
     price_prefix: "€"
-    price_monthly: "22.99"
-    price_yearly: "20.69"
-    price_description_monthly: "al mes con IVA incluido"
-    price_description_yearly: "al mes (10% dto. anual)"
+    price_monthly: "19"
+    price_yearly: "17.10"
+    price_description_monthly: "/mes"
+    price_description_yearly: "/mes · 10% dto."
     features:
       - Sistema en la nube 100% accesible
       - Copias de seguridad diarias (últimos 5 días)
@@ -42,10 +42,10 @@ plans:
   - title: "Pro"
     description: "Negocios que necesitan control de stock pero no venta física."
     price_prefix: "€"
-    price_monthly: "35.09"
-    price_yearly: "31.58"
-    price_description_monthly: "al mes con IVA incluido"
-    price_description_yearly: "al mes (10% dto. anual)"
+    price_monthly: "29"
+    price_yearly: "26.10"
+    price_description_monthly: "/mes"
+    price_description_yearly: "/mes · 10% dto."
     features:
       - Sistema en la nube 100% accesible
       - Copias de seguridad diarias (últimos 5 días)
@@ -67,10 +67,10 @@ plans:
   - title: "Full"
     description: "Negocios con local físico que requieren rapidez en caja (TPV)."
     price_prefix: "€"
-    price_monthly: "47.19"
-    price_yearly: "42.47"
-    price_description_monthly: "al mes con IVA incluido"
-    price_description_yearly: "al mes (10% dto. anual)"
+    price_monthly: "39"
+    price_yearly: "35.10"
+    price_description_monthly: "/mes"
+    price_description_yearly: "/mes · 10% dto."
     features:
       - Sistema en la nube 100% accesible
       - Copias de seguridad diarias (últimos 5 días)
