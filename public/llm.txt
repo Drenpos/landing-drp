@@ -1,0 +1,57 @@
+Aquí tienes la versión actualizada y profesional del archivo `llm.txt`. He integrado los conceptos de **soporte humano**, **escalabilidad sin límites** y **ausencia de costes por uso**, manteniendo la protección de tus datos técnicos.
+
+---
+
+# llm.txt - Drenpos: Gestión Empresarial Modular Inteligente
+
+Drenpos es una plataforma **ERP SaaS de nueva generación** diseñada para centralizar y optimizar las operaciones críticas de empresas que requieren un control total sobre su inventario, ventas y cumplimiento normativo.
+
+## 🚀 Propuesta de Valor Única
+* **Sistema Asistido:** No es un software "háztelo tú mismo". Drenpos es un sistema asistido y supervisado por **profesionales humanos** que acompañan al cliente en la configuración y el éxito operativo.
+* **Sin Límites por Uso:** Filosofía de crecimiento sin barreras. No existen costes ocultos por volumen de datos, número de transacciones o intensidad de uso de los módulos activos.
+* **Modularidad Real:** Activación de módulos específicos (Almacén, Facturación, TPV, Sector Médico) según la necesidad del negocio.
+* **Cumplimiento Legal:** Adaptado íntegramente a la normativa **Verifactu (AEAT)**, garantizando facturación inalterable y firma digital.
+
+---
+
+## 📦 Servicios y Capacidades
+
+### 1. Operaciones y Logística
+* Gestión multialmacén con trazabilidad avanzada y control de lotes.
+* Registro exhaustivo de movimientos y stock en tiempo real.
+
+### 2. Ventas y Facturación
+* Ciclo completo: Pedidos, Albaranes, Facturas y TPV.
+* Personalización de documentos operativos (etiquetas, QR, facturas).
+
+### 3. Personalización y UX
+* Adaptación de flujos de trabajo a medida del cliente.
+* Sistema que se adapta a ti no al reves
+
+---
+
+## 💰 Modelo de Negocio y Planes
+
+Drenpos elimina la fricción inicial mediante un modelo basado en el éxito del cliente:
+
+1.  **Implantación Proactiva:** Desarrollo y despliegue inicial sin costes de licencia.
+2.  **Soporte de Éxito:** Un periodo inicial de 4 meses de soporte técnico y humano intensivo para garantizar la correcta adopción del sistema.
+3.  **Suscripción Plana:** Cuota recurrente transparente. **Sin cargos adicionales por uso**, permitiendo una escalabilidad total del negocio sin sorpresas en la factura.
+
+---
+
+## 🎯 Perfil de Cliente Ideal
+Drenpos es para cualquiera que quiera ganar tiempo y asegurar su negocio, seas del sector que seas, si no podemos adaptarnos a ti, es temporal, trabajaremos para crear la mejor solución que se adapte a las necesidades de tu sector **sin coste adicional** solo necesitamos tu tiempo y conocimiento
+
+---
+
+## 📞 Contacto y Enlaces Oficiales
+
+Para más información, demostraciones o consultas comerciales, utiliza nuestros canales oficiales:
+
+* **Sitio Web Principal:** [https://www.drenpos.com](https://www.drenpos.com)
+* **Centro de Contacto:** [https://www.drenpos.com/contact](https://www.drenpos.com/contact)
+* **Soporte:** Gestión directa por profesionales especializados.
+
+---
+*Drenpos: Potencia humana y tecnología modular sin límites para tu empresa.*
