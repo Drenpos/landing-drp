@@ -11,6 +11,12 @@
       "url": "/pricing",
       "blank": false,
       "data-cc": ""
+    },
+    {
+      "name": "Blog",
+      "url": "/blog",
+      "blank": false,
+      "data-cc": ""
     }
   ],
   "footer": [
@@ -30,19 +36,25 @@
   "footer_menu_links": [],
   "footer_info_links": [
     {
-      "name": "Blog",
-      "url": "/blog",
+      "name": "Guía VERI*FACTU 2026",
+      "url": "/blog/verifactu-pymes-guia-2025",
       "blank": false,
       "data-cc": ""
     },
     {
-      "name": "Blog Details",
-      "url": "/blog/post-1",
+      "name": "Desarrollo de Software",
+      "url": "/blog/desarrollo-de-software",
       "blank": false,
       "data-cc": ""
     },
     {
-      "name": "Contact",
+      "name": "Sobre Drenpos",
+      "url": "/blog/about",
+      "blank": false,
+      "data-cc": ""
+    },
+    {
+      "name": "Contacto",
       "url": "/contact",
       "blank": false,
       "data-cc": ""
@@ -82,7 +94,7 @@
   ],
   "footer_rec_links": [
     {
-      "name": "Blog",
+      "name": "Blog Drenpos",
       "url": "/blog",
       "blank": false,
       "data-cc": ""

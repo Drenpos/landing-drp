@@ -45,11 +45,11 @@ const featuredPost = posts.filter((post) => post.data.featured).slice(0, 1);
           {
             featuredPost.map((post) => (
               <div
-                class="rounded-[32px] border border-dark/10 p-5 bg-body"
+                class="rounded-[32px] border border-dark/10 p-5 bg-body shadow-xl hover:shadow-2xl transition-shadow duration-300"
                 data-aos="fade-up-sm"
                 data-aos-delay="200"
               >
-                <div class="row">
+                <div class="row items-center">
                   <div class="md:col-6">
                     <div class="relative group overflow-hidden rounded-[20px]">
                       <ImageMod
@@ -59,37 +59,42 @@ const featuredPost = posts.filter((post) => post.data.featured).slice(0, 1);
                         height={460}
                         class="object-cover rounded-[20px] w-full group-hover:scale-110 transition duration-700"
                       />
+                      <div class="absolute top-4 left-4">
+                        <span class="bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold">
+                          ⭐ Artículo destacado
+                        </span>
+                      </div>
                     </div>
                   </div>
 
-                  <div class="md:col-6">
+                  <div class="md:col-6 mt-6 md:mt-0">
                     {post.data.date && (
-                      <p class="text-text-dark text-sm">
+                      <p class="text-text-dark/60 text-sm mb-3">
                         {dateFormat(`${post.data.date}`)}
                       </p>
                     )}
 
                     {post.data.title && (
                       <h2
-                        class="h3 my-6"
+                        class="h3 my-4 group-hover:text-primary transition-colors"
                         set:html={markdownify(post.data.title)}
                       />
                     )}
                     {post.body && (
                       <div
-                        class="line-clamp-3"
+                        class="line-clamp-3 text-text-dark/70 mb-6"
                         set:html={markdownify(post.body, true)}
                       />
                     )}
 
                     <a
-                      class="btn btn-dark mt-14"
+                      class="btn btn-primary inline-flex items-center gap-2"
                       href={`/${BLOG_FOLDER}/${post.id}`}
                       rel="noopener"
                       data-aos="fade-up-sm"
                       data-aos-delay="200"
                     >
-                      {"Read More"}
+                      {"Leer artículo completo"}
                       <span class="icon-wrapper">
                         <span class="icon">
                           <DynamicIcon icon={"FaArrowRight"} />
@@ -111,7 +116,13 @@ const featuredPost = posts.filter((post) => post.data.featured).slice(0, 1);
 
   <section class="section pt-0" data-aos="fade-up-sm">
     <div class="container">
-      <h2 class="text-center mb-14">Our Latest Blog</h2>
+      <div class="text-center mb-14">
+        <h2 class="mb-4">Últimos artículos del blog</h2>
+        <p class="text-text-dark/70 text-lg">
+          Explora nuestras guías, artículos técnicos y recursos para optimizar
+          tu negocio
+        </p>
+      </div>
       <div class="row gx-5 justify-center">
         <!-- blog posts -->
         <div class="lg:col-10">

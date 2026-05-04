@@ -2,7 +2,7 @@
 title: "VERI*FACTU en 2026–2027: qué es, a quién afecta y cómo adaptarte sin sanciones"
 meta_title: "VERI*FACTU 2026–2027: Guía completa para pymes y autónomos"
 description: "Guía práctica para pymes y autónomos en España: diferencias entre VERI*FACTU y 'no verificable', qué exige Hacienda (QR y leyenda), plazos, sanciones y plan de adaptación en 10 pasos."
-date: 2025-08-16
+date: 2026-05-04
 image: "/images/blog/verifactu/verifactu-cover.webp"
 author:
   name: "Alonso Bermejo Pérez"

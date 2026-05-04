@@ -1,5 +1,6 @@
 ---
 import BlogCard from "@/components/BlogCard.astro";
+import BlogCTA from "@/components/BlogCTA.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import similarItems from "@/lib/utils/similarItems";
 import type { CollectionEntry } from "astro:content";
@@ -32,36 +33,48 @@ const blogData = { author, date };
       <div class="col-12" data-aos="fade-up-sm" data-aos-delay="200">
         {
           image && (
-            <div class="mb-10">
+            <div class="mb-10 relative rounded-3xl overflow-hidden">
               <ImageMod
                 src={image}
                 height={500}
                 width={1200}
                 alt={title}
-                class="h-auto w-full rounded-3xl object-cover md:h-[700px]"
+                class="h-auto w-full object-cover md:h-[500px]"
                 format="webp"
               />
+              <div class="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent" />
             </div>
           )
         }
       </div>
       <article
-        class="pb-10 lg:col-8"
+        class="pb-10 lg:col-9"
         data-aos="fade-up-sm"
         data-aos-delay="200"
       >
-        <div class="content">
+        <div
+          class="content prose prose-lg max-w-none prose-headings:font-bold prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-2xl prose-pre:rounded-xl"
+        >
           <Content />
         </div>
 
-        <div class="flex items-center mt-10" data-aos="fade-left-sm">
-          <h5 class="mr-3">Share :</h5>
-          <Share
-            className="social-icons"
-            title={title}
-            description={description}
-            slug={post.id}
-          />
+        <!-- Blog CTA -->
+        <BlogCTA />
+
+        <div class="mt-16 pt-8 border-t border-dark/10">
+          <div
+            class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+          >
+            <div class="flex items-center gap-4">
+              <h5 class="text-text-dark/70 font-medium">Compartir artículo:</h5>
+              <Share
+                className="social-icons flex gap-3"
+                title={title}
+                description={description}
+                slug={post.id}
+              />
+            </div>
+          </div>
         </div>
       </article>
     </div>
@@ -69,18 +82,20 @@ const blogData = { author, date };
   <!-- Related posts -->
   {
     similarPosts.length > 0 && (
-      <section class="mt-20">
-        <h2 class="text-center mb-14">Similar Posts</h2>
-        <div class="row justify-center">
-          {similarPosts.map((post, i) => (
-            <div
-              class="mb-14 md:col-6"
-              data-aos="fade-up-sm"
-              data-aos-delay={i * 100}
-            >
-              <BlogCard data={post} />
-            </div>
-          ))}
+      <section class="mt-20 pt-20 border-t border-dark/10">
+        <div class="container">
+          <h2 class="text-center mb-14">Artículos relacionados</h2>
+          <div class="row justify-center">
+            {similarPosts.slice(0, 2).map((post, i) => (
+              <div
+                class="mb-14 md:col-6 lg:col-5"
+                data-aos="fade-up-sm"
+                data-aos-delay={i * 100}
+              >
+                <BlogCard data={post} />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     )
