@@ -54,4 +54,9 @@ export const config = {
     branch: process.env.GIT_BRANCH || 'main',
     repoRoot: REPO_ROOT,
   },
+  images: {
+    // Clave de Pexels API (gratuita en https://www.pexels.com/api/)
+    // Si está vacía, el pipeline omite las imágenes sin error.
+    pexelsApiKey: process.env.PEXELS_API_KEY || '',
+  },
 };

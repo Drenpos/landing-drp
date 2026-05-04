@@ -108,17 +108,46 @@ ${styleGuide}
 ━━ CONTEXTO ADICIONAL ━━
 ${context || 'No especificado'}
 
-━━ REGLAS CRÍTICAS ━━
+━━ REGLAS DE CONTENIDO ━━
 1. Contenido 100% ORIGINAL. Sin copiar competencia.
 2. Hook al inicio: directo, sobre un problema real del ICP. Ni una frase de introducción antes.
 3. Estructura de 6 bloques: Hook → Identificación → Intensificación → Cambio de paradigma → Solución soft → CTA.
-4. Párrafos máximo 3-4 líneas. Frases cortas. Sin textos de 8+ líneas seguidas.
+4. Párrafos máximo 3-4 líneas. Frases cortas. Sin bloques de texto de 6+ líneas seguidas.
 5. Keywords integradas de forma completamente natural.
-6. Incluir 1-2 ejemplos con nombres ficticios de pymes (ej: "Construcciones Martínez", "Distribuciones López").
+6. Incluir 1-2 ejemplos con nombres ficticios de pymes (ej: "Ferretería Martínez", "Distribuciones López SL").
 7. Drenpos mencionado máximo 2-3 veces, de forma natural, nunca como publicidad directa.
 8. CTA final: invitar a reflexionar o a dar un primer paso pequeño. NO "Compra ahora". NO "¡No esperes más!".
 9. El texto debe poder dividirse en párrafos reutilizables como copies de Meta Ads.
 10. Sin emojis en el cuerpo del artículo.
+
+━━ REGLAS DE FORMATO MARKDOWN (OBLIGATORIAS) ━━
+Estas reglas NO son opcionales. El artículo DEBE incluir todos estos elementos:
+
+• H2 (##) para cada sección principal — mínimo 5 H2 en todo el artículo
+• H3 (###) donde haya subsecciones o ejemplos — mínimo 2 H3
+• Listas con guión (-) para cualquier enumeración de 3+ elementos — mínimo 2 listas
+• **Negrita** en cada párrafo para el concepto o frase más importante — mínimo 1 por párrafo
+• > Blockquote para frases de impacto o datos clave — mínimo 2 blockquotes
+• Una tabla comparativa o resumen cuando sea útil (al menos 1 tabla)
+• Separación visual clara entre secciones
+
+EJEMPLO de cómo debe verse un bloque bien formateado:
+
+## Por qué el Excel falla cuando escalas
+
+Muchas pymes empiezan con Excel porque funciona. Pero llega un punto en que **el archivo se convierte en el problema**.
+
+- Cada persona tiene su versión
+- Los datos se desactualizan en horas
+- No hay trazabilidad de quién cambió qué
+
+> "Tener datos desactualizados es peor que no tenerlos: te dan una falsa sensación de control."
+
+### El caso de Ferretería Martínez
+
+Cuando Martínez tenía 2 empleados, el Excel era suficiente. Con 8 personas y 3 almacenes, **perdían una hora diaria** reconciliando versiones distintas del mismo archivo.
+
+IMPORTANTE: El artículo que generes DEBE tener esta riqueza visual y estructural en TODAS las secciones, no solo en alguna.
 
 ━━ FORMATO DE RESPUESTA ━━
 Devuelve ÚNICAMENTE un JSON válido:

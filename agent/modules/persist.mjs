@@ -1,27 +1,31 @@
 /**
  * Módulo 6 — Persistencia
  * Guarda dos archivos en src/content/blog/:
- *   1. YYYY-MM-DD-slug.md       — el artículo del blog
- *   2. YYYY-MM-DD-slug.ads.md   — assets Meta Ads (companion file)
+ *   1. [slug].md       — el artículo del blog
+ *   2. [slug].ads.md   — assets Meta Ads (companion file)
+ *
+ * Las imágenes se inyectan en el contenido markdown antes de guardar.
  */
 import { writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import { config } from '../config.mjs';
 import { log } from '../utils/logger.mjs';
 
-/** Construye el frontmatter YAML del post */
-function buildFrontmatter(article, date) {
-  const esc = (s = '') => String(s).replace(/"/g, '\\"');
+/** Escapa comillas dobles para YAML frontmatter */
+const esc = (s = '') => String(s).replace(/"/g, '\\"');
 
+/** Construye el frontmatter YAML del post */
+function buildFrontmatter(article, date, coverImagePath = '') {
   const categories = (article.categories || ['Blog']).map((c) => `"${esc(c)}"`).join(', ');
   const tags = (article.tags || []).map((t) => `"${esc(t)}"`).join(', ');
+  const image = coverImagePath || article.image || '';
 
   return `---
 title: "${esc(article.title)}"
 meta_title: "${esc(article.metaTitle || article.title)}"
 description: "${esc(article.description)}"
 date: ${date}
-image: ""
+image: "${image}"
 author:
   name: "${esc(config.blog.author.name)}"
   designation: "${esc(config.blog.author.designation)}"
@@ -38,16 +42,80 @@ hero:
 `;
 }
 
-/** Construye el companion file de assets Meta Ads en markdown */
+/**
+ * Inyecta imágenes en el contenido markdown después de secciones H2.
+ * Inyecta después del 2º y 4º H2 (saltamos el 1º que es el hook).
+ * La imagen de cover NO se inyecta aquí (va en el frontmatter).
+ */
+function injectImages(content, images = []) {
+  if (!images || images.length === 0) return content;
+
+  // Las imágenes para inyectar inline (sin la cover, que ya va en frontmatter)
+  const inlineImages = images.slice(1); // index 0 = cover
+  if (inlineImages.length === 0) return content;
+
+  const lines = content.split('\n');
+  const h2Positions = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    if (/^## /.test(lines[i])) {
+      h2Positions.push(i);
+    }
+  }
+
+  // Inyectar después del 2º, 4º H2 (índices 1 y 3)
+  const injectTargets = [h2Positions[1], h2Positions[3]].filter(Boolean);
+
+  // Mapa posición → imagen
+  const injectionMap = new Map();
+  injectTargets.forEach((pos, idx) => {
+    if (inlineImages[idx]) {
+      injectionMap.set(pos, inlineImages[idx]);
+    }
+  });
+
+  // Reconstruir: tras el H2 y su primer párrafo, insertar la imagen
+  const result = [];
+  let pendingImage = null;
+  let linesAfterH2 = 0;
+
+  for (let i = 0; i < lines.length; i++) {
+    result.push(lines[i]);
+
+    // Si este H2 tiene imagen asignada, la preparamos
+    if (injectionMap.has(i)) {
+      pendingImage = injectionMap.get(i);
+      linesAfterH2 = 0;
+    }
+
+    // Inyectar después de la primera línea de texto tras el H2
+    if (pendingImage) {
+      linesAfterH2++;
+      const isText = lines[i].trim() && !lines[i].startsWith('#');
+      const isBlankAfterText = !lines[i].trim() && linesAfterH2 > 2;
+
+      if (isBlankAfterText) {
+        result.push(`![${pendingImage.alt}](${pendingImage.path})`);
+        result.push('');
+        pendingImage = null;
+        linesAfterH2 = 0;
+      }
+    }
+  }
+
+  return result.join('\n');
+}
+
+/** Construye el companion file de assets Meta Ads */
 function buildAdsFile(ads, article, date) {
   const hooks = (ads.hooks || []).map((h, i) => `${i + 1}. ${h}`).join('\n');
-  const copiesShort = (ads.copiesShort || []).map((c, i) => `### Copy corto ${i + 1}\n${c}`).join('\n\n');
+  const copiesShort = (ads.copiesShort || [])
+    .map((c, i) => `### Copy corto ${i + 1}\n${c}`)
+    .join('\n\n');
   const ctaSuggestions = (ads.ctaSuggestions || []).map((c) => `- ${c}`).join('\n');
 
   return `# Assets Meta Ads — ${article.title}
-> Generado automáticamente por el agente SEO de Drenpos
-> Post: \`src/content/blog/${date}-${article.slug}.md\`
-> Fecha: ${date}
+> Generado automáticamente · Post: \`src/content/blog/${article.slug}.md\` · ${date}
 
 ---
 
@@ -57,7 +125,7 @@ ${hooks}
 
 ---
 
-## Copies cortos (tráfico / leads)
+## Copies cortos
 
 ${copiesShort}
 
@@ -81,7 +149,7 @@ ${ctaSuggestions}
 
 ---
 
-## Sugerencias de audiencia
+## Audiencias sugeridas
 
 | Campaña | Audiencia |
 |---------|-----------|
@@ -99,24 +167,31 @@ ${ads.usageNotes || ''}
 
 /**
  * Persistir artículo + companion ads.
- * @param {object} article   - Artículo generado
- * @param {object} adsAssets - Assets Meta Ads generados
+ * @param {object} article    - Artículo generado
+ * @param {object} adsAssets  - Assets Meta Ads generados
+ * @param {Array}  images     - Imágenes descargadas [{path, alt, localPath}]
  * @returns {Promise<{filepath, filename, adsFilepath, adsFilename, date}>}
  */
-export async function persistArticle(article, adsAssets = {}) {
+export async function persistArticle(article, adsAssets = {}, images = []) {
   log.step('MÓDULO 6 · PERSISTENCIA', 'Guardando post y assets de ads...');
 
   const date = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
-  const filename = `${date}-${article.slug}.md`;
-  const adsFilename = `${date}-${article.slug}.ads.md`;
+  const filename    = `${article.slug}.md`;
+  const adsFilename = `${article.slug}.ads.md`;
 
-  const filepath = join(config.blog.postsDir, filename);
+  const filepath    = join(config.blog.postsDir, filename);
   const adsFilepath = join(config.blog.postsDir, adsFilename);
 
   await mkdir(config.blog.postsDir, { recursive: true });
 
+  // Imagen de cover = primera imagen descargada
+  const coverImagePath = images[0]?.path || '';
+
+  // Inyectar imágenes inline en el contenido
+  const contentWithImages = injectImages(article.content || '', images);
+
   // 1. Guardar post
-  const postContent = buildFrontmatter(article, date) + (article.content || '');
+  const postContent = buildFrontmatter(article, date, coverImagePath) + contentWithImages;
   await writeFile(filepath, postContent, 'utf-8');
   log.success(`Post guardado: src/content/blog/${filename}`);
 

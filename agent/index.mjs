@@ -25,6 +25,7 @@ import { analyzeOwnContent } from './modules/analyze-own.mjs';
 import { synthesizeStrategy } from './modules/synthesize.mjs';
 import { generateContent } from './modules/generate.mjs';
 import { generateAds } from './modules/generate-ads.mjs';
+import { generateImages } from './modules/generate-images.mjs';
 import { persistArticle } from './modules/persist.mjs';
 import { gitOps } from './modules/gitops.mjs';
 
@@ -165,8 +166,11 @@ async function main() {
     // ── MÓDULO 5b: Generación de assets Meta Ads ──
     const adsAssets = await generateAds(article, icp);
 
-    // ── MÓDULO 6: Persistencia (post + companion ads) ──
-    const { filepath, filename, adsFilename } = await persistArticle(article, adsAssets);
+    // ── MÓDULO 5c: Imágenes (Pexels) ──
+    const images = await generateImages(article, icp);
+
+    // ── MÓDULO 6: Persistencia (post + imágenes + companion ads) ──
+    const { filepath, filename, adsFilename } = await persistArticle(article, adsAssets, images);
 
     // ── MÓDULO 7: GitOps ──
     const gitResult = await gitOps(filename, article.slug);
@@ -177,6 +181,7 @@ async function main() {
     console.log('\n\x1b[1m\x1b[32m  ✅  Pipeline completado\x1b[0m\n');
     console.log(`  📄  Post     : src/content/blog/${filename}`);
     console.log(`  📣  Ads      : src/content/blog/${adsFilename}`);
+    console.log(`  🖼   Imágenes : ${images.length > 0 ? images.length + ' descargadas en public/images/blog/' + article.slug + '/' : 'ninguna (sin PEXELS_API_KEY)'}`);
     console.log(`  📝  Título   : ${article.title}`);
     console.log(`  🔗  Slug     : ${article.slug}`);
     console.log(`  🎯  Hook #1  : ${adsAssets.hooks?.[0] || '—'}`);
