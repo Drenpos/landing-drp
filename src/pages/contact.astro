@@ -180,8 +180,8 @@ if (!SITE_KEY && import.meta.env.MODE === "production") {
   // Hacer la función global para que reCAPTCHA pueda llamarla
   window.onContactSubmit = onContactSubmit;
 
-  // Verificar que reCAPTCHA se cargó correctamente
-  window.addEventListener("load", () => {
+  // Cargar reCAPTCHA dinámicamente solo si hay una clave válida
+  function loadRecaptcha() {
     const btnSubmit = document.getElementById("btnSubmit");
     const siteKey = btnSubmit?.getAttribute("data-sitekey");
 
@@ -193,17 +193,38 @@ if (!SITE_KEY && import.meta.env.MODE === "production") {
       console.error(
         "👉 Dashboard: https://dash.cloudflare.com/ → Workers & Pages → landing-drp → Settings → Environment variables",
       );
-    } else {
-      console.log(
-        "✅ reCAPTCHA Site Key encontrada:",
-        siteKey.substring(0, 10) + "...",
-      );
+      // Deshabilitar el botón si no hay clave
+      if (btnSubmit) {
+        btnSubmit.disabled = true;
+        btnSubmit.textContent = "⚠️ reCAPTCHA no configurado";
+        btnSubmit.classList.add("opacity-50", "cursor-not-allowed");
+      }
+      return;
     }
 
-    if (typeof grecaptcha !== "undefined") {
+    console.log(
+      "✅ reCAPTCHA Site Key encontrada:",
+      siteKey.substring(0, 10) + "...",
+    );
+
+    // Cargar el script de reCAPTCHA dinámicamente
+    const script = document.createElement("script");
+    script.src = "https://www.google.com/recaptcha/api.js";
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
       console.log("✅ reCAPTCHA cargado correctamente");
-    } else {
-      console.error("❌ reCAPTCHA no se cargó correctamente");
-    }
-  });
+    };
+    script.onerror = () => {
+      console.error("❌ Error al cargar reCAPTCHA");
+    };
+    document.head.appendChild(script);
+  }
+
+  // Ejecutar cuando el DOM esté listo
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", loadRecaptcha);
+  } else {
+    loadRecaptcha();
+  }
 </script>
