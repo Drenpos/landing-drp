@@ -9,8 +9,9 @@ author:
   designation: "CEO & Founder"
   avatar: "/images/alonso.jpg"
 categories: ["Gestión de retail", "Automatización pymes"]
-tags: ["control de stock", "gestión de inventario", "ERP retail", "retail digital"]
-featured: false
+tags:
+  ["control de stock", "gestión de inventario", "ERP retail", "retail digital"]
+featured: true
 draft: false
 hero:
   title: "Control de stock sin caos operativo"
@@ -36,6 +37,7 @@ Empiezan las versiones desactualizadas. Tu responsable de tienda edita una hoja,
 Toma el caso de Ferretería Martínez. Con dos empleados, el Excel bastaba. Con seis y tres líneas de producto, **perdían dos horas diarias reconciliando datos y perdían el 12% de las ventas potenciales por desabastecimiento.**
 
 El ciclo se repite sin pausa:
+
 - Conteo manual propenso a errores humanos
 - Actualización tardía que genera ventas imposibles
 - Acumulación de stock muerto que quema caja
@@ -52,11 +54,11 @@ Los sistemas tradicionales exigen meses de implementación, formaciones extensas
 
 Por otro lado, las herramientas ligeras o no-code prometen agilidad, pero **carecen de trazabilidad normativa y rompen la sincronización omnicanal.** Si vendes en tienda, web y marketplaces, cada plataforma actualiza su propio inventario. El resultado es un caos de sobreventas y devoluciones.
 
-| Criterio | Hojas de cálculo | ERP retail tradicional | Solución ligera a medida |
-|---|---|---|---|
-| Implementación | Inmediata | 3-6 meses | 2-4 semanas |
-| Sincronización | Manual | Compleja y costosa | Nativa y en tiempo real |
-| Coste oculto | Alto (tiempo + errores) | Muy alto (licencias + soporte) | Predecible y escalable |
+| Criterio       | Hojas de cálculo        | ERP retail tradicional         | Solución ligera a medida |
+| -------------- | ----------------------- | ------------------------------ | ------------------------ |
+| Implementación | Inmediata               | 3-6 meses                      | 2-4 semanas              |
+| Sincronización | Manual                  | Compleja y costosa             | Nativa y en tiempo real  |
+| Coste oculto   | Alto (tiempo + errores) | Muy alto (licencias + soporte) | Predecible y escalable   |
 
 La mayoría de pymes se quedan a mitad de camino. **Necesitas un puente que una la agilidad que tu equipo exige con la robustez que tu facturación requiere.**
 

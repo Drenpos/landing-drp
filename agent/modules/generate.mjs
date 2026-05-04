@@ -5,10 +5,10 @@
  *
  * El contenido es 100% original, SEO optimizado y reutilizable en Meta Ads.
  */
-import { existsSync, readFileSync } from 'fs';
-import { chat } from '../utils/ollama.mjs';
-import { log } from '../utils/logger.mjs';
-import { config } from '../config.mjs';
+import { existsSync, readFileSync } from "fs";
+import { chat } from "../utils/ollama.mjs";
+import { log } from "../utils/logger.mjs";
+import { config } from "../config.mjs";
 // config.ollama.genTimeout se usa para esta llamada (puede tardar varios minutos con modelos grandes)
 
 const SYSTEM = `Eres el redactor jefe de Drenpos (ERP + TPV + facturación para pymes españolas). Escribes artículos de blog que cumplen dos funciones simultáneas: posicionar en Google Y alimentar campañas de Meta Ads.
@@ -23,15 +23,15 @@ Tu contenido:
 - Nunca suena a "contenido de marca" — suena a consejero de confianza`;
 
 /** Convierte texto a slug URL-safe */
-export function slugify(text = '') {
+export function slugify(text = "") {
   return text
     .toLowerCase()
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .replace(/[^a-z0-9\s-]/g, '')
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9\s-]/g, "")
     .trim()
-    .replace(/\s+/g, '-')
-    .replace(/-{2,}/g, '-')
+    .replace(/\s+/g, "-")
+    .replace(/-{2,}/g, "-")
     .substring(0, 80);
 }
 
@@ -44,35 +44,56 @@ export function slugify(text = '') {
  * @param {object} icp       - { type, role, maturity, pains }
  * @returns {Promise<object>} Artículo completo
  */
-export async function generateContent(strategy, idea, keywords, context, icp = {}) {
-  log.step('MÓDULO 5 · GENERACIÓN', 'Generando artículo original con estructura Ads-aligned...');
+export async function generateContent(
+  strategy,
+  idea,
+  keywords,
+  context,
+  icp = {},
+) {
+  log.step(
+    "MÓDULO 5 · GENERACIÓN",
+    "Generando artículo original con estructura Ads-aligned...",
+  );
 
   // Leer guía de estilo
-  let styleGuide = 'Directo, claro, sin humo. Párrafos cortos. H2 descriptivos. Sin relleno.';
+  let styleGuide =
+    "Directo, claro, sin humo. Párrafos cortos. H2 descriptivos. Sin relleno.";
   if (existsSync(config.blog.styleFile)) {
-    styleGuide = readFileSync(config.blog.styleFile, 'utf-8');
+    styleGuide = readFileSync(config.blog.styleFile, "utf-8");
   }
 
   // Construir descripción de estructura esperada
   const structureText = (strategy.recommendedStructure || [])
-    .map((s, i) => `  ${i + 1}. [${s.section}] H2: "${s.suggestedH2}"\n     → ${s.purpose}`)
-    .join('\n');
+    .map(
+      (s, i) =>
+        `  ${i + 1}. [${s.section}] H2: "${s.suggestedH2}"\n     → ${s.purpose}`,
+    )
+    .join("\n");
 
   // ICP summary
   const icpSummary = [
-    icp.type     ? `Empresa: ${icp.type}` : '',
-    icp.role     ? `Lector: ${icp.role}` : '',
-    icp.maturity ? `Madurez digital: ${icp.maturity}` : '',
-    icp.pains?.length ? `Dolores: ${icp.pains.join(', ')}` : '',
-    strategy.icpInsights?.coreDesire ? `Deseo real: ${strategy.icpInsights.coreDesire}` : '',
-    strategy.icpInsights?.mainFear   ? `Miedo principal: ${strategy.icpInsights.mainFear}` : '',
-    strategy.icpInsights?.currentSolution ? `Cómo lo resuelve hoy: ${strategy.icpInsights.currentSolution}` : '',
-  ].filter(Boolean).join('\n');
+    icp.type ? `Empresa: ${icp.type}` : "",
+    icp.role ? `Lector: ${icp.role}` : "",
+    icp.maturity ? `Madurez digital: ${icp.maturity}` : "",
+    icp.pains?.length ? `Dolores: ${icp.pains.join(", ")}` : "",
+    strategy.icpInsights?.coreDesire
+      ? `Deseo real: ${strategy.icpInsights.coreDesire}`
+      : "",
+    strategy.icpInsights?.mainFear
+      ? `Miedo principal: ${strategy.icpInsights.mainFear}`
+      : "",
+    strategy.icpInsights?.currentSolution
+      ? `Cómo lo resuelve hoy: ${strategy.icpInsights.currentSolution}`
+      : "",
+  ]
+    .filter(Boolean)
+    .join("\n");
 
   const prompt = `Escribe un artículo de blog COMPLETO para Drenpos sobre: "${idea}"
 
 ━━ ICP — A QUIÉN LE ESCRIBES ━━
-${icpSummary || 'Gerente o responsable de operaciones de una pyme española'}
+${icpSummary || "Gerente o responsable de operaciones de una pyme española"}
 
 ━━ ESTRATEGIA EDITORIAL ━━
 Ángulo: ${strategy.articleAngle}
@@ -83,12 +104,12 @@ Palabras objetivo: ~${strategy.estimatedWordCount || 1300}
 
 ━━ SEO ━━
 Keyword principal: ${strategy.seoStrategy?.primaryKeyword || keywords[0]}
-Keywords secundarias: ${(strategy.seoStrategy?.secondaryKeywords || keywords.slice(1)).join(', ')}
-Uso de keywords: ${strategy.seoStrategy?.keywordDensityGuidance || 'Natural, sin saturar'}
+Keywords secundarias: ${(strategy.seoStrategy?.secondaryKeywords || keywords.slice(1)).join(", ")}
+Uso de keywords: ${strategy.seoStrategy?.keywordDensityGuidance || "Natural, sin saturar"}
 
 ━━ HOOK DE APERTURA ━━
-Tipo de hook: ${strategy.hookStrategy?.angle || 'problema real'}
-Ejemplo propuesto: "${strategy.hookStrategy?.example || '¿Sigues teniendo este problema?'}"
+Tipo de hook: ${strategy.hookStrategy?.angle || "problema real"}
+Ejemplo propuesto: "${strategy.hookStrategy?.example || "¿Sigues teniendo este problema?"}"
 REGLA CRÍTICA: El artículo DEBE empezar con este hook o una variante superior.
 NO empezar con "En este artículo...", "Hoy vamos a ver...", ni ninguna introducción genérica.
 
@@ -96,17 +117,17 @@ NO empezar con "En este artículo...", "Hoy vamos a ver...", ni ninguna introduc
 ${structureText}
 
 ━━ HUECOS QUE LLENAR VS. COMPETENCIA ━━
-${(strategy.competitionGapsToFill || []).map((g) => `- ${g}`).join('\n')}
+${(strategy.competitionGapsToFill || []).map((g) => `- ${g}`).join("\n")}
 
 ━━ ALINEACIÓN ADS ━━
-Ángulos scroll-stop a integrar: ${(strategy.adsAlignment?.scrollStopAngles || []).join(' | ')}
-Triggers emocionales: ${(strategy.adsAlignment?.emotionalTriggers || []).join(', ')}
+Ángulos scroll-stop a integrar: ${(strategy.adsAlignment?.scrollStopAngles || []).join(" | ")}
+Triggers emocionales: ${(strategy.adsAlignment?.emotionalTriggers || []).join(", ")}
 
 ━━ GUÍA DE ESTILO DRENPOS ━━
 ${styleGuide}
 
 ━━ CONTEXTO ADICIONAL ━━
-${context || 'No especificado'}
+${context || "No especificado"}
 
 ━━ REGLAS DE CONTENIDO ━━
 1. Contenido 100% ORIGINAL. Sin copiar competencia.
@@ -161,6 +182,7 @@ Devuelve ÚNICAMENTE un JSON válido:
   "heroTitle": "Título del hero (puede = title o variante más directa)",
   "heroDescription": "Descripción del hero — 1 frase que atrapa",
   "content": "ARTÍCULO COMPLETO EN MARKDOWN (sin frontmatter, empieza directo con el hook)"
+  "featured": true
 }
 
 El "content" debe tener el artículo completo con todos los H2, H3, párrafos y CTA final.`;
@@ -173,7 +195,7 @@ El "content" debe tener el artículo completo con todos los H2, H3, párrafos y 
     });
 
     const match = raw.match(/\{[\s\S]*\}/);
-    if (!match) throw new Error('No JSON en la respuesta del modelo');
+    if (!match) throw new Error("No JSON en la respuesta del modelo");
 
     const article = JSON.parse(match[0]);
 
@@ -181,10 +203,10 @@ El "content" debe tener el artículo completo con todos los H2, H3, párrafos y 
     article.slug = slugify(article.slug || article.title || idea);
 
     // Ensure arrays
-    if (!Array.isArray(article.categories)) article.categories = ['Blog'];
+    if (!Array.isArray(article.categories)) article.categories = ["Blog"];
     if (!Array.isArray(article.tags)) article.tags = keywords.slice(0, 5);
 
-    const wc = (article.content || '').split(/\s+/).filter(Boolean).length;
+    const wc = (article.content || "").split(/\s+/).filter(Boolean).length;
     log.success(`Artículo generado: "${article.title}"`);
     log.info(`~${wc} palabras | slug: ${article.slug}`);
 

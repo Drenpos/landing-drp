@@ -9,7 +9,7 @@ author:
   designation: "CEO & Founder"
   avatar: "/images/alonso.jpg"
 categories: ["VERI*FACTU", "Facturación", "Pymes", "Autónomos", "Cumplimiento"]
-featured: true
+featured: false
 draft: false
 hero:
   title: "VERI*FACTU en 2026–2027: Guía completa de adaptación"
