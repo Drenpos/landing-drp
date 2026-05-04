@@ -39,9 +39,25 @@ pipeline {
                 script {
                     echo "🏗️ Building for production..."
                     sh 'npm i --force'
+                    
+                    // Verificar que las variables existen (sin mostrar valores sensibles)
+                    echo "Verificando variables de entorno..."
+                    echo "SITE configurado: ${SITE}"
+                    echo "PUBLIC_RECAPTCHA_SITE_KEY configurado: ${PUBLIC_RECAPTCHA_SITE_KEY ? 'SÍ' : 'NO'}"
+                    echo "PUBLIC_CLERK_PUBLISHABLE_KEY configurado: ${PUBLIC_CLERK_PUBLISHABLE_KEY ? 'SÍ' : 'NO'}"
+                    
                     // Build shell
                      slackSend(color: "#ffc800", message: "🏗️ Building for production...")
-                    sh 'npm run build'
+                    
+                    // Pasar las variables de entorno al build de Astro
+                    withEnv([
+                        "PUBLIC_CLERK_PUBLISHABLE_KEY=${PUBLIC_CLERK_PUBLISHABLE_KEY}",
+                        "CLERK_SECRET_KEY=${CLERK_SECRET_KEY}",
+                        "PUBLIC_RECAPTCHA_SITE_KEY=${PUBLIC_RECAPTCHA_SITE_KEY}",
+                        "SITE=${SITE}"
+                    ]) {
+                        sh 'npm run build'
+                    }
                     
                     echo "✅ All microfrontends built successfully"
                      slackSend(color: "#2fff00", message: "✅ All microfrontends built successfully")
