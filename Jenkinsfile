@@ -11,6 +11,7 @@ pipeline {
         PUBLIC_CLERK_PUBLISHABLE_KEY = credentials('PUBLIC_CLERK_PUBLISHABLE_KEY')
         CLERK_SECRET_KEY = credentials('CLERK_SECRET_KEY')
         PUBLIC_RECAPTCHA_SITE_KEY = credentials('PUBLIC_RECAPTCHA_SITE_KEY')
+        SITE="https://drenpos.com"
       }
 
 

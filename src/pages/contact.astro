@@ -20,6 +20,11 @@ const { title, description, meta_title, contact_section } = contact.data;
 // Check if message was sent
 const messageSent = Astro.url.searchParams.get("sended") === "true";
 const SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "";
+
+// Debug: verificar que la clave existe
+if (!SITE_KEY && import.meta.env.MODE === 'production') {
+  console.error("⚠️ PUBLIC_RECAPTCHA_SITE_KEY no está configurada en producción");
+}
 ---
 
 <Base title={title} meta_title={meta_title} description={description}>
@@ -175,6 +180,17 @@ const SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "";
 
   // Verificar que reCAPTCHA se cargó correctamente
   window.addEventListener("load", () => {
+    const btnSubmit = document.getElementById("btnSubmit");
+    const siteKey = btnSubmit?.getAttribute("data-sitekey");
+    
+    // Verificar si la clave existe
+    if (!siteKey || siteKey === "") {
+      console.error("❌ ERROR: data-sitekey está vacío. Configura PUBLIC_RECAPTCHA_SITE_KEY en Cloudflare Pages");
+      console.error("👉 Dashboard: https://dash.cloudflare.com/ → Workers & Pages → landing-drp → Settings → Environment variables");
+    } else {
+      console.log("✅ reCAPTCHA Site Key encontrada:", siteKey.substring(0, 10) + "...");
+    }
+    
     if (typeof grecaptcha !== "undefined") {
       console.log("✅ reCAPTCHA cargado correctamente");
     } else {
