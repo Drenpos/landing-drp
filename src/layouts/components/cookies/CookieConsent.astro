@@ -22,13 +22,11 @@ import "@/styles/ccElegantBlack.css";
 
     // Solo inicializar CookieConsent una vez
     if (!window.__cookieConsentInitialized) {
-      console.log("Initializing CookieConsent for the first time");
       CookieConsent.run(config);
       window.__cookieConsentInitialized = true;
     } else {
-      console.log("CookieConsent already initialized");
     }
-    
+
     // Siempre re-adjuntar event listeners en cada navegación
     attachCookieListeners();
   }
@@ -36,19 +34,16 @@ import "@/styles/ccElegantBlack.css";
   function attachCookieListeners() {
     // Buscar todos los elementos con data-cc y adjuntar listeners manualmente
     const ccElements = document.querySelectorAll("[data-cc]");
-    console.log("Found", ccElements.length, "elements with data-cc");
-    
+
     ccElements.forEach((element) => {
       // Evitar duplicar listeners
-      if (element.dataset.ccListenerAttached === 'true') {
-        console.log("Listener already attached to element");
+      if (element.dataset.ccListenerAttached === "true") {
         return;
       }
-      
-      element.dataset.ccListenerAttached = 'true';
+
+      element.dataset.ccListenerAttached = "true";
       element.addEventListener("click", (e) => {
         const action = element.getAttribute("data-cc");
-        console.log("Click detected, action:", action);
         if (action === "show-preferencesModal") {
           e.preventDefault();
           CookieConsent.showPreferences();
@@ -62,7 +57,6 @@ import "@/styles/ccElegantBlack.css";
 
   // Ejecutar cada vez que Astro carga una nueva página (view transitions)
   document.addEventListener("astro:page-load", () => {
-    console.log("astro:page-load - re-initializing cookie consent");
     initCookieConsent();
   });
 </script>

@@ -10,7 +10,6 @@ const {
 }: { summary_length: number; blog_folder: string } = config.settings;
 const { data, blog_folder_int } = Astro.props;
 const blog_folder = blog_folder_int || defaultBlogFolder;
-console.log(blog_folder, blog_folder_int, defaultBlogFolder);
 const { title, image, date, categories } = data.data;
 ---
 

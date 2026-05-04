@@ -161,3 +161,24 @@ const SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "";
   <Faq />
   <CallToAction />
 </Base>
+
+<script>
+  // Función callback de reCAPTCHA v2 Invisible
+  function onContactSubmit(token) {
+    console.log("reCAPTCHA validado correctamente");
+    // Enviar el formulario después de la validación
+    document.querySelector("form").submit();
+  }
+
+  // Hacer la función global para que reCAPTCHA pueda llamarla
+  window.onContactSubmit = onContactSubmit;
+
+  // Verificar que reCAPTCHA se cargó correctamente
+  window.addEventListener("load", () => {
+    if (typeof grecaptcha !== "undefined") {
+      console.log("✅ reCAPTCHA cargado correctamente");
+    } else {
+      console.error("❌ reCAPTCHA no se cargó correctamente");
+    }
+  });
+</script>
