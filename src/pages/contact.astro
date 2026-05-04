@@ -19,7 +19,9 @@ const { title, description, meta_title, contact_section } = contact.data;
 
 // Check if message was sent
 const messageSent = Astro.url.searchParams.get("sended") === "true";
-const SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "";
+const SITE_KEY =
+  import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY ||
+  "6LebRrwqAAAAAB-QwrsbY4HNQGli2N28aoFNrn1R";
 
 // Debug: verificar que la clave existe
 if (!SITE_KEY && import.meta.env.MODE === "production") {
