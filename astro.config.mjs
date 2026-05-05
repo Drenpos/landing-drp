@@ -42,6 +42,25 @@ function getBlogUrls() {
     return [];
   }
 }
+function getBlogUrlsLocal() {
+  const blogDir = path.join(process.cwd(), "src/content/local");
+  const baseUrl = config.site.base_url || "http://examplesite.com";
+
+  try {
+    const files = fs.readdirSync(blogDir);
+    const blogUrls = files
+      .filter((file) => file.endsWith(".md") && file !== "-index.md")
+      .map((file) => {
+        const slug = file.replace(".md", "");
+        return `${baseUrl}/local/${slug}`;
+      });
+
+    return blogUrls;
+  } catch (error) {
+    console.warn("No se pudo leer el directorio de blog local:", error);
+    return [];
+  }
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -55,6 +74,10 @@ export default defineConfig({
     sitemap({
       // Incluir rutas dinámicas de blog
       customPages: getBlogUrls(),
+    }),
+    sitemap({
+      // Incluir rutas dinámicas de blog local
+      customPages: getBlogUrlsLocal(),
     }),
     AutoImport({
       imports: [
