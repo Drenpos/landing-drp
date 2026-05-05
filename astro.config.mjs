@@ -10,6 +10,8 @@ import { defineConfig, passthroughImageService } from "astro/config";
 import remarkCollapse from "remark-collapse";
 import remarkToc from "remark-toc";
 import config from "./src/config/config.json";
+import fs from "fs";
+import path from "path";
 
 let highlighter;
 async function getHighlighter() {
@@ -18,6 +20,27 @@ async function getHighlighter() {
     highlighter = await getHighlighter({ theme: "one-dark-pro" });
   }
   return highlighter;
+}
+
+// Función para obtener las rutas de blog
+function getBlogUrls() {
+  const blogDir = path.join(process.cwd(), "src/content/blog");
+  const baseUrl = config.site.base_url || "http://examplesite.com";
+
+  try {
+    const files = fs.readdirSync(blogDir);
+    const blogUrls = files
+      .filter((file) => file.endsWith(".md") && file !== "-index.md")
+      .map((file) => {
+        const slug = file.replace(".md", "");
+        return `${baseUrl}/blog/${slug}`;
+      });
+
+    return blogUrls;
+  } catch (error) {
+    console.warn("No se pudo leer el directorio de blog:", error);
+    return [];
+  }
 }
 
 // https://astro.build/config
@@ -29,7 +52,10 @@ export default defineConfig({
   integrations: [
     clerk(),
     react(),
-    sitemap(),
+    sitemap({
+      // Incluir rutas dinámicas de blog
+      customPages: getBlogUrls(),
+    }),
     AutoImport({
       imports: [
         "@/shortcodes/Button",
@@ -37,8 +63,8 @@ export default defineConfig({
         "@/shortcodes/Notice",
         "@/shortcodes/Video",
         "@/shortcodes/Youtube",
-        "@/shortcodes/Tabs",
         "@/shortcodes/Tab",
+        "@/shortcodes/Tabs",
       ],
     }),
     mdx(),
