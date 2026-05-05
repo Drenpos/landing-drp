@@ -73,11 +73,7 @@ export default defineConfig({
     react(),
     sitemap({
       // Incluir rutas dinámicas de blog
-      customPages: getBlogUrls(),
-    }),
-    sitemap({
-      // Incluir rutas dinámicas de blog local
-      customPages: getBlogUrlsLocal(),
+      customPages: [...getBlogUrls(), ...getBlogUrlsLocal()],
     }),
     AutoImport({
       imports: [
