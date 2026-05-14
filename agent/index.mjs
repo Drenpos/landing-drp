@@ -24,7 +24,7 @@ import { analyzeCompetition } from "./modules/analyze-competition.mjs";
 import { analyzeOwnContent } from "./modules/analyze-own.mjs";
 import { synthesizeStrategy } from "./modules/synthesize.mjs";
 import { generateContent } from "./modules/generate.mjs";
-// import { generateAds } from './modules/generate-ads.mjs';
+import { generateAds } from "./modules/generate-ads.mjs";
 import { generateImages } from "./modules/generate-images.mjs";
 import { persistArticle } from "./modules/persist.mjs";
 import { gitOps } from "./modules/gitops.mjs";
@@ -198,7 +198,7 @@ async function main() {
     );
 
     // // ── MÓDULO 5b: Generación de assets Meta Ads ──
-    // const adsAssets = await generateAds(article, icp);
+    const adsAssets = await generateAds(article, icp);
 
     // ── MÓDULO 5c: Imágenes (Pexels) ──
     const images = await generateImages(article, icp);

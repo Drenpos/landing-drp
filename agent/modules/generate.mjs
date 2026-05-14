@@ -194,10 +194,45 @@ El "content" debe tener el artículo completo con todos los H2, H3, párrafos y 
       timeout: config.ollama.genTimeout,
     });
 
+    // Extraer JSON de la respuesta
     const match = raw.match(/\{[\s\S]*\}/);
     if (!match) throw new Error("No JSON en la respuesta del modelo");
 
-    const article = JSON.parse(match[0]);
+    let jsonString = match[0];
+
+    // Limpiar el JSON antes de parsear
+    // 1. Remover trailing commas antes de ] o }
+    jsonString = jsonString.replace(/,(\s*[}\]])/g, "$1");
+
+    // 2. Remover comentarios // y /* */
+    jsonString = jsonString.replace(/\/\/.*$/gm, "");
+    jsonString = jsonString.replace(/\/\*[\s\S]*?\*\//g, "");
+
+    // 3. Limpiar espacios extra
+    jsonString = jsonString.trim();
+
+    // Intentar parsear
+    let article;
+    try {
+      article = JSON.parse(jsonString);
+    } catch (parseError) {
+      // Log del JSON problemático para debugging
+      const errorPos = parseError.message.match(/position (\d+)/)?.[1];
+      if (errorPos) {
+        const pos = parseInt(errorPos, 10);
+        const start = Math.max(0, pos - 200);
+        const end = Math.min(jsonString.length, pos + 200);
+        log.error(`JSON inválido en posición ${pos}:`);
+        log.error(
+          `...${jsonString.substring(start, end).replace(/\n/g, "↵")}...`,
+        );
+      } else {
+        log.error(`JSON inválido (primeros 500 chars):`);
+        log.error(jsonString.substring(0, 500));
+      }
+      log.error(`Error de parseo: ${parseError.message}`);
+      throw parseError;
+    }
 
     // Normalize slug
     article.slug = slugify(article.slug || article.title || idea);

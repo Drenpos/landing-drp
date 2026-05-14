@@ -82,7 +82,15 @@ Responde ÚNICAMENTE con el JSON. Sin texto previo ni posterior.`;
     const raw = await chat(prompt, SYSTEM, { temperature: 0.25, numCtx: 12288 });
     const match = raw.match(/\{[\s\S]*\}/);
     if (!match) throw new Error('No JSON en respuesta');
-    const result = JSON.parse(match[0]);
+    
+    // Limpiar JSON antes de parsear
+    let jsonString = match[0];
+    jsonString = jsonString.replace(/,(\s*[\}\]])/g, '$1');
+    jsonString = jsonString.replace(/\/\/.*$/gm, '');
+    jsonString = jsonString.replace(/\/\*[\s\S]*?\*\//g, '');
+    jsonString = jsonString.trim();
+    
+    const result = JSON.parse(jsonString);
     log.success('Análisis de competencia completado');
     log.debug(`Gaps detectados: ${result.gaps?.join(' | ')}`);
     return result;

@@ -248,7 +248,7 @@ export async function persistArticle(article, adsAssets = {}, images = []) {
   await writeFile(filepath, postContent, "utf-8");
   log.success(`Post guardado: src/content/blog/${filename}`);
 
-  // 2. Guardar companion ads
+  // // 2. Guardar companion ads
   const adsContent = buildAdsFile(adsAssets, article, date);
   await writeFile(adsFilepath, adsContent, "utf-8");
   log.success(`Ads guardados: src/content/blog/${adsFilename}`);

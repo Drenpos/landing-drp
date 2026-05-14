@@ -42,7 +42,15 @@ Return ONLY a JSON array of 4 strings:
     const raw = await chat(prompt, '', { temperature: 0.3, numCtx: 2048 });
     const match = raw.match(/\[[\s\S]*?\]/);
     if (!match) throw new Error('No array en respuesta');
-    const queries = JSON.parse(match[0]);
+    
+    // Limpiar JSON antes de parsear
+    let jsonString = match[0];
+    jsonString = jsonString.replace(/,(\s*[\}\]])/g, '$1'); // trailing commas
+    jsonString = jsonString.replace(/\/\/.*$/gm, ''); // comentarios
+    jsonString = jsonString.replace(/\/\*[\s\S]*?\*\//g, '');
+    jsonString = jsonString.trim();
+    
+    const queries = JSON.parse(jsonString);
     return Array.isArray(queries) ? queries.slice(0, 4) : [];
   } catch (e) {
     log.debug(`Error generando queries: ${e.message}`);

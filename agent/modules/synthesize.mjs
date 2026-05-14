@@ -3,17 +3,18 @@
  * Combina análisis de competencia + perfil propio + ICP
  * para definir una estrategia orientada a SEO y conversión Ads.
  */
-import { chat } from '../utils/ollama.mjs';
-import { log } from '../utils/logger.mjs';
+import { chat } from "../utils/ollama.mjs";
+import { log } from "../utils/logger.mjs";
 
 const SYSTEM = `Eres un estratega de contenido que trabaja en la intersección de SEO y performance marketing (Meta Ads). Diseñas artículos de blog que posicionan en buscadores Y alimentan campañas publicitarias. Tu foco es el ICP (Ideal Customer Profile): escribes para una persona real con un problema real, no para un algoritmo.`;
 
 /** Fallback cuando el LLM falla */
 function fallbackStrategy(idea, keywords, icp) {
-  const pain = icp.pains?.[0] || 'procesos manuales que quitan tiempo';
+  const pain = icp.pains?.[0] || "procesos manuales que quitan tiempo";
   return {
-    articleAngle: `Cómo ${icp.type || 'las pymes'} resuelven ${pain} con tecnología`,
-    differentialValue: 'Perspectiva real de negocio, no teoría. Con ejemplos y sin rodeos.',
+    articleAngle: `Cómo ${icp.type || "las pymes"} resuelven ${pain} con tecnología`,
+    differentialValue:
+      "Perspectiva real de negocio, no teoría. Con ejemplos y sin rodeos.",
     icpInsights: {
       coreDesire: `Tener control real de su negocio sin complicaciones`,
       mainFear: `Seguir perdiendo tiempo y dinero por falta de herramientas`,
@@ -21,35 +22,62 @@ function fallbackStrategy(idea, keywords, icp) {
       triggerToChange: `Un error costoso o un competidor que ya lo ha hecho`,
     },
     hookStrategy: {
-      angle: 'Problema/consecuencia real',
+      angle: "Problema/consecuencia real",
       example: `¿Sigues gestionando ${pain} con Excel?`,
     },
     recommendedStructure: [
-      { section: 'Hook', purpose: 'Capturar atención con problema real', suggestedH2: `¿Todavía con este problema en tu empresa?` },
-      { section: 'Identificación', purpose: 'Hacer que el lector se reconozca', suggestedH2: `Esto le pasa a casi todas las pymes` },
-      { section: 'Intensificación', purpose: 'Amplificar el coste real del problema', suggestedH2: `Lo que te cuesta seguir igual` },
-      { section: 'Cambio de paradigma', purpose: 'Cuestionar la solución actual', suggestedH2: `Por qué el Excel no es suficiente` },
-      { section: 'Solución', purpose: 'Introducir el enfoque de Drenpos suavemente', suggestedH2: `Cómo lo hacen las empresas que ya lo han resuelto` },
-      { section: 'CTA', purpose: 'Invitar sin presionar', suggestedH2: `El siguiente paso (sin compromiso)` },
+      {
+        section: "Hook",
+        purpose: "Capturar atención con problema real",
+        suggestedH2: `¿Todavía con este problema en tu empresa?`,
+      },
+      {
+        section: "Identificación",
+        purpose: "Hacer que el lector se reconozca",
+        suggestedH2: `Esto le pasa a casi todas las pymes`,
+      },
+      {
+        section: "Intensificación",
+        purpose: "Amplificar el coste real del problema",
+        suggestedH2: `Lo que te cuesta seguir igual`,
+      },
+      {
+        section: "Cambio de paradigma",
+        purpose: "Cuestionar la solución actual",
+        suggestedH2: `Por qué el Excel no es suficiente`,
+      },
+      {
+        section: "Solución",
+        purpose: "Introducir el enfoque de Drenpos suavemente",
+        suggestedH2: `Cómo lo hacen las empresas que ya lo han resuelto`,
+      },
+      {
+        section: "CTA",
+        purpose: "Invitar sin presionar",
+        suggestedH2: `El siguiente paso (sin compromiso)`,
+      },
     ],
     seoStrategy: {
       titleFormula: `${idea}: lo que nadie te cuenta`,
       primaryKeyword: keywords[0] || idea,
       secondaryKeywords: keywords.slice(1),
-      keywordDensityGuidance: 'Natural. Keyword principal en título, primer párrafo y 1-2 H2.',
+      keywordDensityGuidance:
+        "Natural. Keyword principal en título, primer párrafo y 1-2 H2.",
     },
-    contentPositioning: 'El artículo más honesto y directo sobre el tema. Escrito desde dentro del negocio.',
-    toneGuidance: `Habla como un consultor de confianza al ${icp.role || 'gerente'}. Directo, cercano, sin superioridad.`,
+    contentPositioning:
+      "El artículo más honesto y directo sobre el tema. Escrito desde dentro del negocio.",
+    toneGuidance: `Habla como un consultor de confianza al ${icp.role || "gerente"}. Directo, cercano, sin superioridad.`,
     estimatedWordCount: 1300,
     competitionGapsToFill: [
-      'Añadir ejemplos con nombres ficticios de pymes concretas',
-      'Cuantificar el impacto real (tiempo, dinero, errores)',
-      'No vender directamente — posicionar como aliado',
+      "Añadir ejemplos con nombres ficticios de pymes concretas",
+      "Cuantificar el impacto real (tiempo, dinero, errores)",
+      "No vender directamente — posicionar como aliado",
     ],
     adsAlignment: {
       scrollStopAngles: [pain, `tu empresa`, `esto te está pasando`],
-      emotionalTriggers: ['frustración', 'alivio', 'control'],
-      retargetingSetup: 'Lectores del post → audiencia caliente para campañas de leads',
+      emotionalTriggers: ["frustración", "alivio", "control"],
+      retargetingSetup:
+        "Lectores del post → audiencia caliente para campañas de leads",
     },
   };
 }
@@ -64,24 +92,33 @@ function fallbackStrategy(idea, keywords, icp) {
  * @param {object} icp         - { type, role, maturity, pains }
  * @returns {Promise<object>}
  */
-export async function synthesizeStrategy(competition, ownProfile, idea, keywords, context, icp = {}) {
-  log.step('MÓDULO 4 · SÍNTESIS', 'Creando estrategia SEO + Ads con ICP...');
+export async function synthesizeStrategy(
+  competition,
+  ownProfile,
+  idea,
+  keywords,
+  context,
+  icp = {},
+) {
+  log.step("MÓDULO 4 · SÍNTESIS", "Creando estrategia SEO + Ads con ICP...");
 
   const icpText = [
-    icp.type     ? `Tipo de empresa: ${icp.type}` : '',
-    icp.role     ? `Rol objetivo: ${icp.role}` : '',
-    icp.maturity ? `Madurez digital: ${icp.maturity}` : '',
-    icp.pains?.length ? `Dolores principales: ${icp.pains.join(', ')}` : '',
-  ].filter(Boolean).join('\n');
+    icp.type ? `Tipo de empresa: ${icp.type}` : "",
+    icp.role ? `Rol objetivo: ${icp.role}` : "",
+    icp.maturity ? `Madurez digital: ${icp.maturity}` : "",
+    icp.pains?.length ? `Dolores principales: ${icp.pains.join(", ")}` : "",
+  ]
+    .filter(Boolean)
+    .join("\n");
 
   const prompt = `Diseña la estrategia editorial para un artículo de blog de Drenpos.
 
 TEMA: "${idea}"
-KEYWORDS: ${keywords.join(', ')}
-CONTEXTO: ${context || 'No especificado'}
+KEYWORDS: ${keywords.join(", ")}
+CONTEXTO: ${context || "No especificado"}
 
 ICP (IDEAL CUSTOMER PROFILE):
-${icpText || 'No especificado — infiere a partir del tema y keywords'}
+${icpText || "No especificado — infiere a partir del tema y keywords"}
 
 ANÁLISIS DE COMPETENCIA:
 ${JSON.stringify(competition, null, 2)}
@@ -139,12 +176,41 @@ Responde ÚNICAMENTE con el JSON. Sin texto adicional.`;
 
   try {
     const raw = await chat(prompt, SYSTEM, { temperature: 0.4, numCtx: 10240 });
+
+    // Extraer JSON de la respuesta
     const match = raw.match(/\{[\s\S]*\}/);
-    if (!match) throw new Error('No JSON en respuesta');
-    const strategy = JSON.parse(match[0]);
+    if (!match) throw new Error("No JSON en respuesta");
+
+    let jsonString = match[0];
+
+    // Limpiar el JSON antes de parsear
+    // 1. Remover trailing commas antes de ] o }
+    jsonString = jsonString.replace(/,(\s*[}\]])/g, "$1");
+
+    // 2. Remover comentarios // y /* */
+    jsonString = jsonString.replace(/\/\/.*$/gm, "");
+    jsonString = jsonString.replace(/\/\*[\s\S]*?\*\//g, "");
+
+    // 3. Limpiar espacios extra
+    jsonString = jsonString.trim();
+
+    // Intentar parsear
+    let strategy;
+    try {
+      strategy = JSON.parse(jsonString);
+    } catch (parseError) {
+      // Log del JSON problemático para debugging (primeros 500 caracteres)
+      log.error(
+        `JSON inválido (primeros 500 chars):\n${jsonString.substring(0, 500)}...`,
+      );
+      log.error(`Error de parseo: ${parseError.message}`);
+      throw parseError;
+    }
 
     log.success(`Ángulo: "${strategy.articleAngle}"`);
-    log.success(`Hook: ${strategy.hookStrategy?.angle} — "${strategy.hookStrategy?.example}"`);
+    log.success(
+      `Hook: ${strategy.hookStrategy?.angle} — "${strategy.hookStrategy?.example}"`,
+    );
     log.info(`Secciones: ${strategy.recommendedStructure?.length || 0}`);
     return strategy;
   } catch (e) {

@@ -93,7 +93,14 @@ Responde ÚNICAMENTE con el JSON. Sin texto adicional.`;
     const match = raw.match(/\{[\s\S]*\}/);
     if (!match) throw new Error('No JSON en respuesta');
 
-    const ads = JSON.parse(match[0]);
+    // Limpiar JSON antes de parsear
+    let jsonString = match[0];
+    jsonString = jsonString.replace(/,(\s*[\}\]])/g, '$1');
+    jsonString = jsonString.replace(/\/\/.*$/gm, '');
+    jsonString = jsonString.replace(/\/\*[\s\S]*?\*\//g, '');
+    jsonString = jsonString.trim();
+
+    const ads = JSON.parse(jsonString);
 
     log.success(`${ads.hooks?.length || 0} hooks generados`);
     log.success(`${(ads.copiesShort?.length || 0) + 1} copies generados`);
