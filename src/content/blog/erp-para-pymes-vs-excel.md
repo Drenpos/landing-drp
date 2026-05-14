@@ -9,8 +9,14 @@ author:
   designation: "CEO & Founder"
   avatar: "/images/alonso.jpg"
 categories: ["Gestión Empresarial", "Tecnología para Pymes"]
-tags: ["erp para pymes", "excel vs erp", "gestion empresarial", "software para empresas"]
-featured: false
+tags:
+  [
+    "erp para pymes",
+    "excel vs erp",
+    "gestion empresarial",
+    "software para empresas",
+  ]
+featured: true
 draft: false
 hero:
   title: "ERP vs Excel: ¿Tu gestión depende de un archivo o de tu negocio?"
@@ -65,13 +71,13 @@ Excel es una herramienta de cálculo, no una herramienta de gestión empresarial
 
 Cuando hablamos de **excel vs erp**, la diferencia no es solo tecnológica, es estructural. Un ERP centraliza la información para que, cuando se registra una venta, el stock se descuente automáticamente y la contabilidad se actualice sin intervención humana.
 
-| Característica | Excel / Hojas de cálculo | ERP para pymes |
-| :--- | :--- | : |
-| **Fuente de datos** | Múltiples archivos y versiones | Única, centralizada y real |
-| **Error humano** | Muy alto (depende de la entrada manual) | Bajo (automatización de procesos) |
-| **Visibilidad** | Diferida (depende de actualizaciones) | Tiempo real (instantánea) |
-| **Trazabilidad** | Casi inexistente (difícil saber quién cambió qué) | Total (registro de cada movimiento) |
-| **Seguridad** | Baja (fácil de borrar o modificar sin rastro) | Alta (permisos por usuario y roles) |
+| Característica      | Excel / Hojas de cálculo                          | ERP para pymes                      |
+| :------------------ | :------------------------------------------------ | :---------------------------------- |
+| **Fuente de datos** | Múltiples archivos y versiones                    | Única, centralizada y real          |
+| **Error humano**    | Muy alto (depende de la entrada manual)           | Bajo (automatización de procesos)   |
+| **Visibilidad**     | Diferida (depende de actualizaciones)             | Tiempo real (instantánea)           |
+| **Trazabilidad**    | Casi inexistente (difícil saber quién cambió qué) | Total (registro de cada movimiento) |
+| **Seguridad**       | Baja (fácil de borrar o modificar sin rastro)     | Alta (permisos por usuario y roles) |
 
 ## Cómo lo hacen las empresas que ya lo han resuelto
 

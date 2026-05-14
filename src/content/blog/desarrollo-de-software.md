@@ -9,7 +9,7 @@ author:
   designation: "CEO & Founder"
   avatar: "/images/alonso.jpg"
 categories: ["Desarrollo de Software", "Tecnología", "Servicios"]
-featured: true
+featured: false
 draft: false
 hero:
   title: "Desarrollo de software en drenpos"
