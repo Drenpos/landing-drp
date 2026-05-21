@@ -1,0 +1,294 @@
+---
+// FeaturePowerSection.astro
+// Sección de funcionalidades avanzadas con imágenes reales de Drenpos.
+// Coloca los pantallazos en:
+//   public/images/funcionalidades/comunicacion.png
+//   public/images/funcionalidades/trazabilidad.png
+---
+
+<section id="funcionalidades-avanzadas" class="section pt-0 overflow-hidden">
+  <div class="container">
+
+    <!-- ══════════════════════════════════════════
+         FEATURE 1: Comunicación integrada
+    ══════════════════════════════════════════ -->
+    <div class="row gx-0 gy-14 lg:gy-0 items-center mb-24 lg:mb-40">
+
+      <!-- LEFT: Text -->
+      <div class="lg:col-6 lg:pe-16" data-aos="fade-up-sm" data-aos-delay="100">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-6">
+          Comunicación integrada
+        </span>
+        <h3 class="h4 mb-5 font-bold leading-tight">
+          Facturas y documentos directamente al cliente, <span class="text-primary">sin tocar nada más</span>
+        </h3>
+        <p class="text-lg mb-8 leading-relaxed" style="color: rgba(16,25,40,0.72);">
+          Tu cliente escanea un QR o te da su correo. En segundos recibe su factura, albarán o cualquier documento con tu marca y los datos exactos. Sin WhatsApp, sin imprimir, sin reenvíos manuales.
+        </p>
+
+        <div class="flex flex-col gap-6 mb-10">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1">📱</div>
+            <div>
+              <p class="font-semibold text-text-dark mb-1">QR instantáneo</p>
+              <p class="text-sm" style="color: rgba(16,25,40,0.62);">El cliente escanea y recibe el documento en su móvil. Sin apps, sin registros, sin esperas.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1">📧</div>
+            <div>
+              <p class="font-semibold text-text-dark mb-1">Envío por email automático</p>
+              <p class="text-sm" style="color: rgba(16,25,40,0.62);">Configura la dirección una vez y Drenpos envía todo por ti, cuando y como decides.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1">🎨</div>
+            <div>
+              <p class="font-semibold text-text-dark mb-1">Templates personalizados con tu marca</p>
+              <p class="text-sm" style="color: rgba(16,25,40,0.62);">Logo, colores corporativos, textos y firma. Cada documento es tuyo, no del software.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1">📋</div>
+            <div>
+              <p class="font-semibold text-text-dark mb-1">Historial de envíos completo</p>
+              <p class="text-sm" style="color: rgba(16,25,40,0.62);">Sabe exactamente quién recibió qué y cuándo, sin tener que preguntar a nadie.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Screenshot -->
+      <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="300">
+        <div class="relative px-6 lg:px-0 pt-10 pb-10">
+
+          <!-- Decorative blob -->
+          <div
+            class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none"
+            style="background: rgba(121,27,70,0.07);"
+          ></div>
+          <div
+            class="absolute bottom-0 left-0 w-48 h-48 rounded-full blur-2xl -z-10 pointer-events-none"
+            style="background: rgba(211,167,118,0.08);"
+          ></div>
+
+          <!-- Screenshot frame -->
+          <div
+            class="rounded-2xl overflow-hidden"
+            style="box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07); border: 1px solid rgba(16,25,40,0.08);"
+          >
+            <img
+              src="/images/funcionalidades/comunicacion.png"
+              alt="Pantalla de envío de documentos y QR en Drenpos"
+              class="w-full h-auto block"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Floating badge: Entregado -->
+          <div
+            class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3"
+            style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07); max-width: 230px;"
+            data-aos="fade-up-sm"
+            data-aos-delay="550"
+          >
+            <div
+              class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0 font-bold"
+              style="background: #dcfce7; color: #16a34a;"
+            >✓</div>
+            <div>
+              <p class="text-xs font-bold text-dark">Documento entregado</p>
+              <p class="text-xs" style="color: #9ca3af;">Comercial García · hace 2 min</p>
+            </div>
+          </div>
+
+          <!-- Floating badge: QR -->
+          <div
+            class="absolute -top-5 -right-2 lg:-right-8 rounded-2xl px-4 py-3 flex items-center gap-2.5"
+            style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);"
+            data-aos="zoom-in-up-sm"
+            data-aos-delay="450"
+          >
+            <div
+              class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0"
+              style="background: rgba(121,27,70,0.08);"
+            >📱</div>
+            <div>
+              <p class="text-xs font-bold text-dark">Escanea el QR</p>
+              <p class="text-xs" style="color: #9ca3af;">Sin instalar nada</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         FEATURE 2: Trazabilidad Total de Stock
+    ══════════════════════════════════════════ -->
+    <div class="row gx-0 gy-14 lg:gy-0 items-center mb-24 lg:mb-40">
+
+      <!-- LEFT: Screenshot -->
+      <div class="lg:col-6 lg:pe-8" data-aos="fade-up-sm" data-aos-delay="100">
+        <div class="relative px-6 lg:px-0 pt-10 pb-10">
+
+          <!-- Decorative blob -->
+          <div
+            class="absolute -top-10 -left-10 w-72 h-72 rounded-full blur-3xl -z-10 pointer-events-none"
+            style="background: rgba(211,167,118,0.12);"
+          ></div>
+          <div
+            class="absolute -bottom-8 right-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none"
+            style="background: rgba(121,27,70,0.06);"
+          ></div>
+
+          <!-- Screenshot frame -->
+          <div
+            class="rounded-2xl overflow-hidden"
+            style="box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07); border: 1px solid rgba(16,25,40,0.08);"
+          >
+            <img
+              src="/images/funcionalidades/trazabilidad.png"
+              alt="Pantalla de trazabilidad y control de stock en Drenpos"
+              class="w-full h-auto block"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Floating badge: Audit trail -->
+          <div
+            class="absolute -top-5 -right-2 lg:-right-8 rounded-2xl px-4 py-3"
+            style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07); min-width: 168px;"
+            data-aos="zoom-in-up-sm"
+            data-aos-delay="500"
+          >
+            <p class="text-xs font-bold text-dark mb-2.5">Audit trail completo</p>
+            <div class="space-y-1.5">
+              <div class="flex items-center gap-2 text-xs" style="color: #6b7280;">
+                <div class="w-2 h-2 rounded-full flex-shrink-0" style="background: #16a34a;"></div>
+                Qué se movió
+              </div>
+              <div class="flex items-center gap-2 text-xs" style="color: #6b7280;">
+                <div class="w-2 h-2 rounded-full flex-shrink-0" style="background: #791b46;"></div>
+                Quién lo hizo
+              </div>
+              <div class="flex items-center gap-2 text-xs" style="color: #6b7280;">
+                <div class="w-2 h-2 rounded-full flex-shrink-0" style="background: #d3a776;"></div>
+                Cuándo y dónde
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating badge: Alerta caducidad -->
+          <div
+            class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-2.5"
+            style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07); max-width: 210px;"
+            data-aos="fade-up-sm"
+            data-aos-delay="600"
+          >
+            <div
+              class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0"
+              style="background: #fef3c7;"
+            >⚠️</div>
+            <div>
+              <p class="text-xs font-bold" style="color: #b45309;">Alerta de caducidad</p>
+              <p class="text-xs" style="color: #9ca3af;">Lote L2024-D · 12 días</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT: Text -->
+      <div class="lg:col-6 lg:ps-16" data-aos="fade-up-sm" data-aos-delay="300">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-6">
+          Trazabilidad total
+        </span>
+        <h3 class="h4 mb-5 font-bold leading-tight">
+          Sabe exactamente qué tienes, dónde está, <span class="text-primary">quién lo movió y cuándo</span>
+        </h3>
+        <p class="text-lg mb-8 leading-relaxed" style="color: rgba(16,25,40,0.72);">
+          Control absoluto sobre cada unidad de tu inventario. Lotes, fechas de caducidad, movimientos entre almacenes y responsables identificados. La trazabilidad que exige la normativa, sin el trabajo extra que implica.
+        </p>
+
+        <div class="flex flex-col gap-6 mb-10">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1" style="background: rgba(211,167,118,0.15);">🔢</div>
+            <div>
+              <p class="font-semibold text-text-dark mb-1">Gestión por lotes</p>
+              <p class="text-sm" style="color: rgba(16,25,40,0.62);">Cada entrada lleva su lote identificado. Localiza cualquier unidad y su origen en segundos.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1" style="background: rgba(211,167,118,0.15);">📅</div>
+            <div>
+              <p class="font-semibold text-text-dark mb-1">Control de caducidades con alertas</p>
+              <p class="text-sm" style="color: rgba(16,25,40,0.62);">Alertas automáticas antes de que un producto caduque. Vende primero lo que antes vence, sin pensar en ello.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1" style="background: rgba(211,167,118,0.15);">📊</div>
+            <div>
+              <p class="font-semibold text-text-dark mb-1">Reportes de movimientos completos</p>
+              <p class="text-sm" style="color: rgba(16,25,40,0.62);">Filtra por producto, fecha, usuario o almacén. Exporta al instante para auditorías o inspecciones.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1" style="background: rgba(211,167,118,0.15);">👤</div>
+            <div>
+              <p class="font-semibold text-text-dark mb-1">Responsable en cada acción</p>
+              <p class="text-sm" style="color: rgba(16,25,40,0.62);">Cada movimiento lleva el nombre de quien lo realizó, el momento exacto y el almacén de origen.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         MINI FEATURES GRID
+    ══════════════════════════════════════════ -->
+    <div data-aos="fade-up-sm">
+      <div class="text-center mb-12">
+        <p class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Y mucho más</p>
+        <h3 class="h4 font-bold">Cada detalle, pensado para tu negocio</h3>
+      </div>
+
+      <div class="row g-5">
+
+        <div class="col-12 sm:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay="0">
+          <div class="border rounded-[20px] py-8 px-6 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
+            <div class="w-14 h-14 rounded-full flex items-center justify-center mb-5 text-2xl" style="background: #D1FADF;">📊</div>
+            <h5 class="font-semibold mb-2" style="color: #15803d;">Reportes automáticos</h5>
+            <p class="text-sm" style="color: rgba(16,25,40,0.65);">Informes de ventas, stock, márgenes y caducidades generados solos. Sin exportar a Excel, sin perder tiempo.</p>
+          </div>
+        </div>
+
+        <div class="col-12 sm:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay="100">
+          <div class="border rounded-[20px] py-8 px-6 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
+            <div class="w-14 h-14 rounded-full flex items-center justify-center mb-5 text-2xl" style="background: #DDD6FF;">🏷️</div>
+            <h5 class="font-semibold mb-2" style="color: #6d28d9;">Etiquetado de lotes</h5>
+            <p class="text-sm" style="color: rgba(16,25,40,0.65);">Imprime etiquetas con lote, caducidad y código de barras directamente desde Drenpos, en segundos.</p>
+          </div>
+        </div>
+
+        <div class="col-12 sm:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="border rounded-[20px] py-8 px-6 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
+            <div class="w-14 h-14 rounded-full flex items-center justify-center mb-5 text-2xl" style="background: #FFEAFF;">⚠️</div>
+            <h5 class="font-semibold mb-2" style="color: #a21caf;">Alertas inteligentes</h5>
+            <p class="text-sm" style="color: rgba(16,25,40,0.65);">Notificaciones proactivas de stock mínimo, caducidades próximas y anomalías en movimientos de almacén.</p>
+          </div>
+        </div>
+
+        <div class="col-12 sm:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay="300">
+          <div class="border rounded-[20px] py-8 px-6 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
+            <div class="w-14 h-14 rounded-full flex items-center justify-center mb-5 text-2xl" style="background: #FFFBF9;">🔒</div>
+            <h5 class="font-semibold mb-2" style="color: #c2410c;">Control de accesos</h5>
+            <p class="text-sm" style="color: rgba(16,25,40,0.65);">Define qué puede ver y hacer cada usuario. Roles personalizados por área, almacén o nivel de responsabilidad.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
