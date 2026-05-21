@@ -9,8 +9,14 @@ author:
   designation: "CEO & Founder"
   avatar: "/images/alonso.jpg"
 categories: ["Gestión de Pymes", "Productividad"]
-tags: ["whatsapp empresas", "facturacion automatica", "presupuestos whatsapp", "automatización"]
-featured: false
+tags:
+  [
+    "whatsapp empresas",
+    "facturacion automatica",
+    "presupuestos whatsapp",
+    "automatización",
+  ]
+featured: true
 draft: false
 hero:
   title: "Cómo enviar facturas y presupuestos por WhatsApp automáticamente"
@@ -54,12 +60,12 @@ Muchos gestores creen que con una lista de contactos en Excel y un poco de orden
 
 ![Man in beanie and vest using a scanner in a warehouse for inventory control.](/images/blog/enviar-facturas-por-whatsapp-automaticamente/section-2.jpg)
 
-| Característica | Gestión Manual (Excel/Papel) | Facturación Automática (ERP) |
-| :--- | :--- | :--- |
-| **Tiempo de envío** | 3 a 5 minutos por documento | Segundos (un solo clic) |
-| **Riesgo de error** | Muy alto (copiar/pegar) | Casi inexistente |
-| **Seguimiento** | Difícil y desordenado | Trazabilidad total |
-| **Imagen de marca** | Poco profesional | Profesional y ágil |
+| Característica      | Gestión Manual (Excel/Papel) | Facturación Automática (ERP) |
+| :------------------ | :--------------------------- | :--------------------------- |
+| **Tiempo de envío** | 3 a 5 minutos por documento  | Segundos (un solo clic)      |
+| **Riesgo de error** | Muy alto (copiar/pegar)      | Casi inexistente             |
+| **Seguimiento**     | Difícil y desordenado        | Trazabilidad total           |
+| **Imagen de marca** | Poco profesional             | Profesional y ágil           |
 
 ## Cómo lo hacen las empresas que ya han resuelto este caos
 

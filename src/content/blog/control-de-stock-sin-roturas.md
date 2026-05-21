@@ -11,7 +11,7 @@ author:
 categories: ["Gestión de retail", "Automatización pymes"]
 tags:
   ["control de stock", "gestión de inventario", "ERP retail", "retail digital"]
-featured: true
+featured: false
 draft: false
 hero:
   title: "Control de stock sin caos operativo"
