@@ -39,8 +39,8 @@ export const config = {
     genTimeout: parseInt(process.env.OLLAMA_GEN_TIMEOUT || "600000"),
   },
   blog: {
-    postsDir: join(REPO_ROOT, "src", "content", "local"),
-    // postsDir: join(REPO_ROOT, 'src', 'content', 'blog'),
+    // postsDir: join(REPO_ROOT, 'src', 'content', 'local'),
+    postsDir: join(REPO_ROOT, "src", "content", "blog"),
     styleFile: join(REPO_ROOT, "ai", "style", "blog_style.md"),
     author: {
       name: process.env.AUTHOR_NAME || "Alonso Bermejo Pérez",
