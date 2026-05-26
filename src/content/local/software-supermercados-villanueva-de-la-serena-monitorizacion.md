@@ -3,7 +3,7 @@ title: "Software de supermercados en Villanueva de la Serena: Control de stock y
 meta_title: "Software de supermercados en Villanueva de la Serena | Monitorización Activa"
 description: "Evita pérdidas invisibles en tu supermercado con software de monitorización en tiempo real. Control de stock, alertas de caducidad y gestión inteligente en Villanueva de la Serena."
 date: 2026-05-26
-image: "/images/blog/software-supermercados-Villanueva de la Serena-monitorizacion/cover.jpg"
+image: "/images/blog/software-supermercados-monitorizacion/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
   designation: "CEO & Founder"
@@ -38,7 +38,7 @@ Si no tienes tiempo para leer todo, aquí tienes **la clave para proteger tu mar
 
 Muchos gerentes de alimentación en nuestra zona operan bajo una **falsa sensación de seguridad**. Creen que porque el arqueo de caja cuadra, el negocio está bajo control. Pero **el verdadero peligro no está en lo que ves, sino en lo que ignoras**.
 
-![A neatly organized liquor aisle with various wine and oil bottles on shelves.](/images/blog/software-supermercados-Villanueva de la Serena-monitorizacion/section-1.jpg)
+![A neatly organized liquor aisle with various wine and oil bottles on shelves.](/images/blog/software-supermercados-monitorizacion/section-1.jpg)
 
 Las pérdidas por mermas, errores en la recepción de mercancía o productos que se quedan en el fondo de la nevera sin ser detectados **son fugas de capital silenciosas**. Estas pérdidas no aparecen en el ticket de venta, pero erosionan tu beneficio neto cada día.
 
@@ -63,7 +63,7 @@ Negocios como "Distribuciones López SL" o pequeñas tiendas de barrio en la zon
 
 Aquí es donde la mayoría de los gerentes se confunden. Un ERP o un TPV tradicional es una herramienta de **gestión pasiva**. Su función es registrar la historia: qué se vendió, a qué hora y a qué precio.
 
-![Woman wearing mask, shopping in grocery store, choosing fresh produce with smartphone in hand.](/images/blog/software-supermercados-Villanueva de la Serena-monitorizacion/section-2.jpg)
+![Woman wearing mask, shopping in grocery store, choosing fresh produce with smartphone in hand.](/images/blog/software-supermercados-monitorizacion/section-2.jpg)
 
 Sin embargo, la **monitorización activa** es un salto tecnológico. No se trata solo de mirar el pasado, sino de recibir información sobre el presente para actuar en el futuro.
 

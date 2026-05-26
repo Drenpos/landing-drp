@@ -3,13 +3,19 @@ title: "Software de supermercados en Badajoz: Control de stock y mermas"
 meta_title: "Software de supermercados en Badajoz | Monitorización Activa"
 description: "Evita pérdidas invisibles en tu supermercado con software de monitorización en tiempo real. Control de stock, alertas de caducidad y gestión inteligente en Badajoz."
 date: 2026-05-26
-image: "/images/blog/software-supermercados-badajoz-monitorizacion/cover.jpg"
+image: "/images/blog/software-supermercados-monitorizacion/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
   designation: "CEO & Founder"
   avatar: "/images/alonso.jpg"
 categories: ["Gestión de Retail", "Tecnología Alimentaria"]
-tags: ["software supermercados Badajoz", "control de stock", "monitorización retail", "ERP supermercados"]
+tags:
+  [
+    "software supermercados Badajoz",
+    "control de stock",
+    "monitorización retail",
+    "ERP supermercados",
+  ]
 featured: false
 draft: false
 hero:
@@ -32,7 +38,7 @@ Si no tienes tiempo para leer todo, aquí tienes **la clave para proteger tu mar
 
 Muchos gerentes de alimentación en nuestra zona operan bajo una **falsa sensación de seguridad**. Creen que porque el arqueo de caja cuadra, el negocio está bajo control. Pero **el verdadero peligro no está en lo que ves, sino en lo que ignoras**.
 
-![A neatly organized liquor aisle with various wine and oil bottles on shelves.](/images/blog/software-supermercados-badajoz-monitorizacion/section-1.jpg)
+![A neatly organized liquor aisle with various wine and oil bottles on shelves.](/images/blog/software-supermercados-monitorizacion/section-1.jpg)
 
 Las pérdidas por mermas, errores en la recepción de mercancía o productos que se quedan en el fondo de la nevera sin ser detectados **son fugas de capital silenciosas**. Estas pérdidas no aparecen en el ticket de venta, pero erosionan tu beneficio neto cada día.
 
@@ -57,19 +63,20 @@ Negocios como "Distribuciones López SL" o pequeñas tiendas de barrio en la zon
 
 Aquí es donde la mayoría de los gerentes se confunden. Un ERP o un TPV tradicional es una herramienta de **gestión pasiva**. Su función es registrar la historia: qué se vendió, a qué hora y a qué precio.
 
-![Woman wearing mask, shopping in grocery store, choosing fresh produce with smartphone in hand.](/images/blog/software-supermercados-badajoz-monitorizacion/section-2.jpg)
+![Woman wearing mask, shopping in grocery store, choosing fresh produce with smartphone in hand.](/images/blog/software-supermercados-monitorizacion/section-2.jpg)
 
 Sin embargo, la **monitorización activa** es un salto tecnológico. No se trata solo de mirar el pasado, sino de recibir información sobre el presente para actuar en el futuro.
 
-| Caracteridad | Gestión Tradicional (ERP/TPV) | Monitorización Activa (Drenpos) |
-| :--- | :--- | :--- |
-| **Enfoque** | Registro de ventas pasadas | Alerta de incidencias presentes |
-| **Inventario** | Revisión manual/periódica | Control de stock en tiempo real |
-| **Mermas** | Se detectan al final del mes | Se detectan en el momento |
-| **Tecnología** | Base de datos simple | Integración de alertas y sensores |
+| Caracteridad   | Gestión Tradicional (ERP/TPV) | Monitorización Activa (Drenpos)   |
+| :------------- | :---------------------------- | :-------------------------------- |
+| **Enfoque**    | Registro de ventas pasadas    | Alerta de incidencias presentes   |
+| **Inventario** | Revisión manual/periódica     | Control de stock en tiempo real   |
+| **Mermas**     | Se detectan al final del mes  | Se detectan en el momento         |
+| **Tecnología** | Base de datos simple          | Integración de alertas y sensores |
 
 **El software de supermercados en Badajoz** que solo te ofrece la primera columna te deja desarmado ante la rotura de stock. El que te ofrece la segunda, te permite anticiparte.
-	le
+le
+
 ## La era de la monitorización activa: Sensores, alertas y control de stock en tiempo real
 
 La tecnología actual permite que tu supermercado te "hable". Ya no hablamos solo de software, hablamos de un ecosistema de **control de stock de supermercados** inteligente.
@@ -98,7 +105,7 @@ Nuestro enfoque no es venderte un paquete cerrado de funciones que no usarás. A
 
 Depende de tu infraestructura. El modelo **Cloud** te permite supervisar tu negocio desde cualquier lugar con internet. El modelo **On-premise** es ideal si prefieres que toda la información resida en tus propios servidores locales por razones de autonomía técnica.
 
-### ¿Cumple el software con la normativa Verif*actu?
+### ¿Cumple el software con la normativa Verif\*actu?
 
 Sí. En Drenpos estamos preparados para las **nuevas exigencias fiscales y normativas** de la administración española, asegurando que tu digitalización sea segura y legal.
 
