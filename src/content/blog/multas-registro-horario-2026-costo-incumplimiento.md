@@ -10,7 +10,7 @@ author:
   avatar: "/images/alonso.jpg"
 categories: ["Cumplimiento Normativo", "Gestión Operativa"]
 tags: ["multas registro horario", "sanciones control horario", "inspeccion trabajo fichajes", "registro jornada obligatorio"]
-featured: true
+featured: false
 draft: false
 hero:
   title: "Multas registro horario en 2026: cuánto te cuesta realmente incumplir"
