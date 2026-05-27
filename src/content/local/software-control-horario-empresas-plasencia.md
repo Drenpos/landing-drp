@@ -10,7 +10,7 @@ author:
   avatar: "/images/alonso.jpg"
 categories: ["Control Horario", "Pymes Extremadura"]
 tags: ["control horario plasencia", "registro horario 2026", "gestoría local", "pymes extremeñas", "cumplimiento laboral"]
-featured: true
+featured: false
 draft: false
 hero:
   title: "Software de control horario para empresas en Plasencia"
