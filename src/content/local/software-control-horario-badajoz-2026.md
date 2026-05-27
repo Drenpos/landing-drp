@@ -10,7 +10,7 @@ author:
   avatar: "/images/alonso.jpg"
 categories: ["Control Horario", "Gestión PYME"]
 tags: ["control horario", "Badajoz", "cumplimiento 2026", "ERP local"]
-featured: true
+featured: false
 draft: false
 hero:
   title: "Software control horario Badajoz: cumple hoy, opera mejor mañana"
