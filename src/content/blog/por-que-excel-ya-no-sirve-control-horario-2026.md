@@ -10,7 +10,7 @@ author:
   avatar: "/images/alonso.jpg"
 categories: ["Cumplimiento Legal", "Gestión de RRHH", "Digitalización Pymes"]
 tags: ["excel control horario", "registro jornada digital", "control presencia cloud", "software fichajes"]
-featured: true
+featured: false
 draft: false
 hero:
   title: "El Excel ya no es tu aliado: es un riesgo legal acumulable"
