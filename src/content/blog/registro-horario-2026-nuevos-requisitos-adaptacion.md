@@ -10,7 +10,7 @@ author:
   avatar: "/images/alonso.jpg"
 categories: ["Cumplimiento Legal", "Gestión Operativa"]
 tags: ["registro horario 2026", "control horario obligatorio", "nueva ley fichajes", "software control horario"]
-featured: true
+featured: false
 draft: false
 hero:
   title: "Registro horario 2026: de la obligación legal a tu ventaja operativa"
