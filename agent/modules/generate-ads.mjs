@@ -6,7 +6,7 @@
  *   - 1 mensaje principal de valor
  *   - Sugerencias de segmentación y uso
  */
-import { chat } from '../utils/llm.mjs';
+import { chat, activeProvider } from '../utils/llm.mjs';
 import { log } from '../utils/logger.mjs';
 import { config } from '../config.mjs';
 
@@ -84,10 +84,14 @@ Devuelve JSON con esta estructura exacta:
 Responde ÚNICAMENTE con el JSON. Sin texto adicional.`;
 
   try {
+    const useJsonMode =
+      activeProvider() === 'openai' && config.openai.jsonMode;
+
     const raw = await chat(prompt, SYSTEM, {
       temperature: 0.65,
       numCtx: 8192,
       timeout: config.llm.genTimeout,
+      ...(useJsonMode && { responseFormat: { type: 'json_object' } }),
     });
 
     const match = raw.match(/\{[\s\S]*\}/);

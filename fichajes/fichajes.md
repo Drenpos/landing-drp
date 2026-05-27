@@ -23,3 +23,5 @@ Widget de fichajes rapido lo añades a a la pantalla inicial y fichas rapido sin
 ![alt text](image-7.png)
 
 Control de fichajes por llavero rfid o qr del empleado, el sistema pone a disposicion un dispositivo que se puede tnere fisico donde con un llavero customizado, con rfid o con el qr de fichajes que puedes sacar de cada empleado se inicia el fichaje o se detiene.(de este no tenemos imagenes debes de sacar algunas de la web)
+
+Puedes usar el sitema desde ordenador o desde el propio movil, donde puedes hacer todo.

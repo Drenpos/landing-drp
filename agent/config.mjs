@@ -35,15 +35,11 @@ export const config = {
     provider: (process.env.LLM_PROVIDER || "ollama").toLowerCase(),
     // Timeout para llamadas cortas (análisis, síntesis)
     timeout: parseInt(
-      process.env.LLM_TIMEOUT ||
-        process.env.OLLAMA_TIMEOUT ||
-        "180000",
+      process.env.LLM_TIMEOUT || process.env.OLLAMA_TIMEOUT || "180000",
     ),
     // Timeout extendido para generación de artículos completos
     genTimeout: parseInt(
-      process.env.LLM_GEN_TIMEOUT ||
-        process.env.OLLAMA_GEN_TIMEOUT ||
-        "600000",
+      process.env.LLM_GEN_TIMEOUT || process.env.OLLAMA_GEN_TIMEOUT || "600000",
     ),
   },
   ollama: {
@@ -71,10 +67,14 @@ export const config = {
     project: process.env.OPENAI_PROJECT || "",
     timeout: parseInt(process.env.OPENAI_TIMEOUT || "180000"),
     genTimeout: parseInt(process.env.OPENAI_GEN_TIMEOUT || "600000"),
+    // Activar response_format={type:json_object} para forzar JSON válido.
+    // Soportado por OpenAI (gpt-4o+), DeepSeek, Mistral, Together, OpenRouter
+    // y vLLM. Desactívalo si tu endpoint no lo soporta.
+    jsonMode: process.env.OPENAI_JSON_MODE !== "false",
   },
   blog: {
-    // postsDir: join(REPO_ROOT, 'src', 'content', 'local'),
-    postsDir: join(REPO_ROOT, "src", "content", "blog"),
+    postsDir: join(REPO_ROOT, "src", "content", "local"),
+    // postsDir: join(REPO_ROOT, "src", "content", "blog"),
     styleFile: join(REPO_ROOT, "ai", "style", "blog_style.md"),
     author: {
       name: process.env.AUTHOR_NAME || "Alonso Bermejo Pérez",

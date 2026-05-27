@@ -6,7 +6,7 @@
  * El contenido es 100% original, SEO optimizado y reutilizable en Meta Ads.
  */
 import { existsSync, readFileSync } from "fs";
-import { chat } from "../utils/llm.mjs";
+import { chat, activeProvider } from "../utils/llm.mjs";
 import { log } from "../utils/logger.mjs";
 import { config } from "../config.mjs";
 import { formatSourcesForPrompt } from "./sources.mjs";
@@ -34,6 +34,125 @@ export function slugify(text = "") {
     .replace(/\s+/g, "-")
     .replace(/-{2,}/g, "-")
     .substring(0, 80);
+}
+
+/**
+ * Escapa control chars (newlines, tabs, etc.) y comillas tipográficas
+ * que estén DENTRO de cadenas JSON. Camina el string carácter a carácter
+ * llevando cuenta de cuándo estamos dentro de un string.
+ */
+function escapeControlCharsInJsonStrings(s) {
+  let out = "";
+  let inString = false;
+  let escape = false;
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    if (escape) {
+      out += c;
+      escape = false;
+      continue;
+    }
+    if (c === "\\") {
+      out += c;
+      escape = true;
+      continue;
+    }
+    if (c === '"') {
+      out += c;
+      inString = !inString;
+      continue;
+    }
+    if (inString) {
+      if (c === "\n") {
+        out += "\\n";
+        continue;
+      }
+      if (c === "\r") {
+        out += "\\r";
+        continue;
+      }
+      if (c === "\t") {
+        out += "\\t";
+        continue;
+      }
+      const code = c.charCodeAt(0);
+      if (code < 0x20) {
+        out += "\\u" + code.toString(16).padStart(4, "0");
+        continue;
+      }
+    }
+    out += c;
+  }
+  return out;
+}
+
+/**
+ * Parseo robusto del JSON que devuelve el modelo.
+ * Maneja: bloques ```json…```, control chars dentro de strings,
+ * trailing commas, comentarios, comillas tipográficas, etc.
+ */
+function parseModelJson(raw) {
+  if (!raw) throw new Error("Respuesta vacía del modelo");
+
+  // 1) Si viene envuelto en ```json ... ``` lo extraemos
+  let text = raw.trim();
+  const fenceMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/i);
+  if (fenceMatch) text = fenceMatch[1];
+
+  // 2) Cortamos desde la primera { hasta la última } para descartar prólogos/epílogos
+  const first = text.indexOf("{");
+  const last = text.lastIndexOf("}");
+  if (first === -1 || last === -1 || last < first) {
+    throw new Error("No JSON en la respuesta del modelo");
+  }
+  let jsonString = text.slice(first, last + 1);
+
+  // 3) Saneados básicos previos
+  // Comentarios // y /* */
+  jsonString = jsonString.replace(/\/\/[^\n]*$/gm, "");
+  jsonString = jsonString.replace(/\/\*[\s\S]*?\*\//g, "");
+  // Trailing commas
+  jsonString = jsonString.replace(/,(\s*[}\]])/g, "$1");
+
+  // 4) Comillas tipográficas → comillas ASCII solo cuando se usan como
+  //    delimitador (heurística simple: las normalizamos siempre, los
+  //    contenidos en español rara vez usan " " que no sean delimitadoras).
+  jsonString = jsonString.replace(/[“”]/g, '"');
+
+  // 5) Escapar control chars dentro de strings (la causa frecuente del fallo)
+  jsonString = escapeControlCharsInJsonStrings(jsonString);
+
+  // 6) Parseo. Si falla, una segunda pasada intentando reparar
+  //    comas faltantes entre pares clave-valor sobre líneas distintas.
+  try {
+    return JSON.parse(jsonString);
+  } catch (firstErr) {
+    // Intento de reparación: añadir coma cuando una línea termina en " o ] o }
+    // y la siguiente empieza con "clave":
+    const repaired = jsonString.replace(
+      /([}\]"0-9truefalsnl])(\s*\n\s*)("[^"\n]+"\s*:)/g,
+      '$1,$2$3',
+    );
+    try {
+      return JSON.parse(repaired);
+    } catch (secondErr) {
+      const errPos = secondErr.message.match(/position (\d+)/)?.[1];
+      if (errPos) {
+        const pos = parseInt(errPos, 10);
+        const start = Math.max(0, pos - 200);
+        const end = Math.min(jsonString.length, pos + 200);
+        log.error(`JSON inválido en posición ${pos}:`);
+        log.error(
+          `...${jsonString.substring(start, end).replace(/\n/g, "↵")}...`,
+        );
+      } else {
+        log.error("JSON inválido (primeros 500 chars):");
+        log.error(jsonString.substring(0, 500));
+      }
+      log.error(`Error de parseo: ${secondErr.message}`);
+      throw secondErr;
+    }
+  }
 }
 
 /**
@@ -211,8 +330,8 @@ Cuando Martínez tenía 2 empleados, el Excel era suficiente. Con 8 personas y 3
 
 IMPORTANTE: El artículo que generes DEBE tener esta riqueza visual y estructural en TODAS las secciones, no solo en alguna.
 
-━━ FORMATO DE RESPUESTA ━━
-Devuelve ÚNICAMENTE un JSON válido:
+━━ FORMATO DE RESPUESTA (CRÍTICO) ━━
+Devuelve ÚNICAMENTE un JSON válido (sin markdown, sin \`\`\`json, sin texto antes ni después):
 {
   "title": "Título SEO (keyword principal, máx 65 chars, no clickbait)",
   "metaTitle": "Meta título (máx 60 chars)",
@@ -222,60 +341,35 @@ Devuelve ÚNICAMENTE un JSON válido:
   "tags": ["tag1", "tag2", "tag3", "tag4"],
   "heroTitle": "Título del hero (puede = title o variante más directa)",
   "heroDescription": "Descripción del hero — 1 frase que atrapa",
-  "content": "ARTÍCULO COMPLETO EN MARKDOWN (sin frontmatter, empieza directo con el hook)"
+  "content": "ARTÍCULO COMPLETO EN MARKDOWN (sin frontmatter, empieza directo con el hook)",
   "featured": true
 }
 
-El "content" debe tener el artículo completo con todos los H2, H3, párrafos y CTA final.`;
+REGLAS DE JSON (NO LAS ROMPAS):
+- TODOS los saltos de línea dentro del string "content" deben ir escapados como \\n
+- TODAS las comillas dobles dentro de "content" deben ir escapadas como \\"
+- NO uses comillas tipográficas (" ") dentro del JSON, solo " ASCII
+- NO añadas comentarios // ni /* */
+- NO uses trailing commas
+- Verifica que cada par "clave": valor termine en coma excepto el último
+- El "content" debe tener el artículo completo con todos los H2, H3, párrafos y CTA final.`;
 
   try {
+    const useJsonMode =
+      activeProvider() === "openai" && config.openai.jsonMode;
+
     const raw = await chat(prompt, SYSTEM, {
       // Si vamos en STRICT bajamos temperatura para reducir invenciones
       temperature: strict ? 0.45 : 0.72,
       // Ampliamos contexto cuando hay fuentes para que caben sin truncarse
       numCtx: hasSources ? 24576 : 12288,
       timeout: config.llm.genTimeout,
+      // Forzar JSON válido en proveedores OpenAI-compatibles que lo soporten
+      ...(useJsonMode && { responseFormat: { type: "json_object" } }),
     });
 
-    // Extraer JSON de la respuesta
-    const match = raw.match(/\{[\s\S]*\}/);
-    if (!match) throw new Error("No JSON en la respuesta del modelo");
-
-    let jsonString = match[0];
-
-    // Limpiar el JSON antes de parsear
-    // 1. Remover trailing commas antes de ] o }
-    jsonString = jsonString.replace(/,(\s*[}\]])/g, "$1");
-
-    // 2. Remover comentarios // y /* */
-    jsonString = jsonString.replace(/\/\/.*$/gm, "");
-    jsonString = jsonString.replace(/\/\*[\s\S]*?\*\//g, "");
-
-    // 3. Limpiar espacios extra
-    jsonString = jsonString.trim();
-
-    // Intentar parsear
-    let article;
-    try {
-      article = JSON.parse(jsonString);
-    } catch (parseError) {
-      // Log del JSON problemático para debugging
-      const errorPos = parseError.message.match(/position (\d+)/)?.[1];
-      if (errorPos) {
-        const pos = parseInt(errorPos, 10);
-        const start = Math.max(0, pos - 200);
-        const end = Math.min(jsonString.length, pos + 200);
-        log.error(`JSON inválido en posición ${pos}:`);
-        log.error(
-          `...${jsonString.substring(start, end).replace(/\n/g, "↵")}...`,
-        );
-      } else {
-        log.error(`JSON inválido (primeros 500 chars):`);
-        log.error(jsonString.substring(0, 500));
-      }
-      log.error(`Error de parseo: ${parseError.message}`);
-      throw parseError;
-    }
+    // Extraer y sanear el JSON de la respuesta
+    const article = parseModelJson(raw);
 
     // Normalize slug
     article.slug = slugify(article.slug || article.title || idea);

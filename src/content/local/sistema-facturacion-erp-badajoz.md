@@ -17,7 +17,7 @@ categories:
     "Autónomos",
     "Ley Antifraude",
   ]
-featured: true
+featured: false
 draft: false
 hero:
   title: "ERP y Facturación en Badajoz"
