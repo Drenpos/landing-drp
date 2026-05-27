@@ -10,7 +10,7 @@ author:
   avatar: "/images/alonso.jpg"
 categories: ["Control Horario", "Cumplimiento Legal", "Gestión de Pymes"]
 tags: ["fichar desde movil", "control horario movil", "app fichajes empleados", "registro jornada app", "geolocalizacion fichajes"]
-featured: true
+featured: false
 draft: false
 hero:
   title: "Cómo fichar desde el móvil de forma legal en 2026"
