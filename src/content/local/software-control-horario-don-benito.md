@@ -10,7 +10,7 @@ author:
   avatar: "/images/alonso.jpg"
 categories: ["Control Horario", "Pymes", "Normativa Laboral"]
 tags: ["control horario Don Benito", "registro horario 2026", "fichajes empleados", "Drenpos", "pymes extremadura"]
-featured: true
+featured: false
 draft: false
 hero:
   title: "Software de control horario Don Benito: tranquilidad legal y operativa"
