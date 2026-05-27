@@ -10,7 +10,7 @@ author:
   avatar: "/images/alonso.jpg"
 categories: ["Gestión Empresarial", "Cumplimiento Normativo"]
 tags: ["control horario", "Navalmoral de la Mata", "registro 2026", "Drenpos"]
-featured: true
+featured: false
 draft: false
 hero:
   title: "Software de control horario para empresas en Navalmoral de la Mata"
