@@ -10,7 +10,7 @@ author:
   avatar: "/images/alonso.jpg"
 categories: ["Control Horario", "Cumplimiento Legal", "Pymes Extremadura"]
 tags: ["registro horario", "app fichajes", "control jornada", "Villanueva de la Serena", "Drenpos"]
-featured: true
+featured: false
 draft: false
 hero:
   title: "Software control horario Villanueva de la Serena"
