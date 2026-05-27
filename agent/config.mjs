@@ -29,6 +29,23 @@ if (existsSync(envFile)) {
 }
 
 export const config = {
+  // ─── LLM provider selection ─────────────────────────────────────────────
+  // 'ollama' (local) | 'openai' (cualquier endpoint OpenAI-compatible)
+  llm: {
+    provider: (process.env.LLM_PROVIDER || "ollama").toLowerCase(),
+    // Timeout para llamadas cortas (análisis, síntesis)
+    timeout: parseInt(
+      process.env.LLM_TIMEOUT ||
+        process.env.OLLAMA_TIMEOUT ||
+        "180000",
+    ),
+    // Timeout extendido para generación de artículos completos
+    genTimeout: parseInt(
+      process.env.LLM_GEN_TIMEOUT ||
+        process.env.OLLAMA_GEN_TIMEOUT ||
+        "600000",
+    ),
+  },
   ollama: {
     baseUrl: process.env.OLLAMA_URL || "http://localhost:11434",
     model: process.env.OLLAMA_MODEL || "qwen2.5:14b",
@@ -37,6 +54,23 @@ export const config = {
     // Timeout extendido para generación de artículos completos
     // Modelos grandes (35B+) pueden tardar 5-10 min. Default: 10 min.
     genTimeout: parseInt(process.env.OLLAMA_GEN_TIMEOUT || "600000"),
+  },
+  openai: {
+    // Cualquier endpoint OpenAI-compatible:
+    //   https://api.openai.com/v1
+    //   https://openrouter.ai/api/v1
+    //   https://api.together.xyz/v1
+    //   https://api.groq.com/openai/v1
+    //   https://api.deepseek.com/v1
+    //   https://api.mistral.ai/v1
+    //   https://<your-resource>.openai.azure.com/openai/deployments/<name>
+    baseUrl: process.env.OPENAI_API_BASE_URL || "https://api.openai.com/v1",
+    apiKey: process.env.OPENAI_API_KEY || "",
+    model: process.env.OPENAI_MODEL || "gpt-4o",
+    org: process.env.OPENAI_ORG || "",
+    project: process.env.OPENAI_PROJECT || "",
+    timeout: parseInt(process.env.OPENAI_TIMEOUT || "180000"),
+    genTimeout: parseInt(process.env.OPENAI_GEN_TIMEOUT || "600000"),
   },
   blog: {
     // postsDir: join(REPO_ROOT, 'src', 'content', 'local'),

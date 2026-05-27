@@ -16,7 +16,7 @@ tags:
     "gestion empresarial",
     "software para empresas",
   ]
-featured: true
+featured: false
 draft: false
 hero:
   title: "ERP vs Excel: ¿Tu gestión depende de un archivo o de tu negocio?"

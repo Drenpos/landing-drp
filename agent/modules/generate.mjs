@@ -6,10 +6,11 @@
  * El contenido es 100% original, SEO optimizado y reutilizable en Meta Ads.
  */
 import { existsSync, readFileSync } from "fs";
-import { chat } from "../utils/ollama.mjs";
+import { chat } from "../utils/llm.mjs";
 import { log } from "../utils/logger.mjs";
 import { config } from "../config.mjs";
-// config.ollama.genTimeout se usa para esta llamada (puede tardar varios minutos con modelos grandes)
+import { formatSourcesForPrompt } from "./sources.mjs";
+// config.llm.genTimeout se usa para esta llamada (puede tardar varios minutos con modelos grandes)
 
 const SYSTEM = `Eres el redactor jefe de Drenpos (ERP + TPV + facturación para pymes españolas). Escribes artículos de blog que cumplen dos funciones simultáneas: posicionar en Google Y alimentar campañas de Meta Ads.
 
@@ -50,7 +51,12 @@ export async function generateContent(
   keywords,
   context,
   icp = {},
+  groundingOpts = {},
 ) {
+  const { sources = [], strict = false } = groundingOpts;
+  const sourcesBlock = formatSourcesForPrompt(sources);
+  const hasSources = sources.length > 0;
+
   log.step(
     "MÓDULO 5 · GENERACIÓN",
     "Generando artículo original con estructura Ads-aligned...",
@@ -129,6 +135,34 @@ ${styleGuide}
 ━━ CONTEXTO ADICIONAL ━━
 ${context || "No especificado"}
 
+${
+  hasSources
+    ? `━━ FUENTES DE VERDAD (GROUNDING) ━━
+Los siguientes documentos son la ÚNICA fuente válida para cifras, fechas,
+artículos legales, nombres propios, sanciones, requisitos, plazos y citas.
+
+REGLAS DE USO DE FUENTES:
+${
+  strict
+    ? `- MODO STRICT: NO puedes incluir ningún dato, cifra, ley, organismo o cita que
+  no aparezca literalmente en las fuentes. Si un dato no está, NO lo inventes:
+  o lo omites, o escribes una frase genérica sin números.
+- Prohibido inventar nombres de empresas, expertos, estudios o estadísticas.
+- Si necesitas un ejemplo y no hay en las fuentes, usa nombres ficticios
+  claramente identificables (ej: "Distribuciones Ejemplo SL").`
+    : `- Usa las fuentes como referencia principal. Los datos sensibles (multas,
+  artículos, fechas, sanciones) deben coincidir con lo que dicen las fuentes.
+- Si un dato no está en las fuentes, prefiere omitirlo a inventarlo.`
+}
+- No copies frases literales largas. Reescribe con tus palabras.
+- Cuando uses un dato concreto de una fuente, puedes referenciarla en el
+  cuerpo del artículo de forma natural (ej: "según la normativa vigente…",
+  "el Real Decreto X/2025 establece que…") sin enlaces ni notas al pie.
+
+${sourcesBlock}
+`
+    : ""
+}
 ━━ REGLAS DE CONTENIDO ━━
 1. Contenido 100% ORIGINAL. Sin copiar competencia.
 2. Hook al inicio: directo, sobre un problema real del ICP. Ni una frase de introducción antes.
@@ -140,6 +174,13 @@ ${context || "No especificado"}
 8. CTA final: invitar a reflexionar o a dar un primer paso pequeño. NO "Compra ahora". NO "¡No esperes más!".
 9. El texto debe poder dividirse en párrafos reutilizables como copies de Meta Ads.
 10. Sin emojis en el cuerpo del artículo.
+${
+  hasSources
+    ? `11. ${strict ? "OBLIGATORIO" : "PRIORITARIO"}: cualquier afirmación con números, fechas, cifras
+   de multas, artículos legales, organismos o porcentajes debe estar respaldada
+   por las FUENTES DE VERDAD entregadas más arriba. Si no está, no lo escribas.`
+    : ""
+}
 
 ━━ REGLAS DE FORMATO MARKDOWN (OBLIGATORIAS) ━━
 Estas reglas NO son opcionales. El artículo DEBE incluir todos estos elementos:
@@ -189,9 +230,11 @@ El "content" debe tener el artículo completo con todos los H2, H3, párrafos y 
 
   try {
     const raw = await chat(prompt, SYSTEM, {
-      temperature: 0.72,
-      numCtx: 12288,
-      timeout: config.ollama.genTimeout,
+      // Si vamos en STRICT bajamos temperatura para reducir invenciones
+      temperature: strict ? 0.45 : 0.72,
+      // Ampliamos contexto cuando hay fuentes para que caben sin truncarse
+      numCtx: hasSources ? 24576 : 12288,
+      timeout: config.llm.genTimeout,
     });
 
     // Extraer JSON de la respuesta

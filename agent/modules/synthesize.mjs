@@ -3,7 +3,7 @@
  * Combina análisis de competencia + perfil propio + ICP
  * para definir una estrategia orientada a SEO y conversión Ads.
  */
-import { chat } from "../utils/ollama.mjs";
+import { chat } from "../utils/llm.mjs";
 import { log } from "../utils/logger.mjs";
 
 const SYSTEM = `Eres un estratega de contenido que trabaja en la intersección de SEO y performance marketing (Meta Ads). Diseñas artículos de blog que posicionan en buscadores Y alimentan campañas publicitarias. Tu foco es el ICP (Ideal Customer Profile): escribes para una persona real con un problema real, no para un algoritmo.`;

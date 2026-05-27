@@ -16,7 +16,7 @@
  *     --icp-pains "control de stock,errores en pedidos,procesos manuales"
  */
 
-import { checkOllama } from "./utils/ollama.mjs";
+import { checkLLM, activeProvider, activeModel } from "./utils/llm.mjs";
 import { log } from "./utils/logger.mjs";
 import { config } from "./config.mjs";
 import { researchCompetition } from "./modules/research.mjs";
@@ -28,6 +28,7 @@ import { generateAds } from "./modules/generate-ads.mjs";
 import { generateImages } from "./modules/generate-images.mjs";
 import { persistArticle } from "./modules/persist.mjs";
 import { gitOps } from "./modules/gitops.mjs";
+import { loadSources } from "./modules/sources.mjs";
 
 // ─── CLI arg parser ─────────────────────────────────────────────────────────
 
@@ -42,6 +43,11 @@ function parseArgs(argv) {
       role: "", // rol objetivo (ej: "gerente, responsable de almacén")
       maturity: "", // madurez digital: "bajo" | "medio" | "alto"
       pains: [], // dolores principales
+    },
+    sources: {
+      files: [], // rutas locales (.md / .txt / .html / .json)
+      urls: [], // URLs externas a fetchear como fuente
+      strict: false, // si true: el modelo NO puede añadir info fuera de las fuentes
     },
   };
 
@@ -69,6 +75,18 @@ function parseArgs(argv) {
         .split(",")
         .map((p) => p.trim())
         .filter(Boolean);
+    } else if ((arg === "--source-docs" || arg === "--sources") && next) {
+      result.sources.files = args[++i]
+        .split(",")
+        .map((p) => p.trim())
+        .filter(Boolean);
+    } else if (arg === "--source-urls" && next) {
+      result.sources.urls = args[++i]
+        .split(",")
+        .map((u) => u.trim())
+        .filter(Boolean);
+    } else if (arg === "--strict-sources") {
+      result.sources.strict = true;
     } else if (!arg.startsWith("-") && !result.idea) {
       result.idea = arg;
     }
@@ -91,6 +109,11 @@ function printUsage() {
     --icp-role        <texto>        Rol objetivo     (ej: "gerente,director de operaciones")
     --icp-maturity    bajo|medio|alto Madurez digital del target
     --icp-pains       <p1,p2,...>    Dolores principales separados por comas
+
+  ── Fuentes (Grounding / anti-alucinación) ─────────────────
+    --source-docs     <ruta1,ruta2>  Archivos .md/.txt/.html como fuente
+    --source-urls     <url1,url2>    URLs externas que se descargan y limpian
+    --strict-sources                 Prohíbe al modelo añadir datos fuera de las fuentes
 
   ── Variables de entorno (ver agent/.env.example) ──────────
     OLLAMA_URL      http://localhost:11434
@@ -116,7 +139,7 @@ function printUsage() {
 async function main() {
   console.log("\n\x1b[1m\x1b[35m  🤖  Drenpos SEO + Ads Blog Agent\x1b[0m\n");
 
-  const { idea, keywords, context, icp } = parseArgs(process.argv);
+  const { idea, keywords, context, icp, sources } = parseArgs(process.argv);
 
   if (!idea) {
     printUsage();
@@ -135,36 +158,56 @@ async function main() {
   log.info(
     `ICP dolores: ${icp.pains.length > 0 ? icp.pains.join(", ") : "(no especificados)"}`,
   );
-  log.info(`Modelo:      ${config.ollama.model}`);
+  log.info(
+    `Fuentes:     ${sources.files.length} doc(s) + ${sources.urls.length} URL(s)${sources.strict ? " · STRICT" : ""}`,
+  );
+  log.info(`Provider:    ${activeProvider()}`);
+  log.info(`Modelo:      ${activeModel()}`);
   log.info(
     `Git push:    ${config.git.autoPush ? "habilitado" : "deshabilitado"}`,
   );
 
-  // ── Check Ollama ──
-  const ollama = await checkOllama();
-  if (!ollama.ok) {
+  // ── Check LLM provider ──
+  const llm = await checkLLM();
+  if (!llm.ok) {
     log.error(
-      `Ollama no disponible en ${config.ollama.baseUrl}: ${ollama.error}`,
+      `Provider "${llm.provider}" no disponible: ${llm.error || "desconocido"}`,
     );
-    log.info("Asegúrate de que Ollama está corriendo: ollama serve");
+    if (llm.provider === "ollama") {
+      log.info("Asegúrate de que Ollama está corriendo: ollama serve");
+    } else {
+      log.info(
+        "Revisa OPENAI_API_KEY y OPENAI_API_BASE_URL en agent/.env",
+      );
+    }
     process.exit(1);
   }
 
-  const modelBase = config.ollama.model.split(":")[0];
+  // Aviso si el modelo configurado no está en la lista (cuando el provider la expone)
+  const modelBase = activeModel().split(":")[0];
   if (
-    ollama.models.length > 0 &&
-    !ollama.models.some((m) => m.startsWith(modelBase))
+    llm.models.length > 0 &&
+    !llm.models.some((m) => m.startsWith(modelBase))
   ) {
-    log.warn(`Modelo "${config.ollama.model}" no encontrado en Ollama.`);
-    log.warn(`Disponibles: ${ollama.models.join(", ")}`);
-    log.warn(`Descárgalo: ollama pull ${config.ollama.model}`);
+    log.warn(`Modelo "${activeModel()}" no encontrado en el provider.`);
+    log.warn(`Disponibles: ${llm.models.slice(0, 10).join(", ")}${llm.models.length > 10 ? "…" : ""}`);
+    if (llm.provider === "ollama") {
+      log.warn(`Descárgalo: ollama pull ${activeModel()}`);
+    }
   } else {
-    log.success(`Ollama listo — ${config.ollama.model}`);
+    log.success(`Provider listo — ${llm.provider} · ${activeModel()}`);
+    if (llm.error) log.debug(llm.error);
   }
 
   const t0 = Date.now();
 
   try {
+    // ── MÓDULO 0: Fuentes (grounding) ──
+    const sourceDocs = await loadSources({
+      files: sources.files,
+      urls: sources.urls,
+    });
+
     // ── MÓDULO 1: Research ──
     const corpus = await researchCompetition(idea, keywords);
 
@@ -195,6 +238,7 @@ async function main() {
       keywords,
       context,
       icp,
+      { sources: sourceDocs, strict: sources.strict },
     );
 
     // // ── MÓDULO 5b: Generación de assets Meta Ads ──

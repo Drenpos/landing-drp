@@ -11,7 +11,7 @@
  */
 import { writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
-import { chat } from '../utils/ollama.mjs';
+import { chat } from '../utils/llm.mjs';
 import { log } from '../utils/logger.mjs';
 import { config } from '../config.mjs';
 

@@ -3,7 +3,7 @@
  * Extrae patrones estructurales y estrategias SEO del corpus.
  * NUNCA copia contenido literal; trabaja sobre patrones abstractos.
  */
-import { chat } from '../utils/ollama.mjs';
+import { chat } from '../utils/llm.mjs';
 import { log } from '../utils/logger.mjs';
 
 const SYSTEM = `Eres un analista SEO y editorial experto. Tu trabajo es identificar patrones estructurales, estrategias de posicionamiento y huecos editoriales en contenido de la competencia. NUNCA reproduces ni copias texto literal de los artículos analizados — solo extraes patrones y estrategias abstractas.`;

@@ -6,7 +6,7 @@
  *   - 1 mensaje principal de valor
  *   - Sugerencias de segmentación y uso
  */
-import { chat } from '../utils/ollama.mjs';
+import { chat } from '../utils/llm.mjs';
 import { log } from '../utils/logger.mjs';
 import { config } from '../config.mjs';
 
@@ -87,7 +87,7 @@ Responde ÚNICAMENTE con el JSON. Sin texto adicional.`;
     const raw = await chat(prompt, SYSTEM, {
       temperature: 0.65,
       numCtx: 8192,
-      timeout: config.ollama.genTimeout,
+      timeout: config.llm.genTimeout,
     });
 
     const match = raw.match(/\{[\s\S]*\}/);

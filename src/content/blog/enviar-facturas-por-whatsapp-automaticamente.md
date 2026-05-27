@@ -16,7 +16,7 @@ tags:
     "presupuestos whatsapp",
     "automatización",
   ]
-featured: true
+featured: false
 draft: false
 hero:
   title: "Cómo enviar facturas y presupuestos por WhatsApp automáticamente"

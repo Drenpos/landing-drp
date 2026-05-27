@@ -11,7 +11,7 @@ author:
   designation: "CEO & Founder"
   avatar: "/images/alonso.jpg"
 
-featured: true
+featured: false
 draft: false
 hero:
   title: "Innovación y Tecnología a Medida"
