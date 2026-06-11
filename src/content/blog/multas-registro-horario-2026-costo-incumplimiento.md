@@ -23,7 +23,7 @@ Muchos gerentes y responsables de administración siguen tratando el control de 
 
 ## El registro jornada obligatorio en 2026: por qué tu método actual es un riesgo financiero
 
-La exigencia legal no ha cambiado de fondo, pero sí lo ha hecho en la forma de ejecución y fiscalización. **El registro jornada obligatorio en 2026 exige trazabilidad digital, inalterabilidad y acceso inmediato.** Lo que antes se toleraba como un cuaderno de bitácora o una hoja suelta, ahora se valora como un sistema de control contable y laboral.
+La exigencia legal no ha cambiado de fondo, pero sí lo ha hecho en la forma de ejecución y fiscalización. **El [registro jornada obligatorio en 2026](/blog/registro-horario-digital) exige trazabilidad digital, inalterabilidad y acceso inmediato.** Lo que antes se toleraba como un cuaderno de bitácora o una hoja suelta, ahora se valora como un sistema de control contable y laboral.
 
 > "Tener datos dispersos o modificables no es gestión: es una vulnerabilidad contable que la Inspección acepta como prueba en tu contra."
 
@@ -49,7 +49,7 @@ Además, el pasivo contable se dispara. **Las horas no registradas distorsionan 
 
 ## La trampa de los métodos manuales: por qué la inspección trabajo fichajes ya no te perdona
 
-Excel y papel funcionaban cuando tu plantilla era pequeña y los procesos eran simples. **Hoy, esos métodos son el principal vector de exposición legal y operativa.** La inspección trabajo fichajes ya no valora la intención de cumplir: valora la capacidad de demostrarlo en tiempo real.
+[Excel y papel](/blog/por-que-excel-ya-no-sirve-control-horario-2026) funcionaban cuando tu plantilla era pequeña y los procesos eran simples. **Hoy, esos métodos son el principal vector de exposición legal y operativa.** La inspección trabajo fichajes ya no valora la intención de cumplir: valora la capacidad de demostrarlo en tiempo real.
 
 ### El coste oculto de la gestión manual
 
@@ -75,13 +75,13 @@ La solución no es contratar a un administrativo más para validar papeles. **Es
 
 1. **Inventario de exposición:** Identifica qué empleados, turnos y modalidades de trabajo no están correctamente documentados hoy.
 2. **Selección de soporte digital inalterable:** Elige una plataforma que registre fichajes, guarde la trazabilidad y permita el acceso inmediato al trabajador.
-3. **Integración con nóminas y contabilidad:** Conecta el registro horario con tu ERP para que el coste laboral se calcule automáticamente y sin errores.
+3. **Integración con nóminas y contabilidad:** Conecta el registro horario con tu ERP para que el coste laboral se calcule automáticamente y sin errores. Consulta los [mejores programas de control horario para pymes](/blog/mejores-programas-control-horario) si aún no has elegido sistema.
 4. **Formación operativa mínima:** Entrena a tu equipo en el uso del sistema. La adopción debe ser natural, no una carga adicional.
 5. **Auditoría interna preventiva:** Revisa los informes mensuales para detectar desviaciones antes de que lleguen a la Inspección.
 
 > "Automatizar no es cambiar de software: es transformar un riesgo legal en un activo de control operativo."
 
-Plataformas como Drenpos están diseñadas para pymes que necesitan cumplir sin complicaciones. **El módulo de control horario se integra directamente con la facturación y la gestión de nóminas, eliminando la duplicidad de datos.** Tus empleados fichan desde el móvil o el TPV, tú tienes los informes listos para la Inspección y tu administración recupera horas productivas. **La tecnología a medida no complica: simplifica el cumplimiento y protege tu margen.**
+Plataformas como Drenpos están diseñadas para pymes que necesitan cumplir sin complicaciones. **El módulo de control horario se integra directamente con la facturación y la gestión de nóminas, eliminando la duplicidad de datos.** Tus empleados [fichan desde el móvil o el TPV](/blog/fichar-desde-el-movil-legal-2026), tú tienes los informes listos para la Inspección y tu administración recupera horas productivas. **La tecnología a medida no complica: simplifica el cumplimiento y protege tu margen.**
 
 ## Diagnóstico de cumplimiento 2026: evita el coste de la inacción
 

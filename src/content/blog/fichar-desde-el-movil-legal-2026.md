@@ -17,11 +17,11 @@ hero:
   description: "La inspección no espera. Convierte el fichaje móvil en blindaje operativo y financiero sin frenar a tu equipo."
 ---
 
-Si sigues fichando desde el móvil como si fuera 2019, no solo estás perdiendo horas: estás construyendo una multa de inspección y un colapso operativo a tu medida.
+Si sigues fichando desde el móvil como si fuera 2019, no solo estás perdiendo horas: estás construyendo una [multa de inspección](/blog/multas-registro-horario-2026-costo-incumplimiento) y un colapso operativo a tu medida.
 
 ## ¿Fichar desde el móvil sigue siendo legal en 2026? La respuesta no es lo que crees
 
-La normativa de registro de jornada es clara: **el control horario es obligatorio y debe garantizar la seguridad jurídica tanto para la empresa como para el trabajador.** Pero la realidad operativa ha cambiado radicalmente. Tus comerciales están en ruta, tus técnicos en obra y tus teletrabajadores gestionando proyectos desde casa. **El fichaje ya no es un trámite de entrada; es el primer eslabón de tu control financiero.**
+La normativa de registro de jornada es clara: **el [control horario es obligatorio](/blog/registro-horario-digital) y debe garantizar la seguridad jurídica tanto para la empresa como para el trabajador.** Pero la realidad operativa ha cambiado radicalmente. Tus comerciales están en ruta, tus técnicos en obra y tus teletrabajadores gestionando proyectos desde casa. **El fichaje ya no es un trámite de entrada; es el primer eslabón de tu control financiero.**
 
 Muchos directores creen que basta con descargar una aplicación y dejar que el equipo pulse un botón. La inspección no ve apps. Ve trazabilidad. Ve si los datos son inalterables, accesibles y cumplen el plazo de conservación exigido. Si tu sistema actual no garantiza eso, no estás cumpliendo la ley. Estás improvisando.
 
@@ -31,7 +31,7 @@ El salto a 2026 exige dejar de ver el control horario como un gasto administrati
 
 ## El coste oculto de ignorar la normativa (y por qué tu Excel ya no sirve)
 
-El Excel fue útil cuando eras cinco personas. Hoy es una trampa de relojería. Cada celda rota, cada fórmula que se desajusta y cada captura de WhatsApp que guardas en una carpeta compartida suma un riesgo silencioso. **La burocracia manual no es inofensiva: es el mayor generador de horas no facturadas y cargas imprevistas.**
+El [Excel fue útil cuando eras cinco personas](/blog/por-que-excel-ya-no-sirve-control-horario-2026). Hoy es una trampa de relojería. Cada celda rota, cada fórmula que se desajusta y cada captura de WhatsApp que guardas en una carpeta compartida suma un riesgo silencioso. **La burocracia manual no es inofensiva: es el mayor generador de horas no facturadas y cargas imprevistas.**
 
 ![Two workers in a warehouse discussing logistics near a forklift captured from above.](/images/blog/fichar-desde-el-movil-legal-2026/section-1.jpg)
 
@@ -75,7 +75,7 @@ Desde el lado técnico, un sistema escalable debe garantizar:
 - Configuración granular de permisos según rol (técnico, comercial, director)
 - Cumplimiento estricto de los plazos de conservación y derecho al olvido
 
-Apps genéricas suelen ofrecer todo esto en teoría, pero en la práctica limitan la personalización. Una solución a medida, como la que se integra en un entorno ERP como Drenpos, adapta los flujos a tu realidad operativa. No obligas a tu equipo a aprender un software nuevo; adaptas el software a cómo ya trabajan. El ROI no se mide en licencias mensuales, sino en horas de gestión ahorradas, horas facturadas recuperadas y cero tiempo perdido preparando documentación.
+Apps genéricas suelen ofrecer todo esto en teoría, pero en la práctica limitan la personalización. Una solución a medida, como la que se integra en un entorno ERP como Drenpos, adapta los flujos a tu realidad operativa. Compara opciones en nuestra guía de [mejores programas de control horario](/blog/mejores-programas-control-horario). No obligas a tu equipo a aprender un software nuevo; adaptas el software a cómo ya trabajan. El ROI no se mide en licencias mensuales, sino en horas de gestión ahorradas, horas facturadas recuperadas y cero tiempo perdido preparando documentación.
 
 | Criterio | App genérica 'talla única' | Solución integrada en ERP | Impacto operativo real |
 |---|---|---|---|

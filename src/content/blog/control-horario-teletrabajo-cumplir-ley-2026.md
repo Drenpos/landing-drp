@@ -19,11 +19,11 @@ hero:
 
 ## Control horario teletrabajo: cómo cumplir la ley en 2026
 
-La Inspección no espera a 2026 para multar: un **control horario teletrabajo** fragmentado es hoy una bomba de relojería legal y operativa. **No se trata de un trámite burocrático, sino de la primera línea de defensa de tu pyme.** Cuando el equipo trabaja desde casa o en espacios híbridos, la ausencia de un sistema centralizado genera silos de datos que la Inspección de Trabajo detecta con facilidad. **Cada hora no registrada es un riesgo directo para tu margen y tu reputación.**
+La Inspección no espera a 2026 para multar: un **control horario teletrabajo** fragmentado es hoy una bomba de relojería legal y operativa. Conoce los [requisitos del registro horario digital](/blog/registro-horario-digital) antes de elegir sistema. **No se trata de un trámite burocrático, sino de la primera línea de defensa de tu pyme.** Cuando el equipo trabaja desde casa o en espacios híbridos, la ausencia de un sistema centralizado genera silos de datos que la Inspección de Trabajo detecta con facilidad. **Cada hora no registrada es un riesgo directo para tu margen y tu reputación.**
 
 ## ¿Tu control horario de teletrabajo es un activo o una multa pendiente?
 
-**El teletrabajo ha eliminado las paredes de la oficina, pero no la obligación legal de registrar la jornada.** Muchos directores y responsables de RRHH confían en la autonomía del equipo, pero la normativa exige transparencia absoluta. **La confianza ciega no sustituye a la trazabilidad.** Si tus fichajes remoto dependen de correos, mensajes de WhatsApp o hojas de cálculo compartidas, estás construyendo sobre arena. **La Inspección valora la consistencia, no la intención.** Un registro jornada teletrabajo desordenado se interpreta automáticamente como incumplimiento. **Tu prioridad debe ser blindar la empresa, no solo cumplir un formulario.**
+**El teletrabajo ha eliminado las paredes de la oficina, pero no la obligación legal de registrar la jornada.** Muchos directores y responsables de RRHH confían en la autonomía del equipo, pero la normativa exige transparencia absoluta. **La confianza ciega no sustituye a la trazabilidad.** Si tus fichajes remoto dependen de correos, mensajes de WhatsApp o [hojas de cálculo compartidas](/blog/por-que-excel-ya-no-sirve-control-horario-2026), estás construyendo sobre arena. **La Inspección valora la consistencia, no la intención.** Un registro jornada teletrabajo desordenado se interpreta automáticamente como incumplimiento. **Tu prioridad debe ser blindar la empresa, no solo cumplir un formulario.**
 
 ![Man giving a business presentation with financial graphs on a whiteboard using a tablet for explanation.](/images/blog/control-horario-teletrabajo-cumplir-ley-2026/section-1.jpg)
 
@@ -45,13 +45,13 @@ La Inspección no espera a 2026 para multar: un **control horario teletrabajo** 
 
 ## Cómo una pyme de 40 empleados recuperó 12h/semana y blindó su cumplimiento
 
-**El caso de Distribuciones López SL ilustra el cambio de paradigma.** Hace dos años, gestionaban el control horario de sus comerciales remotos con plantillas de Excel y recordatorios por email. **Cada fin de mes, RRHH perdía 8 horas conciliando versiones y respondiendo dudas de la plantilla.** Además, una auditoría interna reveló que el 15% de las horas extras no estaban debidamente registradas, exponiendo a la empresa a sanciones.
+**El caso de Distribuciones López SL ilustra el cambio de paradigma.** Hace dos años, gestionaban el control horario de sus comerciales remotos con plantillas de Excel y recordatorios por email. Si te reconoces en esta situación, consulta las [sanciones por incumplimiento del registro horario](/blog/multas-registro-horario-2026-costo-incumplimiento) y los [mejores programas de control horario para pymes](/blog/mejores-programas-control-horario). **Cada fin de mes, RRHH perdía 8 horas conciliando versiones y respondiendo dudas de la plantilla.** Además, una auditoría interna reveló que el 15% de las horas extras no estaban debidamente registradas, exponiendo a la empresa a sanciones.
 
 ![A young woman working from home using a laptop in a relaxed living room setting.](/images/blog/control-horario-teletrabajo-cumplir-ley-2026/section-2.jpg)
 
 ### El giro estratégico
 
-Decidieron migrar a un entorno integrado. **No se trató de imponer vigilancia, sino de eliminar fricción administrativa.** Al centralizar el registro jornada teletrabajo en una plataforma única, lograron:
+Decidieron migrar a un entorno integrado. **No se trató de imponer vigilancia, sino de eliminar fricción administrativa.** Al centralizar el [registro jornada teletrabajo](/blog/fichar-desde-el-movil-legal-2026) en una plataforma única, lograron:
 
 - **Automatizar la conciliación** entre entrada, salida y pausas, eliminando errores humanos.
 - **Generar informes listos para Inspección** en un clic, cumpliendo con los plazos de conservación exigidos.
