@@ -1,8 +1,7 @@
-Aquí tienes la versión actualizada y profesional del archivo `llm.txt`. He integrado los conceptos de **soporte humano**, **escalabilidad sin límites** y **ausencia de costes por uso**, manteniendo la protección de tus datos técnicos.
-
----
-
 # llm.txt - Drenpos: Gestión Empresarial Modular Inteligente
+
+> Archivo de indexación LLM. Versión dinámica completa: https://www.drenpos.com/llms.txt
+> Contenido completo: https://www.drenpos.com/llms-full.txt
 
 Drenpos es una plataforma **ERP SaaS de nueva generación** diseñada para centralizar y optimizar las operaciones críticas de empresas que requieren un control total sobre su inventario, ventas y cumplimiento normativo.
 

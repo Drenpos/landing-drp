@@ -43,7 +43,7 @@ const { title, meta_title, description, image, noindex, canonical } =
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <CookieConsent />
     <script is:inline>
@@ -225,6 +225,68 @@ const { title, meta_title, description, image, noindex, canonical } =
       }`}
     />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Structured data for LLM/AI indexing -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.drenpos.com/#organization",
+          "name": "Drenpos",
+          "url": "https://www.drenpos.com",
+          "logo": "https://www.drenpos.com/images/logo.svg",
+          "description": "Plataforma ERP SaaS modular para pymes y autónomos en España. Gestión de inventario, ventas, facturación electrónica Verifactu y control horario.",
+          "sameAs": [],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "url": "https://www.drenpos.com/contact",
+            "availableLanguage": "Spanish"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "España"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://www.drenpos.com/#software",
+          "name": "Drenpos ERP",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "url": "https://www.drenpos.com",
+          "description": "ERP SaaS modular para pymes españolas. Incluye almacén multialmacén, TPV, facturación electrónica con Verifactu (AEAT), control horario laboral y módulo médico. Sin costes por uso. Soporte humano incluido.",
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "description": "Suscripción mensual plana sin costes adicionales por uso",
+            "url": "https://www.drenpos.com/pricing"
+          },
+          "provider": { "@id": "https://www.drenpos.com/#organization" },
+          "featureList": [
+            "Gestión de inventario multialmacén",
+            "TPV (Terminal Punto de Venta)",
+            "Facturación electrónica Verifactu",
+            "Control horario laboral",
+            "Gestión de pedidos y albaranes",
+            "Trazabilidad de lotes",
+            "Módulo sector médico",
+            "Soporte humano incluido"
+          ],
+          "keywords": "ERP pymes España, software gestión empresarial, facturación electrónica Verifactu, control horario, TPV, almacén"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.drenpos.com/#website",
+          "url": "https://www.drenpos.com",
+          "name": "Drenpos",
+          "description": "Ecosistema de gestión empresarial modular para pymes en España",
+          "publisher": { "@id": "https://www.drenpos.com/#organization" },
+          "inLanguage": "es-ES"
+        }
+      ]
+    })} />
   </head>
   <body class="overflow-x-hidden">
     <noscript
