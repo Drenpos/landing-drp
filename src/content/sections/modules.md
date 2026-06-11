@@ -71,8 +71,8 @@ modules:
 
   - name: "Módulo Usuarios"
     description: "Usuarios adicionales del sistema"
-    price_monthly: "3.90 €"
-    price_yearly: "3.51 €"
+    price_monthly: "5.00 €"
+    price_yearly: "4.50 €"
     included_in: []
     features:
       - "Usuario adicional al sistema"
@@ -82,8 +82,8 @@ modules:
 
   - name: "Módulo Informes"
     description: "Obtén información detallada y adicional de tus datos (en desarrollo potenciado con IA)"
-    price_monthly: "6.90 €"
-    price_yearly: "6.21 €"
+    price_monthly: "6.00 €"
+    price_yearly: "5.40 €"
     included_in:
       - "Essential"
       - "Pro"
@@ -120,8 +120,8 @@ modules:
 
   - name: "Módulo Cloud Storage"
     description: "Conecta con tu Dropbox para guardar tus anexos en la nube"
-    price_monthly: "4.90 €"
-    price_yearly: "4.41 €"
+    price_monthly: "4.00 €"
+    price_yearly: "3.60 €"
     included_in: []
     features:
       - "Integración con Dropbox"
@@ -130,7 +130,7 @@ modules:
       - "Backup de documentos"
 
 notes:
-  - "Todos los precios incluyen IVA"
+  - "Todos los precios son sin IVA"
   - "Los precios anuales incluyen un 10% de descuento"
   - "Los módulos se pueden activar y desactivar mensualmente"
   - "Sin permanencia ni costes de instalación"
