@@ -13,7 +13,7 @@ list:
     description: Drenpos es un ERP modular para PYMEs y autónomos. Centraliza stock, ventas, finanzas (Verifactu) e informes en una sola plataforma para trabajar con más control y menos tareas manuales.
     active: true
   - title: ¿Qué módulos incluye ahora mismo?
-    description: "Actualmente: Almacén y stock (multi-almacén, ubicaciones, lotes), Ventas (pedido→albarán→factura), Finanzas y facturación conforme Verifactu, e Informes/analítica. El módulo TPV está en desarrollo."
+    description: "Actualmente: Almacén y stock (multi-almacén, ubicaciones, lotes), Ventas (pedido→albarán→factura), Finanzas y facturación conforme Verifactu, Informes/analítica y TPV (listo para restauración y tiendas)."
   - title: ¿Cumple con Verifactu y la AEAT?
     description: Sí. Gestionamos facturación con series por periodo, registros inalterables y firma. Además, preparamos el envío a AEAT (cuando aplique) para garantizar trazabilidad y veracidad de los datos.
   - title: ¿Cómo gestionáis la trazabilidad por lotes y ubicaciones?
