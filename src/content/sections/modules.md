@@ -96,8 +96,8 @@ modules:
 
   - name: "Envío por correo"
     description: "Envío de documentos por correo electrónico sin salir del sistema"
-    price_monthly: "4.90 €"
-    price_yearly: "4.41 €"
+    price_monthly: "4.84 €"
+    price_yearly: "4.36 €"
     included_in:
       - "Essential"
       - "Pro"
@@ -107,6 +107,16 @@ modules:
       - "Plantillas personalizables"
       - "Envío automático"
       - "Integración con tu correo"
+
+  - name: "Envío por WhatsApp"
+    description: "Envío de documentos por WhatsApp sin salir del sistema"
+    price_monthly: "4.84 €"
+    price_yearly: "4.36 €"
+    included_in: []
+    features:
+      - "Envío de facturas por WhatsApp"
+      - "Envío de documentos desde el sistema"
+      - "Integración directa con WhatsApp"
 
   - name: "Módulo Cloud Storage"
     description: "Conecta con tu Dropbox para guardar tus anexos en la nube"
