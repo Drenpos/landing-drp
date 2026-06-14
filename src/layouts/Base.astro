@@ -40,6 +40,11 @@ export interface Props {
 // destructure frontmatter
 const { title, meta_title, description, image, noindex, canonical } =
   Astro.props;
+
+// canonical absoluto: usa la prop si se pasa, si no la genera desde la URL actual
+const canonicalURL = canonical
+  ? canonical
+  : new URL(Astro.url.pathname, config.site.base_url).href;
 ---
 
 <!doctype html>
@@ -113,7 +118,7 @@ const { title, meta_title, description, image, noindex, canonical } =
               path: join(process.cwd(), "public", "fonts", "Aptos-Bold.ttf"),
             },
           ],
-          preload: false,
+          preload: true,
           display: "swap",
           selector: "body",
           fallback: "sans-serif",
@@ -154,7 +159,9 @@ const { title, meta_title, description, image, noindex, canonical } =
     </title>
 
     <!-- canonical url -->
-    {canonical && <link rel="canonical" href={canonical} item-prop="url" />}
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
     <!-- noindex robots -->
     {noindex && <meta name="robots" content="noindex,nofollow" />}
@@ -188,10 +195,9 @@ const { title, meta_title, description, image, noindex, canonical } =
       )}
     />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content={`${config.site.base_url}/${Astro.url.pathname.replace("/", "")}`}
-    />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="Drenpos" />
+    <meta property="og:locale" content="es_ES" />
 
     <!-- twitter-title -->
     <meta

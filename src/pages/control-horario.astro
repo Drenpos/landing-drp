@@ -2,16 +2,20 @@
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 
-// Sección de Control horario · landing dedicada
-// Imágenes en /public/images/funcionalidades/control-horario/
-//   01-gestion-personal.png
-//   02-gestion-manager.png
-//   03-reporte-resumen.png
-//   04-reporte-trazabilidad.png
-//   05-conceptos.png
-//   06-calendario-laboral.png
-//   07-calendario-asignacion.png
-//   08-widget-rapido.png
+// ════════════════════════════════════════════════════════════════════════
+//  Control horario · landing dedicada (optimizada SEO 2026)
+//  Imágenes UI:   /public/images/funcionalidades/control-horario/
+//    01-gestion-personal.png · 02-gestion-manager.png · 03-reporte-resumen.png
+//    04-reporte-trazabilidad.png · 05-conceptos.png · 06-calendario-laboral.png
+//    07-calendario-asignacion.png · 08-widget-rapido.png
+//  Imágenes HARDWARE (reemplazar placeholders por fotos reales):
+//    hardware/01-dispositivo-lector-rfid.png
+//    hardware/02-llaveros-personalizados.png
+//    hardware/03-tarjetas-qr.png
+//    hardware/04-hardware-conjunto.png
+// ════════════════════════════════════════════════════════════════════════
+
+const CANONICAL = "https://www.drenpos.com/control-horario";
 
 const requisitos = [
   "Registro diario, individualizado y por trabajador",
@@ -22,10 +26,64 @@ const requisitos = [
   "Exportable en formato legible para la autoridad laboral",
 ];
 
+// Métodos de fichaje (tabla comparativa, buena para SEO/AEO)
+const metodos = [
+  {
+    icon: "💻",
+    name: "Web (ordenador)",
+    desc: "Ficha desde el navegador en oficina o teletrabajo.",
+    best: "Oficinas y administración",
+  },
+  {
+    icon: "📱",
+    name: "App PWA en el móvil",
+    desc: "Instalable sin App Store ni Google Play. Solo la pantalla de fichaje.",
+    best: "Comerciales y trabajo en campo",
+  },
+  {
+    icon: "⚡",
+    name: "Widget rápido",
+    desc: "Ficha en un toque desde la pantalla de inicio, sin entrar al sistema.",
+    best: "Inicio/parada frecuente",
+  },
+  {
+    icon: "🔑",
+    name: "Llavero RFID",
+    desc: "Acerca el llavero al lector físico y ficha. Sin móvil ni pantalla.",
+    best: "Almacenes, talleres, fábricas",
+  },
+  {
+    icon: "📷",
+    name: "Código QR personal",
+    desc: "Cada empleado escanea su QR imprimible para iniciar o parar jornada.",
+    best: "Hostelería, retail, eventos",
+  },
+];
+
+// Casos de uso reales (long-tail + AEO)
+const casos = [
+  {
+    tag: "Almacén · 20 empleados a turnos",
+    title: "Fichaje sin tocar ningún sistema",
+    body: "El administrador configura dos calendarios (turno mañana y turno tarde), asigna cada empleado a su turno, instala el lector físico en el almacén y entrega llaveros personalizados. Los empleados fichan al entrar y salir pasando el llavero. A fin de mes, el admin exporta el reporte de todo el equipo en un clic y lo envía a gestoría.",
+    icon: "🏭",
+  },
+  {
+    tag: "Equipo comercial en movilidad",
+    title: "Fichar desde cualquier ubicación",
+    body: "Cada comercial instala la app PWA en su móvil y ficha desde donde esté. El sistema registra la hora con sellado temporal inalterable: no se puede modificar sin dejar huella. El responsable ve los fichajes en tiempo real sin llamadas ni mensajes.",
+    icon: "🚗",
+  },
+];
+
 const faqs = [
   {
     q: "¿El registro horario es realmente obligatorio en 2026?",
-    a: "Sí. Todas las empresas con empleados por cuenta ajena están obligadas a llevar un registro horario diario, individualizado e inalterable. La Inspección de Trabajo puede solicitarlo en cualquier momento y la falta de registro está tipificada como infracción grave.",
+    a: "Sí. Todas las empresas con empleados por cuenta ajena están obligadas a llevar un registro horario diario, individualizado e inalterable. La Inspección de Trabajo puede solicitarlo en cualquier momento y la falta de registro está tipificada como infracción grave, con sanciones de 625 € a 6.250 € por centro de trabajo.",
+  },
+  {
+    q: "¿Qué es exactamente el control horario digital?",
+    a: "Es el sistema que registra de forma fiable la hora de entrada y de salida de cada trabajador, conservando los datos de manera inalterable y accesible. A diferencia del papel o el Excel, un sistema digital como Drenpos garantiza que cada fichaje queda sellado con fecha, autor y trazabilidad, cumpliendo la normativa de registro de jornada.",
   },
   {
     q: "¿Sirve un Excel como sistema de fichaje?",
@@ -33,62 +91,153 @@ const faqs = [
   },
   {
     q: "¿Pueden mis empleados fichar desde el móvil?",
-    a: "Sí. Drenpos funciona desde ordenador y desde el móvil con la misma experiencia, sin instalar apps adicionales. Ideal para teletrabajo, comerciales o personal desplazado entre delegaciones.",
+    a: "Sí. Drenpos funciona desde ordenador y desde el móvil con una app PWA instalable sin tiendas de aplicaciones. Ideal para teletrabajo, comerciales o personal desplazado entre delegaciones.",
+  },
+  {
+    q: "¿Cómo se ficha sin pantallas individuales por empleado?",
+    a: "Ofrecemos un dispositivo físico propio que lee llaveros RFID personalizados o el QR personal de cada empleado. Pensado para almacenes, talleres, hostelería y retail. El fichaje se inicia o se detiene en cuanto se acerca el llavero o se escanea el QR, sin que el operario necesite móvil ni ordenador.",
+  },
+  {
+    q: "¿Puedo comprar el dispositivo de fichaje sin contratar el sistema?",
+    a: "Sí. El hardware de fichaje de Drenpos (lector RFID, llaveros personalizados y tarjetas QR) puede adquirirse como solución de control de presencia independiente. Si más adelante quieres el ecosistema completo, se integra sin perder ningún dato. Escríbenos para una propuesta a medida.",
   },
   {
     q: "¿Qué pasa si un empleado se olvida de fichar?",
     a: "El manager puede crear o corregir el fichaje desde su panel. Cada modificación queda registrada con autor, fecha y motivo en la tabla de trazabilidad, así el reporte sigue siendo válido frente a la Inspección.",
   },
   {
-    q: "¿Cómo se ficha sin pantallas individuales por empleado?",
-    a: "Ofrecemos un dispositivo físico que lee llaveros RFID personalizados o el QR personal de cada empleado. Pensado para almacenes, talleres, hostelería y retail. El fichaje se inicia o se detiene en cuanto se acerca el llavero o se escanea el QR.",
-  },
-  {
     q: "¿Puedo usar conceptos de fichaje propios de mi empresa?",
     a: "Sí. Puedes crear todos los conceptos que necesites (formación, visita cliente, comida, asuntos propios, etc.), definir si computan como jornada laboral o no, e incluso establecer límites diarios o semanales por concepto.",
   },
 ];
+
+// Enlazado interno · control horario por ciudad (clúster local)
+const ciudades = [
+  { n: "Mérida", s: "software-control-horario-merida" },
+  { n: "Badajoz", s: "software-control-horario-badajoz-2026" },
+  { n: "Cáceres", s: "software-control-horario-caceres" },
+  { n: "Plasencia", s: "software-control-horario-empresas-plasencia" },
+  { n: "Don Benito", s: "software-control-horario-don-benito" },
+  { n: "Almendralejo", s: "software-control-horario-almendralejo" },
+  { n: "Villanueva de la Serena", s: "software-control-horario-villanueva-de-la-serena" },
+  { n: "Montijo", s: "software-control-horario-montijo-2026" },
+  { n: "Navalmoral de la Mata", s: "software-control-horario-navalmoral-de-la-mata" },
+  { n: "Zafra", s: "software-control-horario-zafra" },
+  { n: "Coria", s: "software-control-horario-coria" },
+];
+
+// Artículos relacionados (clúster temático)
+const articulos = [
+  { t: "Registro horario 2026: nuevos requisitos y cómo adaptarte", s: "registro-horario-2026-nuevos-requisitos-adaptacion" },
+  { t: "Multas del registro horario 2026: lo que cuesta incumplir", s: "multas-registro-horario-2026-costo-incumplimiento" },
+  { t: "Por qué Excel ya no sirve para el control horario", s: "por-que-excel-ya-no-sirve-control-horario-2026" },
+  { t: "Fichar desde el móvil: ¿es legal en 2026?", s: "fichar-desde-el-movil-legal-2026" },
+  { t: "Control horario en teletrabajo: cómo cumplir la ley", s: "control-horario-teletrabajo-cumplir-ley-2026" },
+  { t: "Comparativa: mejor software de control horario para pymes", s: "comparativa-mejores-software-control-horario-pymes-2026" },
+];
+
+// ── Datos estructurados (JSON-LD) ──────────────────────────────────────
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
+    { "@type": "ListItem", position: 3, name: "Control Horario", item: CANONICAL },
+  ],
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Drenpos · Control Horario",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web, iOS, Android (PWA)",
+  url: CANONICAL,
+  description:
+    "Software de control horario y registro de jornada para empresas. Fichaje por web, móvil (PWA), widget rápido, llavero RFID y código QR. Reportes inalterables listos para la Inspección de Trabajo. Hardware de fichaje propio diseñado por Drenpos.",
+  offers: {
+    "@type": "Offer",
+    price: "1.09",
+    priceCurrency: "EUR",
+    description: "Módulo Fichajes desde 1,09 €/mes por usuario. Incluido en todos los planes Drenpos.",
+    url: "https://www.drenpos.com/pricing",
+  },
+  featureList: [
+    "Registro horario diario e individualizado",
+    "Fichaje por web, móvil PWA, widget, RFID y QR",
+    "Calendarios laborales y festivos por empleado",
+    "Conceptos de fichaje personalizables",
+    "Reportes y trazabilidad para Inspección de Trabajo",
+    "Hardware de fichaje propio (lector RFID + llaveros + tarjetas QR)",
+  ],
+  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
+};
 ---
 
 <Base
-  title="Control Horario · Drenpos"
-  meta_title="Software de Control Horario y Fichajes para empresas · Drenpos"
-  description="Cumple la ley de registro horario 2026 sin complicaciones. Fichajes desde web, móvil, widget o RFID/QR; calendarios laborales por empleado, reportes auditables y trazabilidad completa. Listo para Inspección de Trabajo."
+  title="Control Horario y Registro de Jornada · Drenpos"
+  meta_title="Software de Control Horario y Fichajes 2026 | Drenpos"
+  description="Software de control horario para cumplir el registro de jornada 2026. Fichaje por web, móvil, QR y llavero RFID con hardware propio. Reportes listos para Inspección. Demo gratis."
+  canonical={CANONICAL}
+  image="/images/funcionalidades/control-horario/01-gestion-personal.png"
 >
+  <!-- Datos estructurados -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
   <!-- ═══════════════════════════════════════════════════════════════════
        HERO
   ═══════════════════════════════════════════════════════════════════ -->
   <section class="section-sm pb-0 relative z-10 overflow-hidden">
-    <!-- Grainy background -->
     <div class="absolute inset-0 z-0 pointer-events-none">
       <img
         src="/images/grainy.svg"
         alt=""
+        width="1440"
+        height="900"
         class="w-full h-full object-cover opacity-[.08]"
       />
     </div>
 
     <div class="container relative z-10">
+      <!-- Breadcrumb visible -->
+      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/funcionalidades" class="hover:text-primary">Funcionalidades</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Control Horario</span>
+      </nav>
+
       <div class="row gx-0 gy-12 lg:gy-0 items-center">
         <div class="lg:col-6" data-aos="fade-up-sm">
           <span
             class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6"
           >
-            <span
-              class="w-2 h-2 rounded-full"
-              style="background: #16a34a;"
-              aria-hidden="true"></span>
-            Nueva ley 2026
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Registro de jornada · Ley 2026
           </span>
 
           <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
-            Control horario sin <span class="text-primary">multas, sin Excel</span
-            >, sin perder tiempo.
+            Software de <span class="text-primary">control horario</span> para cumplir la ley sin Excel ni multas
           </h1>
           <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
-            Drenpos digitaliza los fichajes de tu equipo con la trazabilidad
-            que exige la Inspección de Trabajo. Web, móvil, widget rápido o
-            llavero RFID. Cumples la ley desde el primer día.
+            Drenpos digitaliza el registro de jornada de tu equipo con la
+            trazabilidad que exige la Inspección de Trabajo. Fichaje por web,
+            móvil, widget, código QR o llavero RFID con hardware propio. Cumples
+            la normativa desde el primer día.
           </p>
 
           <ul class="flex flex-wrap gap-4 mb-10">
@@ -97,134 +246,65 @@ const faqs = [
                 Pedir demo gratuita
                 <span class="icon-wrapper">
                   <span class="icon">
-                    <svg
-                      width="19"
-                      height="12"
-                      viewBox="0 0 19 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"></path>
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                   </span>
                   <span class="icon" aria-hidden="true">
-                    <svg
-                      width="19"
-                      height="12"
-                      viewBox="0 0 19 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"></path>
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                   </span>
                 </span>
               </a>
             </li>
             <li data-aos="fade-up-sm" data-aos-delay="150">
-              <a href="/pricing" class="btn btn-light">Ver precios</a>
+              <a href="#hardware" class="btn btn-light">Ver el dispositivo de fichaje</a>
             </li>
           </ul>
 
-          <!-- Trust row -->
-          <div
-            class="flex flex-wrap gap-x-8 gap-y-3 text-sm"
-            style="color: rgba(16,25,40,0.62);"
-          >
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
             <div class="flex items-center gap-2">
-              <span
-                class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold"
-                style="background: #16a34a;">✓</span
-              >
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
               Listo para Inspección de Trabajo
             </div>
             <div class="flex items-center gap-2">
-              <span
-                class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold"
-                style="background: #16a34a;">✓</span
-              >
-              Web + móvil incluidos
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Web + móvil + RFID
             </div>
             <div class="flex items-center gap-2">
-              <span
-                class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold"
-                style="background: #16a34a;">✓</span
-              >
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
               Sin permanencia
             </div>
           </div>
         </div>
 
-        <!-- Hero image -->
         <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
           <div class="relative px-4 lg:px-0 pt-10 pb-10">
-            <div
-              class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none"
-              style="background: rgba(121,27,70,0.10);"
-            >
-            </div>
-            <div
-              class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none"
-              style="background: rgba(211,167,118,0.12);"
-            >
-            </div>
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
 
-            <div
-              class="rounded-2xl overflow-hidden relative z-10"
-              style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);"
-            >
+            <div class="rounded-2xl overflow-hidden relative z-10" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
               <img
                 src="/images/funcionalidades/control-horario/01-gestion-personal.png"
-                alt="Panel personal de fichajes de Drenpos con gráfico de dedicación"
+                alt="Panel de control horario de Drenpos con gráfico de dedicación y fichajes del día"
+                width="720"
+                height="480"
                 class="w-full h-auto block"
                 fetchpriority="high"
               />
             </div>
 
-            <!-- Badge: estado fichaje -->
-            <div
-              class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3"
-              style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);"
-              data-aos="zoom-in-up-sm"
-              data-aos-delay="500"
-            >
-              <div
-                class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0 font-bold animate-pulse"
-                style="background: #dcfce7; color: #16a34a;"
-              >
-                ●
-              </div>
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0 font-bold animate-pulse" style="background: #dcfce7; color: #16a34a;">●</div>
               <div>
                 <p class="text-xs font-bold text-dark">Fichando ahora</p>
-                <p class="text-xs" style="color: #9ca3af;">
-                  06h 42min · jornada activa
-                </p>
+                <p class="text-xs" style="color: #9ca3af;">06h 42min · jornada activa</p>
               </div>
             </div>
 
-            <!-- Badge: cumplimiento -->
-            <div
-              class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5"
-              style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);"
-              data-aos="fade-up-sm"
-              data-aos-delay="450"
-            >
-              <div
-                class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0"
-                style="background: #fef3c7;"
-              >
-                ⚖️
-              </div>
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #fef3c7;">⚖️</div>
               <div>
                 <p class="text-xs font-bold text-dark">100% legal</p>
                 <p class="text-xs" style="color: #9ca3af;">Registro 2026</p>
@@ -237,76 +317,60 @@ const faqs = [
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════
+       DEFINICIÓN CITABLE (AEO / featured snippet)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h4 font-bold mb-4">¿Qué es un software de control horario?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            Un <strong>software de control horario</strong> es una herramienta
+            digital que registra la entrada y salida de cada trabajador de forma
+            fiable, individualizada e inalterable, y conserva esos datos durante
+            cuatro años para cumplir la ley de registro de jornada. Drenpos
+            permite fichar desde el ordenador, el móvil, un widget rápido, un
+            código QR o un llavero RFID, y genera reportes auditables listos
+            para la Inspección de Trabajo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
        BANNER LEGAL: la urgencia
   ═══════════════════════════════════════════════════════════════════ -->
   <section class="section-sm">
     <div class="container">
-      <div
-        class="rounded-[28px] p-8 lg:p-12 relative overflow-hidden"
-        style="background: linear-gradient(135deg, rgba(121,27,70,0.08) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);"
-        data-aos="fade-up-sm"
-      >
+      <div class="rounded-[28px] p-8 lg:p-12 relative overflow-hidden" style="background: linear-gradient(135deg, rgba(121,27,70,0.08) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
         <div class="row gx-0 gy-8 lg:gy-0 items-center">
           <div class="lg:col-7 lg:pe-10">
-            <span
-              class="text-primary bg-white/70 px-3 py-1 inline-block rounded-full uppercase text-xs font-medium mb-5 tracking-wide"
-            >
-              Lo que dice la ley
-            </span>
+            <span class="text-primary bg-white/70 px-3 py-1 inline-block rounded-full uppercase text-xs font-medium mb-5 tracking-wide">Lo que dice la ley</span>
             <h2 class="h4 mb-4 font-bold leading-tight">
               El registro horario no es opcional.<br />
-              <span class="text-primary"
-                >Lo que está en juego son multas reales.</span
-              >
+              <span class="text-primary">Lo que está en juego son multas reales.</span>
             </h2>
-            <p
-              class="text-lg mb-0 leading-relaxed"
-              style="color: rgba(16,25,40,0.72);"
-            >
+            <p class="text-lg mb-0 leading-relaxed" style="color: rgba(16,25,40,0.72);">
               Llevar el registro en papel, en Excel o de forma incompleta es
-              motivo de sanción. La Inspección de Trabajo puede pedir tu
-              registro horario en cualquier momento y debes presentarlo
-              individualizado, diario, inalterable y conservado durante 4
-              años.
+              motivo de sanción. La Inspección de Trabajo puede pedir tu registro
+              horario en cualquier momento y debes presentarlo individualizado,
+              diario, inalterable y conservado durante 4 años.
             </p>
           </div>
           <div class="lg:col-5">
             <div class="grid grid-cols-3 gap-4">
-              <div
-                class="rounded-2xl p-5 text-center"
-                style="background: white; box-shadow: 0 4px 16px rgba(0,0,0,0.05);"
-              >
+              <div class="rounded-2xl p-5 text-center" style="background: white; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
                 <p class="text-3xl font-bold text-primary mb-1">€625</p>
-                <p
-                  class="text-xs uppercase tracking-wide"
-                  style="color: rgba(16,25,40,0.55);"
-                >
-                  Multa mínima
-                </p>
+                <p class="text-xs uppercase tracking-wide" style="color: rgba(16,25,40,0.55);">Multa mínima</p>
               </div>
-              <div
-                class="rounded-2xl p-5 text-center"
-                style="background: white; box-shadow: 0 4px 16px rgba(0,0,0,0.05);"
-              >
+              <div class="rounded-2xl p-5 text-center" style="background: white; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
                 <p class="text-3xl font-bold text-primary mb-1">€6.250</p>
-                <p
-                  class="text-xs uppercase tracking-wide"
-                  style="color: rgba(16,25,40,0.55);"
-                >
-                  Por trabajador
-                </p>
+                <p class="text-xs uppercase tracking-wide" style="color: rgba(16,25,40,0.55);">Por centro</p>
               </div>
-              <div
-                class="rounded-2xl p-5 text-center"
-                style="background: white; box-shadow: 0 4px 16px rgba(0,0,0,0.05);"
-              >
+              <div class="rounded-2xl p-5 text-center" style="background: white; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
                 <p class="text-3xl font-bold text-primary mb-1">4 años</p>
-                <p
-                  class="text-xs uppercase tracking-wide"
-                  style="color: rgba(16,25,40,0.55);"
-                >
-                  Conservación
-                </p>
+                <p class="text-xs uppercase tracking-wide" style="color: rgba(16,25,40,0.55);">Conservación</p>
               </div>
             </div>
           </div>
@@ -321,261 +385,112 @@ const faqs = [
   <section class="section pt-0 overflow-hidden">
     <div class="container">
       <div class="row gx-0 gy-14 lg:gy-0 items-center mb-24 lg:mb-32">
-        <!-- IMG -->
-        <div
-          class="lg:col-6 lg:pe-8"
-          data-aos="fade-up-sm"
-          data-aos-delay="100"
-        >
+        <div class="lg:col-6 lg:pe-8" data-aos="fade-up-sm" data-aos-delay="100">
           <div class="relative px-6 lg:px-0 pt-10 pb-10">
-            <div
-              class="absolute -top-10 -left-10 w-72 h-72 rounded-full blur-3xl -z-10 pointer-events-none"
-              style="background: rgba(121,27,70,0.08);"
-            >
-            </div>
-            <div
-              class="rounded-2xl overflow-hidden"
-              style="box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07); border: 1px solid rgba(16,25,40,0.08);"
-            >
-              <img
-                src="/images/funcionalidades/control-horario/01-gestion-personal.png"
-                alt="Pantalla personal de fichajes con gráfico de dedicación"
-                class="w-full h-auto block"
-                loading="lazy"
-              />
+            <div class="absolute -top-10 -left-10 w-72 h-72 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.08);"></div>
+            <div class="rounded-2xl overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07); border: 1px solid rgba(16,25,40,0.08);">
+              <img src="/images/funcionalidades/control-horario/01-gestion-personal.png" alt="Pantalla personal de fichajes con gráfico de dedicación del empleado" width="640" height="420" class="w-full h-auto block" loading="lazy" />
             </div>
           </div>
         </div>
 
-        <!-- TEXT -->
-        <div
-          class="lg:col-6 lg:ps-16"
-          data-aos="fade-up-sm"
-          data-aos-delay="300"
-        >
-          <span
-            class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-6"
-          >
-            Para empleados
-          </span>
+        <div class="lg:col-6 lg:ps-16" data-aos="fade-up-sm" data-aos-delay="300">
+          <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-6">Para empleados</span>
           <h2 class="h4 mb-5 font-bold leading-tight">
             Cada persona, su panel.<br />
             <span class="text-primary">Fichar y desfichar en un clic.</span>
           </h2>
-          <p
-            class="text-lg mb-8 leading-relaxed"
-            style="color: rgba(16,25,40,0.72);"
-          >
+          <p class="text-lg mb-8 leading-relaxed" style="color: rgba(16,25,40,0.72);">
             Tus empleados acceden a su propio panel desde cualquier dispositivo:
-            ven sus fichajes del día, semana y mes, inician o detienen la
-            jornada con un solo botón y exportan su informe sin tener que
-            pedírselo a nadie.
+            ven sus fichajes del día, semana y mes, inician o detienen la jornada
+            con un solo botón y exportan su informe sin tener que pedírselo a
+            nadie.
           </p>
 
           <div class="flex flex-col gap-6">
             <div class="flex items-start gap-4">
-              <div
-                class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1"
-              >
-                ⏱️
-              </div>
+              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1">⏱️</div>
               <div>
-                <p class="font-semibold text-text-dark mb-1">
-                  Fichaje en un clic
-                </p>
-                <p class="text-sm" style="color: rgba(16,25,40,0.62);">
-                  Inicia y detén la jornada desde la propia pantalla, sin
-                  formularios ni pasos intermedios.
-                </p>
+                <p class="font-semibold text-text-dark mb-1">Fichaje en un clic</p>
+                <p class="text-sm" style="color: rgba(16,25,40,0.62);">Inicia y detén la jornada desde la propia pantalla, sin formularios ni pasos intermedios.</p>
               </div>
             </div>
-
             <div class="flex items-start gap-4">
-              <div
-                class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1"
-              >
-                📈
-              </div>
+              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1">📈</div>
               <div>
-                <p class="font-semibold text-text-dark mb-1">
-                  Gráfico de dedicación
-                </p>
-                <p class="text-sm" style="color: rgba(16,25,40,0.62);">
-                  Visualiza el tiempo dedicado por día, semana y mes en un
-                  vistazo. Cero hojas de cálculo.
-                </p>
+                <p class="font-semibold text-text-dark mb-1">Gráfico de dedicación</p>
+                <p class="text-sm" style="color: rgba(16,25,40,0.62);">Visualiza el tiempo dedicado por día, semana y mes en un vistazo. Cero hojas de cálculo.</p>
               </div>
             </div>
-
             <div class="flex items-start gap-4">
-              <div
-                class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1"
-              >
-                📤
-              </div>
+              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1">📤</div>
               <div>
-                <p class="font-semibold text-text-dark mb-1">
-                  Exporta tu propio reporte
-                </p>
-                <p class="text-sm" style="color: rgba(16,25,40,0.62);">
-                  Cada empleado descarga su informe por rango de fechas. Listo
-                  para nóminas o consulta personal.
-                </p>
+                <p class="font-semibold text-text-dark mb-1">Exporta tu propio reporte</p>
+                <p class="text-sm" style="color: rgba(16,25,40,0.62);">Cada empleado descarga su informe por rango de fechas. Listo para nóminas o consulta personal.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- ═══════════════════════════════════════════════════════════════════
-           FEATURE 2 · Vista manager
-      ═══════════════════════════════════════════════════════════════════ -->
+      <!-- FEATURE 2 · Vista manager -->
       <div class="row gx-0 gy-14 lg:gy-0 items-center mb-24 lg:mb-32">
-        <!-- TEXT -->
-        <div
-          class="lg:col-6 lg:pe-16"
-          data-aos="fade-up-sm"
-          data-aos-delay="100"
-        >
-          <span
-            class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-6"
-          >
-            Para managers
-          </span>
+        <div class="lg:col-6 lg:pe-16" data-aos="fade-up-sm" data-aos-delay="100">
+          <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-6">Para managers</span>
           <h2 class="h4 mb-5 font-bold leading-tight">
             Todo tu equipo en una pantalla.<br />
-            <span class="text-primary"
-              >Crea, edita y exporta sin fricción.</span
-            >
+            <span class="text-primary">Crea, edita y exporta sin fricción.</span>
           </h2>
-          <p
-            class="text-lg mb-8 leading-relaxed"
-            style="color: rgba(16,25,40,0.72);"
-          >
-            Los responsables ven los fichajes de su equipo en tiempo real,
-            pueden crear o corregir fichajes cuando hay incidencias y exportar
-            informes por persona, departamento o rango de fechas. Cada acción
-            queda auditada.
+          <p class="text-lg mb-8 leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            Los responsables ven los fichajes de su equipo en tiempo real, pueden
+            crear o corregir fichajes cuando hay incidencias y exportar informes
+            por persona, departamento o rango de fechas. Cada acción queda
+            auditada.
           </p>
-
           <div class="flex flex-col gap-6">
             <div class="flex items-start gap-4">
-              <div
-                class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1"
-              >
-                👥
-              </div>
+              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1">👥</div>
               <div>
-                <p class="font-semibold text-text-dark mb-1">
-                  Equipo en tiempo real
-                </p>
-                <p class="text-sm" style="color: rgba(16,25,40,0.62);">
-                  Quién está dentro, quién no, quién tiene incidencias. Sin
-                  llamadas ni mensajes para enterarte.
-                </p>
+                <p class="font-semibold text-text-dark mb-1">Equipo en tiempo real</p>
+                <p class="text-sm" style="color: rgba(16,25,40,0.62);">Quién está dentro, quién no, quién tiene incidencias. Sin llamadas ni mensajes para enterarte.</p>
               </div>
             </div>
-
             <div class="flex items-start gap-4">
-              <div
-                class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1"
-              >
-                ✏️
-              </div>
+              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1">✏️</div>
               <div>
-                <p class="font-semibold text-text-dark mb-1">
-                  Crear y corregir fichajes
-                </p>
-                <p class="text-sm" style="color: rgba(16,25,40,0.62);">
-                  Si alguien olvida fichar, lo registras manualmente. Queda
-                  marcado con autor, motivo y fecha del cambio.
-                </p>
+                <p class="font-semibold text-text-dark mb-1">Crear y corregir fichajes</p>
+                <p class="text-sm" style="color: rgba(16,25,40,0.62);">Si alguien olvida fichar, lo registras manualmente. Queda marcado con autor, motivo y fecha del cambio.</p>
               </div>
             </div>
-
             <div class="flex items-start gap-4">
-              <div
-                class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1"
-              >
-                📑
-              </div>
+              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1">📑</div>
               <div>
-                <p class="font-semibold text-text-dark mb-1">
-                  Reportes listos para Inspección
-                </p>
-                <p class="text-sm" style="color: rgba(16,25,40,0.62);">
-                  Exporta el registro horario por rango y persona. Sin montar
-                  Excel, sin perder tiempo.
-                </p>
+                <p class="font-semibold text-text-dark mb-1">Reportes listos para Inspección</p>
+                <p class="text-sm" style="color: rgba(16,25,40,0.62);">Exporta el registro horario por rango y persona. Sin montar Excel, sin perder tiempo.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- IMG -->
         <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="300">
           <div class="relative px-6 lg:px-0 pt-10 pb-10">
-            <div
-              class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none"
-              style="background: rgba(121,27,70,0.07);"
-            >
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.07);"></div>
+            <div class="rounded-2xl overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07); border: 1px solid rgba(16,25,40,0.08);">
+              <img src="/images/funcionalidades/control-horario/02-gestion-manager.png" alt="Vista de manager con los fichajes de todo el equipo en tiempo real" width="640" height="420" class="w-full h-auto block" loading="lazy" />
             </div>
-            <div
-              class="rounded-2xl overflow-hidden"
-              style="box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07); border: 1px solid rgba(16,25,40,0.08);"
-            >
-              <img
-                src="/images/funcionalidades/control-horario/02-gestion-manager.png"
-                alt="Vista de manager con fichajes de todo el equipo y edición"
-                class="w-full h-auto block"
-                loading="lazy"
-              />
-            </div>
-
-            <div
-              class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3"
-              style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07); min-width: 180px;"
-              data-aos="zoom-in-up-sm"
-              data-aos-delay="500"
-            >
-              <p class="text-xs font-bold text-dark mb-2.5">
-                Estado del equipo
-              </p>
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07); min-width: 180px;" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <p class="text-xs font-bold text-dark mb-2.5">Estado del equipo</p>
               <div class="space-y-1.5">
-                <div
-                  class="flex items-center justify-between text-xs"
-                  style="color: #6b7280;"
-                >
-                  <span class="flex items-center gap-2">
-                    <span
-                      class="w-2 h-2 rounded-full"
-                      style="background: #16a34a;"></span>
-                    Fichando
-                  </span>
+                <div class="flex items-center justify-between text-xs" style="color: #6b7280;">
+                  <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full" style="background: #16a34a;"></span>Fichando</span>
                   <span class="font-semibold" style="color: #16a34a;">8</span>
                 </div>
-                <div
-                  class="flex items-center justify-between text-xs"
-                  style="color: #6b7280;"
-                >
-                  <span class="flex items-center gap-2">
-                    <span
-                      class="w-2 h-2 rounded-full"
-                      style="background: #d3a776;"></span>
-                    En pausa
-                  </span>
+                <div class="flex items-center justify-between text-xs" style="color: #6b7280;">
+                  <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full" style="background: #d3a776;"></span>En pausa</span>
                   <span class="font-semibold" style="color: #b45309;">2</span>
                 </div>
-                <div
-                  class="flex items-center justify-between text-xs"
-                  style="color: #6b7280;"
-                >
-                  <span class="flex items-center gap-2">
-                    <span
-                      class="w-2 h-2 rounded-full"
-                      style="background: #9ca3af;"></span>
-                    Sin fichar
-                  </span>
+                <div class="flex items-center justify-between text-xs" style="color: #6b7280;">
+                  <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full" style="background: #9ca3af;"></span>Sin fichar</span>
                   <span class="font-semibold" style="color: #4b5563;">1</span>
                 </div>
               </div>
@@ -584,127 +499,51 @@ const faqs = [
         </div>
       </div>
 
-      <!-- ═══════════════════════════════════════════════════════════════════
-           FEATURE 3 · Reportes + trazabilidad
-      ═══════════════════════════════════════════════════════════════════ -->
+      <!-- FEATURE 3 · Reportes + trazabilidad -->
       <div class="row gx-0 gy-14 lg:gy-0 items-center">
-        <!-- IMG: collage -->
-        <div
-          class="lg:col-6 lg:pe-8"
-          data-aos="fade-up-sm"
-          data-aos-delay="100"
-        >
+        <div class="lg:col-6 lg:pe-8" data-aos="fade-up-sm" data-aos-delay="100">
           <div class="relative px-6 lg:px-0 pt-10 pb-16">
-            <div
-              class="absolute -top-10 -left-10 w-72 h-72 rounded-full blur-3xl -z-10 pointer-events-none"
-              style="background: rgba(121,27,70,0.08);"
-            >
+            <div class="absolute -top-10 -left-10 w-72 h-72 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.08);"></div>
+            <div class="rounded-2xl overflow-hidden relative z-10" style="box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07); border: 1px solid rgba(16,25,40,0.08);">
+              <img src="/images/funcionalidades/control-horario/03-reporte-resumen.png" alt="Reporte de control horario con horas dedicadas, pendientes y extras" width="640" height="420" class="w-full h-auto block" loading="lazy" />
             </div>
-            <div
-              class="rounded-2xl overflow-hidden relative z-10"
-              style="box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07); border: 1px solid rgba(16,25,40,0.08);"
-            >
-              <img
-                src="/images/funcionalidades/control-horario/03-reporte-resumen.png"
-                alt="Reporte de fichajes: horas dedicadas, pendientes y extras"
-                class="w-full h-auto block"
-                loading="lazy"
-              />
-            </div>
-            <div
-              class="hidden lg:block absolute -bottom-2 -right-4 w-2/3 rounded-2xl overflow-hidden"
-              style="box-shadow: 0 24px 64px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);"
-              data-aos="fade-up-sm"
-              data-aos-delay="400"
-            >
-              <img
-                src="/images/funcionalidades/control-horario/04-reporte-trazabilidad.png"
-                alt="Tabla de trazabilidad: quién hizo qué y cuándo"
-                class="w-full h-auto block"
-                loading="lazy"
-              />
+            <div class="hidden lg:block absolute -bottom-2 -right-4 w-2/3 rounded-2xl overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);" data-aos="fade-up-sm" data-aos-delay="400">
+              <img src="/images/funcionalidades/control-horario/04-reporte-trazabilidad.png" alt="Tabla de trazabilidad de fichajes: quién hizo qué y cuándo" width="420" height="280" class="w-full h-auto block" loading="lazy" />
             </div>
           </div>
         </div>
 
-        <!-- TEXT -->
-        <div
-          class="lg:col-6 lg:ps-16 lg:mt-0 mt-8"
-          data-aos="fade-up-sm"
-          data-aos-delay="300"
-        >
-          <span
-            class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-6"
-          >
-            Reportes + auditoría
-          </span>
+        <div class="lg:col-6 lg:ps-16 lg:mt-0 mt-8" data-aos="fade-up-sm" data-aos-delay="300">
+          <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-6">Reportes + auditoría</span>
           <h2 class="h4 mb-5 font-bold leading-tight">
-            Horas, dedicaciones y trazabilidad <span class="text-primary"
-              >en el mismo informe</span
-            >
+            Horas, dedicaciones y trazabilidad <span class="text-primary">en el mismo informe</span>
           </h2>
-          <p
-            class="text-lg mb-8 leading-relaxed"
-            style="color: rgba(16,25,40,0.72);"
-          >
+          <p class="text-lg mb-8 leading-relaxed" style="color: rgba(16,25,40,0.72);">
             Por defecto, cada reporte muestra horas dedicadas, horas pendientes
             por dedicar, horas extras y a qué se ha dedicado cada bloque. Y
-            debajo, una tabla de trazabilidad con todo lo que ha pasado: quién
-            lo hizo, cuándo y por qué.
+            debajo, una tabla de trazabilidad con todo lo que ha pasado: quién lo
+            hizo, cuándo y por qué.
           </p>
-
           <div class="flex flex-col gap-6">
             <div class="flex items-start gap-4">
-              <div
-                class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1"
-                style="background: rgba(211,167,118,0.15);"
-              >
-                ⏳
-              </div>
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1" style="background: rgba(211,167,118,0.15);">⏳</div>
               <div>
-                <p class="font-semibold text-text-dark mb-1">
-                  Horas dedicadas, pendientes y extras
-                </p>
-                <p class="text-sm" style="color: rgba(16,25,40,0.62);">
-                  Cálculo automático según el calendario laboral de cada
-                  persona. Sin operar a mano.
-                </p>
+                <p class="font-semibold text-text-dark mb-1">Horas dedicadas, pendientes y extras</p>
+                <p class="text-sm" style="color: rgba(16,25,40,0.62);">Cálculo automático según el calendario laboral de cada persona. Sin operar a mano.</p>
               </div>
             </div>
-
             <div class="flex items-start gap-4">
-              <div
-                class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1"
-                style="background: rgba(211,167,118,0.15);"
-              >
-                🎯
-              </div>
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1" style="background: rgba(211,167,118,0.15);">🎯</div>
               <div>
-                <p class="font-semibold text-text-dark mb-1">
-                  ¿A qué se dedicó el tiempo?
-                </p>
-                <p class="text-sm" style="color: rgba(16,25,40,0.62);">
-                  Desglose por conceptos: lo que cuenta como jornada, lo que no
-                  y lo que se imputa a cada proyecto o tarea.
-                </p>
+                <p class="font-semibold text-text-dark mb-1">¿A qué se dedicó el tiempo?</p>
+                <p class="text-sm" style="color: rgba(16,25,40,0.62);">Desglose por conceptos: lo que cuenta como jornada, lo que no y lo que se imputa a cada proyecto o tarea.</p>
               </div>
             </div>
-
             <div class="flex items-start gap-4">
-              <div
-                class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1"
-                style="background: rgba(211,167,118,0.15);"
-              >
-                🔍
-              </div>
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-xl leading-none pt-1" style="background: rgba(211,167,118,0.15);">🔍</div>
               <div>
-                <p class="font-semibold text-text-dark mb-1">
-                  Trazabilidad completa
-                </p>
-                <p class="text-sm" style="color: rgba(16,25,40,0.62);">
-                  Cada acción queda registrada con autor, fecha y motivo. La
-                  prueba que pide la Inspección.
-                </p>
+                <p class="font-semibold text-text-dark mb-1">Trazabilidad completa</p>
+                <p class="text-sm" style="color: rgba(16,25,40,0.62);">Cada acción queda registrada con autor, fecha y motivo. La prueba que pide la Inspección.</p>
               </div>
             </div>
           </div>
@@ -714,247 +553,227 @@ const faqs = [
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════
-       CONFIGURACIÓN A MEDIDA · grid de 4 features
+       HARDWARE PROPIO · sección destacada (diferenciador)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="hardware" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="rounded-[32px] overflow-hidden relative" style="background: rgba(16,25,40,0.97);">
+        <div class="absolute -top-20 -right-20 w-96 h-96 rounded-full blur-3xl pointer-events-none" style="background: rgba(211,167,118,0.18);"></div>
+        <div class="absolute -bottom-24 -left-16 w-80 h-80 rounded-full blur-3xl pointer-events-none" style="background: rgba(121,27,70,0.35);"></div>
+
+        <div class="relative p-8 lg:p-16">
+          <!-- Encabezado -->
+          <div class="text-center max-w-3xl mx-auto mb-14" data-aos="fade-up-sm">
+            <span class="text-white bg-white/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-5 tracking-wide">
+              Hardware propio · fabricado por Drenpos
+            </span>
+            <h2 class="h3 font-bold mb-4 text-white leading-tight">
+              El único control horario con <span style="color: #f9b27c;">su propio dispositivo de fichaje</span>
+            </h2>
+            <p class="text-lg leading-relaxed mb-0" style="color: rgba(255,255,255,0.78);">
+              Diseñamos, imprimimos en 3D y programamos nuestro propio lector
+              RFID, con llaveros y tarjetas QR personalizados para cada empleado.
+              Tu equipo ficha sin móvil ni ordenador: pasa el llavero y listo.
+              Pensado para almacenes, talleres, fábricas, hostelería y retail.
+            </p>
+          </div>
+
+          <!-- Showcase de fotos -->
+          <div class="row g-5 mb-12">
+            <!-- Dispositivo grande -->
+            <div class="lg:col-7" data-aos="fade-up-sm">
+              <div class="rounded-2xl overflow-hidden h-full relative" style="border: 1px solid rgba(255,255,255,0.10);">
+                <img src="/images/funcionalidades/control-horario/hardware/01-dispositivo-lector-rfid.png" alt="Dispositivo lector RFID de fichaje de Drenpos para control horario" width="800" height="533" class="w-full h-full object-cover block" loading="lazy" />
+                <div class="absolute bottom-0 inset-x-0 p-6" style="background: linear-gradient(to top, rgba(16,25,40,0.85), transparent);">
+                  <p class="text-white font-bold text-lg mb-1">Lector RFID dedicado</p>
+                  <p class="text-sm" style="color: rgba(255,255,255,0.75);">Sin móvil ni pantalla individual. Se instala en la entrada y el operario ficha en un gesto.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Llaveros + tarjetas apilados -->
+            <div class="lg:col-5">
+              <div class="flex flex-col gap-5 h-full">
+                <div class="rounded-2xl overflow-hidden relative flex-1" style="border: 1px solid rgba(255,255,255,0.10);" data-aos="fade-up-sm" data-aos-delay="100">
+                  <img src="/images/funcionalidades/control-horario/hardware/02-llaveros-personalizados.png" alt="Llaveros RFID personalizados impresos en 3D por Drenpos" width="600" height="300" class="w-full h-full object-cover block" loading="lazy" />
+                  <div class="absolute bottom-0 inset-x-0 p-5" style="background: linear-gradient(to top, rgba(16,25,40,0.85), transparent);">
+                    <p class="text-white font-bold mb-0.5">Llaveros personalizados</p>
+                    <p class="text-xs" style="color: rgba(255,255,255,0.75);">Impresos en 3D, uno por empleado.</p>
+                  </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden relative flex-1" style="border: 1px solid rgba(255,255,255,0.10);" data-aos="fade-up-sm" data-aos-delay="200">
+                  <img src="/images/funcionalidades/control-horario/hardware/03-tarjetas-qr.png" alt="Tarjetas con código QR personal para fichar en Drenpos" width="600" height="300" class="w-full h-full object-cover block" loading="lazy" />
+                  <div class="absolute bottom-0 inset-x-0 p-5" style="background: linear-gradient(to top, rgba(16,25,40,0.85), transparent);">
+                    <p class="text-white font-bold mb-0.5">Tarjetas con QR</p>
+                    <p class="text-xs" style="color: rgba(255,255,255,0.75);">Alternativa imprimible al llavero.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ventajas -->
+          <div class="row g-4 mb-12">
+            <div class="lg:col-4" data-aos="fade-up-sm">
+              <div class="rounded-2xl p-6 h-full" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
+                <div class="text-2xl mb-3">🛠️</div>
+                <p class="text-white font-semibold mb-1.5">Diseño y fabricación propios</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.72);">No revendemos hardware genérico. Lo diseñamos, imprimimos y programamos nosotros, así que lo adaptamos a tu caso.</p>
+              </div>
+            </div>
+            <div class="lg:col-4" data-aos="fade-up-sm" data-aos-delay="100">
+              <div class="rounded-2xl p-6 h-full" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
+                <div class="text-2xl mb-3">⚡</div>
+                <p class="text-white font-semibold mb-1.5">Fichaje en un gesto</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.72);">El operario acerca el llavero o escanea su QR. Sin contraseñas, sin apps que instalar, sin colas.</p>
+              </div>
+            </div>
+            <div class="lg:col-4" data-aos="fade-up-sm" data-aos-delay="200">
+              <div class="rounded-2xl p-6 h-full" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
+                <div class="text-2xl mb-3">🔒</div>
+                <p class="text-white font-semibold mb-1.5">Sellado inalterable</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.72);">Cada fichaje queda registrado con hora exacta y no se puede modificar sin dejar huella. Válido ante Inspección.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Standalone callout -->
+          <div class="rounded-2xl p-6 lg:p-8 flex flex-col lg:flex-row items-center gap-6" style="background: rgba(249,178,124,0.12); border: 1px solid rgba(249,178,124,0.25);" data-aos="fade-up-sm">
+            <div class="flex-grow text-center lg:text-left">
+              <p class="text-white font-bold text-lg mb-1">¿Solo quieres el dispositivo de fichaje?</p>
+              <p class="text-sm mb-0" style="color: rgba(255,255,255,0.78);">
+                El hardware de control de presencia se puede adquirir como
+                solución independiente, sin contratar el ERP completo. Y si más
+                adelante quieres todo el ecosistema Drenpos, se integra sin perder
+                un solo dato.
+              </p>
+            </div>
+            <a href="/contact" class="btn btn-light flex-shrink-0">Pedir presupuesto del hardware</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       MÉTODOS DE FICHAJE · grid (SEO/AEO)
   ═══════════════════════════════════════════════════════════════════ -->
   <section class="section pt-0 overflow-hidden">
     <div class="container">
       <div class="text-center mb-12" data-aos="fade-up-sm">
-        <span
-          class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4"
-        >
-          Configuración a medida
-        </span>
-        <h2 class="h3 font-bold mb-4">Se adapta a cómo trabajas, no al revés</h2>
-        <p
-          class="text-lg max-w-2xl mx-auto"
-          style="color: rgba(16,25,40,0.65);"
-        >
-          Cada empresa tiene sus horarios, sus conceptos y su forma de
-          organizarse. Drenpos se configura sin programación.
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">5 formas de fichar</span>
+        <h2 class="h3 font-bold mb-4">Elige cómo ficha cada equipo</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          No todos los negocios fichan igual. Drenpos cubre todos los escenarios
+          con la misma trazabilidad legal, combinables en la misma empresa.
         </p>
       </div>
 
-      <div class="row g-5 mb-16">
-        <!-- Conceptos -->
-        <div class="col-12 lg:col-6" data-aos="fade-up-sm" data-aos-delay="0">
-          <div
-            class="border rounded-[20px] overflow-hidden h-full hover:shadow-lg transition-shadow duration-300 flex flex-col"
-            style="border-color: rgba(16,25,40,0.1);"
-          >
-            <div
-              class="aspect-[16/9] overflow-hidden"
-              style="background: #fafafa;"
-            >
-              <img
-                src="/images/funcionalidades/control-horario/05-conceptos.png"
-                alt="Conceptos de fichaje configurables"
-                class="w-full h-full object-cover block"
-                loading="lazy"
-              />
+      <div class="row g-4">
+        {metodos.map((m, i) => (
+          <div class="col-12 md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 80}>
+            <div class="border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(121,27,70,0.08);">{m.icon}</div>
+              <h3 class="h6 font-semibold mb-2">{m.name}</h3>
+              <p class="text-sm leading-relaxed mb-4" style="color: rgba(16,25,40,0.65);">{m.desc}</p>
+              <p class="text-xs font-medium uppercase tracking-wide" style="color: #b45309;">Ideal: {m.best}</p>
+            </div>
+          </div>
+        ))}
+        <div class="col-12 md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay="400">
+          <div class="rounded-[20px] p-7 h-full flex flex-col justify-center" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);">
+            <p class="font-semibold text-text-dark mb-2">¿No sabes cuál te conviene?</p>
+            <p class="text-sm mb-4" style="color: rgba(16,25,40,0.65);">Te asesoramos según tu sector y tu forma de trabajar en una demo de 20 minutos.</p>
+            <a href="/contact" class="text-primary font-semibold inline-flex items-center gap-1">Hablar con el equipo →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CONFIGURACIÓN A MEDIDA · grid de 3 features
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Configuración a medida</span>
+        <h2 class="h3 font-bold mb-4">Se adapta a cómo trabajas, no al revés</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">Cada empresa tiene sus horarios, sus conceptos y su forma de organizarse. Drenpos se configura sin programación.</p>
+      </div>
+
+      <div class="row g-5">
+        <div class="col-12 lg:col-4" data-aos="fade-up-sm" data-aos-delay="0">
+          <div class="border rounded-[20px] overflow-hidden h-full hover:shadow-lg transition-shadow duration-300 flex flex-col" style="border-color: rgba(16,25,40,0.1);">
+            <div class="aspect-[16/9] overflow-hidden" style="background: #fafafa;">
+              <img src="/images/funcionalidades/control-horario/05-conceptos.png" alt="Conceptos de fichaje configurables en Drenpos" width="480" height="270" class="w-full h-full object-cover block" loading="lazy" />
             </div>
             <div class="p-7 flex-grow">
               <div class="flex items-center gap-3 mb-3">
-                <div
-                  class="w-11 h-11 rounded-xl flex items-center justify-center text-xl"
-                  style="background: rgba(121,27,70,0.10);"
-                >
-                  🏷️
-                </div>
+                <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl" style="background: rgba(121,27,70,0.10);">🏷️</div>
                 <h3 class="h6 font-semibold mb-0">Conceptos de fichaje</h3>
               </div>
-              <p
-                class="text-sm leading-relaxed"
-                style="color: rgba(16,25,40,0.65);"
-              >
-                Crea conceptos propios (trabajo, formación, visita cliente,
-                comida, asuntos propios…) y asígnalos a cada fichaje. Define si
-                imputan como jornada laboral o no, e incluso pon límites
-                diarios o semanales. Reportes con más detalle, sin pedir nada
-                extra al empleado.
-              </p>
+              <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.65);">Crea conceptos propios (trabajo, formación, visita cliente, comida, asuntos propios…), define si imputan como jornada y pon límites diarios o semanales.</p>
             </div>
           </div>
         </div>
 
-        <!-- Calendarios -->
-        <div class="col-12 lg:col-6" data-aos="fade-up-sm" data-aos-delay="100">
-          <div
-            class="border rounded-[20px] overflow-hidden h-full hover:shadow-lg transition-shadow duration-300 flex flex-col"
-            style="border-color: rgba(16,25,40,0.1);"
-          >
-            <div
-              class="aspect-[16/9] overflow-hidden grid grid-cols-2"
-              style="background: #fafafa;"
-            >
-              <img
-                src="/images/funcionalidades/control-horario/06-calendario-laboral.png"
-                alt="Calendario laboral"
-                class="w-full h-full object-cover block"
-                loading="lazy"
-              />
-              <img
-                src="/images/funcionalidades/control-horario/07-calendario-asignacion.png"
-                alt="Asignación de calendario a empleados"
-                class="w-full h-full object-cover block"
-                loading="lazy"
-              />
+        <div class="col-12 lg:col-4" data-aos="fade-up-sm" data-aos-delay="100">
+          <div class="border rounded-[20px] overflow-hidden h-full hover:shadow-lg transition-shadow duration-300 flex flex-col" style="border-color: rgba(16,25,40,0.1);">
+            <div class="aspect-[16/9] overflow-hidden grid grid-cols-2" style="background: #fafafa;">
+              <img src="/images/funcionalidades/control-horario/06-calendario-laboral.png" alt="Calendario laboral de empresa en Drenpos" width="240" height="270" class="w-full h-full object-cover block" loading="lazy" />
+              <img src="/images/funcionalidades/control-horario/07-calendario-asignacion.png" alt="Asignación de calendario laboral a empleados" width="240" height="270" class="w-full h-full object-cover block" loading="lazy" />
             </div>
             <div class="p-7 flex-grow">
               <div class="flex items-center gap-3 mb-3">
-                <div
-                  class="w-11 h-11 rounded-xl flex items-center justify-center text-xl"
-                  style="background: rgba(211,167,118,0.15);"
-                >
-                  📅
-                </div>
-                <h3 class="h6 font-semibold mb-0">Calendarios laborales</h3>
+                <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl" style="background: rgba(211,167,118,0.15);">📅</div>
+                <h3 class="h6 font-semibold mb-0">Calendarios y festivos</h3>
               </div>
-              <p
-                class="text-sm leading-relaxed"
-                style="color: rgba(16,25,40,0.65);"
-              >
-                Define horarios, festivos y particularidades por calendario.
-                Asigna uno a cada empleado y Drenpos calcula sus horas
-                dedicadas, pendientes y extras. Comerciales, administrativos o
-                turnos: cada uno con su lógica.
-              </p>
+              <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.65);">Define horarios y festivos por región o trabajador. Drenpos calcula horas dedicadas, pendientes y extras según el calendario de cada empleado.</p>
             </div>
           </div>
         </div>
 
-        <!-- Widget rápido -->
-        <div class="col-12 lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
-          <div
-            class="border rounded-[20px] overflow-hidden h-full hover:shadow-lg transition-shadow duration-300 flex flex-col"
-            style="border-color: rgba(16,25,40,0.1);"
-          >
-            <div
-              class="aspect-[16/9] overflow-hidden flex items-center justify-center p-4"
-              style="background: #fafafa;"
-            >
-              <img
-                src="/images/funcionalidades/control-horario/08-widget-rapido.png"
-                alt="Widget de fichaje rápido en la pantalla de inicio"
-                class="max-w-full max-h-full object-contain block"
-                loading="lazy"
-              />
+        <div class="col-12 lg:col-4" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="border rounded-[20px] overflow-hidden h-full hover:shadow-lg transition-shadow duration-300 flex flex-col" style="border-color: rgba(16,25,40,0.1);">
+            <div class="aspect-[16/9] overflow-hidden flex items-center justify-center p-4" style="background: #fafafa;">
+              <img src="/images/funcionalidades/control-horario/08-widget-rapido.png" alt="Widget de fichaje rápido en la pantalla de inicio" width="320" height="270" class="max-w-full max-h-full object-contain block" loading="lazy" />
             </div>
             <div class="p-7 flex-grow">
               <div class="flex items-center gap-3 mb-3">
-                <div
-                  class="w-11 h-11 rounded-xl flex items-center justify-center text-xl"
-                  style="background: #D1FADF;"
-                >
-                  ⚡
-                </div>
+                <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl" style="background: #D1FADF;">⚡</div>
                 <h3 class="h6 font-semibold mb-0">Widget de fichaje rápido</h3>
               </div>
-              <p
-                class="text-sm leading-relaxed"
-                style="color: rgba(16,25,40,0.65);"
-              >
-                Añade el widget a tu pantalla de inicio y ficha en un solo
-                toque, sin entrar a la sección de fichajes. Ideal para empezar,
-                parar o registrar una pausa sin perder el foco.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- RFID + QR -->
-        <div class="col-12 lg:col-6" data-aos="fade-up-sm" data-aos-delay="300">
-          <div
-            class="border rounded-[20px] overflow-hidden h-full hover:shadow-lg transition-shadow duration-300 flex flex-col"
-            style="border-color: rgba(16,25,40,0.1);"
-          >
-            <div
-              class="aspect-[16/9] flex flex-col items-center justify-center gap-3 p-6"
-              style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%);"
-            >
-              <div class="flex items-center gap-4">
-                <div
-                  class="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl"
-                  style="background: white; box-shadow: 0 8px 24px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.06);"
-                >
-                  🔑
-                </div>
-                <div class="text-3xl" style="color: rgba(16,25,40,0.30);">+</div>
-                <div
-                  class="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl"
-                  style="background: white; box-shadow: 0 8px 24px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.06);"
-                >
-                  📷
-                </div>
-              </div>
-              <p
-                class="text-xs font-semibold uppercase tracking-wide"
-                style="color: rgba(16,25,40,0.50);"
-              >
-                RFID · QR · Dispositivo dedicado
-              </p>
-            </div>
-            <div class="p-7 flex-grow">
-              <div class="flex items-center gap-3 mb-3">
-                <div
-                  class="w-11 h-11 rounded-xl flex items-center justify-center text-xl"
-                  style="background: #FFEAFF;"
-                >
-                  🆔
-                </div>
-                <h3 class="h6 font-semibold mb-0">
-                  Fichaje por llavero RFID o QR
-                </h3>
-              </div>
-              <p
-                class="text-sm leading-relaxed"
-                style="color: rgba(16,25,40,0.65);"
-              >
-                Para entornos sin pantallas individuales: te entregamos un
-                dispositivo físico. El empleado acerca su llavero RFID o
-                escanea su QR de fichaje y la jornada empieza o se detiene al
-                instante. Ideal para almacenes, talleres, hostelería y retail.
-              </p>
+              <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.65);">Añade el widget a la pantalla de inicio y ficha en un toque, sin entrar a la sección de fichajes. Ideal para empezar, parar o registrar una pausa.</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Multi-device strip -->
-      <div
-        class="rounded-[20px] p-8 lg:p-10 flex flex-col lg:flex-row items-center gap-6 lg:gap-10"
-        style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);"
-        data-aos="fade-up-sm"
-      >
-        <div class="flex items-center gap-4 flex-shrink-0">
-          <div
-            class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl"
-            style="background: white; box-shadow: 0 6px 18px rgba(0,0,0,0.06);"
-          >
-            💻
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CASOS DE USO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Casos de uso</span>
+        <h2 class="h3 font-bold mb-4">Cómo lo usan empresas como la tuya</h2>
+      </div>
+      <div class="row g-5">
+        {casos.map((c, i) => (
+          <div class="col-12 lg:col-6" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+            <div class="border rounded-[24px] p-8 h-full" style="border-color: rgba(16,25,40,0.1); background: #fff;">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background: rgba(121,27,70,0.08);">{c.icon}</div>
+                <span class="text-xs font-semibold uppercase tracking-wide" style="color: #b45309;">{c.tag}</span>
+              </div>
+              <h3 class="h5 font-bold mb-3">{c.title}</h3>
+              <p class="text-base leading-relaxed mb-0" style="color: rgba(16,25,40,0.7);">{c.body}</p>
+            </div>
           </div>
-          <div
-            class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl"
-            style="background: white; box-shadow: 0 6px 18px rgba(0,0,0,0.06);"
-          >
-            📱
-          </div>
-          <div
-            class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl"
-            style="background: white; box-shadow: 0 6px 18px rgba(0,0,0,0.06);"
-          >
-            🆔
-          </div>
-        </div>
-        <div class="flex-grow text-center lg:text-left">
-          <h3 class="h5 font-semibold mb-1">
-            Desde el ordenador, desde el móvil o por RFID
-          </h3>
-          <p class="text-sm mb-0" style="color: rgba(16,25,40,0.65);">
-            La misma experiencia, sin instalar nada extra. Ficha desde la
-            oficina, desde casa, desde la obra o desde el móvil del empleado:
-            todo queda en el mismo sitio.
-          </p>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -964,56 +783,27 @@ const faqs = [
   ═══════════════════════════════════════════════════════════════════ -->
   <section class="section pt-0">
     <div class="container">
-      <div
-        class="rounded-[28px] overflow-hidden"
-        style="background: rgba(16,25,40,0.97);"
-      >
+      <div class="rounded-[28px] overflow-hidden" style="background: rgba(16,25,40,0.97);">
         <div class="row gx-0 gy-10 lg:gy-0 items-center p-10 lg:p-16">
           <div class="lg:col-6 lg:pe-10">
-            <span
-              class="text-white bg-white/10 px-3 py-1 inline-block rounded-full uppercase text-xs font-medium mb-5 tracking-wide"
-              data-aos="fade-up-sm"
-            >
-              Cumplimiento legal
-            </span>
-            <h2
-              class="h3 font-bold mb-5 text-white leading-tight"
-              data-aos="fade-up-sm"
-            >
-              Cumples la nueva ley <span style="color: #f9b27c;"
-                >desde el primer fichaje</span
-              >
+            <span class="text-white bg-white/10 px-3 py-1 inline-block rounded-full uppercase text-xs font-medium mb-5 tracking-wide" data-aos="fade-up-sm">Cumplimiento legal</span>
+            <h2 class="h3 font-bold mb-5 text-white leading-tight" data-aos="fade-up-sm">
+              Cumples la nueva ley <span style="color: #f9b27c;">desde el primer fichaje</span>
             </h2>
-            <p
-              class="text-lg leading-relaxed mb-0"
-              style="color: rgba(255,255,255,0.78);"
-              data-aos="fade-up-sm"
-            >
-              Drenpos está diseñado para encajar con los requisitos del
-              registro horario digital obligatorio de 2026. No tienes que
-              configurar nada para estar al día.
+            <p class="text-lg leading-relaxed mb-0" style="color: rgba(255,255,255,0.78);" data-aos="fade-up-sm">
+              Drenpos está diseñado para encajar con los requisitos del registro
+              horario digital obligatorio de 2026. No tienes que configurar nada
+              para estar al día.
             </p>
           </div>
           <div class="lg:col-6">
             <ul class="flex flex-col gap-4">
-              {
-                requisitos.map((item, i) => (
-                  <li
-                    class="flex items-start gap-4 p-4 rounded-2xl"
-                    style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);"
-                    data-aos="fade-up-sm"
-                    data-aos-delay={i * 50}
-                  >
-                    <span
-                      class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm"
-                      style="background: #16a34a; color: white;"
-                    >
-                      ✓
-                    </span>
-                    <span style="color: rgba(255,255,255,0.92);">{item}</span>
-                  </li>
-                ))
-              }
+              {requisitos.map((item, i) => (
+                <li class="flex items-start gap-4 p-4 rounded-2xl" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);" data-aos="fade-up-sm" data-aos-delay={i * 50}>
+                  <span class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm" style="background: #16a34a; color: white;">✓</span>
+                  <span style="color: rgba(255,255,255,0.92);">{item}</span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -1028,53 +818,64 @@ const faqs = [
     <div class="container">
       <div class="row justify-center">
         <div class="lg:col-10 text-center mb-12" data-aos="fade-up-sm">
-          <span
-            class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4"
-          >
-            Preguntas frecuentes
-          </span>
-          <h2 class="h3 font-bold mb-3">Lo que más nos preguntan</h2>
+          <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Preguntas frecuentes</span>
+          <h2 class="h3 font-bold mb-3">Control horario: lo que más nos preguntan</h2>
           <p class="text-lg" style="color: rgba(16,25,40,0.65);">
-            Si tu duda no está aquí,{" "}
-            <a href="/contact" class="text-primary font-semibold underline"
-              >escríbenos</a
-            >.
+            Si tu duda no está aquí, <a href="/contact" class="text-primary font-semibold underline">escríbenos</a>.
           </p>
         </div>
         <div class="lg:col-10">
           <div class="flex flex-col gap-3">
-            {
-              faqs.map((f, i) => (
-                <details
-                  class="group rounded-2xl border bg-white"
-                  style="border-color: rgba(16,25,40,0.1);"
-                  data-aos="fade-up-sm"
-                  data-aos-delay={i * 40}
-                >
-                  <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none">
-                    <span class="font-semibold text-base lg:text-lg">
-                      {f.q}
-                    </span>
-                    <span
-                      class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-200 group-open:rotate-45 text-xl leading-none"
-                      style="background: rgba(121,27,70,0.10); color: #791b46;"
-                      aria-hidden="true"
-                    >
-                      +
-                    </span>
-                  </summary>
-                  <div class="px-6 pb-6 -mt-2">
-                    <p
-                      class="text-base leading-relaxed mb-0"
-                      style="color: rgba(16,25,40,0.72);"
-                    >
-                      {f.a}
-                    </p>
-                  </div>
-                </details>
-              ))
-            }
+            {faqs.map((f, i) => (
+              <details class="group rounded-2xl border bg-white" style="border-color: rgba(16,25,40,0.1);" data-aos="fade-up-sm" data-aos-delay={i * 40}>
+                <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none">
+                  <span class="font-semibold text-base lg:text-lg">{f.q}</span>
+                  <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-200 group-open:rotate-45 text-xl leading-none" style="background: rgba(121,27,70,0.10); color: #791b46;" aria-hidden="true">+</span>
+                </summary>
+                <div class="px-6 pb-6 -mt-2">
+                  <p class="text-base leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">{f.a}</p>
+                </div>
+              </details>
+            ))}
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ENLAZADO INTERNO · control horario por ciudad + artículos
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row gx-0 gy-12 lg:gy-0">
+        <!-- Ciudades -->
+        <div class="lg:col-7 lg:pe-12">
+          <h2 class="h5 font-bold mb-2">Control horario por ciudad</h2>
+          <p class="text-sm mb-6" style="color: rgba(16,25,40,0.6);">Soporte cercano y contenido específico para empresas de Extremadura.</p>
+          <div class="flex flex-wrap gap-2.5">
+            {ciudades.map((c) => (
+              <a href={`/local/${c.s}`} class="text-sm px-4 py-2 rounded-full border transition-colors hover:border-primary hover:text-primary" style="border-color: rgba(16,25,40,0.12); color: rgba(16,25,40,0.7);">
+                {c.n}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Artículos -->
+        <div class="lg:col-5">
+          <h2 class="h5 font-bold mb-2">Sigue leyendo sobre registro horario</h2>
+          <p class="text-sm mb-6" style="color: rgba(16,25,40,0.6);">Guías sobre la normativa 2026 y cómo cumplirla.</p>
+          <ul class="flex flex-col gap-3">
+            {articulos.map((a) => (
+              <li>
+                <a href={`/blog/${a.s}`} class="flex items-start gap-3 group">
+                  <span class="text-primary mt-1 flex-shrink-0" aria-hidden="true">→</span>
+                  <span class="text-sm font-medium group-hover:text-primary transition-colors" style="color: rgba(16,25,40,0.78);">{a.t}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

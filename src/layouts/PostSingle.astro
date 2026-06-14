@@ -9,6 +9,7 @@ import ImageMod from "./components/ImageMod.astro";
 import Share from "./components/Share.astro";
 import CallToAction from "./partials/CallToAction.astro";
 import PageHeader from "./partials/PageHeader.astro";
+import config from "@/config/config.json";
 
 type Props = {
   post: CollectionEntry<"blog">;
@@ -23,7 +24,32 @@ const { Content } = await render(post);
 const { title, description, image, date, author } = post.data;
 
 const blogData = { author, date };
+
+// ── Schema BlogPosting (cubre blog y local) ──────────────────────────────
+const base = config.site.base_url;
+const postUrl = new URL(Astro.url.pathname, base).href;
+const imageUrl = image
+  ? new URL(image, base).href
+  : `${base}${config.metadata.meta_image}`;
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description,
+  image: imageUrl,
+  datePublished:
+    date instanceof Date ? date.toISOString() : new Date(date).toISOString(),
+  author: { "@type": "Person", name: author?.name || "Drenpos" },
+  publisher: {
+    "@type": "Organization",
+    name: "Drenpos",
+    logo: { "@type": "ImageObject", url: `${base}/images/logo.svg` },
+  },
+  mainEntityOfPage: { "@type": "WebPage", "@id": postUrl },
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 
 <PageHeader title={title} blogData={blogData} />
 

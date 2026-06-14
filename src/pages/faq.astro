@@ -3,6 +3,7 @@ import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import FaqPertial from "@/partials/Faq.astro";
 import PageHeader from "@/partials/PageHeader.astro";
+import { plainify } from "@/lib/utils/textConverter";
 import { getEntry, type CollectionEntry } from "astro:content";
 
 const changelog = (await getEntry(
@@ -10,6 +11,20 @@ const changelog = (await getEntry(
   "-index"
 )) as CollectionEntry<"changelog">;
 const { title, description, meta_title, image, hero } = changelog.data;
+
+// ── Schema FAQPage (rich results + AEO) ──────────────────────────────────
+const faq = (await getEntry("faq", "faq")) as CollectionEntry<"faq">;
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: (faq.data.list || [])
+    .filter((i: { title?: string; description?: string }) => i.title && i.description)
+    .map((i: { title: string; description: string }) => ({
+      "@type": "Question",
+      name: plainify(i.title),
+      acceptedAnswer: { "@type": "Answer", text: plainify(i.description) },
+    })),
+};
 ---
 
 <Base
@@ -18,6 +33,7 @@ const { title, description, meta_title, image, hero } = changelog.data;
   description={description}
   image={image}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <PageHeader title={hero.title} description={hero.description} />
   <div class="section-up pb-0">
     <FaqPertial />
