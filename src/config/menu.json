@@ -20,6 +20,10 @@
         {
           "name": "Control Horario",
           "url": "/control-horario"
+        },
+        {
+          "name": "Almacén y Tienda",
+          "url": "/software-almacen-tienda"
         }
       ]
     },

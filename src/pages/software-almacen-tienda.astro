@@ -1,0 +1,539 @@
+---
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+
+// ════════════════════════════════════════════════════════════════════════
+//  Landing · Software de almacén y tienda (optimizada SEO)
+//  Punto fuerte de Drenpos: gestión de almacén. + TPV de tienda.
+//  Capturas (reemplazar placeholders por reales):
+//    almacen-tienda/01-almacen-ubicaciones.png
+//    almacen-tienda/02-lotes-caducidad.png
+//    almacen-tienda/03-tpv-tienda.png
+//    almacen-tienda/04-pistola-traslados.png
+//  Reutiliza también: /images/power/stock.png, /images/ventas.png
+// ════════════════════════════════════════════════════════════════════════
+
+const CANONICAL = "https://www.drenpos.com/software-almacen-tienda";
+
+// Capacidades de ALMACÉN (el punto fuerte)
+const almacen = [
+  {
+    icon: "📍",
+    title: "Multialmacén con ubicaciones",
+    body: "Varios almacenes, cada uno con sus ubicaciones (estantes, pasillos, zonas). Imprime un QR por ubicación, pégalo en la estantería y la pistola sabe exactamente de dónde sale o entra cada artículo.",
+  },
+  {
+    icon: "🏷️",
+    title: "Lotes y trazabilidad total",
+    body: "Cada lote registra fecha de fabricación, caducidad, proveedor de origen y clientes de destino. Ante una alerta sanitaria localizas el lote y sus destinatarios en segundos.",
+  },
+  {
+    icon: "🔄",
+    title: "Salidas FIFO, LIFO y FEFO",
+    body: "Elige el método de salida por artículo y el sistema selecciona el lote solo: FIFO (primero en entrar, primero en salir), LIFO (último en entrar, primero en salir) o FEFO (primero en caducar, primero en salir). Con alertas de caducidad configurables encima.",
+  },
+  {
+    icon: "📦",
+    title: "Unidades de medida múltiples",
+    body: "Botella = 1, caja = 6, palet = 96: cada unidad con su precio y su código de barras. La pistola distingue sola cuál estás procesando.",
+  },
+  {
+    icon: "🔫",
+    title: "Traslados con pistola lectora",
+    body: "Flujo lineal pensado para operarios: escanea ubicación origen → producto → cantidad → ubicación destino. Sin tocar la pantalla, con auditoría completa del movimiento.",
+  },
+  {
+    icon: "🚨",
+    title: "Alertas de stock mínimo y máximo",
+    body: "Define mínimos y máximos por artículo y recibe avisos automáticos. Menos roturas, menos sobrestock, inventarios que cuadran.",
+  },
+];
+
+// Capacidades de TIENDA / TPV
+const tienda = [
+  {
+    icon: "🛒",
+    title: "TPV de tienda integrado",
+    body: "Grupos de artículos, búsqueda global, líneas manuales, múltiples cuentas simultáneas y asistente de cambio. El stock se descuenta solo del inventario, sin doble gestión.",
+  },
+  {
+    icon: "🍽️",
+    title: "TPV de restaurante",
+    body: "Gestión de mesas, múltiples mesas abiertas a la vez y pantalla de cocina/barra que recibe los pedidos en tiempo real según familias de productos.",
+  },
+  {
+    icon: "💶",
+    title: "Cierre de caja",
+    body: "Al cerrar el turno, desglose por método de pago, cuánto debería haber en caja, ajuste y reporte imprimible. Historial y reimpresión de cualquier ticket.",
+  },
+  {
+    icon: "🧾",
+    title: "Facturación Verifactu",
+    body: "De ticket a factura con QR verificable en la AEAT y hash encadenado. Listo para la normativa sin que configures nada.",
+  },
+  {
+    icon: "💬",
+    title: "Envío por WhatsApp y correo",
+    body: "Manda facturas y albaranes al cliente por WhatsApp o email directamente desde el sistema, sin apps de terceros.",
+  },
+  {
+    icon: "📸",
+    title: "OCR de facturas de proveedor",
+    body: "Foto de un albarán o factura → el sistema detecta líneas y datos, crea el proveedor si no existe y genera el documento. Menos tecleo, menos errores.",
+  },
+];
+
+// Flujo de ventas
+const flujo = ["Oferta", "Pedido", "Albarán", "Factura"];
+
+// Casos de uso (del contexto real)
+const casos = [
+  {
+    tag: "Tienda de alimentación con frescos",
+    icon: "🥫",
+    body: "Embutidos, mermeladas y platos preparados gestionados por lote y caducidad. 15 días antes de caducar, llega una alerta con producto, ubicación y unidades. FEFO asegura vender primero lo que antes caduca, y ante una inspección de Sanidad el rastreo de lote muestra en segundos a qué clientes se vendió.",
+  },
+  {
+    tag: "Distribuidor con varios almacenes",
+    icon: "🚚",
+    body: "El traslado diario del almacén central a tienda se hace con pistola en 5 minutos: descuenta del central y suma en tienda automáticamente, con auditoría completa. A fin de mes, remesas SEPA generan el XML para el banco sin exportaciones manuales.",
+  },
+  {
+    tag: "Bar con cocina y barra",
+    icon: "🍻",
+    body: "El camarero toma el pedido en el TPV restaurante y lo asigna a la mesa. Los platos van a la pantalla de cocina y las bebidas a la de barra. Al cobrar, el stock ya se ha descontado del inventario. Cierre de caja con un clic.",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Qué es un software de gestión de almacén?",
+    a: "Es una herramienta que controla en tiempo real las existencias de uno o varios almacenes: entradas, salidas, ubicaciones, lotes y traslados. Drenpos añade trazabilidad completa, alertas de caducidad y stock, y escaneo con pistola lectora, de modo que sabes en todo momento qué tienes, dónde y en qué estado.",
+  },
+  {
+    q: "¿Sirve Drenpos para una tienda física?",
+    a: "Sí. Incluye TPV de tienda y de restaurante integrado con el inventario: cada venta descuenta stock automáticamente, sin doble gestión. Tienes cierre de caja, múltiples cuentas, métodos de pago configurables y facturación Verifactu desde el mismo sistema.",
+  },
+  {
+    q: "¿Gestiona lotes y caducidades para productos alimentarios?",
+    a: "Sí. Cada lote guarda fecha de fabricación y caducidad, proveedor de origen y clientes de destino. El sistema avisa antes de que caduquen los lotes y aplica FIFO, LIFO o FEFO automáticamente. La trazabilidad cumple el Reglamento (CE) 178/2002 de trazabilidad alimentaria.",
+  },
+  {
+    q: "¿Puedo trabajar con pistola lectora de códigos de barras?",
+    a: "Sí. Puedes añadir líneas a los documentos y hacer traslados escaneando con pistola, y cada artículo admite varios códigos de barras (uno por unidad de medida: botella, caja, palet). También puedes usar la cámara del móvil u ordenador.",
+  },
+  {
+    q: "¿Funciona con varios almacenes y tiendas a la vez?",
+    a: "Sí. Puedes tener múltiples almacenes con sus ubicaciones y mover stock entre ellos con auditoría completa. No hay límite de sesiones simultáneas, así que varios usuarios trabajan a la vez desde distintos dispositivos.",
+  },
+  {
+    q: "¿Cuánto cuesta?",
+    a: "El plan Pro, con módulo de Inventario incluido, cuesta 29 €/mes (sin IVA) e incluye 3 usuarios. El plan Full añade TPV por 39 €/mes. Sin permanencia, sin coste de instalación y con actualizaciones gratis.",
+  },
+];
+
+// Enlazado interno
+const ciudades = [
+  { n: "Mérida", s: "sistema-facturacion-erp-merida" },
+  { n: "Badajoz", s: "sistema-facturacion-erp-badajoz" },
+  { n: "Cáceres", s: "sistema-facturacion-erp-caceres" },
+  { n: "Don Benito", s: "sistema-facturacion-erp-don-benito" },
+  { n: "Almendralejo", s: "sistema-facturacion-erp-almendralejo" },
+  { n: "Villanueva de la Serena", s: "sistema-facturacion-erp-villanueva" },
+];
+const supermercados = [
+  { n: "Mérida", s: "software-supermercados-mérida-monitorizacion" },
+  { n: "Badajoz", s: "software-supermercados-badajoz-monitorizacion" },
+  { n: "Cáceres", s: "software-supermercados-cáceres-monitorizacion" },
+  { n: "Don Benito", s: "software-supermercados-don-benito-monitorizacion" },
+  { n: "Almendralejo", s: "software-supermercados-almendralejo-monitorizacion" },
+  { n: "Zafra", s: "software-supermercados-zafra-monitorizacion" },
+];
+
+// ── Datos estructurados ──────────────────────────────────────────────────
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
+    { "@type": "ListItem", position: 3, name: "Software de almacén y tienda", item: CANONICAL },
+  ],
+};
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Drenpos · Almacén y TPV de tienda",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web, iOS, Android (PWA)",
+  url: CANONICAL,
+  description:
+    "Software de gestión de almacén y TPV de tienda para pymes: multialmacén con ubicaciones, lotes y trazabilidad, FIFO/LIFO/FEFO, alertas de caducidad, traslados con pistola, TPV de tienda y restaurante, y facturación Verifactu.",
+  offers: {
+    "@type": "Offer",
+    price: "29.00",
+    priceCurrency: "EUR",
+    description: "Plan Pro con módulo de Inventario incluido, desde 29 €/mes (sin IVA).",
+    url: "https://www.drenpos.com/pricing",
+  },
+  featureList: [
+    "Gestión multialmacén con ubicaciones y QR",
+    "Lotes, caducidad y trazabilidad total",
+    "FIFO / LIFO / FEFO automático",
+    "Traslados con pistola lectora",
+    "Unidades de medida múltiples",
+    "TPV de tienda y restaurante",
+    "Cierre de caja y facturación Verifactu",
+  ],
+  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
+};
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+---
+
+<Base
+  title="Software de Almacén y Tienda · Drenpos"
+  meta_title="Software de Almacén y TPV para Tiendas | Drenpos"
+  description="Software de gestión de almacén y tienda para pymes: multialmacén, ubicaciones, lotes con FIFO/LIFO/FEFO, alertas de caducidad, traslados con pistola y TPV con Verifactu. Pide demo gratis."
+  canonical={CANONICAL}
+  image="/images/power/stock.png"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="section-sm pb-0 relative z-10 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/images/grainy.svg" width="1440" height="900" alt="" aria-hidden="true" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/funcionalidades" class="hover:text-primary">Funcionalidades</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Almacén y tienda</span>
+      </nav>
+
+      <div class="row gx-0 gy-12 lg:gy-0 items-center">
+        <div class="lg:col-6" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Nuestro punto más fuerte
+          </span>
+
+          <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
+            Software de <span class="text-primary">almacén y tienda</span> que cuadra el stock y vende sin fricción
+          </h1>
+          <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
+            Multialmacén con ubicaciones, lotes, caducidad y trazabilidad total,
+            traslados con pistola y un TPV de tienda y restaurante integrado con
+            facturación Verifactu. Todo en un solo sistema, sin duplicar datos.
+          </p>
+
+          <ul class="flex flex-wrap gap-4 mb-10">
+            <li data-aos="fade-up-sm" data-aos-delay="100">
+              <a href="/contact" class="btn btn-dark">
+                Pedir demo gratuita
+                <span class="icon-wrapper">
+                  <span class="icon"><svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                  <span class="icon" aria-hidden="true"><svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                </span>
+              </a>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="150">
+              <a href="/pricing" class="btn btn-light">Ver precios</a>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Lotes · FIFO · LIFO · FEFO
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              TPV integrado
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Pistola lectora
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="relative px-4 lg:px-0 pt-10 pb-10">
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
+            <div class="rounded-2xl overflow-hidden relative z-10" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
+              <img src="/images/power/stock.png" alt="Panel de control de stock y almacén de Drenpos" width="720" height="480" class="w-full h-auto block" fetchpriority="high" />
+            </div>
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0" style="background: #fef3c7;">⏰</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Lote caduca en 15 días</p>
+                <p class="text-xs" style="color: #9ca3af;">Estante A-3 · 48 uds</p>
+              </div>
+            </div>
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #dcfce7;">📍</div>
+              <div>
+                <p class="text-xs font-bold text-dark">3 almacenes</p>
+                <p class="text-xs" style="color: #9ca3af;">stock en tiempo real</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ DEFINICIÓN CITABLE ═══════════════ -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h4 font-bold mb-4">Almacén y tienda, en un único sistema</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            Drenpos une la <strong>gestión de almacén</strong> (multialmacén,
+            ubicaciones, lotes, caducidad y trazabilidad) con un <strong>TPV de
+            tienda y restaurante</strong> y la facturación. Cada venta descuenta
+            stock automáticamente y cada movimiento queda auditado, así que dejas
+            de cuadrar inventarios a mano y de reescribir datos entre programas.
+            Es el punto donde Drenpos supera a cualquier alternativa de su rango
+            de precio.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ BLOQUE ALMACÉN ═══════════════ -->
+  <section class="section pt-10 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Gestión de almacén</span>
+        <h2 class="h3 font-bold mb-4">Control total de tu stock, en tiempo real</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Lo que necesita un almacén que se toma en serio su inventario: ubicaciones, lotes, caducidad y escaneo con pistola.
+        </p>
+      </div>
+
+      <div class="row g-4 mb-16">
+        {almacen.map((f, i) => (
+          <div class="col-12 md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 80}>
+            <div class="border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(121,27,70,0.08);">{f.icon}</div>
+              <h3 class="h6 font-semibold mb-2">{f.title}</h3>
+              <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{f.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Showcase almacén -->
+      <div class="row gx-0 gy-8 lg:gy-0 items-center">
+        <div class="lg:col-6 lg:pe-10" data-aos="fade-up-sm">
+          <div class="rounded-2xl overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.08);">
+            <img src="/images/funcionalidades/almacen-tienda/01-almacen-ubicaciones.png" alt="Gestión de almacenes y ubicaciones con QR en Drenpos" width="640" height="420" class="w-full h-auto block" loading="lazy" />
+          </div>
+        </div>
+        <div class="lg:col-6 lg:ps-10 lg:mt-0 mt-8" data-aos="fade-up-sm" data-aos-delay="150">
+          <div class="rounded-2xl overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.08);">
+            <img src="/images/funcionalidades/almacen-tienda/02-lotes-caducidad.png" alt="Control de lotes con métodos de salida FIFO, LIFO y FEFO y alertas de caducidad" width="640" height="420" class="w-full h-auto block" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FLUJO DE VENTAS ═══════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="rounded-[28px] p-8 lg:p-12" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
+        <div class="text-center mb-8">
+          <h2 class="h4 font-bold mb-2">De la oferta a la factura, en un flujo continuo</h2>
+          <p class="text-base mb-0" style="color: rgba(16,25,40,0.65);">La información se arrastra entre documentos. Copiar un albarán a factura es un clic.</p>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-3 lg:gap-5">
+          {flujo.map((paso, i) => (
+            <>
+              <div class="rounded-2xl px-6 py-4 font-semibold text-text-dark" style="background: white; box-shadow: 0 6px 18px rgba(0,0,0,0.06);">{paso}</div>
+              {i < flujo.length - 1 && <span class="text-primary text-2xl font-bold" aria-hidden="true">→</span>}
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ BLOQUE TIENDA / TPV ═══════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Tienda y punto de venta</span>
+        <h2 class="h3 font-bold mb-4">Vende en tienda con el stock siempre al día</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          TPV de tienda y restaurante integrado con el inventario y la facturación. Cada venta actualiza el stock sin que hagas nada.
+        </p>
+      </div>
+
+      <div class="row g-4 mb-16">
+        {tienda.map((f, i) => (
+          <div class="col-12 md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 80}>
+            <div class="border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(211,167,118,0.15);">{f.icon}</div>
+              <h3 class="h6 font-semibold mb-2">{f.title}</h3>
+              <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{f.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="row gx-0 gy-8 lg:gy-0 items-center">
+        <div class="lg:col-6 lg:pe-10" data-aos="fade-up-sm">
+          <div class="rounded-2xl overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.08);">
+            <img src="/images/funcionalidades/almacen-tienda/03-tpv-tienda.png" alt="TPV de tienda de Drenpos con grupos de artículos y cierre de caja" width="640" height="420" class="w-full h-auto block" loading="lazy" />
+          </div>
+        </div>
+        <div class="lg:col-6 lg:ps-10 lg:mt-0 mt-8" data-aos="fade-up-sm" data-aos-delay="150">
+          <div class="rounded-2xl overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.08);">
+            <img src="/images/funcionalidades/almacen-tienda/04-pistola-traslados.png" alt="Traslados de stock entre almacenes con pistola lectora" width="640" height="420" class="w-full h-auto block" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CUMPLIMIENTO TRAZABILIDAD ═══════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="rounded-[28px] overflow-hidden" style="background: rgba(16,25,40,0.97);">
+        <div class="row gx-0 gy-8 lg:gy-0 items-center p-10 lg:p-14">
+          <div class="lg:col-7 lg:pe-10">
+            <span class="text-white bg-white/10 px-3 py-1 inline-block rounded-full uppercase text-xs font-medium mb-5 tracking-wide" data-aos="fade-up-sm">Cumplimiento legal</span>
+            <h2 class="h3 font-bold mb-4 text-white leading-tight" data-aos="fade-up-sm">
+              Trazabilidad de lotes <span style="color: #f9b27c;">que te ahorra una sanción</span>
+            </h2>
+            <p class="text-lg leading-relaxed mb-0" style="color: rgba(255,255,255,0.78);" data-aos="fade-up-sm">
+              Si trabajas con productos alimentarios o farmacéuticos, la
+              trazabilidad por lotes es obligatoria (Reglamento CE 178/2002). Una
+              inspección sin registros puede costar más de 600.000 € en casos
+              graves. Drenpos registra origen y destino de cada lote y localiza
+              los afectados en segundos.
+            </p>
+          </div>
+          <div class="lg:col-5">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="rounded-2xl p-5 text-center" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
+                <p class="text-xl font-bold mb-1" style="color: #f9b27c;">FIFO·LIFO·FEFO</p>
+                <p class="text-xs" style="color: rgba(255,255,255,0.7);">Métodos de salida configurables</p>
+              </div>
+              <div class="rounded-2xl p-5 text-center" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
+                <p class="text-2xl font-bold mb-1" style="color: #f9b27c;">100%</p>
+                <p class="text-xs" style="color: rgba(255,255,255,0.7);">Trazabilidad origen-destino</p>
+              </div>
+              <div class="rounded-2xl p-5 text-center" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
+                <p class="text-2xl font-bold mb-1" style="color: #f9b27c;">Segundos</p>
+                <p class="text-xs" style="color: rgba(255,255,255,0.7);">Localizar un lote y sus clientes</p>
+              </div>
+              <div class="rounded-2xl p-5 text-center" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
+                <p class="text-2xl font-bold mb-1" style="color: #f9b27c;">Auditoría</p>
+                <p class="text-xs" style="color: rgba(255,255,255,0.7);">Histórico completo de movimientos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CASOS DE USO ═══════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Casos de uso</span>
+        <h2 class="h3 font-bold mb-4">Pensado para cómo trabajas de verdad</h2>
+      </div>
+      <div class="row g-5">
+        {casos.map((c, i) => (
+          <div class="col-12 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+            <div class="border rounded-[24px] p-8 h-full" style="border-color: rgba(16,25,40,0.1); background: #fff;">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(121,27,70,0.08);">{c.icon}</div>
+              <p class="text-xs font-semibold uppercase tracking-wide mb-3" style="color: #b45309;">{c.tag}</p>
+              <p class="text-base leading-relaxed mb-0" style="color: rgba(16,25,40,0.7);">{c.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FAQ ═══════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10 text-center mb-12" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Preguntas frecuentes</span>
+          <h2 class="h3 font-bold mb-3">Almacén y tienda: lo que más nos preguntan</h2>
+          <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+            Si tu duda no está aquí, <a href="/contact" class="text-primary font-semibold underline">escríbenos</a>.
+          </p>
+        </div>
+        <div class="lg:col-10">
+          <div class="flex flex-col gap-3">
+            {faqs.map((f, i) => (
+              <details class="group rounded-2xl border bg-white" style="border-color: rgba(16,25,40,0.1);" data-aos="fade-up-sm" data-aos-delay={i * 40}>
+                <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none">
+                  <span class="font-semibold text-base lg:text-lg">{f.q}</span>
+                  <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-200 group-open:rotate-45 text-xl leading-none" style="background: rgba(121,27,70,0.10); color: #791b46;" aria-hidden="true">+</span>
+                </summary>
+                <div class="px-6 pb-6 -mt-2">
+                  <p class="text-base leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">{f.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ENLAZADO INTERNO ═══════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row gx-0 gy-12 lg:gy-0">
+        <div class="lg:col-6 lg:pe-12">
+          <h2 class="h5 font-bold mb-2">Sistema de facturación y ERP por ciudad</h2>
+          <p class="text-sm mb-6" style="color: rgba(16,25,40,0.6);">Soporte cercano para empresas de Extremadura.</p>
+          <div class="flex flex-wrap gap-2.5">
+            {ciudades.map((c) => (
+              <a href={`/local/${c.s}`} class="text-sm px-4 py-2 rounded-full border transition-colors hover:border-primary hover:text-primary" style="border-color: rgba(16,25,40,0.12); color: rgba(16,25,40,0.7);">{c.n}</a>
+            ))}
+          </div>
+        </div>
+        <div class="lg:col-6">
+          <h2 class="h5 font-bold mb-2">Software para supermercados por ciudad</h2>
+          <p class="text-sm mb-6" style="color: rgba(16,25,40,0.6);">Monitorización de stock, ventas y caja para alimentación.</p>
+          <div class="flex flex-wrap gap-2.5">
+            {supermercados.map((c) => (
+              <a href={`/local/${c.s}`} class="text-sm px-4 py-2 rounded-full border transition-colors hover:border-primary hover:text-primary" style="border-color: rgba(16,25,40,0.12); color: rgba(16,25,40,0.7);">{c.n}</a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>
