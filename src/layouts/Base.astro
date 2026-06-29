@@ -96,9 +96,7 @@ const resolvedDescription = plainify(
   description || excerpt || config.metadata.meta_description,
 );
 
-const resolvedTitle = plainify(
-  meta_title || title || config.site.title,
-);
+const resolvedTitle = plainify(meta_title || title || config.site.title);
 
 const ogImageUrl = `${siteUrl}${image || config.metadata.meta_image}`;
 const ogImageAlt = image_alt || resolvedTitle;
@@ -293,7 +291,7 @@ const jsonLd = {
         f.parentNode.insertBefore(j, f);
       })(window, document);
     </script>
-
+    <meta name="msvalidate.01" content="1C54C04B0BDB8940EC2C717A0CAAE934" />
     <!-- favicon -->
     <link rel="shortcut icon" href={config.site.favicon} />
     <!-- theme meta -->
@@ -408,7 +406,10 @@ const jsonLd = {
     <!-- Open Graph -->
     <meta property="og:title" content={resolvedTitle} />
     <meta property="og:description" content={resolvedDescription} />
-    <meta property="og:type" content={type === "article" ? "article" : "website"} />
+    <meta
+      property="og:type"
+      content={type === "article" ? "article" : "website"}
+    />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:site_name" content="Drenpos" />
     <meta property="og:locale" content="es_ES" />
