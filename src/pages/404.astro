@@ -1,10 +1,17 @@
 ---
+export const prerender = true;
+
 import ImageMod from "@/components/ImageMod.astro";
 import DynamicIcon from "@/helpers/DynamicIcon";
 import Base from "@/layouts/Base.astro";
+import FuzzyRedirect from "@jdevalk/astro-seo-graph/FuzzyRedirect.astro";
+
+// Cloudflare's static-asset router serves /404.html with a 404 status
+// when no other route matches, so explicit response.status isn't needed
+// here under the prerender + cloudflare adapter combination.
 ---
 
-<Base title="Page Not Found">
+<Base title="Página no encontrada" noindex>
   <section class="section text-center relative z-10">
     <div class="container" data-aos="fade-up-sm">
       <div class="row justify-center">
@@ -12,18 +19,24 @@ import Base from "@/layouts/Base.astro";
           <ImageMod
             class="mx-auto mb-16 block w-[480px]"
             src="/images/404.png"
-            alt="404 image"
+            alt="Imagen 404 — página no encontrada"
             width={480}
             height={480}
           />
           <div class="content">
+            <h1>Página no encontrada</h1>
             <p>
-              Your Trusted Partner in Data Protection with Cutting-Edge
-              Solutions for <br /> Comprehensive Data Security.
+              La URL que buscas no existe o se ha movido.
             </p>
+            <FuzzyRedirect
+              threshold={0.55}
+              autoRedirectThreshold={0.88}
+              sitemapUrl="/sitemap-index.xml"
+              suggestionText="¿Quizás quisiste decir"
+            />
           </div>
           <a href="/" class="btn btn-dark mt-8">
-            Back to home
+            Volver al inicio
             <span class="icon-wrapper">
               <span class="icon">
                 <DynamicIcon icon={"FaArrowRight"} />
@@ -39,7 +52,6 @@ import Base from "@/layouts/Base.astro";
   </section>
 </Base>
 
-<!-- Add the grainy background -->
 <div class="absolute inset-0 z-0">
   <img
     src="/images/grainy.svg"

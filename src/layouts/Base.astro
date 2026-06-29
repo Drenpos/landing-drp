@@ -1,6 +1,7 @@
 ---
 import TwSizeIndicator from "@/components/TwSizeIndicator.astro";
 import config from "@/config/config.json";
+import social from "@/config/social.json";
 import theme from "@/config/theme.json";
 import { plainify } from "@/lib/utils/textConverter";
 import Footer from "@/partials/Footer.astro";
@@ -32,19 +33,234 @@ export interface Props {
   title?: string;
   meta_title?: string;
   description?: string;
+  excerpt?: string;
   image?: string;
+  image_alt?: string;
   noindex?: boolean;
   canonical?: string;
+  type?: "website" | "article";
+  published_date?: string | Date;
+  modified_date?: string | Date;
+  author?: { name?: string; url?: string };
+  keywords?: string[];
+  breadcrumbs?: Array<{ name: string; item: string }>;
 }
 
-// destructure frontmatter
-const { title, meta_title, description, image, noindex, canonical } =
-  Astro.props;
+const {
+  title,
+  meta_title,
+  description,
+  excerpt,
+  image,
+  image_alt,
+  noindex,
+  canonical,
+  type = "website",
+  published_date,
+  modified_date,
+  author,
+  keywords,
+  breadcrumbs,
+} = Astro.props;
 
-// canonical absoluto: usa la prop si se pasa, si no la genera desde la URL actual
-const canonicalURL = canonical
-  ? canonical
-  : new URL(Astro.url.pathname, config.site.base_url).href;
+const siteUrl = config.site.base_url;
+
+// Strip tracking params from canonical
+const TRACKING_PARAMS = new Set([
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_content",
+  "utm_term",
+  "gclid",
+  "fbclid",
+  "msclkid",
+  "mc_cid",
+  "mc_eid",
+  "ref",
+  "ref_src",
+  "yclid",
+]);
+
+function buildCanonical(): string {
+  if (canonical) return canonical;
+  const url = new URL(Astro.url.pathname, siteUrl);
+  for (const param of TRACKING_PARAMS) url.searchParams.delete(param);
+  return url.href.replace(/\?$/, "");
+}
+
+const canonicalURL = buildCanonical();
+
+// Description fallback chain: description → excerpt → meta_description
+const resolvedDescription = plainify(
+  description || excerpt || config.metadata.meta_description,
+);
+
+const resolvedTitle = plainify(
+  meta_title || title || config.site.title,
+);
+
+const ogImageUrl = `${siteUrl}${image || config.metadata.meta_image}`;
+const ogImageAlt = image_alt || resolvedTitle;
+
+const pubDate = published_date ? new Date(published_date).toISOString() : null;
+const modDate = modified_date ? new Date(modified_date).toISOString() : pubDate;
+
+// Build JSON-LD @graph per route
+const orgId = `${siteUrl}/#organization`;
+const websiteId = `${siteUrl}/#website`;
+const pageId = `${canonicalURL}#webpage`;
+const articleId = `${canonicalURL}#article`;
+const imageId = `${canonicalURL}#primaryimage`;
+
+const sameAs = social.main.map((s) => s.link);
+
+const graph: Record<string, unknown>[] = [
+  {
+    "@type": "Organization",
+    "@id": orgId,
+    name: "Drenpos",
+    url: siteUrl,
+    logo: {
+      "@type": "ImageObject",
+      url: `${siteUrl}${config.site.logo}`,
+      width: Number(config.site.logo_width),
+      height: Number(config.site.logo_height),
+    },
+    description:
+      "Plataforma ERP SaaS modular para pymes y autónomos en España. Gestión de inventario, ventas, facturación electrónica Verifactu y control horario.",
+    sameAs,
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      url: `${siteUrl}/contact`,
+      availableLanguage: ["Spanish", "es"],
+    },
+    areaServed: { "@type": "Country", name: "España" },
+    knowsAbout: [
+      "ERP",
+      "Facturación electrónica",
+      "Verifactu",
+      "Control horario",
+      "TPV",
+      "Gestión de inventario",
+      "Software para pymes",
+    ],
+    publishingPrinciples: `${siteUrl}/legal/aviso-legal`,
+    copyrightHolder: { "@id": orgId },
+    copyrightYear: new Date().getFullYear(),
+  },
+  {
+    "@type": "SoftwareApplication",
+    "@id": `${siteUrl}/#software`,
+    name: "Drenpos ERP",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    url: siteUrl,
+    description:
+      "ERP SaaS modular para pymes españolas. Incluye almacén multialmacén, TPV, facturación electrónica con Verifactu (AEAT), control horario laboral y módulo médico. Sin costes por uso. Soporte humano incluido.",
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "EUR",
+      description: "Suscripción mensual plana sin costes adicionales por uso",
+      url: `${siteUrl}/pricing`,
+    },
+    provider: { "@id": orgId },
+    featureList: [
+      "Gestión de inventario multialmacén",
+      "TPV (Terminal Punto de Venta)",
+      "Facturación electrónica Verifactu",
+      "Control horario laboral",
+      "Gestión de pedidos y albaranes",
+      "Trazabilidad de lotes",
+      "Módulo sector médico",
+      "Soporte humano incluido",
+    ],
+  },
+  {
+    "@type": "WebSite",
+    "@id": websiteId,
+    url: siteUrl,
+    name: "Drenpos",
+    description:
+      "Ecosistema de gestión empresarial modular para pymes en España",
+    publisher: { "@id": orgId },
+    inLanguage: "es-ES",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${siteUrl}/blog/?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  },
+  {
+    "@type": "WebPage",
+    "@id": pageId,
+    url: canonicalURL,
+    name: resolvedTitle,
+    description: resolvedDescription,
+    isPartOf: { "@id": websiteId },
+    inLanguage: "es-ES",
+    ...(image && { primaryImageOfPage: { "@id": imageId } }),
+    ...(modDate && { dateModified: modDate }),
+    ...(pubDate && { datePublished: pubDate }),
+  },
+];
+
+if (image) {
+  graph.push({
+    "@type": "ImageObject",
+    "@id": imageId,
+    url: ogImageUrl,
+    contentUrl: ogImageUrl,
+    caption: ogImageAlt,
+  });
+}
+
+if (breadcrumbs && breadcrumbs.length > 0) {
+  graph.push({
+    "@type": "BreadcrumbList",
+    "@id": `${canonicalURL}#breadcrumb`,
+    itemListElement: breadcrumbs.map((b, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: b.name,
+      item: b.item.startsWith("http") ? b.item : `${siteUrl}${b.item}`,
+    })),
+  });
+}
+
+if (type === "article" && pubDate) {
+  graph.push({
+    "@type": "BlogPosting",
+    "@id": articleId,
+    mainEntityOfPage: { "@id": pageId },
+    headline: resolvedTitle,
+    description: resolvedDescription,
+    datePublished: pubDate,
+    dateModified: modDate || pubDate,
+    inLanguage: "es-ES",
+    isPartOf: { "@id": websiteId },
+    publisher: { "@id": orgId },
+    ...(image && { image: { "@id": imageId } }),
+    ...(keywords && keywords.length > 0 && { keywords: keywords.join(", ") }),
+    ...(author?.name && {
+      author: {
+        "@type": "Person",
+        name: author.name,
+        ...(author.url && { url: author.url }),
+      },
+    }),
+    url: canonicalURL,
+  });
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": graph,
+};
 ---
 
 <!doctype html>
@@ -154,145 +370,71 @@ const canonicalURL = canonical
     />
 
     <!-- title -->
-    <title>
-      {plainify(meta_title ? meta_title : title ? title : config.site.title)}
-    </title>
+    <title>{resolvedTitle}</title>
 
-    <!-- canonical url -->
-    <link rel="canonical" href={canonicalURL} />
+    <!-- canonical url (suppressed when noindex per Google guidance) -->
+    {!noindex && <link rel="canonical" href={canonicalURL} />}
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-    <!-- noindex robots -->
-    {noindex && <meta name="robots" content="noindex,nofollow" />}
+    <!-- robots meta -->
+    {
+      noindex ? (
+        <meta name="robots" content="noindex,nofollow" />
+      ) : (
+        <meta
+          name="robots"
+          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+        />
+      )
+    }
 
     <!-- meta-description -->
-    <meta
-      name="description"
-      content={plainify(
-        description ? description : config.metadata.meta_description,
-      )}
-    />
+    <meta name="description" content={resolvedDescription} />
 
     <ClientRouter />
 
     <!-- author from config.json -->
     <meta name="author" content={config.metadata.meta_author} />
 
-    <!-- og-title -->
-    <meta
-      property="og:title"
-      content={plainify(
-        meta_title ? meta_title : title ? title : config.site.title,
-      )}
+    <!-- RSS alternates -->
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Drenpos Blog"
+      href={`${siteUrl}/rss.xml`}
     />
 
-    <!-- og-description -->
-    <meta
-      property="og:description"
-      content={plainify(
-        description ? description : config.metadata.meta_description,
-      )}
-    />
-    <meta property="og:type" content="website" />
+    <!-- Open Graph -->
+    <meta property="og:title" content={resolvedTitle} />
+    <meta property="og:description" content={resolvedDescription} />
+    <meta property="og:type" content={type === "article" ? "article" : "website"} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:site_name" content="Drenpos" />
     <meta property="og:locale" content="es_ES" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    {
+      type === "article" && pubDate && (
+        <meta property="article:published_time" content={pubDate} />
+      )
+    }
+    {
+      type === "article" && modDate && (
+        <meta property="article:modified_time" content={modDate} />
+      )
+    }
+    {
+      type === "article" && author?.name && (
+        <meta property="article:author" content={author.name} />
+      )
+    }
 
-    <!-- twitter-title -->
-    <meta
-      name="twitter:title"
-      content={plainify(
-        meta_title ? meta_title : title ? title : config.site.title,
-      )}
-    />
-
-    <!-- twitter-description -->
-    <meta
-      name="twitter:description"
-      content={plainify(
-        description ? description : config.metadata.meta_description,
-      )}
-    />
-
-    <!-- og-image -->
-    <meta
-      property="og:image"
-      content={`${config.site.base_url}${
-        image ? image : config.metadata.meta_image
-      }`}
-    />
-
-    <!-- twitter-image -->
-    <meta
-      name="twitter:image"
-      content={`${config.site.base_url}${
-        image ? image : config.metadata.meta_image
-      }`}
-    />
+    <!-- Twitter card (twitter:title/description/image fall back to og:* automatically) -->
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Structured data for LLM/AI indexing -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "https://www.drenpos.com/#organization",
-          "name": "Drenpos",
-          "url": "https://www.drenpos.com",
-          "logo": "https://www.drenpos.com/images/logo.svg",
-          "description": "Plataforma ERP SaaS modular para pymes y autónomos en España. Gestión de inventario, ventas, facturación electrónica Verifactu y control horario.",
-          "sameAs": [],
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "sales",
-            "url": "https://www.drenpos.com/contact",
-            "availableLanguage": "Spanish"
-          },
-          "areaServed": {
-            "@type": "Country",
-            "name": "España"
-          }
-        },
-        {
-          "@type": "SoftwareApplication",
-          "@id": "https://www.drenpos.com/#software",
-          "name": "Drenpos ERP",
-          "applicationCategory": "BusinessApplication",
-          "operatingSystem": "Web",
-          "url": "https://www.drenpos.com",
-          "description": "ERP SaaS modular para pymes españolas. Incluye almacén multialmacén, TPV, facturación electrónica con Verifactu (AEAT), control horario laboral y módulo médico. Sin costes por uso. Soporte humano incluido.",
-          "offers": {
-            "@type": "Offer",
-            "priceCurrency": "EUR",
-            "description": "Suscripción mensual plana sin costes adicionales por uso",
-            "url": "https://www.drenpos.com/pricing"
-          },
-          "provider": { "@id": "https://www.drenpos.com/#organization" },
-          "featureList": [
-            "Gestión de inventario multialmacén",
-            "TPV (Terminal Punto de Venta)",
-            "Facturación electrónica Verifactu",
-            "Control horario laboral",
-            "Gestión de pedidos y albaranes",
-            "Trazabilidad de lotes",
-            "Módulo sector médico",
-            "Soporte humano incluido"
-          ],
-          "keywords": "ERP pymes España, software gestión empresarial, facturación electrónica Verifactu, control horario, TPV, almacén"
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://www.drenpos.com/#website",
-          "url": "https://www.drenpos.com",
-          "name": "Drenpos",
-          "description": "Ecosistema de gestión empresarial modular para pymes en España",
-          "publisher": { "@id": "https://www.drenpos.com/#organization" },
-          "inLanguage": "es-ES"
-        }
-      ]
-    })} />
+    <!-- Structured data: @graph per route -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body class="overflow-x-hidden">
     <noscript

@@ -1,19 +1,23 @@
 ---
+export const prerender = true;
+
 import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 import CallToAction from "@/partials/CallToAction.astro";
 import PageHeader from "@/partials/PageHeader.astro";
 import { Icon } from "astro-icon/components";
-import { getEntry, render } from "astro:content";
+import { getCollection, render } from "astro:content";
 
-const { single } = Astro.params;
-const career = await getEntry("careers", single as string);
-
-if (!career) {
-  return Astro.redirect("/404");
+export async function getStaticPaths() {
+  const items = await getCollection("careers", ({ id }) => id !== "-index");
+  return items.map((item) => ({
+    params: { single: item.id },
+    props: { career: item },
+  }));
 }
 
+const { career } = Astro.props;
 const {
   title,
   meta_title,
@@ -26,12 +30,17 @@ const {
 } = career.data;
 const { Content } = await render(career);
 
-// Array of job details and corresponding icons
 const jobDetails = [
   { value: location, icon: "careers/location" },
   { value: duration, icon: "careers/clock" },
   { value: salary, icon: "careers/salary" },
   { value: benefits, icon: "careers/benefit" },
+];
+
+const breadcrumbs = [
+  { name: "Inicio", item: "/" },
+  { name: "Empleo", item: "/careers" },
+  { name: title, item: `/careers/${career.id}` },
 ];
 ---
 
@@ -40,6 +49,8 @@ const jobDetails = [
   meta_title={meta_title}
   description={description}
   image={image}
+  image_alt={title}
+  breadcrumbs={breadcrumbs}
 >
   <PageHeader title={title} />
   <section

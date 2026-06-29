@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(awk '/const blogCollection|const localCollection/{f=1} f{print NR\": \"$0} /^}\\);/{if\\(f\\)c++; if\\(c>=1 && f\\){f=0;c=0}}' src/content.config.ts)",
+      "Bash(awk '/^---/{c++} c<2 || /^---/{print} c>=2{exit}' src/content/blog/comparativa-mejores-software-control-horario-pymes-2026.md)",
+      "Bash(echo \"STRAPI_URL en env:\"; grep -rn \"STRAPI\" .env .env.example src/env.d.ts 2>/dev/null; echo \"---\"; echo \"Strapi v? check si existe carpeta backend o solo es API remota:\"; ls -d ../*strapi* ../../*strapi* 2>/dev/null; grep -rn \"strapi\" package.json 2>/dev/null)",
+      "Read(//Users/abp/Documents/Proyectos/DRP/**)",
+      "Bash(cd /Users/abp/Documents/Proyectos/DRP/landing-drp; echo \"===ROUTES===\"; ls src/pages/blog src/pages/local 2>/dev/null; echo \"===getCollection usage===\"; grep -rln \"getCollection\\\\|getEntry\" src/pages/blog src/layouts 2>/dev/null | head; echo \"===how blog single reads fields===\"; sed -n '1,60p' src/pages/blog/[single].astro 2>/dev/null)",
+      "Bash(timeout 180 npx astro sync)",
+      "Bash(npx astro *)",
+      "Bash(STRAPI_URL=\"http://14.0.0.6:1337\" node scripts/migrate-md-to-strapi.mjs --dry-run)",
+      "Bash(git check-ignore *)",
+      "Bash(node scripts/migrate-md-to-strapi.mjs --dry-run)",
+      "Bash(node -e ' *)",
+      "Bash(node scripts/migrate-md-to-strapi.mjs)",
+      "Bash(curl -sg -w '\\\\n%{http_code}\\\\n' 'http://14.0.0.6:1337/api/post-blogs?pagination[pageSize]=1')"
+    ],
+    "additionalDirectories": [
+      "/Users/abp/Documents/Proyectos/DRP/landing-drp/src/pages/blog"
+    ]
+  }
+}

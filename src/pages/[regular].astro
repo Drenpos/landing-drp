@@ -1,18 +1,28 @@
 ---
+export const prerender = true;
+
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import PageHeader from "@/partials/PageHeader.astro";
-import { getEntry, render } from "astro:content";
+import { getCollection, render } from "astro:content";
 
-const { regular } = Astro.params;
-const page = await getEntry("pages", regular as string);
-
-if (!page) {
-  return Astro.redirect("/404");
+export async function getStaticPaths() {
+  const pages = await getCollection("pages", ({ id, data }) =>
+    !data.draft && id !== "-index",
+  );
+  return pages.map((page) => ({
+    params: { regular: page.id },
+    props: { page },
+  }));
 }
 
+const { page } = Astro.props;
 const { title, meta_title, description, image, hero } = page.data;
 const { Content } = await render(page);
+const breadcrumbs = [
+  { name: "Inicio", item: "/" },
+  { name: title, item: `/${page.id}` },
+];
 ---
 
 <Base
@@ -20,6 +30,8 @@ const { Content } = await render(page);
   meta_title={meta_title}
   description={description}
   image={image}
+  image_alt={title}
+  breadcrumbs={breadcrumbs}
 >
   <PageHeader
     title={hero?.title || title}

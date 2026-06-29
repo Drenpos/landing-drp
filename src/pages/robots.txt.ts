@@ -1,8 +1,13 @@
 import type { APIRoute } from "astro";
 
+export const prerender = true;
+
 const base = import.meta.env.SITE || "https://www.drenpos.com";
 
 const robotsTxt = `
+# Content Signals (IETF draft draft-romm-aipref-contentsignals)
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
 User-agent: *
 Allow: /
 Disallow: /api/
@@ -45,7 +50,7 @@ User-agent: CCBot
 Allow: /
 
 Sitemap: ${new URL("sitemap-index.xml", base).href}
-LLMs: ${new URL("llms.txt", base).href}
+Schemamap: ${new URL("schemamap.xml", base).href}
 `.trim();
 
 export const GET: APIRoute = () => {

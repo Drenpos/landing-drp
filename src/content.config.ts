@@ -108,65 +108,46 @@ const aboutCollection = defineCollection({
   }),
 });
 
-// Post collection schema
+// Shared SEO-friendly post schema (blog + local).
+// Hard upper bounds tuned to avoid breaking existing content; seoGraph's
+// validateMetadataLength still warns at build for SERP-truncation bounds
+// (title 30-65, description 70-200) without failing the build.
+const postSchemaShape = {
+  title: z.string().min(5).max(150),
+  // Hard schema bounds are loose to avoid breaking existing content;
+  // seoGraph validateMetadataLength warns (non-blocking) on the
+  // SERP-optimal title 30-65 / description 70-200 ranges at build.
+  meta_title: z.string().min(20).max(120).optional(),
+  description: z.string().max(300).optional(),
+  tags: z.array(z.string()).optional(),
+  date: z.coerce.date().optional(),
+  image: z.string().optional(),
+  author: z
+    .object({
+      name: z.string().default("Admin"),
+      avatar: z.string(),
+      designation: z.string(),
+    })
+    .optional(),
+  categories: z.array(z.string()).default(["others"]),
+  featured: z.boolean().optional(),
+  draft: z.boolean().optional(),
+  hero: z
+    .object({
+      title: z.string(),
+      description: z.string().optional(),
+    })
+    .optional(),
+} as const;
+
 const blogCollection = defineCollection({
-  loader: glob({
-    pattern: "**/*.{md,mdx}",
-    base: "src/content/blog",
-  }),
-  schema: z.object({
-    title: z.string(),
-    meta_title: z.string().optional(),
-    description: z.string().optional(),
-    date: z.date().optional(),
-    image: z.string().optional(),
-    author: z
-      .object({
-        name: z.string().default("Admin"),
-        avatar: z.string(),
-        designation: z.string(),
-      })
-      .optional(),
-    categories: z.array(z.string()).default(["others"]),
-    featured: z.boolean().optional(),
-    draft: z.boolean().optional(),
-    hero: z
-      .object({
-        title: z.string(),
-        description: z.string().optional(),
-      })
-      .optional(),
-  }),
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/blog" }),
+  schema: z.object(postSchemaShape),
 });
-// Post collection schema
+
 const localCollection = defineCollection({
-  loader: glob({
-    pattern: "**/*.{md,mdx}",
-    base: "src/content/local",
-  }),
-  schema: z.object({
-    title: z.string(),
-    meta_title: z.string().optional(),
-    description: z.string().optional(),
-    date: z.date().optional(),
-    image: z.string().optional(),
-    author: z
-      .object({
-        name: z.string().default("Admin"),
-        avatar: z.string(),
-        designation: z.string(),
-      })
-      .optional(),
-    categories: z.array(z.string()).default(["others"]),
-    featured: z.boolean().optional(),
-    draft: z.boolean().optional(),
-    hero: z
-      .object({
-        title: z.string(),
-        description: z.string().optional(),
-      })
-      .optional(),
-  }),
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/local" }),
+  schema: z.object(postSchemaShape),
 });
 
 // Features Collection

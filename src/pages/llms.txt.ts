@@ -1,4 +1,6 @@
 import type { APIRoute } from "astro";
+
+export const prerender = true;
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";

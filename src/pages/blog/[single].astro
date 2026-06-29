@@ -1,20 +1,29 @@
 ---
+export const prerender = true;
+
 import Base from "@/layouts/Base.astro";
 import PostSingle from "@/layouts/PostSingle.astro";
-import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 
-// En modo SSR no usamos getStaticPaths, obtenemos el contenido dinámicamente
-const { single } = Astro.params;
-
-// Intentar obtener el post
-const post = await getEntry("blog", single as string);
-
-// Si no existe, redirigir a 404
-if (!post) {
-  return Astro.redirect("/404");
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ id, data }) =>
+    !data.draft && id !== "-index",
+  );
+  return posts.map((post) => ({
+    params: { single: post.id },
+    props: { post },
+  }));
 }
 
-const { title, meta_title, description, image } = post.data;
+const { post } = Astro.props;
+const { title, meta_title, description, date, author, categories, tags } =
+  post.data;
+const image = post.data.image || `/og/blog/${post.id}.jpg`;
+const breadcrumbs = [
+  { name: "Inicio", item: "/" },
+  { name: "Blog", item: "/blog" },
+  { name: title, item: `/blog/${post.id}` },
+];
 ---
 
 <Base
@@ -22,6 +31,13 @@ const { title, meta_title, description, image } = post.data;
   meta_title={meta_title}
   description={description}
   image={image}
+  image_alt={title}
+  type="article"
+  published_date={date}
+  modified_date={date}
+  author={author && { name: author.name }}
+  keywords={tags || categories}
+  breadcrumbs={breadcrumbs}
 >
   <PostSingle post={post} />
 </Base>
