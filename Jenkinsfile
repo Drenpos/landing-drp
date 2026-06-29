@@ -4,16 +4,17 @@ pipeline {
     tools {
         nodejs "NODE24"
     }
-       environment {
-        // Mapeamos credenciales de Jenkins a env vars
-        CLOUDFLARE_API_TOKEN = credentials('CLOUDFALRE_DRP_TOKEN')
-        CLOUDFLARE_ACCOUNT_ID = credentials('CLOUDFALRE_DRP_USER')
+    environment {
+        // Credenciales para variables de build (Astro las consume en npm run build).
+        // El deploy lo hace CF Pages automáticamente via git integration —
+        // este pipeline solo verifica que el build pasa antes de que CF Pages
+        // lo recoja, y corre el link checker.
         PUBLIC_CLERK_PUBLISHABLE_KEY = credentials('PUBLIC_CLERK_PUBLISHABLE_KEY')
         CLERK_SECRET_KEY = credentials('CLERK_SECRET_KEY')
         PUBLIC_RECAPTCHA_SITE_KEY = credentials('PUBLIC_RECAPTCHA_SITE_KEY')
         INDEXNOW_KEY = credentials('INDEXNOW_KEY')
-        SITE="https://www.drenpos.com"
-      }
+        SITE = "https://www.drenpos.com"
+    }
 
 
     stages {
@@ -56,23 +57,19 @@ pipeline {
             }
         }
 
-        stage('Build app') {
+        stage('Build verify') {
             steps {
                 script {
-                    echo "🏗️ Building for production..."
+                    echo "🏗️ Verifying build (CF Pages will build + deploy independently)..."
                     sh 'npm i --force'
 
-                    // Verificar que las variables existen (sin mostrar valores sensibles)
-                    echo "Verificando variables de entorno..."
                     echo "SITE configurado: ${SITE}"
                     echo "PUBLIC_RECAPTCHA_SITE_KEY configurado: ${PUBLIC_RECAPTCHA_SITE_KEY ? 'SÍ' : 'NO'}"
                     echo "PUBLIC_CLERK_PUBLISHABLE_KEY configurado: ${PUBLIC_CLERK_PUBLISHABLE_KEY ? 'SÍ' : 'NO'}"
                     echo "INDEXNOW_KEY configurado: ${INDEXNOW_KEY ? 'SÍ' : 'NO'}"
 
-                    // Build shell
-                     slackSend(color: "#ffc800", message: "🏗️ Building for production...")
+                    slackSend(color: "#ffc800", message: "🏗️ Build verify...")
 
-                    // Pasar las variables de entorno al build de Astro
                     withEnv([
                         "PUBLIC_CLERK_PUBLISHABLE_KEY=${PUBLIC_CLERK_PUBLISHABLE_KEY}",
                         "CLERK_SECRET_KEY=${CLERK_SECRET_KEY}",
@@ -84,41 +81,11 @@ pipeline {
                         sh 'npm run build'
                     }
 
-                    echo "✅ All microfrontends built successfully"
-                     slackSend(color: "#2fff00", message: "✅ All microfrontends built successfully")
+                    echo "✅ Build verified — CF Pages will publish from git push"
+                    slackSend(color: "#2fff00", message: "✅ Build verified — CF Pages publica solo")
                 }
             }
         }
-
-
-
-      stage('Deploy to Cloudflare Pages') {
-            steps {
-                script {
-                    echo "🚀 Deploying to Cloudflare Pages..."
-
-
-                    // Install Wrangler if not already installed
-                    sh 'npm install -g wrangler || true'
-
-                    // Authenticate with Cloudflare using environment variables
-                    sh 'wrangler whoami || echo "Setting up authentication..."'
-
-                    // Deploy contract
-                    sh '''
-                        cd dist
-                        wrangler pages deploy . --project-name=landing-drp --branch=$BRANCH_NAME
-                    '''
-
-
-                    echo "✅ Contract deployed to Cloudflare Pages successfully"
-                        slackSend(color: "#2fff00", message: "✅ Contract deployed to Cloudflare Pages successfully")
-                }
-            }
-        }
-
-
-
     }
 
     post {

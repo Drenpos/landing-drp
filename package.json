@@ -71,8 +71,8 @@
 		"astro": "astro",
 		"build": "astro build",
 		"cf-typegen": "wrangler types",
-		"check": "astro build && tsc && wrangler deploy --dry-run",
-		"deploy": "wrangler deploy",
+		"check": "astro build && tsc && wrangler pages deploy dist --dry-run --project-name=landing-drp",
+		"deploy": "wrangler pages deploy dist --project-name=landing-drp",
 		"dev": "astro dev",
 		"preview": "astro build && wrangler dev"
 	},
