@@ -83,6 +83,12 @@ export default defineConfig({
   site: SITE_URL,
   base: config.site.base_path ? config.site.base_path : "/",
   trailingSlash: config.site.trailing_slash ? "always" : "never",
+  // build.format "file" emite foo.html en lugar de foo/index.html.
+  // Sin esto, trailingSlash:"never" + format:"directory" causa que cada
+  // /foo redirija a /foo/ (round-trip extra, mal para SEO).
+  build: {
+    format: "file",
+  },
   vite: { plugins: [tailwindcss()] },
   integrations: [
     clerk(),
