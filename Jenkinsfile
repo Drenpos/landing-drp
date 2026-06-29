@@ -48,7 +48,6 @@ pipeline {
                             --max-concurrency 8 \\
                             --timeout 20 \\
                             --accept 200,206,429 \\
-                            --exclude-mail \\
                             "/input/src/content/**/*.md" \\
                             "/input/src/content/**/*.mdx" \\
                         || echo "⚠️  Lychee found broken links — see log above"
