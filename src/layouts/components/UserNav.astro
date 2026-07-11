@@ -1,7 +1,7 @@
 ---
 // Server-side: solo funciona en páginas SSR (middleware de Clerk activo).
 // En páginas prerenderizadas (prerender = true) Astro.locals.auth es undefined,
-// así que renderizamos la vista logged-out y el <script> de abajo corrige
+// así que renderizamos la vista logged-out y el script de abajo corrige
 // el estado en el cliente usando clerk-js ($userStore).
 let isAuthenticated = false;
 let user: any = null;

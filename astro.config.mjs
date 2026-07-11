@@ -14,7 +14,11 @@ import path from "path";
 import remarkCollapse from "remark-collapse";
 import remarkToc from "remark-toc";
 import tailwindcss from "@tailwindcss/vite";
+import { loadEnv } from "vite";
 import config from "./src/config/config.json";
+
+// Carga .env + process.env (Jenkins) para tenerlos disponibles en config-time.
+const env = loadEnv(process.env.NODE_ENV ?? "production", process.cwd(), "");
 
 let highlighter;
 async function getHighlighter() {
@@ -91,7 +95,14 @@ export default defineConfig({
   },
   vite: { plugins: [tailwindcss()] },
   integrations: [
-    clerk(),
+    // publishableKey explícita: en páginas prerenderizadas el middleware no
+    // corre y la sustitución de import.meta.env no llega al bundle cliente,
+    // así clerk-js siempre recibe la clave (es pública, seguro embeberla).
+    clerk({
+      publishableKey:
+        env.PUBLIC_CLERK_PUBLISHABLE_KEY ||
+        process.env.PUBLIC_CLERK_PUBLISHABLE_KEY,
+    }),
     react(),
     sitemap({
       customPages: allPosts.map((p) => p.url),
