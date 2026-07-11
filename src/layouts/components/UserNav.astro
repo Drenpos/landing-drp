@@ -1,7 +1,8 @@
 ---
-// Safely access Clerk locals. On prerendered pages (export const prerender = true)
-// the Clerk middleware has not run, so Astro.locals.auth is undefined.
-// Default to the logged-out view in that case — bots don't sign in anyway.
+// Server-side: solo funciona en páginas SSR (middleware de Clerk activo).
+// En páginas prerenderizadas (prerender = true) Astro.locals.auth es undefined,
+// así que renderizamos la vista logged-out y el <script> de abajo corrige
+// el estado en el cliente usando clerk-js ($userStore).
 let isAuthenticated = false;
 let user: any = null;
 let userImg: string | null = null;
@@ -19,27 +20,55 @@ if (typeof Astro.locals.auth === "function") {
       }
     }
   } catch {
-    // Prerender or environment without Clerk runtime — fall through to logged-out.
+    // Sin runtime de Clerk — vista logged-out; el cliente corrige si hay sesión.
   }
 }
 ---
 
-{user ? (
+<div data-user-nav>
   <a
     href="https://contract.drenpos.com/home"
-    class="flex items-center gap-2 hover:opacity-80 transition"
+    class:list={[
+      "flex items-center gap-2 hover:opacity-80 transition",
+      { hidden: !user },
+    ]}
+    data-user-nav-avatar
   >
     <img
-      src={userImg}
-      alt={user.fullName || 'Usuario'}
+      src={userImg ?? ""}
+      alt={user?.fullName || "Usuario"}
       class="w-10 h-10 rounded-full border-2 border-gray-300"
+      data-user-nav-img
     />
   </a>
-) : (
   <a
     href="https://contract.drenpos.com/auth"
-    class="btn-primary"
+    class:list={["btn-primary", { hidden: !!user }]}
+    data-user-nav-login
   >
     Iniciar sesión
   </a>
-)}
+</div>
+
+<script>
+  import { $userStore } from "@clerk/astro/client";
+
+  const root = document.querySelector("[data-user-nav]");
+  const avatarLink = root?.querySelector<HTMLAnchorElement>("[data-user-nav-avatar]");
+  const avatarImg = root?.querySelector<HTMLImageElement>("[data-user-nav-img]");
+  const loginBtn = root?.querySelector<HTMLAnchorElement>("[data-user-nav-login]");
+
+  $userStore.subscribe((user) => {
+    if (user === undefined || !avatarLink || !avatarImg || !loginBtn) return; // clerk-js aún cargando
+    if (user) {
+      avatarImg.src =
+        user.externalAccounts?.[0]?.imageUrl || user.imageUrl || "";
+      avatarImg.alt = user.fullName || "Usuario";
+      avatarLink.classList.remove("hidden");
+      loginBtn.classList.add("hidden");
+    } else {
+      avatarLink.classList.add("hidden");
+      loginBtn.classList.remove("hidden");
+    }
+  });
+</script>
