@@ -64,6 +64,8 @@ Nuestro enfoque se basa en varios principios clave:
 
 Nuestro enfoque personalizado y orientado al cliente nos permite **desarrollar software a medida** que impulsa el éxito de nuestros clientes.
 
+¿Sabías que ese desarrollo puede salirte gratis? Si tu pyme tiene centro de trabajo en Extremadura y un reto sin solución en el mercado, las [ayudas de innovación abierta de la Junta de Extremadura](/blog/ayuda-innovacion-abierta-extremadura-2026) financian al 100% (hasta 25.000 €) el desarrollo de la solución junto a una startup certificada por ENISA como drenpos.
+
 ## Desarrollo de software a medida
 
 En drenpos, comenzamos con un **análisis exhaustivo de los requisitos del cliente** en nuestro proceso de **desarrollo de software a medida**. Nuestro equipo de expertos entiende bien las necesidades de tu negocio y diseña una **arquitectura de software sólida y eficiente** que se ajusta a lo que necesitas.

@@ -47,9 +47,29 @@ const articleSchema = {
   },
   mainEntityOfPage: { "@type": "WebPage", "@id": postUrl },
 };
+
+// ── Schema FAQPage (solo si el post define `faq` en frontmatter) ──────────
+const faq = post.data.faq;
+const faqSchema =
+  faq && faq.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faq.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: { "@type": "Answer", text: item.answer },
+        })),
+      }
+    : null;
 ---
 
 <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+{
+  faqSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  )
+}
 
 <PageHeader title={title} blogData={blogData} />
 

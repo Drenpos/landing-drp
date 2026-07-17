@@ -138,6 +138,16 @@ const postSchemaShape = {
       description: z.string().optional(),
     })
     .optional(),
+  // FAQ opcional: alimenta el bloque visible y el JSON-LD FAQPage del post.
+  // Las respuestas deben coincidir con el contenido visible (requisito de Google).
+  faq: z
+    .array(
+      z.object({
+        question: z.string(),
+        answer: z.string(),
+      }),
+    )
+    .optional(),
 } as const;
 
 const blogCollection = defineCollection({

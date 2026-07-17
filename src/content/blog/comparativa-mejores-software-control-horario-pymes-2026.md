@@ -86,4 +86,6 @@ La incertidumbre sobre qué plataforma elegir es legítima, pero paralizarte sol
 
 > "No se trata de comprar un software. Se trata de recuperar la tranquilidad de saber que tu empresa está blindada, sin complicaciones técnicas ni dependencia de procesos manuales."
 
+Y si tu problema va más allá del control horario — un reto operativo que ningún software estándar resuelve — existe una vía para financiarlo al 100%: las [ayudas de innovación abierta de la Junta de Extremadura](/blog/ayuda-innovacion-abierta-extremadura-2026), con hasta 25.000 € por proyecto para desarrollar la solución junto a una startup certificada.
+
 Si quieres validar si tu flujo actual cumple con los estándares de 2026 o si una plataforma integrada puede optimizar tu gestión sin fricción, **agenda una sesión de diagnóstico personalizada.** Analizaremos tu operativa real, identificaremos los cuellos de botilla y te mostraremos cómo escalar sin romper lo que ya funciona. **Tu tiempo y tu tranquilidad operativa son el activo más valioso de tu pyme. Úsalos con inteligencia.**
