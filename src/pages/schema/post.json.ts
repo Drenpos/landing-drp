@@ -1,5 +1,6 @@
 import { getCollection } from "astro:content";
 import { createSchemaEndpoint } from "@jdevalk/astro-seo-graph";
+import type { GraphEntity } from "@jdevalk/seo-graph-core";
 
 export const prerender = true;
 import {
@@ -74,6 +75,8 @@ export const GET = createSchemaEndpoint({
         ids,
       ),
     ];
-    return pieces;
+    // Los builders devuelven Record<string, unknown>; el endpoint espera
+    // GraphEntity (mismo shape con "@type" garantizado por los builders).
+    return pieces as unknown as GraphEntity[];
   },
 });

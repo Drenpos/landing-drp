@@ -84,7 +84,14 @@ const TRACKING_PARAMS = new Set([
 
 function buildCanonical(): string {
   if (canonical) return canonical;
-  const url = new URL(Astro.url.pathname, siteUrl);
+  // Con build.format "file", Astro.url.pathname termina en ".html" durante el
+  // prerender. La URL pública es la limpia (Cloudflare 301-redirige la .html),
+  // así que el canonical debe emitirse SIN extensión: de lo contrario apunta
+  // a una URL que redirige y contradice al sitemap.
+  const cleanPath = Astro.url.pathname
+    .replace(/\/index\.html$/, "/")
+    .replace(/\.html$/, "");
+  const url = new URL(cleanPath || "/", siteUrl);
   for (const param of TRACKING_PARAMS) url.searchParams.delete(param);
   return url.href.replace(/\?$/, "");
 }
@@ -248,7 +255,8 @@ if (type === "article" && pubDate) {
       author: {
         "@type": "Person",
         name: author.name,
-        ...(author.url && { url: author.url }),
+        ...(author.url && { url: author.url, sameAs: [author.url] }),
+        worksFor: { "@id": orgId },
       },
     }),
     url: canonicalURL,

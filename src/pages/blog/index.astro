@@ -9,7 +9,7 @@ import Base from "@/layouts/Base.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import dateFormat from "@/lib/utils/dateFormat";
 import { sortByDate } from "@/lib/utils/sortFunctions";
-import { markdownify } from "@/lib/utils/textConverter";
+import { markdownify, plainify } from "@/lib/utils/textConverter";
 import PageHeader from "@/partials/PageHeader.astro";
 import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
@@ -81,12 +81,13 @@ const featuredPost = posts.filter((post) => post.data.featured).slice(0, 1);
                         set:html={markdownify(post.data.title)}
                       />
                     )}
-                    {post.body && (
-                      <div
-                        class="line-clamp-3 text-text-dark/70 mb-6"
-                        set:html={markdownify(post.body, true)}
-                      />
-                    )}
+                    {/* Extracto plano: nunca embeber el cuerpo completo del
+                        post (contenido duplicado que compite con el artículo) */}
+                    <p class="line-clamp-3 text-text-dark/70 mb-6">
+                      {plainify(
+                        post.data.description || post.body?.slice(0, 400) || "",
+                      )}
+                    </p>
 
                     <a
                       class="btn btn-primary inline-flex items-center gap-2"

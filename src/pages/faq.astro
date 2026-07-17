@@ -7,14 +7,20 @@ import PageHeader from "@/partials/PageHeader.astro";
 import { plainify } from "@/lib/utils/textConverter";
 import { getEntry, type CollectionEntry } from "astro:content";
 
-const changelog = (await getEntry(
-  "changelog",
-  "-index"
-)) as CollectionEntry<"changelog">;
-const { title, description, meta_title, image, hero } = changelog.data;
-
 // ── Schema FAQPage (rich results + AEO) ──────────────────────────────────
 const faq = (await getEntry("faq", "faq")) as CollectionEntry<"faq">;
+
+// Metadatos propios de la página FAQ (antes heredaba los del changelog:
+// title "Changelog", description placeholder y H1 en inglés).
+const title = "Preguntas frecuentes sobre Drenpos";
+const meta_title = "Preguntas frecuentes | Drenpos ERP para pymes";
+const description =
+  "Respuestas directas sobre Drenpos: qué incluye cada módulo, cumplimiento Verifactu, trazabilidad por lotes, implantación, importación de datos, copias de seguridad y permisos por usuario.";
+const hero = {
+  title: "Preguntas frecuentes",
+  description:
+    "Resolvemos las dudas clave sobre Drenpos: stock (lotes y ubicaciones), ventas, finanzas (Verifactu), implantación y soporte.",
+};
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -28,12 +34,7 @@ const faqSchema = {
 };
 ---
 
-<Base
-  title={title}
-  meta_title={meta_title}
-  description={description}
-  image={image}
->
+<Base title={title} meta_title={meta_title} description={description}>
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <PageHeader title={hero.title} description={hero.description} />
   <div class="section-up pb-0">

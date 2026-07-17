@@ -1,8 +1,8 @@
 ---
-title: "Drenpos: Innovación y Tecnología a Medida para Todos los Negocios"
-meta_title: "Drenpos | Innovación y Tecnología a Medida"
-description: "Descubre cómo Drenpos ofrece soluciones tecnológicas personalizadas para grandes empresas, pymes y autónomos, con un enfoque en innovación y calidad."
-date: 2026-01-01
+title: "Sobre Drenpos: la startup extremeña detrás del ERP que habla en idioma pyme"
+meta_title: "Sobre Drenpos | Startup ENISA de software para pymes"
+description: "Drenpos es una startup extremeña certificada por ENISA que desarrolla un ERP modular en la nube para pymes y autónomos: almacén, TPV, facturación Verifactu y control horario con soporte humano."
+date: 2026-07-17
 image: "/images/blog/about/DRP-WEB.webp"
 categories: ["Empresa", "Tecnología", "Servicios"]
 
@@ -14,48 +14,33 @@ author:
 featured: false
 draft: false
 hero:
-  title: "Innovación y Tecnología a Medida"
-  description: "Soluciones tecnológicas personalizadas para empresas de todos los tamaños"
+  title: "Sobre Drenpos"
+  description: "Software de gestión hecho en Extremadura para pymes de toda España"
 ---
 
-En un mercado donde la tecnología avanza rápidamente, contar con un socio confiable y competente es esencial para cualquier empresa, ya sea una gran corporación o una pequeña pyme. **Drenpos** se establece como un líder en el desarrollo de software, ofreciendo soluciones personalizadas que se adaptan a las necesidades de negocios de todos los tamaños. Nuestro enfoque abarca desde grandes proyectos corporativos hasta el apoyo a pymes y autónomos, brindando siempre la máxima calidad y un servicio inigualable.
+**Drenpos es una startup tecnológica extremeña, certificada como empresa emergente por ENISA, que desarrolla un ERP modular 100% en la nube para pymes y autónomos españoles.** Nuestro producto unifica almacén, ventas, TPV, facturación electrónica Verifactu y control horario en un solo sistema, sin la complejidad ni el coste de un ERP de gran empresa. Trabajamos desde Extremadura para clientes de toda España, con soporte humano incluido en todos los planes.
 
-## ¿Quiénes Somos?
+## ¿Quiénes somos?
 
-**Drenpos** es una empresa joven, dinámica y en constante evolución, especializada en el desarrollo de software tanto para aplicaciones web como móviles. Nos destacamos por nuestra capacidad para abordar proyectos de gran envergadura, implementando soluciones tecnológicas innovadoras que ayudan a las empresas a alcanzar sus objetivos estratégicos. Al mismo tiempo, entendemos la importancia de ofrecer servicios accesibles para pymes y autónomos, quienes también merecen herramientas tecnológicas de primer nivel.
+Drenpos nace en Extremadura con una convicción: las pymes merecen software que se adapte a ellas, y no al revés. Somos un equipo técnico liderado por Alonso Bermejo Pérez (CEO y fundador) que desarrolla producto propio — no revendemos licencias de terceros — y que acompaña cada implantación en persona. Esa cercanía es la razón de que nuestros clientes destaquen el soporte tanto como el producto.
 
-## Nuestra Propuesta de Valor
+## Credenciales que puedes verificar
 
-En Drenpos, creemos en la personalización y en la innovación. Nuestro equipo de expertos trabaja estrechamente con cada cliente para entender sus desafíos específicos y diseñar soluciones tecnológicas que se alineen con sus metas. Desde grandes corporaciones que necesitan sistemas robustos hasta pequeñas empresas que requieren soluciones eficientes y asequibles, Drenpos está preparado para ofrecer resultados excepcionales.
+La confianza no se declara, se acredita. Estas son las nuestras:
 
-- **Soluciones Escalables para Grandes Proyectos:** Contamos con la experiencia y las capacidades necesarias para desarrollar software a gran escala, integrando las últimas tecnologías y metodologías ágiles. Nos adaptamos a las demandas de proyectos complejos, asegurando un desarrollo eficiente y una implementación exitosa.
+- **Certificación ENISA de empresa emergente**, al amparo de la Ley 28/2022 de fomento del ecosistema de las empresas emergentes. Este sello acredita ante la administración que nuestro proyecto es innovador y escalable, y aporta 10 puntos automáticos a las pymes que se presentan con nosotros a las [ayudas de innovación abierta de la Junta de Extremadura](/blog/ayuda-innovacion-abierta-extremadura-2026).
+- **Programa Extremadura Open Future** (Telefónica + Junta de Extremadura), donde aceleramos el proyecto.
+- **Cumplimiento normativo de serie**: facturación conforme a Verifactu (RD 1007/2023) con [declaración responsable pública](https://api.drenpos.com/api/verifactu-consult/dr-latest), registro horario adaptado a la normativa laboral y trazabilidad de lotes conforme al Reglamento CE 178/2002.
+- **Datos alojados en la UE** con copias de seguridad diarias.
 
-- **Accesibilidad para Pymes y Autónomos:** Aunque estamos equipados para manejar grandes proyectos, también nos preocupamos por hacer la tecnología accesible para pymes y autónomos. Ofrecemos soluciones de alta calidad a un costo ajustado, sin comprometer la funcionalidad o el rendimiento.
+## Qué hacemos
 
-## Servicios de Drenpos
+Nuestro producto es el [ERP modular Drenpos](/modulos): activas solo los módulos que necesitas — almacén multialmacén con lotes y ubicaciones, TPV para tienda y hostelería, facturación electrónica, [control horario con hardware propio de fichaje](/control-horario), OCR de facturas, WhatsApp integrado — y creces a tu ritmo, desde 19 €/mes y sin costes ocultos por uso.
 
-### Desarrollo de Software Empresarial
+Además del producto, desarrollamos **soluciones a medida para retos que el mercado no cubre**: como startup certificada por ENISA, colaboramos con pymes tractoras en proyectos de innovación abierta financiados al 100% por la Junta de Extremadura, desde la definición del reto hasta la entrega de la solución.
 
-Nos especializamos en crear soluciones personalizadas para empresas de todos los tamaños. Desde plataformas corporativas a aplicaciones móviles, en Drenpos abordamos cada proyecto con una atención meticulosa al detalle, garantizando que nuestras soluciones se adapten a tus necesidades y objetivos.
+## Cómo trabajamos
 
-### Consultoría y Estrategia Tecnológica
+Tres principios guían cada proyecto: **cercanía** (soporte humano real, implantación acompañada, formación incluida), **transparencia** (precios públicos, sin permanencia, actualizaciones gratis para siempre) y **producto propio** (si un desarrollo beneficia a todos los clientes, se incorpora al producto sin coste).
 
-Ayudamos a las empresas a identificar oportunidades y a implementar tecnologías que optimicen sus operaciones. Nuestro equipo de consultores está preparado para ofrecerte una visión estratégica, asegurando que cada inversión en tecnología tenga un impacto positivo en tu negocio.
-
-### Soporte y Mantenimiento Continuo
-
-Sabemos que el éxito de una implementación tecnológica depende del soporte post-desarrollo. En Drenpos, ofrecemos servicios continuos de mantenimiento y soporte, asegurando que tus sistemas sigan operando de manera óptima y que puedan evolucionar con tu negocio.
-
-### Formación y Capacitación
-
-Para aquellos que buscan mejorar sus competencias tecnológicas, ofrecemos programas de formación que capacitan a tu equipo en el uso de las herramientas más avanzadas del mercado, ayudándote a maximizar el retorno de tu inversión en tecnología.
-
-## ¿Por Qué Drenpos?
-
-- **Innovación Constante:** En Drenpos, nos mantenemos a la vanguardia de las tendencias tecnológicas, asegurándonos de que nuestros clientes siempre tengan acceso a las soluciones más modernas y eficaces.
-- **Compromiso con la Calidad:** Ya sea un proyecto grande o pequeño, nuestro compromiso con la calidad es inquebrantable. Cada solución que entregamos es un reflejo de nuestra dedicación a la excelencia.
-- **Atención Personalizada:** Tratamos cada proyecto como único, ofreciendo un servicio personalizado y cercano que nos permite adaptarnos a las necesidades específicas de nuestros clientes.
-
-## Conclusión
-
-**Drenpos** es más que un proveedor de servicios tecnológicos; somos un socio estratégico que entiende las demandas de un mercado globalizado y competitivo. Tanto si diriges una gran empresa como una pequeña pyme, en Drenpos encontrarás el soporte tecnológico que necesitas para alcanzar tus metas y llevar tu negocio al siguiente nivel. ¡Contáctanos hoy mismo y descubre cómo podemos colaborar para hacer crecer tu empresa con soluciones tecnológicas de vanguardia!
+¿Quieres conocernos? [Escríbenos](/contact) o solicita una demo gratuita de 20 minutos: te enseñamos el sistema con tus propios casos, no con diapositivas.

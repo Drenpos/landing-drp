@@ -1,5 +1,12 @@
 import type { CookieConsentConfig } from "vanilla-cookieconsent";
 
+// gtag lo inyecta el snippet inline de Base.astro (Consent Mode v2).
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 // ❌ Quita el grant por defecto: GA4 no debe estar granted sin consentimiento
 // if (typeof window !== "undefined") {
 //   window.gtag?.("consent", "update", {

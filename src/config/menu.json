@@ -24,6 +24,10 @@
         {
           "name": "Almacén y Tienda",
           "url": "/software-almacen-tienda"
+        },
+        {
+          "name": "Módulos",
+          "url": "/modulos"
         }
       ]
     },
@@ -58,7 +62,7 @@
   "footer_info_links": [
     {
       "name": "Guía VERI*FACTU 2026",
-      "url": "/blog/verifactu-pymes-guia-2025",
+      "url": "/blog/verifactu-pymes-guia-2026",
       "blank": false,
       "data-cc": ""
     },
@@ -117,6 +121,24 @@
     {
       "name": "Blog Drenpos",
       "url": "/blog",
+      "blank": false,
+      "data-cc": ""
+    },
+    {
+      "name": "Preguntas frecuentes",
+      "url": "/faq",
+      "blank": false,
+      "data-cc": ""
+    },
+    {
+      "name": "Módulos del ERP",
+      "url": "/modulos",
+      "blank": false,
+      "data-cc": ""
+    },
+    {
+      "name": "Ayudas de innovación abierta",
+      "url": "/blog/ayuda-innovacion-abierta-extremadura-2026",
       "blank": false,
       "data-cc": ""
     },

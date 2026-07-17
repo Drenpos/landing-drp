@@ -46,6 +46,8 @@ export const GET: APIRoute = async ({ props }) => {
   const subtitle = post.data.description || "";
   const tag = collection === "local" ? "GUÍA LOCAL" : "BLOG DRENPOS";
 
+  // Satori acepta un árbol de objetos plano (element-like); su tipado pide
+  // ReactNode, así que casteamos el literal.
   const svg = await satori(
     {
       type: "div",
@@ -147,7 +149,7 @@ export const GET: APIRoute = async ({ props }) => {
           },
         ],
       },
-    },
+    } as unknown as Parameters<typeof satori>[0],
     {
       width: 1200,
       height: 675,
@@ -160,7 +162,7 @@ export const GET: APIRoute = async ({ props }) => {
 
   const jpg = await sharp(Buffer.from(svg)).jpeg({ quality: 88 }).toBuffer();
 
-  return new Response(jpg, {
+  return new Response(new Uint8Array(jpg), {
     headers: {
       "Content-Type": "image/jpeg",
       "Cache-Control": "public, max-age=31536000, immutable",

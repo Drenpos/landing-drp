@@ -9,14 +9,16 @@ import ImageMod from "./components/ImageMod.astro";
 import Share from "./components/Share.astro";
 import CallToAction from "./partials/CallToAction.astro";
 import PageHeader from "./partials/PageHeader.astro";
-import config from "@/config/config.json";
 
 type Props = {
   post: CollectionEntry<"blog">;
 };
 
-const COLLECTION_FOLDER = "blog";
 const { post } = Astro.props;
+// Carpeta real de la colección ("blog" o "local"): imprescindible para que
+// los enlaces de compartir y los relacionados apunten a la ruta correcta.
+const COLLECTION_FOLDER =
+  (post as { collection?: string }).collection || "blog";
 
 const posts = await getSinglePage(COLLECTION_FOLDER);
 const similarPosts = similarItems(post, posts);
@@ -25,28 +27,8 @@ const { title, description, image, date, author } = post.data;
 
 const blogData = { author, date };
 
-// ── Schema BlogPosting (cubre blog y local) ──────────────────────────────
-const base = config.site.base_url;
-const postUrl = new URL(Astro.url.pathname, base).href;
-const imageUrl = image
-  ? new URL(image, base).href
-  : `${base}${config.metadata.meta_image}`;
-const articleSchema = {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  headline: title,
-  description,
-  image: imageUrl,
-  datePublished:
-    date instanceof Date ? date.toISOString() : new Date(date).toISOString(),
-  author: { "@type": "Person", name: author?.name || "Drenpos" },
-  publisher: {
-    "@type": "Organization",
-    name: "Drenpos",
-    logo: { "@type": "ImageObject", url: `${base}/images/logo.svg` },
-  },
-  mainEntityOfPage: { "@type": "WebPage", "@id": postUrl },
-};
+// El schema BlogPosting lo emite Base.astro dentro del @graph (con keywords,
+// autor y fechas). No se duplica aquí; este layout solo aporta el FAQPage.
 
 // ── Schema FAQPage (solo si el post define `faq` en frontmatter) ──────────
 const faq = post.data.faq;
@@ -64,7 +46,6 @@ const faqSchema =
     : null;
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 {
   faqSchema && (
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
@@ -117,7 +98,7 @@ const faqSchema =
                 className="social-icons flex gap-3"
                 title={title}
                 description={description}
-                slug={post.id}
+                slug={`${COLLECTION_FOLDER}/${post.id}`}
               />
             </div>
           </div>
@@ -138,7 +119,7 @@ const faqSchema =
                 data-aos="fade-up-sm"
                 data-aos-delay={i * 100}
               >
-                <BlogCard data={post} />
+                <BlogCard data={post} blog_folder_int={COLLECTION_FOLDER} />
               </div>
             ))}
           </div>

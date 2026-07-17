@@ -35,7 +35,10 @@ const breadcrumbs = [
   type="article"
   published_date={date}
   modified_date={date}
-  author={author && { name: author.name }}
+  author={author && {
+    name: author.name,
+    url: "https://www.linkedin.com/in/alonso-bermejo/",
+  }}
   keywords={tags || categories}
   breadcrumbs={breadcrumbs}
 >
