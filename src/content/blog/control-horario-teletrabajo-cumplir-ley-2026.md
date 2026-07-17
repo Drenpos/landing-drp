@@ -1,6 +1,6 @@
 ---
 title: "Control horario teletrabajo: cómo cumplir la ley en 2026"
-meta_title: "Control horario teletrabajo 2026: guía de cumplimiento y blindaje operativo"
+meta_title: "Control horario en teletrabajo 2026: guía de cumplimiento"
 description: "Evita sanciones y recupera tiempo. Aprende a integrar el control horario teletrabajo en tu pyme con trazabilidad real, prevención de burnout y cumplimiento normativo."
 date: 2026-05-27
 image: "/images/blog/control-horario-teletrabajo-cumplir-ley-2026/cover.jpg"

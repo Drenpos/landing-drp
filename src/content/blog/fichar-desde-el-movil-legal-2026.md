@@ -1,6 +1,6 @@
 ---
 title: "Cómo fichar desde el móvil de forma legal en 2026: guía operativa"
-meta_title: "Fichar desde el móvil legal en 2026: cumple sin frenar tu operativa"
+meta_title: "Fichar desde el móvil legal en 2026: guía para pymes"
 description: "Descubre cómo fichar desde el móvil de forma legal en 2026. Deja atrás el Excel, evita sanciones y convierte el control horario en un activo financiero real."
 date: 2026-05-27
 image: "/images/blog/fichar-desde-el-movil-legal-2026/cover.jpg"

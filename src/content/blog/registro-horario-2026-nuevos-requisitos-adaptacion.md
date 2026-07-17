@@ -15,6 +15,15 @@ draft: false
 hero:
   title: "Registro horario 2026: de la obligación legal a tu ventaja operativa"
   description: "Deja de gestionar fichajes en papel o Excel. Conoce los requisitos reales de la Inspección y cómo migrar sin perder rentabilidad."
+faq:
+  - question: "¿Qué exige exactamente el registro horario en 2026?"
+    answer: "Tres pilares: trazabilidad (registro de entrada y salida con sellado de fecha y hora), inmutabilidad (los datos no pueden alterarse una vez registrados) y acceso remoto para la Inspección. Además, los registros deben conservarse durante el plazo legal sin pérdida de integridad."
+  - question: "¿Cómo migro desde Excel sin frenar la operativa?"
+    answer: "Por fases: primero se importan empleados y calendarios, después se activa el fichaje digital más simple para tu equipo (app, QR o terminal) y por último se validan los reportes. Con un sistema preparado, la adaptación se hace en días y sin parar el negocio."
+  - question: "¿Qué pasa si sigo registrando la jornada en papel o en hojas de cálculo?"
+    answer: "Que no estás cumpliendo: la Inspección exige trazabilidad digital inalterable, y las sanciones se calculan por empleado afectado. Cada mes con el método antiguo acumula riesgo, además del coste oculto en horas administrativas y errores de conciliación."
+  - question: "¿Cuánto se tarda en adaptarse al nuevo registro horario?"
+    answer: "Con un sistema listo para pymes, días: configuración, importación de plantilla, alta de métodos de fichaje y una formación breve. En Drenpos la implantación es acompañada y el módulo de control horario queda integrado con el resto de tu gestión desde el primer día."
 ---
 
 Si sigues gestionando los fichajes en [Excel o con plantillas genéricas](/blog/por-que-excel-ya-no-sirve-control-horario-2026), no estás cumpliendo la ley: estás acumulando [sanciones graves](/blog/multas-registro-horario-2026-costo-incumplimiento) y perdiendo margen sin saberlo. En el contexto del registro horario 2026, la Inspección no pedirá papeles, pedirá trazabilidad digital inalterable.
@@ -74,3 +83,21 @@ Si sigues gestionando los fichajes en [Excel o con plantillas genéricas](/blog/
 **El cumplimiento ya no es un departamento, es la infraestructura de tu negocio.** Preparar tu empresa para el registro horario 2026 significa elegir una arquitectura que crezca contigo, no que te limite. **La escalabilidad real permite añadir puestos, turnos o ubicaciones sin reconfigurar procesos.** Drenpos integra este control dentro de un ecosistema ERP + TPV + facturación, eliminando la necesidad de parchear soluciones desconectadas. **Unificar el registro con la operativa diaria cierra el ciclo de datos y elimina la fricción administrativa.**
 
 **La pregunta no es si deberías adaptarte, sino cuánto margen estás dispuesto a seguir perdiendo.** Revisa tus flujos actuales. Identifica dónde se fuga el tiempo. Y decide si quieres seguir gestionando el pasado o empezar a blindar tu futuro operativo. Si buscas una consultoría técnica para mapear tu migración sin interrumpir la operativa, el primer paso es validar tu estado actual. **La tranquilidad no se improvisa, se diseña.**
+
+## Preguntas frecuentes sobre el registro horario 2026
+
+### ¿Qué exige exactamente el registro horario en 2026?
+
+Tres pilares: trazabilidad (registro de entrada y salida con sellado de fecha y hora), inmutabilidad (los datos no pueden alterarse una vez registrados) y acceso remoto para la Inspección. Además, los registros deben conservarse durante el plazo legal sin pérdida de integridad.
+
+### ¿Cómo migro desde Excel sin frenar la operativa?
+
+Por fases: primero se importan empleados y calendarios, después se activa el fichaje digital más simple para tu equipo (app, QR o terminal) y por último se validan los reportes. Con un sistema preparado, la adaptación se hace en días y sin parar el negocio.
+
+### ¿Qué pasa si sigo registrando la jornada en papel o en hojas de cálculo?
+
+Que no estás cumpliendo: la Inspección exige trazabilidad digital inalterable, y las sanciones se calculan por empleado afectado. Cada mes con el método antiguo acumula riesgo, además del coste oculto en horas administrativas y errores de conciliación.
+
+### ¿Cuánto se tarda en adaptarse al nuevo registro horario?
+
+Con un sistema listo para pymes, días: configuración, importación de plantilla, alta de métodos de fichaje y una formación breve. En Drenpos la implantación es acompañada y el módulo de control horario queda integrado con el resto de tu gestión desde el primer día.

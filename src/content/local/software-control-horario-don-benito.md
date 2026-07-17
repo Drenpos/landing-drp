@@ -1,6 +1,6 @@
 ---
 title: "Software de control horario Don Benito: cumplimiento 2026 sin fricción"
-meta_title: "Software control horario Don Benito | Cumplimiento 2026 sin parones"
+meta_title: "Software control horario Don Benito | Cumplimiento 2026"
 description: "Digitaliza el registro horario en Don Benito. Cumple la normativa 2026, elimina multas y recupera horas de gestión con un sistema modular y soporte local."
 date: 2026-05-27
 image: "/images/blog/software-control-horario-don-benito/cover.jpg"

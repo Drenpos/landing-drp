@@ -21,6 +21,15 @@ draft: false
 hero:
   title: "ERP vs Excel: ¿Tu gestión depende de un archivo o de tu negocio?"
   description: "El momento de cambiar las hojas de cálculo por un sistema real llega cuando el error manual te cuesta más que la inversión tecnológica."
+faq:
+  - question: "¿Cuándo debe una pyme dejar Excel y pasarse a un ERP?"
+    answer: "Cuando aparecen las señales clásicas: versiones contradictorias del mismo archivo, stock que no cuadra con la realidad, horas perdidas conciliando datos para cerrar el mes y decisiones tomadas con información desactualizada. Si te suena, el Excel ya te está costando dinero."
+  - question: "¿Qué gana una pyme con un ERP frente a las hojas de cálculo?"
+    answer: "Una única fuente de verdad: cada venta, compra o movimiento de almacén actualiza el resto del sistema al momento, sin duplicar datos ni reescribir información. Se acaban los errores de copia y el tiempo administrativo se convierte en tiempo de negocio."
+  - question: "¿Es caro implantar un ERP en una pyme pequeña?"
+    answer: "No tiene por qué. Drenpos parte de 19 € al mes con estructura modular: activas solo lo que necesitas y amplías cuando el negocio lo pide. La implantación estándar se hace en días, con importación de datos y formación incluidas, sin permanencia."
+  - question: "¿Puedo migrar mis datos de Excel al ERP?"
+    answer: "Sí. En la implantación se importan artículos, clientes, proveedores y stock inicial desde tus hojas de cálculo actuales, y se configura la empresa con sus series y periodos. Tu histórico no se pierde: se ordena."
 ---
 
 ## ¿Sigues gestionando la duplicidad de datos con Excel?
@@ -100,3 +109,21 @@ No te pedimos que cambies toda tu operativa mañana. El paso más inteligente es
 Pregúntate esto: Si mañana tu empresa duplicara su volumen de pedidos, **¿tu sistema de Excel actual podría soportarlo o colapsaría bajo su propio peso?**
 
 Si la respuesta te genera dudas, quizás es el momento de empezar a mirar otras alternativas. No necesitas un software complejo de multinacional, necesitas una herramienta que entienda la realidad de una pyme española.
+
+## Preguntas frecuentes: del Excel al ERP
+
+### ¿Cuándo debe una pyme dejar Excel y pasarse a un ERP?
+
+Cuando aparecen las señales clásicas: versiones contradictorias del mismo archivo, stock que no cuadra con la realidad, horas perdidas conciliando datos para cerrar el mes y decisiones tomadas con información desactualizada. Si te suena, el Excel ya te está costando dinero.
+
+### ¿Qué gana una pyme con un ERP frente a las hojas de cálculo?
+
+Una única fuente de verdad: cada venta, compra o movimiento de almacén actualiza el resto del sistema al momento, sin duplicar datos ni reescribir información. Se acaban los errores de copia y el tiempo administrativo se convierte en tiempo de negocio.
+
+### ¿Es caro implantar un ERP en una pyme pequeña?
+
+No tiene por qué. Drenpos parte de 19 € al mes con estructura modular: activas solo lo que necesitas y amplías cuando el negocio lo pide. La implantación estándar se hace en días, con importación de datos y formación incluidas, sin permanencia.
+
+### ¿Puedo migrar mis datos de Excel al ERP?
+
+Sí. En la implantación se importan artículos, clientes, proveedores y stock inicial desde tus hojas de cálculo actuales, y se configura la empresa con sus series y periodos. Tu histórico no se pierde: se ordena.

@@ -1,6 +1,6 @@
 ---
 title: "Software de control horario para empresas en Navalmoral de la Mata"
-meta_title: "Software control horario Navalmoral de la Mata | Cumple 2026 sin fricción"
+meta_title: "Software control horario Navalmoral de la Mata 2026"
 description: "Digitaliza el registro horario en Navalmoral de la Mata antes de 2026. Solución modular, soporte cercano y migración guiada para pymes que buscan tranquilidad legal."
 date: 2026-05-27
 image: "/images/blog/software-control-horario-navalmoral-de-la-mata/cover.jpg"

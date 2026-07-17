@@ -1,7 +1,7 @@
 ---
 title: "Cómo enviar facturas por WhatsApp de forma automática"
 meta_title: "Automatizar envío de facturas y presupuestos por WhatsApp"
-description: ""
+description: "Envía facturas, presupuestos y albaranes por WhatsApp automáticamente desde tu programa de gestión: cómo funciona, qué tiempo ahorra a tu pyme y cómo activarlo en Drenpos sin apps de terceros."
 date: 2026-05-21
 image: "/images/blog/enviar-facturas-por-whatsapp-automaticamente/cover.jpg"
 author:

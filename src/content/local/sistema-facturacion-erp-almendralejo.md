@@ -1,7 +1,7 @@
 ---
 title: "Soluciones ERP y Programas de Facturación en Almendralejo: guía práctica para PYMES y autónomos"
 meta_title: "ERP y Programa de Facturación en Almendralejo | Drenpos"
-description: "Qué es un ERP, diferencias con CRM, checklist de funciones, Ley Antifraude/Veri*Factu, seguridad y cómo elegir. Drenpos: modular, en la nube, soporte personal y mejoras continuas sin coste."
+description: "Sistema de facturación y ERP para pymes de Almendralejo: qué es un ERP, diferencias con un CRM, checklist de funciones y cumplimiento Verifactu, con implantación y soporte cercano en Almendralejo."
 date: 2025-09-20
 author:
   name: "Alonso Bermejo Pérez"
@@ -26,7 +26,7 @@ hero:
 > **TL;DR:** Si operas en **Almendralejo** y buscas **programa de facturación/ERP**, prioriza: **cumplimiento (Ley Antifraude/Veri\*Factu)**, **control de stock**, **automatización**, **seguridad** y **soporte cercano**. **Drenpos** es modular (activas solo lo que necesitas), 100% en la nube, con **migración guiada**, **soporte personal** y **mejoras continuas sin coste adicional** para clientes activos.
 
 <div class="my-8 flex justify-center">
-  <a href="/contacto" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
+  <a href="/contact" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
     Solicitar demo en Almendralejo
   </a>
 </div>
@@ -262,7 +262,7 @@ Sesión práctica (1–2 h): **presupuestos/pedidos/facturas**, **cierres de caj
 **Soporte cercano** en tus primeros días reales de uso. Ajustamos **plantillas** e **informes**, resolvemos **dudas** y te dejamos **volando**.
 
 <div class="my-8 flex justify-center">
-  <a href="/contacto" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
+  <a href="/contact" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
     Solicitar demo ahora
   </a>
 </div>
@@ -277,7 +277,7 @@ Sesión práctica (1–2 h): **presupuestos/pedidos/facturas**, **cierres de caj
 - [Módulo de TPV](/modulos/tpv)
 - [Módulo de Almacén](/modulos/almacen)
 - [Guía VERI\*FACTU](/blog/verifactu-que-es-guia-2025)
-- [Contacto](/contacto) -->
+- [Contacto](/contact) -->
 
 ---
 

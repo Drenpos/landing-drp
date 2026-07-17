@@ -1,6 +1,6 @@
 ---
 title: "Software control horario Villanueva de la Serena: tranquilidad legal 2026"
-meta_title: "Software control horario Villanueva de la Serena | Cumplimiento 2026"
+meta_title: "Control horario Villanueva de la Serena | Cumple 2026"
 description: "Digitaliza tu registro horario en Villanueva de la Serena antes de 2026. Evita multas, elimina el papel y opera con tranquilidad legal y operativa."
 date: 2026-05-27
 image: "/images/blog/software-control-horario-villanueva-de-la-serena/cover.jpg"

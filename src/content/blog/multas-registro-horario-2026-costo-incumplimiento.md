@@ -15,6 +15,15 @@ draft: false
 hero:
   title: "Multas registro horario en 2026: cuánto te cuesta realmente incumplir"
   description: "No es un trámite administrativo. Es un pasivo financiero que la Inspección ya está aplicando con rigor. Conoce el coste real y cómo proteger tu margen."
+faq:
+  - question: "¿De cuánto son las multas por no llevar registro horario en 2026?"
+    answer: "Se aplican de forma progresiva y por empleado afectado: las infracciones leves pueden superar los 6.250 € por trabajador mal registrado, las graves escalan con la reincidencia o la falta de colaboración, y las muy graves se activan ante ocultación o falsificación de registros."
+  - question: "¿Qué pide la Inspección de Trabajo cuando llega a la empresa?"
+    answer: "Los registros de jornada de los últimos cuatro años, en soporte digital inalterable y con acceso inmediato. Si están en papel, correos o archivos locales editables, la empresa queda en posición de debilidad: la falta de soporte digital se interpreta como negligencia."
+  - question: "¿Sirven todavía el papel o el Excel para el registro de jornada?"
+    answer: "No. En 2026 se exige trazabilidad digital, inalterabilidad y acceso inmediato a los registros. Una hoja de cálculo editable no acredita nada ante una inspección: cada celda modificable es un punto ciego que juega en contra de la empresa."
+  - question: "¿Cómo elimino el riesgo de sanción sin frenar la operativa?"
+    answer: "Con un sistema de fichaje digital con sellado inalterable integrado en tu operativa diaria — app, QR o terminal — y reportes listos para la Inspección. En Drenpos el control horario va dentro del ERP, así el cumplimiento no añade trabajo: lo quita."
 ---
 
 No es un trámite. Es un pasivo financiero que la Inspección de Trabajo ya está aplicando con rigor en 2026. Si sigues fichando en papel o Excel, tu empresa no está ahorrando: está acumulando un riesgo que se multiplicará por tres en la próxima visita. **El registro horario ha dejado de ser una obligación burocrática para convertirse en un ítem crítico de tesorería.**
@@ -100,3 +109,21 @@ Si tu administración está al límite de gestionar fichajes, nóminas y factura
 **No esperes a que la inspección te pida los registros de 2026.** Revisa tu sistema de control horario esta semana. Si ves que tu equipo pierde horas validando datos o que tu contabilidad tiene discrepancias por horas no registradas, **es momento de migrar a un flujo integrado que proteja tu negocio y tu tranquilidad.**
 
 ¿Quieres saber cuánto te cuesta realmente mantener tu método actual frente a un sistema automatizado? **Agenda un diagnóstico de cumplimiento 2026 y transforma la incertidumbre en control operativo.**
+
+## Preguntas frecuentes sobre las multas del registro horario
+
+### ¿De cuánto son las multas por no llevar registro horario en 2026?
+
+Se aplican de forma progresiva y por empleado afectado: las infracciones leves pueden superar los 6.250 € por trabajador mal registrado, las graves escalan con la reincidencia o la falta de colaboración, y las muy graves se activan ante ocultación o falsificación de registros.
+
+### ¿Qué pide la Inspección de Trabajo cuando llega a la empresa?
+
+Los registros de jornada de los últimos cuatro años, en soporte digital inalterable y con acceso inmediato. Si están en papel, correos o archivos locales editables, la empresa queda en posición de debilidad: la falta de soporte digital se interpreta como negligencia.
+
+### ¿Sirven todavía el papel o el Excel para el registro de jornada?
+
+No. En 2026 se exige trazabilidad digital, inalterabilidad y acceso inmediato a los registros. Una hoja de cálculo editable no acredita nada ante una inspección: cada celda modificable es un punto ciego que juega en contra de la empresa.
+
+### ¿Cómo elimino el riesgo de sanción sin frenar la operativa?
+
+Con un sistema de fichaje digital con sellado inalterable integrado en tu operativa diaria — app, QR o terminal — y reportes listos para la Inspección. En Drenpos el control horario va dentro del ERP, así el cumplimiento no añade trabajo: lo quita.

@@ -1,6 +1,6 @@
 ---
 title: "Software de supermercados en Villanueva de la Serena: Control de stock y mermas"
-meta_title: "Software de supermercados en Villanueva de la Serena | Monitorización Activa"
+meta_title: "Software para supermercados en Villanueva de la Serena"
 description: "Evita pérdidas invisibles en tu supermercado con software de monitorización en tiempo real. Control de stock, alertas de caducidad y gestión inteligente en Villanueva de la Serena."
 date: 2026-05-26
 image: "/images/blog/software-supermercados-monitorizacion/cover.jpg"

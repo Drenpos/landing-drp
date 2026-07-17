@@ -6,6 +6,7 @@ import { getSinglePage } from "@/lib/contentParser.astro";
 import { getTaxonomy } from "@/lib/taxonomyParser.astro";
 import { sortByDate } from "@/lib/utils/sortFunctions";
 import taxonomyFilter from "@/lib/utils/taxonomyFilter";
+import { humanize } from "@/lib/utils/textConverter";
 import PageHeader from "@/partials/PageHeader.astro";
 
 // get static paths for all categories
@@ -27,10 +28,16 @@ const BLOG_FOLDER = "blog";
 const posts = await getSinglePage(BLOG_FOLDER);
 const filterByCategories = taxonomyFilter(posts, "categories", category!);
 const sortedPosts = sortByDate(filterByCategories);
+
+// Título/description humanizados (antes se emitía el slug crudo, p. ej.
+// "ayudas-y-subvenciones", con warnings de longitud y duplicidad)
+const categoryName = humanize(category!);
+const pageTitle = `Artículos sobre ${categoryName.toLowerCase()} | Blog Drenpos`;
+const pageDescription = `Artículos y guías sobre ${categoryName.toLowerCase()} para pymes y autónomos: consejos prácticos del equipo de Drenpos, el software de gestión hecho en Extremadura.`;
 ---
 
-<Base title={category}>
-  <PageHeader title={category} />
+<Base title={pageTitle} description={pageDescription}>
+  <PageHeader title={categoryName} />
   <div class="section-sm pb-0">
     <div class="container">
       <div class="row">

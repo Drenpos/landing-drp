@@ -43,10 +43,10 @@ export async function getStaticPaths() {
 ---
 
 <Base
-  title={postIndex.data.title}
-  meta_title={postIndex.data.meta_title}
+  title={`Guías por ciudad en Extremadura | Página ${currentPage}`}
+  meta_title={`Guías por ciudad en Extremadura | Página ${currentPage}`}
   image={postIndex.data.image}
-  description={postIndex.data.description}
+  description={`Archivo de guías locales de Drenpos, página ${currentPage}: software de gestión, control horario y facturación para pymes de Extremadura, ciudad a ciudad.`}
 >
   <PageHeader title={postIndex.data.title} hasSmallHeight={"h-[550px]"} />
   <section class="section-up">
