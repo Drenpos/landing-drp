@@ -9,8 +9,15 @@ author:
   designation: "CEO & Founder"
   avatar: "/images/alonso.jpg"
 categories: ["Cumplimiento Legal", "Gestión Operativa"]
-tags: ["registro horario digital", "fichaje digital", "ley control horario 2026", "sanciones registro horario", "software control horario"]
-featured: true
+tags:
+  [
+    "registro horario digital",
+    "fichaje digital",
+    "ley control horario 2026",
+    "sanciones registro horario",
+    "software control horario",
+  ]
+featured: false
 draft: false
 hero:
   title: "Registro horario digital: la guía que la Inspección de Trabajo no te va a dar"
@@ -59,15 +66,15 @@ No todos los sistemas digitales son válidos. **La Inspección evaluará el sist
 
 Los requisitos mínimos que debe cubrir tu sistema de registro horario digital son:
 
-| Requisito | Qué implica en la práctica |
-|---|---|
-| **Sellado temporal inalterable** | Cada fichaje queda registrado con fecha y hora que no puede editarse retroactivamente sin dejar huella |
-| **Registro completo de jornada** | Entrada, salida, pausas, horas extra y su clasificación (ordinarias / complementarias) |
-| **Acceso del trabajador** | Cada empleado puede consultar sus propios registros en cualquier momento, sin intermediarios |
-| **Acceso remoto de la Inspección** | El sistema permite facilitar datos en tiempo real sin necesidad de exportaciones manuales |
-| **Conservación durante 4 años** | Los registros deben estar disponibles para auditoría durante el plazo legal mínimo |
-| **Trazabilidad de modificaciones** | Si se corrige un fichaje erróneo, el sistema registra quién lo hizo, cuándo y por qué |
-| **Cumplimiento RGPD** | Los datos horarios son datos personales y deben tratarse conforme a la LOPD-GDD |
+| Requisito                          | Qué implica en la práctica                                                                             |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| **Sellado temporal inalterable**   | Cada fichaje queda registrado con fecha y hora que no puede editarse retroactivamente sin dejar huella |
+| **Registro completo de jornada**   | Entrada, salida, pausas, horas extra y su clasificación (ordinarias / complementarias)                 |
+| **Acceso del trabajador**          | Cada empleado puede consultar sus propios registros en cualquier momento, sin intermediarios           |
+| **Acceso remoto de la Inspección** | El sistema permite facilitar datos en tiempo real sin necesidad de exportaciones manuales              |
+| **Conservación durante 4 años**    | Los registros deben estar disponibles para auditoría durante el plazo legal mínimo                     |
+| **Trazabilidad de modificaciones** | Si se corrige un fichaje erróneo, el sistema registra quién lo hizo, cuándo y por qué                  |
+| **Cumplimiento RGPD**              | Los datos horarios son datos personales y deben tratarse conforme a la LOPD-GDD                        |
 
 **Cumplir con estos requisitos no es caro ni complejo si partes de la herramienta correcta.** El problema surge cuando se intentan parchear sistemas genéricos que no fueron diseñados para cumplir la normativa española de registro laboral.
 

@@ -9,8 +9,15 @@ author:
   designation: "CEO & Founder"
   avatar: "/images/alonso.jpg"
 categories: ["Control Horario", "Pymes Coria"]
-tags: ["registro horario", "RD 8/2019", "control jornada", "pymes extremadura", "drenpos"]
-featured: true
+tags:
+  [
+    "registro horario",
+    "RD 8/2019",
+    "control jornada",
+    "pymes extremadura",
+    "drenpos",
+  ]
+featured: false
 draft: false
 hero:
   title: "Software control horario Coria: cumple la normativa 2026 sin estrés"
@@ -52,12 +59,12 @@ Los terminales físicos siguen vendiéndose como la solución definitiva, pero *
 
 ![Two workers in a warehouse discussing logistics near a forklift captured from above.](/images/blog/software-control-horario-coria/section-2.jpg)
 
-| Característica | Hardware tradicional | App 100% cloud |
-|---|---|---|
-| Coste inicial | Alto (terminales + instalación) | Cero (uso desde móvil o navegador) |
-| Mantenimiento | Técnico especializado y recurrente | Actualizaciones automáticas en la nube |
-| Flexibilidad | Fichaje presencial obligatorio | Geolocalización y fichaje remoto |
-| Riesgo operativo | Avería = parada de registro | Redundancia total y acceso multiplataforma |
+| Característica   | Hardware tradicional               | App 100% cloud                             |
+| ---------------- | ---------------------------------- | ------------------------------------------ |
+| Coste inicial    | Alto (terminales + instalación)    | Cero (uso desde móvil o navegador)         |
+| Mantenimiento    | Técnico especializado y recurrente | Actualizaciones automáticas en la nube     |
+| Flexibilidad     | Fichaje presencial obligatorio     | Geolocalización y fichaje remoto           |
+| Riesgo operativo | Avería = parada de registro        | Redundancia total y acceso multiplataforma |
 
 **La nube elimina la fricción técnica y centraliza la información sin depender de un único dispositivo.**
 
