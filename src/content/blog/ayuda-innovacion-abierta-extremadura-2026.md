@@ -42,6 +42,11 @@ faq:
 
 Hay pymes que llevan años arrastrando el mismo problema operativo porque "no hay software que lo resuelva". Y tienen razón: el mercado está lleno de herramientas genéricas que obligan a tu negocio a adaptarse a ellas, y no al revés. **Si tu operativa te roba horas cada semana y ya has comprobado que ninguna herramienta estándar lo arregla, esta convocatoria es tu palanca — y el reloj ya corre.**
 
+<div class="not-prose my-8 text-center">
+  <a class="btn btn-dark" style="padding: 0.65rem 2rem;" href="https://outlook.office.com/bookwithme/user/230ec478daa44cc79be4e804e7312d31@drenpos.com/meetingtype/iFTzo_D-Zk-PUrXAQtzL2Q2?anonymous&amp;ep=mcard" target="_blank" rel="noopener">📅 Reserva tu diagnóstico gratuito de 30 min</a>
+  <p class="mt-3 text-sm opacity-70">Te decimos si tu caso encaja antes de que pierdas un mes de plazo</p>
+</div>
+
 ## ¿Qué son las ayudas de innovación abierta y por qué te interesan?
 
 La innovación abierta es un modelo de co-creación en el que tu pyme plantea un reto sin solución en el mercado y una startup tecnológica lo desarrolla. La Junta de Extremadura subvenciona el 100% de esos servicios de innovación, hasta 25.000 € por proyecto a fondo perdido, con un 50% anticipado tras la concesión. La beneficiaria es tu empresa (la pyme tractora), no la startup: tú solicitas, tú cobras, y el acuerdo de colaboración canaliza los fondos al desarrollo.
@@ -92,6 +97,10 @@ Drenpos es una startup extremeña certificada como empresa emergente por ENISA, 
 - **Expediente llave en mano:** identificamos contigo el reto, redactamos la memoria técnica (máximo 15 páginas, y cada una cuenta), preparamos el acuerdo de colaboración con el contenido mínimo que exige el artículo 7 del decreto, y emitimos la factura proforma desglosada a valores de mercado.
 - **Experiencia real en el terreno:** trabajamos a diario la gestión de almacén, el TPV, la trazabilidad de stock y el [control horario integrado](/blog/comparativa-mejores-software-control-horario-pymes-2026) de pymes de comercio y distribución. Conocemos los retos porque operamos donde surgen.
 
+<div class="not-prose my-8 text-center">
+  <a class="btn btn-light" style="padding: 0.65rem 2rem;" href="https://outlook.office.com/bookwithme/user/230ec478daa44cc79be4e804e7312d31@drenpos.com/meetingtype/iFTzo_D-Zk-PUrXAQtzL2Q2?anonymous&amp;ep=mcard" target="_blank" rel="noopener">Reserva tu cita: analizamos tu reto en 30 minutos</a>
+</div>
+
 ### ¿Qué tipo de retos encajan?
 
 Un reto subvencionable no es "quiero digitalizarme". Es un problema específico sin respuesta comercial. Algunos ejemplos del tipo de desafío que trabajamos con pymes de comercio y distribución: **identificación automática de miles de referencias de pequeño formato que hacen inviable el inventariado convencional, trazabilidad de producto cortado o fraccionado a medida con recálculo dinámico de stock, o motores de búsqueda técnica de producto por compatibilidad integrados en el punto de venta.** Si al leer esto has pensado en un problema concreto de tu negocio, ese es tu reto.
@@ -113,6 +122,11 @@ Si has respondido "no" a cualquiera de las tres, **te falta preparación, no sue
 > "La subvención no es para quien la busca cuando se publica. Es para quien la tiene preparada cuando se publica."
 
 **Reserva tu sesión de diagnóstico gratuita** y convierte ese problema que llevas años arrastrando en un proyecto financiado al 100% por la Junta de Extremadura. Tu reto ya existe. La ayuda ya existe. El plazo cierra el 18 de agosto.
+
+<div class="not-prose my-8 text-center">
+  <a class="btn btn-dark" style="padding: 0.65rem 2rem;" href="https://outlook.office.com/bookwithme/user/230ec478daa44cc79be4e804e7312d31@drenpos.com/meetingtype/iFTzo_D-Zk-PUrXAQtzL2Q2?anonymous&amp;ep=mcard" target="_blank" rel="noopener">📅 Reservar sesión de diagnóstico gratuita</a>
+  <p class="mt-3 text-sm opacity-70">30 minutos por videollamada · Eliges tú el hueco · Sin compromiso</p>
+</div>
 
 ## Preguntas frecuentes sobre las ayudas de innovación abierta
 
