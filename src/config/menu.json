@@ -22,6 +22,10 @@
           "url": "/control-horario"
         },
         {
+          "name": "Gestión de Almacén",
+          "url": "/software-gestion-almacen"
+        },
+        {
           "name": "Almacén y Tienda",
           "url": "/software-almacen-tienda"
         },

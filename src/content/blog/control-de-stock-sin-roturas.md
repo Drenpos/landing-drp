@@ -98,3 +98,5 @@ El stock deja de ser un problema cuando se convierte en un activo visible y pred
 Puedes seguir confiando en archivos que se desactualizan, o puedes construir un sistema que trabaje por ti. **La tranquilidad no llega cuando tienes más herramientas, llega cuando eliminas el ruido de fondo.**
 
 Si quieres auditar tu situación actual sin compromiso, **comienza por medir el coste real de tus errores de stock este mes.** La diferencia entre la intuición y la precisión es solo un paso bien dado.
+
+Y si quieres ver cómo resuelve todo esto un sistema pensado para pymes — multialmacén, ubicaciones con QR, lotes con caducidad y pistola lectora —, echa un vistazo a nuestro [software de gestión de almacén](/software-gestion-almacen): es nuestra especialidad.
