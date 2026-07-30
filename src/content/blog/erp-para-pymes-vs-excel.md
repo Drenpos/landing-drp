@@ -62,7 +62,7 @@ Muchos gerentes ven el cambio a un **erp para pymes** como un gasto, cuando en r
 
 ### El caso de Distribuciones López SL
 
-Esta empresa de distribución de suministros industriales operaba con un sistema de hojas de cálculo muy robusto. Sin embargo, un error en una celda de Excel hizo que **no detectaran una rotura de stock** de un componente crítico. El resultado fue un pedido urgente de un cliente importante que no pudieron cumplir, lo que derivó en una penalización económica y la pérdida de confianza de un cliente de años.
+Esta empresa de distribución de suministros industriales operaba con un sistema de hojas de cálculo muy robusto. Sin embargo, un error en una celda de Excel hizo que **no detectaran una [rotura de stock](/blog/control-de-stock-sin-roturas)** de un componente crítico. El resultado fue un pedido urgente de un cliente importante que no pudieron cumplir, lo que derivó en una penalización económica y la pérdida de confianza de un cliente de años.
 
 ### El caso de Ferretería Martínez
 
@@ -97,7 +97,7 @@ Implementar una solución de gestión empresarial como **Drenpos** permite que e
 El enfoque no es complicar la operativa, sino simplificarla mediante:
 
 - **Automatización de tareas repetitables**: Olvídate de copiar y pegar datos de una factura a un Excel.
-- **Control de inventario en tiempo real**: Saber exactamente qué tienes y qué necesitas pedir.
+- **Control de inventario en tiempo real**: Saber exactamente qué tienes y qué necesitas pedir, con un [almacén organizado por zonas y ubicaciones](/blog/como-organizar-almacen-pyme) que el sistema refleja al momento.
 - **Visibilidad total**: Acceder a la información de tu negocio desde cualquier lugar, sin depender de que alguien te envíe un archivo por correo.
 
 Como hemos visto en casos de éxito con **Drenpos**, el cambio no consiste en añadir más trabajo, sino en **eliminar el trabajo que no genera valor**.
@@ -108,7 +108,9 @@ No te pedimos que cambies toda tu operativa mañana. El paso más inteligente es
 
 Pregúntate esto: Si mañana tu empresa duplicara su volumen de pedidos, **¿tu sistema de Excel actual podría soportarlo o colapsaría bajo su propio peso?**
 
-Si la respuesta te genera dudas, quizás es el momento de empezar a mirar otras alternativas. No necesitas un software complejo de multinacional, necesitas una herramienta que entienda la realidad de una pyme española.
+Si la respuesta te genera dudas, quizás es el momento de empezar a mirar otras alternativas. No necesitas un software complejo de multinacional, necesitas una herramienta que entienda la realidad de una pyme española. Puedes ver los módulos y precios de Drenpos en nuestra página de [planes para pymes](/pricing), o escribirnos desde la [página de contacto](/contact) para una auditoría sin compromiso.
+
+Y si tu mayor dolor está en el almacén — ubicaciones, lotes, caducidades, pistola lectora —, tenemos una solución específica: el [software de gestión de almacén](/software-gestion-almacen) de Drenpos.
 
 ## Preguntas frecuentes: del Excel al ERP
 
