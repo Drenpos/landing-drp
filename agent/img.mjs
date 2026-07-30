@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
- * Descarga las imágenes del post "Ayudas de innovación abierta en Extremadura"
- * desde Pexels y las guarda en public/images/blog/ayudas-innovacion-abierta-extremadura/
+ * Descarga las imágenes del post "Cómo organizar el almacén de una pyme"
+ * desde Pexels y las guarda en public/images/blog/como-organizar-almacen-pyme/
+ * (sobrescribe los placeholders actuales).
  *
  * Sin dependencias: usa fetch nativo (Node 18+) y lee el .env a mano.
  *
@@ -13,19 +14,19 @@ import { join } from "node:path";
 
 // ---------- Config ----------
 // Ajusta si tu carpeta pública es 'static/' en vez de 'public/'
-const OUTPUT_DIR = "public/images/blog/ayudas-innovacion-abierta-extremadura";
+const OUTPUT_DIR = "public/images/blog/como-organizar-almacen-pyme";
 
 // [nombre_archivo, query en Pexels, orientación]
 const IMAGES = [
-  ["cover.jpg", "small business owner warehouse tablet", "landscape"],
-  ["section-1.jpg", "warehouse workers inventory checking", "landscape"],
-  ["section-2.jpg", "business meeting startup handshake office", "landscape"],
+  ["cover.jpg", "organized warehouse shelves boxes racking", "landscape"],
+  ["section-1.jpg", "warehouse worker organizing shelves boxes", "landscape"],
+  ["section-2.jpg", "warehouse worker barcode scanner inventory", "landscape"],
 ];
 
 // ---------- Cargar PEXELS_API_KEY (env o .env) ----------
 function loadApiKey() {
   if (process.env.PEXELS_API_KEY) return process.env.PEXELS_API_KEY;
-  for (const envPath of [".env", ".env.local"]) {
+  for (const envPath of [".env", ".env.local", "agent/.env"]) {
     if (!existsSync(envPath)) continue;
     const line = readFileSync(envPath, "utf8")
       .split("\n")
