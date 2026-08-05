@@ -27,7 +27,7 @@ hero:
 
 **El proceso es siempre el mismo**: abres el PDF de la factura, buscas el contacto en tu agenda, adjuntas el archivo, escribes un mensaje de cortesía y esperas a que el cliente te confirme la recepción.
 
-Parece una tarea pequeña, pero **cuando sumas todas las veces que lo haces al día**, el impacto en tu productividad y en tu capacidad de venta es devastador.
+Parece una tarea pequeña. Pero suma todas las veces que lo haces al día y el impacto en tu productividad y en tu capacidad de venta es devastador.
 
 ## Esto le pasa a casi todas las pymes
 
@@ -46,13 +46,13 @@ En esta empresa de suministros industriales, el responsable de ventas pasaba **c
 
 ## Lo que te cuesta seguir igual
 
-El problema no es solo el tiempo que pierdas, sino **la falta de control real sobre tu flujo de caja**. Un presupuesto que no llega a tiempo es una venta que se pierde frente a la competencia.
+Más allá del tiempo que pierdes, el problema de fondo es la **falta de control real** sobre tu flujo de caja. Un presupuesto que no llega a tiempo es una venta que se pierde frente a la competencia.
 
-> "El error humano en la gestión manual no es una posibilidad, es una certeza matemática."
+> "El error humano en la gestión manual deja de ser una posibilidad y pasa a ser una certeza matemática."
 
 Si dependes de la memoria o de un proceso manual, **el riesgo de enviar un presupuesto con un error de precio o una factura a un cliente equivocado** es altísimo. Esto genera una desconfianza que ninguna campaña de marketing puede recuperar.
 
-> "La automatización no es un lujo para grandes corporaciones, es una necesidad para la supervivencia de la pyme."
+> "La automatización ya no queda reservada a las grandes corporaciones: para una pyme es cuestión de supervivencia."
 
 ## Por qué el Excel y el envío manual no son suficientes
 
@@ -71,7 +71,7 @@ Muchos gestores creen que con una lista de contactos en Excel y un poco de orden
 
 Las empresas que están creciendo no buscan trabajar más horas, sino **trabajar de forma más inteligente**. La clave está en la integración de herramientas.
 
-La solución no es usar WhatsApp Empresas simplemente como un chat de mensajería, sino **conectar tu herramienta de gestión con tu canal de comunicación** principal.
+La solución pasa por conectar tu **herramienta de gestión** con tu canal de comunicación principal, en lugar de usar WhatsApp Empresas como un simple chat.
 
 Al implementar una **facturación automática** integrada con tu sistema de gestión, el proceso cambia por completo:
 
@@ -79,12 +79,12 @@ Al implementar una **facturación automática** integrada con tu sistema de gest
 - **Sin descargas intermedias**: El sistema gestiona el archivo por ti.
 - **Trazabilidad real**: Sabes exactamente qué se ha enviado y cuándo.
 
-En Drenpos, hemos diseñado un entorno donde **enviar facturas por WhatsApp** deja de ser una tarea pendiente para convertirse en un proceso invisible, rápido y eficiente.
+En Drenpos hemos diseñado un entorno donde **enviar facturas por WhatsApp** deja de ser una tarea pendiente para convertirse en un proceso rápido y casi invisible.
 
 ## El siguiente paso (sin compromiso)
 
 No necesitas cambiar toda tu forma de trabajar de la noche a la mañana. Solo necesitas **evaluar si tu proceso actual te está frenando** más de lo que te ayuda.
 
-Te invitamos a reflexionar: **¿Cuánto dinero estás dejando de ganar por dedicar tiempo a tareas que una tecnología sencilla podría hacer por ti?**
+Haz números: ¿cuánto dinero estás dejando de ganar por dedicar tiempo a tareas que una tecnología sencilla podría hacer por ti?
 
 Si sientes que es hora de recuperar el control de tu tiempo, podemos ayudarte a analizar tus procesos actuales.

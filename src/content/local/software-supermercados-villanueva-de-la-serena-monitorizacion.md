@@ -23,7 +23,7 @@ hero:
   description: "Si tu software solo te dice qué vendiste, no estás controlando tu negocio, solo estás contando lo que ya se ha ido."
 ---
 
-¿Sabes exactamente cuánto dinero perdió tu supermercado ayer por una rotura de stock o una cadencia de producto no detectada? **Si tu software solo te dice qué vendiste, pero no qué estás perdiendo, la respuesta es: no lo sabes.**
+¿Sabes con certeza cuánto dinero perdió ayer tu supermercado por una rotura de stock o una caducidad no detectada? Si tu software solo te dice qué vendiste, pero no qué estás perdiendo, la respuesta es que no lo sabes.
 
 ## Resumen ejecutivo: El control que tu supermercado en Villanueva de la Serena necesita
 
@@ -36,7 +36,7 @@ Si no tienes tiempo para leer todo, aquí tienes **la clave para proteger tu mar
 
 ## El coste oculto de la gestión reactiva en el retail de alimentación
 
-Muchos gerentes de alimentación en nuestra zona operan bajo una **falsa sensación de seguridad**. Creen que porque el arqueo de caja cuadra, el negocio está bajo control. Pero **el verdadero peligro no está en lo que ves, sino en lo que ignoras**.
+Muchos gerentes de alimentación en nuestra zona operan bajo una **falsa sensación de seguridad**. Creen que porque el arqueo de caja cuadra, el negocio está bajo control. Pero el verdadero peligro se esconde en lo que ignoras.
 
 ![A neatly organized liquor aisle with various wine and oil bottles on shelves.](/images/blog/software-supermercados-monitorizacion/section-1.jpg)
 
@@ -44,11 +44,11 @@ Las pérdidas por mermas, errores en la recepción de mercancía o productos que
 
 > "Gestionar un supermercado basándose solo en el ticket de venta es como intentar pilotar un avión mirando solo el retrovisor: sabes dónde estuviste, pero no tienes ni idea de lo que tienes delante."
 
-## Por qué los supermercados en Villanueva de la Serena están percdotiendo margen en la gestión de inventarios
+## Por qué los supermercados en Villanueva de la Serena están perdiendo margen en la gestión de inventarios
 
 En el sector retail de Villanueva de la Serena, la competencia es feroz y los márgenes son ajustados. Muchos negocios locales todavía dependen de la **gestión basada en la intuición** o el famoso "recorrido visual" diario por los pasillos.
 
-Este método tiene un fallo crítico: **es puramente reactivo**. Solo te das cuenta de que un producto falta cuando el cliente te lo pide, o de que un lote ha caducado cuando ya es demasiado tarde para hacer nada.
+Este método tiene un punto débil claro: **es puramente reactivo**. Solo te das cuenta de que un producto falta cuando el cliente te lo pide, o de que un lote ha caducado cuando ya es demasiado tarde para hacer nada.
 
 ### El error de la gestión manual
 
@@ -65,9 +65,9 @@ Aquí es donde la mayoría de los gerentes se confunden. Un ERP o un TPV tradici
 
 ![Woman wearing mask, shopping in grocery store, choosing fresh produce with smartphone in hand.](/images/blog/software-supermercados-monitorizacion/section-2.jpg)
 
-Sin embargo, la **monitorización activa** es un salto tecnológico. No se trata solo de mirar el pasado, sino de recibir información sobre el presente para actuar en el futuro.
+Sin embargo, la **monitorización activa** es un salto tecnológico. Ya no miras solo el pasado: recibes información del presente para decidir a tiempo.
 
-| Caracteridad   | Gestión Tradicional (ERP/TPV) | Monitorización Activa (Drenpos)   |
+| Característica | Gestión Tradicional (ERP/TPV) | Monitorización Activa (Drenpos)   |
 | :------------- | :---------------------------- | :-------------------------------- |
 | **Enfoque**    | Registro de ventas pasadas    | Alerta de incidencias presentes   |
 | **Inventario** | Revisión manual/periódica     | Control de stock en tiempo real   |
@@ -75,7 +75,6 @@ Sin embargo, la **monitorización activa** es un salto tecnológico. No se trata
 | **Tecnología** | Base de datos simple          | Integración de alertas y sensores |
 
 **El software de supermercados en Villanueva de la Serena** que solo te ofrece la primera columna te deja desarmado ante la rotura de stock. El que te ofrece la segunda, te permite anticiparte.
-le
 
 ## La era de la monitorización activa: Sensores, alertas y control de stock en tiempo real
 
@@ -93,11 +92,11 @@ Imagina recibir una notificación en tu móvil porque la temperatura de la secci
 
 ## Software de monitorización Drenpos: La solución modular para el retail extremeño
 
-En Drenpos, entendemos que un supermercado en Villanueva de la Serena no necesita una solución genérica diseñada para una multinacional. **Necesitas algo que se adapte a tu realidad local**.
+En Drenpos, entendemos que un supermercado en Villanueva de la Serena no necesita una solución genérica diseñada para una multinacional. Necesitas algo que se adapte a tu realidad local.
 
 Nuestro enfoque no es venderte un paquete cerrado de funciones que no usarás. Apostamos por un **ERP para supermercados en Villanueva de la Serena** que sea modular. Si necesitas control de stock avanzado, lo tienes; si solo necesitas una facturación ágil, también.
 
-**Nos posicionamos como tu aliado técnico**, ofreciendo un soporte que entiende tus calles y tus necesidades. No somos un software de la nube que no te responde; somos tecnología aplicada a tu rentabilidad diaria.
+**Nos posicionamos como tu aliado técnico**, ofreciendo un soporte que entiende tus calles y tus necesidades. Somos tecnología aplicada a tu rentabilidad diaria, con alguien al otro lado cuando lo necesitas.
 
 ## Preguntas frecuentes sobre la digitalización de supermercados
 
@@ -105,7 +104,7 @@ Nuestro enfoque no es venderte un paquete cerrado de funciones que no usarás. A
 
 Depende de tu infraestructura. El modelo **Cloud** te permite supervisar tu negocio desde cualquier lugar con internet. El modelo **On-premise** es ideal si prefieres que toda la información resida en tus propios servidores locales por razones de autonomía técnica.
 
-### ¿Cumple el software con la normativa Verif\*actu?
+### ¿Cumple el software con la normativa Veri\*Factu?
 
 Sí. En Drenpos estamos preparados para las **nuevas exigencias fiscales y normativas** de la administración española, asegurando que tu digitalización sea segura y legal.
 
@@ -119,4 +118,4 @@ No pretendo que cambies tu forma de trabajar hoy mismo. Solo te invito a **refle
 
 Si sientes que tu margen de beneficio se está escapando entre las manos por falta de control, te propongo un primer paso sencillo: **una conversación técnica**.
 
-Podemos analizar tu flujo de trabajo actual y ver si existe una brecha de monitorización que esté afectando a tu rentabilidad. **Sin compromisos, solo con el objetivo de darte claridad sobre tu negocio**.
+Podemos analizar tu flujo de trabajo actual y ver si existe una brecha de monitorización que esté afectando a tu rentabilidad. Sin compromisos, solo con el objetivo de darte claridad sobre tu negocio.

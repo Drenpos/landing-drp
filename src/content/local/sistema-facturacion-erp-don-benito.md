@@ -48,10 +48,10 @@ hero:
 
 <h2 id="introduccion">Soluciones ERP para PYMES en Don Benito</h2>
 
-Elegir un **programa de facturación** o un **ERP** no debería ser un dolor de cabeza. Si trabajas en **Don Benito** —ya seas autónomo, comercio de barrio, distribuidora, taller o empresa de servicios— necesitas un **software de gestión** que simplifique la facturación, cumpla la **normativa fiscal (Ley Antifraude)** y te ayude a vender más y mejor, sin procesos complejos ni costes inesperados.
+Elegir un **programa de facturación** o un **ERP** no debería quitarte el sueño. Si trabajas en **Don Benito** (ya seas autónomo, comercio de barrio, distribuidora, taller o empresa de servicios) necesitas un **software de gestión** que simplifique la facturación, cumpla la **normativa fiscal (Ley Antifraude)** y te ayude a vender más y mejor, sin procesos complejos ni costes inesperados.
 
-**Drenpos** nace con esa idea: **activar solo lo que necesitas** (módulos de facturación, **TPV**, **almacén**, **fichajes**, etc.), **empezar en minutos** y **crecer sin cambiar de sistema**.  
-Esta guía explica, con lenguaje claro, cómo entender el mundo **ERP/facturación** y cómo elegir bien para tu negocio en **Don Benito**.
+**Drenpos** nace con esa idea: **activar solo lo que necesitas** (módulos de facturación, **TPV**, **almacén**, **fichajes**, etc.), empezar en minutos y crecer sin cambiar de sistema.  
+Esta guía explica, con lenguaje claro, cómo entender el mundo ERP/facturación y cómo elegir bien para tu negocio en Don Benito.
 
 ---
 
@@ -69,22 +69,22 @@ Esta guía explica, con lenguaje claro, cómo entender el mundo **ERP/facturaci�
 **¿Qué es un ERP en facturación?**  
 Llevar la **facturación** dentro de un sistema que conecta con todo lo demás. Ya no es un proceso aislado: impacta en **stock, contabilidad, cobros, informes y relación con clientes**. Resultado: **menos duplicidades y menos errores**.
 
-**¿Qué es ERP en contabilidad (“ERP en conta”)?**  
+**¿Qué es ERP en contabilidad ("ERP en conta")?**  
 El módulo que **registra y clasifica automáticamente** la información financiera (ventas, compras, bancos, impuestos). Puede **publicar asientos**, generar **informes** y facilitar el trabajo con tu **asesoría**.
 
-**¿Qué es el “servicio ERP”?**  
-El conjunto de **funcionalidades + soporte + actualizaciones** que recibes al usar un ERP (en la nube o local). En **Drenpos**, además, es **modular**: pagas y usas lo que necesitas ahora, ampliable mañana.
+**¿Qué es el "servicio ERP"?**  
+El conjunto de **funcionalidades + soporte + actualizaciones** que recibes al usar un ERP (en la nube o local). En Drenpos, además, es modular: pagas y usas lo que necesitas ahora, ampliable mañana.
 
-**¿Y un “software de sistema de facturación”?**  
+**¿Y un "software de sistema de facturación"?**  
 La herramienta (simple o completa) que permite **crear, enviar y registrar** facturas, presupuestos y albaranes. En un **ERP**, esa facturación **se integra con el resto de áreas**.
 
-> Hoy, un buen ERP en la nube no solo resuelve la **gestión administrativa**: te permite trabajar en **tiempo real**, automatizar **procesos de negocio** y mantener **copias de seguridad** seguras sin depender de **servidores externos** o **disco duro local**.
+> Un buen ERP en la nube va más allá de la **gestión administrativa**: te permite trabajar en **tiempo real**, automatizar **procesos de negocio** y mantener **copias de seguridad** seguras sin depender de **servidores externos** o **disco duro local**.
 
 ---
 
 <h2 id="erp-vs-crm">2) ERP vs CRM: qué necesitas según tu negocio en Don Benito</h2>
 
-En Don Benito muchas empresas dudan entre **ERP** y **CRM**. Son **complementarios**:
+En Don Benito, la duda entre **ERP** y **CRM** se repite mucho. Son **complementarios**:
 
 - **CRM (Customer Relationship Management):** orientado a **gestión comercial y de clientes** (oportunidades, seguimiento, pipeline, emails).
 - **ERP:** orientado a **operaciones y back-office** (facturación, **almacén**, compras, **TPV**, fichajes, contabilidad).
@@ -93,11 +93,11 @@ En Don Benito muchas empresas dudan entre **ERP** y **CRM**. Son **complementari
 
 - Si tu reto es **ordenar la venta, captar leads y hacer seguimiento**, empieza por **CRM**.
 - Si tu reto es **facturar bien, controlar stock, cuadrar compras/ventas y cumplir normativa**, prioriza **ERP**.
-- ¿Necesitas ambos? **Drenpos** permite **activar módulos** para cubrir **CRM ligero**, **ERP completo** y **crecer sin cambiar** de sistema.
+- ¿Necesitas ambos? **Drenpos** permite activar módulos para cubrir un **CRM ligero** o un **ERP completo**, y crecer sin cambiar de sistema.
 
 **Ventaja local:** al ser **cloud**, tu equipo puede trabajar desde **Don Benito, Mérida, Cáceres o donde haga falta**, incluso con comerciales en movilidad, **sin instalaciones raras**.
 
-**Resumen clave:**  
+**La idea clave:**  
 El **CRM** está más orientado a la **gestión comercial**, mientras que el **ERP de gestión** se centra en los **procesos operativos** y la **automatización de tareas** internas (facturación, **control de stock**, compras, **conciliación bancaria**, etc.). Juntos impulsan la **transformación digital**.
 
 ---
@@ -106,7 +106,7 @@ El **CRM** está más orientado a la **gestión comercial**, mientras que el **E
 
 Si estás comparando opciones, utiliza este **checklist esencial**:
 
-### Bloque “imprescindibles”
+### Bloque "imprescindibles"
 
 - **Factura electrónica / facturas electrónicas** con **firma digital** y **certificado digital**.
 - **Gestión de almacenes** y **cadena de suministro**: trazabilidad con **lotes, ubicaciones y caducidades**.
@@ -193,7 +193,7 @@ En España, la **Ley Antifraude** y la **normativa fiscal** imponen requisitos c
 
 **Filtro rápido para decidir:**
 
-- **Funcionalidades:** ¿cubre ya el 80% de lo que haces? ¿Qué módulos extra en 3–6 meses?
+- **Funcionalidades:** ¿cubre ya el 80% de lo que haces? ¿Qué módulos extra en 3-6 meses?
 - **Usabilidad:** ¿curva de aprendizaje razonable para tu equipo?
 - **Cumplimiento:** ¿incluye **Veri\*Factu/Antifraude** y **logs**?
 - **Soporte local y cercanía:** ¿te atienden en tu horario y entienden el **contexto extremeño**?
@@ -201,13 +201,13 @@ En España, la **Ley Antifraude** y la **normativa fiscal** imponen requisitos c
 - **Integraciones y exportaciones:** ¿conectarás con **asesoría, ecommerce o TPV**?
 - **Migración:** ¿se encargan de **datos, series y clientes** sin parar la operativa?
 
-**Comparativa mental “rápida”:**
+**Comparativa mental "rápida":**
 
 - **Programas de facturación simples:** rápidos de arrancar, pero limitan en **stock** y **trazabilidad**.
-- **ERPs generalistas:** completos, pero pueden ser **caros/rigídos** para PYMES locales.
+- **ERPs generalistas:** completos, pero pueden ser **caros o rígidos** para PYMES locales.
 - **Drenpos (enfoque modular):** empiezas ahora con **facturación** y activas **TPV, Almacén, Fichajes, CRM/Finanzas** cuando toque, sin cambiar de software ni romper la numeración.
 
-**Punto importante adicional**  
+**Un último apunte**  
 Asegúrate de que el ERP cuente con **permisos por usuario**, **control de accesos** y **trazabilidad** de todas las acciones. Protege tu negocio, refuerza el **trabajo en equipo** y el **control total** de la información.
 
 ---
@@ -215,7 +215,7 @@ Asegúrate de que el ERP cuente con **permisos por usuario**, **control de acces
 <h2 id="por-que-drenpos">6) Por qué Drenpos encaja para autónomos y PYMES de Don Benito</h2>
 
 **1) Soporte personal y cercano**  
-No eres “un ticket”. Te atendemos **personas**, en castellano, con conocimiento real de **PYMES extremeñas**. Te acompañamos en el **arranque**, resolvemos **dudas** y proponemos **mejoras** cuando detectamos oportunidades.
+No eres "un ticket". Te atienden **personas**, en castellano, con conocimiento real de **PYMES extremeñas**. Te acompañamos en el **arranque**, resolvemos **dudas** y proponemos **mejoras** cuando detectamos oportunidades.
 
 **2) Mejoras continuas co-creadas (sin costes adicionales)**  
 Escuchamos activamente a nuestros clientes y **priorizamos el roadmap** con sus necesidades reales. Las **mejoras globales** del producto se publican de forma continua **sin coste extra** para los clientes activos: evoluciona tu ERP **sin sorpresas de presupuesto**.
@@ -223,7 +223,7 @@ Escuchamos activamente a nuestros clientes y **priorizamos el roadmap** con sus 
 **3) Modular y a tu ritmo**  
 Activa **solo lo que necesitas**: facturación hoy; **TPV**, **Almacén**, **Fichajes** o **Finanzas** cuando toque. Paga por **módulos**, no por features que no usas.
 
-**4) Cumplimiento “by design”**  
+**4) Cumplimiento "by design"**  
 Listo para **Ley Antifraude/Veri\*Factu**: **registros inalterables**, **firma**, **QR/leyenda** y **trazabilidad** con logs. Menos riesgo, más tranquilidad.
 
 **5) Control de stock serio (si lo necesitas)**  
@@ -235,31 +235,31 @@ Accede desde **oficina, almacén o casa**. **Backups diarios** y rendimiento est
 **7) Migración sin dolor**  
 Importamos **clientes, productos, series y saldos** con seguridad y sin parar tu operativa. Tú sigues vendiendo; **nosotros migramos**.
 
-**En resumen**  
+**Lo esencial**  
 **Soporte personal**, **mejoras continuas sin coste**, **control total** del negocio, **seguridad de los datos** y un ERP diseñado para la **automatización avanzada** de tus **procesos de negocio**.  
-**Drenpos** no es solo un **programa de facturación**: es una **aplicación web** que combina **ERP y CRM**, compatible con **comercio electrónico**, con **copias de seguridad automáticas** y una evolución constante **gracias a los usuarios**.
+**Drenpos** combina **ERP y CRM** en una misma aplicación web, compatible con **comercio electrónico**, con **copias de seguridad automáticas** y una evolución constante gracias a los usuarios.
 
-> “¿Tienes una necesidad concreta que ningún ERP te resuelve? **Cuéntanosla**: si aporta valor al conjunto, la **incorporamos al producto sin coste extra** y te avisamos cuando esté disponible.”
+> "¿Tienes una necesidad concreta que ningún ERP te resuelve? **Cuéntanosla**: si aporta valor al conjunto, la **incorporamos al producto sin coste extra** y te avisamos cuando esté disponible."
 
 ---
 
 <h2 id="proximos-pasos">7) Próximos pasos: demo, migración y plan de 10 días</h2>
 
-Si has llegado hasta aquí, probablemente tengas claro que necesitas **orden, cumplimiento y simplicidad**. Te propongo un camino **sin sustos**:
+Si has llegado hasta este punto, seguramente tengas claro que necesitas **orden, cumplimiento y simplicidad**. Te propongo un camino **sin sustos**:
 
-**Día 1 — Llamada y diagnóstico (30 min)**  
+**Día 1: Llamada y diagnóstico (30 min)**  
 Revisamos **ventas, compras, TPV, stock, fichajes**, documentos (**series, plantillas**) y prioridades (p. ej., **Veri\*Factu**).
 
-**Día 2–3 — Plan de arranque**  
-Definimos **módulos a activar hoy** (p. ej., **Facturación + TPV**) y **módulos para el mes 2–3** (p. ej., **Almacén con ubicaciones**).
+**Día 2-3: Plan de arranque**  
+Definimos **módulos a activar hoy** (p. ej., **Facturación + TPV**) y **módulos para el mes 2-3** (p. ej., **Almacén con ubicaciones**).
 
-**Día 4–6 — Migración guiada**  
+**Día 4-6: Migración guiada**  
 Importamos **clientes, productos, tarifas** y, si aplica, **series y stock inicial**. Configuramos **firmas, plantillas y numeraciones**.
 
-**Día 7 — Formación express**  
-Sesión práctica (1–2 h): **presupuestos/pedidos/facturas**, **cierres de caja**, **informes** y **envío por email**.
+**Día 7: Formación express**  
+Sesión práctica (1-2 h): **presupuestos/pedidos/facturas**, **cierres de caja**, **informes** y **envío por email**.
 
-**Día 8–10 — Acompañamiento**  
+**Día 8-10: Acompañamiento**  
 **Soporte cercano** en tus primeros días reales de uso. Ajustamos **plantillas** e **informes**, resolvemos **dudas** y te dejamos **volando**.
 
 <div class="my-8 flex justify-center">
@@ -268,7 +268,7 @@ Sesión práctica (1–2 h): **presupuestos/pedidos/facturas**, **cierres de caj
   </a>
 </div>
 
-> Con **Drenpos** no solo empiezas a **facturar en 10 días**: das un paso firme hacia la **transformación digital** de tu empresa, con un **software en la nube** pensado para **autónomos, despachos profesionales y PYMES** de Extremadura.
+> Con **Drenpos** empiezas a **facturar en 10 días** y das un paso firme hacia la **transformación digital** de tu empresa, con un **software en la nube** pensado para **autónomos, despachos profesionales y PYMES** de Extremadura.
 
 <!-- ---
 
@@ -282,7 +282,7 @@ Sesión práctica (1–2 h): **presupuestos/pedidos/facturas**, **cierres de caj
 
 ---
 
-<h2 id="faq">FAQ (SEO “People Also Ask”)</h2>
+<h2 id="faq">FAQ (SEO "People Also Ask")</h2>
 
 **¿Qué es un ERP en facturación?**  
 Un ERP integra la **facturación** dentro de un sistema que también gestiona **stock, compras, contabilidad y clientes**, evitando **duplicidades** y **errores**.
@@ -290,8 +290,8 @@ Un ERP integra la **facturación** dentro de un sistema que también gestiona **
 **¿Qué es el servicio ERP?**  
 El **conjunto de funcionalidades + soporte + actualizaciones** que recibes al usar un ERP, idealmente **en la nube** y **modular** (como **Drenpos**).
 
-**¿Qué es ERP en contabilidad (“ERP en conta”)?**  
+**¿Qué es ERP en contabilidad ("ERP en conta")?**  
 El módulo que **registra y clasifica automáticamente** los **movimientos económicos** y **facilita** la relación con tu **asesoría**.
 
 **¿Qué es un software de sistema de facturación?**  
-Una herramienta para **crear, enviar y registrar** facturas. En su versión “**ERP**”, además, **se conecta con stock, compras, informes y CRM**.
+Una herramienta para **crear, enviar y registrar** facturas. En su versión "**ERP**", además, **se conecta con stock, compras, informes y CRM**.

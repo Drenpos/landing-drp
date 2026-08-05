@@ -17,15 +17,15 @@ hero:
   description: "Deja el Excel y el papel atrás. Cumple la normativa 2026 con un sistema modular, sincronización offline y acompañamiento cercano."
 ---
 
-Si sigues fichando a tus empleados en papel o Excel en Montijo, no solo pierdes horas gestionando ausencias: estás acumulando un riesgo de multa que la Inspección de Trabajo empezará a auditar con mayor rigor en 2026.
+Si sigues fichando a tus empleados en papel o Excel en Montijo, pierdes horas gestionando ausencias y acumulas un riesgo de multa que la Inspección de Trabajo empezará a auditar con mayor rigor en 2026.
 
-**No se trata de cumplir un trámite burocrático, sino de blindar tu operativa diaria.** El registro digital es obligatorio, inalterable y accesible. Drenpos lo hace modular y cercano, adaptado a la realidad semi-rural y a los flujos de trabajo reales de tu empresa.
+Blindar tu operativa diaria pesa aquí más que cumplir un trámite burocrático. El registro digital es obligatorio, inalterable y accesible. Drenpos lo hace modular y cercano, adaptado a la realidad semi-rural y a los flujos de trabajo reales de tu empresa.
 
 ## Por qué el control manual ya no es viable para las empresas de Montijo
 
-**El papel y las hojas de cálculo compartidas generan más dudas que control.** En un entorno como Montijo, donde la conectividad puede ser intermitente y los horarios escalonados, el control manual se desmorona rápidamente. Cuando intentas conciliar dos versiones distintas del mismo Excel, **pierdes horas valiosas que podrían dedicarse a hacer crecer tu negocio**.
+El papel y las hojas de cálculo compartidas generan más dudas que control. En un entorno como Montijo, donde la conectividad puede ser intermitente y los horarios escalonados, el control manual se desmorona rápidamente. Cuando intentas conciliar dos versiones distintas del mismo Excel, pierdes horas valiosas que podrían dedicarse a hacer crecer tu negocio.
 
-Imagina una empresa de logística local que gestiona las **fichajes empleados Montijo** con libretas físicas. Al final del mes, las horas extras se duplican, las ausencias se pierden y el gestor termina pasando su noche revisando datos desactualizados.
+Imagina una empresa de logística local que gestiona los **fichajes empleados Montijo** con libretas físicas. Al final del mes, las horas extras se duplican, las ausencias se pierden y el gestor termina pasando su noche revisando datos desactualizados.
 
 La normativa es clara. Según el Real Decreto-ley 8/2019 (BOE-A-2019-3481), el **registro horario Montijo** debe ser digital, inalterable y accesible para el trabajador. La Inspección no busca complicarte la vida, pero sí exige trazabilidad completa.
 
@@ -33,13 +33,13 @@ La normativa es clara. Según el Real Decreto-ley 8/2019 (BOE-A-2019-3481), el *
 
 ## Funcionalidades clave de un software de control horario adaptado a tu operativa
 
-**Cada módulo se activa según tu ritmo, sin licencias innecesarias.** Un buen sistema de **control de jornada Montijo** no te obliga a usar todo lo que tiene, sino que se adapta a tu tejido empresarial real.
+Cada módulo se activa según tu ritmo, sin licencias innecesarias. Un buen sistema de **control de jornada Montijo** se adapta a tu tejido empresarial real en lugar de obligarte a usar todo lo que trae.
 
 ![Hands interacting with a tablet, showcasing modern touchscreen technology in an indoor setting.](/images/blog/software-control-horario-montijo-2026/section-1.jpg)
 
 ### Fichajes móviles y sincronización offline
 
-**La conectividad no debe ser un obstáculo para cumplir la ley.** Nuestra **app fichajes Montijo** permite registrar la entrada y salida sin conexión. Cuando el dispositivo recupera señal, los datos se sincronizan automáticamente en la nube.
+La conectividad no debe ser un obstáculo para cumplir la ley. Nuestra **app fichajes Montijo** permite registrar la entrada y salida sin conexión. Cuando el dispositivo recupera señal, los datos se sincronizan automáticamente en la nube.
 
 ### Informes listos para la Inspección
 
@@ -54,7 +54,7 @@ Una cafetería en el casco urbano implementó el **sistema control presencia Mon
 
 ## Cumplimiento normativo 2026 y seguridad: lo que exige la ley y lo que te ofrecemos
 
-**La normativa no pide tecnología cara, pide certeza jurídica.** El artículo 10 del Real Decreto-ley 8/2019 establece que el registro debe garantizar el cumplimiento de los límites de jornada. El artículo 11 tipifica las infracciones por falta de registro o falsedad.
+La normativa no pide tecnología cara, pide certeza jurídica. El artículo 10 del Real Decreto-ley 8/2019 establece que el registro debe garantizar el cumplimiento de los límites de jornada. El artículo 11 tipifica las infracciones por falta de registro o falsedad.
 
 | Criterio | Control manual (Excel/Papel) | Software de control horario Montijo |
 |---|---|---|
@@ -67,7 +67,7 @@ Una cafetería en el casco urbano implementó el **sistema control presencia Mon
 
 ## Migración sin fricción: cómo empezar a fichar en la nube en 48 horas
 
-**Cambiar de Excel a la nube no requiere parar la operativa.** Entendemos que en Montijo el día a día no se detiene. Por eso, el acompañamiento es presencial y guiado.
+Cambiar de Excel a la nube no requiere parar la operativa. Entendemos que en Montijo el día a día no se detiene. Por eso, el acompañamiento es presencial y guiado.
 
 ![Asian businessman in formal wear signs paperwork at office desk.](/images/blog/software-control-horario-montijo-2026/section-2.jpg)
 
@@ -84,9 +84,9 @@ Drenpos no te deja solo tras la instalación. **El soporte cercano valida tu ope
 **Sí, el sistema está diseñado para entornos semi-rurales.** Los fichajes se guardan localmente y se sincronizan automáticamente cuando el dispositivo recupera conexión. **Nunca perderás un registro por falta de señal.**
 
 ### ¿Es obligatorio para todas las empresas?
-**La ley aplica a todas las empresas con trabajadores asalariados.** Si tu plantilla supera el umbral legal, el **registro horario Montijo** es obligatorio. Drenpos te ayuda a identificar tu situación exacta sin letra pequeña.
+La ley aplica a todas las empresas con trabajadores asalariados. Si tu plantilla supera el umbral legal, el **registro horario Montijo** es obligatorio. Drenpos te ayuda a identificar tu situación exacta sin letra pequeña.
 
 ### ¿Qué pasa si la Inspección pide los datos mañana?
-**Tendrás toda la trazabilidad lista en segundos.** El sistema genera informes consolidados que cumplen con los requisitos del BOE. **La respuesta inmediata elimina el estrés de las auditorías sorpresa.**
+**Tendrás toda la trazabilidad lista en segundos.** El sistema genera informes consolidados que cumplen con los requisitos del BOE. La respuesta inmediata elimina el estrés de las auditorías sorpresa.
 
-**La tranquilidad operativa empieza por un primer paso pequeño.** Si quieres ver cómo se adapta a tu operativa diaria sin complicaciones, agenda una demo guiada o escríbenos. **Tu negocio en Montijo merece un control que trabaje para ti, no en tu contra.**
+La tranquilidad operativa empieza por un primer paso pequeño. Si quieres ver cómo se adapta a tu operativa diaria sin complicaciones, agenda una demo guiada o escríbenos. Tu negocio en Montijo merece un control que trabaje para ti, no en tu contra.

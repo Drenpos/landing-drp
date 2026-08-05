@@ -36,7 +36,7 @@ faq:
 
 Organizar el almacén de una pyme se resume en cuatro decisiones: **dividir el espacio en zonas con función única**, **dar a cada hueco un código de ubicación**, **colocar el producto según su rotación (método ABC)** y **definir una regla de salida (FIFO o FEFO)**. Con esas cuatro piezas, cualquier persona del equipo encuentra cualquier referencia sin preguntar a nadie, y el inventario deja de ser un acto de fe.
 
-La mayoría de los almacenes de pymes no están desordenados por falta de espacio, sino por falta de criterio: el producto se deja "donde cabe" y la información vive en la cabeza del encargado. **El día que esa persona falta, el almacén se para.** Esta guía te da el método completo para que eso no vuelva a pasar.
+La mayoría de los almacenes de pymes no están desordenados por falta de espacio, sino por falta de criterio: el producto se deja "donde cabe" y la información vive en la cabeza del encargado. El día que esa persona falta, el almacén se para. Esta guía te da el método completo para que eso no vuelva a pasar.
 
 ## Empieza por el plano: las 5 zonas de todo almacén
 
@@ -46,11 +46,11 @@ Antes de comprar estanterías o software, dibuja el flujo de la mercancía. Todo
 2. **Almacenaje**: las estanterías donde vive el producto, con ubicaciones codificadas.
 3. **Picking / preparación**: donde se montan los pedidos. Si preparas pedidos sobre la marcha entre pasillos, los errores están garantizados.
 4. **Expedición**: lo que está listo para salir, separado de lo que acaba de llegar.
-5. **Devoluciones y cuarentena**: producto pendiente de revisar, romper stock o reintegrar. **Es la zona que más caos genera cuando no existe.**
+5. **Devoluciones y cuarentena**: producto pendiente de revisar, romper stock o reintegrar. Es la zona que más caos genera cuando no existe.
 
 ![Trabajador de almacén organizando estanterías con inventario etiquetado.](/images/blog/como-organizar-almacen-pyme/section-1.jpg)
 
-El error clásico es mezclar recepción y expedición en el mismo mostrador: acaba saliendo mercancía sin registrar y entrando mercancía sin verificar. **Aunque sea con cinta en el suelo, separa las zonas físicamente.**
+El error clásico es mezclar recepción y expedición en el mismo mostrador: acaba saliendo mercancía sin registrar y entrando mercancía sin verificar. Separa las zonas físicamente, aunque sea con cinta en el suelo.
 
 ## Ubicaciones con nombre y apellido
 
@@ -62,13 +62,13 @@ Un almacén está organizado cuando puedes decirle a alguien que no ha entrado n
 | Estantería | 03      | El módulo dentro del pasillo        |
 | Altura     | 2       | La balda, contando desde el suelo   |
 
-Etiqueta cada hueco con su código y, si usas un sistema digital, con un **QR o código de barras escaneable**. La regla de oro: **el stock no se mueve sin registrar el movimiento.** Da igual que el registro sea una pistola lectora o una tablet en la pared; lo que no se registra, no existe.
+Etiqueta cada hueco con su código y, si usas un sistema digital, con un **QR o código de barras escaneable**. La regla de oro: el stock no se mueve sin registrar el movimiento. Da igual que el registro sea una pistola lectora o una tablet en la pared; lo que no se registra, no existe.
 
 Con ubicaciones codificadas desaparece la pregunta que más tiempo quema en una pyme: *"¿dónde está esto?"*. Y desaparece también la dependencia de la memoria: el conocimiento pasa de las personas al sistema.
 
 ## Método ABC: coloca según rotación, no según llegada
 
-El principio de Pareto se cumple en casi todos los almacenes: **una minoría de referencias concentra la gran mayoría de los movimientos.** El método ABC lo convierte en criterio de colocación:
+El principio de Pareto se cumple en casi todos los almacenes: una **minoría de referencias** concentra la gran mayoría de los movimientos. El método ABC lo convierte en criterio de colocación:
 
 | Clase | Qué es                                  | Dónde va                                | Frecuencia de conteo |
 | ----- | --------------------------------------- | --------------------------------------- | -------------------- |
@@ -76,16 +76,16 @@ El principio de Pareto se cumple en casi todos los almacenes: **una minoría de 
 | B     | Rotación media                          | Alturas intermedias                     | Trimestral           |
 | C     | Baja rotación                           | Zonas altas o alejadas                  | Semestral            |
 
-No necesitas un estudio de consultoría para clasificar: **saca las ventas por referencia de los últimos 12 meses, ordénalas por unidades movidas y corta la lista.** Lo que descubras en la cola de la lista suele ser la sorpresa: stock muerto ocupando las mejores ubicaciones del almacén.
+No necesitas un estudio de consultoría para clasificar: saca las ventas por referencia de los últimos 12 meses, ordénalas por unidades movidas y corta la lista. Lo que descubras en la cola de la lista suele ser la sorpresa: stock muerto ocupando las mejores ubicaciones del almacén.
 
 > "El almacén no se ordena por estética: se ordena para que las piernas del equipo recorran menos metros por pedido."
 
 ## FIFO, FEFO y lotes: la regla de salida
 
-Toda referencia necesita una regla de salida definida, no una costumbre:
+Toda referencia necesita una regla de salida definida, que no dependa de la costumbre de cada uno:
 
 - **FIFO (First In, First Out)**: sale primero lo que entró primero. Es la regla general para evitar que el producto antiguo se quede eternamente al fondo de la balda.
-- **FEFO (First Expired, First Out)**: sale primero el lote que antes caduca. **Es innegociable en alimentación, farmacia, cosmética y parafarmacia.** Aplicar FIFO donde toca FEFO acaba en mermas y en producto caducado en el lineal.
+- **FEFO (First Expired, First Out)**: sale primero el lote que antes caduca. Es **innegociable** en alimentación, farmacia, cosmética y parafarmacia. Aplicar FIFO donde toca FEFO acaba en mermas y en producto caducado en el lineal.
 
 ![Gestión de lotes y caducidades con lector de códigos en un almacén.](/images/blog/como-organizar-almacen-pyme/section-2.jpg)
 
@@ -100,7 +100,7 @@ El inventario anual "a puerta cerrada" es el peor sistema posible: paraliza la v
 3. Registra la diferencia entre stock teórico y real **en el momento**, con su motivo.
 4. Investiga los descuadres repetidos: casi siempre apuntan a un proceso roto (una devolución sin registrar, una merma sin anotar), no a un robo.
 
-Con este sistema, **el stock teórico y el real convergen de forma continua** y nunca necesitas cerrar para contar. Además, los descuadres se detectan a los días, no a los once meses.
+Con este sistema, el stock teórico y el real **convergen de forma continua** y nunca necesitas cerrar para contar. Además, los descuadres se detectan a los días, no a los once meses.
 
 ## ¿Cuándo dar el salto a un SGA?
 
@@ -111,7 +111,7 @@ El papel y el Excel aguantan hasta cierto punto. Las señales de que tu almacén
 - Manejas lotes con caducidad y los controlas "de memoria".
 - El inventario real y el teórico se parecen cada vez menos, como explicamos en [ERP para pymes: cuándo dejar Excel](/blog/erp-para-pymes-vs-excel).
 
-Un SGA moderno no es el software pesado de una gran logística: es una capa ligera que **registra cada movimiento con pistola o móvil, mantiene el stock por ubicación en tiempo real y avisa antes de la rotura o la caducidad.** La organización física que has montado con esta guía es exactamente lo que el software necesita para funcionar: zonas, ubicaciones y reglas.
+Olvídate del software pesado de una gran logística: un SGA moderno es una capa ligera que registra cada movimiento con pistola o móvil, mantiene el stock por ubicación en tiempo real y avisa antes de la rotura o la caducidad. La organización física que has montado con esta guía es exactamente lo que el software necesita para funcionar: zonas, ubicaciones y reglas.
 
 Si quieres ver cómo se aplica todo esto con multialmacén, ubicaciones con QR, lotes con caducidad y lectora de códigos, echa un vistazo a nuestro [software de gestión de almacén](/software-gestion-almacen): está pensado para pymes que quieren orden sin burocracia.
 

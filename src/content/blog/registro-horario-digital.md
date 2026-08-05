@@ -2,7 +2,7 @@
 title: "Registro horario digital: obligación, requisitos y sanciones en 2026"
 meta_title: "Registro horario digital 2026: guía completa para empresas"
 description: "Todo lo que necesitas saber sobre el registro horario digital en 2026: cuándo es obligatorio, qué requisitos debe cumplir tu sistema y cómo evitar sanciones por trabajador."
-date: 2026-06-11
+date: 2026-08-03
 image: "/images/blog/registro-horario-digital/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -26,11 +26,11 @@ hero:
 
 La pregunta ya no es si debes implantar un **registro horario digital**: la ley te lo exige desde 2019 y la nueva normativa de 2026 endurece el control hasta el punto de que un sistema incorrecto puede costarte más que no tener ninguno. La diferencia está en que ahora las multas se calculan por trabajador afectado, no por infracción. Con veinte empleados, un sistema de fichaje no homologado puede suponer hasta 10.000 euros por cabeza. Consulta el desglose completo en nuestra guía de [multas de registro horario 2026](/blog/multas-registro-horario-2026-costo-incumplimiento).
 
-**El [registro en papel o Excel no solo es ilegal](/blog/por-que-excel-ya-no-sirve-control-horario-2026): es una trampa contable activa.** Cada hora no trazada es una hora que puede convertirse en litigio, sanción o pérdida de margen. La digitalización del registro no es burocracia, es la estructura mínima de seguridad jurídica que cualquier empresa necesita para operar sin sobresaltos.
+El [registro en papel o Excel es ilegal](/blog/por-que-excel-ya-no-sirve-control-horario-2026) y, además, una **trampa contable activa**. Cada hora no trazada es una hora que puede convertirse en litigio, sanción o pérdida de margen. La digitalización del registro es la estructura mínima de seguridad jurídica que cualquier empresa necesita para operar sin sobresaltos.
 
 ## Qué es el registro horario digital y por qué el papel ya no vale
 
-**El registro horario digital es el sistema obligatorio por el que toda empresa debe documentar, de forma inalterable y accesible, la hora de entrada y salida de cada trabajador.** El Real Decreto-ley 8/2019 estableció la obligación de registrar la jornada laboral, pero dejaba abierta la forma. La nueva normativa impulsada por el Ministerio de Trabajo en 2025 cierra esa puerta: solo son válidos los sistemas digitales homologados.
+El **registro horario digital** es el sistema obligatorio por el que toda empresa debe documentar, de forma inalterable y accesible, la hora de entrada y salida de cada trabajador. El Real Decreto-ley 8/2019 estableció la obligación de registrar la jornada laboral, pero dejaba abierta la forma. La nueva normativa impulsada por el Ministerio de Trabajo en 2025 cierra esa puerta: solo son válidos los sistemas digitales homologados.
 
 Esto significa que quedan expresamente prohibidos:
 
@@ -39,7 +39,7 @@ Esto significa que quedan expresamente prohibidos:
 - Sistemas sin sellado temporal inalterable
 - Herramientas que permitan modificar fichajes sin dejar rastro auditable
 
-**El criterio de la Inspección de Trabajo es claro: si el dato puede borrarse o editarse sin huella, no es un registro válido.** Y si no es válido, la sanción es la misma que si no tuvieras ningún sistema.
+El criterio de la Inspección de Trabajo es claro: si el dato puede borrarse o editarse sin huella, no es un registro válido. Y si no es válido, la sanción es la misma que si no tuvieras ningún sistema.
 
 ![Trabajador fichando desde smartphone en una tienda de distribución.](/images/blog/registro-horario-digital/section-1.jpg)
 
@@ -47,7 +47,7 @@ Esto significa que quedan expresamente prohibidos:
 
 ## Ley de control horario 2026: qué cambia exactamente
 
-La nueva ley de control horario en España no llega por vía parlamentaria sino a través de un real decreto. El Consejo de Ministros aprobó su tramitación urgente el 30 de septiembre de 2025. A junio de 2026 no ha sido publicada en el BOE, pero su aprobación es inminente y las empresas que aún no tienen un sistema digital homologado están acumulando riesgo.
+La nueva ley de control horario en España no llega por vía parlamentaria sino a través de un real decreto. El Consejo de Ministros aprobó su tramitación urgente el 30 de septiembre de 2025. El Consejo de Estado emitió un dictamen crítico el 23 de marzo de 2026 que obligó a revisar el texto, y el sector especializado sitúa la aprobación en el último tramo de 2026. A agosto de 2026 no ha sido publicada en el BOE, pero las empresas que aún no tienen un sistema digital homologado siguen acumulando riesgo.
 
 **Los cambios respecto al marco actual son sustanciales:**
 
@@ -58,11 +58,11 @@ La nueva ley de control horario en España no llega por vía parlamentaria sino 
 - **Restricción de sistemas biométricos**: huella dactilar y reconocimiento facial solo son válidos cuando no existe alternativa técnica viable, ya que la AEPD los clasifica como datos especialmente sensibles.
 - **Régimen sancionador por trabajador afectado**, no por infracción global. Esto multiplica el impacto económico en empresas con plantillas de cualquier tamaño.
 
-**El período de adaptación tras la publicación en el BOE será corto.** Las empresas que ya cuentan con un sistema digital válido no tendrán que hacer nada. Las que siguen con papel o Excel deberán migrar antes de que la norma entre en vigor.
+El período de adaptación tras la publicación en el BOE será corto. Las empresas que ya cuentan con un sistema digital válido no tendrán que hacer nada. Las que siguen con papel o Excel deberán migrar antes de que la norma entre en vigor.
 
 ## Requisitos técnicos que debe cumplir tu sistema de fichaje digital
 
-No todos los sistemas digitales son válidos. **La Inspección evaluará el sistema que uses, no solo los datos que contenga.** Un software que permite editar fichajes sin rastro, que no garantiza la conservación durante cuatro años o que no permite el acceso remoto a los organismos de control no cumple la normativa, aunque sea digital.
+No todos los sistemas digitales son válidos. La Inspección evaluará el sistema que uses, además de los datos que contenga. Un software que permite editar fichajes sin rastro, que no garantiza la conservación durante cuatro años o que no permite el acceso remoto a los organismos de control no cumple la normativa, aunque sea digital.
 
 Los requisitos mínimos que debe cubrir tu sistema de registro horario digital son:
 
@@ -76,7 +76,7 @@ Los requisitos mínimos que debe cubrir tu sistema de registro horario digital s
 | **Trazabilidad de modificaciones** | Si se corrige un fichaje erróneo, el sistema registra quién lo hizo, cuándo y por qué                  |
 | **Cumplimiento RGPD**              | Los datos horarios son datos personales y deben tratarse conforme a la LOPD-GDD                        |
 
-**Cumplir con estos requisitos no es caro ni complejo si partes de la herramienta correcta.** El problema surge cuando se intentan parchear sistemas genéricos que no fueron diseñados para cumplir la normativa española de registro laboral.
+Cumplir con estos requisitos no es caro ni complejo si partes de la herramienta correcta. El problema surge cuando se intentan parchear sistemas genéricos que no fueron diseñados para cumplir la normativa española de registro laboral.
 
 ## Métodos válidos para fichar digitalmente en 2026
 
@@ -92,11 +92,11 @@ La ley no impone un método concreto, sino que el sistema sea digital, inalterab
 
 ![Panel de control de fichajes con vista de equipo y horas por turno.](/images/blog/registro-horario-digital/section-2.jpg)
 
-**Los sistemas biométricos (huella o reconocimiento facial) quedan restringidos** a los casos en que ninguna de las alternativas anteriores sea técnicamente viable. Dada la posición de la AEPD sobre los datos biométricos como categoría especial, su uso sin evaluación de impacto previa expone a la empresa a sanciones adicionales bajo RGPD.
+Los sistemas biométricos (huella o reconocimiento facial) quedan **restringidos** a los casos en que ninguna de las alternativas anteriores sea técnicamente viable. Dada la posición de la AEPD sobre los datos biométricos como categoría especial, su uso sin evaluación de impacto previa expone a la empresa a sanciones adicionales bajo RGPD.
 
 ## Sanciones por no cumplir: cuánto puede costarte realmente
 
-**El cambio más significativo de la nueva normativa no es la obligación de digitalizar, sino cómo se calculan las multas.** Con el régimen actual, la sanción es por infracción. Con la nueva ley, se calcula por trabajador afectado. Este cambio transforma una multa asumible en un riesgo existencial para empresas medianas.
+El cambio más significativo de la nueva normativa está en cómo se calculan las multas, más incluso que en la obligación de digitalizar. Con el régimen actual, la sanción es por infracción. Con la nueva ley, se calcula por trabajador afectado. Este cambio transforma una multa asumible en un riesgo existencial para empresas medianas.
 
 Las sanciones se gradúan según la Ley sobre Infracciones y Sanciones en el Orden Social (LISOS):
 
@@ -118,7 +118,7 @@ Las infracciones más frecuentes que detecta la Inspección son:
 
 ## Cómo implementar el registro horario digital sin interrumpir la operativa
 
-**La migración desde papel o Excel no tiene por qué ser traumática.** El error más común es intentar replicar el proceso manual en una herramienta digital, en lugar de dejar que la herramienta redefina el proceso. Un sistema bien configurado hace invisible el fichaje para el empleado y hace auditable cualquier dato para el responsable.
+La migración desde papel o Excel no tiene por qué ser traumática. El error más común es intentar replicar el proceso manual en una herramienta digital, en lugar de dejar que la herramienta redefina el proceso. Un sistema bien configurado hace invisible el fichaje para el empleado y hace auditable cualquier dato para el responsable.
 
 Un plan de implementación realista sigue cuatro pasos:
 
@@ -134,7 +134,7 @@ Un plan de implementación realista sigue cuatro pasos:
 
 ## Registro horario digital y protección de datos: lo que debes comunicar a tu equipo
 
-Los datos horarios son datos personales y están protegidos por el RGPD y la LOPD-GDD. **Implantar un sistema de registro horario digital sin informar correctamente a los trabajadores es una infracción doble: laboral y de protección de datos.**
+Los datos horarios son datos personales y están protegidos por el RGPD y la LOPD-GDD. Implantar un sistema de registro horario digital sin informar correctamente a los trabajadores es una **infracción doble**: laboral y de protección de datos.
 
 Las obligaciones mínimas son:
 
@@ -147,7 +147,7 @@ Si el sistema incluye geolocalización, la información previa al trabajador deb
 
 ## Gestión de ausencias, vacaciones y pausas: el registro horario como herramienta real
 
-**Un sistema de registro horario digital que solo registra entrada y salida no cumple la normativa de 2026.** La nueva ley exige también el registro de pausas, horas extra y su clasificación. Pero más allá del cumplimiento, esta información tiene valor operativo directo.
+Un sistema de registro horario digital que solo registra entrada y salida no cumple la normativa de 2026. La nueva ley exige también el registro de pausas, horas extra y su clasificación. Pero más allá del cumplimiento, esta información tiene valor operativo directo.
 
 Cuando los datos de jornada están integrados con la gestión de ausencias y nóminas, el responsable puede:
 
@@ -156,13 +156,13 @@ Cuando los datos de jornada están integrados con la gestión de ausencias y nó
 - Gestionar solicitudes de vacaciones y permisos sin depender del correo electrónico
 - Generar informes de jornada listos para una auditoría en menos de cinco minutos
 
-**Drenpos integra el control horario dentro del mismo sistema que gestiona el TPV, la facturación y las nóminas.** Si quieres comparar opciones antes de decidir, consulta los [mejores programas de control horario para pymes](/blog/mejores-programas-control-horario). Esto significa que cuando un empleado hace horas extra, el sistema lo detecta, lo registra y lo refleja directamente en el cálculo de nómina, sin intervención manual y sin riesgo de olvido.
+Drenpos integra el **control horario** dentro del mismo sistema que gestiona el TPV, la facturación y las nóminas. Si quieres comparar opciones antes de decidir, consulta los [mejores programas de control horario para pymes](/blog/mejores-programas-control-horario). Esto significa que cuando un empleado hace horas extra, el sistema lo detecta, lo registra y lo refleja directamente en el cálculo de nómina, sin intervención manual y sin riesgo de olvido.
 
 ## Preguntas frecuentes sobre el registro horario digital
 
 ### ¿Desde cuándo es obligatorio el registro horario digital?
 
-El registro de jornada es obligatorio desde mayo de 2019 (RD-ley 8/2019). La obligación de que sea **exclusivamente digital** llega con la nueva normativa en tramitación, prevista para entrar en vigor en 2026, aunque a junio de 2026 aún no ha sido publicada en el BOE.
+El registro de jornada es obligatorio desde mayo de 2019 (RD-ley 8/2019). La obligación de que sea **exclusivamente digital** llega con la nueva normativa en tramitación, prevista para su aprobación en el último tramo de 2026, aunque a agosto de 2026 aún no ha sido publicada en el BOE.
 
 ### ¿Un autónomo con trabajadores necesita registro horario digital?
 
@@ -186,4 +186,4 @@ El plazo legal mínimo es de **cuatro años**. Los registros deben estar disponi
 
 ---
 
-**La pregunta ya no es si necesitas un registro horario digital: es si el que tienes aguantaría una inspección mañana por la mañana.** Si la respuesta no es un "sí" rotundo, el momento de cambiar no es cuando llegue la multa, sino antes de que llegue.
+A estas alturas, la única pregunta que importa es si tu registro horario digital aguantaría una inspección mañana por la mañana. Si la respuesta no es un "sí" rotundo, el momento de cambiar no es cuando llegue la multa, sino antes de que llegue.
