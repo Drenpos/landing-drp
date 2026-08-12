@@ -17,6 +17,100 @@ import CallToAction from "@/partials/CallToAction.astro";
 
 const CANONICAL = "https://www.drenpos.com/software-gestion-almacen";
 
+// Capacidades de nivel WMS (bloque 2026: palets, picking, depósito 3PL)
+const wms = [
+  {
+    icon: "📦",
+    tag: "Preparación de pedidos",
+    title: "Picking guiado, oleadas y expedición con escaneo",
+    body: "Semáforo de preparabilidad para saber qué pedidos salen completos hoy, etiqueta QR por pedido que abre la sesión de picking, asistente móvil paso a paso con el lote sugerido por FEFO y oleadas pick-to-box para varios pedidos en una sola vuelta. Al expedir, escanear el pedido genera el albarán o la factura.",
+    bullets: [
+      "Semáforo: completos, con faltas y qué viene de camino",
+      "Oleadas y zona de preparados en baldas con QR",
+      "Expedición con escaneo → albarán o factura automáticos",
+    ],
+  },
+  {
+    icon: "🏷️",
+    tag: "Palets y unidades logísticas",
+    title: "Etiqueta SSCC estándar GS1 y ciclo de vida del palet",
+    body: "Cada palet nace con su etiqueta SSCC imprimible en rollo o A4 — la misma que exigen las grandes plataformas logísticas. Ciclo de vida completo: abierto, cerrado y pesado (bruto, tara y neto), expedido o anulado, con permisos separados por paso y trazabilidad de todo lo que ha entrado y salido del palet.",
+    bullets: [
+      "Mezcla libre de productos, lotes y series dentro del palet",
+      "Mover el palet entero de ubicación o almacén en un escaneo",
+      "Despaletizado: vaciar, pasar a otro palet o partir en varios",
+    ],
+  },
+  {
+    icon: "🤝",
+    tag: "Depósito de terceros (3PL)",
+    title: "Alquiler de huecos de palet con tarifario y liquidación",
+    body: "Para almacenes que guardan mercancía de otros y cobran por ello. Cada palet lleva su propietario y el sistema impide de raíz mezclar o vender por error mercancía ajena. Tarifas por palet/día, kg/día, entrada, salida, manipulación o bulto preparado, con franquicias, mínimos y vigencias.",
+    bullets: [
+      "Los eventos tarificables se registran solos en cada operación",
+      "Posición del cliente en vivo y simulador de coste",
+      "Informe del periodo en PDF sin necesidad de facturar",
+    ],
+  },
+  {
+    icon: "🔪",
+    tag: "Despiece y transformación",
+    title: "De un producto salen varios, con lote nuevo y merma explícita",
+    body: "Sala de despiece, cocina central, obrador o envasado: se marca qué sale del palet y qué productos entran a cambio, con su lote nuevo y su caducidad. Los despieces se ejecutan en bloque todo o nada, y la merma queda registrada como una línea más — nunca desaparece en silencio.",
+    bullets: [
+      "Borrador en espera: se corrige con los kilos reales antes de ejecutar",
+      "Traza de qué cantidades se dedicaron a fabricar qué",
+      "La manipulación se factura sola si el palet es de un depositante",
+    ],
+  },
+  {
+    icon: "✍️",
+    tag: "Entregas firmadas",
+    title: "Actas con firma y huella criptográfica sha256",
+    body: "Cuando la mercancía cambia de manos queda un acta firmada, en pantalla o en papel, con el CIF y la dirección fiscal del cliente, el detalle con lotes y palets, quién entrega y quién recibe. El servidor congela el contenido y lo sella con sha256: una firma no se edita ni se borra jamás.",
+    bullets: [
+      "Histórico de entregas por palet consultable siempre",
+      "Corrección solo como acta adicional, nunca sobrescribiendo",
+      "Acta de emergencia reconstruible desde el histórico de movimientos",
+    ],
+  },
+  {
+    icon: "🧮",
+    tag: "Reservas y compras",
+    title: "Stock disponible real y propuesta de compra asistida",
+    body: "Al confirmar un pedido, el stock queda comprometido para ese cliente: en todo el sistema se distingue stock físico de stock disponible. La propuesta de compra cruza mínimos y máximos, consumo real, unidades reservadas, demanda sin stock y lo que ya viene de camino, y genera el pedido de compra en un clic.",
+    bullets: [
+      "Traslados, salidas e inventarios respetan las reservas",
+      "Alertas de pedidos: cuántas unidades faltan para servir todo",
+      "Cross-docking en recepción para lo que sale sin pasar por estantería",
+    ],
+  },
+];
+
+// Landings hermanas del clúster de almacén
+const hermanas = [
+  {
+    url: "/software-almacen-frigorifico",
+    title: "Almacén frigorífico y de congelados",
+    body: "Cadena de frío, FEFO, palets a pie de cámara y operativa en móvil dentro de la cámara.",
+  },
+  {
+    url: "/software-alquiler-huecos-palet",
+    title: "Depósito de terceros y alquiler de huecos",
+    body: "Custodia de mercancía ajena con tarifario por palet/día, posición en vivo y liquidación.",
+  },
+  {
+    url: "/software-preparacion-pedidos-picking",
+    title: "Preparación de pedidos y picking",
+    body: "Oleadas, asistente móvil, zona de preparados y expedición con escaneo.",
+  },
+  {
+    url: "/software-almacen-tienda",
+    title: "Almacén y TPV para tienda",
+    body: "Si además vendes en mostrador: stock descontado en cada ticket, sin dobles capturas.",
+  },
+];
+
 // Síntomas (dolores que busca el usuario — long-tail AEO)
 const sintomas = [
   {
@@ -85,6 +179,8 @@ const comparativa = [
     stock: "Manual, siempre desfasado",
     lotes: "—",
     ubicaciones: "—",
+    palets: "—",
+    picking: "Lista en papel",
     integracion: "—",
     precio: "«Gratis» (te cuesta en horas y errores)",
   },
@@ -93,22 +189,28 @@ const comparativa = [
     stock: "Unidades totales, sin detalle",
     lotes: "No o muy limitado",
     ubicaciones: "No",
+    palets: "No",
+    picking: "No",
     integracion: "Solo facturación",
     precio: "10–30 €/mes",
   },
   {
-    opcion: "SGA enterprise",
+    opcion: "WMS / SGA enterprise",
     stock: "Tiempo real",
     lotes: "Sí",
     ubicaciones: "Sí",
+    palets: "Sí, con SSCC",
+    picking: "Sí, avanzado",
     integracion: "Requiere integrarlo con tu ERP",
     precio: "Miles de € + proyecto de meses",
   },
   {
     opcion: "Drenpos",
-    stock: "Tiempo real",
+    stock: "Tiempo real, físico y disponible",
     lotes: "Sí, con FEFO y alertas",
     ubicaciones: "Sí, con QR",
+    palets: "Sí, SSCC GS1 y despaletizado",
+    picking: "Oleadas, móvil y expedición con escaneo",
     integracion: "Nativa: compras, ventas, TPV y facturación",
     precio: "Desde 19,90 €/mes",
     destacado: true,
@@ -120,14 +222,32 @@ const casos = [
   {
     tag: "Distribución y mayoristas",
     icon: "🚚",
-    title: "Multialmacén con traslados controlados",
-    body: "Stock independiente por nave o delegación, traslados entre almacenes con pistola y visión consolidada para compras. Los pedidos se preparan contra la ubicación real, no contra la memoria del encargado.",
+    title: "Multialmacén con traslados y picking por oleadas",
+    body: "Stock independiente por nave o delegación, traslados con pistola y visión consolidada para compras. Por la mañana entran los pedidos, el semáforo dice cuáles salen completos y el mozo prepara ocho en una sola vuelta al almacén con el móvil.",
   },
   {
     tag: "Alimentación y perecederos",
     icon: "🥫",
-    title: "Lotes y caducidades bajo control",
-    body: "Cada palet entra con su lote y su fecha. Las salidas se proponen por FEFO, las alertas avisan antes de que caduque nada y, ante una incidencia sanitaria, localizas y retiras el lote completo en minutos con su trazabilidad documentada.",
+    title: "Lotes, caducidades y recall en minutos",
+    body: "Cada palet entra con su lote y su fecha. Las salidas se proponen por FEFO, las alertas avisan antes de que caduque nada y, ante una incidencia sanitaria, localizas el lote, sus destinatarios y lo que queda vivo, con informe PDF listo para Sanidad.",
+  },
+  {
+    tag: "Frigoríficos y cámaras",
+    icon: "❄️",
+    title: "Operativa a pie de cámara, no en la oficina",
+    body: "Las pantallas de palets funcionan en móvil y tablet, así que el palet se monta, se pesa y se mueve dentro de la cámara. El hueco frío es caro: los informes de rotación e inmovilizado enseñan qué lleva meses ocupando espacio.",
+  },
+  {
+    tag: "Logística y 3PL",
+    icon: "🤝",
+    title: "Guardar mercancía de otros y cobrarla bien",
+    body: "Cada palet lleva su propietario, cada entrada, salida o manipulación genera su apunte tarificable en la misma operación, y la posición del cliente se ve en vivo. El informe del periodo sale en PDF aunque factures con otro sistema.",
+  },
+  {
+    tag: "Cárnicas y salas de despiece",
+    icon: "🔪",
+    title: "Transformación con lote nuevo y merma que no desaparece",
+    body: "Entra media canal con su SSCC y salen lomo, panceta y hamburguesas con lote y caducidad propios. El despiece se ejecuta todo o nada, la merma queda apuntada como una línea más y el vínculo entre lote de origen y lotes resultantes se mantiene.",
   },
   {
     tag: "Ferretería y recambios",
@@ -140,15 +260,31 @@ const casos = [
 const faqs = [
   {
     q: "¿Qué es un software de gestión de almacén (SGA)?",
-    a: "Es el sistema que controla todo lo que entra, se mueve y sale de tu almacén: stock en tiempo real, ubicación exacta de cada referencia, lotes con caducidad y trazabilidad de cada movimiento. A diferencia de un inventario básico, un SGA sabe no solo cuánto tienes, sino dónde está y de qué lote es.",
+    a: "Es el sistema que controla todo lo que entra, se mueve y sale de tu almacén: stock en tiempo real, ubicación exacta de cada referencia, lotes con caducidad y trazabilidad de cada movimiento. A diferencia de un inventario básico, un SGA sabe no solo cuánto tienes, sino dónde está, de qué lote es y en qué palet viaja.",
   },
   {
-    q: "¿Qué debe tener un buen programa de gestión de almacén para una pyme?",
-    a: "Cinco cosas: stock en tiempo real conectado a compras y ventas, ubicaciones para localizar referencias sin depender de la memoria, control de lotes y caducidades si trabajas con perecederos, lectura por pistola o móvil para operar sin teclear, e integración nativa con facturación y TPV para no duplicar datos.",
+    q: "¿Qué diferencia hay entre un SGA y un WMS?",
+    a: "Ninguna de fondo: SGA es Sistema de Gestión de Almacenes y WMS es Warehouse Management System, el mismo concepto en dos idiomas. Lo que sí marca la diferencia es si el sistema conoce la ubicación, el lote y la unidad logística, y si está integrado con compras, ventas y facturación o hay que sincronizarlo con tu ERP.",
+  },
+  {
+    q: "¿Drenpos gestiona palets con etiqueta SSCC?",
+    a: "Sí. Cada palet nace con su etiqueta SSCC estándar GS1 imprimible en rollo o A4, con ciclo de vida completo (abierto, cerrado y pesado con bruto, tara y neto, expedido o anulado). Dentro cabe cualquier mezcla de productos, lotes y series, el palet entero se mueve en un escaneo y el despaletizado permite vaciarlo, pasarlo a otro o partirlo en varios nuevos ya etiquetados.",
+  },
+  {
+    q: "¿Cómo funciona la preparación de pedidos (picking)?",
+    a: "El listado de preparación muestra un semáforo con qué pedidos se pueden servir completos, cuáles tienen faltas y qué viene de camino. Cada pedido lleva su etiqueta QR que abre la sesión de picking, el asistente móvil guía producto a producto con el lote sugerido por FIFO, LIFO o FEFO, y se pueden lanzar oleadas para preparar varios pedidos en una sola vuelta. Al expedir, escanear el pedido genera el albarán o la factura.",
+  },
+  {
+    q: "¿Puedo alquilar huecos de palet y facturar el depósito?",
+    a: "Sí, con el módulo de depósito de terceros. Cada palet lleva su propietario y el sistema bloquea de raíz mezclar o vender mercancía ajena. Las tarifas admiten palet/día, kg/día, entrada, salida, manipulación o bulto preparado, con franquicias, mínimos y vigencias, los eventos tarificables se registran solos y la posición de cada cliente se ve en vivo, con simulador de coste e informe del periodo en PDF.",
+  },
+  {
+    q: "¿Sirve para un almacén frigorífico o de congelados?",
+    a: "Sí, y es uno de los perfiles donde más aporta. Las pantallas de palets funcionan en móvil y tablet para operar dentro de la cámara, FEFO y las alertas de caducidad protegen el producto, el despiece registra la merma de forma explícita y los informes de rotación e inmovilizado enseñan qué está ocupando un hueco frío sin moverse.",
   },
   {
     q: "¿Cuánto cuesta un software de gestión de almacén?",
-    a: "Los SGA enterprise cuestan miles de euros más un proyecto de implantación de meses. Las herramientas de facturación con inventario básico rondan 10–30 €/mes pero no tienen ubicaciones ni lotes. El módulo de almacén de Drenpos cuesta desde 19,90 €/mes con multialmacén, ubicaciones QR, lotes con FEFO y pistola, sin coste por uso ni permanencia.",
+    a: "Los WMS enterprise cuestan miles de euros más un proyecto de implantación de meses. Las herramientas de facturación con inventario básico rondan 10–30 €/mes pero no tienen ubicaciones, lotes ni palets. El módulo de almacén de Drenpos cuesta desde 19,90 €/mes con multialmacén, ubicaciones QR, lotes con FEFO, palets con SSCC y picking, sin coste por uso ni permanencia.",
   },
   {
     q: "¿Puedo controlar el stock de varios almacenes a la vez?",
@@ -156,15 +292,19 @@ const faqs = [
   },
   {
     q: "¿Cómo funciona la trazabilidad por lotes? ¿Es obligatoria?",
-    a: "Cada entrada de mercancía registra su lote y caducidad, y cada salida queda vinculada al lote que se sirvió. Si trabajas con alimentación, el Reglamento CE 178/2002 te obliga a poder identificar origen y destino de cada lote: con Drenpos localizas y retiras un lote completo en minutos, con el histórico documentado.",
+    a: "Cada entrada de mercancía registra su lote y caducidad, y cada salida queda vinculada al lote que se sirvió. Si trabajas con alimentación, el Reglamento (CE) 178/2002 te obliga a poder identificar origen y destino de cada lote: con Drenpos localizas el lote, sus destinatarios y lo que queda vivo, y generas el informe PDF de retirada en un clic.",
+  },
+  {
+    q: "¿Qué valor legal tiene una entrega firmada en Drenpos?",
+    a: "El acta se puede firmar en pantalla o en papel y sale con el CIF y la dirección fiscal del cliente, el detalle con lotes y palets, quién entrega, quién recibe y la fecha en hora local. El servidor congela el contenido firmado y lo sella con una huella criptográfica sha256, de modo que una firma no se edita ni se borra: cualquier corrección queda como acta adicional.",
   },
   {
     q: "¿Puedo hacer inventario sin cerrar el negocio?",
-    a: "Sí. Con inventarios parciales por zona o ubicación: escaneas una estantería con la pistola o el móvil, el sistema compara con el stock teórico y ajusta las diferencias. Repartido en sesiones cortas, el recuento anual con cierre desaparece.",
+    a: "Sí. Con inventarios parciales por zona o ubicación: escaneas una estantería con la pistola o el móvil, el sistema compara con el stock teórico y ajusta las diferencias, avisando si el recuento deja stock por debajo de lo reservado. Repartido en sesiones cortas, el recuento anual con cierre desaparece.",
   },
   {
     q: "¿Se integra con mis ventas, compras y facturación?",
-    a: "Es que no es una integración: es el mismo sistema. Cada venta, compra, albarán o ticket de TPV mueve el stock automáticamente. Sin exportaciones, sin sincronizaciones que fallan y sin descuadres entre programas.",
+    a: "Es que no es una integración: es el mismo sistema. Cada venta, compra, albarán o ticket de TPV mueve el stock automáticamente, y escanear un SSCC dentro de un albarán o una factura arrastra el palet entero con sus líneas agrupadas y blindadas. Sin exportaciones, sin sincronizaciones que fallan y sin descuadres entre programas.",
   },
   {
     q: "¿Cuánto se tarda en ponerlo en marcha?",
@@ -174,10 +314,15 @@ const faqs = [
 
 // Enlaces internos (clúster almacén + puente a retail y ayudas)
 const articulos = [
-  { t: "Cómo organizar el almacén de una pyme: guía práctica", s: "como-organizar-almacen-pyme" },
+  { t: "WMS, SGA y ERP: en qué se diferencian y cuál necesitas", s: "wms-sga-erp-diferencias" },
+  { t: "Preparación de pedidos y picking: guía práctica", s: "preparacion-de-pedidos-picking-almacen" },
+  { t: "Etiqueta SSCC: qué es y cómo se genera", s: "etiqueta-sscc-gs1-palets" },
+  { t: "Alquiler de huecos de palet: tarifas y contrato", s: "alquiler-huecos-palet-tarifas" },
+  { t: "Software de almacén frigorífico y congelados", s: "software-almacen-frigorifico-congelados" },
+  { t: "Trazabilidad alimentaria: lotes y retirada de producto", s: "trazabilidad-alimentaria-lotes-recall" },
+  { t: "Despiece, merma y trazabilidad cárnica", s: "despiece-merma-trazabilidad-carnica" },
+  { t: "Cómo organizar el almacén de una pyme", s: "como-organizar-almacen-pyme" },
   { t: "Control de stock sin roturas: guía práctica", s: "control-de-stock-sin-roturas" },
-  { t: "ERP para pymes: cuándo dejar Excel", s: "erp-para-pymes-vs-excel" },
-  { t: "Cómo enviar albaranes y facturas por WhatsApp", s: "enviar-facturas-por-whatsapp-automaticamente" },
 ];
 
 // ── Datos estructurados (JSON-LD) ──────────────────────────────────────
@@ -209,7 +354,7 @@ const productSchema = {
   operatingSystem: "Web",
   url: CANONICAL,
   description:
-    "Software de gestión de almacén (SGA) para pymes: multialmacén, ubicaciones con QR, lotes con caducidad y FEFO, trazabilidad completa, pistola lectora e inventarios sin cerrar. Integrado con compras, ventas, TPV y facturación.",
+    "Software de gestión de almacén (SGA/WMS) para pymes: multialmacén, ubicaciones con QR, lotes con caducidad y FEFO, trazabilidad completa con informe de recall, preparación de pedidos con oleadas, palets con etiqueta SSCC estándar GS1, despiece con merma explícita, depósito de terceros con tarifario por palet/día y actas de entrega firmadas con huella sha256. Integrado con compras, ventas, TPV y facturación.",
   offers: {
     "@type": "Offer",
     price: "19.90",
@@ -218,12 +363,21 @@ const productSchema = {
     url: "https://www.drenpos.com/pricing",
   },
   featureList: [
-    "Stock en tiempo real multialmacén",
+    "Stock en tiempo real multialmacén, físico y disponible",
     "Ubicaciones con etiquetas QR",
-    "Control de lotes, caducidades y FEFO",
-    "Trazabilidad completa por lote",
-    "Recepción, traslados e inventario con pistola lectora",
+    "Control de lotes, números de serie, caducidades y FEFO",
+    "Trazabilidad completa por lote con informe de recall en PDF",
+    "Recepción contra pedido de compra con ruta guiada y cross-docking",
+    "Preparación de pedidos con semáforo, oleadas y asistente móvil",
+    "Expedición con escaneo que genera albarán o factura",
+    "Palets y unidades logísticas con etiqueta SSCC estándar GS1",
+    "Despaletizado, división de palets y traslado de palet completo",
+    "Despiece y transformación con lote nuevo y merma explícita",
+    "Depósito de terceros (3PL) con tarifario por palet/día y kg/día",
+    "Actas de entrega firmadas con huella criptográfica sha256",
+    "Reservas de stock y propuesta de compra asistida",
     "Inventarios parciales sin cerrar el negocio",
+    "Informes de rotación, inmovilizado y análisis de costes",
     "Integración nativa con compras, ventas, TPV y facturación",
   ],
   provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
@@ -232,8 +386,8 @@ const productSchema = {
 
 <Base
   title="Software de Gestión de Almacén · Drenpos"
-  meta_title="Software de Gestión de Almacén para Pymes | SGA Drenpos"
-  description="Software de gestión de almacén con potencia de SGA a precio de pyme: multialmacén, ubicaciones QR, lotes con caducidad FEFO, trazabilidad y pistola lectora. Desde 19,90 €/mes. Demo gratis."
+  meta_title="Software de Gestión de Almacén y WMS para Pymes | Drenpos"
+  description="Software de gestión de almacén con potencia de WMS a precio de pyme: ubicaciones QR, lotes con FEFO, preparación de pedidos, palets con etiqueta SSCC y alquiler de huecos. Desde 19,90 €/mes."
   canonical={CANONICAL}
   image="/images/funcionalidades/almacen-tienda/01-almacen-ubicaciones.png"
 >
@@ -267,13 +421,17 @@ const productSchema = {
           </span>
 
           <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
-            Software de <span class="text-primary">gestión de almacén</span> con potencia de SGA a precio de pyme
+            Software de <span class="text-primary">gestión de almacén</span> con potencia de WMS a precio de pyme
           </h1>
           <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
             Stock en tiempo real, ubicaciones con QR, lotes con caducidad y
-            FEFO, trazabilidad completa y pistola lectora. Todo integrado con
-            tus compras, ventas y facturación — sin proyectos de meses ni
-            precios de gran empresa.
+            FEFO, trazabilidad completa y pistola lectora. Y ahora también
+            <strong>preparación de pedidos con oleadas</strong>,
+            <strong>palets con etiqueta SSCC estándar GS1</strong>,
+            <strong>despiece con merma explícita</strong> y
+            <strong>depósito de terceros con alquiler de huecos de palet</strong>.
+            Todo integrado con tus compras, ventas y facturación — sin
+            proyectos de meses ni precios de gran empresa.
           </p>
 
           <ul class="flex flex-wrap gap-4 mb-10">
@@ -307,6 +465,10 @@ const productSchema = {
             <div class="flex items-center gap-2">
               <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
               Lotes, caducidad y FEFO
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Palets con SSCC y picking
             </div>
             <div class="flex items-center gap-2">
               <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
@@ -361,16 +523,19 @@ const productSchema = {
         <div class="lg:col-9 text-center" data-aos="fade-up-sm">
           <h2 class="h4 font-bold mb-4">¿Qué es un software de gestión de almacén?</h2>
           <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
-            Un <strong>software de gestión de almacén (SGA)</strong> es el
-            sistema que controla todo lo que entra, se mueve y sale de tu
-            almacén: <strong>stock en tiempo real</strong>, la
+            Un <strong>software de gestión de almacén (SGA, o WMS por sus
+            siglas en inglés)</strong> es el sistema que controla todo lo que
+            entra, se mueve y sale de tu almacén:
+            <strong>stock en tiempo real</strong>, la
             <strong>ubicación exacta</strong> de cada referencia, los
-            <strong>lotes con su caducidad</strong> y la trazabilidad de cada
-            movimiento. La diferencia con un inventario básico es simple: un
-            inventario sabe <em>cuánto</em> tienes; un SGA sabe además
-            <em>dónde está y de qué lote es</em>. Drenpos pone esa capacidad
-            — hasta ahora reservada a sistemas de gran empresa — al alcance de
-            cualquier pyme, integrada con sus compras, ventas y facturación.
+            <strong>lotes con su caducidad</strong>, la
+            <strong>unidad logística</strong> en la que viaja la mercancía y la
+            trazabilidad de cada movimiento. La diferencia con un inventario
+            básico es simple: un inventario sabe <em>cuánto</em> tienes; un SGA
+            sabe además <em>dónde está, de qué lote es, en qué palet va y quién
+            lo tocó</em>. Drenpos pone esa capacidad — hasta ahora reservada a
+            sistemas de gran empresa — al alcance de cualquier pyme, integrada
+            con sus compras, ventas y facturación.
           </p>
         </div>
       </div>
@@ -436,6 +601,75 @@ const productSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════
+       CAPACIDADES DE NIVEL WMS (bloque 2026)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-5">
+          <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+          Nuevo en 2026
+        </span>
+        <h2 class="h3 font-bold mb-4">Capacidades de WMS que antes costaban miles de euros</h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Preparación de pedidos, palets con etiqueta SSCC estándar GS1,
+          despiece con merma explícita, depósito de mercancía de terceros y
+          entregas firmadas con valor probatorio. Todo dentro del módulo de
+          Inventario, sin proyecto de integración y sin un segundo sistema
+          que sincronizar con tu ERP.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center">
+        {
+          wms.map((c, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3 leading-snug">{c.title}</h3>
+                <p class="text-sm mb-5" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+                <ul class="space-y-2">
+                  {c.bullets.map((b) => (
+                    <li class="flex items-start gap-2.5">
+                      <span class="w-4 h-4 mt-1 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[9px] font-bold" style="background: #16a34a;">✓</span>
+                      <span class="text-xs" style="color: rgba(16,25,40,0.72);">{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center mt-12">
+        <div class="lg:col-10">
+          <div class="rounded-3xl border border-dark/10 bg-body p-7 lg:p-9" data-aos="fade-up-sm">
+            <h3 class="h5 font-bold mb-3">¿Por qué esto importa más de lo que parece?</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(16,25,40,0.72);">
+              La mayoría de pymes que necesitan palets, picking guiado o
+              depósito de terceros acaban comprando un <strong>WMS separado</strong>
+              y conectándolo a su ERP. Eso significa dos maestros de artículos,
+              una sincronización que falla el día peor y descuadres que nadie
+              sabe de dónde vienen.
+            </p>
+            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.72);">
+              En Drenpos es el mismo sistema: escanear un SSCC dentro de un
+              albarán arrastra el palet entero con sus líneas agrupadas y
+              blindadas, la manipulación de un palet en depósito genera su
+              apunte tarificable en la misma operación, y el informe de
+              trazabilidad cruza entradas, salidas y stock vivo sin exportar
+              nada. Te lo contamos en detalle en
+              <a href="/blog/wms-sga-erp-diferencias" class="text-primary underline">WMS, SGA y ERP: en qué se diferencian</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
        COMPARATIVA (tabla de decisión — AEO)
   ═══════════════════════════════════════════════════════════════════ -->
   <section class="section pt-0 overflow-hidden">
@@ -447,13 +681,15 @@ const productSchema = {
         </p>
       </div>
       <div class="overflow-x-auto" data-aos="fade-up-sm">
-        <table class="w-full text-sm border-collapse min-w-[760px]">
+        <table class="w-full text-sm border-collapse min-w-[1020px]">
           <thead>
             <tr class="bg-dark text-white">
               <th class="text-left p-4 rounded-tl-2xl">Opción</th>
               <th class="text-left p-4">Stock</th>
               <th class="text-left p-4">Lotes y caducidad</th>
               <th class="text-left p-4">Ubicaciones</th>
+              <th class="text-left p-4">Palets / SSCC</th>
+              <th class="text-left p-4">Preparación de pedidos</th>
               <th class="text-left p-4">Integración con tu gestión</th>
               <th class="text-left p-4 rounded-tr-2xl">Coste</th>
             </tr>
@@ -466,6 +702,8 @@ const productSchema = {
                   <td class="p-4">{r.stock}</td>
                   <td class="p-4">{r.lotes}</td>
                   <td class="p-4">{r.ubicaciones}</td>
+                  <td class="p-4">{r.palets}</td>
+                  <td class="p-4">{r.picking}</td>
                   <td class="p-4">{r.integracion}</td>
                   <td class="p-4">{r.precio}</td>
                 </tr>
@@ -521,9 +759,12 @@ const productSchema = {
             <h2 class="h3 font-bold mb-3 text-white">Todo el almacén, desde 19,90 €/mes</h2>
             <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
               El módulo Almacén incluye multialmacén, ubicaciones con QR, lotes
-              con caducidad y FEFO, trazabilidad y stock en tiempo real. Sin
-              coste por volumen de datos, sin permanencia y con soporte humano
-              incluido. Actívalo solo o combínalo con ventas, TPV y facturación.
+              con caducidad y FEFO, trazabilidad con informe de recall,
+              preparación de pedidos con oleadas, palets con etiqueta SSCC
+              estándar GS1, despiece con merma explícita, depósito de terceros
+              y entregas firmadas. Sin coste por volumen de datos, sin
+              permanencia y con soporte humano incluido. Actívalo solo o
+              combínalo con ventas, TPV y facturación.
             </p>
             <ul class="flex flex-wrap gap-4 justify-center">
               <li>
@@ -573,26 +814,39 @@ const productSchema = {
   ═══════════════════════════════════════════════════════════════════ -->
   <section class="section pt-0">
     <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-3">Soluciones específicas por tipo de almacén</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          El mismo sistema, explicado desde el problema concreto de cada operativa.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center mb-14">
+        {
+          hermanas.map((h, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <a href={h.url} class="block h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl hover:border-primary/30 transition-all duration-300">
+                <h3 class="h6 font-bold mb-2 leading-snug text-primary">{h.title}</h3>
+                <p class="text-sm mb-3" style="color: rgba(16,25,40,0.68);">{h.body}</p>
+                <span class="text-primary text-sm font-medium">Ver solución →</span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
       <div class="row justify-center gy-6">
-        <div class="lg:col-5" data-aos="fade-up-sm">
-          <h2 class="h5 font-bold mb-2">Sigue leyendo sobre stock y almacén</h2>
-          <ul class="space-y-2 text-sm">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <h2 class="h5 font-bold mb-3">Sigue leyendo sobre almacén, palets y picking</h2>
+          <ul class="row g-2 text-sm">
             {
               articulos.map((a) => (
-                <li>
+                <li class="md:col-6">
                   <a href={`/blog/${a.s}`} class="text-primary hover:underline">{a.t}</a>
                 </li>
               ))
             }
           </ul>
-        </div>
-        <div class="lg:col-5" data-aos="fade-up-sm" data-aos-delay="100">
-          <h2 class="h5 font-bold mb-2">¿Tienes también tienda física?</h2>
-          <p class="text-sm mb-3" style="color: rgba(16,25,40,0.65);">
-            Si además del almacén vendes en mostrador, mira la solución conjunta
-            de almacén + TPV: stock descontado en cada ticket, sin dobles capturas.
-          </p>
-          <a href="/software-almacen-tienda" class="text-primary text-sm font-medium hover:underline">Software de almacén y tienda →</a>
         </div>
       </div>
     </div>

@@ -1,0 +1,846 @@
+---
+export const prerender = true;
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+
+// ════════════════════════════════════════════════════════════════════════
+//  Software de preparación de pedidos (picking) · landing dedicada
+//  Intención de búsqueda objetivo:
+//    - "software de preparación de pedidos" (principal)
+//    - "software de picking para almacén" / "picking móvil"
+//    - "sistema de picking por oleadas" / "software de expedición"
+//    - long-tail: preparación de pedidos con pistola lectora,
+//      reducir errores de picking, pick-to-box, zona de preparados
+//  Diferenciación con /software-gestion-almacen: aquella cubre el SGA
+//  completo; esta ataca solo el flujo pedido → picking → expedición.
+//  Imágenes UI: /public/images/funcionalidades/almacen-tienda/
+// ════════════════════════════════════════════════════════════════════════
+
+const CANONICAL = "https://www.drenpos.com/software-preparacion-pedidos-picking";
+
+// Síntomas (dolores de búsqueda — long-tail AEO)
+const sintomas = [
+  {
+    icon: "🛑",
+    title: "Empiezas un pedido y a mitad descubres que falta género",
+    body: "El preparador ya ha recorrido medio almacén cuando aparece la falta. Hay que deshacer, avisar a comercial y volver a empezar con otro pedido.",
+  },
+  {
+    icon: "📄",
+    title: "Listas en papel que alguien transcribe después",
+    body: "Se imprime la lista, se marca a boli y por la tarde alguien la pasa al ordenador. Cada transcripción es una oportunidad de equivocarse — y el stock va siempre con horas de retraso.",
+  },
+  {
+    icon: "🔎",
+    title: "Pedidos preparados que nadie encuentra en el muelle",
+    body: "Las cajas están hechas, pero están «por ahí». El chófer espera mientras dos personas buscan qué palé o qué caja es la del cliente que se va ahora.",
+  },
+  {
+    icon: "❓",
+    title: "No puedes demostrar quién preparó qué ni qué lote se sirvió",
+    body: "Llega una reclamación y no hay forma de saber quién montó el pedido, qué lote salió ni si la caja se verificó antes de cargarla.",
+  },
+];
+
+// El flujo real en 6 pasos (todo mapeado 1:1 a producto)
+const flujo = [
+  {
+    n: "01",
+    icon: "🚦",
+    tag: "Antes de mover un pie",
+    title: "Semáforo de preparabilidad",
+    body: "El listado de preparación dice de un vistazo qué pedidos se pueden servir completos con el stock actual, cuáles tienen faltas y qué está de camino en pedidos de compra. Se decide qué se prepara hoy antes de que nadie coja una caja.",
+  },
+  {
+    n: "02",
+    icon: "🏷️",
+    tag: "Arranque",
+    title: "Etiqueta QR por pedido",
+    body: "Cada pedido lleva su etiqueta QR imprimible. Escanearla abre la sesión de picking — o la crea si aún no existe. Sin buscar el pedido en una lista ni teclear referencias en el móvil.",
+  },
+  {
+    n: "03",
+    icon: "📱",
+    tag: "En el almacén",
+    title: "Asistente móvil paso a paso",
+    body: "El asistente guía línea a línea: qué producto, en qué ubicación, qué lote sugerido según FIFO, LIFO o FEFO, y cuántas unidades. Si algo no cuadra, se registra la incidencia en esa línea y el pedido sigue avanzando.",
+  },
+  {
+    n: "04",
+    icon: "🌊",
+    tag: "Productividad",
+    title: "Oleadas: varios pedidos en una sola vuelta",
+    body: "Se lanza una oleada con los pedidos que interesan y el sistema consolida una única ruta por el almacén (pick-to-box). Se recorre el almacén una vez y salen varios pedidos, no uno.",
+  },
+  {
+    n: "05",
+    icon: "📦",
+    tag: "Dónde está cada pedido",
+    title: "Zona de preparados o palet directo",
+    body: "Los pedidos listos se aparcan en baldas con QR: se escanea la balda y se sabe exactamente dónde está cada pedido. Como alternativa, el pedido se prepara directamente sobre un palet con su etiqueta SSCC y al expedir sale el palet completo con su trazabilidad.",
+  },
+  {
+    n: "06",
+    icon: "🚚",
+    tag: "Salida",
+    title: "Verificación y expedición con escaneo",
+    body: "Verificación configurable antes de expedir (recuento de control) y, al escanear el pedido preparado, el sistema genera el albarán o la factura automáticamente, con trazabilidad documental completa. Nadie vuelve a teclear el pedido.",
+  },
+];
+
+// Métodos de picking (conceptos logísticos estándar — tabla AEO)
+const metodos = [
+  {
+    metodo: "Por pedido (discreto)",
+    como: "Un preparador recorre el almacén para un único pedido, de principio a fin.",
+    cuando: "Pocos pedidos al día, pedidos grandes o muy urgentes, y equipos pequeños donde la trazabilidad de «quién preparó qué» es lo prioritario.",
+    cuandoNo: "Cuando hay muchos pedidos pequeños: se repite el mismo recorrido una vez por pedido y casi todo el tiempo se va en andar.",
+  },
+  {
+    metodo: "Por lotes (batch)",
+    como: "Se agrupan varios pedidos y se recoge la cantidad total de cada producto en una sola pasada; después se reparte entre los pedidos.",
+    cuando: "Muchos pedidos que comparten las mismas referencias, con una mesa o zona donde separar después.",
+    cuandoNo: "Si no hay espacio ni tiempo para la separación posterior, o si los pedidos comparten pocas referencias entre sí.",
+  },
+  {
+    metodo: "Por oleadas (wave)",
+    como: "Se lanzan tandas de pedidos agrupados por un criterio (urgencia, ruta de reparto, hora de salida) y se recorre el almacén una vez por oleada.",
+    cuando: "Cuando las salidas tienen horarios: la oleada se organiza alrededor del camión o de la recogida de la agencia.",
+    cuandoNo: "Si los pedidos llegan de forma continua durante todo el día y hay que servirlos según entran, sin ventanas de salida.",
+  },
+  {
+    metodo: "Por zonas",
+    como: "Cada preparador cubre una zona fija del almacén y solo prepara las líneas que caen en ella; el pedido se completa con las aportaciones de cada zona.",
+    cuando: "Almacenes grandes, con zonas de condiciones distintas (seco, refrigerado, congelado) o con equipos especializados por área.",
+    cuandoNo: "En almacenes pequeños, donde partir el pedido añade coordinación y consolidación sin ganar nada.",
+  },
+  {
+    metodo: "Pick-to-box",
+    como: "Se recoge directamente dentro de la caja o el contenedor final de cada pedido, así que al terminar la ruta el pedido ya está montado.",
+    cuando: "Pedidos de pocas líneas y volumen manejable, cuando se quiere evitar por completo la fase de separación posterior.",
+    cuandoNo: "Con pedidos voluminosos o pesados, donde llevar varias cajas abiertas por el almacén no es práctico.",
+  },
+];
+
+// Capacidades complementarias (todo real, products_modules.md)
+const capacidades = [
+  {
+    icon: "🔒",
+    tag: "Reservas de stock",
+    title: "Stock físico y stock disponible, siempre separados",
+    body: "Al confirmar un pedido, el stock queda comprometido para ese cliente y en todo el sistema se distingue físico de disponible (físico − reservado), también al elegir lotes y series. Las reservas se consumen solas al servir, incluso en servicios parciales.",
+  },
+  {
+    icon: "📥",
+    tag: "Recepción de mercancía",
+    title: "Recibir contra pedido de compra con ruta guiada",
+    body: "El operario recibe con pistola y el sistema compara lo esperado con lo recibido, siguiendo una ruta guiada por ubicación de destino para no dar vueltas. Incidencias por línea (faltas, roturas, mercancía no pedida), etiquetas GS1 con lote o serie desde la propia sesión y albarán de compra al cerrar.",
+  },
+  {
+    icon: "⚡",
+    tag: "Cross-docking",
+    title: "Lo que sale sin llegar a tocar la estantería",
+    body: "Si hay pedidos de venta esperando ese producto, la línea de recepción lo avisa en el momento para que la mercancía salga directa hacia preparación sin pasar por estantería.",
+  },
+  {
+    icon: "🖨️",
+    tag: "Impresión",
+    title: "Hoja de etiquetas, lista de picking y etiqueta de envío",
+    body: "Desde la misma pantalla se imprime la hoja de etiquetas de pedidos, la lista de picking para quien prefiere apoyo en papel y la etiqueta de envío del bulto preparado.",
+  },
+  {
+    icon: "👤",
+    tag: "Responsables",
+    title: "Quién preparó y quién recibió, sesión a sesión",
+    body: "Cada sesión lleva su preparador y su receptor asignados, con seguimiento de quién hizo qué. Ante una reclamación no hace falta reconstruir la mañana de memoria.",
+  },
+  {
+    icon: "🛡️",
+    tag: "Permisos",
+    title: "Roles de almacén con plantillas listas",
+    body: "Permisos por rol con plantillas preparadas para aplicar (mozo, responsable, supervisor), usuarios en varios grupos a la vez y explorador inverso para auditar quién tiene acceso a qué.",
+  },
+];
+
+// Comparativa de soluciones (tabla de decisión — AEO)
+const comparativa = [
+  {
+    opcion: "Papel y hoja de cálculo",
+    servible: "A ojo, preguntando al almacén",
+    guiado: "No: lista impresa",
+    oleadas: "Manual, en la cabeza del responsable",
+    expedicion: "Se teclea el albarán después",
+    precio: "«Gratis» (te cuesta en horas y errores)",
+  },
+  {
+    opcion: "Facturación con inventario básico",
+    servible: "Solo unidades totales, sin reservas",
+    guiado: "No",
+    oleadas: "No",
+    expedicion: "Albarán manual desde el pedido",
+    precio: "10–30 €/mes",
+  },
+  {
+    opcion: "WMS enterprise",
+    servible: "Sí",
+    guiado: "Sí, avanzado",
+    oleadas: "Sí",
+    expedicion: "Sí, pero factura tu ERP aparte",
+    precio: "Miles de € + proyecto de meses",
+  },
+  {
+    opcion: "Drenpos",
+    servible: "Semáforo de preparabilidad, con faltas y lo que viene de camino",
+    guiado: "Asistente móvil con ubicación y lote FIFO/LIFO/FEFO",
+    oleadas: "Sí, pick-to-box en una ruta consolidada",
+    expedicion: "Escanear genera el albarán o la factura",
+    precio: "Desde 19,90 €/mes",
+    destacado: true,
+  },
+];
+
+// Casos de uso (long-tail sectorial, todos apoyados en producto real)
+const casos = [
+  {
+    tag: "Distribución B2B",
+    icon: "🚚",
+    title: "20 pedidos por la mañana, una oleada con los 8 urgentes",
+    body: "El responsable mira el semáforo, ve cuáles se pueden servir completos y lanza una oleada con los ocho que salen en la primera furgoneta. El mozo los prepara en una sola vuelta con el móvil, cada pedido se aparca en su balda con QR y al cargar se escanea y sale el albarán solo. Lo que no había stock para servir ya está en la propuesta de compra.",
+  },
+  {
+    tag: "E-commerce y multicanal",
+    icon: "🛒",
+    title: "Picking por olas y etiqueta de envío en la misma sesión",
+    body: "Muchos pedidos de pocas líneas: se agrupan en oleadas por hora de recogida de la agencia y se recogen pick-to-box. Al cerrar el pedido se imprime su etiqueta de envío y la expedición con escaneo genera el documento de salida sin volver a teclear nada.",
+  },
+  {
+    tag: "Palet completo",
+    icon: "🏗️",
+    title: "Preparar sobre el palet y expedir el palet con su SSCC",
+    body: "Para pedidos grandes, el pedido se prepara directamente sobre un palet que nace con su etiqueta SSCC estándar GS1. Al expedir sale el palet completo con su trazabilidad, y escanear ese SSCC dentro del albarán o la factura arrastra sus líneas agrupadas y blindadas.",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Qué es la preparación de pedidos y en qué se diferencia del picking?",
+    a: "La preparación de pedidos es el proceso completo que va desde que un pedido se confirma hasta que la mercancía sale por el muelle: decidir qué pedidos son servibles, recogerlos, dejarlos identificados y expedirlos. El picking es solo una parte de ese proceso — el acto de recoger físicamente el producto de su ubicación. Y la expedición es la parte final: verificar lo preparado, cargarlo y generar el documento de salida. En Drenpos los tres pasos viven en el mismo flujo: semáforo de preparabilidad, asistente de picking móvil y expedición con escaneo que genera el albarán o la factura.",
+  },
+  {
+    q: "¿Qué es el picking por oleadas y cuándo conviene?",
+    a: "El picking por oleadas consiste en lanzar varios pedidos a la vez agrupados por un criterio común (urgencia, ruta de reparto u hora de salida) para recorrer el almacén una sola vez en lugar de una vez por pedido. Conviene cuando hay muchos pedidos de pocas líneas y las salidas tienen horario, porque la oleada se organiza alrededor del camión o de la recogida de la agencia. No conviene si los pedidos llegan de forma continua y hay que servirlos según entran, sin ventanas de salida. En Drenpos la oleada consolida una única ruta por el almacén con recogida pick-to-box.",
+  },
+  {
+    q: "¿Cómo sé qué pedidos puedo servir completos hoy?",
+    a: "Con el semáforo de preparabilidad del listado de preparación. Muestra qué pedidos se pueden servir completos con el stock actual, cuáles tienen faltas y qué está de camino en pedidos de compra, de modo que se decide qué se prepara antes de que nadie recorra el almacén. Además, las alertas de pedidos cruzan la demanda pendiente con el stock físico y avisan de cuántas unidades faltan por comprar para servirlo todo, y la propuesta de compra asistida deja el pedido de compra listo en un clic.",
+  },
+  {
+    q: "¿El preparador necesita una pistola lectora o vale el móvil?",
+    a: "Valen las dos cosas. El asistente de picking está pensado para móvil y para pistola lectora: se puede escanear con un lector dedicado o con la cámara del móvil, y todas las pantallas funcionan en móvil y tablet para trabajar a pie de estantería. Muchos almacenes empiezan con el móvil que ya tiene el equipo y añaden pistolas después, sin cambiar de sistema ni de forma de trabajar.",
+  },
+  {
+    q: "¿Cómo evito servir el lote equivocado?",
+    a: "El asistente de picking sugiere el lote en cada línea según el criterio configurado: FIFO (primero en entrar, primero en salir), LIFO (último en entrar, primero en salir) o FEFO (primero en caducar, primero en salir). Cuando está configurado, el sistema selecciona el lote automáticamente sin intervención manual, y la validación de lotes y series se aplica con las mismas reglas que en el resto de documentos. Cada salida queda vinculada al lote que se sirvió, así que la trazabilidad muestra después a qué cliente fue cada lote.",
+  },
+  {
+    q: "¿Se genera el albarán solo al expedir?",
+    a: "Sí. Al escanear el pedido preparado, la expedición genera el albarán o la factura automáticamente, con trazabilidad documental completa entre el pedido y el documento resultante. Antes de eso se puede exigir una verificación configurable (recuento de control), y si el pedido se preparó sobre un palet sale el palet completo con su etiqueta SSCC y su trazabilidad. Nadie vuelve a teclear las líneas del pedido en un documento de salida.",
+  },
+  {
+    q: "¿Puedo preparar el pedido directamente sobre un palet?",
+    a: "Sí. El pedido se puede preparar sobre un palet que nace con su etiqueta SSCC estándar GS1 imprimible en rollo o A4, y al expedir sale el palet completo con su trazabilidad. Dentro del palet cabe cualquier mezcla de productos, lotes y series, y escanear ese SSCC dentro de un albarán o una factura arrastra el palet entero con sus líneas agrupadas y blindadas. La alternativa es la zona de preparados: baldas con QR donde se aparcan los pedidos listos y que se escanean para saber dónde está cada uno.",
+  },
+  {
+    q: "¿Cuánto cuesta y cuánto se tarda en implantarlo?",
+    a: "La preparación de pedidos forma parte del módulo de Almacén de Drenpos, desde 19,90 €/mes sin IVA, sin coste por uso ni permanencia y con soporte humano incluido; existe también despliegue on-premise en el servidor del cliente, a presupuesto. La implantación estándar se hace en días: importamos los artículos, definimos almacenes y ubicaciones, imprimimos las etiquetas QR de ubicaciones y baldas, cargamos el stock inicial y formamos al equipo.",
+  },
+];
+
+// Landings hermanas del clúster de almacén
+const hermanas = [
+  {
+    url: "/software-gestion-almacen",
+    title: "Software de gestión de almacén (SGA)",
+    body: "El módulo completo: ubicaciones con QR, lotes con FEFO, trazabilidad, palets con SSCC e inventarios.",
+  },
+  {
+    url: "/software-alquiler-huecos-palet",
+    title: "Depósito de terceros y alquiler de huecos",
+    body: "Custodia de mercancía ajena con tarifario por palet/día, posición en vivo y liquidación.",
+  },
+  {
+    url: "/software-almacen-frigorifico",
+    title: "Almacén frigorífico y de congelados",
+    body: "Cadena de frío, FEFO, palets a pie de cámara y operativa en móvil dentro de la cámara.",
+  },
+  {
+    url: "/software-almacen-tienda",
+    title: "Almacén y TPV para tienda",
+    body: "Si además vendes en mostrador: stock descontado en cada ticket, sin dobles capturas.",
+  },
+];
+
+const articulos = [
+  { t: "Preparación de pedidos y picking: guía práctica", s: "preparacion-de-pedidos-picking-almacen" },
+  { t: "Etiqueta SSCC: qué es y cómo se genera", s: "etiqueta-sscc-gs1-palets" },
+  { t: "WMS, SGA y ERP: en qué se diferencian y cuál necesitas", s: "wms-sga-erp-diferencias" },
+  { t: "Control de stock sin roturas: guía práctica", s: "control-de-stock-sin-roturas" },
+  { t: "Cómo organizar el almacén de una pyme", s: "como-organizar-almacen-pyme" },
+];
+
+// ── Datos estructurados (JSON-LD) ──────────────────────────────────────
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
+    { "@type": "ListItem", position: 3, name: "Preparación de pedidos", item: CANONICAL },
+  ],
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Drenpos · Preparación de pedidos y picking",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  url: CANONICAL,
+  description:
+    "Software de preparación de pedidos (picking) para almacén: semáforo de preparabilidad, etiqueta QR por pedido, asistente de picking móvil con lote sugerido por FIFO/LIFO/FEFO, oleadas pick-to-box, zona de preparados en baldas con QR, preparación sobre palet con etiqueta SSCC, verificación configurable y expedición con escaneo que genera el albarán o la factura. Integrado con reservas de stock, recepción de mercancía, compras, ventas y facturación.",
+  offers: {
+    "@type": "Offer",
+    price: "19.90",
+    priceCurrency: "EUR",
+    description: "Módulo Almacén desde 19,90 €/mes (sin IVA). Sin coste por uso ni permanencia.",
+    url: "https://www.drenpos.com/pricing",
+  },
+  featureList: [
+    "Semáforo de preparabilidad: pedidos completos, con faltas y de camino",
+    "Etiqueta QR por pedido que abre o crea la sesión de picking",
+    "Asistente de picking móvil paso a paso con ubicación y lote sugerido",
+    "Selección de lote por FIFO, LIFO o FEFO",
+    "Incidencias por línea durante la preparación",
+    "Oleadas: varios pedidos en una ruta consolidada (pick-to-box)",
+    "Zona de preparados en baldas con etiqueta QR",
+    "Preparación sobre palet con etiqueta SSCC estándar GS1",
+    "Verificación configurable antes de expedir",
+    "Expedición con escaneo que genera el albarán o la factura",
+    "Impresión de hoja de etiquetas, lista de picking y etiqueta de envío",
+    "Asignación de preparador y receptor por sesión",
+    "Reservas de stock con distinción entre físico y disponible",
+    "Recepción contra pedido de compra con ruta guiada y cross-docking",
+    "Permisos por rol de almacén con plantillas listas",
+  ],
+  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
+};
+---
+
+<Base
+  title="Software de Preparación de Pedidos · Drenpos"
+  meta_title="Software de Preparación de Pedidos y Picking | Drenpos"
+  description="Software de preparación de pedidos: picking guiado en móvil, oleadas, zona de preparados y expedición con escaneo que genera el albarán. Desde 19,90 €/mes."
+  canonical={CANONICAL}
+  image="/images/funcionalidades/almacen-tienda/04-pistola-traslados.png"
+>
+  <!-- Datos estructurados -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0 relative z-10 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/images/grainy.svg" alt="" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/funcionalidades" class="hover:text-primary">Funcionalidades</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Preparación de pedidos</span>
+      </nav>
+
+      <div class="row gx-0 gy-12 lg:gy-0 items-center">
+        <div class="lg:col-6" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Picking y expedición
+          </span>
+
+          <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
+            Software de <span class="text-primary">preparación de pedidos</span> que guía al almacén desde el pedido hasta el muelle
+          </h1>
+          <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
+            Semáforo para saber qué pedidos salen completos hoy,
+            <strong>etiqueta QR por pedido</strong> que abre la sesión de picking,
+            <strong>asistente móvil paso a paso</strong> con la ubicación y el lote
+            sugerido por FIFO, LIFO o FEFO, <strong>oleadas pick-to-box</strong> para
+            preparar varios pedidos en una sola vuelta y
+            <strong>expedición con escaneo</strong> que genera el albarán o la
+            factura. Sin listas en papel, sin transcripciones y sin buscar
+            cajas en el muelle.
+          </p>
+
+          <ul class="flex flex-wrap gap-4 mb-10">
+            <li data-aos="fade-up-sm" data-aos-delay="100">
+              <a href="/contact" class="btn btn-dark">
+                Pedir demo gratuita
+                <span class="icon-wrapper">
+                  <span class="icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="150">
+              <a href="/pricing" class="btn btn-light">Ver precios</a>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Picking guiado en móvil o pistola
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Oleadas pick-to-box
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Albarán automático al expedir
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="relative px-4 lg:px-0 pt-10 pb-10">
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
+
+            <div class="rounded-2xl overflow-hidden relative z-10" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
+              <img
+                src="/images/funcionalidades/almacen-tienda/04-pistola-traslados.png"
+                alt="Operario preparando un pedido con pistola lectora y el asistente de picking de Drenpos"
+                width="720"
+                height="480"
+                class="w-full h-auto block"
+                fetchpriority="high"
+              />
+            </div>
+
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0" style="background: #fce7f3; color: #791b46;">🌊</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Oleada #12 · 8 pedidos</p>
+                <p class="text-xs" style="color: #9ca3af;">Ruta consolidada · pick-to-box</p>
+              </div>
+            </div>
+
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-white text-sm flex-shrink-0 font-bold" style="background: #16a34a;">✓</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Pedido listo · Balda B-04</p>
+                <p class="text-xs" style="color: #9ca3af;">Escanea la balda y aparece</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DEFINICIÓN CITABLE (AEO / featured snippet)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h4 font-bold mb-4">¿Qué es un software de preparación de pedidos?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            Un <strong>software de preparación de pedidos</strong> es el sistema
+            que guía al preparador desde que el pedido se confirma hasta que la
+            mercancía sale por el muelle: decide <strong>qué pedidos son
+            servibles</strong> con el stock que hay, marca <strong>en qué orden
+            recorrer el almacén</strong>, indica <strong>qué lote coger</strong> en
+            cada línea y <strong>genera el documento de salida</strong> al
+            escanear el pedido preparado. Conviene separar tres conceptos que
+            suelen mezclarse: la <em>preparación de pedidos</em> es el proceso
+            completo; el <em>picking</em> es solo el acto de recoger el producto
+            de su ubicación; y la <em>expedición</em> es la fase final de
+            verificar, cargar y emitir el albarán o la factura. Drenpos cubre
+            los tres pasos en un mismo flujo, sobre el mismo stock y con la
+            misma trazabilidad.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SÍNTOMAS
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Te suena alguna de estas cuatro?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          Son los síntomas por los que un almacén acaba buscando un software de picking.
+        </p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          sintomas.map((s, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{s.icon}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{s.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.65);">{s.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       EL FLUJO EN 6 PASOS
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-5">
+          <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+          De la venta al muelle
+        </span>
+        <h2 class="h3 font-bold mb-4">Cómo funciona la preparación de pedidos en Drenpos</h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Seis pasos, uno detrás de otro, sin papel entre medias. El mismo flujo
+          para un pedido suelto y para una oleada de ocho.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center">
+        {
+          flujo.map((f, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-3xl">{f.icon}</span>
+                  <span class="text-2xl font-bold" style="color: rgba(121,27,70,0.22);">{f.n}</span>
+                </div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{f.tag}</p>
+                <h3 class="h6 font-bold mb-3 leading-snug">{f.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{f.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center mt-12">
+        <div class="lg:col-10">
+          <div class="rounded-3xl border border-dark/10 bg-body p-7 lg:p-9" data-aos="fade-up-sm">
+            <h3 class="h5 font-bold mb-3">Por qué esto reduce los errores de picking</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(16,25,40,0.72);">
+              Un error de picking casi nunca es un descuido: es un punto del
+              proceso donde alguien tuvo que <strong>recordar, interpretar o
+              transcribir</strong> algo. La lista en papel obliga a recordar qué
+              lote tocaba, la transcripción posterior obliga a interpretar una
+              anotación a boli y el pedido sin identificar obliga a adivinar de
+              quién es la caja del muelle.
+            </p>
+            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.72);">
+              El asistente móvil elimina esos tres puntos: dice la ubicación, propone
+              el lote según FIFO, LIFO o FEFO, deja registrar la incidencia en la
+              línea donde ocurre y, al expedir, convierte el escaneo en albarán o
+              factura sin pasar por un teclado. Lo explicamos en detalle en
+              <a href="/blog/preparacion-de-pedidos-picking-almacen" class="text-primary underline">la guía práctica de preparación de pedidos y picking</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       MÉTODOS DE PICKING (tabla AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Métodos de picking: cuál encaja con tu almacén</h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          No hay un método mejor que otro: hay uno que encaja con tu número de
+          pedidos, tus líneas por pedido y tus horas de salida. Estos son los
+          cinco que se usan en la práctica.
+        </p>
+      </div>
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[860px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Método</th>
+              <th class="text-left p-4">Cómo funciona</th>
+              <th class="text-left p-4">Cuándo conviene</th>
+              <th class="text-left p-4 rounded-tr-2xl">Cuándo NO</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              metodos.map((m) => (
+                <tr class="border-b border-dark/5">
+                  <td class="p-4 font-medium">{m.metodo}</td>
+                  <td class="p-4">{m.como}</td>
+                  <td class="p-4">{m.cuando}</td>
+                  <td class="p-4">{m.cuandoNo}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="text-center mt-8 text-sm max-w-2xl mx-auto" style="color: rgba(16,25,40,0.6);" data-aos="fade-up-sm">
+        En Drenpos el picking por pedido y las oleadas con recogida pick-to-box
+        están soportados de serie: se lanza una oleada con los pedidos que
+        interesan y el sistema consolida una única ruta por el almacén.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CAPACIDADES COMPLEMENTARIAS
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Lo que hace que el picking funcione de verdad</h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Un asistente de picking solo sirve si el stock que lee es de fiar. Por
+          eso la preparación de pedidos vive junto a las reservas, la recepción
+          de mercancía y los permisos de almacén — en el mismo sistema, no en
+          uno conectado por API.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center">
+        {
+          capacidades.map((c, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3 leading-snug">{c.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       COMPARATIVA DE SOLUCIONES (tabla de decisión — AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Con qué preparas hoy tus pedidos?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          Comparativa honesta de las cuatro vías que tiene una pyme para preparar y expedir.
+        </p>
+      </div>
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[900px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Opción</th>
+              <th class="text-left p-4">Saber si un pedido es servible</th>
+              <th class="text-left p-4">Picking guiado en móvil</th>
+              <th class="text-left p-4">Oleadas</th>
+              <th class="text-left p-4">Expedición con escaneo</th>
+              <th class="text-left p-4 rounded-tr-2xl">Coste</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comparativa.map((r) => (
+                <tr class={r.destacado ? "bg-primary/5 font-medium" : "border-b border-dark/5"}>
+                  <td class={`p-4 ${r.destacado ? "text-primary font-bold" : "font-medium"}`}>{r.opcion}</td>
+                  <td class="p-4">{r.servible}</td>
+                  <td class="p-4">{r.guiado}</td>
+                  <td class="p-4">{r.oleadas}</td>
+                  <td class="p-4">{r.expedicion}</td>
+                  <td class="p-4">{r.precio}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CASOS DE USO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Cómo lo usan almacenes como el tuyo</h2>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          casos.map((c, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3">{c.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PRECIO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-8">
+          <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-3 text-white">Preparación de pedidos incluida, desde 19,90 €/mes</h2>
+            <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+              El picking no es un extra: forma parte del módulo Almacén, con
+              semáforo de preparabilidad, etiqueta QR por pedido, asistente móvil
+              con lote sugerido, oleadas pick-to-box, zona de preparados,
+              preparación sobre palet con etiqueta SSCC y expedición con escaneo.
+              Precios sin IVA, sin coste por uso, sin permanencia y con soporte
+              humano incluido. Si prefieres tener el sistema en tu propio
+              servidor, el despliegue on-premise se estudia a presupuesto.
+            </p>
+            <ul class="flex flex-wrap gap-4 justify-center">
+              <li>
+                <a href="/pricing" class="btn btn-light">Ver planes y precios</a>
+              </li>
+              <li>
+                <a href="/contact" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Pedir demo de 20 minutos</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FAQ (visible + schema)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <h2 class="h3 font-bold mb-3 text-center" data-aos="fade-up-sm">Preparación de pedidos: lo que más nos preguntan</h2>
+          <p class="text-center mb-10" style="color: rgba(16,25,40,0.62);" data-aos="fade-up-sm">
+            Respuestas directas, sin letra pequeña.
+          </p>
+          <div class="space-y-4">
+            {
+              faqs.map((f, i) => (
+                <details class="group rounded-2xl border border-dark/10 bg-body p-5" data-aos="fade-up-sm" data-aos-delay={Math.min(i * 50, 300)}>
+                  <summary class="cursor-pointer list-none flex items-start justify-between gap-4">
+                    <h3 class="h6 font-bold leading-snug">{f.q}</h3>
+                    <span class="text-primary text-xl leading-none mt-0.5 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <p class="mt-4 text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">{f.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ENLAZADO INTERNO (clúster)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-3">Soluciones específicas por tipo de almacén</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          El mismo sistema, explicado desde el problema concreto de cada operativa.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center mb-14">
+        {
+          hermanas.map((h, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <a href={h.url} class="block h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl hover:border-primary/30 transition-all duration-300">
+                <h3 class="h6 font-bold mb-2 leading-snug text-primary">{h.title}</h3>
+                <p class="text-sm mb-3" style="color: rgba(16,25,40,0.68);">{h.body}</p>
+                <span class="text-primary text-sm font-medium">Ver solución →</span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center gy-6">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <h2 class="h5 font-bold mb-3">Sigue leyendo sobre picking, palets y stock</h2>
+          <ul class="row g-2 text-sm mb-6">
+            {
+              articulos.map((a) => (
+                <li class="md:col-6">
+                  <a href={`/blog/${a.s}`} class="text-primary hover:underline">{a.t}</a>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="text-sm" style="color: rgba(16,25,40,0.65);">
+            ¿Quieres ver el sistema completo? Repasa
+            <a href="/modulos" class="text-primary underline">todos los módulos de Drenpos</a>,
+            consulta los <a href="/pricing" class="text-primary underline">planes y precios</a>
+            o <a href="/contact" class="text-primary underline">pídenos una demo</a> de veinte minutos
+            sobre tu propia operativa de almacén.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>

@@ -1,0 +1,803 @@
+---
+export const prerender = true;
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+
+// ════════════════════════════════════════════════════════════════════════
+//  Software de almacén frigorífico · landing dedicada (SEO/AEO/GEO 2026)
+//  Intención de búsqueda objetivo:
+//    - "software almacén frigorífico" (principal)
+//    - "software para almacén de congelados" / "gestión de cámaras frigoríficas"
+//    - "ERP para frigorífico" / "trazabilidad de la cadena de frío"
+//    - long-tail: almacén de frío negativo, cárnicas, pescado congelado
+//  Diferenciación con /software-gestion-almacen: esa ataca el SGA genérico;
+//  esta ataca frío, congelado, cámara y cadena de frío.
+//  Imágenes UI: /public/images/funcionalidades/almacen-tienda/
+// ════════════════════════════════════════════════════════════════════════
+
+const CANONICAL = "https://www.drenpos.com/software-almacen-frigorifico";
+
+// Síntomas (dolores reales de un almacén de frío)
+const sintomas = [
+  {
+    icon: "🧊",
+    title: "El hueco frío está lleno de género parado y nadie lo sabe",
+    body: "Congelar cuesta energía todos los días. Sin informes de rotación e inmovilizado, el palet que lleva meses sin moverse sigue pagando luz como el que entró ayer.",
+  },
+  {
+    icon: "🧤",
+    title: "El operario apunta en papel con guantes y luego alguien lo teclea",
+    body: "Dos capturas para el mismo dato: la de la cámara y la de la oficina. Entre una y otra se pierden lotes, kilos y ubicaciones — y el descuadre aparece días después.",
+  },
+  {
+    icon: "🗓️",
+    title: "Las caducidades se descubren tarde",
+    body: "Cuando la fecha se revisa palet a palet, se descubre el problema el día que ya es merma. Sin alertas por lote, la caducidad siempre llega antes que el aviso.",
+  },
+  {
+    icon: "📍",
+    title: "Nadie sabe en qué cámara y a qué altura está un lote concreto",
+    body: "Localizar un lote significa abrir la cámara, bajar palets y buscar. Y si hay que retirarlo por una incidencia, el reloj corre mientras el equipo mira estanterías.",
+  },
+];
+
+// Capacidades reales (todas mapeadas 1:1 al módulo de Inventario)
+const capacidades = [
+  {
+    icon: "🗓️",
+    tag: "Cadena de frío",
+    title: "Lotes, caducidades y FEFO automático con alertas",
+    body: "Cada entrada registra su lote, su fecha de fabricación y su fecha de caducidad. El sistema puede servir por FIFO, LIFO o FEFO y, cuando FEFO está configurado, elige el lote solo, sin intervención manual. Las alertas avisan X días antes de que caduque un lote, configurables por artículo o de forma global.",
+    bullets: [
+      "La alerta dice qué producto, en qué almacén y en qué ubicación",
+      "FEFO también en el asistente de picking, con lote sugerido",
+      "Números de serie con las mismas garantías que los lotes",
+    ],
+  },
+  {
+    icon: "🏷️",
+    tag: "Palets y unidades logísticas",
+    title: "Etiqueta SSCC estándar GS1 y palet pesado",
+    body: "Cada palet nace con su etiqueta SSCC estándar GS1 imprimible en rollo o A4 — la misma que exigen las grandes plataformas logísticas. Ciclo de vida completo: abierto mientras se carga, cerrado y pesado con bruto, tara y neto, expedido o anulado, con permisos separados para cada paso.",
+    bullets: [
+      "Mover el palet entero de cámara o ubicación en un escaneo",
+      "Despaletizado en tres gestos: vaciar, pasar a otro o partir en varios",
+      "Mezcla libre de productos, lotes y series, con traza de todo el palet",
+    ],
+  },
+  {
+    icon: "📱",
+    tag: "Operativa a pie de cámara",
+    title: "Móvil y tablet dentro del frío, no en la oficina",
+    body: "Todas las pantallas de palets funcionan en móvil y tablet: el palet se monta, se cierra, se pesa y se mueve donde está la mercancía. El montaje admite pistola lectora (escanear ubicación, producto y cantidad) o a mano, y los dos caminos están siempre disponibles.",
+    bullets: [
+      "Traslados con flujo lineal pensado para pistola, sin tocar pantalla",
+      "Vista global de contenido: dónde está este lote, en una pantalla",
+      "Inventarios por zona, con regularización automática de diferencias",
+    ],
+  },
+  {
+    icon: "🔎",
+    tag: "Trazabilidad y recall",
+    title: "Informe de retirada en PDF listo para Sanidad",
+    body: "Pantalla dedicada de trazabilidad que funciona con un lote, un número de serie o un producto sin nada: de qué proveedores entró, a qué clientes salió con sus documentos y cuánto queda vivo y en qué almacén y ubicación. Con un clic, informe PDF listo para presentar a Sanidad o al cliente.",
+    bullets: [
+      "Accesible también desde la ficha de cada producto",
+      "OCR de albaranes y facturas que da de alta los lotes del documento",
+      "Etiquetas GS1 con lote o serie impresas desde la propia recepción",
+    ],
+  },
+  {
+    icon: "🔪",
+    tag: "Despiece y transformación",
+    title: "Lote nuevo, caducidad propia y merma registrada",
+    body: "Sala de despiece, obrador o envasado: se marca qué sale del palet y qué productos entran a cambio, con su lote nuevo, su caducidad y su destino — el mismo palet, otro, o suelto en cualquier almacén y ubicación. Con borrador en espera para corregir con los kilos reales antes de ejecutar.",
+    bullets: [
+      "Ejecución en bloque todo o nada: nunca una salida sin su entrada",
+      "La merma se registra explícita, como una línea más",
+      "Traza de qué cantidades se dedicaron a fabricar qué",
+    ],
+  },
+  {
+    icon: "🤝",
+    tag: "Depósito de terceros",
+    title: "Guardar mercancía de clientes y cobrarla bien",
+    body: "Cada palet lleva su propietario y el sistema impide de raíz mezclar mercancía de dueños distintos o vender por error lo que es de un cliente. Tarifas por palet/día, kg/día, entrada, salida, manipulación o bulto preparado, con franquicias, mínimos, vigencias y precios por tipo de soporte.",
+    bullets: [
+      "Los eventos tarificables se registran solos en cada operación",
+      "Posición del cliente en vivo y simulador de coste con desglose",
+      "Informe formal del periodo en PDF sin necesidad de facturar",
+    ],
+  },
+];
+
+// Comparativa (tabla AEO — decisión de compra)
+const comparativa = [
+  {
+    opcion: "Excel y papel",
+    lotes: "Manual y siempre desfasado",
+    palets: "—",
+    camara: "Papel y guantes",
+    deposito: "—",
+    precio: "«Gratis» (se paga en horas y en merma)",
+  },
+  {
+    opcion: "Facturación con inventario básico",
+    lotes: "No o muy limitado",
+    palets: "No",
+    camara: "No",
+    deposito: "No",
+    precio: "10–30 €/mes",
+  },
+  {
+    opcion: "WMS enterprise",
+    lotes: "Sí",
+    palets: "Sí, con SSCC",
+    camara: "Sí, con terminal propio",
+    deposito: "Según módulo y proyecto",
+    precio: "Miles de € + proyecto de meses",
+  },
+  {
+    opcion: "Drenpos",
+    lotes: "Sí, con FEFO y alertas configurables",
+    palets: "Sí, SSCC GS1, pesado y despaletizado",
+    camara: "Sí, todas las pantallas de palets en móvil y tablet",
+    deposito: "Sí, con tarifario, posición en vivo e informe PDF",
+    precio: "Desde 19,90 €/mes",
+    destacado: true,
+  },
+];
+
+// Casos de uso sectoriales
+const casos = [
+  {
+    tag: "Frigorífico de servicio",
+    icon: "❄️",
+    title: "Cámaras alquiladas a terceros, con liquidación clara",
+    body: "Cada palet entra con su propietario y su SSCC. Entradas, salidas y manipulaciones generan su apunte tarificable en la misma operación, la posición de cada depositante se ve en vivo y el informe del periodo sale en PDF, se facture desde Drenpos o desde fuera.",
+  },
+  {
+    tag: "Cárnicas y sala de despiece",
+    icon: "🔪",
+    title: "De media canal a lomo, panceta y hamburguesas",
+    body: "Entra la canal paletizada con su etiqueta SSCC y en la sala de despiece salen productos nuevos con su lote y su caducidad propios. El despiece se ejecuta todo o nada, la merma queda apuntada como una línea más y el vínculo con el lote de origen se mantiene.",
+  },
+  {
+    tag: "Distribución de congelados",
+    icon: "🚚",
+    title: "Preparación de pedidos sin sacar el género de más",
+    body: "El semáforo de preparabilidad dice qué pedidos salen completos hoy, el asistente móvil guía producto a producto con el lote sugerido por FEFO y las oleadas permiten preparar varios pedidos en una sola vuelta. Al expedir, escanear el pedido genera el albarán o la factura.",
+  },
+  {
+    tag: "Hortofrutícola y refrigerado",
+    icon: "🥬",
+    title: "FEFO en producto de vida corta",
+    body: "Con fechas de caducidad muy ajustadas, el sistema propone siempre el lote que antes caduca y avisa con los días de antelación que se configuren, indicando producto, almacén y ubicación. Los informes de rotación e inmovilizado enseñan qué lleva parado demasiado tiempo.",
+  },
+];
+
+// Normativa citada por nombre exacto (sin articulados ni cifras inventadas)
+const normas = [
+  {
+    nombre: "Reglamento (CE) 178/2002",
+    body: "Principios generales de la legislación alimentaria y trazabilidad: poder identificar de dónde vino y a dónde fue cada lote. Es lo que resuelve la pantalla de trazabilidad y el informe de recall en PDF.",
+  },
+  {
+    nombre: "Reglamento (CE) 852/2004",
+    body: "Higiene de los productos alimenticios. El registro documental de lotes, movimientos y manipulaciones es la parte que un software puede sostener.",
+  },
+  {
+    nombre: "Reglamento (CE) 853/2004",
+    body: "Normas específicas de higiene para alimentos de origen animal, aplicable a cárnicas, pesca y salas de despiece. La identificación por lote y el registro del despiece se apoyan en el sistema.",
+  },
+  {
+    nombre: "Reglamento (UE) 1169/2011",
+    body: "Información alimentaria facilitada al consumidor. El sistema mantiene la fecha y el lote asociados a cada producto y a cada salida.",
+  },
+  {
+    nombre: "Sistema APPCC",
+    body: "Análisis de Peligros y Puntos de Control Crítico. Drenpos aporta el registro trazable de lotes, caducidades, movimientos, despieces y entregas firmadas que da soporte documental al plan.",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Qué es un software de almacén frigorífico?",
+    a: "Es el sistema que controla el stock, la ubicación, el lote, la caducidad y la unidad logística en un almacén donde el hueco cuesta energía todos los días y el producto tiene fecha. Se diferencia de un inventario normal en que no solo sabe cuánto tienes: sabe en qué cámara y en qué ubicación está, de qué lote es, en qué palet viaja, cuándo caduca y cuánta merma se generó al transformarlo. En Drenpos eso incluye FEFO automático, alertas de caducidad, palets con etiqueta SSCC estándar GS1, trazabilidad con informe de recall en PDF y operativa en móvil a pie de cámara.",
+  },
+  {
+    q: "¿Sirve para congelado y refrigerado a la vez?",
+    a: "Sí. Drenpos es multialmacén: cada cámara, túnel o zona puede ser un almacén con su stock independiente y sus ubicaciones con QR, y la visión consolidada se mantiene para compras y análisis. El producto de frío negativo y el refrigerado se gestionan con las mismas herramientas — lotes, caducidad, FEFO, palets y traslados — sin duplicar sistemas ni maestros de artículos.",
+  },
+  {
+    q: "¿Cómo controla las caducidades y el FEFO?",
+    a: "Cada entrada de un artículo con lotes activados registra su código de lote, su fecha de fabricación y su fecha de caducidad. El método de salida se configura como FIFO, LIFO o FEFO; con FEFO, el sistema selecciona automáticamente el lote que antes caduca, también en el asistente de picking. Las alertas de caducidad avisan los días de antelación que se definan, por artículo o de forma global, y la notificación indica producto, almacén y ubicación.",
+  },
+  {
+    q: "¿Puedo trabajar dentro de la cámara con el móvil?",
+    a: "Sí. Todas las pantallas de palets funcionan en móvil y tablet, precisamente para que la operativa se haga a pie de cámara y no en la oficina. El palet se monta con pistola (escanear ubicación, producto y cantidad) o a mano, se cierra y se pesa con bruto, tara y neto, y se mueve entero de ubicación o de almacén en un escaneo. Los traslados tienen además un flujo lineal pensado para operarios con pistola.",
+  },
+  {
+    q: "¿Gestiona palets con etiqueta SSCC?",
+    a: "Sí. Cada palet nace con su etiqueta SSCC estándar GS1 imprimible en rollo o A4, y tiene ciclo de vida completo: abierto, cerrado y pesado (bruto, tara y neto), expedido o anulado, con permisos separados por paso. Dentro cabe cualquier mezcla de productos, lotes y series, el despaletizado permite vaciarlo, pasar mercancía a otro palet o partirlo en varios nuevos ya etiquetados, y escanear el SSCC dentro de un albarán o una factura arrastra el palet entero con sus líneas agrupadas y blindadas.",
+  },
+  {
+    q: "¿Puedo alquilar huecos de cámara y facturar el depósito?",
+    a: "Sí, con el módulo de depósito de terceros. Cada palet lleva su propietario y el sistema bloquea de raíz mezclar o vender mercancía ajena. Las tarifas admiten palet/día, kg/día, entrada, salida, manipulación o bulto preparado, con días de franquicia, mínimos por liquidación, precios por tipo de soporte y vigencias, y cada concepto elige cómo se cuenta: día a día, foto a fin de mes, pico máximo o aniversario de entrada. La posición del cliente se ve en vivo, hay simulador de coste e informe formal del periodo en PDF sin necesidad de facturar.",
+  },
+  {
+    q: "¿Cómo se registra la merma del despiece?",
+    a: "En el despiece se marca qué sale del palet y qué productos entran a cambio, con su lote nuevo y su caducidad. La merma se registra de forma explícita como una línea más: nunca desaparece en silencio. Los despieces se ejecutan en bloque todo o nada, de modo que jamás queda una salida sin su entrada, y queda traza completa de qué cantidades se dedicaron a fabricar qué. Si el palet es de un cliente en depósito, la manipulación genera su apunte de tarifa sola.",
+  },
+  {
+    q: "¿Cuánto cuesta y cuánto se tarda en implantarlo?",
+    a: "El módulo de Almacén parte de 19,90 €/mes (sin IVA), con actualizaciones y soporte humano incluidos, sin coste por uso ni permanencia. La implantación estándar se hace en días: importamos los artículos desde Excel o desde el sistema anterior, definimos cámaras, almacenes y ubicaciones, cargamos el stock inicial y formamos al equipo. Para quien necesita que los datos no salgan de la empresa, existe despliegue on-premise en el servidor del cliente, a presupuesto.",
+  },
+];
+
+// Landings hermanas del clúster de almacén
+const hermanas = [
+  {
+    url: "/software-gestion-almacen",
+    title: "Software de gestión de almacén (SGA)",
+    body: "La visión completa: multialmacén, ubicaciones QR, lotes, picking, palets y trazabilidad.",
+  },
+  {
+    url: "/software-alquiler-huecos-palet",
+    title: "Alquiler de huecos de palet",
+    body: "Custodia de mercancía ajena con tarifario por palet/día, posición en vivo y liquidación.",
+  },
+  {
+    url: "/software-preparacion-pedidos-picking",
+    title: "Preparación de pedidos y picking",
+    body: "Oleadas, asistente móvil con lote FEFO, zona de preparados y expedición con escaneo.",
+  },
+  {
+    url: "/software-almacen-tienda",
+    title: "Almacén y TPV para tienda",
+    body: "Si además vendes en mostrador: el stock se descuenta en cada ticket, sin dobles capturas.",
+  },
+];
+
+const articulos = [
+  { t: "Software de almacén frigorífico y congelados", s: "software-almacen-frigorifico-congelados" },
+  { t: "Trazabilidad alimentaria: lotes y retirada de producto", s: "trazabilidad-alimentaria-lotes-recall" },
+  { t: "Despiece, merma y trazabilidad cárnica", s: "despiece-merma-trazabilidad-carnica" },
+  { t: "Etiqueta SSCC: qué es y cómo se genera", s: "etiqueta-sscc-gs1-palets" },
+  { t: "Cómo organizar el almacén de una pyme", s: "como-organizar-almacen-pyme" },
+];
+
+// ── Datos estructurados (JSON-LD) ──────────────────────────────────────
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
+    { "@type": "ListItem", position: 3, name: "Almacén frigorífico", item: CANONICAL },
+  ],
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Drenpos · Almacén Frigorífico y Congelados",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  url: CANONICAL,
+  description:
+    "Software de almacén frigorífico para congelado y refrigerado: lotes con caducidad y FEFO automático con alertas configurables, palets con etiqueta SSCC estándar GS1 con pesado bruto-tara-neto, operativa en móvil y tablet a pie de cámara, trazabilidad total con informe de recall en PDF, despiece con lote nuevo y merma explícita y depósito de terceros con tarifario por palet/día y kg/día. Integrado con compras, ventas y facturación.",
+  offers: {
+    "@type": "Offer",
+    price: "19.90",
+    priceCurrency: "EUR",
+    description: "Módulo Almacén desde 19,90 €/mes (sin IVA). Sin coste por uso ni permanencia.",
+    url: "https://www.drenpos.com/pricing",
+  },
+  featureList: [
+    "Multialmacén por cámara, túnel o zona con ubicaciones QR",
+    "Lotes con fecha de fabricación y caducidad",
+    "Salidas por FIFO, LIFO o FEFO con selección automática de lote",
+    "Alertas de caducidad configurables con artículo, almacén y ubicación",
+    "Palets con etiqueta SSCC estándar GS1 imprimible en rollo o A4",
+    "Ciclo de vida del palet: abierto, cerrado y pesado, expedido o anulado",
+    "Pesado de palet con bruto, tara y neto",
+    "Traslado del palet completo en un escaneo y despaletizado en tres gestos",
+    "Todas las pantallas de palets en móvil y tablet, a pie de cámara",
+    "Trazabilidad total con informe de recall en PDF",
+    "OCR de albaranes y facturas con alta automática de lotes",
+    "Despiece y transformación con lote nuevo, caducidad propia y merma explícita",
+    "Depósito de terceros con tarifario por palet/día y kg/día",
+    "Posición del depositante en vivo, simulador e informe del periodo en PDF",
+    "Preparación de pedidos con semáforo, oleadas y asistente móvil",
+    "Informes de rotación e inmovilizado del stock en frío",
+  ],
+  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
+};
+---
+
+<Base
+  title="Software de Almacén Frigorífico · Drenpos"
+  meta_title="Software Almacén Frigorífico y Congelados | Drenpos"
+  description="Software de almacén frigorífico para congelados y refrigerados: lotes con FEFO, palets con etiqueta SSCC, trazabilidad y depósito. Desde 19,90 €/mes."
+  canonical={CANONICAL}
+  image="/images/funcionalidades/almacen-tienda/02-lotes-caducidad.png"
+>
+  <!-- Datos estructurados -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0 relative z-10 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/images/grainy.svg" alt="" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/funcionalidades" class="hover:text-primary">Funcionalidades</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Almacén frigorífico</span>
+      </nav>
+
+      <div class="row gx-0 gy-12 lg:gy-0 items-center">
+        <div class="lg:col-6" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Frío, congelado y cadena de frío
+          </span>
+
+          <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
+            <span class="text-primary">Software de almacén frigorífico</span> que funciona dentro de la cámara
+          </h1>
+          <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
+            Lotes con caducidad y <strong>FEFO automático</strong>, palets con
+            <strong>etiqueta SSCC estándar GS1</strong> pesados con bruto, tara y
+            neto, <strong>trazabilidad total con informe de recall en PDF</strong>,
+            despiece con merma explícita y
+            <strong>depósito de terceros con tarifario por palet/día</strong>.
+            Todas las pantallas de palets funcionan en móvil y tablet: la
+            operativa se hace a pie de cámara, no en la oficina.
+          </p>
+
+          <ul class="flex flex-wrap gap-4 mb-10">
+            <li data-aos="fade-up-sm" data-aos-delay="100">
+              <a href="/contact" class="btn btn-dark">
+                Pedir demo gratuita
+                <span class="icon-wrapper">
+                  <span class="icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="150">
+              <a href="/pricing" class="btn btn-light">Ver precios</a>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              FEFO y alertas de caducidad
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Palets SSCC pesados
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Operativa en móvil dentro de la cámara
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="relative px-4 lg:px-0 pt-10 pb-10">
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
+
+            <div class="rounded-2xl overflow-hidden relative z-10" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
+              <img
+                src="/images/funcionalidades/almacen-tienda/02-lotes-caducidad.png"
+                alt="Control de lotes y fechas de caducidad en Drenpos para un almacén frigorífico"
+                width="720"
+                height="480"
+                class="w-full h-auto block"
+                fetchpriority="high"
+              />
+            </div>
+
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #fef3c7;">🗓️</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Alerta de caducidad</p>
+                <p class="text-xs" style="color: #9ca3af;">Cámara 2 · Pasillo B · FEFO</p>
+              </div>
+            </div>
+
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0" style="background: #dcfce7; color: #16a34a;">🏷️</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Palet cerrado y pesado</p>
+                <p class="text-xs" style="color: #9ca3af;">SSCC · bruto, tara y neto</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DEFINICIÓN CITABLE (AEO / featured snippet)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h4 font-bold mb-4">¿Qué es un software de almacén frigorífico?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            Un <strong>software de almacén frigorífico</strong> es el sistema
+            que controla el <strong>stock, la ubicación, el lote, la fecha de
+            caducidad y la unidad logística</strong> en un almacén donde el
+            hueco cuesta energía cada día que pasa y el producto tiene fecha.
+            Se diferencia de un inventario normal en que no se conforma con
+            saber <em>cuánto</em> hay: conoce <em>el palet</em> en el que viaja
+            la mercancía, <em>el lote</em> del que procede, <em>cuándo
+            caduca</em> y <em>cuánta merma</em> se generó al transformarla. Por
+            eso incorpora salidas por FEFO, alertas de caducidad, etiqueta SSCC
+            estándar GS1, trazabilidad con informe de retirada y operativa en
+            móvil a pie de cámara — porque en frío las decisiones se toman
+            donde está la mercancía, no en la oficina.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SÍNTOMAS
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Te suena alguna de estas cuatro?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          Son los síntomas por los que un almacén de frío acaba buscando un software específico.
+        </p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          sintomas.map((s, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{s.icon}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{s.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.65);">{s.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CAPACIDADES (tarjetas con icono — producto real)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Lo que un almacén de frío necesita de verdad</h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Seis capacidades del módulo de Almacén pensadas para congelado,
+          refrigerado y cadena de frío. Sin proyecto de integración y sin un
+          segundo sistema que sincronizar con tu gestión.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center">
+        {
+          capacidades.map((c, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3 leading-snug">{c.title}</h3>
+                <p class="text-sm mb-5" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+                <ul class="space-y-2">
+                  {c.bullets.map((b) => (
+                    <li class="flex items-start gap-2.5">
+                      <span class="w-4 h-4 mt-1 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[9px] font-bold" style="background: #16a34a;">✓</span>
+                      <span class="text-xs" style="color: rgba(16,25,40,0.72);">{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center mt-12">
+        <div class="lg:col-10">
+          <div class="rounded-3xl border border-dark/10 bg-body p-7 lg:p-9" data-aos="fade-up-sm">
+            <h3 class="h5 font-bold mb-3">¿Por qué el móvil dentro de la cámara cambia tanto?</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(16,25,40,0.72);">
+              Porque elimina la doble captura. Cuando el palet se monta, se
+              cierra, se pesa y se mueve desde el propio dispositivo, el dato
+              nace donde ocurre la operación: no hay una libreta con guantes
+              primero y un teclado en la oficina después. Todas las pantallas
+              de palets de Drenpos funcionan en móvil y tablet, y el montaje
+              admite pistola lectora o entrada manual — los dos caminos están
+              siempre disponibles.
+            </p>
+            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.72);">
+              A partir de ahí, todo lo demás encaja: el lote sugerido por FEFO
+              llega al asistente de picking, escanear un SSCC dentro de un
+              albarán o una factura arrastra el palet entero con sus líneas
+              agrupadas y blindadas, y la manipulación de un palet en depósito
+              genera su apunte tarificable en la misma operación. Lo contamos
+              con más detalle en
+              <a href="/blog/software-almacen-frigorifico-congelados" class="text-primary underline">software de almacén frigorífico y congelados</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       COMPARATIVA (tabla de decisión — AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Qué opción encaja con tu frigorífico?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          Comparativa honesta de las cuatro vías que tiene un almacén de frío para gestionarse.
+        </p>
+      </div>
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[900px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Opción</th>
+              <th class="text-left p-4">Lotes y caducidad</th>
+              <th class="text-left p-4">Palets y SSCC</th>
+              <th class="text-left p-4">Operativa en cámara (móvil)</th>
+              <th class="text-left p-4">Depósito de terceros</th>
+              <th class="text-left p-4 rounded-tr-2xl">Coste</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comparativa.map((r) => (
+                <tr class={r.destacado ? "bg-primary/5 font-medium" : "border-b border-dark/5"}>
+                  <td class={`p-4 ${r.destacado ? "text-primary font-bold" : "font-medium"}`}>{r.opcion}</td>
+                  <td class="p-4">{r.lotes}</td>
+                  <td class="p-4">{r.palets}</td>
+                  <td class="p-4">{r.camara}</td>
+                  <td class="p-4">{r.deposito}</td>
+                  <td class="p-4">{r.precio}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CASOS DE USO SECTORIALES
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Cómo lo usan almacenes de frío como el tuyo</h2>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          casos.map((c, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3 leading-snug">{c.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CUMPLIMIENTO (normativa citada por nombre exacto)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Cumplimiento: qué parte sostiene el software</h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Un almacén frigorífico de alimentación se mueve dentro de un marco
+          normativo exigente. Drenpos no sustituye a ese marco: aporta el
+          registro trazable que lo hace demostrable.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center">
+        {
+          normas.map((n, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
+                <h3 class="h6 font-bold mb-3 leading-snug" style="color: #791b46;">{n.nombre}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{n.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center mt-10">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <div class="rounded-3xl border border-dark/10 bg-body p-6 lg:p-8">
+            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">
+              Esta página cita las normas por su nombre para orientar, no como
+              asesoramiento legal: <strong>el detalle aplicable a tu actividad
+              debe confirmarse con el texto vigente de cada norma y con el plan
+              APPCC de tu empresa</strong>, junto a tu responsable de calidad o
+              a la autoridad sanitaria competente. Lo que sí garantiza Drenpos
+              es la parte documental: lote, caducidad, ubicación, palet,
+              movimientos, despiece con merma y entregas firmadas, todo
+              recuperable en un informe.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PRECIO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-8">
+          <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-3 text-white">Todo el almacén frigorífico, desde 19,90 €/mes</h2>
+            <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+              El módulo Almacén incluye multialmacén por cámara con ubicaciones
+              QR, lotes con caducidad y FEFO, alertas configurables,
+              trazabilidad con informe de recall en PDF, palets con etiqueta
+              SSCC estándar GS1 y pesado, despiece con merma explícita,
+              depósito de terceros y entregas firmadas. Sin coste por uso, sin
+              permanencia y con actualizaciones y soporte humano incluidos.
+            </p>
+            <ul class="flex flex-wrap gap-4 justify-center mb-6">
+              <li>
+                <a href="/pricing" class="btn btn-light">Ver planes y precios</a>
+              </li>
+              <li>
+                <a href="/contact" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Pedir demo de 20 minutos</a>
+              </li>
+            </ul>
+            <p class="text-sm max-w-xl mx-auto" style="color: rgba(255,255,255,0.55);">
+              Precios sin IVA. Si tus datos no pueden salir de la empresa,
+              existe <strong>despliegue on-premise</strong> en tu propio
+              servidor con el sistema completo, a presupuesto.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FAQ (visible + schema)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <h2 class="h3 font-bold mb-3 text-center" data-aos="fade-up-sm">Almacén frigorífico: lo que más nos preguntan</h2>
+          <p class="text-center mb-10" style="color: rgba(16,25,40,0.62);" data-aos="fade-up-sm">
+            Respuestas directas, sin letra pequeña.
+          </p>
+          <div class="space-y-4">
+            {
+              faqs.map((f, i) => (
+                <details class="group rounded-2xl border border-dark/10 bg-body p-5" data-aos="fade-up-sm" data-aos-delay={Math.min(i * 50, 300)}>
+                  <summary class="cursor-pointer list-none flex items-start justify-between gap-4">
+                    <h3 class="h6 font-bold leading-snug">{f.q}</h3>
+                    <span class="text-primary text-xl leading-none mt-0.5 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <p class="mt-4 text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">{f.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ENLAZADO INTERNO (clúster)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-3">Soluciones específicas por tipo de almacén</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          El mismo sistema, explicado desde el problema concreto de cada operativa.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center mb-14">
+        {
+          hermanas.map((h, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <a href={h.url} class="block h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl hover:border-primary/30 transition-all duration-300">
+                <h3 class="h6 font-bold mb-2 leading-snug text-primary">{h.title}</h3>
+                <p class="text-sm mb-3" style="color: rgba(16,25,40,0.68);">{h.body}</p>
+                <span class="text-primary text-sm font-medium">Ver solución →</span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center gy-6">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <h2 class="h5 font-bold mb-3">Sigue leyendo sobre frío, lotes y palets</h2>
+          <ul class="row g-2 text-sm mb-8">
+            {
+              articulos.map((a) => (
+                <li class="md:col-6">
+                  <a href={`/blog/${a.s}`} class="text-primary hover:underline">{a.t}</a>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="text-sm" style="color: rgba(16,25,40,0.7);">
+            ¿Quieres ver el sistema completo? Consulta todos los
+            <a href="/modulos" class="text-primary underline">módulos de Drenpos</a>,
+            los <a href="/pricing" class="text-primary underline">planes y precios</a>
+            o escríbenos desde el
+            <a href="/contact" class="text-primary underline">formulario de contacto</a>
+            para una demo de 20 minutos sobre tu propia operativa de frío.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>

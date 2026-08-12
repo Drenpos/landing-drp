@@ -26,6 +26,18 @@
           "url": "/software-gestion-almacen"
         },
         {
+          "name": "Preparación de Pedidos",
+          "url": "/software-preparacion-pedidos-picking"
+        },
+        {
+          "name": "Almacén Frigorífico",
+          "url": "/software-almacen-frigorifico"
+        },
+        {
+          "name": "Alquiler de Huecos de Palet",
+          "url": "/software-alquiler-huecos-palet"
+        },
+        {
           "name": "Almacén y Tienda",
           "url": "/software-almacen-tienda"
         },

@@ -1,0 +1,828 @@
+---
+export const prerender = true;
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+
+// ════════════════════════════════════════════════════════════════════════
+//  Alquiler de huecos de palet · depósito de terceros (custodia / 3PL)
+//  Intención de búsqueda objetivo:
+//    - "alquiler de huecos de palet" (principal)
+//    - "software de depósito de mercancías" / "software para operador
+//      logístico 3PL" / "custodia de mercancía de terceros"
+//    - "tarifas de almacenaje por palet" / "cómo facturar el almacenaje
+//      de palets" / "software para alquilar espacio de almacén"
+//  Público principal: EL DEPOSITARIO (quien tiene huecos libres y quiere
+//  monetizarlos). Secundario: el DEPOSITANTE (quien busca dónde guardar).
+//  Imágenes UI: /public/images/funcionalidades/almacen-tienda/
+// ════════════════════════════════════════════════════════════════════════
+
+const CANONICAL = "https://www.drenpos.com/software-alquiler-huecos-palet";
+
+// Síntomas (dolores del depositario — long-tail AEO)
+const sintomas = [
+  {
+    icon: "🕳️",
+    title: "Tienes huecos vacíos que no generan un euro",
+    body: "La cámara o la nave están pagadas igual estén llenas o vacías. Cada hueco parado es capacidad que ya has comprado y que no está facturando.",
+  },
+  {
+    icon: "📊",
+    title: "Llevas el depósito en una hoja de cálculo",
+    body: "Entradas y salidas apuntadas a mano y, a fin de mes, la sensación de haber cobrado de menos. Nadie recuerda cuántos días estuvo dentro cada palet.",
+  },
+  {
+    icon: "🔀",
+    title: "Miedo a mezclar o vender mercancía de un cliente",
+    body: "Un palet que no era tuyo servido en un pedido, o dos depositantes con el mismo producto en la misma cámara. El error se descubre tarde y se paga caro.",
+  },
+  {
+    icon: "🙅",
+    title: "«Yo eso no lo recibí»",
+    body: "Sin prueba de la entrega, la discusión la pierde siempre el almacén. Un albarán sin firmar no defiende nada cuando falta una paletización.",
+  },
+];
+
+// Cómo funciona — 4 pasos
+const pasos = [
+  {
+    n: "1",
+    title: "Das de alta al depositante y su tarifa",
+    body: "Cada cliente en depósito tiene su tarifario: qué conceptos se le cobran, a qué precio, con qué días de franquicia, qué mínimo por liquidación y desde qué fecha está vigente. Se pueden fijar precios distintos por tipo de soporte.",
+  },
+  {
+    n: "2",
+    title: "Entra la mercancía y se paletiza con su propietario",
+    body: "El palet nace con su etiqueta SSCC estándar GS1 y con el propietario marcado. A partir de ahí, el sistema impide de raíz mezclarlo con mercancía de otro dueño o venderlo por error en un pedido tuyo.",
+  },
+  {
+    n: "3",
+    title: "Cada evento genera su apunte tarificable solo",
+    body: "Una entrada, una salida, una manipulación o un despiece de un palet de cliente registran su apunte automáticamente, en la misma operación. Nadie tiene que acordarse de anotar nada aparte para poder cobrarlo.",
+  },
+  {
+    n: "4",
+    title: "A fin de periodo sacas la posición, el informe y la factura",
+    body: "Cuántos palets y kg tiene dentro cada cliente, cuánto lleva devengado, el informe formal del periodo en PDF — y la factura, si quieres emitirla desde Drenpos. Si facturas con otro sistema, el informe vale igual.",
+  },
+];
+
+// Tarifario (a) conceptos tarifables
+const conceptos = [
+  { c: "Por palet y día", m: "Ocupación de hueco, independientemente de lo que pese", w: "Es la referencia habitual cuando el hueco es el recurso escaso: cámaras y estanterías convencionales." },
+  { c: "Por kg y día", m: "Ocupación ponderada por el peso almacenado", w: "Cuando el producto es muy denso o muy ligero y el palet no representa bien el coste real." },
+  { c: "Por entrada", m: "El acto de recepcionar y ubicar la mercancía", w: "Para repercutir la descarga y la ubicación en almacenes con mucha rotación de entradas." },
+  { c: "Por salida", m: "El acto de sacar y cargar la mercancía", w: "Cuando el trabajo de expedición pesa tanto o más que la propia custodia." },
+  { c: "Por manipulación", m: "Cada trabajo sobre la mercancía: despiece, reetiquetado, reagrupado", w: "Almacenes que además transforman o acondicionan el género del depositante." },
+  { c: "Por bulto preparado", m: "Cada unidad servida al preparar pedidos del depositante", w: "Operadores que, además de guardar, preparan y expiden los pedidos de su cliente." },
+];
+
+// Tarifario (b) modos de cómputo
+const computos = [
+  { c: "Día a día", m: "Suma lo que hay dentro cada día del periodo", w: "El cálculo más fino y más justo: paga exactamente por los días que estuvo dentro cada palet." },
+  { c: "Foto a fin de mes", m: "Mide solo lo que hay dentro el último día del periodo", w: "Cómputo simple, para acuerdos donde el stock es estable y no interesa contar día a día." },
+  { c: "Pico máximo del periodo", m: "Toma la cifra más alta alcanzada dentro del periodo", w: "Cuando lo que el almacén reserva es capacidad: se cobra el espacio que hubo que tener disponible." },
+  { c: "Aniversario de entrada", m: "Cuenta ciclos completos desde la fecha en que entró cada palet", w: "Acuerdos por quincenas o meses de custodia que no encajan con el mes natural." },
+];
+
+// Capacidades (mapeadas 1:1 a producto real)
+const capacidades = [
+  {
+    icon: "🔒",
+    tag: "Sin mezclas",
+    title: "Propietario por palet, con bloqueo de raíz",
+    body: "Cada palet lleva su dueño. El sistema impide mezclar mercancía de propietarios distintos dentro del mismo palet y bloquea vender por error lo que es de un cliente, con mensajes claros en el momento — no con un aviso a posteriori.",
+  },
+  {
+    icon: "⚙️",
+    tag: "Nada se olvida",
+    title: "Los eventos tarificables se registran solos",
+    body: "Una entrada, una salida, una manipulación o un despiece sobre un palet de cliente generan su apunte automáticamente, dentro de la misma operación. El operario trabaja como siempre y la facturación se construye sola.",
+  },
+  {
+    icon: "📡",
+    tag: "Posición en vivo",
+    title: "Qué tiene dentro cada cliente y cuánto lleva devengado",
+    body: "Palets y kilos dentro en este momento, y devengado acumulado del periodo. Sirve para responder al depositante sin cuadrar nada a mano y para saber, antes de fin de mes, qué se va a facturar.",
+  },
+  {
+    icon: "🧮",
+    tag: "Antes de firmar",
+    title: "Simulador de coste con desglose día a día",
+    body: "«¿Cuánto le costaría a este cliente tener 20 palets un mes?» — respuesta al momento, con el desglose día a día. Presupuestar una tarifa deja de ser una estimación de servilleta.",
+  },
+  {
+    icon: "📄",
+    tag: "Sin obligar a facturar",
+    title: "Informe formal del periodo en PDF",
+    body: "El informe del periodo se emite cuando quieras, sin necesidad de facturar desde Drenpos. Pensado para almacenes que facturan con otro sistema o que solo necesitan rendir cuentas al depositante.",
+  },
+  {
+    icon: "✍️",
+    tag: "Prueba de entrega",
+    title: "Actas firmadas y congeladas con huella sha256",
+    body: "Firma en pantalla o en papel, acta PDF con el CIF y la dirección fiscal, el detalle con lotes y palets y quién entrega y quién recibe. El servidor congela el contenido y lo sella con sha256: una firma no se edita ni se borra. Histórico de entregas por palet y acta de emergencia reconstruible desde los movimientos.",
+  },
+];
+
+// Comparativa (tabla AEO — decisión de compra)
+const comparativa = [
+  {
+    opcion: "Excel y albaranes en papel",
+    propietario: "En la cabeza de alguien",
+    tarifario: "Una fórmula que solo entiende quien la hizo",
+    liquidacion: "Manual, a fin de mes y a ojo",
+    acta: "Albarán sin firmar",
+    precio: "«Gratis» (te cuesta en horas y en cobrar de menos)",
+  },
+  {
+    opcion: "Software de facturación genérico",
+    propietario: "No existe el concepto",
+    tarifario: "Líneas de factura escritas a mano",
+    liquidacion: "Manual: tú calculas, él imprime",
+    acta: "No",
+    precio: "Barato, pero no resuelve el depósito",
+  },
+  {
+    opcion: "WMS enterprise con módulo 3PL",
+    propietario: "Sí",
+    tarifario: "Sí, avanzado",
+    liquidacion: "Sí",
+    acta: "Según módulo y proyecto",
+    precio: "Miles de € + proyecto de meses",
+  },
+  {
+    opcion: "Drenpos",
+    propietario: "Por palet, con bloqueo de raíz",
+    tarifario: "Palet/día, kg/día, entrada, salida, manipulación y bulto",
+    liquidacion: "Eventos automáticos, posición en vivo e informe PDF",
+    acta: "Firma en pantalla o papel con huella sha256",
+    precio: "Desde 19,90 €/mes",
+    destacado: true,
+  },
+];
+
+// Casos de uso (long-tail sectorial)
+const casos = [
+  {
+    tag: "Frigorífico",
+    icon: "❄️",
+    title: "Alquilar cámara a productores de temporada",
+    body: "La campaña llena la cámara unas semanas y luego la vacía. Cada productor tiene su propia tarifa por palet y día, sus palets marcados con su nombre y su informe del periodo. Las pantallas de palets funcionan en móvil, así que el género se monta, se pesa y se mueve dentro de la cámara.",
+  },
+  {
+    tag: "Nave logística",
+    icon: "📦",
+    title: "Guardar stock de e-commerce y preparar sus pedidos",
+    body: "Además de custodiar, el almacén prepara. La tarifa suma custodia por palet y día más bulto preparado, y el picking se hace con el asistente móvil por oleadas. Cada pedido preparado deja su apunte tarificable sin que nadie lo apunte aparte.",
+  },
+  {
+    tag: "Distribuidor",
+    icon: "🤝",
+    title: "Custodiar género de un fabricante y facturarle la manipulación",
+    body: "El fabricante deja stock en tu nave y tú lo reetiquetas, lo reagrupas o lo despiezas. Cada manipulación genera su apunte, la merma queda registrada como una línea más y al recoger el camión el chófer firma el acta en la tablet.",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Qué es el alquiler de huecos de palet?",
+    a: "Es un contrato de depósito por el que un almacén (el depositario) custodia mercancía que sigue siendo propiedad de un tercero (el depositante) a cambio de una tarifa, habitualmente calculada por palet y día de permanencia. Junto al almacenaje se suelen repercutir conceptos adicionales por la entrada, la salida y la manipulación de la mercancía. La propiedad no cambia de manos en ningún momento: el depositario custodia y responde de la mercancía, pero no la compra. En España el contrato de depósito está regulado en el Código Civil (artículos 1758 y siguientes); conviene contrastar cada acuerdo concreto con un asesor.",
+  },
+  {
+    q: "¿Cómo se calcula la tarifa de almacenaje por palet?",
+    a: "En Drenpos la tarifa se compone eligiendo conceptos y modo de cómputo. Los conceptos disponibles son por palet y día, por kg y día, por entrada, por salida, por manipulación y por bulto preparado. El modo de cómputo decide cómo se mide la ocupación: día a día, foto a fin de mes, pico máximo del periodo o aniversario de entrada. Cada concepto admite además días de franquicia, mínimos por liquidación, precios por tipo de soporte y vigencias. Los importes los fija cada almacén según su coste y su mercado: Drenpos no impone precios.",
+  },
+  {
+    q: "¿Qué es un día de franquicia y un mínimo de liquidación?",
+    a: "Un día de franquicia es un periodo inicial que no se factura: la mercancía puede estar dentro esos días sin devengar almacenaje, algo habitual cuando el palet es de paso. El mínimo por liquidación es el importe o la cantidad por debajo de la cual no se baja al cerrar el periodo, para que un cliente con muy poca actividad no genere una factura testimonial. Ambos se configuran dentro del tarifario de cada depositante, junto con los precios por tipo de soporte y las vigencias.",
+  },
+  {
+    q: "¿Cómo evito mezclar la mercancía de dos clientes?",
+    a: "Cada palet lleva su propietario registrado y el sistema lo bloquea de raíz: no deja mezclar mercancía de dueños distintos dentro del mismo palet ni servir por error en un pedido tuyo lo que es de un depositante, y avisa con mensajes claros en el momento de la operación. No es un informe que descubre el error después: es una barrera que impide cometerlo.",
+  },
+  {
+    q: "¿Puedo emitir el informe del periodo sin facturar desde Drenpos?",
+    a: "Sí. El informe formal del periodo se genera en PDF cuando quieras, sin necesidad de emitir factura desde Drenpos. Está pensado justo para dos casos: almacenes que facturan con otro sistema y quieren el detalle calculado, y almacenes que necesitan rendir cuentas al depositante de lo que ha entrado, salido y permanecido en sus huecos.",
+  },
+  {
+    q: "¿Qué valor tiene el acta de entrega firmada?",
+    a: "El acta se firma en pantalla, quedando el trazo incrustado en el documento, o en papel, imprimiendo dos copias con sus cajas de firma. El PDF sale con la empresa, el CIF y la dirección fiscal del cliente, el detalle con lotes y palets, quién entrega, quién recibe y la fecha en hora local. El servidor congela el contenido firmado y lo sella con una huella criptográfica sha256: una firma no se edita ni se borra jamás, y cualquier corrección queda como acta adicional. Además hay histórico de entregas por palet y acta de emergencia reconstruible desde el histórico de movimientos.",
+  },
+  {
+    q: "¿Necesito etiquetar los palets con SSCC?",
+    a: "Trabajar con etiqueta SSCC es lo recomendable y es lo que hace Drenpos: cada palet nace con su etiqueta SSCC estándar GS1 imprimible en rollo o A4, la misma que exigen las grandes plataformas logísticas. Esa etiqueta es la que permite mover el palet entero en un escaneo, arrastrarlo dentro de un albarán o una factura con sus líneas agrupadas y blindadas, y mantener la trazabilidad de todo lo que ha entrado y salido de ese palet en su vida.",
+  },
+  {
+    q: "¿Cuánto cuesta y cuánto se tarda en implantarlo?",
+    a: "El módulo de Almacén, que incluye el depósito de terceros, cuesta desde 19,90 €/mes sin IVA, sin coste por uso ni permanencia y con soporte humano incluido. También existe despliegue on-premise, en el servidor del cliente, a presupuesto. La implantación estándar se hace en días: importamos artículos, definimos almacenes y ubicaciones, damos de alta a los depositantes con su tarifario, cargamos la posición inicial y formamos al equipo.",
+  },
+];
+
+// Enlaces internos (clúster almacén)
+const hermanas = [
+  {
+    url: "/software-gestion-almacen",
+    title: "Software de gestión de almacén",
+    body: "La landing madre: multialmacén, ubicaciones QR, lotes con FEFO, palets con SSCC y trazabilidad.",
+  },
+  {
+    url: "/software-almacen-frigorifico",
+    title: "Almacén frigorífico y de congelados",
+    body: "Cadena de frío, FEFO, palets a pie de cámara y operativa en móvil dentro de la cámara.",
+  },
+  {
+    url: "/software-preparacion-pedidos-picking",
+    title: "Preparación de pedidos y picking",
+    body: "Oleadas, asistente móvil, zona de preparados y expedición con escaneo.",
+  },
+  {
+    url: "/modulos",
+    title: "Todos los módulos de Drenpos",
+    body: "Almacén, ventas, compras, TPV, facturación, fichajes y control horario en un solo sistema.",
+  },
+];
+
+const articulos = [
+  { t: "Alquiler de huecos de palet: tarifas y contrato", s: "alquiler-huecos-palet-tarifas" },
+  { t: "Etiqueta SSCC: qué es y cómo se genera", s: "etiqueta-sscc-gs1-palets" },
+  { t: "WMS, SGA y ERP: en qué se diferencian y cuál necesitas", s: "wms-sga-erp-diferencias" },
+  { t: "Preparación de pedidos y picking: guía práctica", s: "preparacion-de-pedidos-picking-almacen" },
+  { t: "Trazabilidad alimentaria: lotes y retirada de producto", s: "trazabilidad-alimentaria-lotes-recall" },
+];
+
+// ── Datos estructurados (JSON-LD) ──────────────────────────────────────
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
+    { "@type": "ListItem", position: 3, name: "Depósito y alquiler de huecos de palet", item: CANONICAL },
+  ],
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Drenpos · Depósito de terceros y alquiler de huecos de palet",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  url: CANONICAL,
+  description:
+    "Software de depósito de mercancías para almacenes y operadores logísticos 3PL que alquilan huecos de palet: propietario por palet con bloqueo de raíz, tarifario por palet/día, kg/día, entrada, salida, manipulación y bulto preparado, con franquicias, mínimos, vigencias y cómputo día a día, foto a fin de mes, pico o aniversario. Eventos tarificables automáticos, posición del cliente en vivo, simulador de coste, informe del periodo en PDF sin necesidad de facturar y actas de entrega firmadas con huella criptográfica sha256.",
+  offers: {
+    "@type": "Offer",
+    price: "19.90",
+    priceCurrency: "EUR",
+    description: "Módulo Almacén, con depósito de terceros incluido, desde 19,90 €/mes (sin IVA). Sin coste por uso ni permanencia.",
+    url: "https://www.drenpos.com/pricing",
+  },
+  featureList: [
+    "Propietario por palet con bloqueo de mezcla y de venta de mercancía ajena",
+    "Tarifario por palet/día, kg/día, entrada, salida, manipulación y bulto preparado",
+    "Días de franquicia, mínimos por liquidación, precios por tipo de soporte y vigencias",
+    "Cómputo día a día, foto a fin de mes, pico máximo del periodo o aniversario de entrada",
+    "Registro automático de eventos tarificables en la propia operación",
+    "Posición del cliente en vivo: palets y kg dentro y devengado del periodo",
+    "Simulador de coste con desglose día a día",
+    "Informe formal del periodo en PDF sin necesidad de facturar",
+    "Actas de entrega firmadas en pantalla o papel con huella criptográfica sha256",
+    "Histórico de entregas por palet y acta de emergencia reconstruible",
+    "Etiqueta SSCC estándar GS1 y ciclo de vida completo del palet",
+    "Despiece y manipulación con facturación automática al depositante",
+  ],
+  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
+};
+---
+
+<Base
+  title="Alquiler de Huecos de Palet · Drenpos"
+  meta_title="Software de Alquiler de Huecos de Palet y Depósito | Drenpos"
+  description="Software de depósito de mercancías para alquilar huecos de palet: propietario por palet, tarifas por palet/día y kg/día y liquidación automática. Desde 19,90 €/mes."
+  canonical={CANONICAL}
+  image="/images/funcionalidades/almacen-tienda/01-almacen-ubicaciones.png"
+>
+  <!-- Datos estructurados -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0 relative z-10 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/images/grainy.svg" alt="" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/funcionalidades" class="hover:text-primary">Funcionalidades</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Depósito y alquiler de huecos de palet</span>
+      </nav>
+
+      <div class="row gx-0 gy-12 lg:gy-0 items-center">
+        <div class="lg:col-6" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Depósito de terceros · 3PL
+          </span>
+
+          <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
+            Convierte tus huecos libres en ingresos: <span class="text-primary">alquiler de huecos de palet</span> con tarifario y liquidación
+          </h1>
+          <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
+            Si tienes cámara o nave con espacio parado, Drenpos te deja
+            guardar mercancía de otros y cobrarla bien. Cada palet lleva su
+            <strong>propietario</strong>, cada entrada, salida o manipulación
+            genera su <strong>apunte tarificable solo</strong>, la
+            <strong>posición de cada cliente</strong> se ve en vivo y el
+            <strong>informe del periodo</strong> sale en PDF aunque factures
+            con otro sistema. Con actas de entrega firmadas y selladas.
+          </p>
+
+          <ul class="flex flex-wrap gap-4 mb-10">
+            <li data-aos="fade-up-sm" data-aos-delay="100">
+              <a href="/contact" class="btn btn-dark">
+                Pedir demo gratuita
+                <span class="icon-wrapper">
+                  <span class="icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="150">
+              <a href="/pricing" class="btn btn-light">Ver precios</a>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Tarifas por palet/día y kg/día
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Liquidación automática
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Actas firmadas con huella sha256
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="relative px-4 lg:px-0 pt-10 pb-10">
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
+
+            <div class="rounded-2xl overflow-hidden relative z-10" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
+              <img
+                src="/images/funcionalidades/almacen-tienda/01-almacen-ubicaciones.png"
+                alt="Pantalla de Drenpos con los huecos y palets del almacén y el propietario de cada mercancía"
+                width="720"
+                height="480"
+                class="w-full h-auto block"
+                fetchpriority="high"
+              />
+            </div>
+
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0" style="background: #fdf2f8; color: #791b46;">🏷️</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Palet PT-0042</p>
+                <p class="text-xs" style="color: #9ca3af;">Cliente: depositante</p>
+              </div>
+            </div>
+
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #dcfce7;">📈</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Devengado del periodo</p>
+                <p class="text-xs" style="color: #9ca3af;">18 palets/día</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DEFINICIÓN CITABLE (AEO / featured snippet)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h4 font-bold mb-4">¿Qué es el alquiler de huecos de palet?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            El <strong>alquiler de huecos de palet</strong> es un
+            <strong>contrato de depósito</strong> por el que un almacén —el
+            <strong>depositario</strong>— custodia mercancía que sigue siendo
+            propiedad de un tercero —el <strong>depositante</strong>— a cambio
+            de una tarifa, normalmente calculada
+            <strong>por palet y día</strong> de permanencia. Junto al
+            almacenaje se suelen repercutir
+            <strong>conceptos adicionales por entrada, salida y
+            manipulación</strong> de la mercancía. La nota que lo define: la
+            <strong>propiedad no cambia</strong> en ningún momento; el almacén
+            guarda y responde de un género que no ha comprado. En España el
+            contrato de depósito está regulado en el
+            <strong>Código Civil (artículos 1758 y siguientes)</strong>;
+            conviene contrastar cada acuerdo con un asesor antes de firmarlo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SÍNTOMAS (dolores de búsqueda)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Cuatro señales de que tu depósito se te está escapando</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          Los cuatro motivos por los que un almacén con huecos libres acaba buscando un software de depósito de mercancías.
+        </p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          sintomas.map((s, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{s.icon}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{s.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.65);">{s.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CÓMO FUNCIONA (4 pasos)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Cómo funciona el depósito de terceros en Drenpos</h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Del alta del depositante a la liquidación del periodo, en cuatro
+          pasos que el equipo de almacén ejecuta sin cambiar su forma de
+          trabajar.
+        </p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          pasos.map((p, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold mb-4" style="background: #791b46;">{p.n}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{p.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{p.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       TARIFARIO (conceptos + modos de cómputo)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-5">
+          <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+          El corazón del módulo
+        </span>
+        <h2 class="h3 font-bold mb-4">Tarifas de almacenaje por palet: conceptos y cómputo</h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Cada almacén cobra el depósito a su manera. En vez de imponerte un
+          modelo, el tarifario se compone: eliges <strong>qué conceptos</strong>
+          cobras y <strong>cómo se cuenta</strong> cada uno.
+        </p>
+      </div>
+
+      <h3 class="h5 font-bold mb-4" data-aos="fade-up-sm">a) Conceptos tarifables</h3>
+      <div class="overflow-x-auto mb-14" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[760px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Concepto</th>
+              <th class="text-left p-4">Qué mide</th>
+              <th class="text-left p-4 rounded-tr-2xl">Cuándo conviene</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              conceptos.map((r) => (
+                <tr class="border-b border-dark/5">
+                  <td class="p-4 font-medium text-primary">{r.c}</td>
+                  <td class="p-4">{r.m}</td>
+                  <td class="p-4">{r.w}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="h5 font-bold mb-4" data-aos="fade-up-sm">b) Modos de cómputo</h3>
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[760px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Modo</th>
+              <th class="text-left p-4">Qué mide</th>
+              <th class="text-left p-4 rounded-tr-2xl">Cuándo conviene</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              computos.map((r) => (
+                <tr class="border-b border-dark/5">
+                  <td class="p-4 font-medium text-primary">{r.c}</td>
+                  <td class="p-4">{r.m}</td>
+                  <td class="p-4">{r.w}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row justify-center mt-12">
+        <div class="lg:col-10">
+          <div class="rounded-3xl border border-dark/10 bg-body p-7 lg:p-9" data-aos="fade-up-sm">
+            <h3 class="h5 font-bold mb-3">Y encima, la letra pequeña del acuerdo</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(16,25,40,0.72);">
+              El tarifario admite además <strong>días de franquicia</strong>
+              (los primeros días no devengan), <strong>mínimos por
+              liquidación</strong> (para que un cliente con poca actividad no
+              genere una factura testimonial), <strong>precios por tipo de
+              soporte</strong> y <strong>vigencias</strong>, de modo que subir
+              tarifa a partir de una fecha no obliga a rehacer nada de lo ya
+              devengado.
+            </p>
+            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.72);">
+              Una advertencia honesta: <strong>los importes los fija cada
+              almacén</strong>. Drenpos calcula, no impone precios de mercado
+              — dependen de tu coste por hueco, de tu zona y de lo que
+              negocies con cada depositante. Si quieres profundizar en cómo
+              plantear el acuerdo, lo desarrollamos en
+              <a href="/blog/alquiler-huecos-palet-tarifas" class="text-primary underline">alquiler de huecos de palet: tarifas y contrato</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CAPACIDADES
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Todo lo que necesitas para custodiar mercancía de terceros</h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Seis capacidades que convierten el depósito en un servicio que se
+          puede vender, controlar y defender.
+        </p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          capacidades.map((c, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3 leading-snug">{c.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       COMPARATIVA (tabla de decisión — AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Con qué gestionas hoy el depósito?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          Comparativa honesta de las cuatro formas de llevar la custodia de mercancía de terceros.
+        </p>
+      </div>
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[980px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Opción</th>
+              <th class="text-left p-4">Propietario por palet</th>
+              <th class="text-left p-4">Tarifario multi-concepto</th>
+              <th class="text-left p-4">Liquidación automática</th>
+              <th class="text-left p-4">Acta firmada con huella</th>
+              <th class="text-left p-4 rounded-tr-2xl">Coste</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comparativa.map((r) => (
+                <tr class={r.destacado ? "bg-primary/5 font-medium" : "border-b border-dark/5"}>
+                  <td class={`p-4 ${r.destacado ? "text-primary font-bold" : "font-medium"}`}>{r.opcion}</td>
+                  <td class="p-4">{r.propietario}</td>
+                  <td class="p-4">{r.tarifario}</td>
+                  <td class="p-4">{r.liquidacion}</td>
+                  <td class="p-4">{r.acta}</td>
+                  <td class="p-4">{r.precio}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CASOS DE USO SECTORIALES
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Tres formas de monetizar un hueco vacío</h2>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          casos.map((c, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3 leading-snug">{c.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="text-center mt-10 text-sm max-w-2xl mx-auto" style="color: rgba(16,25,40,0.6);" data-aos="fade-up-sm">
+        ¿Y si eres el depositante, el que busca dónde guardar sus palets? La
+        misma pantalla vale para leerla del revés: pide a tu almacén posición
+        en vivo, informe del periodo con el desglose día a día y
+        <a href="/blog/etiqueta-sscc-gs1-palets" class="text-primary underline">etiqueta SSCC en cada palet</a>.
+        Si te lo dan, sabrás siempre qué tienes dentro y por qué pagas.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PRECIO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-8">
+          <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-3 text-white">Depósito de terceros incluido, desde 19,90 €/mes</h2>
+            <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+              El módulo Almacén incluye el depósito de terceros completo:
+              propietario por palet con bloqueo de raíz, tarifario por
+              palet/día, kg/día, entrada, salida, manipulación y bulto
+              preparado, eventos tarificables automáticos, posición del cliente
+              en vivo, simulador de coste, informe del periodo en PDF y actas
+              de entrega firmadas con huella sha256. Precios sin IVA, sin coste
+              por uso, sin permanencia y con soporte humano incluido. Si
+              necesitas el sistema en tu propio servidor, el despliegue
+              on-premise se presupuesta aparte.
+            </p>
+            <ul class="flex flex-wrap gap-4 justify-center">
+              <li>
+                <a href="/pricing" class="btn btn-light">Ver planes y precios</a>
+              </li>
+              <li>
+                <a href="/contact" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Pedir demo de 20 minutos</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FAQ (visible + schema)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <h2 class="h3 font-bold mb-3 text-center" data-aos="fade-up-sm">Alquiler de huecos de palet: lo que más nos preguntan</h2>
+          <p class="text-center mb-10" style="color: rgba(16,25,40,0.62);" data-aos="fade-up-sm">
+            Respuestas directas, sin letra pequeña.
+          </p>
+          <div class="space-y-4">
+            {
+              faqs.map((f, i) => (
+                <details class="group rounded-2xl border border-dark/10 bg-body p-5" data-aos="fade-up-sm" data-aos-delay={Math.min(i * 50, 300)}>
+                  <summary class="cursor-pointer list-none flex items-start justify-between gap-4">
+                    <h3 class="h6 font-bold leading-snug">{f.q}</h3>
+                    <span class="text-primary text-xl leading-none mt-0.5 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <p class="mt-4 text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">{f.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ENLAZADO INTERNO (clúster)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-3">Sigue explorando el almacén de Drenpos</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          El depósito de terceros es una pieza del módulo de Almacén. Estas son las demás.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center mb-14">
+        {
+          hermanas.map((h, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <a href={h.url} class="block h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl hover:border-primary/30 transition-all duration-300">
+                <h3 class="h6 font-bold mb-2 leading-snug text-primary">{h.title}</h3>
+                <p class="text-sm mb-3" style="color: rgba(16,25,40,0.68);">{h.body}</p>
+                <span class="text-primary text-sm font-medium">Ver solución →</span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center gy-6">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <h2 class="h5 font-bold mb-3">Sigue leyendo sobre depósito, palets y almacén</h2>
+          <ul class="row g-2 text-sm">
+            {
+              articulos.map((a) => (
+                <li class="md:col-6">
+                  <a href={`/blog/${a.s}`} class="text-primary hover:underline">{a.t}</a>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="text-sm mt-6" style="color: rgba(16,25,40,0.65);">
+            ¿Quieres verlo con tus propios datos? Mira los
+            <a href="/pricing" class="text-primary underline">planes y precios</a>
+            o <a href="/contact" class="text-primary underline">pídenos una demo</a>
+            y te enseñamos la posición de un depositante y su liquidación en vivo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>

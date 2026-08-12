@@ -81,6 +81,20 @@ Registro: https://contract.drenpos.com/auth
 
 ---
 
+# Páginas de solución (almacén)
+
+La gestión de almacén es la especialidad de Drenpos e incluye capacidades de nivel WMS dentro del módulo de Inventario, sin sistema adicional que sincronizar:
+
+- ${BASE}/software-gestion-almacen — SGA/WMS general: multialmacén, ubicaciones con QR, lotes y series, FIFO/LIFO/FEFO, reservas de stock, trazabilidad con informe de recall, inventarios parciales e informes de rotación e inmovilizado.
+- ${BASE}/software-preparacion-pedidos-picking — preparación de pedidos y expedición: semáforo de preparabilidad, etiqueta QR por pedido, asistente de picking móvil, oleadas pick-to-box, zona de preparados con QR y expedición con escaneo que genera albarán o factura.
+- ${BASE}/software-almacen-frigorifico — almacén frigorífico y de congelados: cadena de frío, alertas de caducidad, operativa de palets en móvil y tablet a pie de cámara, despiece con merma explícita.
+- ${BASE}/software-alquiler-huecos-palet — depósito de terceros y alquiler de huecos de palet (3PL): propietario por palet, tarifas por palet/día y kg/día, eventos tarificables automáticos, posición en vivo, simulador, informe del periodo en PDF y actas de entrega firmadas con huella criptográfica sha256.
+- ${BASE}/software-almacen-tienda — almacén combinado con TPV para comercio con tienda física.
+
+Unidades logísticas: cada palet nace con su etiqueta SSCC estándar GS1 imprimible, con ciclo de vida completo (abierto, cerrado y pesado con bruto/tara/neto, expedido o anulado), mezcla libre de productos, lotes y series, movimiento del palet entero en un escaneo, despaletizado y división en varios palets nuevos ya etiquetados, y palets blindados dentro de albaranes y facturas.
+
+---
+
 # Planes y Precios
 
 ${pricingData}

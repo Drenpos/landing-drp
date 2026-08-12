@@ -2,7 +2,7 @@
 title: "Cómo organizar el almacén de una pyme: guía práctica 2026"
 meta_title: "Cómo organizar un almacén pequeño: guía para pymes 2026"
 description: "Guía práctica para organizar el almacén de tu pyme: zonas, ubicaciones con QR, método ABC, FIFO/FEFO e inventarios cíclicos sin cerrar la tienda."
-date: 2026-07-30
+date: 2026-08-11
 image: "/images/blog/como-organizar-almacen-pyme/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -15,6 +15,8 @@ tags:
     "gestión de almacén",
     "inventario",
     "sga para pymes",
+    "palets",
+    "etiqueta sscc",
   ]
 featured: false
 draft: false
@@ -30,6 +32,10 @@ faq:
     answer: "FIFO (First In, First Out) da salida primero a lo que entró primero y es la regla general para productos sin caducidad. FEFO (First Expired, First Out) da salida primero al lote que antes caduca, y es obligado en alimentación, farmacia, cosmética o cualquier producto con fecha de vencimiento."
   - question: "¿Cuándo necesita una pyme un software de gestión de almacén (SGA)?"
     answer: "Cuando las ubicaciones ya no caben en la cabeza de una persona: más de unas pocas centenas de referencias, más de una persona moviendo stock, varios canales de venta o productos con lote y caducidad. Un SGA registra cada movimiento con lector de códigos, mantiene el stock por ubicación en tiempo real y elimina la dependencia de la memoria del equipo."
+  - question: "¿Qué es un hueco de palet y en qué se diferencia de una ubicación de estantería?"
+    answer: "Una ubicación de estantería identifica una balda concreta donde conviven varias referencias sueltas. Un hueco de palet es el espacio que ocupa una unidad logística completa, con su etiqueta y, si guardas mercancía de terceros, con su propietario asociado. El cambio importa porque el hueco de palet se puede tarifar por días, por entradas o por salidas, y la estantería normalmente no."
+  - question: "¿Cómo se identifica un palet dentro del almacén?"
+    answer: "Con una etiqueta SSCC estándar GS1, imprimible en rollo o en A4, que da al palet un identificador único. A partir de ahí el palet se monta con pistola, se cierra y se pesa (bruto, tara y neto), se mueve entero de ubicación en un escaneo y se puede partir o vaciar sin perder la trazabilidad de lo que lleva dentro."
 ---
 
 ## ¿Cómo se organiza bien un almacén?
@@ -37,6 +43,8 @@ faq:
 Organizar el almacén de una pyme se resume en cuatro decisiones: **dividir el espacio en zonas con función única**, **dar a cada hueco un código de ubicación**, **colocar el producto según su rotación (método ABC)** y **definir una regla de salida (FIFO o FEFO)**. Con esas cuatro piezas, cualquier persona del equipo encuentra cualquier referencia sin preguntar a nadie, y el inventario deja de ser un acto de fe.
 
 La mayoría de los almacenes de pymes no están desordenados por falta de espacio, sino por falta de criterio: el producto se deja "donde cabe" y la información vive en la cabeza del encargado. El día que esa persona falta, el almacén se para. Esta guía te da el método completo para que eso no vuelva a pasar.
+
+> **Actualizado en agosto de 2026:** hemos añadido una sección sobre cómo organizar el almacén cuando la unidad de trabajo es el palet (etiqueta SSCC, huecos de palet y zona de preparados con QR), una tabla comparativa cajas vs palets y dos preguntas frecuentes nuevas.
 
 ## Empieza por el plano: las 5 zonas de todo almacén
 
@@ -89,7 +97,26 @@ Toda referencia necesita una regla de salida definida, que no dependa de la cost
 
 ![Gestión de lotes y caducidades con lector de códigos en un almacén.](/images/blog/como-organizar-almacen-pyme/section-2.jpg)
 
-Para que FEFO funcione, necesitas **trazabilidad por lote**: saber qué lote entró, en qué ubicación está y a qué cliente salió. Hacerlo en papel es posible hasta que deja de serlo; en cuanto manejas decenas de lotes vivos, el control manual se rompe. Aquí es donde un sistema con [control de stock en tiempo real](/blog/control-de-stock-sin-roturas) marca la diferencia entre detectar una caducidad a tiempo o tirarla a la basura.
+Para que FEFO funcione, necesitas **trazabilidad por lote**: saber qué lote entró, en qué ubicación está y a qué cliente salió. Hacerlo en papel es posible hasta que deja de serlo; en cuanto manejas decenas de lotes vivos, el control manual se rompe. Aquí es donde un sistema con [control de stock en tiempo real](/blog/control-de-stock-sin-roturas) marca la diferencia entre detectar una caducidad a tiempo o tirarla a la basura. Y si trabajas con alimentación, esa misma trazabilidad es la que te salva el día de una alerta sanitaria, como explicamos en [trazabilidad alimentaria por lotes y recall](/blog/trazabilidad-alimentaria-lotes-recall).
+
+## ¿Cómo se organiza un almacén que trabaja con palets?
+
+Un almacén de palets se organiza tomando el palet como unidad de trabajo, no la caja. Cada palet se identifica con una etiqueta SSCC estándar GS1, se mueve entero en un solo escaneo y arrastra consigo el stock que lleva dentro. Las zonas se dibujan por huecos de palet, la zona de preparados se señaliza con baldas identificadas por QR y el inventario se hace contando palets, no unidades sueltas.
+
+La zonificación cambia cuando la unidad de trabajo es el palet. Ya no reservas baldas por referencia, sino huecos capaces de alojar una unidad logística completa, con mezcla de productos, lotes y series dentro. El pasillo deja de recorrerse a pie con una caja en la mano y pasa a recorrerse con transpaleta.
+
+Identificar cada palet con una etiqueta SSCC estándar GS1 —la misma que exigen las grandes plataformas logísticas— cambia la operativa entera. Mover el palet de ubicación o de almacén se convierte en un escaneo: el stock de dentro viaja solo, sin reescribir línea a línea lo que lleva encima. Cómo se construye ese código y qué lleva dentro lo desglosamos en la [guía de la etiqueta SSCC GS1 para palets](/blog/etiqueta-sscc-gs1-palets).
+
+La zona de preparación también gana con el cambio. Los pedidos listos se aparcan en baldas identificadas por QR y basta escanear la balda para saber dónde está cada uno, y un pedido se puede preparar directamente sobre un palet que después sale expedido con su trazabilidad completa. Es el flujo que detallamos en [preparación de pedidos y picking en almacén](/blog/preparacion-de-pedidos-picking-almacen).
+
+El último salto llega cuando el almacén empieza a guardar mercancía de terceros. El "hueco de estantería" pasa a ser "hueco de palet" con propietario, y cada entrada, salida o manipulación se convierte en un concepto que se puede tarifar. Si te suena a tu caso, mira cómo funciona el [alquiler de huecos de palet](/software-alquiler-huecos-palet).
+
+| Criterio           | Almacén de cajas                                | Almacén de palets                                             |
+| ------------------ | ----------------------------------------------- | ------------------------------------------------------------- |
+| Unidad de trabajo  | La caja o la unidad suelta                      | El palet completo, con mezcla de productos y lotes            |
+| Identificación     | Código de barras del artículo y QR de ubicación | Etiqueta SSCC estándar GS1 propia de cada palet               |
+| Cómo se mueve      | Unidad a unidad, línea a línea                  | El palet entero en un escaneo: el stock de dentro viaja solo  |
+| Cómo se inventaría | Conteo de unidades hueco a hueco                | Recuento de palets y contenido agrupado dentro de cada palet  |
 
 ## Inventario cíclico: cuenta poco, cuenta siempre
 
@@ -110,6 +137,8 @@ El papel y el Excel aguantan hasta cierto punto. Las señales de que tu almacén
 - Vendes en tienda y online, y el stock de cada canal va por su cuenta.
 - Manejas lotes con caducidad y los controlas "de memoria".
 - El inventario real y el teórico se parecen cada vez menos, como explicamos en [ERP para pymes: cuándo dejar Excel](/blog/erp-para-pymes-vs-excel).
+
+Si dudas entre montar un WMS aparte, un SGA o apoyarte en el módulo de almacén de tu ERP, lo comparamos en [WMS, SGA y ERP: diferencias](/blog/wms-sga-erp-diferencias).
 
 Olvídate del software pesado de una gran logística: un SGA moderno es una capa ligera que registra cada movimiento con pistola o móvil, mantiene el stock por ubicación en tiempo real y avisa antes de la rotura o la caducidad. La organización física que has montado con esta guía es exactamente lo que el software necesita para funcionar: zonas, ubicaciones y reglas.
 
@@ -132,3 +161,11 @@ FIFO (First In, First Out) da salida primero a lo que entró primero y es la reg
 ### ¿Cuándo necesita una pyme un software de gestión de almacén (SGA)?
 
 Cuando las ubicaciones ya no caben en la cabeza de una persona: más de unas pocas centenas de referencias, más de una persona moviendo stock, varios canales de venta o productos con lote y caducidad. Un SGA registra cada movimiento con lector de códigos, mantiene el stock por ubicación en tiempo real y elimina la dependencia de la memoria del equipo.
+
+### ¿Qué es un hueco de palet y en qué se diferencia de una ubicación de estantería?
+
+Una ubicación de estantería identifica una balda concreta donde conviven varias referencias sueltas. Un hueco de palet es el espacio que ocupa una unidad logística completa, con su etiqueta y, si guardas mercancía de terceros, con su propietario asociado. El cambio importa porque el hueco de palet se puede tarifar por días, por entradas o por salidas, y la estantería normalmente no.
+
+### ¿Cómo se identifica un palet dentro del almacén?
+
+Con una etiqueta SSCC estándar GS1, imprimible en rollo o en A4, que da al palet un identificador único. A partir de ahí el palet se monta con pistola, se cierra y se pesa (bruto, tara y neto), se mueve entero de ubicación en un escaneo y se puede partir o vaciar sin perder la trazabilidad de lo que lleva dentro.

@@ -1,49 +1,67 @@
 # Post de LinkedIn — Dispositivo de fichaje portátil 12V
 
-> Publicar desde el perfil de Alonso (mejor alcance que la página de empresa) y, a las 2–3 horas, compartirlo desde la página de Drenpos. Idealmente entre martes y jueves, 8:30–10:00. Sustituye [ENLACE] por la URL del post del blog. La primera línea es el "gancho" que LinkedIn muestra antes del "...ver más": no la toques sin motivo.
+> Publicar desde el perfil de Alonso (mejor alcance que la página de empresa) y compartirlo desde la página de Drenpos 2 o 3 horas después. Mejor martes a jueves, 8:30 a 10:00. Sustituye [ENLACE] por la URL del post del blog.
+>
+> Ojo con la primera línea: es lo único que se ve antes del "...ver más". Su único trabajo es que la gente pulse. No la toques sin motivo.
 
 ## Versión principal (recomendada)
 
-Esto que ves enchufado al mechero de una furgoneta es un sistema de registro horario. Legal. Completo.
+Ayer fiché a un empleado con el mechero del coche.
 
-En 2024 la Inspección de Trabajo levantó 1.869 actas por el registro de jornada, un 90% más que en 2019. Y el nuevo real decreto que endurece los requisitos está previsto para finales de este año.
+Y es probablemente lo más legal que he hecho en todo el mes.
 
-El problema es que la mayoría de sistemas de fichaje asumen que tienes una oficina: terminal en la pared, enchufe, red estable.
+Contexto: en España toda empresa tiene que registrar la jornada de sus trabajadores. El papel y el Excel están de retirada, la Inspección levantó 1.869 actas en 2024 (un 90% más que en 2019) y el nuevo real decreto viene de camino con multas de hasta 10.000 euros por trabajador.
 
-Pero una cuadrilla que cambia de obra cada semana no tiene pared.
-Un puesto de mercadillo no tiene enchufe.
-Una furgoneta de reparto no tiene oficina.
+Todo muy razonable si tienes oficina, terminal en la pared y un enchufe a mano.
 
-Por eso en Drenpos hicimos un dispositivo de fichaje que funciona a 12V y 3A. Se alimenta desde el mechero del coche, una batería auxiliar o cualquier adaptador de red. El empleado acerca su llavero RFID o su tarjeta QR, y su jornada queda registrada con hora exacta y trazabilidad completa, sincronizada con la plataforma.
+¿Pero y si tu equipo trabaja en una obra? ¿En un mercadillo? ¿Repartiendo en furgoneta?
 
-Sin apps en el móvil personal. Sin instalación. Sin depender de dónde toque trabajar mañana.
+Pues nada, a fichar por telepatía.
 
-Y si solo quieres el hardware como control de presencia, también se vende suelto.
+Como la telepatía todavía no pasa una inspección, en Drenpos fabricamos un cacharro que sí la pasa:
 
-Lo hemos contado a fondo aquí, con la cronología real de la ley y los requisitos que ya puedes ir cumpliendo: [ENLACE]
+Un dispositivo de fichaje que funciona a 12V y 3A. Traducción: se enchufa al mechero de la furgoneta, a una batería o a un enchufe normal. El empleado acerca su llavero RFID o su tarjeta QR y listo. Hora exacta, trazabilidad completa y los datos guardados los 4 años que pide la ley.
 
-Si tienes equipo en obra, en campaña o en ruta y aún fichan "de memoria", escríbeme y lo vemos.
+Sin apps. Sin usar el móvil personal de nadie. Sin explicarle a Paco, que lleva 30 años poniendo ladrillos, cómo se instala una aplicación.
+
+La cuadrilla ficha al bajar de la furgoneta. El temporero, en la finca. El del food truck, entre pedido y pedido.
+
+Y si solo quieres el cacharro sin el resto del sistema, también te lo vendemos suelto. No somos de obligar.
+
+La ley, los plazos y las multas, contados sin jerga aquí: [ENLACE]
+
+Si tu equipo trabaja donde no llegan los enchufes y todavía fichan "de palabra", escríbeme. Mejor yo que la Inspección.
 
 ---
 
 ## Versión corta (alternativa)
 
-Un registro horario legal que se enchufa al mechero del coche.
+Hemos enchufado un sistema de fichaje al mechero de una furgoneta. A propósito.
 
-Funciona a 12V y 3A: furgoneta, obra, mercadillo o feria. El empleado acerca su llavero RFID y la jornada queda registrada con hora exacta y trazabilidad, como exige el art. 34.9 del Estatuto de los Trabajadores.
+Funciona a 12V y 3A: obra, mercadillo, reparto o finca. El empleado acerca su llavero RFID y su jornada queda registrada con hora exacta y trazabilidad, tal y como exige la ley de registro horario.
 
-Con 1.869 actas de Inspección en 2024 y el nuevo real decreto previsto para finales de 2026, "mi equipo trabaja fuera" ya no es una excusa que aguante una inspección.
+Con 1.869 actas de la Inspección en 2024 y el nuevo real decreto al caer, "es que trabajamos fuera" ha dejado de ser una excusa. Ahora es un caso de uso.
 
-Cómo funciona y qué exige la ley, aquí: [ENLACE]
+Cómo funciona y qué pide la ley, aquí: [ENLACE]
 
 ---
 
-## Hashtags (máx. 3–5, al final del post)
+## Primeras líneas alternativas (por si quieres hacer A/B)
+
+1. "Ayer fiché a un empleado con el mechero del coche." (la recomendada)
+2. "Mi producto favorito de 2026 se enchufa donde antes iba el mechero."
+3. "La Inspección de Trabajo no acepta 'estábamos en la obra' como excusa. Nuestro cacharro tampoco la necesita."
+
+## Hashtags (máximo 3 a 5, al final)
 
 #ControlHorario #RegistroDeJornada #Pymes #Construcción #RRHH
 
-## Idea de creativo que acompaña al post
+## Creativo que acompaña al post
 
-- Opción A (mejor): el reel grabado (ver guion adjunto) subido como vídeo nativo a LinkedIn.
-- Opción B: foto real del dispositivo enchufado al mechero con un llavero al lado. Nada de mockups: la foto "de furgoneta de verdad" es el gancho.
-- Opción C: carrusel de 4 diapositivas — 1) foto dispositivo + "Esto es un sistema de fichaje", 2) el problema (obra/mercadillo/furgoneta), 3) cómo funciona (12V · RFID · QR), 4) CTA con enlace.
+- Opción A (la buena): el reel grabado (ver guion) subido como vídeo nativo.
+- Opción B: foto real del dispositivo enchufado al mechero con un llavero al lado. Cuanto más de furgoneta de verdad parezca, mejor funciona el gancho. Nada de mockups pulidos.
+- Opción C: carrusel de 4 diapositivas: 1) foto del cacharro + "Esto es un sistema de fichaje", 2) el problema (obra, mercadillo, furgoneta), 3) cómo funciona (12V, RFID, QR), 4) CTA con enlace.
+
+## Truco de alcance
+
+Responde a los primeros comentarios en la primera hora (el algoritmo lo premia mucho) y deja tú el primer comentario con una pregunta del tipo "¿Cómo ficha tu equipo cuando trabaja fuera?". Los comentarios de gente contando sus apaños valen oro y alargan la vida del post.

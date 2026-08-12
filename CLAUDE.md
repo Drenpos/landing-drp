@@ -54,6 +54,15 @@ Key collections:
 - `llms.txt.ts`, `llms-full.txt.ts`, `robots.txt.ts`, `rss.xml.js` — generated text routes
 - `legal/` — static legal pages (aviso-legal, cookies, privacidad, terminos)
 
+**Clúster de landings de almacén** (todas `prerender = true`, mismo sistema de diseño, JSON-LD Breadcrumb + SoftwareApplication + FAQPage, enlazadas entre sí):
+- `software-gestion-almacen.astro` — SGA/WMS general (pilar del clúster)
+- `software-preparacion-pedidos-picking.astro` — picking, oleadas y expedición
+- `software-almacen-frigorifico.astro` — frío, congelados y cadena de frío
+- `software-alquiler-huecos-palet.astro` — depósito de terceros / 3PL
+- `software-almacen-tienda.astro` — almacén + TPV para retail
+
+Al tocar una, revisa: `src/config/menu.json` (submenú Funcionalidades), `src/pages/llms.txt.ts` y `src/pages/llms-full.txt.ts` (bloque "Páginas de solución"), y los enlaces cruzados del array `hermanas` en `software-gestion-almacen.astro`. `seoGraph` valida en build enlaces internos, unicidad de metadatos y H1 único: un enlace roto o un `meta_title` duplicado rompe el build.
+
 ### Auto-imported shortcodes
 Available in all `.md`/`.mdx` without import (`astro.config.mjs`): `Button`, `Accordion`, `Notice`, `Video`, `Youtube`, `Tab`, `Tabs`. Sources in `src/layouts/shortcodes/`.
 

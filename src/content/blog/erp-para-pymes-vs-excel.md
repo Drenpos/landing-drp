@@ -2,7 +2,7 @@
 title: "ERP para pymes: cuándo dejar Excel para ganar control"
 meta_title: "ERP vs Excel: ¿Cuándo tu pyme necesita un cambio?"
 description: "Descubre cuándo las hojas de cálculo empiezan a frenar tu crecimiento y cómo un ERP para pymes puede eliminar la duplicidad de datos y los errores manuales."
-date: 2026-05-14
+date: 2026-08-11
 image: "/images/blog/erp-para-pymes-vs-excel/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -15,6 +15,8 @@ tags:
     "excel vs erp",
     "gestion empresarial",
     "software para empresas",
+    "wms",
+    "gestión de almacén",
   ]
 featured: false
 draft: false
@@ -30,6 +32,10 @@ faq:
     answer: "No tiene por qué. Drenpos parte de 19 € al mes con estructura modular: activas solo lo que necesitas y amplías cuando el negocio lo pide. La implantación estándar se hace en días, con importación de datos y formación incluidas, sin permanencia."
   - question: "¿Puedo migrar mis datos de Excel al ERP?"
     answer: "Sí. En la implantación se importan artículos, clientes, proveedores y stock inicial desde tus hojas de cálculo actuales, y se configura la empresa con sus series y periodos. Tu histórico no se pierde: se ordena."
+  - question: "¿Necesito un WMS aparte del ERP para gestionar el almacén?"
+    answer: "No siempre, y en una pyme rara vez compensa. Un WMS separado obliga a mantener dos maestros de artículos y una sincronización que falla justo cuando más volumen hay. Si el ERP ya gestiona ubicaciones, lotes, series, palets con etiqueta SSCC y picking móvil, el almacén y la facturación comparten los mismos datos y desaparece el punto de fallo."
+  - question: "¿Cuánto cuesta el módulo de inventario de Drenpos?"
+    answer: "Los planes parten de 19 €/mes sin IVA (Esencial), 29 €/mes (Pro) y 39 €/mes (Full), y el módulo de Inventario se añade por 16,45 €/mes sin IVA. Es modular: activas el almacén cuando lo necesitas y el resto del ERP sigue igual, sin cambiar de sistema ni volver a migrar los datos."
 ---
 
 ## ¿Sigues gestionando la duplicidad de datos con Excel?
@@ -39,6 +45,8 @@ Seguramente te ha pasado: abres un archivo, intentas actualizar el stock y te da
 Si sientes que **la información de tu empresa está fragmentada** en decenas de pestañas, archivos compartidos y notas adhesivas, más que gestionar un negocio estás manteniendo un equilibrio precario.
 
 La sensación de que **no tienes el control real** de lo que ocurre en tu almacén o en tu facturación es el síntoma más claro de que tu herramienta actual ha quedado obsoleta.
+
+> **Actualizado en agosto de 2026:** hemos añadido una sección con las cinco señales de que Excel se ha quedado corto en el almacén, una tabla de señal, fallo y solución, y dos preguntas frecuentes nuevas sobre WMS y sobre el precio del módulo de Inventario.
 
 ## Esto le pasa a casi todas las pymes
 
@@ -88,6 +96,26 @@ Cuando hablamos de **excel vs erp**, la diferencia es estructural, y va mucho m�
 | **Trazabilidad**    | Casi inexistente (difícil saber quién cambió qué) | Total (registro de cada movimiento) |
 | **Seguridad**       | Baja (fácil de borrar o modificar sin rastro)     | Alta (permisos por usuario y roles) |
 
+## ¿Cuándo deja de bastar Excel en el almacén?
+
+Excel deja de bastar en el almacén cuando aparecen cinco señales: entran lotes con caducidad, hace falta saber la ubicación exacta de cada referencia, se prepara más de un pedido a la vez, llega mercancía de otro propietario a tus huecos y hay que demostrar quién entregó qué y cuándo. A partir de ahí el problema ya no es de fórmulas: es de trazabilidad.
+
+En ese punto, la respuesta no es "un ERP más grande". Es un sistema que conozca tres cosas que una hoja de cálculo no sabe representar: la ubicación, el lote y la unidad logística. El día de una alerta sanitaria esa diferencia se nota, porque hay que localizar el lote y sus destinatarios en minutos, como contamos en [trazabilidad alimentaria, lotes y recall](/blog/trazabilidad-alimentaria-lotes-recall).
+
+La tentación habitual es comprar un WMS aparte y conectarlo al ERP. El problema es que acabas con dos maestros de artículos y una sincronización que falla justo el día de más carga. Lo comparamos en detalle en [WMS, SGA y ERP: qué los diferencia](/blog/wms-sga-erp-diferencias).
+
+Cada señal tiene un remedio concreto, y ninguno pasa por añadir otra pestaña al archivo. La tercera, por ejemplo, se resuelve con un [software de preparación de pedidos](/software-preparacion-pedidos-picking) que ordena las oleadas y aparca cada pedido listo en su balda con QR.
+
+| Señal                                     | Qué falla en Excel                                     | Qué lo resuelve                                                              |
+| ----------------------------------------- | ------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| Aparecen lotes con caducidad              | La fecha se anota a mano y nadie la revisa a tiempo    | Lotes con caducidad, alertas X días antes y salida FEFO automática           |
+| Hace falta la ubicación exacta            | La celda dice cuánto hay, no dónde está                | Ubicaciones con QR imprimible y stock por ubicación en tiempo real           |
+| Se prepara más de un pedido a la vez      | Dos personas editan la misma hoja y se pisan           | Picking móvil por oleadas y zona de preparados con baldas identificadas      |
+| Entra mercancía de otro propietario       | Nada impide vender por error lo que no es tuyo         | Palets con propietario, bloqueo de mezcla y tarifario de depósito            |
+| Hay que demostrar quién entregó qué       | Un albarán en papel del que no queda rastro            | Actas firmadas en pantalla o en papel, selladas con huella criptográfica     |
+
+Si tu almacén es frigorífico o guardas género de clientes, las dos últimas señales suelen llegar antes que las tres primeras. Lo desarrollamos en el [software para almacén frigorífico](/software-almacen-frigorifico) y en la guía de [tarifas de alquiler de huecos de palet](/blog/alquiler-huecos-palet-tarifas).
+
 ## Cómo lo hacen las empresas que ya lo han resuelto
 
 Las empresas que logran escalar sin morir en el intento han entendido que **la tecnología debe trabajar para ellos**. Han dejado de usar archivos aislados para adoptar un ecosistema donde la información fluye.
@@ -129,3 +157,11 @@ No tiene por qué. Drenpos parte de 19 € al mes con estructura modular: activa
 ### ¿Puedo migrar mis datos de Excel al ERP?
 
 Sí. En la implantación se importan artículos, clientes, proveedores y stock inicial desde tus hojas de cálculo actuales, y se configura la empresa con sus series y periodos. Tu histórico no se pierde: se ordena.
+
+### ¿Necesito un WMS aparte del ERP para gestionar el almacén?
+
+No siempre, y en una pyme rara vez compensa. Un WMS separado obliga a mantener dos maestros de artículos y una sincronización que falla justo cuando más volumen hay. Si el ERP ya gestiona ubicaciones, lotes, series, palets con etiqueta SSCC y picking móvil, el almacén y la facturación comparten los mismos datos y desaparece el punto de fallo.
+
+### ¿Cuánto cuesta el módulo de inventario de Drenpos?
+
+Los planes parten de 19 €/mes sin IVA (Esencial), 29 €/mes (Pro) y 39 €/mes (Full), y el módulo de Inventario se añade por 16,45 €/mes sin IVA. Es modular: activas el almacén cuando lo necesitas y el resto del ERP sigue igual, sin cambiar de sistema ni volver a migrar los datos.
