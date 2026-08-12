@@ -3,7 +3,7 @@ title: "Trazabilidad alimentaria: gestión de lotes y retirada de producto"
 meta_title: "Trazabilidad alimentaria por lotes y recall"
 description: "Qué exige la trazabilidad alimentaria, qué datos guardar en cada lote y cómo ejecutar una retirada de producto sin revisar albaranes a mano durante horas."
 date: 2026-08-12
-image: "/images/blog/trazabilidad-alimentaria-lotes-recall/cover.webp"
+image: "/images/blog/trazabilidad-alimentaria-lotes-recall/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
   designation: "CEO & Founder"
@@ -59,6 +59,8 @@ Las obligaciones exactas, los plazos y las sanciones dependen de la norma vigent
 
 Se distinguen tres bloques: hacia atrás, interna o de proceso, y hacia delante. El primero cubre lo que entra en la empresa, el segundo lo que ocurre dentro cuando el producto se transforma y el tercero lo que sale hacia el cliente. Los tres tienen que encajar entre sí: si falta el del medio, un lote entra y otro distinto sale sin que nadie pueda explicar el salto.
 
+![Los tres tramos de la trazabilidad alimentaria: hacia atrás, interna o de proceso, y hacia delante, con los datos que registra cada uno](/images/blog/trazabilidad-alimentaria-lotes-recall/figura-1.png)
+
 | Tipo de trazabilidad | Qué registra | Documento que lo respalda |
 | --- | --- | --- |
 | Hacia atrás (proveedores) | Qué entró, de qué proveedor, en qué fecha, con qué lote y cuántas unidades | Albarán o factura de compra, registro de recepción |
@@ -88,6 +90,8 @@ Con esos campos, «¿dónde está este lote?» tiene respuesta inmediata. Sin el
 
 Excel aguanta bien mientras solo hay que apuntar. El problema llega cuando hay que cruzar: relacionar las entradas de un lote con todas sus salidas y decir cuántas unidades quedan vivas y dónde, en el mismo minuto en que suena el teléfono. En una hoja de cálculo, eso se hace a mano.
 
+![Línea de envasado donde cada lote recibe su etiqueta y su fecha de caducidad](/images/blog/trazabilidad-alimentaria-lotes-recall/section-1.jpg)
+
 Se repiten tres fallos. Nadie cruza entradas y salidas en segundos, porque hay que filtrar dos pestañas y confiar en que los códigos coincidan. Y la hoja no sabe qué queda vivo: no mantiene stock por lote y ubicación en tiempo real.
 
 Y todo depende de una persona. Si el responsable se saltó tres albaranes en una semana intensa, la trazabilidad ha dejado de funcionar sin que nadie se entere. Es el mismo patrón que vemos en el [control de stock sin roturas](/blog/control-de-stock-sin-roturas): funciona hasta el día que hace falta de verdad.
@@ -101,6 +105,8 @@ La mejor gestión de un recall es la que no hace falta. Buena parte de las incid
 ## ¿Cómo se ejecuta una retirada de producto?
 
 Una retirada de producto del mercado se juega en la primera hora. El objetivo de ese rato es acotar el lote afectado, congelar el stock que queda en casa y saber a qué clientes se entregó, con su documento y su cantidad. Las comunicaciones, las devoluciones y el informe final se apoyan después en esos tres datos, así que cuanto antes estén, más corta es la crisis.
+
+![Cronología de una retirada de producto en seis pasos: aviso, localizar el lote, bloquear el stock vivo, identificar destinatarios, comunicar y documentar](/images/blog/trazabilidad-alimentaria-lotes-recall/figura-2.png)
 
 Lo que sigue es una guía operativa orientativa, no un procedimiento oficial. El protocolo formal debe ajustarse al plan APPCC de cada empresa y a las instrucciones de la autoridad competente, que marca el alcance y la forma de la retirada.
 
@@ -134,6 +140,8 @@ Si trabajas con cámara y producto congelado, la operativa está detallada en la
 ## ¿Qué relación tienen el APPCC y la trazabilidad?
 
 El sistema APPCC identifica los peligros del proceso y fija los puntos de control críticos, con sus límites y sus registros. La trazabilidad es la capa que dice a qué producto concreto afectó cada control. Sin lotes, un registro de temperatura avisa de que algo falló, pero no de a qué mercancía ni a qué clientes.
+
+![Almacén de distribución alimentaria con producto agrupado por lotes](/images/blog/trazabilidad-alimentaria-lotes-recall/section-2.jpg)
 
 Por eso conviene que los registros del APPCC y los movimientos de almacén hablen del mismo lote. La formalización del plan y su verificación son responsabilidad de cada empresa: el software sostiene los registros, pero no sustituye al plan.
 

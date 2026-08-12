@@ -3,7 +3,7 @@ title: "Preparación de pedidos y picking en almacén: guía práctica"
 meta_title: "Preparación de pedidos: picking y expedición"
 description: "Qué es la preparación de pedidos, en qué se diferencia del picking y la expedición, qué métodos existen y cómo reducir errores en el almacén paso a paso."
 date: 2026-08-12
-image: "/images/blog/preparacion-de-pedidos-picking-almacen/cover.webp"
+image: "/images/blog/preparacion-de-pedidos-picking-almacen/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
   designation: "CEO & Founder"
@@ -55,6 +55,8 @@ Por eso la preparación no se arregla corriendo más, sino quitando decisiones a
 
 No son lo mismo, aunque se usen como sinónimos. La preparación de pedidos es el proceso completo. El picking es la fase de recogida física de las unidades. La expedición es la salida: cargar, documentar y entregar la mercancía al transportista o al cliente. Confundirlas hace que se compren soluciones para una fase y se deje el problema en otra.
 
+![Operario escaneando la ubicación de un producto con pistola lectora](/images/blog/preparacion-de-pedidos-picking-almacen/section-1.jpg)
+
 | Fase | Qué ocurre | Documento que genera |
 | --- | --- | --- |
 | Preparación | Se lanza el pedido, se recoge, se agrupa y se verifica | Sesión de picking, lista de picking |
@@ -77,6 +79,8 @@ Los métodos de picking son formas de organizar el recorrido y el reparto. Los m
 
 El picking por oleadas consiste en lanzar varios pedidos a la vez en una única ruta consolidada por el almacén. El operario recoge de golpe todas las unidades necesarias y las va repartiendo en un bulto por pedido, lo que se conoce como pick-to-box. Encaja cuando hay muchos pedidos pequeños que comparten referencias y hay una hora de corte para el transporte.
 
+![Comparación de rutas de picking sobre la planta de un almacén: cuatro vueltas preparando pedido a pedido frente a una sola vuelta con picking por oleadas](/images/blog/preparacion-de-pedidos-picking-almacen/figura-1.png)
+
 En Drenpos la oleada se lanza desde el listado de preparación seleccionando los pedidos que interesan. El asistente construye una sola ruta y va indicando en qué caja va cada unidad.
 
 ## ¿Cuáles son los 7 errores de picking que más cuestan?
@@ -96,6 +100,8 @@ Los errores caros de la preparación de pedidos no son de destreza, son de organ
 ## ¿Cómo saber qué pedidos se pueden servir completos?
 
 Con un semáforo de preparabilidad: una vista que cruza el pedido con el stock disponible y con lo que viene de camino. Drenpos muestra en el listado de preparación qué pedidos se pueden servir completos con el stock actual, cuáles tienen faltas y qué unidades están pendientes de llegar en pedidos de compra. Así se decide qué lanzar antes de que nadie coja un carro.
+
+![Semáforo de preparabilidad de pedidos: servible completo, con faltas pero con mercancía de camino, y con faltas sin cobertura de compra](/images/blog/preparacion-de-pedidos-picking-almacen/figura-2.png)
 
 La clave está en distinguir stock físico de stock disponible. Drenpos reserva el stock al confirmar el pedido, y el disponible es el físico menos lo comprometido.
 
@@ -119,6 +125,8 @@ Para pedidos que salen enteros en palet, la preparación se hace directamente so
 ## ¿Cómo se expide la mercancía sin papeleo manual?
 
 La expedición se resuelve escaneando el pedido preparado: Drenpos genera automáticamente el albarán o la factura, con la trazabilidad documental completa desde el pedido de venta. Antes de ese paso se puede exigir una verificación de control configurable, un recuento que confirma lo preparado. Desde la misma pantalla se imprimen la lista de picking y la etiqueta de envío.
+
+![Zona de preparados con pedidos listos para expedir en el muelle de carga](/images/blog/preparacion-de-pedidos-picking-almacen/section-2.jpg)
 
 Las reservas de stock se consumen solas al servir, incluso en servicios parciales, y el lote servido queda registrado.
 

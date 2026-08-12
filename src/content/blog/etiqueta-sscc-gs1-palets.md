@@ -3,7 +3,7 @@ title: "Etiqueta SSCC: qué es, cómo se genera y por qué la exigen"
 meta_title: "Etiqueta SSCC GS1: guía práctica para palets"
 description: "Qué es la etiqueta SSCC, cómo se componen sus 18 dígitos, qué identificadores GS1 lleva y cómo generar etiquetas de palet estándar sin errores."
 date: 2026-08-12
-image: "/images/blog/etiqueta-sscc-gs1-palets/cover.webp"
+image: "/images/blog/etiqueta-sscc-gs1-palets/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
   designation: "CEO & Founder"
@@ -55,6 +55,8 @@ Para una pyme que empieza a servir a cadenas de distribución, el SSCC deja de s
 
 El SSCC suma siempre 18 dígitos repartidos en cuatro bloques: un dígito de extensión, el prefijo de compañía GS1, un número de serie y un dígito de control final. El prefijo lo asigna GS1 y su longitud varía según la empresa; lo que sobra hasta el dígito 17 es la serie que gestiona el emisor. El último dígito no se elige: se calcula.
 
+![Desglose de los 18 dígitos de un código SSCC: dígito de extensión, prefijo de compañía GS1, referencia de serie y dígito de control, con su código de barras GS1-128](/images/blog/etiqueta-sscc-gs1-palets/figura-1.png)
+
 | Posición | Componente | Longitud | Quién lo fija |
 |---|---|---|---|
 | 1 | Dígito de extensión | 1 dígito | La empresa emisora, libremente |
@@ -87,6 +89,8 @@ Si un cliente reclama, no buscas "yogur de fresa": buscas el palet exacto que sa
 
 La etiqueta logística GS1 se estructura en tres secciones apiladas: transporte arriba, cliente en medio y proveedor abajo. Cada bloque agrupa la información según quién la necesita y en qué momento del recorrido. El formato habitual es A5 y la recomendación práctica es colocarla en dos caras adyacentes del palet, para que sea legible se aproxime la carretilla por donde se aproxime.
 
+![Las tres secciones de una etiqueta logística GS1 de palet: transporte, cliente y proveedor, con los identificadores de aplicación de GTIN, lote, caducidad y unidades](/images/blog/etiqueta-sscc-gs1-palets/figura-2.png)
+
 - **Transporte**: lo que usa quien mueve la mercancía (destinatario, punto de entrega, bultos).
 - **Cliente**: lo que interesa a quien recibe (producto, cantidad, lote, fechas) y se cruza contra el pedido.
 - **Proveedor**: cierra con el SSCC en un GS1-128 grande y su representación numérica debajo. Es el dato maestro de la etiqueta.
@@ -111,6 +115,8 @@ En la familia `310n` el último dígito marca los decimales: `3102` es peso neto
 ## ¿Por qué la distribución exige la etiqueta SSCC?
 
 Porque sin SSCC la recepción no se puede automatizar. Una plataforma que descarga cientos de palets al día necesita escanear un código y saber al instante qué ha entrado, sin teclear nada ni abrir el retractilado. El SSCC es lo que enlaza el palet físico con el aviso de expedición electrónico que el proveedor envió antes de que llegara el camión.
+
+![Lectura del código de barras de una unidad logística con escáner](/images/blog/etiqueta-sscc-gs1-palets/section-1.jpg)
 
 Para el proveedor el beneficio tampoco es menor: un palet identificado se recepciona antes y genera menos incidencias. Si preparas sobre palet con un sistema de [preparación de pedidos y picking](/software-preparacion-pedidos-picking), la expedición se resuelve en un gesto.
 
@@ -137,6 +143,8 @@ Los cuatro fallos más repetidos son reutilizar un SSCC ya emitido, imprimir sin
 ## ¿Cómo empezar a etiquetar tus palets con SSCC?
 
 Empezar con SSCC no exige obra ni maquinaria nueva: hacen falta un prefijo de compañía GS1, un sistema que genere y guarde los números y una impresora de etiquetas. Lo demás es método. En un almacén pequeño el proceso se pone en marcha en cuestión de días, y el cambio de fondo no es tecnológico sino de disciplina operativa.
+
+![Palets preparados y retractilados esperando su expedición](/images/blog/etiqueta-sscc-gs1-palets/section-2.jpg)
 
 ### Cómo empezar a etiquetar tus palets con SSCC en 7 pasos
 

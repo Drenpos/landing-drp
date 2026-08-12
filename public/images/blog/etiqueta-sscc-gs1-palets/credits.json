@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "query": "barcode label package",
+    "photographer": "Polina Tankilevitch",
+    "photographer_url": "https://www.pexels.com/@polina-tankilevitch",
+    "pexels_url": "https://www.pexels.com/photo/delivery-boxes-over-a-carpet-on-the-floor-4440794/",
+    "alt": "Etiqueta con código de barras pegada en un palet retractilado"
+  },
+  {
+    "file": "section-1.jpg",
+    "query": "barcode scanning package logistics",
+    "photographer": "RDNE Stock project",
+    "photographer_url": "https://www.pexels.com/@rdne",
+    "pexels_url": "https://www.pexels.com/photo/deliveryman-scanning-the-barcode-7363196/",
+    "alt": "Lectura del código de barras de una unidad logística con escáner"
+  },
+  {
+    "file": "section-2.jpg",
+    "query": "stretch wrapped pallets warehouse",
+    "photographer": "ELEVATE",
+    "photographer_url": "https://www.pexels.com/@elevate",
+    "pexels_url": "https://www.pexels.com/photo/gray-steel-containers-1267331/",
+    "alt": "Palets preparados y retractilados esperando su expedición"
+  }
+]

@@ -3,7 +3,7 @@ title: "Despiece, merma y trazabilidad cárnica: cómo cuadrar el stock"
 meta_title: "Software para sala de despiece y control de merma"
 description: "Cómo registrar el despiece sin descuadres: qué pasa con el stock, el lote y el coste, tipos de merma y el vínculo entre lote de origen y lotes de salida."
 date: 2026-08-12
-image: "/images/blog/despiece-merma-trazabilidad-carnica/cover.webp"
+image: "/images/blog/despiece-merma-trazabilidad-carnica/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
   designation: "CEO & Founder"
@@ -49,6 +49,8 @@ faq:
 
 Un inventario corriente trabaja con un artículo por movimiento: entra o sale. Un despiece es otra cosa: un artículo desaparece y en su lugar aparecen varios, con códigos, lotes y caducidades diferentes, y una parte se queda por el camino. Registrarlo como movimientos sueltos deja el almacén cuadrado en apariencia, pero rompe el hilo entre lo que entró en producción y lo que salió.
 
+![Balance de un despiece: de un lote de origen salen varios productos con lote nuevo más la merma registrada como una línea, en una ejecución todo o nada](/images/blog/despiece-merma-trazabilidad-carnica/figura-1.png)
+
 En una sala de despiece sí cambia: la media canal deja de existir como tal y se convierte en lomo, panceta y hamburguesas, cada uno con su referencia y su lote nuevo.
 
 El apaño habitual es hacer una salida manual de la materia prima y varias entradas manuales de los productos terminados, en momentos distintos y a veces por personas distintas.
@@ -90,6 +92,8 @@ La merma por recorte merece atención aparte. Muchas empresas la dan por perdida
 
 El marco europeo de seguridad alimentaria se apoya en poder seguir un alimento a lo largo de toda la cadena, hacia atrás y hacia delante. Cuando una empresa transforma producto, eso incluye la trazabilidad interna: saber qué materia prima se dedicó a qué producto terminado. Las obligaciones concretas dependen de la actividad, de la norma vigente y del criterio de la autoridad competente.
 
+![Árbol de trazabilidad de un despiece: el lote de origen se divide en lotes resultantes que se vinculan con los clientes y documentos de salida](/images/blog/despiece-merma-trazabilidad-carnica/figura-2.png)
+
 Referencias que suelen citarse en el sector cárnico, por su nombre exacto:
 
 - **Reglamento (CE) 178/2002**, base de la legislación alimentaria y de la trazabilidad.
@@ -124,6 +128,8 @@ Si la mercancía vive en frío, el módulo cubre caducidades y salidas FEFO, y l
 
 El orden importa más que la herramienta. La clave es no tocar el stock hasta que los números sean los reales y ejecutar la salida, las entradas y la merma en una sola operación. Con ese principio el despiece deja de generar diferencias y empieza a dar información: rendimiento por partida, coste por kilo y trazabilidad.
 
+![Sala de despiece industrial con producto en proceso de transformación](/images/blog/despiece-merma-trazabilidad-carnica/section-1.jpg)
+
 1. **Identifica la materia prima con su lote** al recibirla y paletízala con su etiqueta SSCC.
 2. **Abre el despiece desde el palet** indicando qué artículo y qué cantidad entra en producción.
 3. **Define los productos de salida** con su artículo, su lote nuevo y su fecha de caducidad.
@@ -137,6 +143,8 @@ Repetido partida tras partida, este ciclo construye el escandallo de despiece re
 ## ¿Qué sectores necesitan registrar una transformación?
 
 Cualquier empresa en la que de un formato de entrada salgan varios de salida. Es evidente en cárnicas y salas de despiece, pero pasa igual en cocina central, obrador, envasado, pescadería y talleres de manipulado. Cambian los productos, los rendimientos y los tiempos, pero el problema de stock es idéntico: descontar materia prima, dar de alta productos nuevos con lote propio y dejar la merma apuntada.
+
+![Pesaje y envasado de las piezas resultantes del despiece, cada una con su lote](/images/blog/despiece-merma-trazabilidad-carnica/section-2.jpg)
 
 En una cocina central, el guiso que sale en barquetas parte de varias materias primas y genera su lote propio. En pescadería o en envasado, la pieza entera se fracciona y cada formato necesita su etiqueta y su fecha.
 

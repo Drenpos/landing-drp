@@ -102,6 +102,8 @@ node agent/index.mjs --idea "..." --keywords "k1,k2" \
 - `--strict-sources` forbids the model from inventing facts outside provided files/URLs (used heavily in `blogs-registro-horario.sh`)
 - Shell wrappers: `blogs.sh` (city-fanout), `blogs-registro-horario.sh` (registro horario 2026 campaign with bundled sources in `agent/sources/`)
 
+**`agent/img-almacen-2026.mjs`** — descargador de imágenes de Pexels para el clúster de almacén (7 posts × cover + 2 secciones). Recorta con `sharp` (1200×675 la portada, 1200×630 las de sección), escribe `credits.json`, cambia el `image:` del frontmatter de `.webp` a `.jpg` e inserta los `![alt](...)` en el cuerpo tras la cápsula del H2 elegido. Idempotente (`--force` para rehacer), `--dry` para simular, `--only <slug>` para uno solo. Lee `PEXELS_API_KEY` de `agent/.env`. **Necesita red**: no funciona desde el bridge de Cowork, hay que lanzarlo desde una terminal local.
+
 ## Deploy
 
 - **Production**: Jenkins (`Jenkinsfile`) — `npm i --force && npm run build && wrangler pages deploy dist --project-name=landing-drp --branch=$BRANCH_NAME`. Cloudflare token + Clerk + reCAPTCHA + `SITE` come from Jenkins credentials.

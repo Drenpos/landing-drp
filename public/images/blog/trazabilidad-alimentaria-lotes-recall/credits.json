@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "query": "food factory quality control",
+    "photographer": "Anna Shvets",
+    "photographer_url": "https://www.pexels.com/@shvetsa",
+    "pexels_url": "https://www.pexels.com/photo/woman-in-white-coat-and-latex-gloves-wrapping-boxes-5953835/",
+    "alt": "Control de calidad en una planta de producción de alimentos"
+  },
+  {
+    "file": "section-1.jpg",
+    "query": "food packaging production line",
+    "photographer": "Mark Stebnicki",
+    "photographer_url": "https://www.pexels.com/@nc-farm-bureau-mark",
+    "pexels_url": "https://www.pexels.com/photo/back-view-of-worker-on-production-11679687/",
+    "alt": "Línea de envasado donde cada lote recibe su etiqueta y su fecha de caducidad"
+  },
+  {
+    "file": "section-2.jpg",
+    "query": "supermarket warehouse food boxes",
+    "photographer": "Antonius Natan",
+    "photographer_url": "https://www.pexels.com/@antonius-natan-2511019",
+    "pexels_url": "https://www.pexels.com/photo/interior-design-of-a-supermarket-11835349/",
+    "alt": "Almacén de distribución alimentaria con producto agrupado por lotes"
+  }
+]

@@ -3,7 +3,7 @@ title: "Alquiler de huecos de palet: tarifas, contrato y cómo gestionarlo"
 meta_title: "Alquiler de huecos de palet: tarifas y contrato"
 description: "Cómo se construye una tarifa de alquiler de huecos de palet: conceptos que se cobran, modos de cómputo, contrato de depósito y cómo montar el servicio."
 date: 2026-08-12
-image: "/images/blog/alquiler-huecos-palet-tarifas/cover.webp"
+image: "/images/blog/alquiler-huecos-palet-tarifas/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
   designation: "CEO & Founder"
@@ -62,6 +62,8 @@ Todo empieza por identificar la unidad: sin un control de palets serio dentro de
 
 Una tarifa de depósito es un catálogo de conceptos, no un precio. Los más frecuentes son el almacenaje por palet y día, el almacenaje por kilo y día, la entrada, la salida, la manipulación y el bulto preparado. Encima de cada concepto se aplican reglas: días de franquicia, mínimos por liquidación, precios distintos por tipo de soporte y vigencias. Los importes los pone cada almacén.
 
+![Los seis conceptos tarifables de un depósito de mercancías: por palet y día, por kilo y día, por entrada, por salida, por manipulación y por bulto preparado](/images/blog/alquiler-huecos-palet-tarifas/figura-1.png)
+
 | Concepto tarifable      | Unidad de cobro         | Cómo se cuenta                                                      |
 | ----------------------- | ----------------------- | ------------------------------------------------------------------- |
 | Almacenaje por palet    | Palet y día             | Se cuentan las posiciones ocupadas según el modo de cómputo pactado |
@@ -82,6 +84,8 @@ Si además preparas pedidos con la mercancía del depositante, el concepto de bu
 ## ¿Cómo se cuenta el tiempo que ocupa cada palet?
 
 Aquí es donde dos tarifas aparentemente iguales dan facturas muy distintas. El modo de cómputo define qué se considera ocupación durante el periodo, y no hay uno correcto: depende de cómo trabaje el almacén y de qué rotación tenga el cliente. Un depósito de campaña, uno de rotación diaria y uno de larga estancia piden reglas diferentes. Lo importante es pactarlo por escrito y aplicarlo siempre igual.
+
+![Los cuatro modos de cómputo de una tarifa de almacenaje: día a día, foto a fin de mes, pico máximo y aniversario de entrada](/images/blog/alquiler-huecos-palet-tarifas/figura-2.png)
 
 | Modo de cómputo        | Qué mide                                          | Encaja bien en                              |
 | ---------------------- | ------------------------------------------------- | ------------------------------------------- |
@@ -110,6 +114,8 @@ Pide siempre una simulación con tu volumen real de un mes tipo. Comparar solo e
 
 El marco general del depósito está en el Código Civil, artículos 1758 y siguientes: el depositario recibe una cosa ajena con la obligación de guardarla y restituirla. A partir de ahí, el sector añade capas según el tipo de mercancía y de operación. El contrato debe recoger tarifa, modo de cómputo, responsabilidad, seguro, plazos de retirada y qué pasa si el depositante deja de pagar.
 
+![Carretilla elevadora colocando un palet en su hueco de estantería](/images/blog/alquiler-huecos-palet-tarifas/section-1.jpg)
+
 | Norma o estándar                     | Qué cubre                                                | Cuándo te afecta                          |
 | ------------------------------------ | -------------------------------------------------------- | ----------------------------------------- |
 | Código Civil, arts. 1758 y ss.       | Contrato de depósito: guarda y restitución                | Siempre que custodies mercancía ajena     |
@@ -137,6 +143,8 @@ Para ver estos pasos aplicados a tu operativa, lo más rápido es una demo con t
 ## ¿Por qué el Excel se rompe el primer mes?
 
 Porque el Excel guarda saldos, no eventos. Funciona mientras hay un cliente y entradas limpias, y se cae en cuanto aparecen salidas parciales, cambios de soporte, franquicias solapadas y mínimos por liquidación. El coste real no es el tiempo de cuadrar: es lo que se deja de facturar porque nadie apuntó una manipulación un viernes por la tarde. Ese dinero no se recupera.
+
+![Responsable de almacén revisando la posición de un cliente en depósito](/images/blog/alquiler-huecos-palet-tarifas/section-2.jpg)
 
 | Situación                        | Con hoja de cálculo                    | Con eventos registrados                    |
 | -------------------------------- | -------------------------------------- | ------------------------------------------ |

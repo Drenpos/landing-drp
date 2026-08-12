@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "query": "warehouse worker picking order",
+    "photographer": "EqualStock IN",
+    "photographer_url": "https://www.pexels.com/@equalstock",
+    "pexels_url": "https://www.pexels.com/photo/warehouse-worker-organizing-inventory-31112239/",
+    "alt": "Operaria preparando un pedido en el almacén con una caja de picking"
+  },
+  {
+    "file": "section-1.jpg",
+    "query": "barcode scanner warehouse worker",
+    "photographer": "Tiger Lily",
+    "photographer_url": "https://www.pexels.com/@tiger-lily",
+    "pexels_url": "https://www.pexels.com/photo/worker-in-a-warehouse-4483941/",
+    "alt": "Operario escaneando la ubicación de un producto con pistola lectora"
+  },
+  {
+    "file": "section-2.jpg",
+    "query": "packing station boxes shipping",
+    "photographer": "GB  The Green Brand",
+    "photographer_url": "https://www.pexels.com/@gb-the-green-brand-1259697174",
+    "pexels_url": "https://www.pexels.com/photo/warehouse-personnel-conducting-stock-check-operations-30824281/",
+    "alt": "Zona de preparados con pedidos listos para expedir en el muelle de carga"
+  }
+]

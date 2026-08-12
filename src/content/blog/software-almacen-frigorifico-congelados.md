@@ -3,7 +3,7 @@ title: "Software de almacén frigorífico y congelados: guía completa"
 meta_title: "Software almacén frigorífico y congelados"
 description: "Cómo elegir un software de almacén frigorífico: FEFO, lotes, palets con etiqueta SSCC, depósito de terceros y operativa a pie de cámara desde móvil."
 date: 2026-08-12
-image: "/images/blog/software-almacen-frigorifico-congelados/cover.webp"
+image: "/images/blog/software-almacen-frigorifico-congelados/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
   designation: "CEO & Founder"
@@ -49,6 +49,8 @@ faq:
 
 La diferencia no es solo la temperatura. En un almacén frigorífico el hueco tiene un coste energético continuo, la mercancía lleva una fecha de caducidad que la convierte en pérdida si se pasa, y el operario trabaja con guantes, con las manos ocupadas y con prisa por no romper la cadena de frío. Todo eso obliga a que el sistema sea rápido, escaneable y tolerante al entorno.
 
+![Diagrama del recorrido de la mercancía en un almacén frigorífico: recepción, paletizado con etiqueta SSCC, ubicación en cámara, picking FEFO y expedición](/images/blog/software-almacen-frigorifico-congelados/figura-1.png)
+
 ### Refrigerado, congelado y ultracongelado
 
 Los rangos concretos dependen del producto y del marco normativo aplicable: conviene confirmarlos con la norma vigente y con el plan APPCC de la instalación.
@@ -71,6 +73,8 @@ Fallan porque el dato se registra tarde y lejos del sitio donde ocurre. El opera
 
 El FEFO ordena la salida por fecha de caducidad, no por fecha de entrada. Es la diferencia entre sacar lo que lleva más tiempo dentro y sacar lo que antes se va a morir, que no siempre coincide. Combinado con alertas configurables X días antes del vencimiento, convierte la caducidad en algo que se gestiona con antelación en vez de descubrirse cuando ya es merma.
 
+![Comparación entre FIFO y FEFO: qué lote de producto refrigerado elige cada método de salida según fecha de entrada y de caducidad](/images/blog/software-almacen-frigorifico-congelados/figura-2.png)
+
 En Drenpos, un artículo con lotes activados exige indicar el lote en cada compra, venta o traslado, con fabricación y caducidad. El método de salida se configura entre FIFO, LIFO y FEFO, y las alertas avisan X días antes indicando artículo, almacén y ubicación.
 
 ## ¿Cómo se resuelve un recall de lote?
@@ -91,6 +95,8 @@ El despaletizado se resuelve en tres gestos: vaciar a una ubicación, pasar merc
 
 Es la única forma de que el dato sea real. Si las pantallas de palets solo funcionan en el PC de oficina, el operario apuntará en papel y alguien lo tecleará después: la operativa vuelve al punto de partida. En Drenpos todas las pantallas de palets funcionan en móvil y tablet, así que montar, mover, pesar o despaletizar se hace a pie de cámara, con pistola o con el dedo.
 
+![Carga de mercancía congelada en un camión frigorífico en el muelle](/images/blog/software-almacen-frigorifico-congelados/section-1.jpg)
+
 ### Picking y expedición sin salir del frío
 
 Un pedido puede prepararse directamente sobre un palet con su SSCC, de forma que al expedir sale el palet completo con su trazabilidad. Más detalle en [preparación de pedidos y picking](/software-preparacion-pedidos-picking).
@@ -110,6 +116,8 @@ El borrador en espera permite corregir los números cuando acaba la producción 
 ## ¿Cómo se cobra el depósito de mercancía ajena?
 
 Se cobra registrando eventos, no rellenando hojas a fin de mes. Un frigorífico que guarda género de otros necesita que cada palet lleve su propietario, que el sistema impida mezclar o vender por error mercancía ajena, y que cada entrada, salida o manipulación genere su apunte tarificable en la misma operación. Con eso, la liquidación deja de ser una reconstrucción y pasa a ser una consulta.
+
+![Operario revisando mercancía con un dispositivo móvil dentro de una cámara de frío](/images/blog/software-almacen-frigorifico-congelados/section-2.jpg)
 
 El tarifario tiene que adaptarse a cómo cuenta cada almacén, porque no hay dos iguales.
 

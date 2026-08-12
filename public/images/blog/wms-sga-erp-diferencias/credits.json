@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "query": "warehouse manager tablet",
+    "photographer": "Tiger Lily",
+    "photographer_url": "https://www.pexels.com/@tiger-lily",
+    "pexels_url": "https://www.pexels.com/photo/man-in-black-bubble-jacket-holding-white-tablet-computer-4484075/",
+    "alt": "Responsable de logística consultando el sistema de gestión desde una tablet en el almacén"
+  },
+  {
+    "file": "section-1.jpg",
+    "query": "business team meeting office software",
+    "photographer": "Kampus Production",
+    "photographer_url": "https://www.pexels.com/@kampus",
+    "pexels_url": "https://www.pexels.com/photo/office-team-sitting-at-the-table-8636625/",
+    "alt": "Equipo de una pyme evaluando qué sistema de gestión de almacén necesita"
+  },
+  {
+    "file": "section-2.jpg",
+    "query": "modern warehouse interior wide",
+    "photographer": "Craftsman Concrete Floors",
+    "photographer_url": "https://www.pexels.com/@craftsman-concrete-floors-2159674718",
+    "pexels_url": "https://www.pexels.com/photo/spacious-modern-warehouse-interior-in-texas-36217325/",
+    "alt": "Vista general de un centro de distribución con estanterías y zonas diferenciadas"
+  }
+]

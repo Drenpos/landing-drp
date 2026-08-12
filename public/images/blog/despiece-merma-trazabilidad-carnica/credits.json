@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "query": "butcher cutting meat professional",
+    "photographer": "Mark Stebnicki",
+    "photographer_url": "https://www.pexels.com/@nc-farm-bureau-mark",
+    "pexels_url": "https://www.pexels.com/photo/a-butcher-removing-the-bone-of-the-fresh-meat-7163990/",
+    "alt": "Profesional despiezando carne en una sala de despiece"
+  },
+  {
+    "file": "section-1.jpg",
+    "query": "meat processing factory line",
+    "photographer": "Mark Stebnicki",
+    "photographer_url": "https://www.pexels.com/@nc-farm-bureau-mark",
+    "pexels_url": "https://www.pexels.com/photo/butchers-slicing-meat-7163993/",
+    "alt": "Sala de despiece industrial con producto en proceso de transformación"
+  },
+  {
+    "file": "section-2.jpg",
+    "query": "butcher weighing meat scale",
+    "photographer": "the northern lense",
+    "photographer_url": "https://www.pexels.com/@the-northern-lense-2148554063",
+    "pexels_url": "https://www.pexels.com/photo/traditional-market-scene-with-meat-on-scales-31120511/",
+    "alt": "Pesaje y envasado de las piezas resultantes del despiece, cada una con su lote"
+  }
+]

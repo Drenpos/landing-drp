@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "query": "pallet racking warehouse",
+    "photographer": "Engin Akyurt",
+    "photographer_url": "https://www.pexels.com/@enginakyurt",
+    "pexels_url": "https://www.pexels.com/photo/green-metal-shelves-with-construction-materials-4170172/",
+    "alt": "Estanterías de un almacén logístico llenas de huecos de palet ocupados"
+  },
+  {
+    "file": "section-1.jpg",
+    "query": "forklift warehouse pallet",
+    "photographer": "GB  The Green Brand",
+    "photographer_url": "https://www.pexels.com/@gb-the-green-brand-1259697174",
+    "pexels_url": "https://www.pexels.com/photo/modern-warehouse-operations-with-employees-and-forklift-30824313/",
+    "alt": "Carretilla elevadora colocando un palet en su hueco de estantería"
+  },
+  {
+    "file": "section-2.jpg",
+    "query": "logistics manager clipboard warehouse",
+    "photographer": "Craig Adderley",
+    "photographer_url": "https://www.pexels.com/@thatguycraig000",
+    "pexels_url": "https://www.pexels.com/photo/man-holding-clipboard-inside-room-1543924/",
+    "alt": "Responsable de almacén revisando la posición de un cliente en depósito"
+  }
+]

@@ -3,7 +3,7 @@ title: "Diferencia entre WMS y ERP: qué es un SGA y cuál necesitas"
 meta_title: "Diferencia entre WMS y ERP (y qué es un SGA)"
 description: "WMS, SGA y ERP explicados sin humo: qué resuelve cada sistema, qué capacidades definen un WMS real y cuánto cuesta tener el almacén fuera del ERP."
 date: 2026-08-12
-image: "/images/blog/wms-sga-erp-diferencias/cover.webp"
+image: "/images/blog/wms-sga-erp-diferencias/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
   designation: "CEO & Founder"
@@ -55,6 +55,8 @@ Por eso la pregunta útil nunca es "¿esto es un WMS?", sino "¿esto sabe de ubi
 
 Un WMS gobierna el interior del almacén: ubicaciones, rutas, lotes, preparación y expedición. Un ERP gobierna la empresa: compras, ventas, stock valorado, facturación, cobros y contabilidad. La frontera está en el alcance, no en la calidad. Un ERP con módulo de almacén profundo hace de WMS; un WMS aislado nunca hará de ERP, porque no factura ni lleva la contabilidad.
 
+![Equipo de una pyme evaluando qué sistema de gestión de almacén necesita](/images/blog/wms-sga-erp-diferencias/section-1.jpg)
+
 En la práctica, la mayoría de pymes no tiene un problema de almacén: tiene un problema de continuidad. El pedido entra por comercial, se prepara en el almacén y se factura en administración, y cada salto entre sistemas es una oportunidad de error.
 
 De ahí la tesis honesta de este artículo: la decisión relevante no es WMS o ERP, sino integrado o sincronizado.
@@ -62,6 +64,8 @@ De ahí la tesis honesta de este artículo: la decisión relevante no es WMS o E
 ## ¿Qué resuelve cada sistema y para quién?
 
 Cada categoría nace de un problema distinto: el WMS o SGA, del caos físico dentro de una nave; el ERP, de la falta de un sistema único para todo el negocio; el software de facturación con inventario básico, de la necesidad de emitir documentos legales sin complicarse. Confundirlos es la vía rápida a comprar potencia que nadie usa o a quedarse corto en seis meses.
+
+![Tabla comparativa de qué sabe cada sistema sobre el stock: cuánto hay, dónde está, de qué lote es, en qué palet viaja y quién lo tocó](/images/blog/wms-sga-erp-diferencias/figura-2.png)
 
 | Sistema | Qué resuelve | Para quién encaja | Qué NO hace |
 | --- | --- | --- | --- |
@@ -102,6 +106,8 @@ La última fila importa tanto como el resto: un almacén robotizado necesita un 
 
 El precio de las licencias es la parte fácil de calcular. El coste real de separar el almacén del ERP aparece después, en forma de doble maestro de artículos, integraciones que hay que vigilar, descuadres entre el stock que ve el mozo y el que ve quien factura, y horas de gente cuadrando a mano lo que dos sistemas cuentan distinto. Ese gasto no figura en ninguna oferta.
 
+![Diagrama de un WMS separado del ERP con dos maestros de artículos y una sincronización frágil, frente a la gestión de almacén integrada en el mismo sistema](/images/blog/wms-sga-erp-diferencias/figura-1.png)
+
 El síntoma clásico: alguien da de alta un artículo en un sistema y se olvida del otro.
 
 Un WMS separado no es mala idea: simplemente hay que sumar su coste entero. Si tu volumen y tu automatización lo justifican, es la decisión correcta; si no, pagas dos veces por el mismo dato.
@@ -109,6 +115,8 @@ Un WMS separado no es mala idea: simplemente hay que sumar su coste entero. Si t
 ## ¿Cómo saber si necesitas un WMS?
 
 Hay dos formas de equivocarse: quedarse corto y pasarse. Quedarse corto se nota en errores de servicio, inventarios que no cuadran y dependencia de la memoria de una persona. Pasarse se nota en un sistema caro, lento de implantar y usado al veinte por ciento, con el equipo saltándose pasos porque no entiende para qué sirven. La tabla siguiente ayuda a situarte antes de pedir presupuestos.
+
+![Vista general de un centro de distribución con estanterías y zonas diferenciadas](/images/blog/wms-sga-erp-diferencias/section-2.jpg)
 
 | Señales de que te has quedado corto | Señales de que te estás pasando de sistema |
 | --- | --- |

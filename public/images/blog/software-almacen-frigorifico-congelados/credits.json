@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "query": "cold storage warehouse",
+    "photographer": "Tiger Lily",
+    "photographer_url": "https://www.pexels.com/@tiger-lily",
+    "pexels_url": "https://www.pexels.com/photo/worker-on-a-construction-4487382/",
+    "alt": "Interior de una cámara frigorífica con palets almacenados en estanterías"
+  },
+  {
+    "file": "section-1.jpg",
+    "query": "frozen food logistics",
+    "photographer": "MART  PRODUCTION",
+    "photographer_url": "https://www.pexels.com/@mart-production",
+    "pexels_url": "https://www.pexels.com/photo/deliveryman-waiting-at-the-door-7706397/",
+    "alt": "Carga de mercancía congelada en un camión frigorífico en el muelle"
+  },
+  {
+    "file": "section-2.jpg",
+    "query": "warehouse worker cold storage",
+    "photographer": "Tiger Lily",
+    "photographer_url": "https://www.pexels.com/@tiger-lily",
+    "pexels_url": "https://www.pexels.com/photo/man-among-construction-materials-4484042/",
+    "alt": "Operario revisando mercancía con un dispositivo móvil dentro de una cámara de frío"
+  }
+]
