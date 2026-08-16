@@ -6,12 +6,13 @@ badge: "Módulos disponibles"
 modules:
   - name: "Módulo Financiero"
     description: "Ofertas, pedidos, facturación, gestión de clientes y proveedores y mucho más"
-    price_monthly: "19.90 €"
-    price_yearly: "17.91 €"
+    price_monthly: "16.45 €"
+    price_yearly: "14.81 €"
     included_in:
       - "Essential"
       - "Pro"
       - "Full"
+      - "Producción"
     features:
       - "VERIFACTU"
       - "Gestión de ofertas, pedidos, albaranes y facturas"
@@ -23,21 +24,35 @@ modules:
 
   - name: "Módulo Inventario"
     description: "Artículos, almacenes, stock, lotes y mucho más"
-    price_monthly: "19.90 €"
-    price_yearly: "17.91 €"
+    price_monthly: "16.45 €"
+    price_yearly: "14.81 €"
     included_in:
       - "Pro"
       - "Full"
+      - "Producción"
     features:
       - "Gestión de artículos"
       - "Control de almacenes y ubicaciones"
       - "Gestión de stock en tiempo real"
       - "Control de lotes y trazabilidad"
 
+  - name: "Módulo Producción"
+    description: "Órdenes de trabajo, fases, consumo de materiales por lectura, imputación de tiempos y coste real de fabricación"
+    price_monthly: "22.00 €"
+    price_yearly: "19.80 €"
+    included_in:
+      - "Producción"
+    features:
+      - "Órdenes de trabajo y fases de fabricación"
+      - "Consumo de materiales por lectura de código"
+      - "Imputación de tiempos por operario"
+      - "Coste real de fabricación"
+      - "Trazabilidad entre materia prima y producto acabado"
+
   - name: "Módulo TPV"
     description: "TPV, una forma más rápida y sencilla de vender"
-    price_monthly: "24.90 €"
-    price_yearly: "22.41 €"
+    price_monthly: "20.58 €"
+    price_yearly: "18.52 €"
     included_in:
       - "Full"
     features:
@@ -47,8 +62,8 @@ modules:
 
   - name: "Módulo Comercial"
     description: "Gestiona comisiones, ofertas y agentes comerciales"
-    price_monthly: "19.90 €"
-    price_yearly: "17.91 €"
+    price_monthly: "16.45 €"
+    price_yearly: "14.81 €"
     included_in: []
     features:
       - "Gestión de agentes comerciales"
@@ -57,12 +72,13 @@ modules:
 
   - name: "Módulo Fichajes"
     description: "Control de jornada laboral y sistema de fichajes para empleados"
-    price_monthly: "1.09 €"
-    price_yearly: "0.98 €"
+    price_monthly: "1.00 €"
+    price_yearly: "0.90 €"
     included_in:
       - "Essential"
       - "Pro"
       - "Full"
+      - "Producción"
     features:
       - "Registro de jornada laboral"
       - "Control de asistencia"
@@ -88,6 +104,7 @@ modules:
       - "Essential"
       - "Pro"
       - "Full"
+      - "Producción"
     features:
       - "Informes avanzados"
       - "Análisis de datos"
@@ -96,12 +113,13 @@ modules:
 
   - name: "Envío por correo"
     description: "Envío de documentos por correo electrónico sin salir del sistema"
-    price_monthly: "4.84 €"
-    price_yearly: "4.36 €"
+    price_monthly: "4.00 €"
+    price_yearly: "3.60 €"
     included_in:
       - "Essential"
       - "Pro"
       - "Full"
+      - "Producción"
     features:
       - "Envío de facturas por email"
       - "Plantillas personalizables"
@@ -110,9 +128,13 @@ modules:
 
   - name: "Envío por WhatsApp"
     description: "Envío de documentos por WhatsApp sin salir del sistema"
-    price_monthly: "4.84 €"
-    price_yearly: "4.36 €"
-    included_in: []
+    price_monthly: "4.00 €"
+    price_yearly: "3.60 €"
+    included_in:
+      - "Essential"
+      - "Pro"
+      - "Full"
+      - "Producción"
     features:
       - "Envío de facturas por WhatsApp"
       - "Envío de documentos desde el sistema"
@@ -132,6 +154,7 @@ modules:
 notes:
   - "Todos los precios son sin IVA"
   - "Los precios anuales incluyen un 10% de descuento"
+  - "Los módulos Fichajes y Usuarios se facturan por usuario/mes"
   - "Los módulos se pueden activar y desactivar mensualmente"
   - "Sin permanencia ni costes de instalación"
 ---

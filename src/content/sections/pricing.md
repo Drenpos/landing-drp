@@ -30,8 +30,9 @@ plans:
       - 2 Usuarios incluidos
       - Módulo Financiero
       - Módulo Informes
-      - Módulo Fichajes
+      - Módulo Fichajes (2 usuarios)
       - Envíos de documentos por email sin salir del sistema
+      - Envíos de documentos por WhatsApp sin salir del sistema
     badge:
       enable: false
       label: "Recomendado"
@@ -55,8 +56,9 @@ plans:
       - Módulo Financiero
       - Módulo Informes
       - Módulo Inventario
-      - Módulo Fichajes
+      - Módulo Fichajes (3 usuarios)
       - Envíos de documentos por email sin salir del sistema
+      - Envíos de documentos por WhatsApp sin salir del sistema
     badge:
       enable: true
       label: "Recomendado"
@@ -81,8 +83,36 @@ plans:
       - Módulo Informes
       - Módulo Inventario
       - Módulo TPV
-      - Módulo Fichajes
+      - Módulo Fichajes (5 usuarios)
       - Envíos de documentos por email sin salir del sistema
+      - Envíos de documentos por WhatsApp sin salir del sistema
+    badge:
+      enable: false
+      label: "Recomendado"
+    button:
+      enable: true
+      label: "Regístrate y activa el plan"
+      link: "https://contract.drenpos.com/auth"
+  - title: "Producción"
+    description: "Talleres y fabricantes que necesitan controlar la producción y su coste real."
+    price_prefix: "€"
+    price_monthly: "50"
+    price_yearly: "45.00"
+    price_description_monthly: "/mes"
+    price_description_yearly: "/mes · 10% dto."
+    features:
+      - Sistema en la nube 100% accesible
+      - Copias de seguridad diarias (últimos 5 días)
+      - Multidispositivo y multiusuario sin límites
+      - Soporte básico por email
+      - 8 Usuarios incluidos
+      - Módulo Financiero
+      - Módulo Informes
+      - Módulo Inventario
+      - Módulo Producción
+      - Módulo Fichajes (8 usuarios)
+      - Envíos de documentos por email sin salir del sistema
+      - Envíos de documentos por WhatsApp sin salir del sistema
     badge:
       enable: false
       label: "Recomendado"

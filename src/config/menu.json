@@ -42,6 +42,10 @@
           "url": "/software-almacen-tienda"
         },
         {
+          "name": "Producción y Fabricación",
+          "url": "/software-produccion-fabricacion"
+        },
+        {
           "name": "Módulos",
           "url": "/modulos"
         }

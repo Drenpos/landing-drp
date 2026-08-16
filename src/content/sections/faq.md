@@ -13,7 +13,7 @@ list:
     description: Drenpos es un ERP modular para PYMEs y autónomos. Centraliza stock, ventas, finanzas (Verifactu) e informes en una sola plataforma para trabajar con más control y menos tareas manuales.
     active: true
   - title: ¿Qué módulos incluye ahora mismo?
-    description: "Actualmente: Almacén y stock (multi-almacén, ubicaciones, lotes), Ventas (pedido→albarán→factura), Finanzas y facturación conforme Verifactu, Informes/analítica y TPV (listo para restauración y tiendas)."
+    description: "Financiero (ofertas, pedidos, albaranes y facturación Verifactu), Inventario (multialmacén, ubicaciones, stock y lotes), TPV para tienda y restaurante, Producción (órdenes de trabajo, fases, consumo de materiales por lectura, imputación de tiempos y coste real de fabricación), Fichajes para el registro de jornada, Comercial (agentes y comisiones), Informes, Cloud Storage y envío de documentos por correo y WhatsApp."
   - title: ¿Cumple con Verifactu y la AEAT?
     description: Sí. Gestionamos facturación con series por periodo, registros inalterables y firma. Además, preparamos el envío a AEAT (cuando aplique) para garantizar trazabilidad y veracidad de los datos.
   - title: ¿Cómo gestionáis la trazabilidad por lotes y ubicaciones?
@@ -31,7 +31,7 @@ list:
   - title: ¿Qué soporte ofrecéis?
     description: Soporte cercano en español con respuesta habitual ≤ 24h laborables y acompañamiento en el arranque. También resolvemos dudas de configuración y mejores prácticas.
   - title: ¿Cómo funcionan los precios?
-    description: Por módulos y usuarios, para que pagues solo por lo que usas. Cuéntanos tu caso y te enviamos una propuesta clara. Solicita una demo para ver encaje y presupuesto.
+    description: "Precios públicos y sin letra pequeña. Cuatro planes mensuales sin IVA —Essential 19 €, Pro 29 €, Full 39 € y Producción 50 €— cada uno con sus usuarios y módulos incluidos, más los módulos sueltos que quieras añadir. El pago anual descuenta un 10 %, no hay permanencia ni coste de instalación y las actualizaciones van incluidas. Tienes el detalle en la página de precios."
   - title: ¿Hay demo o prueba?
     description: Sí, ofrecemos demo guiada para evaluar encaje y resolver dudas de procesos, datos y trazabilidad. Si te interesa, solicita una demo desde el botón de la página.
 ---

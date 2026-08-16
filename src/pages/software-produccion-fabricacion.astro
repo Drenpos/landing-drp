@@ -1,0 +1,641 @@
+---
+export const prerender = true;
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+
+// ════════════════════════════════════════════════════════════════════════
+//  Landing · Software de producción y fabricación (SEO + GEO + AEO)
+//  Clúster: hermana de /software-gestion-almacen y del resto de landings.
+//  Diferenciación: esta ataca FABRICAR (órdenes de trabajo, fases, tiempos,
+//  coste real). El almacén ataca ALMACENAR. No canibalizan.
+//  Todo lo afirmado aquí sale del módulo DRP_PRODUCTION_MODULE y de los
+//  módulos que el plan Producción incluye. Nada inventado.
+//  Capturas pendientes (cuando existan, sustituir los reutilizados):
+//    funcionalidades/produccion/01-orden-trabajo.png
+//    funcionalidades/produccion/02-coste-real.png
+// ════════════════════════════════════════════════════════════════════════
+
+const CANONICAL = "https://www.drenpos.com/software-produccion-fabricacion";
+
+// Capacidades del módulo de Producción (features reales del módulo)
+const capacidades = [
+  {
+    icon: "🧾",
+    title: "Órdenes de trabajo",
+    body: "Cada fabricación es una orden de trabajo con su producto final, su cantidad y su estado. Sabes en todo momento qué se está fabricando, qué falta y qué ya está terminado, sin listas en papel ni hojas de cálculo paralelas.",
+  },
+  {
+    icon: "🪜",
+    title: "Fases de fabricación",
+    body: "Divide la orden en las fases reales de tu proceso (corte, montaje, acabado, envasado…). Cada fase avanza por separado, así que ves dónde está parado el trabajo en lugar de enterarte al final.",
+  },
+  {
+    icon: "🔫",
+    title: "Consumo de materiales por lectura",
+    body: "El operario escanea el código del material que consume y el stock se descuenta del almacén en ese momento, con su lote. Se acabó el «apúntalo y ya lo meto luego»: el inventario refleja la realidad de la nave.",
+  },
+  {
+    icon: "⏱️",
+    title: "Imputación de tiempos",
+    body: "Cada operario imputa el tiempo que dedica a una fase concreta. El tiempo deja de ser una estimación de memoria y pasa a ser un dato con nombre, fase y fecha.",
+  },
+  {
+    icon: "💶",
+    title: "Coste real de fabricación",
+    body: "Materiales realmente consumidos más tiempos realmente imputados. Ese es el coste de la orden: el real, no el que calculaste al presupuestar. Ahí es donde aparecen los productos que creías rentables y no lo son.",
+  },
+  {
+    icon: "🏷️",
+    title: "Trazabilidad materia prima → producto acabado",
+    body: "Como Producción se apoya en el módulo de Inventario, el lote del producto acabado queda enlazado con los lotes de materia prima que lo formaron. Ante una incidencia, el rastreo va en las dos direcciones.",
+  },
+];
+
+// Síntomas / dolores (long-tail AEO — cómo lo busca la gente de verdad)
+const sintomas = [
+  {
+    icon: "❓",
+    title: "No sabes cuánto te cuesta de verdad fabricar cada producto",
+    body: "Presupuestas con un coste calculado hace dos años. Si el material subió o la pieza lleva más horas de las previstas, el margen se lo come el taller sin que nadie lo vea en ningún sitio.",
+  },
+  {
+    icon: "📋",
+    title: "La producción vive en partes de papel y en la cabeza del encargado",
+    body: "Cuando el encargado libra, nadie sabe por qué fase va cada trabajo. La información existe, pero no está en ningún sistema donde puedas consultarla.",
+  },
+  {
+    icon: "📉",
+    title: "El stock nunca cuadra porque el consumo se apunta tarde",
+    body: "Los materiales salen del almacén a la nave y se descuentan días después, o no se descuentan. El inventario del sistema y el de la estantería llevan vidas separadas.",
+  },
+  {
+    icon: "⏳",
+    title: "Sabes las horas que se pagan, no en qué se han ido",
+    body: "El fichaje te dice que un operario hizo 8 horas. No te dice cuántas fueron a la orden que se te fue de presupuesto ni cuántas a la que sí era rentable.",
+  },
+];
+
+// Flujo de una orden de trabajo (numerado → elegible para list snippet)
+const flujo = [
+  {
+    n: 1,
+    t: "Se abre la orden de trabajo",
+    d: "Producto a fabricar, cantidad y fases del proceso.",
+  },
+  {
+    n: 2,
+    t: "El operario consume material escaneando",
+    d: "El stock se descuenta del almacén en ese momento, con su lote.",
+  },
+  {
+    n: 3,
+    t: "Se imputan los tiempos por fase",
+    d: "Quién, en qué fase y cuánto tiempo.",
+  },
+  {
+    n: 4,
+    t: "La orden se cierra con su coste real",
+    d: "Materiales consumidos + tiempos imputados = lo que te ha costado de verdad.",
+  },
+];
+
+// Casos de uso
+const casos = [
+  {
+    tag: "Taller metalúrgico a medida",
+    icon: "⚙️",
+    body: "Cada pedido es una pieza distinta, así que el coste teórico no sirve de nada. Con la orden de trabajo por fases (corte, soldadura, acabado) y los tiempos imputados, al cerrar el trabajo se ve el coste real y se puede comparar con lo presupuestado antes de presupuestar el siguiente.",
+  },
+  {
+    tag: "Obrador y transformación de alimentos",
+    icon: "🥖",
+    body: "El consumo por lectura descuenta la materia prima con su lote, y el producto acabado nace con lote propio. Si hay una alerta sanitaria, el rastreo va del producto final a los lotes de origen y de un lote de origen a todo lo que se fabricó con él.",
+  },
+  {
+    tag: "Pequeña fábrica con varios operarios",
+    icon: "🏭",
+    body: "Los 8 usuarios de fichaje incluidos en el plan cubren la plantilla del taller: cada operario ficha su jornada y además imputa a qué fase de qué orden fue su tiempo. Registro horario y coste de producción con el mismo dato.",
+  },
+];
+
+// Qué incluye el plan Producción (tabla → elegible para table snippet)
+const incluyePlan = [
+  { m: "Módulo Producción", d: "Órdenes de trabajo, fases, consumo por lectura, tiempos y coste real", s: "22 €" },
+  { m: "Módulo Inventario", d: "Artículos, almacenes, ubicaciones, stock, lotes y trazabilidad", s: "16,45 €" },
+  { m: "Módulo Financiero", d: "Ofertas, pedidos, albaranes, facturación Verifactu, clientes y proveedores", s: "16,45 €" },
+  { m: "Módulo Informes", d: "Informes y análisis de tus datos", s: "6 €" },
+  { m: "8 usuarios del sistema", d: "Con permisos granulares y sesiones simultáneas ilimitadas", s: "40 €" },
+  { m: "8 usuarios de fichaje", d: "Registro de jornada por web, app PWA, QR o llavero RFID", s: "8 €" },
+  { m: "Envío por correo y WhatsApp", d: "Manda documentos al cliente sin salir del sistema", s: "8 €" },
+];
+
+// FAQ — preguntas tal y como se buscan (AEO), respuestas de 50-80 palabras
+const faqs = [
+  {
+    q: "¿Qué es un software de producción?",
+    a: "Un software de producción controla qué se fabrica, en qué fase está, qué materiales consume y cuánto tiempo lleva. En Drenpos cada fabricación es una orden de trabajo dividida en fases: el operario escanea los materiales que consume e imputa sus tiempos, y al cerrar la orden el sistema calcula el coste real de esa fabricación.",
+  },
+  {
+    q: "¿Cuánto cuesta el software de producción de Drenpos?",
+    a: "El plan Producción cuesta 50 €/mes sin IVA e incluye los módulos de Producción, Inventario, Financiero e Informes, 8 usuarios del sistema, 8 usuarios de fichaje y el envío de documentos por correo y WhatsApp. Si ya tienes otro plan, el módulo de Producción suelto cuesta 22 €/mes sin IVA. Sin permanencia ni coste de instalación.",
+  },
+  {
+    q: "¿Cómo se calcula el coste real de fabricación?",
+    a: "Sumando lo que realmente ha pasado en la orden: los materiales que el operario ha consumido escaneándolos y los tiempos que ha imputado a cada fase. No es una estimación previa ni un reparto de costes al cierre del mes, es el consumo y el tiempo de esa orden concreta, así que puedes compararlo con lo que presupuestaste.",
+  },
+  {
+    q: "¿Se descuenta el stock automáticamente al fabricar?",
+    a: "Sí. El consumo de materiales se registra por lectura de código: el operario escanea lo que va a consumir y el stock se descuenta del almacén en ese momento, con su lote. El inventario refleja lo que hay en la nave sin que nadie tenga que pasar partes de consumo a mano después.",
+  },
+  {
+    q: "¿Hay trazabilidad entre la materia prima y el producto acabado?",
+    a: "Sí. El módulo de Producción trabaja sobre el módulo de Inventario, que gestiona lotes con fecha de fabricación y caducidad. El lote del producto acabado queda enlazado con los lotes de materia prima consumidos, de modo que puedes rastrear en ambos sentidos ante una incidencia o una inspección.",
+  },
+  {
+    q: "¿Sirve para un taller pequeño o solo para fábricas grandes?",
+    a: "Está pensado para talleres y fabricantes pequeños y medianos. El plan Producción incluye 8 usuarios, que cubre la plantilla habitual de un taller, y no requiere proyecto de implantación ni consultores. Drenpos está enfocado deliberadamente en pymes y autónomos, no en corporaciones que necesitan un ERP tipo SAP.",
+  },
+  {
+    q: "¿Se integra con el control horario y la facturación?",
+    a: "Sí, es el mismo sistema. El plan Producción incluye 8 usuarios de fichaje para el registro de jornada obligatorio y el módulo Financiero con facturación Verifactu. El tiempo que un operario imputa a una fase y la factura que sale de ese trabajo viven en la misma base de datos, sin exportaciones ni duplicar datos.",
+  },
+];
+
+// Landings hermanas del clúster
+const hermanas = [
+  {
+    url: "/software-gestion-almacen",
+    title: "Gestión de almacén y stock",
+    body: "La base sobre la que se apoya Producción: multialmacén, ubicaciones, lotes y trazabilidad.",
+  },
+  {
+    url: "/software-preparacion-pedidos-picking",
+    title: "Preparación de pedidos y picking",
+    body: "Cuando lo fabricado hay que servirlo: oleadas, asistente móvil y expedición con escaneo.",
+  },
+  {
+    url: "/control-horario",
+    title: "Control horario y fichajes",
+    body: "Los mismos operarios que imputan tiempos, fichando por web, app, QR o llavero RFID.",
+  },
+  {
+    url: "/software-almacen-tienda",
+    title: "Almacén y TPV para tienda",
+    body: "Si además vendes en mostrador lo que fabricas, con el stock descontado en cada ticket.",
+  },
+];
+
+// Enlazado interno local
+const ciudades = [
+  { n: "Mérida", s: "sistema-facturacion-erp-merida" },
+  { n: "Badajoz", s: "sistema-facturacion-erp-badajoz" },
+  { n: "Cáceres", s: "sistema-facturacion-erp-caceres" },
+  { n: "Don Benito", s: "sistema-facturacion-erp-don-benito" },
+  { n: "Almendralejo", s: "sistema-facturacion-erp-almendralejo" },
+  { n: "Villanueva de la Serena", s: "sistema-facturacion-erp-villanueva" },
+];
+
+// ── Datos estructurados ──────────────────────────────────────────────────
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
+    { "@type": "ListItem", position: 3, name: "Software de producción y fabricación", item: CANONICAL },
+  ],
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Drenpos · Módulo de Producción",
+  applicationCategory: "BusinessApplication",
+  applicationSubCategory: "Manufacturing Execution Software",
+  operatingSystem: "Web, iOS, Android (PWA)",
+  url: CANONICAL,
+  inLanguage: "es-ES",
+  description:
+    "Software de producción para talleres y fabricantes: órdenes de trabajo divididas en fases, consumo de materiales por lectura de código con descuento de stock, imputación de tiempos por operario y coste real de fabricación.",
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Plan Producción",
+      price: "50.00",
+      priceCurrency: "EUR",
+      description:
+        "Plan Producción: módulos de Producción, Inventario, Financiero e Informes, 8 usuarios del sistema, 8 usuarios de fichaje y envío por correo y WhatsApp. Precio mensual sin IVA.",
+      url: "https://www.drenpos.com/pricing",
+      availability: "https://schema.org/InStock",
+    },
+    {
+      "@type": "Offer",
+      name: "Módulo Producción (suelto)",
+      price: "22.00",
+      priceCurrency: "EUR",
+      description:
+        "Módulo de Producción añadido a un plan existente. Precio mensual sin IVA.",
+      url: "https://www.drenpos.com/modulos",
+      availability: "https://schema.org/InStock",
+    },
+  ],
+  featureList: [
+    "Órdenes de trabajo con fases de fabricación",
+    "Consumo de materiales por lectura de código de barras",
+    "Descuento automático de stock por lote",
+    "Imputación de tiempos por operario y fase",
+    "Coste real de fabricación",
+    "Trazabilidad entre lote de materia prima y lote de producto acabado",
+  ],
+  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+---
+
+<Base
+  title="Software de Producción y Fabricación · Drenpos"
+  meta_title="Software de Producción para Pymes | Coste Real de Fabricación"
+  description="Software de producción para talleres y fabricantes: órdenes de trabajo por fases, consumo de materiales por escaneo, imputación de tiempos y coste real de fabricación. Desde 50 €/mes sin IVA."
+  canonical={CANONICAL}
+  image="/images/power/stock.png"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="section-sm pb-0 relative z-10 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/images/grainy.svg" width="1440" height="900" alt="" aria-hidden="true" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/funcionalidades" class="hover:text-primary">Funcionalidades</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Producción y fabricación</span>
+      </nav>
+
+      <div class="row gx-0 gy-12 lg:gy-0 items-center">
+        <div class="lg:col-6" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Nuevo módulo
+          </span>
+
+          <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
+            Software de <span class="text-primary">producción</span> que te dice cuánto cuesta fabricar de verdad
+          </h1>
+          <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
+            Órdenes de trabajo divididas en fases, consumo de materiales
+            escaneando el código, imputación de tiempos por operario y
+            <strong>coste real de fabricación</strong> al cerrar la orden.
+            Dentro del mismo ERP que ya lleva tu almacén, tu facturación y tus
+            fichajes. Desde <strong>50 €/mes sin IVA</strong>.
+          </p>
+
+          <ul class="flex flex-wrap gap-4 mb-10">
+            <li data-aos="fade-up-sm" data-aos-delay="100">
+              <a href="/contact" class="btn btn-dark">
+                Pedir demo gratuita
+                <span class="icon-wrapper">
+                  <span class="icon"><svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                  <span class="icon" aria-hidden="true"><svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                </span>
+              </a>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="150">
+              <a href="/pricing" class="btn btn-light">Ver el plan Producción</a>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Coste real por orden
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Consumo por escaneo
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              8 usuarios incluidos
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="relative px-4 lg:px-0 pt-10 pb-10">
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
+            <div class="rounded-2xl overflow-hidden relative z-10" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
+              <img src="/images/power/stock.png" alt="Panel de Drenpos con el stock del almacén sobre el que trabaja el módulo de Producción" width="720" height="480" class="w-full h-auto block" fetchpriority="high" />
+            </div>
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0" style="background: #dcfce7;">💶</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Coste real de la orden</p>
+                <p class="text-xs" style="color: #9ca3af;">materiales + tiempos imputados</p>
+              </div>
+            </div>
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #fef3c7;">🪜</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Fase 2 de 4</p>
+                <p class="text-xs" style="color: #9ca3af;">montaje · en curso</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ DEFINICIÓN CITABLE (front-loading GEO) ═══════════════ -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h4 font-bold mb-4">¿Qué es un software de producción?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            Un <strong>software de producción</strong> controla qué se fabrica,
+            en qué fase está cada trabajo, qué materiales consume y cuánto
+            tiempo lleva. En Drenpos, cada fabricación es una
+            <strong>orden de trabajo</strong> dividida en fases: el operario
+            escanea el material que consume —y el stock se descuenta al
+            instante, con su lote— e imputa el tiempo que dedica a cada fase.
+            Al cerrar la orden tienes el <strong>coste real de fabricación</strong>,
+            no una estimación.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SÍNTOMAS ═══════════════ -->
+  <section class="section pt-12 pb-0">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Si te suena esto</span>
+        <h2 class="h3 font-bold mb-4">Fabricas bien. El problema es que no lo mides.</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Cuatro señales de que tu taller necesita control de producción y no solo un programa de facturación.
+        </p>
+      </div>
+      <div class="row g-4">
+        {sintomas.map((s, i) => (
+          <div class="col-12 md:col-6" data-aos="fade-up-sm" data-aos-delay={(i % 2) * 80}>
+            <div class="border rounded-[20px] p-7 h-full" style="border-color: rgba(16,25,40,0.1);">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(211,167,118,0.15);">{s.icon}</div>
+              <h3 class="h6 font-semibold mb-2">{s.title}</h3>
+              <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{s.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CAPACIDADES ═══════════════ -->
+  <section class="section overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Módulo de Producción</span>
+        <h2 class="h3 font-bold mb-4">Qué hace exactamente el módulo</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Seis capacidades, sin humo: lo que registra, lo que descuenta y lo que calcula.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        {capacidades.map((f, i) => (
+          <div class="col-12 md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 80}>
+            <div class="border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(121,27,70,0.08);">{f.icon}</div>
+              <h3 class="h6 font-semibold mb-2">{f.title}</h3>
+              <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{f.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FLUJO DE UNA ORDEN ═══════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="rounded-[28px] p-8 lg:p-12" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
+        <div class="text-center mb-10">
+          <h2 class="h4 font-bold mb-2">Cómo funciona una orden de trabajo, paso a paso</h2>
+          <p class="text-base mb-0" style="color: rgba(16,25,40,0.65);">Cuatro pasos. Ningún parte de papel entre medias.</p>
+        </div>
+        <ol class="row g-4 list-none ps-0 mb-0">
+          {flujo.map((p) => (
+            <li class="col-12 md:col-6 lg:col-3">
+              <div class="rounded-2xl p-6 h-full" style="background: white; box-shadow: 0 6px 18px rgba(0,0,0,0.06);">
+                <span class="inline-flex items-center justify-center w-9 h-9 rounded-full font-bold mb-4 text-white" style="background: #791b46;">{p.n}</span>
+                <h3 class="text-base font-semibold mb-2">{p.t}</h3>
+                <p class="text-sm mb-0" style="color: rgba(16,25,40,0.65);">{p.d}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ COSTE TEÓRICO VS REAL ═══════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="rounded-[28px] overflow-hidden" style="background: rgba(16,25,40,0.97);">
+        <div class="row gx-0 gy-8 lg:gy-0 items-center p-10 lg:p-14">
+          <div class="lg:col-7 lg:pe-10">
+            <span class="text-white bg-white/10 px-3 py-1 inline-block rounded-full uppercase text-xs font-medium mb-5 tracking-wide" data-aos="fade-up-sm">El dato que cambia decisiones</span>
+            <h2 class="h3 font-bold mb-4 text-white leading-tight" data-aos="fade-up-sm">
+              Coste presupuestado <span style="color: #f9b27c;">contra coste real</span>
+            </h2>
+            <p class="text-lg leading-relaxed mb-0" style="color: rgba(255,255,255,0.78);" data-aos="fade-up-sm">
+              La mayoría de talleres presupuesta con un coste calculado una vez y
+              actualizado pocas veces. Cuando el material sube o la pieza lleva
+              más horas de las previstas, el margen desaparece sin dejar rastro
+              en ningún informe. Con el coste real por orden —materiales
+              consumidos y tiempos imputados— dejas de discutir con la
+              intuición: sabes qué productos son rentables, cuáles hay que
+              repreciar y qué fase se está comiendo las horas.
+            </p>
+          </div>
+          <div class="lg:col-5">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="rounded-2xl p-5 text-center" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
+                <p class="text-2xl font-bold mb-1" style="color: #f9b27c;">Por orden</p>
+                <p class="text-xs" style="color: rgba(255,255,255,0.7);">Coste calculado trabajo a trabajo</p>
+              </div>
+              <div class="rounded-2xl p-5 text-center" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
+                <p class="text-2xl font-bold mb-1" style="color: #f9b27c;">Por fase</p>
+                <p class="text-xs" style="color: rgba(255,255,255,0.7);">Tiempos imputados donde se gastan</p>
+              </div>
+              <div class="rounded-2xl p-5 text-center" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
+                <p class="text-2xl font-bold mb-1" style="color: #f9b27c;">Por lote</p>
+                <p class="text-xs" style="color: rgba(255,255,255,0.7);">Trazabilidad materia prima → acabado</p>
+              </div>
+              <div class="rounded-2xl p-5 text-center" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
+                <p class="text-2xl font-bold mb-1" style="color: #f9b27c;">50 €/mes</p>
+                <p class="text-xs" style="color: rgba(255,255,255,0.7);">Plan Producción, sin IVA</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CASOS DE USO ═══════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Casos de uso</span>
+        <h2 class="h3 font-bold mb-4">Quién lo usa y para qué</h2>
+      </div>
+      <div class="row g-5">
+        {casos.map((c, i) => (
+          <div class="col-12 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+            <div class="border rounded-[24px] p-8 h-full" style="border-color: rgba(16,25,40,0.1); background: #fff;">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(121,27,70,0.08);">{c.icon}</div>
+              <p class="text-xs font-semibold uppercase tracking-wide mb-3" style="color: #b45309;">{c.tag}</p>
+              <p class="text-base leading-relaxed mb-0" style="color: rgba(16,25,40,0.7);">{c.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ QUÉ INCLUYE EL PLAN (tabla AEO) ═══════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10 text-center mb-10" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Plan Producción</span>
+          <h2 class="h3 font-bold mb-3">Qué incluye el plan Producción por 50 €/mes</h2>
+          <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+            Contratados por separado, estos módulos costarían 116,90 €/mes sin IVA.
+          </p>
+        </div>
+        <div class="lg:col-11" data-aos="fade-up-sm">
+          <div class="overflow-x-auto rounded-3xl border" style="border-color: rgba(16,25,40,0.1);">
+            <table class="w-full bg-white">
+              <caption class="sr-only">Módulos y usuarios incluidos en el plan Producción de Drenpos, con su precio por separado sin IVA</caption>
+              <thead>
+                <tr style="background: rgba(16,25,40,0.04);">
+                  <th scope="col" class="text-left px-6 py-4 font-semibold">Incluido en el plan</th>
+                  <th scope="col" class="text-left px-6 py-4 font-semibold">Qué te da</th>
+                  <th scope="col" class="text-right px-6 py-4 font-semibold">Por separado</th>
+                </tr>
+              </thead>
+              <tbody>
+                {incluyePlan.map((r, i) => (
+                  <tr style={i % 2 === 1 ? "background: rgba(16,25,40,0.02);" : ""}>
+                    <th scope="row" class="text-left px-6 py-4 font-medium align-top">{r.m}</th>
+                    <td class="px-6 py-4 text-sm align-top" style="color: rgba(16,25,40,0.68);">{r.d}</td>
+                    <td class="px-6 py-4 text-right whitespace-nowrap align-top">{r.s}</td>
+                  </tr>
+                ))}
+                <tr style="background: rgba(121,27,70,0.06);">
+                  <th scope="row" class="text-left px-6 py-4 font-bold">Plan Producción</th>
+                  <td class="px-6 py-4 text-sm font-medium">Todo lo anterior en un solo precio</td>
+                  <td class="px-6 py-4 text-right font-bold whitespace-nowrap" style="color: #791b46;">50 €/mes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm mt-4 mb-0" style="color: rgba(16,25,40,0.55);">
+            Todos los precios son mensuales y sin IVA. El pago anual aplica un 10 % de descuento.
+            Consulta el detalle en <a href="/pricing" class="text-primary font-medium underline">planes y precios</a>
+            o el catálogo completo de <a href="/modulos" class="text-primary font-medium underline">módulos</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FAQ ═══════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10 text-center mb-12" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Preguntas frecuentes</span>
+          <h2 class="h3 font-bold mb-3">Producción: lo que más nos preguntan</h2>
+          <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+            Si tu duda no está aquí, <a href="/contact" class="text-primary font-semibold underline">escríbenos</a>.
+          </p>
+        </div>
+        <div class="lg:col-10">
+          <div class="flex flex-col gap-3">
+            {faqs.map((f, i) => (
+              <details class="group rounded-2xl border bg-white" style="border-color: rgba(16,25,40,0.1);" data-aos="fade-up-sm" data-aos-delay={i * 40}>
+                <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none">
+                  <h3 class="font-semibold text-base lg:text-lg mb-0">{f.q}</h3>
+                  <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-200 group-open:rotate-45 text-xl leading-none" style="background: rgba(121,27,70,0.10); color: #791b46;" aria-hidden="true">+</span>
+                </summary>
+                <div class="px-6 pb-6 -mt-2">
+                  <p class="text-base leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">{f.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ HERMANAS DEL CLÚSTER ═══════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h4 font-bold mb-2">Sigue por aquí</h2>
+        <p class="text-base mb-0" style="color: rgba(16,25,40,0.65);">Producción no vive sola: se apoya en el almacén, la expedición y el control horario.</p>
+      </div>
+      <div class="row g-4">
+        {hermanas.map((h, i) => (
+          <div class="col-12 md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 80}>
+            <a href={h.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
+              <h3 class="h6 font-semibold mb-2">{h.title}</h3>
+              <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{h.body}</p>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ENLAZADO INTERNO LOCAL ═══════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <h2 class="h5 font-bold mb-2">Sistema de facturación y ERP por ciudad</h2>
+          <p class="text-sm mb-6" style="color: rgba(16,25,40,0.6);">Soporte cercano para talleres y fabricantes de Extremadura.</p>
+          <div class="flex flex-wrap gap-2.5">
+            {ciudades.map((c) => (
+              <a href={`/local/${c.s}`} class="text-sm px-4 py-2 rounded-full border transition-colors hover:border-primary hover:text-primary" style="border-color: rgba(16,25,40,0.12); color: rgba(16,25,40,0.7);">{c.n}</a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>

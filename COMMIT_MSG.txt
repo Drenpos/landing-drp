@@ -1,0 +1,35 @@
+feat(pricing): plan y módulo Producción + landing y schema SEO/GEO/AEO
+
+Datos de negocio
+- Nuevo plan Producción (50 €/mes · 45 € anual, 8 usuarios) en pricing.md,
+  cuarta columna en plans-comparison.md y nuevo Módulo Producción (22 €/mes)
+  en modules.md.
+- Añadido "Envío por WhatsApp" a los cuatro planes: ya venía incluido en la
+  API y no aparecía en la web.
+- Precios de módulos normalizados a sin IVA según la API (Financiero,
+  Inventario y Comercial 16,45 €; TPV 20,58 €; correo y WhatsApp 4 €;
+  Fichajes 1 €). Antes convivían precios con y sin IVA bajo una nota que
+  decía "todos los precios son sin IVA".
+
+Schema de contenido
+- plansComparisonCollection pasa de columnas fijas (essential/pro/full) a
+  .catchall(): añadir un plan ya solo requiere tocar el .md.
+
+SEO / GEO / AEO
+- Nueva landing /software-produccion-fabricacion dentro del clúster de
+  funcionalidades: definición citable front-loaded, flujo numerado, tabla de
+  qué incluye el plan, FAQ con preguntas en lenguaje natural y JSON-LD
+  BreadcrumbList + SoftwareApplication (dos Offer) + FAQPage.
+- /pricing gana BreadcrumbList, SoftwareApplication con AggregateOffer (un
+  Offer por plan, valueAddedTaxIncluded: false) y FAQPage, más un párrafo de
+  respuesta directa y una FAQ específica de precios que sustituye a la
+  genérica.
+- faq.md: la respuesta de precios contradecía los precios públicos ("cuéntanos
+  tu caso y te enviamos una propuesta") y el listado de módulos estaba
+  desactualizado.
+- Base.astro: AggregateOffer 19-50 € y featureList con producción y envíos.
+- menu.json, llms.txt y llms-full.txt enlazan la landing nueva; hermanas de
+  software-gestion-almacen también.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01AX6Qps7KPJQ3aST9uYeJJc

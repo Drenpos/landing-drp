@@ -1,16 +1,13 @@
 ---
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
-import CallToAction from "@/partials/CallToAction.astro";
-import CustomersLogo from "@/partials/CustomersLogo.astro";
-import FAQ from "@/partials/Faq.astro";
-import ModulesTable from "@/partials/ModulesTable.astro";
 import PageHeader from "@/partials/PageHeader.astro";
 import PricingSection from "@/partials/PricingSection.astro";
-import Testimonial from "@/partials/Testimonial.astro";
 import { getEntry, type CollectionEntry } from "astro:content";
 import PlansComparison from "@/partials/PlansComparison.astro";
 import ModulesTableCollapsible from "@/partials/ModulesTableCollapsible.astro";
+
+const CANONICAL = "https://www.drenpos.com/pricing";
 
 const pricingIndex = (await getEntry(
   "pricing",
@@ -18,6 +15,141 @@ const pricingIndex = (await getEntry(
 )) as CollectionEntry<"pricing">;
 
 const { title, description, meta_title, image, hero } = pricingIndex.data;
+
+// ── Precios (sin IVA) ────────────────────────────────────────────────────
+// Fuente única: src/content/sections/pricing.md. Si cambian ahí, cambian aquí.
+const planes = [
+  {
+    nombre: "Essential",
+    precio: "19.00",
+    para: "Autónomos y gestión administrativa básica.",
+    incluye:
+      "2 usuarios, módulos Financiero, Informes y Fichajes, y envío de documentos por correo y WhatsApp.",
+  },
+  {
+    nombre: "Pro",
+    precio: "29.00",
+    para: "Negocios que necesitan control de stock pero no venta física.",
+    incluye:
+      "3 usuarios, todo lo del plan Essential más el módulo de Inventario con almacenes, stock y lotes.",
+  },
+  {
+    nombre: "Full",
+    precio: "39.00",
+    para: "Negocios con local físico que requieren rapidez en caja (TPV).",
+    incluye:
+      "5 usuarios, todo lo del plan Pro más el módulo TPV para tienda y restaurante.",
+  },
+  {
+    nombre: "Producción",
+    precio: "50.00",
+    para: "Talleres y fabricantes que necesitan controlar la producción y su coste real.",
+    incluye:
+      "8 usuarios, módulos Producción, Inventario, Financiero, Informes y Fichajes, y envío por correo y WhatsApp.",
+  },
+];
+
+// ── FAQ específica de precios (AEO: preguntas tal y como se buscan) ───────
+const faqs = [
+  {
+    q: "¿Cuánto cuesta Drenpos?",
+    a: "Drenpos tiene cuatro planes mensuales sin IVA: Essential 19 €, Pro 29 €, Full 39 € y Producción 50 €. Cada plan incluye un número de usuarios y un conjunto de módulos ya activados. El pago anual aplica un 10 % de descuento. No hay coste de instalación, permanencia ni cargos por volumen de datos o transacciones.",
+  },
+  {
+    q: "¿Qué plan de Drenpos me conviene?",
+    a: "Essential si eres autónomo y solo necesitas facturar. Pro si además llevas stock pero no vendes en mostrador. Full si tienes local físico y necesitas TPV. Producción si fabricas y quieres controlar órdenes de trabajo, tiempos y coste real. Si ninguno encaja, el Plan a Medida parte de un estudio de tus procesos.",
+  },
+  {
+    q: "¿Los precios de Drenpos incluyen IVA?",
+    a: "No. Todos los precios publicados —tanto de planes como de módulos sueltos— son sin IVA. Al ser una suscripción de software contratada por empresas y autónomos en España, se factura con el 21 % de IVA aplicable, que verás desglosado en tu factura.",
+  },
+  {
+    q: "¿Puedo añadir módulos sueltos a mi plan?",
+    a: "Sí. Cualquier módulo del catálogo se puede activar sobre tu plan: Producción 22 €/mes, Inventario 16,45 €, TPV 20,58 €, Comercial 16,45 €, Informes 6 €, Cloud Storage 4 €, envío por correo 4 € y por WhatsApp 4 €. Los usuarios adicionales cuestan 5 €/mes y los de fichaje 1 €/mes. Todos sin IVA.",
+  },
+  {
+    q: "¿Hay permanencia o coste de instalación?",
+    a: "No hay ninguno de los dos. Los módulos se activan y desactivan mensualmente, así que puedes ampliar en temporada alta y reducir después. Tampoco hay coste de implantación estándar ni cargos ocultos por número de documentos, sesiones simultáneas o volumen de datos almacenados.",
+  },
+  {
+    q: "¿Las actualizaciones tienen coste adicional?",
+    a: "No. Todas las actualizaciones están incluidas en la suscripción: si un módulo que ya tienes contratado mejora, lo recibes sin coste ni acción por tu parte. No existe el concepto de «upgrade de pago» a una versión superior del mismo módulo.",
+  },
+  {
+    q: "¿El soporte está incluido en el precio?",
+    a: "Sí. Todos los planes incluyen soporte humano en español, con respuesta habitual en menos de 24 horas laborables y acompañamiento durante el arranque. Existe un soporte premium opcional con sobrecoste para quien necesite tiempos de respuesta más exigentes.",
+  },
+  {
+    q: "¿Cuánto ahorro frente a contratar los módulos por separado?",
+    a: "El plan Essential sale un 55 % más barato que sus módulos sueltos. Pro ahorra unos 35,90 €/mes, Full unos 58,50 €/mes y Producción unos 66,90 €/mes. El ahorro crece con el plan porque los usuarios incluidos y los módulos de envío se cobran por separado fuera del plan.",
+  },
+  {
+    q: "¿Hay demo o prueba antes de contratar?",
+    a: "Sí, ofrecemos una demo guiada gratuita de unos 20 minutos para ver el encaje con tus procesos, tus datos y tu trazabilidad antes de decidir. Puedes solicitarla desde la página de contacto sin compromiso.",
+  },
+];
+
+// ── Datos estructurados ──────────────────────────────────────────────────
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Precios", item: CANONICAL },
+  ],
+};
+
+const offersSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Drenpos ERP",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web, iOS, Android (PWA)",
+  url: CANONICAL,
+  inLanguage: "es-ES",
+  description:
+    "ERP SaaS modular para pymes y autónomos en España. Cuatro planes desde 19 €/mes sin IVA, con módulos de facturación Verifactu, inventario, TPV, producción, control horario e informes que se activan y desactivan mensualmente.",
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "EUR",
+    lowPrice: "19.00",
+    highPrice: "50.00",
+    offerCount: planes.length,
+    url: CANONICAL,
+    offers: planes.map((p) => ({
+      "@type": "Offer",
+      name: `Plan ${p.nombre}`,
+      price: p.precio,
+      priceCurrency: "EUR",
+      description: `${p.para} Incluye ${p.incluye} Precio mensual sin IVA.`,
+      url: CANONICAL,
+      availability: "https://schema.org/InStock",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: p.precio,
+        priceCurrency: "EUR",
+        valueAddedTaxIncluded: false,
+        unitCode: "MON",
+        referenceQuantity: {
+          "@type": "QuantitativeValue",
+          value: 1,
+          unitCode: "MON",
+        },
+      },
+    })),
+  },
+  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 ---
 
 <Base
@@ -25,19 +157,68 @@ const { title, description, meta_title, image, hero } = pricingIndex.data;
   meta_title={meta_title}
   image={image}
   description={description}
+  canonical={CANONICAL}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(offersSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
   <PageHeader title={hero.title} description={hero.description} />
+
+  <!-- ═══════════ RESPUESTA DIRECTA (front-loading GEO/AEO) ═══════════ -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <p class="text-lg leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+            Drenpos cuesta desde <strong>19 €/mes sin IVA</strong>. Hay cuatro
+            planes —<strong>Essential 19 €</strong>, <strong>Pro 29 €</strong>,
+            <strong>Full 39 €</strong> y <strong>Producción 50 €</strong>— cada
+            uno con sus usuarios y sus módulos ya incluidos, más un
+            <a href="/contact" class="text-primary font-medium underline">plan a medida</a>
+            para procesos que no encajan en ninguno. Puedes añadir módulos
+            sueltos a cualquier plan y activarlos o desactivarlos cada mes.
+            Sin permanencia, sin coste de instalación y con las actualizaciones
+            incluidas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="section-up pb-0">
     <PricingSection isSection={true} />
     <PlansComparison isSection={true} />
     <ModulesTableCollapsible isSection={true} />
   </div>
-  <!-- <CustomersLogo isGrayscale={true} sectionGap={"section"} /> -->
-  <!-- <Testimonial />-->
-  <br />
-  <br />
-  <br />
-  <FAQ />
-  <!-- <CallToAction /> -->
-  <!-- <CallToAction /> -->
+
+  <!-- ═══════════════ FAQ DE PRECIOS ═══════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10 text-center mb-12" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Preguntas frecuentes</span>
+          <h2 class="h3 font-bold mb-3">Precios: lo que más nos preguntan</h2>
+          <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+            Si tu duda no está aquí, <a href="/contact" class="text-primary font-semibold underline">escríbenos</a> y te ayudamos a elegir.
+          </p>
+        </div>
+        <div class="lg:col-10">
+          <div class="flex flex-col gap-3">
+            {faqs.map((f, i) => (
+              <details class="group rounded-2xl border bg-white" style="border-color: rgba(16,25,40,0.1);" data-aos="fade-up-sm" data-aos-delay={i * 40}>
+                <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none">
+                  <h3 class="font-semibold text-base lg:text-lg mb-0">{f.q}</h3>
+                  <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-200 group-open:rotate-45 text-xl leading-none" style="background: rgba(121,27,70,0.10); color: #791b46;" aria-hidden="true">+</span>
+                </summary>
+                <div class="px-6 pb-6 -mt-2">
+                  <p class="text-base leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">{f.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </Base>

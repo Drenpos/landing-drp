@@ -45,7 +45,7 @@ Key collections:
 - `blog` (general) + `local` (Extremadura local-SEO articles) — parallel blog collections, each with own routes (`src/pages/blog/`, `src/pages/local/`)
 - `sections/*` — reusable page sections: `modules.md`, `plans-comparison.md`, `pricing.md`, `faq.md`, `team.md`, `testimonial.md`, `clients.md`, `call-to-action.md`, `feature*.md`
 
-**Plans comparison schema** (`plans-comparison.md`) uses three plan columns: `essential`, `pro`, `full`. Cell values are `boolean | number | string` — preserves "Hasta 2026" / "Próximamente" style overrides.
+**Plans comparison schema** (`plans-comparison.md`) declares its columns in `plans[].id` (hoy: `essential`, `pro`, `full`, `produccion`). El schema Zod usa `.catchall()` sobre cada fila, así que **añadir un plan nuevo solo requiere tocar el `.md`**: una clave por cada `plan.id` en cada `item`. Cell values are `boolean | number | string` — preserves "Hasta 2026" / "Próximamente" style overrides. `PlansComparison.astro` resuelve la celda con `item[plan.id]`, no hay nombres de plan hardcodeados.
 
 ### Page routes worth knowing
 - `[regular].astro` — catch-all for `pages` collection
@@ -60,6 +60,7 @@ Key collections:
 - `software-almacen-frigorifico.astro` — frío, congelados y cadena de frío
 - `software-alquiler-huecos-palet.astro` — depósito de terceros / 3PL
 - `software-almacen-tienda.astro` — almacén + TPV para retail
+- `software-produccion-fabricacion.astro` — producción y fabricación (órdenes de trabajo, fases, tiempos, coste real)
 
 Al tocar una, revisa: `src/config/menu.json` (submenú Funcionalidades), `src/pages/llms.txt.ts` y `src/pages/llms-full.txt.ts` (bloque "Páginas de solución"), y los enlaces cruzados del array `hermanas` en `software-gestion-almacen.astro`. `seoGraph` valida en build enlaces internos, unicidad de metadatos y H1 único: un enlace roto o un `meta_title` duplicado rompe el build.
 
@@ -80,7 +81,9 @@ Available in all `.md`/`.mdx` without import (`astro.config.mjs`): `Button`, `Ac
 `Base.astro` boots Google Consent Mode v2 (**denied by default**) + GTM (`GTM-PDNNFZ98`) inline before any tracker. `CookieConsent` (vanilla-cookieconsent) controls grants. Don't move/duplicate the inline consent script.
 
 ### SEO / structured data
-`Base.astro` emits JSON-LD for `Organization`, `SoftwareApplication`, `WebSite`. Update product features there when adding modules.
+`Base.astro` emits JSON-LD for `Organization`, `SoftwareApplication`, `WebSite`. Update product features there when adding modules (el `SoftwareApplication` global lleva un `AggregateOffer` con `lowPrice`/`highPrice`/`offerCount` — actualízalo si cambian los planes).
+
+`pricing.astro` emite además su propio `BreadcrumbList` + `SoftwareApplication` con `AggregateOffer` (un `Offer` por plan, `valueAddedTaxIncluded: false`) + `FAQPage`. Los precios viven duplicados en el array `planes` de `pricing.astro` porque el JSON-LD necesita valores numéricos limpios: **si cambias `src/content/sections/pricing.md`, cambia también ese array**.
 
 ### Two key components
 `MODULES_TABLE_README.md` documents `ModulesTableCollapsible.astro` + `PlansComparison.astro` (collapsible module catalog + plan comparison matrix). The collapsible variant supersedes the legacy `ModulesTable.astro`.

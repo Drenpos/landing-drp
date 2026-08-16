@@ -604,6 +604,24 @@ const modulesSectionCollection = defineCollection({
   }),
 });
 
+// Celda de la tabla comparativa: true/false, un número (usuarios incluidos)
+// o un texto libre ("Hasta 2026", "Próximamente"...).
+const comparisonCell = z.union([z.boolean(), z.number(), z.string()]);
+
+// Cada fila lleva `name` + una clave por cada plan declarado en `plans[].id`
+// (essential, pro, full, produccion...). Se usa `catchall` para no tener que
+// tocar el schema cada vez que se añade un plan nuevo.
+const comparisonRow = z
+  .object({
+    name: z.string(),
+  })
+  .catchall(comparisonCell);
+
+const comparisonGroup = z.object({
+  category: z.string(),
+  items: z.array(comparisonRow),
+});
+
 // plansComparisonCollection
 const plansComparisonCollection = defineCollection({
   loader: glob({
@@ -620,32 +638,8 @@ const plansComparisonCollection = defineCollection({
         name: z.string(),
       }),
     ),
-    features: z.array(
-      z.object({
-        category: z.string(),
-        items: z.array(
-          z.object({
-            name: z.string(),
-            essential: z.union([z.boolean(), z.number(), z.string()]),
-            pro: z.union([z.boolean(), z.number(), z.string()]),
-            full: z.union([z.boolean(), z.number(), z.string()]),
-          }),
-        ),
-      }),
-    ),
-    modules: z.array(
-      z.object({
-        category: z.string(),
-        items: z.array(
-          z.object({
-            name: z.string(),
-            essential: z.union([z.boolean(), z.number(), z.string()]),
-            pro: z.union([z.boolean(), z.number(), z.string()]),
-            full: z.union([z.boolean(), z.number(), z.string()]),
-          }),
-        ),
-      }),
-    ),
+    features: z.array(comparisonGroup),
+    modules: z.array(comparisonGroup),
     notes: z.array(z.string()).optional(),
   }),
 });
