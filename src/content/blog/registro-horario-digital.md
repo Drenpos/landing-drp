@@ -1,8 +1,9 @@
 ---
 title: "Registro horario digital: obligación, requisitos y sanciones en 2026"
 meta_title: "Registro horario digital 2026: guía completa para empresas"
-description: "Todo lo que necesitas saber sobre el registro horario digital en 2026: cuándo es obligatorio, qué requisitos debe cumplir tu sistema y cómo evitar sanciones por trabajador."
+description: "Todo lo que necesitas saber sobre el registro horario digital en 2026: estado del real decreto en septiembre, requisitos que debe cumplir tu sistema y sanciones vigentes de 751 a 7.500 euros."
 date: 2026-08-03
+updated: 2026-09-03
 image: "/images/blog/registro-horario-digital/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -24,7 +25,11 @@ hero:
   description: "El papel y el Excel están prohibidos. Conoce los requisitos reales del fichaje digital, cuándo entra en vigor y cómo evitar multas calculadas por trabajador."
 ---
 
-La pregunta ya no es si debes implantar un **registro horario digital**: la ley te lo exige desde 2019 y la nueva normativa de 2026 endurece el control hasta el punto de que un sistema incorrecto puede costarte más que no tener ninguno. La diferencia está en que ahora las multas se calculan por trabajador afectado, no por infracción. Con veinte empleados, un sistema de fichaje no homologado puede suponer hasta 10.000 euros por cabeza. Consulta el desglose completo en nuestra guía de [multas de registro horario 2026](/blog/multas-registro-horario-2026-costo-incumplimiento).
+La pregunta ya no es si debes implantar un **registro horario digital**: la ley te lo exige desde 2019 y el real decreto en tramitación endurece el control hasta el punto de que un sistema incorrecto puede costarte más que no tener ninguno. Hoy la infracción grave por no llevar registro, o por llevarlo en papel o Excel, se sanciona con entre 751 y 7.500 euros. El proyecto de reforma quiere que esa multa se calcule por trabajador afectado, hasta 10.000 euros por cabeza: con veinte empleados, el mismo fallo pasaría de una sanción a veinte. Consulta el desglose completo en nuestra guía de [multas de registro horario 2026](/blog/multas-registro-horario-2026-costo-incumplimiento).
+
+<Notice type="info" title="Actualizado en septiembre de 2026">
+El real decreto de registro horario digital sigue sin publicarse en el BOE. Tras el dictamen del Consejo de Estado del 23 de marzo de 2026, los ministerios de Trabajo y Economía acordaron en julio retomar su tramitación en septiembre de 2026. Mientras tanto, la obligación vigente es la del Real Decreto-ley 8/2019 y las sanciones aplicables son las de la LISOS: de 751 a 7.500 euros por infracción grave. Hemos revisado esta guía con ese estado.
+</Notice>
 
 El [registro en papel o Excel es ilegal](/blog/por-que-excel-ya-no-sirve-control-horario-2026) y, además, una **trampa contable activa**. Cada hora no trazada es una hora que puede convertirse en litigio, sanción o pérdida de margen. La digitalización del registro es la estructura mínima de seguridad jurídica que cualquier empresa necesita para operar sin sobresaltos.
 
@@ -47,7 +52,7 @@ El criterio de la Inspección de Trabajo es claro: si el dato puede borrarse o e
 
 ## Ley de control horario 2026: qué cambia exactamente
 
-La nueva ley de control horario en España no llega por vía parlamentaria sino a través de un real decreto. El Consejo de Ministros aprobó su tramitación urgente el 30 de septiembre de 2025. El Consejo de Estado emitió un dictamen crítico el 23 de marzo de 2026 que obligó a revisar el texto, y el sector especializado sitúa la aprobación en el último tramo de 2026. A agosto de 2026 no ha sido publicada en el BOE, pero las empresas que aún no tienen un sistema digital homologado siguen acumulando riesgo.
+La nueva ley de control horario en España no llega por vía parlamentaria sino a través de un real decreto. El Consejo de Ministros aprobó su tramitación urgente el 30 de septiembre de 2025, después de que el Congreso rechazara el 10 de septiembre de 2025 el proyecto de ley de reducción de jornada que incluía la reforma del registro. El Consejo de Estado emitió un dictamen crítico el 23 de marzo de 2026 que obligó a revisar el texto, y el 24 de julio de 2026 Trabajo y Economía acordaron retomar la tramitación en septiembre. A principios de septiembre de 2026 no ha sido publicada en el BOE, pero las empresas que aún no tienen un sistema digital fiable siguen acumulando riesgo con la norma vigente.
 
 **Los cambios respecto al marco actual son sustanciales:**
 
@@ -56,7 +61,7 @@ La nueva ley de control horario en España no llega por vía parlamentaria sino 
 - **Registro de pausas y descansos**, no solo de entrada y salida. El sistema debe distinguir horas ordinarias, extraordinarias y complementarias.
 - **Inalterabilidad de los datos**: cualquier corrección de un fichaje debe quedar registrada con fecha, hora y quién la autorizó.
 - **Restricción de sistemas biométricos**: huella dactilar y reconocimiento facial solo son válidos cuando no existe alternativa técnica viable, ya que la AEPD los clasifica como datos especialmente sensibles.
-- **Régimen sancionador por trabajador afectado**, no por infracción global. Esto multiplica el impacto económico en empresas con plantillas de cualquier tamaño.
+- **Régimen sancionador por trabajador afectado**, no por infracción global. Es la parte del proyecto que más cambia el cálculo: hoy la multa es por infracción; con la reforma se multiplicaría por cada persona de la plantilla.
 
 El período de adaptación tras la publicación en el BOE será corto. Las empresas que ya cuentan con un sistema digital válido no tendrán que hacer nada. Las que siguen con papel o Excel deberán migrar antes de que la norma entre en vigor.
 
@@ -101,10 +106,10 @@ El cambio más significativo de la nueva normativa está en cómo se calculan la
 Las sanciones se gradúan según la Ley sobre Infracciones y Sanciones en el Orden Social (LISOS):
 
 - **Infracciones leves**: entre 70 y 750 euros
-- **Infracciones graves**: entre 751 y 7.500 euros por trabajador. Entran aquí la falta de sistema adecuado, la conservación incompleta de registros y el uso de sistemas no homologados
-- **Infracciones muy graves**: entre 7.501 y 225.018 euros por trabajador, reservadas para manipulación o falsedad en los datos
+- **Infracciones graves**: entre 751 y 7.500 euros por infracción con la LISOS vigente (artículo 7.5). Entran aquí la falta de sistema adecuado, la conservación incompleta de registros y el uso de sistemas no fiables. El proyecto de reforma eleva el tope a 10.000 euros y lo aplica por trabajador afectado
+- **Infracciones muy graves**: entre 7.501 y 225.018 euros por infracción, reservadas para manipulación o falsedad en los datos
 
-**Ejemplo real:** Una empresa de hostelería con 15 empleados que sigue usando papel podría enfrentarse a una sanción grave de hasta 7.500 euros por cada uno de los 15 trabajadores. Total: hasta 112.500 euros por una única inspección.
+**Ejemplo:** Una empresa de hostelería con 15 empleados que sigue usando papel se expone hoy a una sanción grave de hasta 7.500 euros. Si la reforma se aprueba tal y como está redactada, esa misma inspección podría computar hasta 10.000 euros por cada uno de los 15 trabajadores: hasta 150.000 euros por un único fallo. La Inspección levantó 1.869 actas por registro de jornada en 2024, según los datos recopilados por [Mi Fichaje Legal](https://mifichajelegal.com/blog/real-decreto-registro-horario-digital-mayo-2026-estado-tramitacion-pymes/).
 
 Las infracciones más frecuentes que detecta la Inspección son:
 
@@ -162,7 +167,7 @@ Drenpos integra el **control horario** dentro del mismo sistema que gestiona el 
 
 ### ¿Desde cuándo es obligatorio el registro horario digital?
 
-El registro de jornada es obligatorio desde mayo de 2019 (RD-ley 8/2019). La obligación de que sea **exclusivamente digital** llega con la nueva normativa en tramitación, prevista para su aprobación en el último tramo de 2026, aunque a agosto de 2026 aún no ha sido publicada en el BOE.
+El registro de jornada es obligatorio desde mayo de 2019 (RD-ley 8/2019). La obligación de que sea **exclusivamente digital** llega con el real decreto en tramitación, cuya aprobación el Gobierno retomó en septiembre de 2026 tras el dictamen del Consejo de Estado; a principios de septiembre de 2026 aún no ha sido publicado en el BOE.
 
 ### ¿Un autónomo con trabajadores necesita registro horario digital?
 

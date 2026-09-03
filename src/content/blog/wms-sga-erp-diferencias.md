@@ -3,6 +3,7 @@ title: "Diferencia entre WMS y ERP: qué es un SGA y cuál necesitas"
 meta_title: "Diferencia entre WMS y ERP (y qué es un SGA)"
 description: "WMS, SGA y ERP explicados sin humo: qué resuelve cada sistema, qué capacidades definen un WMS real y cuánto cuesta tener el almacén fuera del ERP."
 date: 2026-08-12
+updated: 2026-09-03
 image: "/images/blog/wms-sga-erp-diferencias/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -151,7 +152,9 @@ Drenpos es un ERP modular cuyo módulo de Inventario hace el trabajo de un SGA d
 
 Esa frontera la decimos antes de vender, no después: con un almacén robotizado, necesitas un WMS especializado.
 
-Para el resto —distribución, alimentación, frío, 3PL de tamaño medio— el módulo de Inventario cubre la operativa. Puedes verlo aplicado en [preparación de pedidos y picking](/software-preparacion-pedidos-picking), en [alquiler de huecos de palet](/software-alquiler-huecos-palet) o en [almacén frigorífico](/software-almacen-frigorifico).
+Para el resto (distribución, alimentación, frío, 3PL de tamaño medio) el módulo de Inventario cubre la operativa. Puedes verlo aplicado en [preparación de pedidos y picking](/software-preparacion-pedidos-picking), en [gestión de palets con etiqueta SSCC](/software-gestion-palets), en [alquiler de huecos de palet](/software-alquiler-huecos-palet) o en [almacén frigorífico](/software-almacen-frigorifico).
+
+Desde septiembre de 2026 los palets propios son explícitos: cada uno guarda el origen de cada línea y el sistema avisa si alguien intenta tocar un palet ya cerrado. Es el tipo de detalle que separa un inventario con cantidades de un SGA que sabe qué hay en cada palet. Si te preguntas qué presupuesto necesita todo esto, lo desglosamos en [cuánto cuesta un SGA para una pyme](/blog/cuanto-cuesta-sga-wms-pyme-2026).
 
 El planteamiento comercial es igual de directo: planes de 19 a 39 €/mes sin IVA, módulo de Inventario por 16,45 €/mes sin IVA, con soporte y actualizaciones incluidos. Detalles en [precios](/pricing).
 

@@ -23,9 +23,9 @@ const COLLECTION_FOLDER =
 const posts = await getSinglePage(COLLECTION_FOLDER);
 const similarPosts = similarItems(post, posts);
 const { Content } = await render(post);
-const { title, description, image, date, author } = post.data;
+const { title, description, image, date, updated, author } = post.data;
 
-const blogData = { author, date };
+const blogData = { author, date, updated };
 
 // El schema BlogPosting lo emite Base.astro dentro del @graph (con keywords,
 // autor y fechas). No se duplica aquí; este layout solo aporta el FAQPage.

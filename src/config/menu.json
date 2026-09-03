@@ -22,6 +22,10 @@
           "url": "/control-horario"
         },
         {
+          "name": "Dispositivo de Fichaje",
+          "url": "/dispositivo-fichaje"
+        },
+        {
           "name": "Gestión de Almacén",
           "url": "/software-gestion-almacen"
         },
@@ -32,6 +36,10 @@
         {
           "name": "Almacén Frigorífico",
           "url": "/software-almacen-frigorifico"
+        },
+        {
+          "name": "Gestión de Palets (SSCC)",
+          "url": "/software-gestion-palets"
         },
         {
           "name": "Alquiler de Huecos de Palet",

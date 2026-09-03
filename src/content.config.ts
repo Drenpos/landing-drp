@@ -121,6 +121,10 @@ const postSchemaShape = {
   description: z.string().max(300).optional(),
   tags: z.array(z.string()).optional(),
   date: z.coerce.date().optional(),
+  // Fecha de última revisión de fondo del contenido. Alimenta dateModified
+  // (JSON-LD + og) y la línea "Actualizado el" visible. Solo se toca cuando
+  // el contenido cambia de verdad, no en retoques cosméticos.
+  updated: z.coerce.date().optional(),
   image: z.string().optional(),
   author: z
     .object({

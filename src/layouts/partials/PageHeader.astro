@@ -14,7 +14,11 @@ const {
   title?: string;
   description?: string;
   hasSmallHeight?: boolean | string;
-  blogData?: { author: { name: string; avatar: string }; date: Date };
+  blogData?: {
+    author: { name: string; avatar: string };
+    date: Date;
+    updated?: Date;
+  };
 } = Astro.props;
 ---
 
@@ -75,9 +79,23 @@ const {
               <li class="flex items-center gap-x-2">
                 <Icon name="random/calendar" class={"text-primary"} />
                 <p class="inline-block font-medium text-primary">
-                  {dateFormat(blogData.date, "iiii, MMM dd, yyyy")}
+                  <time datetime={blogData.date.toISOString()}>
+                    {dateFormat(blogData.date, "EEEE, d 'de' MMMM 'de' yyyy")}
+                  </time>
                 </p>
               </li>
+              {blogData.updated &&
+                blogData.updated.getTime() > blogData.date.getTime() && (
+                  <li class="flex items-center gap-x-2">
+                    <Icon name="random/calendar" class={"text-primary"} />
+                    <p class="inline-block font-medium">
+                      Actualizado el{" "}
+                      <time datetime={blogData.updated.toISOString()}>
+                        {dateFormat(blogData.updated, "d 'de' MMMM 'de' yyyy")}
+                      </time>
+                    </p>
+                  </li>
+                )}
             </ul>
           )
         }

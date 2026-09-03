@@ -87,10 +87,16 @@ La gestión de almacén es la especialidad de Drenpos e incluye capacidades de n
 
 - ${BASE}/software-gestion-almacen — SGA/WMS general: multialmacén, ubicaciones con QR, lotes y series, FIFO/LIFO/FEFO, reservas de stock, trazabilidad con informe de recall, inventarios parciales e informes de rotación e inmovilizado.
 - ${BASE}/software-preparacion-pedidos-picking — preparación de pedidos y expedición: semáforo de preparabilidad, etiqueta QR por pedido, asistente de picking móvil, oleadas pick-to-box, zona de preparados con QR y expedición con escaneo que genera albarán o factura.
+- ${BASE}/software-gestion-palets — gestión de palets y etiqueta SSCC: el palet como unidad logística con SSCC GS1-128 generado desde el propio palet, ciclo de vida abierto, cerrado y pesado (bruto, tara y neto), expedido o anulado, palets propios con origen por línea, mezcla libre de productos, lotes y series, movimiento del palet entero en un escaneo, despaletizado (vaciar, pasar a otro o partir en varios) y palets blindados dentro de albaranes y facturas.
 - ${BASE}/software-almacen-frigorifico — almacén frigorífico y de congelados: cadena de frío, alertas de caducidad, operativa de palets en móvil y tablet a pie de cámara, despiece con merma explícita.
 - ${BASE}/software-alquiler-huecos-palet — depósito de terceros y alquiler de huecos de palet (3PL): propietario por palet, tarifas por palet/día y kg/día, eventos tarificables automáticos, posición en vivo, simulador, informe del periodo en PDF y actas de entrega firmadas con huella criptográfica sha256.
 - ${BASE}/software-almacen-tienda — almacén combinado con TPV para comercio con tienda física.
 - ${BASE}/software-produccion-fabricacion — control de producción para talleres y fabricantes: órdenes de trabajo divididas en fases, consumo de materiales por lectura de código con descuento de stock por lote, imputación de tiempos por operario y coste real de fabricación al cerrar la orden, con trazabilidad entre lote de materia prima y lote de producto acabado. Módulo 22 €/mes o plan Producción 50 €/mes, ambos sin IVA.
+
+# Control horario y dispositivo de fichaje
+
+- ${BASE}/control-horario — software de control horario y registro de jornada: fichaje por web, app PWA, widget, QR y llavero RFID; calendarios laborales, conceptos de fichaje, sellado inalterable y reportes para la Inspección de Trabajo.
+- ${BASE}/dispositivo-fichaje — terminal de fichaje fabricado por Drenpos: lectura de llavero RFID y código QR, pantalla de estado con nombre y foto del empleado, alimentación a 12 V y 3 A (fuente, batería o mechero del vehículo), WiFi con antena externa, placa electrónica propia (revisión v2), carcasa impresa en 3D en PETG con el logo del cliente, actualizaciones de firmware desde su panel web, sin biometría. Desde 120 € sin IVA con llaveros personalizados; licencia de fichaje desde 1 €/usuario/mes. Se vende suelto o con el sistema.
 
 Unidades logísticas: cada palet nace con su etiqueta SSCC estándar GS1 imprimible, con ciclo de vida completo (abierto, cerrado y pesado con bruto/tara/neto, expedido o anulado), mezcla libre de productos, lotes y series, movimiento del palet entero en un escaneo, despaletizado y división en varios palets nuevos ya etiquetados, y palets blindados dentro de albaranes y facturas.
 

@@ -3,6 +3,7 @@ title: "Software de almacén frigorífico y congelados: guía completa"
 meta_title: "Software almacén frigorífico y congelados"
 description: "Cómo elegir un software de almacén frigorífico: FEFO, lotes, palets con etiqueta SSCC, depósito de terceros y operativa a pie de cámara desde móvil."
 date: 2026-08-12
+updated: 2026-09-03
 image: "/images/blog/software-almacen-frigorifico-congelados/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -89,7 +90,7 @@ Aporta que la unidad de trabajo deje de ser la caja y pase a ser el palet. Con u
 
 En Drenpos cada palet nace con su etiqueta SSCC imprimible, con ciclo de vida definido —abierto, cerrado y pesado con bruto, tara y neto, expedido o anulado— y permisos por paso. Una vista global responde a la pregunta de siempre: dónde está este lote. El formato, en [la etiqueta SSCC GS1 para palets](/blog/etiqueta-sscc-gs1-palets).
 
-El despaletizado se resuelve en tres gestos: vaciar a una ubicación, pasar mercancía a otro palet o partir un palet en varios nuevos que nacen cargados y con sus etiquetas impresas.
+El despaletizado se resuelve en tres gestos: vaciar a una ubicación, pasar mercancía a otro palet o partir un palet en varios nuevos que nacen cargados y con sus etiquetas impresas. Desde septiembre de 2026, además, cada palet propio guarda el origen de cada línea y el sistema avisa si alguien intenta modificar un palet ya cerrado. La operativa completa del palet, del montaje a la expedición, la explicamos en [software de gestión de palets](/software-gestion-palets) y, aplicada al frío, en [cómo gestionar palets en un almacén frigorífico](/blog/gestion-palets-almacen-frigorifico-fefo-sscc).
 
 ## ¿Se puede trabajar dentro de la cámara con móvil?
 

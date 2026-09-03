@@ -3,7 +3,8 @@ title: "Fichaje portátil 12V: cumple la ley de jornada en cualquier lugar"
 meta_title: "Dispositivo de fichaje portátil 12V para obras y equipos móviles"
 description: "El dispositivo de fichaje portátil de Drenpos funciona a 12V y 3A: enchúfalo al mechero del coche y registra la jornada con llavero RFID o QR. Cumple la ley de control horario donde no hay oficina."
 date: 2026-08-05
-image: "/images/funcionalidades/control-horario/hardware/01-dispositivo-lector-rfid.png"
+updated: 2026-09-03
+image: "/images/funcionalidades/control-horario/hardware/v2-terminal-cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
   designation: "CEO & Founder"
@@ -34,13 +35,19 @@ faq:
     answer: "Es su caso de uso ideal. Al no depender de instalación fija ni de enchufe de red, el encargado lleva el dispositivo en la furgoneta y los operarios fichan al llegar y al salir con su llavero, sin usar el móvil personal."
   - question: "¿Qué pasa cuando se apruebe el nuevo real decreto de registro horario?"
     answer: "El borrador exige sistemas digitales, inalterables y accesibles en remoto por la Inspección de Trabajo. Un fichaje con dispositivo físico sincronizado con software que garantiza trazabilidad ya cumple ese estándar, por lo que no necesitarás migrar de nuevo cuando se publique en el BOE."
+  - question: "¿Se puede personalizar el dispositivo con el logo de mi empresa?"
+    answer: "Sí. La carcasa se imprime en 3D con el logo de tu empresa en el frontal y los llaveros RFID también llevan tu marca. La revisión v2 del terminal monta una placa electrónica diseñada por Drenpos, por lo que la personalización no es una pegatina sino parte de la fabricación."
   - question: "¿Los empleados necesitan móvil o app para fichar con el dispositivo?"
     answer: "No. El fichaje se hace acercando el llavero RFID personalizado o mostrando el QR personal impreso en tarjeta. No requiere smartphone, app ni conocimientos técnicos: el gesto dura menos de tres segundos."
 ---
 
 ¿Se puede cumplir la ley de control de jornada sin oficina y sin un enchufe cerca? Sí: con un **dispositivo de fichaje portátil** que funciona a 12V y 3A (36 W de consumo máximo) y se alimenta desde el mechero del coche, una batería auxiliar o cualquier adaptador de red. El terminal de Drenpos lee llaveros RFID personalizados y códigos QR de empleado, registra la hora exacta de entrada y salida como exige el [art. 34.9 del Estatuto de los Trabajadores](https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430) y sincroniza cada fichaje con la plataforma con trazabilidad completa. Da igual que tu equipo trabaje en una obra, un mercadillo, una feria o repartido en tres furgonetas: donde haya una toma de 12V, hay registro horario legal.
 
-Y el momento de resolverlo es ahora. La Inspección de Trabajo levantó **1.869 actas de infracción por registro de jornada en 2024 (un 90% más que en 2019) con 20,2 millones de euros en sanciones**, según los datos recopilados por [Mi Fichaje Legal](https://mifichajelegal.com/blog/real-decreto-registro-horario-digital-mayo-2026-estado-tramitacion-pymes/). Además, el nuevo real decreto que endurece los requisitos sigue avanzando: el sector especializado prevé su aprobación para el último tramo de 2026.
+Y el momento de resolverlo es ahora. La Inspección de Trabajo levantó **1.869 actas de infracción por registro de jornada en 2024 (un 90% más que en 2019) con 20,2 millones de euros en sanciones**, según los datos recopilados por [Mi Fichaje Legal](https://mifichajelegal.com/blog/real-decreto-registro-horario-digital-mayo-2026-estado-tramitacion-pymes/). Además, el nuevo real decreto que endurece los requisitos sigue avanzando: el Gobierno retomó su tramitación en septiembre de 2026.
+
+<Notice type="info" title="Actualizado en septiembre de 2026">
+Este artículo incorpora la revisión v2 del terminal: placa electrónica propia diseñada por Drenpos, carcasa impresa en 3D con el logo del cliente, versión de firmware visible en pantalla y actualizaciones desde su panel web. La ficha técnica completa y el precio están en la página del [dispositivo de fichaje](/dispositivo-fichaje).
+</Notice>
 
 ## Qué exige la ley de control de jornada (y qué está a punto de cambiar)
 
@@ -53,9 +60,10 @@ El siguiente paso normativo, el real decreto de registro horario digital, sigue 
 | Mayo 2019          | Entra en vigor la obligación general de registro de jornada (RD-ley 8/2019)                                                                                  |
 | 30 sept. 2025      | El Consejo de Ministros aprueba la tramitación urgente del nuevo real decreto                                                                                |
 | 23 marzo 2026      | El Consejo de Estado emite un dictamen crítico que obliga a revisar el texto ([ESI Soluciones](https://esisoluciones.es/fichajes/registro-horario-digital-2026-estado-normativa/)) |
+| 24 julio 2026      | Trabajo y Economía aplazan la aprobación y acuerdan retomar la tramitación en septiembre de 2026 ([FichMe](https://fichme.com/normativa/fichaje-digital-obligatorio))                     |
 | Otoño 2026 (prev.) | Aprobación prevista según el sector especializado ([TramitApp](https://www.tramitapp.com/blog/ley-control-horario-espana/)), con adaptación de 6 a 12 meses para pymes |
 
-**Lo que el borrador da por seguro:** registro exclusivamente digital (adiós al papel y al Excel), datos inalterables con trazabilidad de cada corrección, desglose de horas ordinarias, extraordinarias y pausas, y acceso remoto de la Inspección. Las sanciones proyectadas escalan **hasta 10.000 € por trabajador afectado**. Tienes el análisis completo en nuestra guía de [registro horario digital](/blog/registro-horario-digital) y el detalle económico en [multas de registro horario 2026](/blog/multas-registro-horario-2026-costo-incumplimiento).
+**Lo que el borrador da por seguro:** registro exclusivamente digital (adiós al papel y al Excel), datos inalterables con trazabilidad de cada corrección, desglose de horas ordinarias, extraordinarias y pausas, y acceso remoto de la Inspección. Las sanciones proyectadas escalan **hasta 10.000 € por trabajador afectado**; mientras la reforma no se publique, la infracción grave vigente va de 751 a 7.500 € por infracción. Tienes el análisis completo en nuestra guía de [registro horario digital](/blog/registro-horario-digital) y el detalle económico en [multas de registro horario 2026](/blog/multas-registro-horario-2026-costo-incumplimiento).
 
 > "El error que más veo en pymes con equipos de campo es pensar que la movilidad les exime del registro. Es al revés: son el primer sitio donde la Inspección pregunta cómo fichan."
 
@@ -75,7 +83,7 @@ La alternativa habitual (que cada empleado fiche [desde su móvil personal](/blo
 
 El dispositivo de fichaje físico de Drenpos está pensado para trabajar donde estés: funciona a **12V y 3A**, por lo que se alimenta desde el mechero de cualquier vehículo, una batería portátil de 12V o un adaptador de corriente estándar. No exige instalación ni obra. Lo dejas en la caseta de obra por la mañana y esa misma tarde ficha el turno del mercadillo.
 
-![Dispositivo lector RFID de fichaje de Drenpos](/images/funcionalidades/control-horario/hardware/01-dispositivo-lector-rfid.png)
+![Terminal de fichaje Drenpos v2 con el logo de un cliente en la carcasa, pantalla de estado y lector RFID y QR](/images/funcionalidades/control-horario/hardware/v2-terminal-marca-cliente.webp)
 
 Sus características clave:
 
@@ -84,9 +92,20 @@ Sus características clave:
 | **Alimentación**       | 12V DC · 3A (consumo máximo 36 W)                                                             |
 | **Dónde enchufarlo**   | Mechero del coche o furgoneta, batería auxiliar de 12V, adaptador de red                       |
 | **Métodos de fichaje** | Llavero RFID personalizado por empleado o tarjeta con QR personal                              |
+| **Pantalla**           | Muestra el nombre y la foto del empleado al fichar, el estado del terminal y la versión de firmware |
+| **Electrónica**        | Placa propia diseñada por Drenpos (revisión v2) con WiFi y antena externa                     |
+| **Carcasa**            | Impresa en 3D en PETG, con el logo de tu empresa en el frontal                                |
 | **Sin móvil ni app**   | El empleado no necesita smartphone: acerca el llavero y la jornada se inicia o se detiene      |
 | **Sincronización**     | Los fichajes se vuelcan a la plataforma Drenpos con sellado temporal y trazabilidad            |
-| **Modalidad de compra**| Disponible como solución independiente o integrado en el ecosistema Drenpos                    |
+| **Modalidad de compra**| Desde 120 € sin IVA, como solución independiente o integrado en el ecosistema Drenpos          |
+
+### Novedades de la revisión v2: placa propia y tu marca en la carcasa
+
+La primera serie del terminal se montó sobre módulos comerciales unidos a mano. La revisión v2 sustituye ese cableado por una **placa electrónica diseñada por Drenpos** que integra el lector, la pantalla y la alimentación a 12V en una sola pieza. El resultado es un terminal más robusto, más rápido de fabricar y más fácil de reparar.
+
+![Placas electrónicas v2 diseñadas por Drenpos junto a la carcasa y la pantalla del terminal de fichaje](/images/funcionalidades/control-horario/hardware/v2-pcb-propia-drenpos.webp)
+
+Con la placa propia llegaron tres mejoras que se notan en el día a día. La **pantalla de estado** enseña el nombre y la foto del empleado en cada fichaje, además de la versión de firmware, así que el encargado sabe de un vistazo qué terminal tiene delante. Las **actualizaciones se aplican desde el panel web** del propio dispositivo, sin desmontarlo ni enviarlo. Y la **carcasa se imprime con el logo del cliente** en el frontal: el terminal que ve la plantilla cada mañana lleva el nombre de su empresa, no el nuestro.
 
 ![Llaveros RFID personalizados de Drenpos](/images/funcionalidades/control-horario/hardware/02-llaveros-personalizados.png)
 
@@ -102,7 +121,7 @@ El gesto de fichar dura menos de tres segundos y no requiere formación: **acerc
 
 **4. Campañas agrícolas.** Cosechas con decenas de temporeros y rotación semanal: se entrega un llavero a cada trabajador el primer día y el registro queda centralizado sin repartir ni una sola app.
 
-**5. Local fijo sin complicaciones.** También funciona atornillado a la entrada del almacén, [como terminal fijo clásico](/control-horario). La diferencia es que si mañana montas un segundo punto de venta, te lo llevas.
+**5. Local fijo sin complicaciones.** También funciona atornillado a la entrada del almacén, [como terminal fijo clásico](/control-horario). La ficha técnica completa está en la página del [dispositivo de fichaje](/dispositivo-fichaje). La diferencia es que si mañana montas un segundo punto de venta, te lo llevas.
 
 ## Cómo ponerlo en marcha en tu empresa
 
@@ -148,6 +167,10 @@ Es su caso de uso ideal. Al no depender de instalación fija ni de enchufe de re
 ### ¿Qué pasa cuando se apruebe el nuevo real decreto de registro horario?
 
 El borrador exige sistemas digitales, inalterables y accesibles en remoto por la Inspección de Trabajo. Un fichaje con dispositivo físico sincronizado con software que garantiza trazabilidad ya cumple ese estándar, por lo que no necesitarás migrar de nuevo cuando se publique en el BOE.
+
+### ¿Se puede personalizar el dispositivo con el logo de mi empresa?
+
+Sí. La carcasa se imprime en 3D con el logo de tu empresa en el frontal y los llaveros RFID también llevan tu marca. La revisión v2 del terminal monta una placa electrónica diseñada por Drenpos, por lo que la personalización no es una pegatina sino parte de la fabricación.
 
 ### ¿Los empleados necesitan móvil o app para fichar con el dispositivo?
 

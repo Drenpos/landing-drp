@@ -1,0 +1,706 @@
+---
+export const prerender = true;
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+
+// ════════════════════════════════════════════════════════════════════════
+//  Dispositivo de fichaje · landing de producto (hardware propio)
+//  Intención de búsqueda objetivo:
+//    - "dispositivo de fichaje" / "terminal de fichaje" (principal)
+//    - "lector de fichaje RFID" / "reloj de fichar para empresas"
+//    - "fichaje con llavero" / "fichaje con tarjeta" / "fichaje por QR"
+//    - "terminal de control de presencia sin huella" (sin biometría)
+//    - long-tail: fichaje en obra / furgoneta / 12V, terminal con logo
+//  Diferenciación con /control-horario: aquella vende el software y todos
+//  los métodos de fichaje; esta vende el hardware físico (ficha técnica,
+//  personalización con la marca del cliente, precio y compra suelta).
+//  Fotos: /public/images/funcionalidades/control-horario/hardware/
+// ════════════════════════════════════════════════════════════════════════
+
+const CANONICAL = "https://www.drenpos.com/dispositivo-fichaje";
+const IMG = "/images/funcionalidades/control-horario/hardware";
+
+// Ficha técnica (solo datos reales del terminal v2)
+const ficha = [
+  { k: "Lectura", v: "Llavero o tarjeta RFID y código QR personal de cada empleado" },
+  { k: "Pantallas", v: "Pantalla de estado (nombre y foto del empleado, fichaje o desfichaje) y ventana de lectura iluminada" },
+  { k: "Alimentación", v: "12 V y 3 A. Fuente de red, batería auxiliar o toma de mechero del vehículo" },
+  { k: "Conectividad", v: "WiFi con antena externa. Cada fichaje se sincroniza con Drenpos con sellado temporal" },
+  { k: "Electrónica", v: "Placa propia diseñada por Drenpos (revisión v2), con la versión de firmware visible en pantalla" },
+  { k: "Carcasa", v: "Impresa en 3D en PETG, con el logo de tu empresa en el frontal si lo quieres" },
+  { k: "Ubicación", v: "Interior: naves, almacenes, talleres, oficinas y hostelería. Portátil en obra o furgoneta" },
+  { k: "Mantenimiento", v: "Actualizaciones de firmware desde su propio panel web, sin desmontarlo ni enviarlo" },
+];
+
+const pasos = [
+  {
+    n: "1",
+    title: "Das de alta al equipo",
+    body: "Cada empleado tiene su ficha en Drenpos con foto. Le asignas un llavero RFID o le imprimes su tarjeta QR desde la propia ficha.",
+  },
+  {
+    n: "2",
+    title: "Enchufas el terminal",
+    body: "Lo conectas a la red WiFi desde su panel web y lo alimentas a 12 V. En pared, sobre un mostrador o en la cabina de la furgoneta.",
+  },
+  {
+    n: "3",
+    title: "El equipo ficha en un gesto",
+    body: "Acercar el llavero o mostrar el QR. La pantalla confirma con el nombre y la foto del empleado, y el fichaje queda sellado en el sistema.",
+  },
+];
+
+const ventajas = [
+  {
+    icon: "🏷️",
+    title: "Con tu logo, no con el nuestro",
+    body: "La carcasa se imprime con la marca de tu empresa en el frontal. El terminal que ve tu plantilla cada mañana lleva tu nombre, y los llaveros también se personalizan.",
+  },
+  {
+    icon: "🛠️",
+    title: "Diseño y fabricación propios",
+    body: "Placa electrónica, firmware y carcasa son nuestros. No revendemos un terminal genérico: si tu operativa necesita algo distinto, lo adaptamos nosotros.",
+  },
+  {
+    icon: "🙅",
+    title: "Sin huella ni reconocimiento facial",
+    body: "Ficha con llavero o QR, sin tratar datos biométricos. Evitas el régimen reforzado que la AEPD aplica a la huella y a la cara, y el empleado no necesita móvil.",
+  },
+  {
+    icon: "🔒",
+    title: "Registro inalterable",
+    body: "Cada fichaje llega a Drenpos con fecha y hora exactas. Las correcciones posteriores quedan trazadas con autor, momento y motivo, listas para la Inspección.",
+  },
+  {
+    icon: "🔌",
+    title: "Funciona a 12 V",
+    body: "Se alimenta desde el mechero de cualquier coche o furgoneta y desde una batería auxiliar. El mismo terminal sirve para la nave y para la cuadrilla desplazada.",
+  },
+  {
+    icon: "📦",
+    title: "Se compra suelto",
+    body: "Puedes adquirir solo el terminal con sus llaveros como control de presencia. Si después quieres el resto del sistema, se integra sin perder un fichaje.",
+  },
+];
+
+// Comparativa de decisión (AEO)
+const comparativa = [
+  {
+    opcion: "Hoja de papel o Excel",
+    metodo: "Firma o celda editable",
+    biometria: "No",
+    logo: "No",
+    legal: "No es inalterable: infracción grave",
+    precio: "«Gratis» (hasta la primera inspección)",
+  },
+  {
+    opcion: "Terminal biométrico genérico",
+    metodo: "Huella o cara",
+    biometria: "Sí, con evaluación de impacto",
+    logo: "No",
+    legal: "Depende del software al que se conecte",
+    precio: "150 a 600 € + licencia aparte",
+  },
+  {
+    opcion: "App en el móvil de cada empleado",
+    metodo: "Botón en el teléfono personal",
+    biometria: "No",
+    logo: "No",
+    legal: "Sí, si el software sella y traza",
+    precio: "Licencia por usuario",
+  },
+  {
+    opcion: "Terminal Drenpos",
+    metodo: "Llavero RFID o QR, sin móvil",
+    biometria: "No",
+    logo: "Sí, en carcasa y llaveros",
+    legal: "Sí: sellado, trazado y exportable",
+    precio: "Desde 120 € el terminal",
+    destacado: true,
+  },
+];
+
+const casos = [
+  {
+    tag: "Almacén y distribución",
+    icon: "🏭",
+    title: "Terminal en la entrada de la nave",
+    body: "Los operarios fichan con el llavero al entrar y al salir, con guantes puestos y sin sacar el móvil. El encargado ve la plantilla en tiempo real desde su panel y exporta el reporte a fin de mes.",
+  },
+  {
+    tag: "Taller y fábrica",
+    icon: "🔧",
+    title: "Tiempos por concepto sin teclado",
+    body: "El mismo llavero inicia y detiene la jornada. Los conceptos de fichaje (producción, mantenimiento, formación) se configuran en Drenpos y los reportes reparten las horas donde toca.",
+  },
+  {
+    tag: "Obra y equipos móviles",
+    icon: "🚐",
+    title: "El terminal viaja en la furgoneta",
+    body: "Conectado al mechero, el encargado lo enciende al llegar y la cuadrilla ficha antes de bajar la herramienta. Sin caseta, sin enchufe y sin repartir apps al personal de temporada.",
+  },
+  {
+    tag: "Hostelería y retail",
+    icon: "☕",
+    title: "Junto a la caja, con la marca del local",
+    body: "Un terminal con el logo del negocio al lado del TPV. El personal ficha con su tarjeta QR y el turno partido queda registrado con sus pausas, sin discusiones a final de mes.",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Qué es un dispositivo de fichaje?",
+    a: "Es un terminal físico que registra la entrada y la salida de cada trabajador cuando este se identifica ante él, normalmente con un llavero o tarjeta RFID, un código QR o un dato biométrico. El terminal de Drenpos lee llaveros RFID y códigos QR personales, muestra en pantalla el nombre y la foto del empleado al fichar y envía cada registro al software de control horario con sellado temporal, de modo que el fichaje queda conservado de forma inalterable durante los cuatro años que exige la ley.",
+  },
+  {
+    q: "¿Puedo comprar solo el terminal sin contratar Drenpos?",
+    a: "Sí. El terminal, los llaveros y las tarjetas QR se venden como control de presencia independiente, con acceso al panel de fichajes para consultar y exportar los registros. Si más adelante quieres facturación, almacén o TPV, el módulo de fichajes ya está dentro del mismo sistema y no hay que migrar nada.",
+  },
+  {
+    q: "¿Cuánto cuesta el dispositivo de fichaje?",
+    a: "El terminal parte de 120 € sin IVA, con llaveros personalizados incluidos para tu plantilla inicial, y la licencia de fichaje de Drenpos cuesta desde 1 € por usuario y mes. En las implantaciones acompañadas el terminal va incluido con las llaves. Pide presupuesto si necesitas varios terminales, tarjetas adicionales o una carcasa con acabado especial.",
+  },
+  {
+    q: "¿Se puede poner el logo de mi empresa en el terminal?",
+    a: "Sí. La carcasa se imprime en 3D con el logo de tu empresa en el frontal, y los llaveros RFID también se personalizan con tu marca. Es la misma pieza que fabricamos para nosotros, con tu identidad: no es una pegatina.",
+  },
+  {
+    q: "¿El fichaje con llavero RFID o QR es legal?",
+    a: "Sí. El artículo 34.9 del Estatuto de los Trabajadores exige registrar la hora concreta de inicio y fin de la jornada de cada persona, y el Real Decreto-ley 8/2019 obliga a conservar esos registros cuatro años. Un terminal que sella cada fichaje y lo traslada a un sistema con trazabilidad de las modificaciones cumple esos requisitos. Además, al no usar huella ni cara, no trata datos biométricos.",
+  },
+  {
+    q: "¿Necesita instalación o un técnico?",
+    a: "No. El terminal se alimenta a 12 V con la fuente incluida, con una batería auxiliar o con el mechero del coche, y se conecta a tu WiFi desde su panel web. Puede ir fijado a la pared, apoyado en un mostrador o dentro de una furgoneta. Las actualizaciones de firmware se aplican desde ese mismo panel, sin desmontarlo.",
+  },
+  {
+    q: "¿Qué pasa si se va la conexión a internet?",
+    a: "El terminal necesita red para sincronizar cada fichaje con Drenpos. Si la WiFi de la nave falla, lo habitual es compartir datos desde un móvil o usar un router 4G; en furgoneta se usa el móvil del encargado como punto de acceso. Los fichajes ya sincronizados no se pierden nunca.",
+  },
+  {
+    q: "¿Qué ve el empleado al fichar?",
+    a: "La pantalla de estado muestra Disponible mientras espera y, al acercar el llavero o el QR, enseña el nombre y la foto del empleado con el texto de fichaje o desfichaje. El propio empleado puede consultar después su historial desde la web o la app, como exige la normativa.",
+  },
+];
+
+const articulos = [
+  { t: "Fichaje portátil 12V: cumple la ley de jornada en cualquier lugar", s: "dispositivo-fichaje-portatil-12v-ley-control-jornada" },
+  { t: "Registro horario digital: obligación, requisitos y sanciones", s: "registro-horario-digital" },
+  { t: "Los mejores programas de control horario para pymes", s: "mejores-programas-control-horario" },
+  { t: "Multas del registro horario: lo que cuesta incumplir", s: "multas-registro-horario-2026-costo-incumplimiento" },
+  { t: "Fichar desde el móvil de forma legal", s: "fichar-desde-el-movil-legal-2026" },
+  { t: "Por qué Excel ya no sirve para el control horario", s: "por-que-excel-ya-no-sirve-control-horario-2026" },
+];
+
+// ── Datos estructurados (JSON-LD) ──────────────────────────────────────
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Control horario", item: "https://www.drenpos.com/control-horario" },
+    { "@type": "ListItem", position: 3, name: "Dispositivo de fichaje", item: CANONICAL },
+  ],
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Terminal de fichaje Drenpos (RFID y QR)",
+  url: CANONICAL,
+  image: [
+    `https://www.drenpos.com${IMG}/v2-terminal-marca-cliente.webp`,
+    `https://www.drenpos.com${IMG}/v2-terminal-en-mano.webp`,
+    `https://www.drenpos.com${IMG}/01-dispositivo-lector-rfid.png`,
+  ],
+  description:
+    "Dispositivo de fichaje para empresas con lectura de llavero RFID y código QR, pantalla de estado con nombre y foto del empleado, alimentación a 12 V, placa electrónica propia y carcasa impresa en 3D con el logo del cliente. Sin biometría. Sincroniza cada fichaje con el software de control horario de Drenpos con sellado inalterable.",
+  brand: { "@type": "Brand", name: "Drenpos" },
+  manufacturer: { "@type": "Organization", name: "Drenpos Tech SL", url: "https://www.drenpos.com" },
+  category: "Terminal de control de presencia",
+  additionalProperty: [
+    { "@type": "PropertyValue", name: "Lectura", value: "RFID y QR" },
+    { "@type": "PropertyValue", name: "Alimentación", value: "12 V, 3 A" },
+    { "@type": "PropertyValue", name: "Conectividad", value: "WiFi con antena externa" },
+    { "@type": "PropertyValue", name: "Biometría", value: "No" },
+    { "@type": "PropertyValue", name: "Personalización", value: "Logo del cliente en carcasa y llaveros" },
+  ],
+  offers: {
+    "@type": "Offer",
+    price: "120",
+    priceCurrency: "EUR",
+    priceValidUntil: "2027-12-31",
+    availability: "https://schema.org/InStock",
+    itemCondition: "https://schema.org/NewCondition",
+    url: CANONICAL,
+    valueAddedTaxIncluded: false,
+    description: "Terminal desde 120 € sin IVA con llaveros personalizados. Licencia de fichaje desde 1 €/usuario/mes.",
+    seller: { "@type": "Organization", name: "Drenpos Tech SL" },
+  },
+};
+---
+
+<Base
+  title="Dispositivo de Fichaje con Llavero RFID y QR · Drenpos"
+  meta_title="Dispositivo de Fichaje RFID y QR para Empresas | Drenpos"
+  description="Terminal de fichaje fabricado por Drenpos: llavero RFID o QR, sin huella, pantalla con foto del empleado, 12 V y tu logo en la carcasa. Desde 120 €, también sin contratar el ERP."
+  canonical={CANONICAL}
+  image={`${IMG}/v2-terminal-cover.jpg`}
+>
+  <!-- Datos estructurados -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0 relative z-10 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/images/grainy.svg" alt="" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/control-horario" class="hover:text-primary">Control horario</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Dispositivo de fichaje</span>
+      </nav>
+
+      <div class="row gx-0 gy-12 lg:gy-0 items-center">
+        <div class="lg:col-6" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Hardware propio · diseñado y fabricado en Extremadura
+          </span>
+
+          <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
+            <span class="text-primary">Dispositivo de fichaje</span> con llavero RFID y QR, con tu logo en la carcasa
+          </h1>
+          <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
+            Un terminal de fichaje que tu equipo usa sin móvil y sin huella:
+            acerca el llavero, la pantalla enseña su nombre y su foto, y la
+            jornada queda registrada en Drenpos con sellado inalterable.
+            <strong>Placa electrónica y carcasa propias</strong>, alimentación
+            a <strong>12 V</strong> y personalización con la
+            <strong>marca de tu empresa</strong>. Se compra suelto o con el
+            sistema completo.
+          </p>
+
+          <ul class="flex flex-wrap gap-4 mb-10">
+            <li data-aos="fade-up-sm" data-aos-delay="100">
+              <a href="/contact" class="btn btn-dark">
+                Pedir presupuesto
+                <span class="icon-wrapper">
+                  <span class="icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="150">
+              <a href="#ficha-tecnica" class="btn btn-light">Ver ficha técnica</a>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Sin biometría
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Desde 120 € sin IVA
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Tu logo en el frontal
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="relative px-4 lg:px-0 pt-10 pb-10">
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
+
+            <div class="rounded-2xl overflow-hidden relative z-10 mx-auto max-w-md" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
+              <img
+                src={`${IMG}/v2-terminal-marca-cliente.webp`}
+                alt="Terminal de fichaje de Drenpos con pantalla de estado, lector RFID y QR y el logo de un cliente en la carcasa"
+                width="900"
+                height="1200"
+                class="w-full h-auto block"
+                fetchpriority="high"
+              />
+            </div>
+
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0 font-bold animate-pulse" style="background: #dcfce7; color: #16a34a;">●</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Disponible</p>
+                <p class="text-xs" style="color: #9ca3af;">Acerca tu tarjeta · v1.0.2</p>
+              </div>
+            </div>
+
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #fef3c7;">🏷️</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Con la marca del cliente</p>
+                <p class="text-xs" style="color: #9ca3af;">Carcasa impresa en 3D</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DEFINICIÓN CITABLE (AEO / featured snippet)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h4 font-bold mb-4">¿Qué es un dispositivo de fichaje?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            Un <strong>dispositivo de fichaje</strong> es un terminal físico
+            que registra la entrada y la salida de cada trabajador cuando este
+            se identifica ante él con un llavero, una tarjeta, un código QR o
+            un dato biométrico. El terminal de Drenpos lee
+            <strong>llaveros RFID y códigos QR personales</strong>, muestra en
+            pantalla el nombre y la foto del empleado, y envía cada fichaje al
+            software de control horario con <strong>sellado temporal
+            inalterable</strong>, que es lo que la Inspección de Trabajo pide
+            ver. No usa huella ni reconocimiento facial, así que no trata
+            datos biométricos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CÓMO FUNCIONA (3 pasos)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Cómo funciona el terminal de fichaje</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          Tres pasos y ninguno necesita un técnico.
+        </p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          pasos.map((p, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="w-11 h-11 rounded-2xl flex items-center justify-center text-lg font-bold text-white mb-4" style="background: #791b46;">{p.n}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{p.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.65);">{p.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SHOWCASE OSCURO: fotos reales + ventajas
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="hardware" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="rounded-[32px] overflow-hidden relative" style="background: rgba(16,25,40,0.97);">
+        <div class="absolute -top-20 -right-20 w-96 h-96 rounded-full blur-3xl pointer-events-none" style="background: rgba(211,167,118,0.18);"></div>
+        <div class="absolute -bottom-24 -left-16 w-80 h-80 rounded-full blur-3xl pointer-events-none" style="background: rgba(121,27,70,0.35);"></div>
+
+        <div class="relative p-8 lg:p-16">
+          <div class="text-center max-w-3xl mx-auto mb-14" data-aos="fade-up-sm">
+            <span class="text-white bg-white/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-5 tracking-wide">
+              Revisión v2 · placa propia
+            </span>
+            <h2 class="h3 font-bold mb-4 text-white leading-tight">
+              Lo fabricamos nosotros, <span style="color: #f9b27c;">de la placa a la carcasa</span>
+            </h2>
+            <p class="text-lg leading-relaxed mb-0" style="color: rgba(255,255,255,0.78);">
+              La revisión v2 del terminal monta una placa electrónica diseñada
+              por Drenpos que une lector, pantalla y alimentación en una sola
+              pieza, con firmware propio que se actualiza desde su panel web.
+              Por eso podemos imprimir la carcasa con tu logo y adaptar el
+              dispositivo a tu forma de trabajar.
+            </p>
+          </div>
+
+          <div class="row g-5 mb-12">
+            <div class="lg:col-5" data-aos="fade-up-sm">
+              <div class="rounded-2xl overflow-hidden h-full relative" style="border: 1px solid rgba(255,255,255,0.10);">
+                <img src={`${IMG}/v2-terminal-en-mano.webp`} alt="Terminal de fichaje Drenpos v2 sostenido en la mano, con antena WiFi y ventana de lectura RFID y QR" width="600" height="800" class="w-full h-full object-cover block" loading="lazy" />
+                <div class="absolute bottom-0 inset-x-0 p-6" style="background: linear-gradient(to top, rgba(16,25,40,0.85), transparent);">
+                  <p class="text-white font-bold text-lg mb-1">Cabe en una mano</p>
+                  <p class="text-sm" style="color: rgba(255,255,255,0.75);">Se lleva a la obra por la mañana y vuelve a la nave por la tarde.</p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-7">
+              <div class="flex flex-col gap-5 h-full">
+                <div class="rounded-2xl overflow-hidden relative flex-1" style="border: 1px solid rgba(255,255,255,0.10);" data-aos="fade-up-sm" data-aos-delay="100">
+                  <img src={`${IMG}/v2-pcb-propia-drenpos.webp`} alt="Placas electrónicas v2 diseñadas por Drenpos junto a la carcasa impresa en 3D y la pantalla del terminal de fichaje" width="900" height="600" class="w-full h-full object-cover block" loading="lazy" style="max-height: 340px;" />
+                  <div class="absolute bottom-0 inset-x-0 p-5" style="background: linear-gradient(to top, rgba(16,25,40,0.85), transparent);">
+                    <p class="text-white font-bold mb-0.5">Placa propia, revisión v2</p>
+                    <p class="text-xs" style="color: rgba(255,255,255,0.75);">Diseñada por Drenpos: lector, pantalla y alimentación a 12 V en una sola placa.</p>
+                  </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden relative flex-1" style="border: 1px solid rgba(255,255,255,0.10);" data-aos="fade-up-sm" data-aos-delay="200">
+                  <img src={`${IMG}/02-llaveros-personalizados.png`} alt="Llaveros RFID personalizados impresos en 3D por Drenpos" width="600" height="300" class="w-full h-full object-cover block" loading="lazy" style="max-height: 260px;" />
+                  <div class="absolute bottom-0 inset-x-0 p-5" style="background: linear-gradient(to top, rgba(16,25,40,0.85), transparent);">
+                    <p class="text-white font-bold mb-0.5">Llaveros con tu marca</p>
+                    <p class="text-xs" style="color: rgba(255,255,255,0.75);">Uno por empleado, impresos en 3D. Tarjetas QR como alternativa imprimible.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4">
+            {
+              ventajas.map((v, i) => (
+                <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 100}>
+                  <div class="rounded-2xl p-6 h-full" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
+                    <div class="text-2xl mb-3">{v.icon}</div>
+                    <p class="text-white font-semibold mb-1.5">{v.title}</p>
+                    <p class="text-sm" style="color: rgba(255,255,255,0.72);">{v.body}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FICHA TÉCNICA (tabla AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="ficha-tecnica" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <div class="text-center mb-10" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-4">Ficha técnica del terminal de fichaje</h2>
+            <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+              Lo que hay dentro de la caja, sin adornos.
+            </p>
+          </div>
+          <div class="overflow-x-auto rounded-3xl border border-dark/10" data-aos="fade-up-sm">
+            <table class="w-full text-sm border-collapse">
+              <tbody>
+                {
+                  ficha.map((f, i) => (
+                    <tr class={i % 2 === 0 ? "bg-primary/5" : ""}>
+                      <th scope="row" class="text-left p-4 font-bold align-top w-40">{f.k}</th>
+                      <td class="p-4" style="color: rgba(16,25,40,0.75);">{f.v}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs mt-4" style="color: rgba(16,25,40,0.55);" data-aos="fade-up-sm">
+            Consumo máximo 36 W. Para exteriores a la intemperie o zonas con
+            agua consúltanos: el terminal está pensado para interior y para
+            vehículos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       COMPARATIVA (tabla de decisión, AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Qué sistema de fichaje te conviene?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          Las cuatro opciones que se plantea una pyme, comparadas con honestidad.
+        </p>
+      </div>
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[900px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Opción</th>
+              <th class="text-left p-4">Cómo se ficha</th>
+              <th class="text-left p-4">Datos biométricos</th>
+              <th class="text-left p-4">Tu logo</th>
+              <th class="text-left p-4">Válido ante Inspección</th>
+              <th class="text-left p-4 rounded-tr-2xl">Coste</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comparativa.map((r) => (
+                <tr class={r.destacado ? "bg-primary/5 font-medium" : "border-b border-dark/5"}>
+                  <td class={`p-4 ${r.destacado ? "text-primary font-bold" : "font-medium"}`}>{r.opcion}</td>
+                  <td class="p-4">{r.metodo}</td>
+                  <td class="p-4">{r.biometria}</td>
+                  <td class="p-4">{r.logo}</td>
+                  <td class="p-4">{r.legal}</td>
+                  <td class="p-4">{r.precio}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs mt-4 text-center" style="color: rgba(16,25,40,0.55);">
+        Los precios de terminales biométricos genéricos son orientativos de mercado. Los de Drenpos, sin IVA.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CASOS DE USO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Dónde se instala un terminal de fichaje</h2>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          casos.map((c, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3 leading-snug">{c.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PRECIO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-8">
+          <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-3 text-white">Terminal desde 120 €, fichajes desde 1 € por usuario</h2>
+            <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+              El terminal incluye los llaveros personalizados de tu plantilla
+              inicial y la fuente de alimentación. La licencia de fichaje de
+              Drenpos da acceso al panel, a los calendarios laborales, a los
+              conceptos y a los reportes para la Inspección. En las
+              implantaciones acompañadas el terminal va incluido.
+            </p>
+            <ul class="flex flex-wrap gap-4 justify-center mb-6">
+              <li>
+                <a href="/contact" class="btn btn-light">Pedir presupuesto del terminal</a>
+              </li>
+              <li>
+                <a href="/control-horario" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Ver el software de control horario</a>
+              </li>
+            </ul>
+            <p class="text-sm max-w-xl mx-auto" style="color: rgba(255,255,255,0.55);">
+              Precios sin IVA. Varios terminales, tarjetas adicionales o
+              acabados especiales de la carcasa, a presupuesto.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FAQ (visible + schema)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <h2 class="h3 font-bold mb-3 text-center" data-aos="fade-up-sm">Dispositivo de fichaje: lo que más nos preguntan</h2>
+          <p class="text-center mb-10" style="color: rgba(16,25,40,0.62);" data-aos="fade-up-sm">
+            Respuestas directas, sin letra pequeña.
+          </p>
+          <div class="space-y-4">
+            {
+              faqs.map((f, i) => (
+                <details class="group rounded-2xl border border-dark/10 bg-body p-5" data-aos="fade-up-sm" data-aos-delay={Math.min(i * 50, 300)}>
+                  <summary class="cursor-pointer list-none flex items-start justify-between gap-4">
+                    <h3 class="h6 font-bold leading-snug">{f.q}</h3>
+                    <span class="text-primary text-xl leading-none mt-0.5 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <p class="mt-4 text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">{f.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ENLAZADO INTERNO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center gy-6">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <h2 class="h5 font-bold mb-3">Sigue leyendo sobre fichajes y registro de jornada</h2>
+          <ul class="row g-2 text-sm mb-8">
+            {
+              articulos.map((a) => (
+                <li class="md:col-6">
+                  <a href={`/blog/${a.s}`} class="text-primary hover:underline">{a.t}</a>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="text-sm" style="color: rgba(16,25,40,0.7);">
+            El terminal es la puerta física del
+            <a href="/control-horario" class="text-primary underline">software de control horario de Drenpos</a>:
+            calendarios laborales, conceptos de fichaje, reportes y
+            trazabilidad. Consulta los
+            <a href="/pricing" class="text-primary underline">planes y precios</a>
+            o escríbenos desde el
+            <a href="/contact" class="text-primary underline">formulario de contacto</a>
+            para un presupuesto con los llaveros de tu equipo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>

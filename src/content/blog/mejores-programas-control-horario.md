@@ -3,6 +3,7 @@ title: "Los 10 mejores programas de control horario para pymes en 2026"
 meta_title: "Mejores programas de control horario 2026: comparativa para pymes"
 description: "Comparativa de los mejores programas de control horario en 2026. Cuál cumple la ley, cuál integra con tu operativa y por qué Drenpos gana para pymes con TPV."
 date: 2026-06-11
+updated: 2026-09-03
 image: "/images/blog/mejores-programas-control-horario/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -30,12 +31,18 @@ faq:
   - question: "¿Cuánto cuesta un programa de control horario?"
     answer: "Las suites de RRHH van de 1,50 a 6 € por usuario y mes, pero vigila los mínimos de facturación: algunos planes parten de más de 80 € mensuales, desproporcionado para equipos pequeños. En Drenpos el control horario es un módulo del ERP con tarifa plana, sin coste por uso."
   - question: "¿Sirve un Excel o una app gratuita para fichar?"
-    answer: "No. Las hojas de cálculo y la mayoría de apps gratuitas no garantizan la inalterabilidad del registro ni el acceso en tiempo real que exige la Inspección, y las multas se calculan por trabajador afectado. Lo barato puede acabar siendo lo más caro."
+    answer: "No. Las hojas de cálculo y la mayoría de apps gratuitas no garantizan la inalterabilidad del registro ni el acceso en tiempo real que exige la Inspección. La infracción grave se sanciona hoy con entre 751 y 7.500 euros, y el proyecto de reforma quiere calcularla por trabajador afectado. Lo barato puede acabar siendo lo más caro."
+  - question: "¿Qué programa de control horario tiene terminal físico propio?"
+    answer: "Drenpos fabrica su propio terminal de fichaje: lee llaveros RFID y códigos QR, muestra el nombre y la foto del empleado en pantalla, funciona a 12 voltios y se imprime en 3D con el logo de la empresa cliente. Se vende desde 120 euros sin IVA, también sin contratar el resto del sistema."
 ---
 
 Buscar el **mejor programa de control horario** en 2026 es más difícil de lo que parece. No porque falten opciones, sino porque la mayoría están diseñadas para un problema distinto al tuyo. Una herramienta pensada para equipos de software remotos no tiene la misma lógica que una pyme con turno de tarde, TPV y cinco empleados rotando entre mostrador y almacén.
 
-El [registro de jornada es obligatorio en España desde 2019](/blog/registro-horario-digital) y la nueva normativa de 2026 exige que sea **exclusivamente digital**, inalterable y accesible para la Inspección de Trabajo en tiempo real. Un sistema que no cumpla estos tres requisitos no vale de nada, aunque sea gratuito. De hecho, puede costarte más que no tener nada: las [multas nuevas se calculan por trabajador afectado](/blog/multas-registro-horario-2026-costo-incumplimiento).
+El [registro de jornada es obligatorio en España desde 2019](/blog/registro-horario-digital) y el real decreto en tramitación exige que sea **exclusivamente digital**, inalterable y accesible para la Inspección de Trabajo en remoto. Un sistema que no cumpla estos tres requisitos no vale de nada, aunque sea gratuito. De hecho, puede costarte más que no tener nada: la infracción grave ya se sanciona con 751 a 7.500 euros y el proyecto de reforma quiere [calcular las multas por trabajador afectado](/blog/multas-registro-horario-2026-costo-incumplimiento).
+
+<Notice type="info" title="Actualizado en septiembre de 2026">
+Revisada con el estado real de la normativa: el real decreto de registro horario digital sigue en tramitación (el Gobierno la retomó en septiembre de 2026 tras el dictamen del Consejo de Estado) y con la revisión v2 del terminal de fichaje de Drenpos, que ahora se entrega con la marca de cada cliente en la carcasa.
+</Notice>
 
 Esta comparativa ordena por lo que le importa a una pyme española: cumplimiento real, integración con la operativa diaria y coste total sin sorpresas. La popularidad y el presupuesto de marketing se quedan fuera.
 
@@ -56,7 +63,7 @@ Si un software no supera este filtro, queda fuera de la comparativa. El resto so
 
 | Programa    | Tipo                        | Cumplimiento 2026 | Integración ERP/TPV      | Precio orientativo          |
 | ----------- | --------------------------- | ----------------- | ------------------------ | --------------------------- |
-| **Drenpos** | ERP + TPV + fichaje         | ✅ Nativo         | ✅ Total (mismo sistema) | Consultar                   |
+| **Drenpos** | ERP + TPV + fichaje         | ✅ Nativo         | ✅ Total (mismo sistema) | Desde 1 €/usuario/mes       |
 | Factorial   | RRHH + fichaje              | ✅ Sí             | ⚠️ Vía integración       | Desde 5,50 €/usuario/mes    |
 | Sesame HR   | RRHH + fichaje              | ✅ Sí             | ⚠️ Vía integración       | Desde 5,50 €/usuario/mes    |
 | Bizneo HR   | Suite RRHH modular          | ✅ Sí             | ⚠️ Limitada              | Desde 6 €/usuario/mes       |
@@ -77,14 +84,14 @@ La diferencia fundamental respecto a cualquier otra opción de esta lista: **no 
 
 **Funcionalidades de control horario en Drenpos:**
 
-- [Fichaje desde app móvil](/blog/fichar-desde-el-movil-legal-2026), QR, terminal de mostrador o portal web
+- [Fichaje desde app móvil](/blog/fichar-desde-el-movil-legal-2026), QR, portal web o [terminal físico propio con llavero RFID](/dispositivo-fichaje), fabricado por Drenpos y personalizado con el logo del cliente
 - Geolocalización configurable por puesto de trabajo
 - Registro de pausas, horas ordinarias, complementarias y extraordinarias
 - Acceso inmediato del trabajador a sus registros
 - Exportación lista para Inspección de Trabajo en un clic
 - Conservación automática de datos durante el período legal
 - Trazabilidad completa de modificaciones con auditoría
-- Integración directa con nóminas, TPV y facturación
+- Reportes listos para la gestoría y para nómina, en el mismo sistema que el TPV y la facturación
 
 **Por qué Drenpos gana para pymes con operativa física:**
 
@@ -264,12 +271,12 @@ Sí. El Real Decreto-ley 8/2019 obliga a todas las empresas españolas, sin exce
 
 La nueva normativa de 2026 añade la obligación de que el sistema sea exclusivamente digital y garantice la inalterabilidad de los datos. Los registros en papel, Excel o cualquier sistema modificable sin rastro quedan **expresamente prohibidos**.
 
-Las sanciones por incumplimiento, bajo la nueva normativa, se calculan por trabajador afectado:
+Las sanciones vigentes son las de la LISOS (artículo 7.5), por infracción:
 
-- **Infracción grave** (sistema no homologado, registros incompletos): hasta 7.500 € **por trabajador**
-- **Infracción muy grave** (manipulación de datos): hasta 225.018 € **por trabajador**
+- **Infracción grave** (sin sistema, registros incompletos o sistema no fiable): de 751 a 7.500 €
+- **Infracción muy grave** (manipulación de datos): de 7.501 a 225.018 €
 
-Una empresa con 10 empleados sin sistema válido puede enfrentarse a una sanción de hasta 75.000 € en una única inspección.
+El proyecto de reforma eleva el tope de la grave a 10.000 € y lo aplica **por trabajador afectado**. Si se aprueba tal cual, una empresa con 10 empleados sin sistema válido pasaría de una sanción de hasta 7.500 € a una de hasta 100.000 € en una única inspección.
 
 ## Preguntas frecuentes
 
@@ -313,4 +320,8 @@ Las suites de RRHH van de 1,50 a 6 € por usuario y mes, pero vigila los mínim
 
 ### ¿Sirve un Excel o una app gratuita para fichar?
 
-No. Las hojas de cálculo y la mayoría de apps gratuitas no garantizan la inalterabilidad del registro ni el acceso en tiempo real que exige la Inspección, y las multas se calculan por trabajador afectado. Lo barato puede acabar siendo lo más caro.
+No. Las hojas de cálculo y la mayoría de apps gratuitas no garantizan la inalterabilidad del registro ni el acceso en tiempo real que exige la Inspección. La infracción grave se sanciona hoy con entre 751 y 7.500 euros, y el proyecto de reforma quiere calcularla por trabajador afectado. Lo barato puede acabar siendo lo más caro.
+
+### ¿Qué programa de control horario tiene terminal físico propio?
+
+Drenpos fabrica su propio [terminal de fichaje](/dispositivo-fichaje): lee llaveros RFID y códigos QR, muestra el nombre y la foto del empleado en pantalla, funciona a 12 voltios y se imprime en 3D con el logo de la empresa cliente. Se vende desde 120 euros sin IVA, también sin contratar el resto del sistema.

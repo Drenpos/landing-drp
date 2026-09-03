@@ -1,0 +1,800 @@
+---
+export const prerender = true;
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+
+// ════════════════════════════════════════════════════════════════════════
+//  Software de gestión de palets · landing dedicada (SEO/AEO/GEO 2026)
+//  Intención de búsqueda objetivo:
+//    - "software gestión de palets" / "control de palets en almacén" (principal)
+//    - "programa para etiquetas SSCC" / "generar etiqueta SSCC GS1-128"
+//    - "trazabilidad de palets" / "paletización software pyme"
+//    - long-tail: palet mixto con varios lotes, mover palet entero con
+//      pistola, palets de clientes en depósito, palet congelado pesado
+//  Diferenciación con el resto del clúster: /software-gestion-almacen es el
+//  SGA general, /software-almacen-frigorifico ataca frío y caducidad,
+//  /software-alquiler-huecos-palet ataca la tarifa del depósito. Esta ataca
+//  el palet como unidad logística: etiqueta, ciclo de vida, movimiento,
+//  despaletizado y blindaje dentro de los documentos.
+//  Imágenes UI: /public/images/funcionalidades/almacen-tienda/
+// ════════════════════════════════════════════════════════════════════════
+
+const CANONICAL = "https://www.drenpos.com/software-gestion-palets";
+
+// Síntomas (dolores reales de quien mueve palets sin sistema)
+const sintomas = [
+  {
+    icon: "📋",
+    title: "El palet se arma bien y se apunta mal",
+    body: "La carretilla monta el palet en diez minutos y el papel que lo describe tarda media hora en llegar a la oficina, si llega. Entre medias, la mercancía ya cambió de hueco.",
+  },
+  {
+    icon: "🏷️",
+    title: "La etiqueta SSCC se hace a mano o no se hace",
+    body: "La gran distribución y las plataformas logísticas piden etiqueta SSCC GS1 en cada palet. Sin sistema se compone en un Excel, se imprime en otro programa y el dígito de control falla cuando menos conviene.",
+  },
+  {
+    icon: "🔍",
+    title: "Nadie sabe qué lotes van dentro de qué palet",
+    body: "Un palet mixto con cinco referencias y tres lotes es normal. Localizar un lote concreto para retirarlo significa abrir palets y contar cajas, con el reloj corriendo.",
+  },
+  {
+    icon: "🤝",
+    title: "Los palets de clientes se mezclan con los propios",
+    body: "Cuando se guarda mercancía de terceros, un palet ajeno vendido por error o mezclado con género propio es una reclamación segura. El control debería estar en el sistema, no en la memoria del encargado.",
+  },
+];
+
+// Capacidades reales (todas del módulo de Inventario)
+const capacidades = [
+  {
+    icon: "🏷️",
+    tag: "Etiqueta estándar",
+    title: "Etiqueta SSCC GS1 imprimible desde el propio palet",
+    body: "Cada palet nace con su código SSCC de 18 dígitos con dígito de control calculado y su etiqueta GS1-128 lista para imprimir en rollo o en A4. La misma etiqueta que exigen las grandes plataformas logísticas, sin componerla a mano ni pasar por un segundo programa.",
+    bullets: [
+      "Identificadores de aplicación GS1 con lote, cantidad y fechas cuando el palet es homogéneo",
+      "Reimpresión desde la ficha del palet, sin recalcular nada",
+      "Escaneable con cualquier pistola lectora, en móvil o en tablet",
+    ],
+  },
+  {
+    icon: "🔄",
+    tag: "Ciclo de vida",
+    title: "Abierto, cerrado y pesado, expedido o anulado",
+    body: "El palet se carga mientras está abierto, se cierra cuando está completo y se pesa con bruto, tara y neto. Después se expide dentro de un albarán o una factura o se anula si no sale. Cada paso tiene su permiso, así que quien carga no cierra y quien cierra no expide si no debe.",
+    bullets: [
+      "Palets propios explícitos: cada uno con su origen por línea",
+      "Aviso al intentar tocar un palet ya cerrado",
+      "Historial completo de cada palet: quién hizo qué y cuándo",
+    ],
+  },
+  {
+    icon: "🧩",
+    tag: "Contenido",
+    title: "Mezcla libre de productos, lotes y series con traza",
+    body: "Un palet puede llevar una sola referencia o varias, con lotes distintos y números de serie. El sistema guarda qué hay dentro, línea a línea, y la vista global de contenido responde en una pantalla a la pregunta de dónde está este lote ahora mismo.",
+    bullets: [
+      "Montaje con pistola (ubicación, producto, cantidad) o a mano",
+      "Unidades de medida múltiples: caja, palet y unidad con su código",
+      "Lote sugerido por FEFO al montar palets de producto con caducidad",
+    ],
+  },
+  {
+    icon: "🚚",
+    tag: "Movimiento",
+    title: "Mover el palet entero en un escaneo",
+    body: "Trasladar un palet de ubicación, de cámara o de almacén es escanear el SSCC y el destino. Todas las líneas viajan juntas y el stock por ubicación se actualiza al momento. El flujo está pensado para hacerse con la pistola en la mano, sin tocar la pantalla.",
+    bullets: [
+      "Traslados entre almacenes con el mismo gesto",
+      "Todas las pantallas de palets funcionan en móvil y tablet",
+      "Sin doble captura: el dato nace donde ocurre la operación",
+    ],
+  },
+  {
+    icon: "✂️",
+    tag: "Despaletizado",
+    title: "Vaciar, pasar a otro palet o partir en varios",
+    body: "Cuando el palet se deshace, el sistema ofrece tres gestos: vaciarlo a ubicación suelta, pasar parte del contenido a otro palet o partirlo en varios palets nuevos, cada uno con su etiqueta SSCC recién generada. El lote y la serie acompañan a cada caja en todo el proceso.",
+    bullets: [
+      "Despiece y transformación con lote nuevo y merma explícita",
+      "Palets resultantes etiquetados en el mismo paso",
+      "Traza entre el palet de origen y los palets de salida",
+    ],
+  },
+  {
+    icon: "📄",
+    tag: "Documentos",
+    title: "Palets blindados dentro de albaranes y facturas",
+    body: "Escanear un SSCC en un albarán o una factura arrastra el palet completo con sus líneas agrupadas y protegidas: no se edita media caja por error. Para palets de terceros, cada entrada, salida o manipulación genera su apunte tarificable en la misma operación.",
+    bullets: [
+      "Entregas firmadas con acta PDF, detalle de palets y huella sha256",
+      "Propietario por palet con bloqueo de raíz para no mezclar mercancía ajena",
+      "Informe del periodo por depositante en PDF sin necesidad de facturar",
+    ],
+  },
+];
+
+// Comparativa (tabla AEO)
+const comparativa = [
+  {
+    opcion: "Excel y etiquetas a mano",
+    sscc: "Compuesta manualmente, dígito de control a riesgo",
+    ciclo: "No existe",
+    mover: "Papel y reteclear en oficina",
+    terceros: "Memoria del encargado",
+    precio: "«Gratis» (se paga en horas y errores)",
+  },
+  {
+    opcion: "Programa de facturación con stock",
+    sscc: "No",
+    ciclo: "No: solo cantidades por artículo",
+    mover: "Ajustes manuales de stock",
+    terceros: "No",
+    precio: "10 a 30 €/mes",
+  },
+  {
+    opcion: "WMS enterprise",
+    sscc: "Sí",
+    ciclo: "Sí, con proyecto",
+    mover: "Sí, con terminal propio",
+    terceros: "Según módulo",
+    precio: "Miles de € y meses de implantación",
+  },
+  {
+    opcion: "Drenpos",
+    sscc: "Sí, GS1-128 desde el propio palet",
+    ciclo: "Abierto, cerrado y pesado, expedido o anulado",
+    mover: "Un escaneo, en móvil o tablet",
+    terceros: "Propietario por palet y tarifario",
+    precio: "Desde 19,90 €/mes",
+    destacado: true,
+  },
+];
+
+// Casos de uso sectoriales
+const casos = [
+  {
+    tag: "Congelados y frío",
+    icon: "🧊",
+    title: "Palet pesado y con FEFO dentro de la cámara",
+    body: "El palet se cierra y se pesa con bruto, tara y neto a pie de cámara. Al preparar pedidos, el lote sugerido por FEFO sale del palet que antes caduca, y el informe de inmovilizado enseña qué palet lleva meses ocupando un hueco frío.",
+  },
+  {
+    tag: "Distribución a gran superficie",
+    icon: "🏬",
+    title: "Etiqueta SSCC que pasa el muelle a la primera",
+    body: "Cada palet expedido lleva su SSCC GS1 con dígito de control correcto y, si es homogéneo, el lote y la cantidad en la misma etiqueta. El albarán arrastra los palets escaneados con sus líneas agrupadas, sin componer nada a mano.",
+  },
+  {
+    tag: "Operador logístico y depósito",
+    icon: "🤝",
+    title: "Palets de clientes sin mezclas ni sorpresas",
+    body: "Cada palet entra con su propietario. El sistema impide mezclar mercancía de dueños distintos y venderla por error, y cada entrada, salida o manipulación genera el apunte de tarifa por palet/día, kg/día o bulto en la misma operación.",
+  },
+  {
+    tag: "Campaña agrícola",
+    icon: "🫒",
+    title: "Palets de campaña con origen por línea",
+    body: "En aceituna, fruta o cereal el palet se forma con entradas de varios proveedores. Cada línea guarda su origen, el palet se cierra y se pesa, y la liquidación después sabe exactamente de quién era cada kilo.",
+  },
+];
+
+// Normativa y estándares citados por su nombre
+const normas = [
+  {
+    nombre: "SSCC (Serial Shipping Container Code)",
+    body: "Código GS1 de 18 dígitos que identifica de forma única cada unidad logística. Drenpos lo genera con su dígito de control al crear el palet y lo imprime en etiqueta GS1-128.",
+  },
+  {
+    nombre: "GS1-128 e identificadores de aplicación",
+    body: "Simbología y estructura de la etiqueta logística estándar. Cuando el palet es homogéneo, la etiqueta puede llevar además lote, cantidad y fechas con sus identificadores de aplicación.",
+  },
+  {
+    nombre: "Reglamento (CE) 178/2002",
+    body: "Trazabilidad alimentaria: poder decir de dónde vino y a dónde fue cada lote. El contenido del palet, línea a línea, es lo que hace que un lote se localice sin abrir cajas.",
+  },
+  {
+    nombre: "Ley 15/2009 del contrato de transporte",
+    body: "Regula la carta de porte y la entrega. Las entregas firmadas de Drenpos generan un acta PDF con el detalle de palets, sellada con huella criptográfica.",
+  },
+  {
+    nombre: "Contrato de depósito (Código Civil, arts. 1758 y siguientes)",
+    body: "Cuando se guardan palets ajenos, el depositario responde de la custodia. El propietario por palet y el informe del periodo en PDF dan soporte documental a esa responsabilidad.",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Qué es un software de gestión de palets?",
+    a: "Es el sistema que trata el palet como una unidad logística con identidad propia: sabe qué productos, lotes y series lleva dentro, dónde está, en qué estado se encuentra (abierto, cerrado y pesado, expedido o anulado) y a quién pertenece. En Drenpos forma parte del módulo de Inventario: cada palet nace con su etiqueta SSCC estándar GS1, se mueve entero con un escaneo, se despaletiza en tres gestos y viaja blindado dentro de albaranes y facturas, con historial completo de quién hizo qué.",
+  },
+  {
+    q: "¿Genera la etiqueta SSCC automáticamente?",
+    a: "Sí. Al crear un palet, Drenpos calcula el código SSCC de 18 dígitos con su dígito de control y prepara la etiqueta GS1-128 para imprimir en rollo o en A4. Si el palet es homogéneo, la etiqueta puede incluir lote, cantidad y fechas con sus identificadores de aplicación. La etiqueta se reimprime desde la ficha del palet sin recalcular nada.",
+  },
+  {
+    q: "¿Puedo tener palets mixtos con varios lotes?",
+    a: "Sí. Un palet admite cualquier mezcla de productos, lotes y números de serie, y el sistema guarda el contenido línea a línea. La vista global de contenido dice en una pantalla dónde está un lote ahora mismo, y la pantalla de trazabilidad genera el informe de retirada en PDF sin abrir cajas.",
+  },
+  {
+    q: "¿Cómo se mueve un palet de sitio?",
+    a: "Escaneando el SSCC y la ubicación o el almacén de destino. Todas las líneas viajan juntas y el stock por ubicación se actualiza en el momento. El flujo está pensado para hacerse con la pistola lectora en la mano y funciona en móvil y tablet, dentro de la nave o de la cámara.",
+  },
+  {
+    q: "¿Qué pasa cuando hay que deshacer un palet?",
+    a: "El despaletizado ofrece tres gestos: vaciar el palet a ubicación suelta, pasar parte del contenido a otro palet o partirlo en varios palets nuevos, cada uno con su etiqueta SSCC. En transformaciones de producto (despiece, envasado) los productos resultantes salen con lote nuevo, caducidad propia y la merma registrada como una línea más.",
+  },
+  {
+    q: "¿Sirve para guardar palets de clientes?",
+    a: "Sí, con el depósito de terceros. Cada palet lleva su propietario y el sistema impide de raíz mezclar mercancía de dueños distintos o venderla por error. Las tarifas admiten palet/día, kg/día, entrada, salida, manipulación o bulto preparado, la posición de cada cliente se ve en vivo y el informe del periodo sale en PDF sin necesidad de facturar desde Drenpos.",
+  },
+  {
+    q: "¿Se puede pesar el palet?",
+    a: "Sí. Al cerrar el palet se registran bruto, tara y neto, y el peso queda en la ficha y en la etiqueta. El pesado tiene su propio permiso, de modo que puede hacerlo una persona distinta de la que cargó el palet.",
+  },
+  {
+    q: "¿Cuánto cuesta y cuánto se tarda en arrancar?",
+    a: "El módulo de Almacén parte de 19,90 €/mes sin IVA, con actualizaciones y soporte humano incluidos, sin coste por uso ni permanencia. La puesta en marcha se hace en días: importamos los artículos desde Excel o desde el programa anterior, definimos almacenes y ubicaciones con su QR, cargamos el stock inicial y formamos al equipo con la pistola en la mano.",
+  },
+];
+
+// Landings hermanas del clúster de almacén
+const hermanas = [
+  {
+    url: "/software-gestion-almacen",
+    title: "Software de gestión de almacén (SGA)",
+    body: "La visión completa: multialmacén, ubicaciones QR, lotes, picking, palets y trazabilidad.",
+  },
+  {
+    url: "/software-almacen-frigorifico",
+    title: "Almacén frigorífico y congelados",
+    body: "FEFO, alertas de caducidad, palets pesados y operativa en móvil dentro de la cámara.",
+  },
+  {
+    url: "/software-alquiler-huecos-palet",
+    title: "Alquiler de huecos de palet",
+    body: "Custodia de mercancía ajena con tarifario por palet/día, posición en vivo y liquidación.",
+  },
+  {
+    url: "/software-preparacion-pedidos-picking",
+    title: "Preparación de pedidos y picking",
+    body: "Oleadas, asistente móvil con lote FEFO, zona de preparados y expedición con escaneo.",
+  },
+];
+
+const articulos = [
+  { t: "Etiqueta SSCC: qué es, cómo se genera y por qué la exigen", s: "etiqueta-sscc-gs1-palets" },
+  { t: "Cómo gestionar palets en un almacén frigorífico: FEFO, lotes y SSCC", s: "gestion-palets-almacen-frigorifico-fefo-sscc" },
+  { t: "Cuánto cuesta un SGA para una pyme en 2026", s: "cuanto-cuesta-sga-wms-pyme-2026" },
+  { t: "Alquiler de huecos de palet: tarifas, contrato y cómo gestionarlo", s: "alquiler-huecos-palet-tarifas" },
+  { t: "Diferencia entre WMS y ERP: qué es un SGA", s: "wms-sga-erp-diferencias" },
+  { t: "Trazabilidad alimentaria: lotes y retirada de producto", s: "trazabilidad-alimentaria-lotes-recall" },
+];
+
+// ── Datos estructurados (JSON-LD) ──────────────────────────────────────
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
+    { "@type": "ListItem", position: 3, name: "Gestión de palets", item: CANONICAL },
+  ],
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Drenpos · Gestión de Palets y Etiqueta SSCC",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  url: CANONICAL,
+  description:
+    "Software de gestión de palets para pymes: etiqueta SSCC estándar GS1 generada desde el propio palet, ciclo de vida abierto, cerrado y pesado con bruto, tara y neto, expedido o anulado, mezcla libre de productos, lotes y series con traza, movimiento del palet entero en un escaneo desde móvil o tablet, despaletizado en tres gestos, palets blindados dentro de albaranes y facturas y depósito de palets de terceros con propietario y tarifario. Incluido en el módulo de Almacén.",
+  offers: {
+    "@type": "Offer",
+    price: "19.90",
+    priceCurrency: "EUR",
+    description: "Módulo Almacén desde 19,90 €/mes (sin IVA). Sin coste por uso ni permanencia.",
+    url: "https://www.drenpos.com/pricing",
+  },
+  featureList: [
+    "Etiqueta SSCC de 18 dígitos con dígito de control e impresión GS1-128",
+    "Ciclo de vida del palet: abierto, cerrado y pesado, expedido o anulado",
+    "Pesado con bruto, tara y neto",
+    "Palets propios explícitos con origen por línea y aviso en palets cerrados",
+    "Mezcla libre de productos, lotes y números de serie con traza",
+    "Vista global de contenido: dónde está un lote ahora mismo",
+    "Traslado del palet completo en un escaneo, en móvil y tablet",
+    "Despaletizado: vaciar, pasar a otro palet o partir en varios",
+    "Palets blindados dentro de albaranes y facturas",
+    "Entregas firmadas con acta PDF y huella sha256",
+    "Depósito de terceros con propietario por palet y tarifario",
+    "Historial completo de cada palet",
+  ],
+  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
+};
+---
+
+<Base
+  title="Software de Gestión de Palets con Etiqueta SSCC · Drenpos"
+  meta_title="Software de Gestión de Palets y Etiqueta SSCC | Drenpos"
+  description="Software de gestión de palets para pymes: etiqueta SSCC GS1 desde el propio palet, cierre y pesado, movimiento en un escaneo, despaletizado y palets de terceros. Desde 19,90 €/mes."
+  canonical={CANONICAL}
+  image="/images/funcionalidades/almacen-tienda/02-lotes-caducidad.png"
+>
+  <!-- Datos estructurados -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0 relative z-10 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/images/grainy.svg" alt="" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/funcionalidades" class="hover:text-primary">Funcionalidades</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Gestión de palets</span>
+      </nav>
+
+      <div class="row gx-0 gy-12 lg:gy-0 items-center">
+        <div class="lg:col-6" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Palets, SSCC y unidades logísticas
+          </span>
+
+          <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
+            <span class="text-primary">Software de gestión de palets</span> con etiqueta SSCC desde el primer escaneo
+          </h1>
+          <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
+            Cada palet nace con su <strong>etiqueta SSCC estándar GS1</strong>,
+            se cierra y se pesa con bruto, tara y neto, se mueve entero
+            <strong>con un escaneo</strong> y viaja blindado dentro de albaranes
+            y facturas. Mezcla libre de productos, lotes y series con traza,
+            despaletizado en tres gestos y <strong>palets de terceros</strong>
+            con propietario y tarifario. Todo en móvil y tablet, en la nave o
+            en la cámara.
+          </p>
+
+          <ul class="flex flex-wrap gap-4 mb-10">
+            <li data-aos="fade-up-sm" data-aos-delay="100">
+              <a href="/contact" class="btn btn-dark">
+                Pedir demo gratuita
+                <span class="icon-wrapper">
+                  <span class="icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="150">
+              <a href="/pricing" class="btn btn-light">Ver precios</a>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Etiqueta SSCC GS1-128
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Palet entero en un escaneo
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Palets de clientes en depósito
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="relative px-4 lg:px-0 pt-10 pb-10">
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
+
+            <div class="rounded-2xl overflow-hidden relative z-10" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
+              <img
+                src="/images/funcionalidades/almacen-tienda/02-lotes-caducidad.png"
+                alt="Control de lotes y palets en Drenpos con etiqueta SSCC y contenido por línea"
+                width="720"
+                height="480"
+                class="w-full h-auto block"
+                fetchpriority="high"
+              />
+            </div>
+
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0 font-bold" style="background: #dcfce7; color: #16a34a;">✓</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Palet cerrado y pesado</p>
+                <p class="text-xs" style="color: #9ca3af;">Etiqueta SSCC impresa · 648 kg neto</p>
+              </div>
+            </div>
+
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #fef3c7;">🚚</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Movido a Cámara 2 · B-14</p>
+                <p class="text-xs" style="color: #9ca3af;">5 referencias, 3 lotes, un escaneo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DEFINICIÓN CITABLE (AEO / featured snippet)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h4 font-bold mb-4">¿Qué es un software de gestión de palets?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            Un <strong>software de gestión de palets</strong> es el sistema
+            que trata cada palet como una <strong>unidad logística con
+            identidad propia</strong>: sabe qué productos, lotes y series
+            lleva dentro, dónde está, en qué estado se encuentra y a quién
+            pertenece. Se diferencia de un control de stock normal en que no
+            cuenta cajas sueltas: identifica el palet con una
+            <strong>etiqueta SSCC estándar GS1</strong>, lo mueve entero con
+            un escaneo, lo cierra y lo pesa, lo despaletiza sin perder la
+            traza y lo blinda dentro del albarán o la factura con la que sale.
+            En Drenpos forma parte del módulo de Almacén, sin proyecto aparte.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SÍNTOMAS
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Te suena alguna de estas cuatro?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          Son los síntomas por los que un almacén que mueve palets acaba buscando un sistema.
+        </p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          sintomas.map((s, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{s.icon}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{s.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.65);">{s.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CAPACIDADES
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Lo que hace Drenpos con un palet</h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Seis capacidades del módulo de Almacén que siguen al palet desde que
+          se monta hasta que sale por el muelle. Sin un segundo sistema que
+          sincronizar con tu facturación.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center">
+        {
+          capacidades.map((c, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3 leading-snug">{c.title}</h3>
+                <p class="text-sm mb-5" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+                <ul class="space-y-2">
+                  {c.bullets.map((b) => (
+                    <li class="flex items-start gap-2.5">
+                      <span class="w-4 h-4 mt-1 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[9px] font-bold" style="background: #16a34a;">✓</span>
+                      <span class="text-xs" style="color: rgba(16,25,40,0.72);">{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center mt-12">
+        <div class="lg:col-10">
+          <div class="rounded-3xl border border-dark/10 bg-body p-7 lg:p-9" data-aos="fade-up-sm">
+            <h3 class="h5 font-bold mb-3">¿Por qué el palet tiene que ser una entidad y no una suma de cajas?</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(16,25,40,0.72);">
+              Porque en la nave nadie mueve cajas: se mueven palets. Si el
+              sistema solo conoce cantidades por artículo, cada traslado de
+              un palet mixto son cinco ajustes manuales y cinco oportunidades
+              de descuadre. Cuando el palet existe como entidad, con su SSCC,
+              su contenido línea a línea y su estado, mover, pesar, partir o
+              expedir es una sola operación y el historial cuenta lo que pasó.
+            </p>
+            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.72);">
+              Ese mismo palet se puede escanear dentro de un albarán o una
+              factura, y las líneas llegan agrupadas y protegidas. Si el palet
+              es de un cliente en depósito, la salida genera su apunte de
+              tarifa en la misma operación. Cómo se construye la etiqueta lo
+              explicamos en
+              <a href="/blog/etiqueta-sscc-gs1-palets" class="text-primary underline">qué es la etiqueta SSCC y cómo se genera</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       COMPARATIVA (tabla de decisión, AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Qué opción encaja con tu almacén?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          Comparativa honesta de las cuatro vías que tiene una pyme para controlar sus palets.
+        </p>
+      </div>
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[900px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Opción</th>
+              <th class="text-left p-4">Etiqueta SSCC</th>
+              <th class="text-left p-4">Ciclo de vida del palet</th>
+              <th class="text-left p-4">Mover un palet</th>
+              <th class="text-left p-4">Palets de terceros</th>
+              <th class="text-left p-4 rounded-tr-2xl">Coste</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comparativa.map((r) => (
+                <tr class={r.destacado ? "bg-primary/5 font-medium" : "border-b border-dark/5"}>
+                  <td class={`p-4 ${r.destacado ? "text-primary font-bold" : "font-medium"}`}>{r.opcion}</td>
+                  <td class="p-4">{r.sscc}</td>
+                  <td class="p-4">{r.ciclo}</td>
+                  <td class="p-4">{r.mover}</td>
+                  <td class="p-4">{r.terceros}</td>
+                  <td class="p-4">{r.precio}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CASOS DE USO SECTORIALES
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Cómo lo usan almacenes que viven de mover palets</h2>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          casos.map((c, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3 leading-snug">{c.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ESTÁNDARES Y NORMATIVA
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Estándares y normativa: qué parte sostiene el software</h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          El palet se mueve entre estándares GS1, trazabilidad alimentaria y
+          contratos de transporte y depósito. Drenpos aporta el registro que
+          lo hace demostrable.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center">
+        {
+          normas.map((n, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
+                <h3 class="h6 font-bold mb-3 leading-snug" style="color: #791b46;">{n.nombre}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{n.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center mt-10">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <div class="rounded-3xl border border-dark/10 bg-body p-6 lg:p-8">
+            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">
+              Esta página cita normas y estándares por su nombre para
+              orientar, no como asesoramiento legal: <strong>el detalle
+              aplicable a tu actividad debe confirmarse con el texto vigente
+              de cada norma</strong> y, en el caso de GS1, con la
+              documentación oficial de GS1 España. Lo que sí garantiza
+              Drenpos es la parte documental: SSCC, contenido, peso,
+              movimientos, despaletizados, propietario y entregas firmadas,
+              todo recuperable en un informe.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PRECIO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-8">
+          <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-3 text-white">Toda la gestión de palets, desde 19,90 €/mes</h2>
+            <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+              El módulo Almacén incluye palets con etiqueta SSCC estándar
+              GS1, cierre y pesado, movimiento en un escaneo, despaletizado,
+              palets blindados en documentos, depósito de terceros y
+              entregas firmadas, además de multialmacén, ubicaciones QR,
+              lotes y trazabilidad. Sin coste por uso, sin permanencia y con
+              actualizaciones y soporte humano incluidos.
+            </p>
+            <ul class="flex flex-wrap gap-4 justify-center mb-6">
+              <li>
+                <a href="/pricing" class="btn btn-light">Ver planes y precios</a>
+              </li>
+              <li>
+                <a href="/contact" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Pedir demo de 20 minutos</a>
+              </li>
+            </ul>
+            <p class="text-sm max-w-xl mx-auto" style="color: rgba(255,255,255,0.55);">
+              Precios sin IVA. Si tus datos no pueden salir de la empresa,
+              existe <strong>despliegue on-premise</strong> en tu propio
+              servidor con el sistema completo, a presupuesto.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FAQ (visible + schema)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <h2 class="h3 font-bold mb-3 text-center" data-aos="fade-up-sm">Gestión de palets: lo que más nos preguntan</h2>
+          <p class="text-center mb-10" style="color: rgba(16,25,40,0.62);" data-aos="fade-up-sm">
+            Respuestas directas, sin letra pequeña.
+          </p>
+          <div class="space-y-4">
+            {
+              faqs.map((f, i) => (
+                <details class="group rounded-2xl border border-dark/10 bg-body p-5" data-aos="fade-up-sm" data-aos-delay={Math.min(i * 50, 300)}>
+                  <summary class="cursor-pointer list-none flex items-start justify-between gap-4">
+                    <h3 class="h6 font-bold leading-snug">{f.q}</h3>
+                    <span class="text-primary text-xl leading-none mt-0.5 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <p class="mt-4 text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">{f.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ENLAZADO INTERNO (clúster)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-3">Soluciones específicas por tipo de almacén</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          El mismo sistema, explicado desde el problema concreto de cada operativa.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center mb-14">
+        {
+          hermanas.map((h, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <a href={h.url} class="block h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl hover:border-primary/30 transition-all duration-300">
+                <h3 class="h6 font-bold mb-2 leading-snug text-primary">{h.title}</h3>
+                <p class="text-sm mb-3" style="color: rgba(16,25,40,0.68);">{h.body}</p>
+                <span class="text-primary text-sm font-medium">Ver solución →</span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center gy-6">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <h2 class="h5 font-bold mb-3">Sigue leyendo sobre palets, SSCC y almacén</h2>
+          <ul class="row g-2 text-sm mb-8">
+            {
+              articulos.map((a) => (
+                <li class="md:col-6">
+                  <a href={`/blog/${a.s}`} class="text-primary hover:underline">{a.t}</a>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="text-sm" style="color: rgba(16,25,40,0.7);">
+            ¿Quieres ver el sistema completo? Consulta todos los
+            <a href="/modulos" class="text-primary underline">módulos de Drenpos</a>,
+            los <a href="/pricing" class="text-primary underline">planes y precios</a>
+            o escríbenos desde el
+            <a href="/contact" class="text-primary underline">formulario de contacto</a>
+            para una demo de 20 minutos sobre tu propia operativa de palets.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>

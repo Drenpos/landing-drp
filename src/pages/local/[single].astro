@@ -16,8 +16,16 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { title, meta_title, description, date, author, categories, tags } =
-  post.data;
+const {
+  title,
+  meta_title,
+  description,
+  date,
+  updated,
+  author,
+  categories,
+  tags,
+} = post.data;
 const image = post.data.image || `/og/local/${post.id}.jpg`;
 const breadcrumbs = [
   { name: "Inicio", item: "/" },
@@ -34,7 +42,7 @@ const breadcrumbs = [
   image_alt={title}
   type="article"
   published_date={date}
-  modified_date={date}
+  modified_date={updated || date}
   author={author && {
     name: author.name,
     url: "https://www.linkedin.com/in/alonso-bermejo/",

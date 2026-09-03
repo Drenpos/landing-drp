@@ -1,8 +1,9 @@
 ---
-title: "VERI*FACTU en 2026-2027: qué es, a quién afecta y cómo adaptarte sin sanciones"
-meta_title: "VERI*FACTU 2026-2027: Guía completa para pymes y autónomos"
-description: "Guía práctica para pymes y autónomos en España: diferencias entre VERI*FACTU y 'no verificable', qué exige Hacienda (QR y leyenda), plazos, sanciones y plan de adaptación en 10 pasos."
+title: "VERI*FACTU en 2027: qué es, a quién afecta y cómo adaptarte sin sanciones"
+meta_title: "VERI*FACTU 2027: guía completa para pymes y autónomos"
+description: "Nuevas fechas de VERI*FACTU tras el RDL 15/2025: 1 de enero y 1 de julio de 2027. Diferencias con el modo no verificable, QR y leyenda, sanciones y plan de adaptación en 10 pasos."
 date: 2026-05-04
+updated: 2026-09-03
 image: "/images/blog/verifactu/verifactu-cover.webp"
 author:
   name: "Alonso Bermejo Pérez"
@@ -12,20 +13,26 @@ categories: ["VERI*FACTU", "Facturación", "Pymes", "Autónomos", "Cumplimiento"
 featured: false
 draft: false
 hero:
-  title: "VERI*FACTU en 2026-2027: Guía completa de adaptación"
+  title: "VERI*FACTU en 2027: guía completa de adaptación"
   description: "Todo lo que necesitas saber para cumplir con VERI*FACTU sin sanciones"
 faq:
   - question: "¿Qué es VERI*FACTU y desde cuándo es obligatorio?"
-    answer: "VERI*FACTU es la modalidad del Real Decreto 1007/2023 en la que tu software de facturación remite en línea a la AEAT todos los registros de facturación. Los obligados tributarios deben tener sistemas adaptados desde el 1 de julio de 2025, con QR en las facturas y la leyenda VERI*FACTU si se remiten todos los registros."
+    answer: "VERI*FACTU es la modalidad del Real Decreto 1007/2023 en la que tu software de facturación remite en línea a la AEAT todos los registros de facturación. Tras el aplazamiento del Real Decreto-ley 15/2025, las empresas sujetas al Impuesto sobre Sociedades deben tener el sistema adaptado el 1 de enero de 2027 y los autónomos y el resto de obligados el 1 de julio de 2027, con QR en las facturas y la leyenda VERI*FACTU si se remiten todos los registros."
   - question: "¿Qué sanciones hay por usar software de facturación no conforme?"
     answer: "La multa por fabricar o comercializar software no conforme llega a 150.000 € por ejercicio y tipo de sistema, y la tenencia o uso de sistemas no certificados se sanciona con 50.000 € por ejercicio. A ello se suman las sanciones por incumplir obligaciones de facturación del artículo 201 de la LGT."
   - question: "¿Es mejor operar en modo VERI*FACTU o en modo no verificable?"
     answer: "Para una pyme, VERI*FACTU suele ser la vía más directa: al remitir los registros a la AEAT, reduces la carga técnica y de custodia y el riesgo de requerimientos. El modo no verificable obliga a cumplir por tu cuenta todas las medidas de integridad, conservación y trazabilidad."
+  - question: "¿Conviene esperar a 2027 para adaptarse?"
+    answer: "No. El aplazamiento cambia el calendario, no la obligación ni los requisitos técnicos. Adaptarse antes permite probar el envío de registros con calma, corregir series y datos maestros sin presión y evitar la avalancha de migraciones de última hora. Además, los sistemas que ya operan en VERI*FACTU dan por cumplido el requisito desde el primer día."
   - question: "¿Drenpos cumple con VERI*FACTU?"
     answer: "Sí. Drenpos opera exclusivamente en modalidad VERI*FACTU: genera el QR y la leyenda correctos, remite los registros a la AEAT y ofrece un panel de control de remisiones. La declaración responsable del software está publicada y accesible desde la propia web."
 ---
 
-> **VERI\*FACTU** es el sistema de facturación que **remite en línea a la AEAT** todos tus registros de facturación. Desde **1 de julio de 2025** debes tener tu software adaptado; además, las facturas deben llevar **QR** y la leyenda **"VERI\*FACTU"** solo si remites todos los registros. Las sanciones por software no conforme pueden llegar a **150.000 €** por ejercicio. Te mostramos por qué te conviene operar en **modo VERI\*FACTU** y cómo adaptarte en 10 pasos.
+> **VERI\*FACTU** es el sistema de facturación que **remite en línea a la AEAT** todos tus registros de facturación. Tras el aplazamiento del **Real Decreto-ley 15/2025**, las sociedades deben tener el software adaptado el **1 de enero de 2027** y los autónomos y el resto de obligados el **1 de julio de 2027**. Las facturas deben llevar **QR** y la leyenda **"VERI\*FACTU"** solo si remites todos los registros. Las sanciones por software no conforme pueden llegar a **150.000 €** por ejercicio para quien lo fabrica y a **50.000 €** para quien lo usa. Te mostramos por qué te conviene operar en **modo VERI\*FACTU** y cómo adaptarte en 10 pasos.
+
+<Notice type="info" title="Actualizado en septiembre de 2026">
+El Real Decreto-ley 15/2025, de 2 de diciembre (BOE del 3 de diciembre de 2025), trasladó a 2027 la entrada en vigor de la obligación: 1 de enero de 2027 para los contribuyentes del Impuesto sobre Sociedades y 1 de julio de 2027 para el resto (autónomos, profesionales y entidades en atribución de rentas). Los requisitos técnicos del Real Decreto 1007/2023 y de su orden ministerial no cambian. Esta guía está revisada con ese calendario.
+</Notice>
 
 <div class="my-8 flex justify-center">
   <a href="/contact" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
@@ -57,8 +64,17 @@ En Drenpos operamos con un enfoque de **cumplimiento por diseño** y priorizamos
 
 <h2 id="a-quien-afecta">¿A quién afecta y desde cuándo?</h2>
 
-- El **Real Decreto 1007/2023** aprueba el reglamento SIF. Los **obligados tributarios** (pymes, autónomos, profesionales) deben tener operativos sistemas adaptados **antes del 1 de julio de 2025**.
-- La **Orden Ministerial** que desarrolla especificaciones técnicas (publicada en 2024) y la **modificación por RD 254/2025** ajustan aspectos técnicos y plazos para fabricantes y comercializadores. La AEAT lo compila en su página oficial de VERI\*FACTU.
+- El **Real Decreto 1007/2023** aprueba el reglamento de los sistemas informáticos de facturación (SIF). Afecta a **pymes, autónomos y profesionales** que emiten facturas con software y no están en el SII.
+- La **Orden HAC/1177/2024** desarrolla las especificaciones técnicas (formato de los registros, huella encadenada, QR y envío a la AEAT). El **Real Decreto 254/2025** ajustó aspectos técnicos y fijó los plazos para fabricantes y comercializadores.
+- El **Real Decreto-ley 15/2025**, de 2 de diciembre, fija el calendario vigente para los obligados tributarios:
+
+| Obligado                                                        | Fecha límite de adaptación |
+| --------------------------------------------------------------- | -------------------------- |
+| Contribuyentes del Impuesto sobre Sociedades                    | 1 de enero de 2027         |
+| Autónomos, profesionales y resto de obligados (IRPF, atribución de rentas) | 1 de julio de 2027 |
+
+- Quedan **fuera** quienes ya llevan los libros a través del **SII** (grandes empresas, grupos de IVA, REDEME) y los territorios forales con su propio sistema (TicketBAI en el País Vasco).
+- La AEAT lo compila en su [página oficial de VERI\*FACTU](https://sede.agenciatributaria.gob.es/Sede/iva/sistemas-informaticos-facturacion-verifactu/nota-informativa-ampliacion-plazo-adaptacion-facturacion.html), y el texto del aplazamiento está en el [BOE](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-24446).
 
 > Nota: **Factura electrónica B2B (Ley Crea y Crece)** es **otra obligación distinta**. Aquí nos centramos en SIF/VERI\*FACTU (requisitos del software de facturación). El BOE diferencia ambas materias.
 
@@ -130,7 +146,7 @@ Si pasas a **VERI\*FACTU**, debes **mantenerte** al menos hasta final de ese añ
 Sí. En VERI\*FACTU, las **comunicas a la AEAT** igualmente.
 
 **¿Quién tiene que estar adaptado y cuándo?**  
-Los **obligados tributarios** deben tener sistemas adaptados **antes del 1 de julio de 2025**; fabricantes y comercializadores, según el plazo desde la **Orden Ministerial**.
+Las **sociedades** el 1 de enero de 2027 y los **autónomos y el resto de obligados** el 1 de julio de 2027, según el Real Decreto-ley 15/2025. Los fabricantes y comercializadores de software ya deben ofrecer sistemas conformes con su declaración responsable.
 
 <h2 id="conclusion">Conclusión y siguiente paso</h2>
 
@@ -153,7 +169,7 @@ Si quieres minimizar riesgos de sanción, evitar requerimientos y simplificar la
 
 ### ¿Qué es VERI*FACTU y desde cuándo es obligatorio?
 
-VERI*FACTU es la modalidad del Real Decreto 1007/2023 en la que tu software de facturación remite en línea a la AEAT todos los registros de facturación. Los obligados tributarios deben tener sistemas adaptados desde el 1 de julio de 2025, con QR en las facturas y la leyenda VERI*FACTU si se remiten todos los registros.
+VERI*FACTU es la modalidad del Real Decreto 1007/2023 en la que tu software de facturación remite en línea a la AEAT todos los registros de facturación. Tras el aplazamiento del Real Decreto-ley 15/2025, las empresas sujetas al Impuesto sobre Sociedades deben tener el sistema adaptado el 1 de enero de 2027 y los autónomos y el resto de obligados el 1 de julio de 2027, con QR en las facturas y la leyenda VERI*FACTU si se remiten todos los registros.
 
 ### ¿Qué sanciones hay por usar software de facturación no conforme?
 
@@ -162,6 +178,10 @@ La multa por fabricar o comercializar software no conforme llega a 150.000 € p
 ### ¿Es mejor operar en modo VERI*FACTU o en modo no verificable?
 
 Para una pyme, VERI*FACTU suele ser la vía más directa: al remitir los registros a la AEAT, reduces la carga técnica y de custodia y el riesgo de requerimientos. El modo no verificable obliga a cumplir por tu cuenta todas las medidas de integridad, conservación y trazabilidad.
+
+### ¿Conviene esperar a 2027 para adaptarse?
+
+No. El aplazamiento cambia el calendario, no la obligación ni los requisitos técnicos. Adaptarse antes permite probar el envío de registros con calma, corregir series y datos maestros sin presión y evitar la avalancha de migraciones de última hora. Además, los sistemas que ya operan en VERI*FACTU dan por cumplido el requisito desde el primer día.
 
 ### ¿Drenpos cumple con VERI*FACTU?
 
