@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "query": "small warehouse shelves boxes",
+    "photographer": "Tiger Lily",
+    "photographer_url": "https://www.pexels.com/@tiger-lily",
+    "pexels_url": "https://www.pexels.com/photo/workers-walking-along-aisle-in-warehouse-4487383/",
+    "alt": "Pequeño almacén de una pyme con estanterías y cajas etiquetadas"
+  },
+  {
+    "file": "section-1.jpg",
+    "query": "business owner laptop warehouse",
+    "photographer": "Kampus Production",
+    "photographer_url": "https://www.pexels.com/@kampus",
+    "pexels_url": "https://www.pexels.com/photo/women-sitting-in-a-room-with-cardboard-boxes-and-using-a-laptop-7857540/",
+    "alt": "Responsable de una pyme comparando presupuestos de software de almacén"
+  },
+  {
+    "file": "section-2.jpg",
+    "query": "warehouse inventory counting clipboard",
+    "photographer": "Vitaly Gariev",
+    "photographer_url": "https://www.pexels.com/@silverkblack",
+    "pexels_url": "https://www.pexels.com/photo/man-inspecting-colorful-rolls-in-a-store-36766870/",
+    "alt": "Recuento manual de stock, el coste oculto de no tener sistema"
+  }
+]

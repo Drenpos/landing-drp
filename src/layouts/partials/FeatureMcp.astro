@@ -1,0 +1,109 @@
+---
+// Sección de home: conector MCP con el asistente de IA del cliente.
+// Ojo: Drenpos no vende IA propia aquí, es un conector al asistente
+// que el cliente ya usa (ChatGPT, Claude o compatible con MCP).
+import { Icon } from "astro-icon/components";
+
+const bullets = [
+  {
+    title: "Con los permisos de cada usuario",
+    description:
+      "El asistente solo ve lo que esa persona ve dentro de Drenpos. Mismos roles, mismas restricciones y cada uno enlaza su propia cuenta.",
+  },
+  {
+    title: "Solo lectura, hoy por hoy",
+    description:
+      "Consulta ventas, clientes, proveedores, productos y stock. No crea, no modifica y no borra nada en tu sistema.",
+  },
+  {
+    title: "6 € al mes por empresa",
+    description:
+      "Sin IVA, con todos los usuarios incluidos y sin permanencia. Se suma a cualquier plan y las consultas nuevas entran sin coste.",
+  },
+];
+---
+
+<section class="section pt-0">
+  <div class="container">
+    <div class="section-title">
+      <div class="col-10 xl:col-8" data-aos="fade-up-sm">
+        <p
+          class="text-primary bg-primary/10 px-[10px] py-1 inline-block rounded-full uppercase text-sm"
+        >
+          Conector MCP
+        </p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold my-5">
+          Tus datos, en tu asistente de IA
+        </h2>
+        <p class="text-lg">
+          Enlaza Drenpos con el ChatGPT o el Claude que ya usas y pregunta por
+          tu negocio en lenguaje natural, desde el móvil y sin abrir el sistema.
+        </p>
+      </div>
+    </div>
+
+    <div class="row gx-0 gy-8 items-center max-w-6xl mx-auto">
+      <div class="lg:col-6 lg:pe-16 relative" data-aos="fade-up-sm">
+        <div
+          class="hidden lg:block absolute left-0 bottom-0 h-[250px] w-[336px] bg-dark/5 opacity-40 -z-10 rounded-3xl"
+          data-aos="fade-up-left"
+          data-aos-delay="100"
+        >
+        </div>
+        <div
+          class="rounded-2xl overflow-hidden border border-dark/10 shadow-2xl"
+        >
+          <img
+            src="/images/funcionalidades/mcp/01-chat-ventas-semana.png"
+            alt="Conversación en un asistente de IA preguntando qué se vendió la semana pasada con la respuesta obtenida de Drenpos"
+            width="1200"
+            height="900"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-auto block"
+          />
+        </div>
+      </div>
+
+      <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
+        <h3 class="h4 mb-5">«¿Qué vendimos la semana pasada?»</h3>
+        <p class="text-lg/inherit mb-8">
+          Se lo preguntas al asistente que ya tienes abierto todo el día y te
+          responde con los datos de tu Drenpos: ventas de un periodo, compras y
+          ventas netas, la ficha de un cliente o el stock de un artículo. No
+          vendemos otra suscripción de inteligencia artificial, ponemos el
+          conector para que uses la tuya.
+        </p>
+
+        <ul class="flex flex-col gap-5 mb-10">
+          {
+            bullets.map((point) => (
+              <li class="flex items-start gap-3">
+                <Icon
+                  name="random/circleCheck"
+                  class="w-6 h-6 flex-shrink-0 mt-1"
+                />
+                <span>
+                  <strong>{point.title}.</strong> {point.description}
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <a class="btn btn-dark" href="/conector-mcp-ia">
+          Ver el conector MCP
+          <span class="sr-only">Details</span>
+          <span class="icon-wrapper">
+            <span class="icon">
+              <Icon name="arrowRight" width="19" height="12" />
+            </span>
+            <span class="icon" aria-hidden="true">
+              <Icon name="arrowRight" width="19" height="12" />
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -50,7 +50,7 @@ modules:
       - "Trazabilidad entre materia prima y producto acabado"
 
   - name: "Módulo TPV"
-    description: "TPV, una forma más rápida y sencilla de vender"
+    description: "TPV para tienda y para hostelería, una forma más rápida y sencilla de vender"
     price_monthly: "20.58 €"
     price_yearly: "18.52 €"
     included_in:
@@ -59,6 +59,11 @@ modules:
       - "Terminal punto de venta"
       - "Gestión de tickets y cajas"
       - "Cierre de caja diario"
+      - "Mapa de sala y mesas para hostelería"
+      - "Flujo guiado de combinados y extras"
+      - "Pantallas de cocina y barra por familias"
+      - "QR de mesa con analítica de escaneos"
+      - "Carta digital (disponible en las próximas semanas)"
 
   - name: "Módulo Comercial"
     description: "Gestiona comisiones, ofertas y agentes comerciales"
@@ -139,6 +144,19 @@ modules:
       - "Envío de facturas por WhatsApp"
       - "Envío de documentos desde el sistema"
       - "Integración directa con WhatsApp"
+
+  - name: "Conector MCP (IA)"
+    description: "Conecta Drenpos con el asistente de IA que ya usas (ChatGPT, Claude o cualquier cliente compatible con MCP) y pregúntale por tus datos"
+    price_monthly: "6 €"
+    price_yearly: "5.40 €"
+    included_in: []
+    features:
+      - "Analítica de ventas por rango de fechas"
+      - "Compras y ventas netas por periodo"
+      - "Búsqueda y ficha completa de clientes y proveedores"
+      - "Búsqueda de productos con su ficha y su stock"
+      - "Solo lectura y con los mismos permisos que el usuario"
+      - "Precio por empresa, todos los usuarios incluidos"
 
   - name: "Módulo Cloud Storage"
     description: "Conecta con tu Dropbox para guardar tus anexos en la nube"

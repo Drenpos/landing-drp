@@ -1,11 +1,11 @@
 ---
 # Banner
 banner:
-  title: "El software que te hará ganar control real sobre tu negocio"
-  content: "100% en la nube, accede desde cualquier dispositivo y lugar. Control de stock, ventas, facturación y finanzas en tiempo real. Añade los módulos que necesites en el futuro de manera fácil, con implantación rápida y soporte **humano**."
+  title: "El software de gestión que da libertad a tu pyme"
+  content: "ERP modular 100% en la nube: gestión de almacén de nivel WMS, TPV para tienda y para bares y restaurantes, facturación Verifactu y control horario con hardware propio. Activa solo los módulos que necesitas, sin permanencia y con soporte **humano**. Y ahora, pregunta a tu asistente de IA por tus ventas."
   main_image:
     src: "/images/ventas.png"
-    alt: "Dashboard Drenpos"
+    alt: "Analítica de ventas de Drenpos: ventas netas, ticket medio y embudo de oferta a factura"
   background_image:
     src: "/images/hero_background.svg"
     alt: "hero_blob"
@@ -47,7 +47,7 @@ problems_section:
       title: "No sabes realmente qué productos son rentables."
       icon: "262783ad-33bb-4a97-be2d-d1717daddab7/mZLsr7Ln43"
     - content: ""
-      title: "Para cerrar el mes necesitas revisar varias hojas y programas."
+      title: "La comanda no llegó a cocina y el cliente sigue esperando."
       icon: "f310b4dd-f455-48a5-860d-57498a8afb31/XUaijxHTcb"
 
 # Features
@@ -57,7 +57,7 @@ features:
     content: "Drenpos es el ERP 100% cloud diseñado específicamente para pequeñas y medianas empresas que necesitan orden, control y cumplimiento normativo sin complicaciones, desde cualquier lugar."
     bulletpoints:
       - "**Acceso total desde cualquier sitio:** trabaja desde la oficina, casa o almacén con móvil, tablet u ordenador sin restricciones"
-      - "**Menos tiempo en inventarios:** reduce hasta un 35% el tiempo dedicado a contar stock gracias a ubicaciones y trazabilidad en tiempo real"
+      - "**Menos tiempo en inventarios:** ubicaciones con QR, lotes y trazabilidad en tiempo real para contar menos y saber más"
       - "**Menos errores de facturación:** centraliza presupuestos, pedidos y facturas en un solo flujo sin duplicar datos"
       - "**Menos riesgo de sanción:** Verifactu listo desde el primer día con registro inalterable y QR automático"
       - "**Implantación rápida:** configuración por fases en días, no en meses, con acompañamiento de especialistas"

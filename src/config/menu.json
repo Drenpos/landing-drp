@@ -26,6 +26,14 @@
           "url": "/dispositivo-fichaje"
         },
         {
+          "name": "Bares y Restaurantes",
+          "url": "/software-bares-restaurantes"
+        },
+        {
+          "name": "Conector IA (MCP)",
+          "url": "/conector-mcp-ia"
+        },
+        {
           "name": "Gestión de Almacén",
           "url": "/software-gestion-almacen"
         },

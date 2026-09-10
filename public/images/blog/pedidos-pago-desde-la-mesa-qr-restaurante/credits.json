@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "query": "person smartphone restaurant table ordering",
+    "photographer": "cottonbro studio",
+    "photographer_url": "https://www.pexels.com/@cottonbro",
+    "pexels_url": "https://www.pexels.com/photo/food-restaurant-hands-people-6322507/",
+    "alt": "Cliente pidiendo desde el móvil sentado en la mesa de un restaurante"
+  },
+  {
+    "file": "section-1.jpg",
+    "query": "waiter serving table restaurant",
+    "photographer": "ANTONI SHKRABA production",
+    "photographer_url": "https://www.pexels.com/@anthonyshkraba-production",
+    "pexels_url": "https://www.pexels.com/photo/waiter-pouring-drinks-8791031/",
+    "alt": "Camarero sirviendo los platos en la mesa"
+  },
+  {
+    "file": "section-2.jpg",
+    "query": "busy restaurant terrace summer",
+    "photographer": "Boris K.",
+    "photographer_url": "https://www.pexels.com/@borisk",
+    "pexels_url": "https://www.pexels.com/photo/outdoor-dining-on-a-paved-floor-12193139/",
+    "alt": "Terraza llena en verano, el escenario donde pedir desde la mesa más ayuda"
+  }
+]

@@ -8,6 +8,7 @@ import FeatureAllIn from "@/partials/FeatureAllIn.astro";
 import FeatureBeforeAfter from "@/partials/FeatureBeforeAfter.astro";
 import FeatureDecisionData from "@/partials/FeatureDecisionData.astro";
 import FeatureEasyUse from "@/partials/FeatureEasyUse.astro";
+import FeatureMcp from "@/partials/FeatureMcp.astro";
 import FeaturesSection from "@/partials/FeaturesSection.astro";
 import PricingSection from "@/partials/PricingSection.astro";
 import Problems from "@/partials/Problems.astro";
@@ -17,16 +18,17 @@ import Testimonial from "@/partials/Testimonial.astro";
 ---
 
 <Base
-  meta_title="Drenpos | ERP y software de gestión para pymes en España"
-  description="Drenpos es el ERP cloud modular para pymes y autónomos en España: inventario, ventas, TPV, facturación Verifactu y control horario en una sola plataforma. Sin costes ocultos y con soporte humano. Pide tu demo gratis."
+  meta_title="Software de gestión para pymes y ERP modular | Drenpos"
+  description="Drenpos, el software de gestión para pymes: inventario, ventas, TPV, facturación Verifactu y control horario. Por módulos, sin permanencia y con soporte humano."
 >
   <BannerHero />
   <!-- <CustomersLogo sectionGap="section" /> -->
   <!-- Problemas  - te suena esto-->
   <Problems />
-  <!-- <Solution /> -->
   <!-- Ecosistema un solo sitio para todo -->
   <FeatureAllIn />
+  <!-- Conector MCP: los datos en el asistente de IA del cliente -->
+  <FeatureMcp />
   <!-- Antes y despues  -->
   <FeatureBeforeAfter />
   <CallToAction compact={true} />

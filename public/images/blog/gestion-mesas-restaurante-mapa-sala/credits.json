@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "query": "restaurant dining room tables",
+    "photographer": "Magda Ehlers",
+    "photographer_url": "https://www.pexels.com/@magda-ehlers-pexels",
+    "pexels_url": "https://www.pexels.com/photo/charming-indoor-restaurant-with-elegant-decor-32568165/",
+    "alt": "Sala de un restaurante con las mesas preparadas para el servicio"
+  },
+  {
+    "file": "section-1.jpg",
+    "query": "restaurant terrace tables outdoor",
+    "photographer": "Boris Ivas",
+    "photographer_url": "https://www.pexels.com/@boris-ivas-28180462",
+    "pexels_url": "https://www.pexels.com/photo/tables-on-restaurant-terrace-18823960/",
+    "alt": "Terraza de un bar con mesas que cambian de sitio según el día"
+  },
+  {
+    "file": "section-2.jpg",
+    "query": "waiter card payment restaurant",
+    "photographer": "Vitaly Gariev",
+    "photographer_url": "https://www.pexels.com/@silverkblack",
+    "pexels_url": "https://www.pexels.com/photo/people-in-a-restaurant-23496892/",
+    "alt": "Cobro con tarjeta en la mesa al cerrar la cuenta"
+  }
+]

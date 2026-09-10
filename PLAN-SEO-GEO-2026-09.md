@@ -97,3 +97,58 @@ Hay páginas plantilla del tema que siguen publicadas con `description: "this is
 ## 5. Cómo trabajar los refrescos a partir de ahora
 
 Cuando toques un post de fondo: cambia el contenido, añade o actualiza `updated: AAAA-MM-DD`, y si el cambio es normativo mete un `<Notice type="info" title="Actualizado en ...">` al principio con dos frases. No pongas `updated` por retoques de estilo: Google compara el contenido y penaliza la fecha falsa.
+
+---
+
+# Tanda 2 (10 de septiembre de 2026): hostelería, conector MCP y home nueva
+
+`astro build` pasa limpio con todo lo de abajo. Sin commit: lo haces tú cuando lo revises.
+
+## Qué se ha creado
+
+- `/software-bares-restaurantes` (`src/pages/software-bares-restaurantes.astro`). Landing pilar de hostelería: mapa de sala y mesas, flujo guiado de combinados y extras, pantallas de cocina y barra (consulta cada 3 s), QR de mesa con analítica, cierre de caja con stock y Verifactu, hoja de ruta honesta (hoy / en semanas / próximamente), comparativa, casos, precio, 8 FAQ. Schema BreadcrumbList + SoftwareApplication + FAQPage.
+- `/conector-mcp-ia` (`src/pages/conector-mcp-ia.astro`). Landing del conector MCP: qué es, 3 pasos, tabla de lo que se puede preguntar hoy, qué no hace todavía, seguridad, 6 €/mes, 8 FAQ. Mock de chat en HTML sin cifras.
+- 5 posts nuevos en `src/content/blog/` (fecha 10/09/2026): `carta-digital-qr-restaurante-guia`, `pantalla-cocina-kds-bares-comandas-perdidas`, `gestion-mesas-restaurante-mapa-sala`, `tpv-bares-restaurantes-como-elegir-2026`, `pedidos-pago-desde-la-mesa-qr-restaurante`. Fuentes externas solo en el de carta digital (Reglamento UE 1169/2011 y RD 126/2015, ambos enlazados al BOE).
+- Home rehecha: hero de dos columnas con keyword ("El software de gestión que da libertad a tu pyme"), captura real de la analítica de ventas y cuatro tarjetas flotantes (cocina, palet SSCC, fichaje, asistente de IA); rejilla bento de módulos con keywords por intención; sección "Tus datos, en tu asistente de IA"; quinta tarjeta de problemas (hostelería) con cinco por fila en escritorio. Partials nuevos: `BannerHero.astro` (reescrito), `ModulesBento.astro`, `FeatureMcp.astro`, `SectorsGrid.astro` (creado pero no usado; se puede borrar).
+- Esquema `homepage` en `content.config.ts`: campos opcionales `banner.eyebrow`, `chips`, `trust`, `cards`, `secondary_image`; `problems_section.cards[].icon` pasa a opcional.
+
+## Qué se ha actualizado
+
+- `software-almacen-tienda.astro` (TPV restaurante con mapa de sala, combinados y QR; tarjetas hermanas), `funcionalidades.astro` (bloque hostelería), `faq.md` (dos preguntas), `modules.md` (features del TPV y módulo Conector MCP a 6 €), `menu.json` (Bares y Restaurantes, Conector IA), `Base.astro` (featureList del SoftwareApplication global), `llms.txt` y `llms-full.txt` (bloques de hostelería y MCP, FAQ nuevas, datos citables).
+- Posts refrescados con `updated: 2026-09-10`: `enviar-facturas-por-whatsapp-automaticamente` (caso catering), `erp-para-pymes-vs-excel` (bar con caja en Excel y consulta desde ChatGPT/Claude), `mejores-programas-control-horario` (hostelería con turnos partidos).
+
+## Capturas pendientes (sustituir los placeholders, mismo nombre de fichero)
+
+En `public/images/funcionalidades/` hay seis PNG provisionales con fondo oscuro y el texto "Captura pendiente". Al guardar la captura real con el mismo nombre, todo queda enlazado sin tocar código:
+
+- `hosteleria/01-mapa-sala-mesas.png` (1200x750): TPV restaurante, mapa de sala con mesas abiertas.
+- `hosteleria/02-pantalla-cocina.png` (1200x750): pantalla de cocina o barra con varias comandas y el código de mesa.
+- `hosteleria/03-cartas-qr-estadisticas.png` (1200x750): página Cartas y QR con las gráficas de escaneos.
+- `hosteleria/04-flujo-combinados.png` (1200x750): el TPV en el paso de complementos o bebidas de un combinado.
+- `mcp/01-chat-ventas-semana.png` (1200x900): ChatGPT o Claude respondiendo a "¿qué vendimos la semana pasada?" con datos de demo.
+- `mcp/02-ficha-cliente-chat.png` (1200x900): ficha de un cliente consultada desde el chat.
+
+Si alguna proporción es distinta, no pasa nada: las imágenes van con `w-full h-auto`. La carpeta `_to_delete/` contiene tres `preview*.tgz` que usé para renderizar la home y se pueden borrar.
+
+## Verificar antes de publicar
+
+- Módulo "Conector MCP (IA)" en `modules.md`: precio escrito como "6 €" y "5.40 €"; el resto usa dos decimales ("6.00 €"). Unifica si la tabla lo muestra distinto.
+- Bento de la home: el enlace "Ver todos los módulos" de la tarjeta de facturación va a `/modulos` porque no hay landing de facturación. Si algún día la haces, cámbialo ahí.
+- La tarjeta de problemas de hostelería no lleva animación Lottie (hace falta un id nuevo de lottie.host); las otras cuatro sí.
+- El array `features` de `homepage/-index.md` no lo pinta ningún partial: lo he limpiado de cifras sin fuente, pero no se ve en la web.
+- Palabras clave por intención usadas en la home: "software de gestión para pymes" (H1 y meta), "ERP modular" (subtítulo y meta), "gestión de almacén y WMS", "TPV para bares y restaurantes", "facturación Verifactu", "control horario", "conector con tu IA". Cuando tengas las capturas reales, pide indexación de `/`, `/software-bares-restaurantes` y `/conector-mcp-ia` en Search Console.
+
+## Corrección posterior (10/09, tarde)
+
+- Home: se ha vuelto a la estructura original (hero centrado con fondo granulado compartido con la cabecera, cuatro tarjetas de problemas, mismo orden de secciones). Solo cambian los textos del hero (H1 "El software de gestión que da libertad a tu pyme" y párrafo con keywords), una tarjeta de problemas (hostelería) y se añade la sección "Tus datos, en tu asistente de IA" (`FeatureMcp.astro`) tras "Todos tus datos en el mismo sitio". Retirados el hero de dos columnas, la rejilla bento y "25 negocios activos". `ModulesBento.astro` y `SectorsGrid.astro` movidos a `_to_delete/`.
+- Precios: el bloque "Drenpos cuesta desde 19 €/mes" se solapaba con el título y el conmutador de planes porque `section-up` (margen negativo bajo la cabecera) estaba aplicado al bloque de planes y no al párrafo. Ahora el párrafo lleva `section-up` y el bloque de planes fluye debajo.
+
+## Imágenes Pexels para los posts nuevos
+
+Script nuevo `agent/img-hosteleria-2026.mjs` (mismo motor que `img-almacen-2026.mjs`, con el plan de los 7 posts: 5 de hostelería y los 2 de almacén de la primera tanda). Descarga portada y dos fotos de sección por post, recorta, escribe `credits.json`, cambia el `image:` del frontmatter a la portada propia e inserta las fotos tras la cápsula del H2 elegido. En los dos posts de almacén retira además las fotos prestadas de otros posts. Las capturas del sistema (placeholders) se quedan donde están.
+
+Hay que lanzarlo desde una terminal local: ni el contenedor de Cowork ni el puente al Mac tienen salida a `api.pexels.com` (403 del proxy).
+
+    node agent/img-hosteleria-2026.mjs --dry     # ver qué haría
+    node agent/img-hosteleria-2026.mjs           # descargar y parchear
+    node agent/img-hosteleria-2026.mjs --only carta-digital-qr-restaurante-guia

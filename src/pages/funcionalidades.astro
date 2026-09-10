@@ -4,6 +4,26 @@ import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import FeaturePowerSection from "@/partials/FeaturePowerSection.astro";
 import PageHeader from "@/partials/PageHeader.astro";
+
+// Bloque de hostelería: resumen de lo que hace el TPV en un bar o restaurante,
+// con enlace a la landing pilar /software-bares-restaurantes.
+const hosteleria = [
+  {
+    icon: "🗺️",
+    title: "Mapa de sala y mesas",
+    body: "Salas y mesas persistentes creadas con un editor donde arrastras las mesas y les pones sillas, más mesas virtuales para abrir sobre la marcha. Varias mesas abiertas a la vez y sincronizadas entre tablet, móvil y ordenador.",
+  },
+  {
+    icon: "📺",
+    title: "Pantallas de cocina y barra",
+    body: "Varias pantallas por local, cada una con sus familias de productos y el código de mesa en cada comanda. Consultan al servidor cada 3 segundos, así que un parpadeo de la WiFi no hace desaparecer un plato.",
+  },
+  {
+    icon: "📱",
+    title: "QR de mesa con analítica",
+    body: "Un QR estándar por local o por mesa, imprimible desde el sistema, que no cambia cuando cambias la carta. Con panel de escaneos por día, hora, día de la semana, mesa y dispositivo.",
+  },
+];
 ---
 
 <Base
@@ -19,6 +39,44 @@ import PageHeader from "@/partials/PageHeader.astro";
   <div class="section-up pb-0">
     <FeaturePowerSection />
   </div>
+
+  <!-- ══════════════════════════════════════════
+       Hostelería: sala, cocina y QR
+  ══════════════════════════════════════════ -->
+  <section id="hosteleria" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">
+          Hostelería
+        </span>
+        <h2 class="h3 font-bold mb-4">Si lo tuyo es un bar o un restaurante</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          El módulo TPV trae la parte de sala, cocina y carta dentro del mismo
+          sistema que ya lleva tu stock y tu facturación.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center mb-10">
+        {
+          hosteleria.map((h, i) => (
+            <div class="col-12 md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(121,27,70,0.08);">{h.icon}</div>
+                <h3 class="h6 font-semibold mb-2">{h.title}</h3>
+                <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{h.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="text-center" data-aos="fade-up-sm">
+        <a href="/software-bares-restaurantes" class="btn btn-light">
+          Ver el software para bares y restaurantes
+        </a>
+      </div>
+    </div>
+  </section>
 
   <CallToAction />
 </Base>

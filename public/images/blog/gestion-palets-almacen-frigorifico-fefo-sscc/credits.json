@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "query": "cold storage warehouse pallets",
+    "photographer": "Tiger Lily",
+    "photographer_url": "https://www.pexels.com/@tiger-lily",
+    "pexels_url": "https://www.pexels.com/photo/worker-on-a-construction-4487382/",
+    "alt": "Palets almacenados en las estanterías de una cámara frigorífica"
+  },
+  {
+    "file": "section-1.jpg",
+    "query": "forklift cold storage warehouse",
+    "photographer": "ELEVATE",
+    "photographer_url": "https://www.pexels.com/@elevate",
+    "pexels_url": "https://www.pexels.com/photo/pathway-for-forklifts-1267327/",
+    "alt": "Carretilla moviendo un palet completo dentro del almacén"
+  },
+  {
+    "file": "section-2.jpg",
+    "query": "frozen food boxes warehouse",
+    "photographer": "Caleb Oquendo",
+    "photographer_url": "https://www.pexels.com/@caleboquendo",
+    "pexels_url": "https://www.pexels.com/photo/pallet-of-green-bean-cans-in-outdoor-distribution-center-34585130/",
+    "alt": "Cajas de producto congelado paletizadas y listas para expedir"
+  }
+]

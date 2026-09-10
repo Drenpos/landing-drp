@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "query": "restaurant kitchen chefs working",
+    "photographer": "Aqil Faisal Halfid",
+    "photographer_url": "https://www.pexels.com/@aqilfaisal",
+    "pexels_url": "https://www.pexels.com/photo/people-cooking-in-industrial-kitchen-13971183/",
+    "alt": "Cocina de un restaurante en pleno servicio con varios cocineros"
+  },
+  {
+    "file": "section-1.jpg",
+    "query": "kitchen order tickets",
+    "photographer": "Willian Justen de Vasconcellos",
+    "photographer_url": "https://www.pexels.com/@willianjusten",
+    "pexels_url": "https://www.pexels.com/photo/busy-fast-food-kitchen-with-workers-under-warm-light-29560600/",
+    "alt": "Pase de cocina con comandas a la espera de salir"
+  },
+  {
+    "file": "section-2.jpg",
+    "query": "bartender making cocktails bar",
+    "photographer": "James Dollin",
+    "photographer_url": "https://www.pexels.com/@james-dollin-2518402",
+    "pexels_url": "https://www.pexels.com/photo/a-bartender-pouring-alcohol-on-a-jigger-5097033/",
+    "alt": "Camarero de barra preparando bebidas durante el servicio"
+  }
+]

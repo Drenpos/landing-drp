@@ -1,0 +1,205 @@
+---
+// Sección de home: rejilla bento con los módulos, cada uno con su keyword y
+// su landing. Sustituye a la antigua rejilla por sector: aquí manda lo que el
+// negocio necesita, no la etiqueta del sector.
+import { Icon } from "astro-icon/components";
+
+type Modulo = {
+  icon: string;
+  title: string;
+  lines: string[];
+  label: string;
+  link: string;
+  tint: string;
+  /** Clases de span en la rejilla bento (por defecto ocupa una columna). */
+  span?: string;
+  /** Tarjeta grande: título un punto mayor. */
+  featured?: boolean;
+  /** Tarjeta ancha con mock de conversación a la derecha. */
+  chat?: boolean;
+};
+
+const modulos: Modulo[] = [
+  {
+    icon: "📦",
+    title: "Gestión de almacén y WMS",
+    lines: [
+      "Ubicaciones, lotes con caducidad, FEFO y trazabilidad hasta el informe de recall en PDF.",
+      "Palets con etiqueta SSCC estándar GS1, picking guiado con pistola y recepción contra pedido.",
+    ],
+    label: "Ver el software de gestión de almacén",
+    link: "/software-gestion-almacen",
+    span: "md:col-span-2",
+    tint: "#FDF2F5",
+    featured: true,
+  },
+  {
+    icon: "🍽️",
+    title: "TPV para bares y restaurantes",
+    lines: [
+      "Mapa de sala con mesas propias, pantallas de cocina y barra por familias y QR de mesa.",
+      "Combinados con pasos configurables y cierre de caja con el stock ya descontado.",
+    ],
+    label: "Ver el TPV de hostelería",
+    link: "/software-bares-restaurantes",
+    tint: "#FFF7ED",
+  },
+  {
+    icon: "🧾",
+    title: "Facturación Verifactu y ventas",
+    lines: [
+      "Presupuesto, pedido, albarán y factura encadenados, con Verifactu y su QR en cada documento.",
+      "Envío por WhatsApp desde el propio sistema y remesas SEPA listas para el banco.",
+    ],
+    label: "Ver todos los módulos",
+    link: "/modulos",
+    tint: "#EEF4FF",
+  },
+  {
+    icon: "🕒",
+    title: "Control horario y terminal de fichaje",
+    lines: [
+      "Registro de jornada desde la app, con QR o con llavero RFID, y calendarios laborales por equipo.",
+      "El terminal físico lo diseñamos e imprimimos nosotros, por si prefieres hardware en la pared.",
+    ],
+    label: "Ver el control horario",
+    link: "/control-horario",
+    tint: "#DCFCE7",
+  },
+  {
+    icon: "🏭",
+    title: "Producción y fabricación",
+    lines: [
+      "Órdenes de trabajo por fases, consumo de materiales escaneando y tiempos por operario.",
+      "Al cerrar la orden sabes el coste real de fabricar, no el que suponías.",
+    ],
+    label: "Ver el software de producción",
+    link: "/software-produccion-fabricacion",
+    tint: "#F1EAFF",
+  },
+  {
+    icon: "🤖",
+    title: "Conector con tu IA",
+    lines: [
+      "Enlaza Drenpos con el ChatGPT o el Claude que ya pagas y pregúntale por tus ventas, tus clientes o tu stock.",
+      "Solo lectura, con los permisos que tiene cada usuario dentro del sistema, por 6 € al mes por empresa sin IVA.",
+    ],
+    label: "Ver el conector MCP",
+    link: "/conector-mcp-ia",
+    span: "md:col-span-2 lg:col-span-3",
+    tint: "#E0F2FE",
+    chat: true,
+  },
+];
+---
+
+<section class="section pb-0">
+  <div class="container">
+    <div class="section-title">
+      <div class="col-10 xl:col-8" data-aos="fade-up-sm">
+        <p
+          class="text-primary bg-primary/10 px-[10px] py-1 inline-block rounded-full uppercase text-sm"
+        >
+          Módulos
+        </p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold my-5">
+          Todo lo que necesita tu negocio, en un solo sistema
+        </h2>
+        <p class="text-lg">
+          Empiezas por lo que más te aprieta y activas el resto cuando toque.
+          Los datos son los mismos para todos los módulos, así que nada se
+          teclea dos veces.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {
+        modulos.map((m, index) => (
+          <a
+            href={m.link}
+            class={`group block h-full rounded-3xl border border-dark/10 bg-body p-7 lg:p-8 transition-shadow duration-300 hover:shadow-xl ${m.span ?? ""}`}
+            data-aos="fade-up-sm"
+            data-aos-delay={index * 75}
+          >
+            <div
+              class={
+                m.chat
+                  ? "grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center h-full"
+                  : "flex flex-col h-full"
+              }
+            >
+              <div class="flex flex-col h-full">
+                <span
+                  class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl mb-5 flex-shrink-0"
+                  style={`background: ${m.tint};`}
+                  aria-hidden="true"
+                >
+                  {m.icon}
+                </span>
+
+                <h3
+                  class={`font-bold mb-3 leading-snug ${m.featured || m.chat ? "h5" : "h6"}`}
+                >
+                  {m.title}
+                </h3>
+
+                <div class="mb-6 space-y-2">
+                  {m.lines.map((line) => (
+                    <p class="text-sm mb-0" style="color: rgba(16,25,40,0.72);">
+                      {line}
+                    </p>
+                  ))}
+                </div>
+
+                <span class="mt-auto text-primary font-medium text-sm inline-flex items-center gap-2 group-hover:underline">
+                  {m.label}
+                  <Icon name="arrowRight" width="19" height="12" />
+                </span>
+              </div>
+
+              {m.chat && (
+                <div
+                  class="rounded-2xl bg-primary/5 border border-primary/10 p-5 sm:p-6"
+                  aria-hidden="true"
+                >
+                  <p
+                    class="text-xs uppercase tracking-wide mb-4"
+                    style="color: rgba(16,25,40,0.45);"
+                  >
+                    Tu asistente de IA
+                  </p>
+
+                  <div class="flex justify-end mb-3">
+                    <p class="text-sm rounded-2xl rounded-br-sm px-4 py-3 max-w-[85%] text-white mb-0 bg-primary">
+                      ¿Qué vendimos la semana pasada?
+                    </p>
+                  </div>
+
+                  <div class="flex justify-start mb-3">
+                    <div class="text-sm rounded-2xl rounded-bl-sm px-4 py-3 max-w-[90%] bg-white border border-dark/5">
+                      <p class="mb-2 flex items-center gap-2 text-xs font-semibold text-primary">
+                        <span class="w-2 h-2 rounded-full bg-primary" />
+                        Consultando Drenpos
+                      </p>
+                      <p class="mb-0" style="color: rgba(16,25,40,0.75);">
+                        Te paso las ventas netas del periodo, el ticket medio y
+                        los productos que más salieron.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex justify-end">
+                    <p class="text-sm rounded-2xl rounded-br-sm px-4 py-3 max-w-[85%] text-white mb-0 bg-primary">
+                      Y dame la ficha de ese cliente
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

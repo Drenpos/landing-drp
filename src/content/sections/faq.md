@@ -14,6 +14,10 @@ list:
     active: true
   - title: ¿Qué módulos incluye ahora mismo?
     description: "Financiero (ofertas, pedidos, albaranes y facturación Verifactu), Inventario (multialmacén, ubicaciones, stock y lotes), TPV para tienda y restaurante, Producción (órdenes de trabajo, fases, consumo de materiales por lectura, imputación de tiempos y coste real de fabricación), Fichajes para el registro de jornada, Comercial (agentes y comisiones), Informes, Cloud Storage y envío de documentos por correo y WhatsApp."
+  - title: ¿Sirve Drenpos para un bar o restaurante?
+    description: "Sí. El módulo TPV trae mapa de sala con mesas persistentes, flujo guiado de combinados y extras con precio por opción, y pantallas de cocina y barra que consultan al servidor cada 3 segundos para que no se pierda ninguna comanda. También tienes QR de mesa con analítica de escaneos, cierre de caja con desglose por método de pago y el stock descontado solo. La carta digital con alérgenos estará disponible en las próximas semanas."
+  - title: ¿Puedo consultar mis datos desde ChatGPT o Claude?
+    description: "Sí, con el módulo Conector MCP. Enlazas Drenpos con el asistente de IA que ya uses y le preguntas en lenguaje natural por las ventas de un periodo, las compras y ventas netas, la ficha de un cliente o el stock de un producto. Es de solo lectura y aplica exactamente los mismos permisos que esa persona tiene dentro de Drenpos; cuesta 6 €/mes por empresa sin IVA, con todos los usuarios incluidos."
   - title: ¿Cumple con Verifactu y la AEAT?
     description: Sí. Gestionamos facturación con series por periodo, registros inalterables y firma. Además, preparamos el envío a AEAT (cuando aplique) para garantizar trazabilidad y veracidad de los datos.
   - title: ¿Cómo gestionáis la trazabilidad por lotes y ubicaciones?

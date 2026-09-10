@@ -51,7 +51,9 @@ const almacen = [
 ];
 
 // Capacidades de TIENDA / TPV
-const tienda = [
+type Tarjeta = { icon: string; title?: string; tag?: string; body: string; link?: string; linkLabel?: string };
+
+const tienda: Tarjeta[] = [
   {
     icon: "🛒",
     title: "TPV de tienda integrado",
@@ -60,7 +62,9 @@ const tienda = [
   {
     icon: "🍽️",
     title: "TPV de restaurante",
-    body: "Gestión de mesas, múltiples mesas abiertas a la vez y pantalla de cocina/barra que recibe los pedidos en tiempo real según familias de productos.",
+    body: "Mapa de sala con tus mesas colocadas como están de verdad, varias mesas abiertas a la vez, flujo guiado de combinados y extras con precio por opción, pantallas de cocina y barra por familias y QR de mesa con analítica de escaneos.",
+    link: "/software-bares-restaurantes",
+    linkLabel: "Ver el software para bares y restaurantes",
   },
   {
     icon: "💶",
@@ -88,7 +92,7 @@ const tienda = [
 const flujo = ["Oferta", "Pedido", "Albarán", "Factura"];
 
 // Casos de uso (del contexto real)
-const casos = [
+const casos: Tarjeta[] = [
   {
     tag: "Tienda de alimentación con frescos",
     icon: "🥫",
@@ -102,7 +106,33 @@ const casos = [
   {
     tag: "Bar con cocina y barra",
     icon: "🍻",
-    body: "El camarero toma el pedido en el TPV restaurante y lo asigna a la mesa. Los platos van a la pantalla de cocina y las bebidas a la de barra. Al cobrar, el stock ya se ha descontado del inventario. Cierre de caja con un clic.",
+    body: "El camarero abre la mesa desde el mapa de sala y marca el pedido: si es una copa o una hamburguesa, el TPV pide los combinados y los extras con su precio. Los platos van a la pantalla de cocina y las bebidas a la de barra. El QR de mesa registra sus escaneos y, al cobrar, el stock ya se ha descontado del inventario.",
+    link: "/software-bares-restaurantes",
+    linkLabel: "Software para bares y restaurantes",
+  },
+];
+
+// Landings hermanas (soluciones específicas por tipo de negocio)
+const hermanas = [
+  {
+    url: "/software-bares-restaurantes",
+    title: "Software para bares y restaurantes",
+    body: "Mapa de sala y mesas, flujo de combinados y extras, pantallas de cocina y barra y QR de mesa con analítica.",
+  },
+  {
+    url: "/software-gestion-almacen",
+    title: "Software de gestión de almacén (SGA)",
+    body: "La visión completa del almacén: multialmacén, ubicaciones QR, lotes, picking, palets y trazabilidad.",
+  },
+  {
+    url: "/software-almacen-frigorifico",
+    title: "Almacén frigorífico y congelados",
+    body: "Cadena de frío con FEFO, alertas de caducidad, palets con SSCC e informe de recall en PDF.",
+  },
+  {
+    url: "/software-produccion-fabricacion",
+    title: "Producción y fabricación",
+    body: "Órdenes de trabajo, consumo de materiales por lectura, imputación de tiempos y coste real.",
   },
 ];
 
@@ -396,6 +426,9 @@ const faqSchema = {
               <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(211,167,118,0.15);">{f.icon}</div>
               <h3 class="h6 font-semibold mb-2">{f.title}</h3>
               <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{f.body}</p>
+              {f.link && (
+                <a href={f.link} class="text-primary text-sm font-medium underline inline-block mt-3">{f.linkLabel} →</a>
+              )}
             </div>
           </div>
         ))}
@@ -473,6 +506,9 @@ const faqSchema = {
               <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(121,27,70,0.08);">{c.icon}</div>
               <p class="text-xs font-semibold uppercase tracking-wide mb-3" style="color: #b45309;">{c.tag}</p>
               <p class="text-base leading-relaxed mb-0" style="color: rgba(16,25,40,0.7);">{c.body}</p>
+              {c.link && (
+                <a href={c.link} class="text-primary text-sm font-medium underline inline-block mt-4">{c.linkLabel} →</a>
+              )}
             </div>
           </div>
         ))}
@@ -513,6 +549,25 @@ const faqSchema = {
   <!-- ═══════════════ ENLAZADO INTERNO ═══════════════ -->
   <section class="section pt-0">
     <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-3">Soluciones específicas por tipo de negocio</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          El mismo sistema, contado desde el problema concreto de cada operativa.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center mb-16">
+        {hermanas.map((h, i) => (
+          <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+            <a href={h.url} class="block h-full border rounded-[20px] p-6 hover:shadow-lg transition-all duration-300" style="border-color: rgba(16,25,40,0.1);">
+              <h3 class="h6 font-semibold mb-2 text-primary leading-snug">{h.title}</h3>
+              <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.65);">{h.body}</p>
+              <span class="text-primary text-sm font-medium">Ver solución →</span>
+            </a>
+          </div>
+        ))}
+      </div>
+
       <div class="row gx-0 gy-12 lg:gy-0">
         <div class="lg:col-6 lg:pe-12">
           <h2 class="h5 font-bold mb-2">Sistema de facturación y ERP por ciudad</h2>

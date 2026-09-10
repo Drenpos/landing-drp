@@ -1,0 +1,904 @@
+---
+export const prerender = true;
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+
+// ════════════════════════════════════════════════════════════════════════
+//  Software para bares y restaurantes · landing pilar de hostelería
+//  Intención de búsqueda objetivo:
+//    - "software para bares y restaurantes" (principal)
+//    - "TPV para restaurantes" / "programa para bares" / "TPV hostelería"
+//    - "TPV con pantalla de cocina" / "gestión de mesas restaurante"
+//  Diferenciación con /software-almacen-tienda: esa ataca almacén + TPV de
+//  tienda; esta ataca sala, cocina, barra y carta.
+//  Capturas UI: /public/images/funcionalidades/hosteleria/
+// ════════════════════════════════════════════════════════════════════════
+
+const CANONICAL = "https://www.drenpos.com/software-bares-restaurantes";
+const IMG = "/images/funcionalidades/hosteleria";
+
+// Síntomas (dolores reales de un bar o un restaurante)
+const sintomas = [
+  {
+    icon: "🍳",
+    title: "Comandas que no llegan a cocina",
+    body: "La WiFi parpadea, alguien se lleva el papel o la pantalla se queda colgada, y ese plato no lo prepara nadie. El cliente lleva veinte minutos esperando algo que nunca entró en la cocina.",
+  },
+  {
+    icon: "🪑",
+    title: "Mesas que nadie sabe si están abiertas",
+    body: "Dos camareros preguntan lo mismo en la barra: si la 7 ya ha pagado, si la 12 sigue ocupada. La sala se lleva de cabeza y de memoria, y al final del turno falta un ticket.",
+  },
+  {
+    icon: "📄",
+    title: "Carta en papel que cambia cada semana",
+    body: "Cambia un precio, entra un plato de temporada, se acaba una referencia. Reimprimir cartas cuesta dinero cada vez, y la de la mesa del fondo siempre es la versión vieja.",
+  },
+  {
+    icon: "🧾",
+    title: "Cierre de caja a mano, con calculadora",
+    body: "Al terminar el turno toca sumar tickets, separar efectivo de tarjeta y cuadrar de cabeza. Cuando no cuadra, nadie sabe si fue un cobro mal metido, un ticket perdido o un error al contar.",
+  },
+];
+
+// Capacidades reales (todas mapeadas 1:1 al módulo TPV de Drenpos)
+const capacidades = [
+  {
+    icon: "🗺️",
+    tag: "Sala",
+    title: "Mapa de sala con tus mesas de verdad",
+    body: "Salas y mesas persistentes que creas tú con un editor de mapa de sala: arrastras las mesas, las redimensionas, les pones sillas y lo ves a pantalla completa. Además hay una pestaña de mesas virtuales para abrir mesas sobre la marcha cuando sacas la terraza o juntas dos grupos.",
+    bullets: [
+      "Entrar en una mesa no la ocupa: el tiempo empieza con la primera línea de consumo",
+      "Varias mesas abiertas a la vez, sincronizadas entre tablet, móvil y ordenador",
+      "El estado de cada mesa se ve en la sala, no se pregunta en la barra",
+    ],
+  },
+  {
+    icon: "🍔",
+    tag: "Combinados y extras",
+    title: "Flujo guiado de pasos al marcar un producto",
+    body: "Marcas una hamburguesa o una copa y el TPV salta solo a los pasos que hayas configurado: complementos, bebidas, lo que necesite ese producto. Cada opción lleva su precio propio, así que un JB con Coca-Cola y un JB con Red Bull cobran lo que tienen que cobrar.",
+    bullets: [
+      "Pasos totalmente configurables por producto",
+      "Sirve para menús, hamburguesas con extras y combinados de bebidas",
+      "El camarero nuevo no se deja un extra sin cobrar",
+    ],
+  },
+  {
+    icon: "📺",
+    tag: "Cocina y barra",
+    title: "Pantallas de órdenes que consultan cada 3 segundos",
+    body: "Varias pantallas por local, y cada una recibe solo los artículos de las familias que le asignes (los artículos sin familia van a las pantallas sin filtro). Cada comanda muestra el código de mesa y el personal la marca como completada cuando sale.",
+    bullets: [
+      "Desde septiembre de 2026 funciona por consulta al servidor cada 3 segundos, no por conexión permanente",
+      "Ninguna comanda se pierde ni se mezcla entre pantallas aunque la WiFi parpadee",
+      "Entre 4 y 10 pantallas por local sin problema",
+    ],
+  },
+  {
+    icon: "📱",
+    tag: "QR de mesa",
+    title: "Un QR estándar que no caduca, con analítica de escaneos",
+    body: "Un QR único por local o por mesa, imprimible desde el sistema, que no cambia cuando cambias la carta. Al escanearlo se abre la carta pública del negocio en carta.drenpos.com, y cada escaneo se registra para que sepas qué pasa en tu sala.",
+    bullets: [
+      "Total de escaneos y únicos por día, por hora y por día de la semana",
+      "Desglose por mesa, dispositivo, país y carta servida",
+      "Panel de gráficas dentro del propio TPV",
+    ],
+  },
+  {
+    icon: "🍽️",
+    tag: "Carta digital",
+    title: "Grupos, productos y alérgenos, en las próximas semanas",
+    body: "La carta digital con grupos y productos, alérgenos, varias cartas a la vez, personalización del tema y bloques HTML estará disponible en las próximas semanas. El QR ya está funcionando hoy y no cambiará cuando se active: los adhesivos que imprimas ahora te seguirán valiendo.",
+    bullets: [
+      "Varias cartas para desayunos, menú del día y noche",
+      "Alérgenos por producto dentro de la propia carta",
+      "El QR impreso sigue siendo el mismo, no hay que reimprimir nada",
+    ],
+  },
+  {
+    icon: "💶",
+    tag: "Cierre y trastienda",
+    title: "Caja, stock, Verifactu y fichaje en el mismo sistema",
+    body: "El cierre de caja sale con desglose por método de pago, admite cobro mixto y permite reimprimir cualquier ticket. Lo que vendes se descuenta solo del inventario, cada ticket y cada factura llevan Verifactu, y el personal ficha con llavero RFID, QR o app.",
+    bullets: [
+      "Stock descontado automáticamente, sin doble gestión",
+      "Facturas enviadas por WhatsApp al cliente desde el propio sistema",
+      "Calendarios laborales y turnos para el equipo de sala y cocina",
+    ],
+  },
+];
+
+// Capturas reales del TPV de hostelería (bloque oscuro)
+const capturas = [
+  {
+    src: `${IMG}/01-mapa-sala-mesas.png`,
+    alt: "Mapa de sala del TPV restaurante de Drenpos con las mesas abiertas de un bar",
+    title: "Mapa de sala editable",
+    caption: "Arrastra las mesas, ponles sillas y ve de un vistazo cuáles están abiertas.",
+  },
+  {
+    src: `${IMG}/02-pantalla-cocina.png`,
+    alt: "Pantalla de cocina de Drenpos con las comandas pendientes y el código de mesa de cada una",
+    title: "Pantalla de cocina y barra",
+    caption: "Cada pantalla recibe solo sus familias, con el código de mesa siempre visible.",
+  },
+  {
+    src: `${IMG}/03-cartas-qr-estadisticas.png`,
+    alt: "Página de cartas y QR de Drenpos con las estadísticas de escaneos por día y por mesa",
+    title: "QR de mesa con analítica",
+    caption: "Escaneos totales y únicos, por hora, por día de la semana y por mesa.",
+  },
+  {
+    src: `${IMG}/04-flujo-combinados.png`,
+    alt: "Pasos de complementos y bebidas del flujo de combinados en el TPV de Drenpos",
+    title: "Flujo guiado de combinados",
+    caption: "Marcas el producto y el TPV pide los complementos y la bebida, con su precio.",
+  },
+];
+
+// Hoja de ruta honesta: qué hay hoy, qué llega en semanas y qué está en desarrollo
+const hojaRuta = [
+  {
+    estado: "Disponible hoy",
+    color: "#16a34a",
+    icon: "✓",
+    intro: "Funcionando en los locales que ya usan el TPV de Drenpos.",
+    items: [
+      "Salas y mesas persistentes con editor de mapa de sala y mesas virtuales",
+      "Flujo guiado de combinados y extras con precio por opción",
+      "Pantallas de cocina y barra por familias, con consulta cada 3 segundos",
+      "QR de mesa imprimible con panel de analítica de escaneos",
+      "Cierre de caja con desglose por método de pago, cobro mixto y reimpresión",
+    ],
+  },
+  {
+    estado: "En las próximas semanas",
+    color: "#b45309",
+    icon: "◷",
+    intro: "Está en camino y el QR que imprimas hoy ya apunta a ello.",
+    items: [
+      "Carta digital con grupos y productos",
+      "Alérgenos por producto",
+      "Varias cartas a la vez (desayunos, menú, noche)",
+      "Personalización del tema y bloques HTML propios",
+    ],
+  },
+  {
+    estado: "Próximamente",
+    color: "#791b46",
+    icon: "◌",
+    intro: "En desarrollo. No damos fecha hasta que lo tengamos.",
+    items: [
+      "Pedidos desde la mesa por parte del cliente",
+      "Pago desde la mesa con el móvil",
+    ],
+  },
+];
+
+// Comparativa (tabla AEO, decisión de compra)
+const comparativa = [
+  {
+    opcion: "TPV genérico de hostelería",
+    mesas: "Sí, según el fabricante",
+    cocina: "Sí, normalmente con su propio hardware",
+    qr: "Suele ser un extra aparte",
+    stock: "Limitado o con un segundo programa",
+    precio: "Cuota mensual más terminal",
+  },
+  {
+    opcion: "App de carta QR suelta",
+    mesas: "No",
+    cocina: "No",
+    qr: "Sí, es lo único que hace",
+    stock: "No",
+    precio: "Cuota aparte del TPV",
+  },
+  {
+    opcion: "Papel y calculadora",
+    mesas: "En la cabeza del encargado",
+    cocina: "Comandas a mano",
+    qr: "No",
+    stock: "Recuento manual",
+    precio: "Se paga en tiempo y en errores",
+  },
+  {
+    opcion: "Drenpos",
+    mesas: "Sí, con editor de mapa de sala y mesas virtuales",
+    cocina: "Sí, varias pantallas por familias con consulta cada 3 s",
+    qr: "Sí, QR propio con analítica (carta digital en semanas)",
+    stock: "Sí, stock descontado solo y facturación Verifactu",
+    precio: "Plan Full 39 €/mes (sin IVA), TPV incluido",
+    destacado: true,
+  },
+];
+
+// Casos de uso reales de hostelería
+const casos = [
+  {
+    tag: "Bar de tapas",
+    icon: "🍻",
+    title: "Barra y cocina, cada una con su pantalla",
+    body: "El camarero marca en el TPV y las raciones caen en la pantalla de cocina mientras las cañas y los vinos caen en la de barra, cada una filtrada por sus familias. Con el código de mesa en cada comanda, nadie pregunta de quién es lo que acaba de salir.",
+  },
+  {
+    tag: "Restaurante con salas",
+    icon: "🍽️",
+    title: "Comedor, terraza y reservado en un mapa",
+    body: "Cada sala tiene su mapa con sus mesas colocadas como están de verdad. Varias mesas abiertas a la vez y todo sincronizado entre la tablet del comedor y el ordenador de la barra, así que cualquiera ve el estado de la sala sin ir a preguntar.",
+  },
+  {
+    tag: "Cafetería",
+    icon: "☕",
+    title: "Desayunos rápidos y menú con extras",
+    body: "El desayuno se marca en dos toques y el menú del día pasa por los pasos configurados: primero, segundo, bebida y postre, cada opción con su precio. El extra que antes se olvidaba (el café con leche de avena, el pan sin gluten) ahora se cobra solo.",
+  },
+  {
+    tag: "Pub de copas",
+    icon: "🥃",
+    title: "Combinados con el refresco que toca",
+    body: "Al marcar la copa, el TPV pide el refresco y aplica el precio de esa combinación concreta. Un JB con Coca-Cola y un JB con Red Bull no cuestan lo mismo, y el sistema lo sabe sin que el camarero tenga que acordarse a las dos de la mañana.",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Qué es un software para bares y restaurantes?",
+    a: "Es el sistema que lleva la sala, la cocina y la caja de un negocio de hostelería en un mismo sitio: qué mesas están abiertas y cuánto llevan, qué ha pedido cada una, qué tiene que preparar cocina y qué barra, qué se ha cobrado y por qué método. Se diferencia de un TPV de tienda en que trabaja sobre mesas y no sobre tickets sueltos, y en que la comanda viaja a las pantallas de cocina y barra en cuanto se marca. En Drenpos eso incluye mapa de sala editable, flujo guiado de combinados y extras, pantallas de órdenes por familias, QR de mesa con analítica y cierre de caja con el stock descontado y Verifactu en cada ticket.",
+  },
+  {
+    q: "¿Cómo funcionan las mesas y el mapa de sala?",
+    a: "Creas tus salas y tus mesas y quedan guardadas: un editor de mapa de sala te deja arrastrar las mesas, redimensionarlas, ponerles sillas y trabajar a pantalla completa. Si un día necesitas abrir una mesa sobre la marcha, tienes la pestaña de mesas virtuales. Entrar en una mesa no la ocupa: el tiempo de ocupación empieza a contar con la primera línea de consumo, así que consultar no ensucia los datos. Puedes tener varias mesas abiertas a la vez y todo se sincroniza entre tablet, móvil y ordenador.",
+  },
+  {
+    q: "¿Se pierden comandas si se cae la WiFi?",
+    a: "Desde septiembre de 2026 las pantallas de órdenes funcionan por consulta al servidor cada 3 segundos, no por conexión permanente. Eso significa que un parpadeo de la WiFi no tira la pantalla: en cuanto vuelve, la siguiente consulta trae lo que falte. Ninguna comanda se pierde ni se mezcla entre pantallas, y un local puede tener entre 4 y 10 pantallas funcionando a la vez sin problema.",
+  },
+  {
+    q: "¿Puedo tener una pantalla para cocina y otra para barra?",
+    a: "Sí, y las que necesites. Cada pantalla tiene asignadas sus familias de productos y recibe solo esos artículos: las raciones a cocina, las bebidas a barra. Los artículos que no tengan familia asignada van a las pantallas sin filtro, para que nada se quede sin destino. Cada comanda muestra el código de mesa y el personal la marca como completada cuando sale.",
+  },
+  {
+    q: "¿El QR de mesa cambia cuando cambio la carta?",
+    a: "No. El QR es un código estándar único por local o por mesa, imprimible desde el sistema, y no cambia al cambiar la carta. Por eso puedes imprimir los adhesivos hoy sin miedo a tener que reimprimirlos cuando se active la carta digital. Al escanearlo se abre la carta pública del negocio en carta.drenpos.com.",
+  },
+  {
+    q: "¿La carta digital con alérgenos está disponible?",
+    a: "Todavía no. La carta digital con grupos y productos, alérgenos, varias cartas a la vez, personalización del tema y bloques HTML estará disponible en las próximas semanas. Lo que sí está hoy es el QR y su analítica de escaneos: total, únicos por día, por hora y por día de la semana, con desglose por mesa, dispositivo, país y carta servida, todo con panel de gráficas dentro del TPV.",
+  },
+  {
+    q: "¿El cliente puede pedir y pagar desde la mesa?",
+    a: "Todavía no. Los pedidos desde la mesa y el pago desde la mesa están en desarrollo y preferimos no dar una fecha hasta tenerlos terminados. Cuando lleguen, aprovecharán el mismo QR que ya estás usando, así que no habrá que cambiar nada de lo que tengas impreso ni pegado en las mesas.",
+  },
+  {
+    q: "¿Cuánto cuesta el TPV de hostelería?",
+    a: "El plan Full cuesta 39 €/mes (sin IVA), incluye el módulo TPV y viene con 5 usuarios. Si ya tienes otro plan y solo quieres añadir el TPV, el módulo suelto son 20,58 €/mes (sin IVA). El fichaje del personal se añade por 1 €/usuario/mes. Sin permanencia, sin coste de instalación y con actualizaciones y soporte incluidos.",
+  },
+];
+
+// Landings relacionadas
+const hermanas = [
+  {
+    url: "/software-almacen-tienda",
+    title: "Software de almacén y tienda",
+    body: "El otro lado del TPV: multialmacén, ubicaciones, lotes y caducidad para la despensa del local.",
+  },
+  {
+    url: "/control-horario",
+    title: "Control horario del personal",
+    body: "Registro de jornada de sala y cocina con calendarios, turnos y reportes listos para la gestoría.",
+  },
+  {
+    url: "/dispositivo-fichaje",
+    title: "Dispositivo de fichaje",
+    body: "Lector RFID con llaveros propios para que el equipo fiche al entrar sin sacar el móvil.",
+  },
+  {
+    url: "/conector-mcp-ia",
+    title: "Conector MCP para tu IA",
+    body: "Pregunta por las ventas del fin de semana desde ChatGPT o Claude, con tus mismos permisos.",
+  },
+];
+
+const articulos = [
+  { t: "Carta digital con QR en un restaurante: guía completa", s: "carta-digital-qr-restaurante-guia" },
+  { t: "Pantalla de cocina (KDS): por qué se pierden comandas en un bar", s: "pantalla-cocina-kds-bares-comandas-perdidas" },
+  { t: "Gestión de mesas en un restaurante y mapa de sala", s: "gestion-mesas-restaurante-mapa-sala" },
+  { t: "TPV para bares y restaurantes: cómo elegirlo en 2026", s: "tpv-bares-restaurantes-como-elegir-2026" },
+  { t: "Pedidos y pago desde la mesa con QR: qué esperar", s: "pedidos-pago-desde-la-mesa-qr-restaurante" },
+];
+
+// ── Datos estructurados (JSON-LD) ──────────────────────────────────────
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
+    { "@type": "ListItem", position: 3, name: "Software para bares y restaurantes", item: CANONICAL },
+  ],
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Drenpos · Software para bares y restaurantes",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web, iOS, Android (PWA)",
+  url: CANONICAL,
+  description:
+    "Software para bares y restaurantes con TPV de hostelería: salas y mesas persistentes con editor de mapa de sala, flujo guiado de combinados y extras con precio por opción, pantallas de cocina y barra por familias que consultan al servidor cada 3 segundos, QR de mesa imprimible con analítica de escaneos, cierre de caja con desglose por método de pago, stock descontado automáticamente, Verifactu en cada ticket y fichaje del personal.",
+  offers: {
+    "@type": "Offer",
+    price: "39.00",
+    priceCurrency: "EUR",
+    description: "Plan Full con módulo TPV incluido y 5 usuarios, 39 €/mes (sin IVA). Módulo TPV suelto 20,58 €/mes.",
+    url: "https://www.drenpos.com/pricing",
+  },
+  featureList: [
+    "Salas y mesas persistentes con editor de mapa de sala",
+    "Mesas virtuales para abrir mesas sobre la marcha",
+    "Varias mesas abiertas a la vez sincronizadas entre dispositivos",
+    "Tiempo de ocupación desde la primera línea de consumo",
+    "Flujo guiado de combinados y extras con precio por opción",
+    "Pasos de selección configurables por producto",
+    "Pantallas de órdenes de cocina y barra filtradas por familias",
+    "Consulta al servidor cada 3 segundos en las pantallas de órdenes",
+    "Código de mesa visible en cada comanda y marcado de completada",
+    "QR de mesa estándar imprimible por local o por mesa",
+    "Analítica de escaneos por día, hora, día de la semana, mesa y dispositivo",
+    "Cierre de caja con desglose por método de pago y cobro mixto",
+    "Reimpresión de tickets e historial",
+    "Stock descontado automáticamente del inventario",
+    "Verifactu en cada ticket y factura",
+    "Envío de facturas por WhatsApp",
+    "Fichaje del personal con llavero RFID, QR o app",
+  ],
+  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+---
+
+<Base
+  title="Software para Bares y Restaurantes · Drenpos"
+  meta_title="Software para Bares y Restaurantes | TPV Drenpos"
+  description="Software para bares y restaurantes con mapa de sala, pantallas de cocina y barra, QR de mesa y cierre de caja con Verifactu. Plan Full 39 €/mes sin IVA."
+  canonical={CANONICAL}
+  image={`${IMG}/01-mapa-sala-mesas.png`}
+>
+  <!-- Datos estructurados -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0 relative z-10 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/images/grainy.svg" alt="" aria-hidden="true" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/funcionalidades" class="hover:text-primary">Funcionalidades</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Bares y restaurantes</span>
+      </nav>
+
+      <div class="row gx-0 gy-12 lg:gy-0 items-center">
+        <div class="lg:col-6" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Hostelería: sala, cocina y barra
+          </span>
+
+          <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
+            <span class="text-primary">Software para bares y restaurantes</span> que no pierde una comanda
+          </h1>
+          <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
+            <strong>Mapa de sala</strong> con tus mesas de verdad, flujo guiado
+            de <strong>combinados y extras</strong>, <strong>pantallas de cocina
+            y barra</strong> que consultan al servidor cada 3 segundos y
+            <strong>QR de mesa</strong> con analítica de escaneos. El cierre de
+            caja sale cuadrado, el stock se descuenta solo y cada ticket lleva
+            Verifactu.
+          </p>
+
+          <ul class="flex flex-wrap gap-4 mb-10">
+            <li data-aos="fade-up-sm" data-aos-delay="100">
+              <a href="/contact" class="btn btn-dark">
+                Pedir demo gratuita
+                <span class="icon-wrapper">
+                  <span class="icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="150">
+              <a href="/pricing" class="btn btn-light">Ver precios</a>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Mesas y mapa de sala
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Pantallas de cocina y barra
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              QR de mesa con analítica
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="relative px-4 lg:px-0 pt-10 pb-10">
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
+
+            <div class="rounded-2xl overflow-hidden relative z-10" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
+              <img
+                src={`${IMG}/01-mapa-sala-mesas.png`}
+                alt="Mapa de sala del TPV restaurante de Drenpos con varias mesas abiertas"
+                width="720"
+                height="450"
+                class="w-full h-auto block"
+                fetchpriority="high"
+              />
+            </div>
+
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #fef3c7;">🍳</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Comanda en cocina</p>
+                <p class="text-xs" style="color: #9ca3af;">Mesa 7 · consulta cada 3 s</p>
+              </div>
+            </div>
+
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0" style="background: #dcfce7; color: #16a34a;">📱</div>
+              <div>
+                <p class="text-xs font-bold text-dark">QR de mesa escaneado</p>
+                <p class="text-xs" style="color: #9ca3af;">Analítica por hora y por mesa</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DEFINICIÓN CITABLE (AEO / featured snippet)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h4 font-bold mb-4">¿Qué es un software para bares y restaurantes?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            Un <strong>software para bares y restaurantes</strong> es el sistema
+            que lleva <strong>la sala, la cocina y la caja</strong> en un mismo
+            sitio: qué mesas están abiertas y cuánto llevan, qué ha pedido cada
+            una, qué tiene que preparar cocina y qué barra, y qué se ha cobrado y
+            por qué método. Se diferencia de un TPV de tienda en que trabaja
+            sobre <em>mesas</em> y no sobre tickets sueltos, y en que la comanda
+            viaja sola a las pantallas de cocina y barra en cuanto se marca. En
+            Drenpos eso incluye mapa de sala editable, flujo guiado de
+            combinados y extras, pantallas de órdenes por familias, QR de mesa
+            con analítica de escaneos y cierre de caja con el stock descontado y
+            Verifactu en cada ticket.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SÍNTOMAS
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Te suena alguna de estas cuatro?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          Son los síntomas por los que un bar o un restaurante acaba buscando un software específico.
+        </p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          sintomas.map((s, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{s.icon}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{s.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.65);">{s.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CAPACIDADES
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Lo que un bar necesita de verdad en el TPV</h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Seis capacidades del módulo TPV pensadas para sala, cocina y barra.
+          Dentro del mismo sistema que ya lleva tu stock y tu facturación, sin
+          un segundo programa que sincronizar.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center">
+        {
+          capacidades.map((c, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3 leading-snug">{c.title}</h3>
+                <p class="text-sm mb-5" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+                <ul class="space-y-2">
+                  {c.bullets.map((b) => (
+                    <li class="flex items-start gap-2.5">
+                      <span class="w-4 h-4 mt-1 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[9px] font-bold" style="background: #16a34a;">✓</span>
+                      <span class="text-xs" style="color: rgba(16,25,40,0.72);">{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center mt-12">
+        <div class="lg:col-10">
+          <div class="rounded-3xl border border-dark/10 bg-body p-7 lg:p-9" data-aos="fade-up-sm">
+            <h3 class="h5 font-bold mb-3">¿Por qué consultar cada 3 segundos es mejor que estar siempre conectado?</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(16,25,40,0.72);">
+              Porque en un local la WiFi parpadea. Con una conexión permanente,
+              cuando el enlace se cae la pantalla deja de recibir y la comanda
+              que entró en ese hueco no aparece en ninguna parte. Desde
+              septiembre de 2026 las pantallas de órdenes de Drenpos preguntan al
+              servidor cada 3 segundos: si una consulta falla, la siguiente trae
+              lo que faltaba.
+            </p>
+            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.72);">
+              El efecto en sala es sencillo de contar: ninguna comanda se pierde
+              ni se mezcla entre pantallas, y un local puede tener entre 4 y 10
+              pantallas funcionando a la vez sin que ninguna se quede atrás. Lo
+              explicamos con más detalle en
+              <a href="/blog/pantalla-cocina-kds-bares-comandas-perdidas" class="text-primary underline">pantalla de cocina (KDS) y comandas perdidas</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SHOWCASE OSCURO: capturas reales del TPV de hostelería
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="capturas" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="rounded-[32px] overflow-hidden relative" style="background: rgba(16,25,40,0.97);">
+        <div class="absolute -top-20 -right-20 w-96 h-96 rounded-full blur-3xl pointer-events-none" style="background: rgba(211,167,118,0.18);"></div>
+        <div class="absolute -bottom-24 -left-16 w-80 h-80 rounded-full blur-3xl pointer-events-none" style="background: rgba(121,27,70,0.35);"></div>
+
+        <div class="relative p-8 lg:p-16">
+          <div class="text-center max-w-3xl mx-auto mb-14" data-aos="fade-up-sm">
+            <span class="text-white bg-white/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-5 tracking-wide">
+              Así se ve en tu local
+            </span>
+            <h2 class="h3 font-bold mb-4 text-white leading-tight">
+              Sala, cocina y QR, <span style="color: #f9b27c;">tal y como lo ve tu equipo</span>
+            </h2>
+            <p class="text-lg leading-relaxed mb-0" style="color: rgba(255,255,255,0.78);">
+              Cuatro pantallas reales del TPV de hostelería de Drenpos: el mapa
+              de sala con las mesas colocadas como están de verdad, la pantalla
+              de cocina con el código de mesa en cada comanda, la analítica de
+              escaneos del QR y los pasos de complementos y bebidas.
+            </p>
+          </div>
+
+          <div class="row g-5">
+            {
+              capturas.map((c, i) => (
+                <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay={(i % 2) * 100}>
+                  <div class="rounded-2xl overflow-hidden h-full relative" style="border: 1px solid rgba(255,255,255,0.10);">
+                    <img src={c.src} alt={c.alt} width="1200" height="750" class="w-full h-auto block" loading="lazy" />
+                    <div class="absolute bottom-0 inset-x-0 p-6" style="background: linear-gradient(to top, rgba(16,25,40,0.90), transparent);">
+                      <p class="text-white font-bold text-lg mb-1">{c.title}</p>
+                      <p class="text-sm mb-0" style="color: rgba(255,255,255,0.78);">{c.caption}</p>
+                    </div>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       HOJA DE RUTA HONESTA
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="hoja-de-ruta" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Hoja de ruta honesta</h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Preferimos que sepas exactamente qué vas a encontrarte el primer día,
+          qué llega enseguida y qué todavía estamos construyendo. Nada de
+          enseñar como disponible algo que aún no lo está.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center">
+        {
+          hojaRuta.map((h, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-white text-sm font-bold" style={`background: ${h.color};`} aria-hidden="true">{h.icon}</span>
+                  <h3 class="h6 font-bold mb-0 leading-snug">{h.estado}</h3>
+                </div>
+                <p class="text-sm mb-4" style="color: rgba(16,25,40,0.65);">{h.intro}</p>
+                <ul class="space-y-2.5">
+                  {h.items.map((it) => (
+                    <li class="flex items-start gap-2.5">
+                      <span class="w-1.5 h-1.5 mt-2 rounded-full flex-shrink-0" style={`background: ${h.color};`} aria-hidden="true"></span>
+                      <span class="text-sm" style="color: rgba(16,25,40,0.72);">{it}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center mt-10">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <div class="rounded-3xl border border-dark/10 bg-body p-6 lg:p-8">
+            <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.7);">
+              Lo importante de este orden es que <strong>el QR ya está y no va a
+              cambiar</strong>. Los adhesivos que imprimas hoy seguirán siendo
+              válidos cuando se active la carta digital y cuando lleguen los
+              pedidos y el pago desde la mesa. Si quieres ver cómo encaja todo,
+              lo contamos en
+              <a href="/blog/carta-digital-qr-restaurante-guia" class="text-primary underline">la guía de carta digital con QR</a>
+              y en
+              <a href="/blog/pedidos-pago-desde-la-mesa-qr-restaurante" class="text-primary underline">pedidos y pago desde la mesa</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       COMPARATIVA (tabla de decisión, AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Qué opción encaja con tu local?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          Comparativa honesta de las cuatro vías que tiene hoy un bar o un restaurante para organizarse.
+        </p>
+      </div>
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[900px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Opción</th>
+              <th class="text-left p-4">Mesas y mapa de sala</th>
+              <th class="text-left p-4">Pantalla de cocina</th>
+              <th class="text-left p-4">QR y carta</th>
+              <th class="text-left p-4">Stock y facturación</th>
+              <th class="text-left p-4 rounded-tr-2xl">Coste</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comparativa.map((r) => (
+                <tr class={r.destacado ? "bg-primary/5 font-medium" : "border-b border-dark/5"}>
+                  <td class={`p-4 ${r.destacado ? "text-primary font-bold" : "font-medium"}`}>{r.opcion}</td>
+                  <td class="p-4">{r.mesas}</td>
+                  <td class="p-4">{r.cocina}</td>
+                  <td class="p-4">{r.qr}</td>
+                  <td class="p-4">{r.stock}</td>
+                  <td class="p-4">{r.precio}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm mt-6 max-w-3xl" style="color: rgba(16,25,40,0.6);">
+        No damos nombres de otras marcas a propósito: cada fabricante tiene su
+        forma de trabajar y su precio, y lo que aquí importa es qué necesita tu
+        local. Si ya tienes un TPV que te funciona, quizá lo que te falte sea
+        solo la parte de stock y facturación, y eso lo cuenta mejor
+        <a href="/software-almacen-tienda" class="text-primary underline">la página de almacén y tienda</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CASOS DE USO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Cómo lo usan locales como el tuyo</h2>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          casos.map((c, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3 leading-snug">{c.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PRECIO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-8">
+          <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-3 text-white">Todo el TPV de hostelería, desde 39 €/mes</h2>
+            <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+              El <strong>plan Full cuesta 39 €/mes (sin IVA)</strong>, incluye el
+              módulo TPV y viene con 5 usuarios: mesas y mapa de sala, flujo de
+              combinados, pantallas de cocina y barra, QR de mesa con analítica,
+              cierre de caja, stock y facturación con Verifactu. Si prefieres
+              añadir el TPV a otro plan, el <strong>módulo suelto son 20,58
+              €/mes</strong>, y el <strong>fichaje del personal 1 €/usuario/mes</strong>.
+            </p>
+            <ul class="flex flex-wrap gap-4 justify-center mb-6">
+              <li>
+                <a href="/pricing" class="btn btn-light">Ver planes y precios</a>
+              </li>
+              <li>
+                <a href="/contact" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Pedir demo de 20 minutos</a>
+              </li>
+            </ul>
+            <p class="text-sm max-w-xl mx-auto" style="color: rgba(255,255,255,0.55);">
+              Precios sin IVA. Sin permanencia, sin coste de instalación y con
+              actualizaciones y soporte humano incluidos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FAQ (visible + schema)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <h2 class="h3 font-bold mb-3 text-center" data-aos="fade-up-sm">Bares y restaurantes: lo que más nos preguntan</h2>
+          <p class="text-center mb-10" style="color: rgba(16,25,40,0.62);" data-aos="fade-up-sm">
+            Respuestas directas, sin letra pequeña.
+          </p>
+          <div class="space-y-4">
+            {
+              faqs.map((f, i) => (
+                <details class="group rounded-2xl border border-dark/10 bg-body p-5" data-aos="fade-up-sm" data-aos-delay={Math.min(i * 50, 300)}>
+                  <summary class="cursor-pointer list-none flex items-start justify-between gap-4">
+                    <h3 class="h6 font-bold leading-snug">{f.q}</h3>
+                    <span class="text-primary text-xl leading-none mt-0.5 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <p class="mt-4 text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">{f.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ENLAZADO INTERNO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-3">Lo que rodea al TPV de tu local</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          El mismo sistema, explicado desde el problema concreto de cada parte del negocio.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center mb-14">
+        {
+          hermanas.map((h, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <a href={h.url} class="block h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl hover:border-primary/30 transition-all duration-300">
+                <h3 class="h6 font-bold mb-2 leading-snug text-primary">{h.title}</h3>
+                <p class="text-sm mb-3" style="color: rgba(16,25,40,0.68);">{h.body}</p>
+                <span class="text-primary text-sm font-medium">Ver solución →</span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center gy-6">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <h2 class="h5 font-bold mb-3">Sigue leyendo sobre sala, cocina y carta digital</h2>
+          <ul class="row g-2 text-sm mb-8">
+            {
+              articulos.map((a) => (
+                <li class="md:col-6">
+                  <a href={`/blog/${a.s}`} class="text-primary hover:underline">{a.t}</a>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="text-sm" style="color: rgba(16,25,40,0.7);">
+            ¿Quieres ver el sistema completo? Consulta todos los
+            <a href="/modulos" class="text-primary underline">módulos de Drenpos</a>,
+            los <a href="/pricing" class="text-primary underline">planes y precios</a>
+            o escríbenos desde el
+            <a href="/contact" class="text-primary underline">formulario de contacto</a>
+            para una demo de 20 minutos sobre la operativa real de tu local.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>

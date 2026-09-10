@@ -1,0 +1,97 @@
+---
+// Sección de home: puertas de entrada por sector.
+import { Icon } from "astro-icon/components";
+
+const sectores = [
+  {
+    icon: "🏭",
+    title: "Almacenes y distribución",
+    description:
+      "Ubicaciones, lotes, palets con etiqueta SSCC, picking con pistola y trazabilidad hasta el recall. El almacén deja de vivir en una hoja aparte.",
+    label: "Software de gestión de almacén",
+    link: "/software-gestion-almacen",
+  },
+  {
+    icon: "🍽️",
+    title: "Bares y restaurantes",
+    description:
+      "TPV con mapa de sala y mesas, pantallas de cocina y barra por familias, QR de mesa y cierre de caja con el stock ya descontado.",
+    label: "Software para bares y restaurantes",
+    link: "/software-bares-restaurantes",
+  },
+  {
+    icon: "🛍️",
+    title: "Tiendas con almacén detrás",
+    description:
+      "El TPV de tienda y el inventario comparten los mismos artículos, así que lo que vendes en el mostrador sale del stock al momento.",
+    label: "Software de almacén y tienda",
+    link: "/software-almacen-tienda",
+  },
+  {
+    icon: "🕒",
+    title: "Equipos que fichan",
+    description:
+      "Registro de jornada con app, QR o llavero RFID, calendarios laborales y reportes listos para la Inspección, con nuestro propio terminal si lo quieres.",
+    label: "Control horario",
+    link: "/control-horario",
+    extra: { label: "dispositivo de fichaje", link: "/dispositivo-fichaje" },
+  },
+];
+---
+
+<section class="section pt-0">
+  <div class="container">
+    <div class="section-title">
+      <div class="col-10 xl:col-8" data-aos="fade-up-sm">
+        <p
+          class="text-primary bg-primary/10 px-[10px] py-1 inline-block rounded-full uppercase text-sm"
+        >
+          Para tu sector
+        </p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold my-5">
+          Cada negocio tiene su lío
+        </h2>
+        <p class="text-lg">
+          El sistema es el mismo, pero lo que activas cambia según lo que llevas
+          entre manos. Estas son las cuatro entradas más habituales.
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4 justify-center">
+      {
+        sectores.map((s, index) => (
+          <div
+            class="md:col-6 lg:col-3"
+            data-aos="fade-up-sm"
+            data-aos-delay={index * 100}
+          >
+            <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 flex flex-col hover:shadow-xl transition-shadow duration-300">
+              <div class="text-3xl mb-4">{s.icon}</div>
+              <h3 class="h6 font-bold mb-3 leading-snug">{s.title}</h3>
+              <p class="text-sm mb-5">{s.description}</p>
+              <p class="mt-auto mb-0 text-sm">
+                <a
+                  href={s.link}
+                  class="text-primary font-medium inline-flex items-center gap-2 hover:underline"
+                >
+                  {s.label}
+                  <Icon name="arrowRight" width="19" height="12" />
+                </a>
+                {s.extra && (
+                  <span class="block mt-2 text-dark/60">
+                    También el{" "}
+                    <a href={s.extra.link} class="text-primary hover:underline">
+                      {s.extra.label}
+                    </a>
+                    .
+                  </span>
+                )}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

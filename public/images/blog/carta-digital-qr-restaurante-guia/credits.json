@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "query": "restaurant table qr code menu",
+    "photographer": "Enes Beydilli",
+    "photographer_url": "https://www.pexels.com/@enesbeydilli",
+    "pexels_url": "https://www.pexels.com/photo/cozy-cafe-interior-with-display-case-29517898/",
+    "alt": "Mesa de restaurante con un código QR para abrir la carta digital desde el móvil"
+  },
+  {
+    "file": "section-1.jpg",
+    "query": "restaurant menu allergens",
+    "photographer": "Andrea Piacquadio",
+    "photographer_url": "https://www.pexels.com/@olly",
+    "pexels_url": "https://www.pexels.com/photo/photography-of-a-smiling-woman-831012/",
+    "alt": "Camarero mostrando la carta a unos clientes en un restaurante"
+  },
+  {
+    "file": "section-2.jpg",
+    "query": "customer scanning qr code restaurant phone",
+    "photographer": "SpotOn POS",
+    "photographer_url": "https://www.pexels.com/@spoton-pos-2160258094",
+    "pexels_url": "https://www.pexels.com/photo/contactless-payment-at-restaurant-bar-counter-37594390/",
+    "alt": "Cliente escaneando el QR de la mesa con el móvil para ver la carta"
+  }
+]

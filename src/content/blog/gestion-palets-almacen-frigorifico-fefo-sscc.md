@@ -3,7 +3,7 @@ title: "Cómo gestionar palets en un almacén frigorífico: FEFO, lotes y SSCC"
 meta_title: "Gestión de palets en almacén frigorífico: FEFO, lotes y SSCC"
 description: "Cómo montar, etiquetar, mover y deshacer palets en un almacén de congelados sin perder el lote ni la caducidad: SSCC, FEFO, pesado, palets mixtos y mercancía de terceros."
 date: 2026-09-03
-image: "/images/blog/software-almacen-frigorifico-congelados/cover.jpg"
+image: "/images/blog/gestion-palets-almacen-frigorifico-fefo-sscc/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
   designation: "CEO & Founder"
@@ -58,9 +58,9 @@ Esa es la diferencia real entre un inventario que cuenta unidades y un sistema d
 
 El palet se monta desde el propio dispositivo que lleva el operario: se abre un palet nuevo, se escanea la ubicación, el producto y la cantidad, y el sistema va guardando el contenido línea a línea. Si el producto tiene lotes, el lote se elige o se escanea en ese momento. Si tiene caducidad, la fecha entra con el lote. Cuando el palet está completo, se cierra y se pesa. Nada se vuelve a teclear en la oficina.
 
-Hay dos caminos y los dos deben estar siempre disponibles: pistola lectora para el flujo rápido y entrada manual para el día en que la etiqueta llega ilegible por la escarcha. En Drenpos todas las pantallas de palets funcionan en móvil y tablet, precisamente para que el dato nazca donde ocurre la operación.
+![Carretilla moviendo un palet completo dentro del almacén](/images/blog/gestion-palets-almacen-frigorifico-fefo-sscc/section-1.jpg)
 
-![Operario con tablet gestionando palets dentro de una cámara frigorífica](/images/blog/software-almacen-frigorifico-congelados/section-1.jpg)
+Hay dos caminos y los dos deben estar siempre disponibles: pistola lectora para el flujo rápido y entrada manual para el día en que la etiqueta llega ilegible por la escarcha. En Drenpos todas las pantallas de palets funcionan en móvil y tablet, precisamente para que el dato nazca donde ocurre la operación.
 
 Un detalle que ahorra discusiones: los palets propios son explícitos y cada línea guarda su origen. Si el palet se formó con tres entradas de proveedores distintos, la ficha del palet lo dice. Y si alguien intenta tocar un palet ya cerrado, el sistema avisa antes de dejarle hacer nada.
 
@@ -76,9 +76,9 @@ Un consejo práctico para frío: pegar la etiqueta en dos caras adyacentes y en 
 
 FEFO ordena las salidas por fecha de caducidad, no por fecha de entrada. En congelados es la única regla que tiene sentido: un palet puede llevar seis meses en cámara y caducar después que otro que entró ayer con producto de vida corta. Con FIFO se saca primero lo viejo; con FEFO se saca primero lo que antes vence.
 
-Para que FEFO funcione con palets, el sistema tiene que conocer la caducidad de cada línea de cada palet, no solo del producto. Así, al preparar un pedido, el asistente de picking propone el lote que antes caduca y dice en qué palet y en qué ubicación está. Las alertas de caducidad avisan los días de antelación que se configuren, por artículo o de forma global, indicando producto, almacén y ubicación.
+![Cajas de producto congelado paletizadas y listas para expedir](/images/blog/gestion-palets-almacen-frigorifico-fefo-sscc/section-2.jpg)
 
-![Panel de alertas de caducidad y lotes en un software de almacén frigorífico](/images/blog/software-almacen-frigorifico-congelados/section-2.jpg)
+Para que FEFO funcione con palets, el sistema tiene que conocer la caducidad de cada línea de cada palet, no solo del producto. Así, al preparar un pedido, el asistente de picking propone el lote que antes caduca y dice en qué palet y en qué ubicación está. Las alertas de caducidad avisan los días de antelación que se configuren, por artículo o de forma global, indicando producto, almacén y ubicación.
 
 Lo que FEFO no puede hacer es decidir qué palet abrir cuando hay varios con el mismo lote. Ahí entra el criterio de la casa: el palet más accesible, el que está más cerca de la zona de preparados o el que ya está abierto. El sistema propone; el encargado dispone.
 

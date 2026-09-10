@@ -3,6 +3,7 @@ title: "ERP para pymes: cuándo dejar Excel para ganar control"
 meta_title: "ERP vs Excel: ¿Cuándo tu pyme necesita un cambio?"
 description: "Descubre cuándo las hojas de cálculo empiezan a frenar tu crecimiento y cómo un ERP para pymes puede eliminar la duplicidad de datos y los errores manuales."
 date: 2026-08-11
+updated: 2026-09-10
 image: "/images/blog/erp-para-pymes-vs-excel/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -129,6 +130,20 @@ El enfoque no es complicar la operativa, sino simplificarla mediante:
 - **Visibilidad total**: Acceder a la información de tu negocio desde cualquier lugar, sin depender de que alguien te envíe un archivo por correo.
 
 Como hemos visto en casos de éxito con **Drenpos**, el cambio consiste en **eliminar el trabajo que no genera valor**, sin añadir más carga al equipo.
+
+## El caso del bar que lleva la caja y el stock en Excel
+
+En hostelería el Excel tiene una versión propia y muy reconocible: una hoja de cierre de caja por día, otra con el inventario de bebidas que se cuenta los lunes, un cuaderno con los albaranes del proveedor y un grupo de WhatsApp donde alguien avisa de que se ha acabado el tónica. Funciona hasta que el local abre un segundo turno o entra personal nuevo.
+
+El problema no es que Excel esté mal hecho, es que **no está conectado a la venta**. Cada caña que sale por la barra debería descontar su producto del inventario en ese momento, y no el lunes siguiente cuando alguien cuente botellas. Cuando el TPV, el almacén y la facturación son el mismo sistema, el cierre de caja sale con el desglose por método de pago y el stock ya está actualizado sin que nadie apunte nada. Cómo funciona esa parte lo detallamos en el [software para bares y restaurantes](/software-bares-restaurantes).
+
+## ¿Y si pudieras preguntarle a tu IA por los datos del negocio?
+
+Aquí hay una diferencia práctica entre tener los datos en hojas de cálculo y tenerlos en un sistema. Un Excel no responde preguntas: hay que abrirlo, filtrar y sumar. Un sistema de gestión sí puede responderlas, y desde 2026 puede hacerlo a través del asistente de IA que ya usas.
+
+El **conector MCP** de Drenpos enlaza tu cuenta con ChatGPT, Claude o cualquier cliente compatible con el protocolo MCP. No es una IA de Drenpos: es un conector para que la IA que ya pagas pueda consultar tus datos. Desde el chat puedes preguntar "¿qué vendimos la semana pasada?", "compras y ventas netas de este mes" o "dame la ficha del producto con esta referencia", y la respuesta sale de tu propio sistema.
+
+La seguridad funciona como dentro de Drenpos: **la IA solo ve lo que ese usuario puede ver**, con los mismos permisos y roles, cada usuario conecta su propia cuenta y por ahora todas las consultas son de solo lectura. El módulo cuesta 6 € al mes por empresa sin IVA, con todos los usuarios incluidos. Puedes verlo en detalle en el [conector MCP para IA](/conector-mcp-ia).
 
 ## El siguiente paso (sin compromiso)
 

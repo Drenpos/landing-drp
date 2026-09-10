@@ -97,7 +97,7 @@ Sus características clave:
 | **Carcasa**            | Impresa en 3D en PETG, con el logo de tu empresa en el frontal                                |
 | **Sin móvil ni app**   | El empleado no necesita smartphone: acerca el llavero y la jornada se inicia o se detiene      |
 | **Sincronización**     | Los fichajes se vuelcan a la plataforma Drenpos con sellado temporal y trazabilidad            |
-| **Modalidad de compra**| Desde 120 € sin IVA, como solución independiente o integrado en el ecosistema Drenpos          |
+| **Modalidad de compra**| Desde 140 € sin IVA, como solución independiente o integrado en el ecosistema Drenpos          |
 
 ### Novedades de la revisión v2: placa propia y tu marca en la carcasa
 

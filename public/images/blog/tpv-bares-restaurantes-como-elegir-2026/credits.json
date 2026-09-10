@@ -1,0 +1,26 @@
+[
+  {
+    "file": "cover.jpg",
+    "query": "bar pos terminal cafe",
+    "photographer": "iMin Technology",
+    "photographer_url": "https://www.pexels.com/@imin-technology-276315592",
+    "pexels_url": "https://www.pexels.com/photo/a-close-up-shot-of-a-person-having-a-card-payment-12935071/",
+    "alt": "TPV en la barra de un bar con la pantalla de venta abierta"
+  },
+  {
+    "file": "section-1.jpg",
+    "query": "waiter taking order tablet",
+    "photographer": "khezez  | خزاز",
+    "photographer_url": "https://www.pexels.com/@khezez",
+    "pexels_url": "https://www.pexels.com/photo/professional-waiter-taking-order-at-restaurant-36799159/",
+    "alt": "Camarero tomando la comanda en una tablet junto a la mesa"
+  },
+  {
+    "file": "section-2.jpg",
+    "query": "cafe counter cash register",
+    "photographer": "Vitaly Gariev",
+    "photographer_url": "https://www.pexels.com/@silverkblack",
+    "pexels_url": "https://www.pexels.com/photo/friendly-cafe-interaction-with-customers-and-baristas-36729735/",
+    "alt": "Mostrador de una cafetería con la caja y el terminal de cobro"
+  }
+]

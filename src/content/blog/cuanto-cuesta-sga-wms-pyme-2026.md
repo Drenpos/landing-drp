@@ -3,7 +3,7 @@ title: "Cuánto cuesta un SGA para una pyme en 2026: licencia, implantación y h
 meta_title: "Cuánto cuesta un SGA o WMS para pymes en 2026"
 description: "Precio real de un software de gestión de almacén para pymes: licencias, implantación, pistolas e impresoras, mantenimiento y coste oculto de no tenerlo. Con rangos de mercado y el desglose de Drenpos."
 date: 2026-09-03
-image: "/images/blog/wms-sga-erp-diferencias/cover.jpg"
+image: "/images/blog/cuanto-cuesta-sga-wms-pyme-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
   designation: "CEO & Founder"
@@ -57,13 +57,13 @@ La lección es sencilla: el precio no lo marca el software, lo marca el tipo de 
 
 La licencia es la parte visible. En un SaaS debería incluir el uso del sistema, las actualizaciones y el soporte. Tres preguntas antes de firmar:
 
+![Responsable de una pyme comparando presupuestos de software de almacén](/images/blog/cuanto-cuesta-sga-wms-pyme-2026/section-1.jpg)
+
 - ¿Hay coste por usuario adicional y cuánto? Es la partida que más crece con el negocio.
 - ¿Hay límite de transacciones, almacenes o referencias? Un límite bajo se convierte en un cambio de plan forzoso.
 - ¿Las mejoras se cobran aparte? Algunos proveedores venden cada módulo nuevo como una ampliación.
 
 En Drenpos el módulo de Inventario cuesta 16,45 euros al mes sin IVA si se contrata suelto, y va incluido en el plan Pro (29 euros al mes, 3 usuarios) y en el plan Full (39 euros al mes, 5 usuarios, con TPV). El usuario adicional cuesta 5 euros al mes. No hay coste por volumen de datos ni por movimientos, y las actualizaciones llegan gratis a todos los planes. El detalle está en [precios](/pricing).
-
-![Comparativa de costes entre un SGA tradicional y un ERP modular con almacén](/images/blog/wms-sga-erp-diferencias/section-1.jpg)
 
 ## ¿Cuánto cuesta la implantación de un SGA?
 
@@ -97,9 +97,9 @@ En un SaaS el mantenimiento va dentro de la cuota: servidores, copias de segurid
 
 Es la partida que nadie factura y la que más pesa. Sin sistema, el almacén paga en horas y en errores: recuentos que no cuadran, roturas que se descubren cuando el cliente ya llamó, pedidos con la referencia equivocada que vuelven en la furgoneta, caducidades que aparecen el día que ya son merma y retiradas de lote que obligan a abrir cajas durante una tarde entera.
 
-Ninguna de esas partidas sale en una factura, pero todas salen de la cuenta de resultados. Un ejercicio útil antes de decidir: apunta durante una semana cuántas horas dedica el equipo a buscar, contar y corregir. Multiplica por 48 semanas y por el coste hora. Suele ser más que la licencia anual de cualquier sistema. El caso de las roturas lo detallamos en [control de stock sin roturas](/blog/control-de-stock-sin-roturas).
+![Recuento manual de stock, el coste oculto de no tener sistema](/images/blog/cuanto-cuesta-sga-wms-pyme-2026/section-2.jpg)
 
-![Almacén de pyme con estanterías etiquetadas y operario con pistola lectora](/images/blog/wms-sga-erp-diferencias/section-2.jpg)
+Ninguna de esas partidas sale en una factura, pero todas salen de la cuenta de resultados. Un ejercicio útil antes de decidir: apunta durante una semana cuántas horas dedica el equipo a buscar, contar y corregir. Multiplica por 48 semanas y por el coste hora. Suele ser más que la licencia anual de cualquier sistema. El caso de las roturas lo detallamos en [control de stock sin roturas](/blog/control-de-stock-sin-roturas).
 
 ## ¿Es más barato el almacén dentro del ERP que un WMS aparte?
 

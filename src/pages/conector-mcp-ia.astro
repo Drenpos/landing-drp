@@ -1,0 +1,708 @@
+---
+export const prerender = true;
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+
+// ════════════════════════════════════════════════════════════════════════
+//  Conector MCP · landing de módulo
+//  Intención de búsqueda objetivo:
+//    - "conectar ERP a ChatGPT" / "ERP con MCP" (principal)
+//    - "consultar ventas desde ChatGPT" / "preguntar a la IA por mis ventas"
+//    - "conector MCP software de gestión" / "Claude MCP empresa"
+//  Aviso: Drenpos NO vende IA propia en este módulo. Es un conector al
+//  asistente que el cliente ya paga. Nunca escribir "IA de Drenpos".
+//  Capturas: /public/images/funcionalidades/mcp/
+// ════════════════════════════════════════════════════════════════════════
+
+const CANONICAL = "https://www.drenpos.com/conector-mcp-ia";
+const IMG = "/images/funcionalidades/mcp";
+
+const pasos = [
+  {
+    n: "1",
+    title: "Activas el módulo en tu cuenta",
+    body: "El conector se contrata como módulo suelto, con cualquier plan, por 6 € al mes y empresa sin IVA. No hay que instalar nada en tus ordenadores ni tocar tu red.",
+  },
+  {
+    n: "2",
+    title: "Cada usuario enlaza su cuenta",
+    body: "Desde ChatGPT, Claude o el cliente compatible con MCP que uses, la persona añade el conector de Drenpos y entra con su usuario. Cada uno enlaza el suyo, no hay una cuenta común.",
+  },
+  {
+    n: "3",
+    title: "Preguntas en lenguaje natural",
+    body: "«¿Qué vendimos la semana pasada?», «dame la ficha del cliente X». El asistente consulta Drenpos y responde con tus datos reales, con los permisos que ese usuario tiene dentro del sistema.",
+  },
+];
+
+const ventajas = [
+  {
+    icon: "🔐",
+    title: "Los mismos permisos que en Drenpos",
+    body: "El conector aplica los roles y permisos que esa persona ya tiene en el sistema. No existe un acceso «de la IA» aparte: si un usuario no ve los márgenes dentro de Drenpos, tampoco los verá desde el chat.",
+  },
+  {
+    icon: "👁️",
+    title: "Solo lectura, hoy por hoy",
+    body: "Las herramientas disponibles consultan información. El asistente no crea, no modifica y no borra nada en tu sistema. Cuando lleguen acciones de escritura lo contaremos claro y seguirán pasando por los permisos de cada usuario.",
+  },
+  {
+    icon: "🤝",
+    title: "Usa el asistente que ya pagas",
+    body: "Funciona con ChatGPT, con Claude y con cualquier cliente compatible con MCP. No te vendemos otra suscripción de IA: aprovechas la que tu equipo ya tiene abierta todo el día.",
+  },
+  {
+    icon: "📱",
+    title: "Desde el móvil, sin abrir el sistema",
+    body: "En el coche antes de una visita o en la puerta del almacén, preguntas al asistente del móvil y tienes el dato. Sin buscar la pantalla correcta ni exportar nada a Excel.",
+  },
+  {
+    icon: "🚀",
+    title: "Se amplía sin coste",
+    body: "Vamos añadiendo consultas nuevas y, más adelante, acciones. Quien tenga el módulo contratado las recibe sin pagar una actualización ni pedir nada.",
+  },
+  {
+    icon: "💶",
+    title: "6 € al mes por empresa",
+    body: "Sin IVA, con todos los usuarios de la empresa incluidos y sin permanencia. Se activa y se desactiva cuando quieras desde tu cuenta.",
+  },
+];
+
+// Qué se puede consultar hoy (todo lectura)
+const consultas = [
+  {
+    consulta: "Ventas por rango de fechas",
+    ejemplo: "«¿Qué vendimos la semana pasada?»",
+    modulo: "Informes",
+  },
+  {
+    consulta: "Compras y ventas netas de un periodo",
+    ejemplo: "«Dime las compras y las ventas netas de este mes»",
+    modulo: "Informes",
+  },
+  {
+    consulta: "Búsqueda de clientes y proveedores",
+    ejemplo: "«Busca al proveedor que empieza por Hermanos»",
+    modulo: "Financiero",
+  },
+  {
+    consulta: "Ficha completa de un cliente",
+    ejemplo: "«Dame la ficha del cliente Talleres Ruiz»",
+    modulo: "Financiero",
+  },
+  {
+    consulta: "Búsqueda de productos",
+    ejemplo: "«¿Tenemos algo con la referencia 4021?»",
+    modulo: "Inventario",
+  },
+  {
+    consulta: "Ficha y stock de un producto",
+    ejemplo: "«¿Cuánto stock nos queda de ese artículo?»",
+    modulo: "Inventario",
+  },
+];
+
+const limites = [
+  {
+    icon: "✍️",
+    title: "No escribe ni modifica datos",
+    body: "El conector es de solo lectura. Nadie puede pedirle al asistente que cambie un precio, que ajuste stock o que borre un documento.",
+  },
+  {
+    icon: "🧾",
+    title: "No crea facturas ni documentos",
+    body: "Ofertas, pedidos, albaranes y facturas se siguen haciendo dentro de Drenpos, donde quedan la numeración, las series y Verifactu.",
+  },
+  {
+    icon: "🧠",
+    title: "No es una IA propia de Drenpos",
+    body: "Drenpos pone el conector; la inteligencia la pone el asistente que tú elijas. Si mañana cambias de ChatGPT a Claude, el conector sigue sirviendo.",
+  },
+  {
+    icon: "🙈",
+    title: "No ve nada que el usuario no vea",
+    body: "Ni datos de otros usuarios con permisos distintos, ni módulos que no tengas contratados. Las herramientas que no te corresponden ni siquiera aparecen.",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Qué es MCP?",
+    a: "MCP son las siglas de Model Context Protocol, un estándar abierto que permite a un asistente de inteligencia artificial conectarse con herramientas y fuentes de datos externas. En la práctica funciona como un enchufe común: en lugar de que cada aplicación invente su propia integración, el asistente habla el mismo idioma con todas. El conector MCP de Drenpos publica las consultas de tu sistema de gestión en ese estándar, de modo que ChatGPT, Claude o cualquier cliente compatible pueda usarlas.",
+  },
+  {
+    q: "¿Funciona con ChatGPT y con Claude?",
+    a: "Sí, y también con cualquier otro cliente compatible con MCP. El conector no está atado a un proveedor concreto: cada usuario lo añade desde el asistente que ya utiliza y enlaza su cuenta de Drenpos. Si tu equipo trabaja con ChatGPT y tú prefieres Claude, cada uno usa el suyo contra el mismo conector.",
+  },
+  {
+    q: "¿Puede la IA modificar mis datos?",
+    a: "No. Hoy todas las herramientas del conector son de solo lectura: consultan ventas, clientes, proveedores, productos y stock, pero no crean, no editan y no eliminan nada. Aunque alguien se lo pida al asistente, no existe forma de escribir en tu sistema a través del conector. Cuando incorporemos acciones de escritura, se avisará y seguirán aplicándose los permisos de cada usuario.",
+  },
+  {
+    q: "¿Ve la IA datos de otros usuarios?",
+    a: "No. Cada persona enlaza su propia cuenta y el conector aplica exactamente los mismos permisos y roles que tiene dentro de Drenpos. Un comercial con la cartera limitada a sus clientes seguirá viendo solo esos clientes desde el chat, y las herramientas de los módulos que no tengáis contratados ni aparecen en la lista.",
+  },
+  {
+    q: "¿Cuánto cuesta el conector MCP?",
+    a: "6 € al mes por empresa sin IVA, con todos los usuarios incluidos. Se contrata como módulo suelto junto a cualquier plan (Esencial 19 €, Pro 29 €, Full 39 € o Producción 50 €, siempre sin IVA) y no tiene permanencia: se activa y se desactiva desde tu cuenta.",
+  },
+  {
+    q: "¿Necesito un plan concreto para usarlo?",
+    a: "No. El conector se puede añadir a cualquier plan. Lo que sí determina el plan y los módulos que tengas contratados es qué consultas aparecen: la analítica de ventas llega con el módulo de Informes y las consultas de productos y stock, con el de Inventario.",
+  },
+  {
+    q: "¿Qué pasa si no tengo contratado un módulo?",
+    a: "Las herramientas de ese módulo no se publican en el conector, así que el asistente ni las ve ni puede intentarlo. Si preguntas por algo que corresponde a un módulo que no tienes, te dirá que no dispone de ese dato. Basta con contratar el módulo para que la consulta aparezca sin tocar nada más.",
+  },
+  {
+    q: "¿Se guardan mis datos en la IA?",
+    a: "Drenpos no almacena tus datos fuera de tu sistema: el conector responde a la consulta y ahí termina su papel. Ahora bien, la respuesta viaja a la conversación del asistente que uses y queda sujeta a las condiciones de ese proveedor, así que conviene revisar la política de retención y de entrenamiento del plan de ChatGPT, Claude o el cliente que tengáis contratado, igual que haríais con cualquier otra herramienta conectada. Si tu prioridad es que nada salga de la empresa, hablemos del despliegue en local.",
+  },
+];
+
+// ── Datos estructurados (JSON-LD) ──────────────────────────────────────
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Módulos", item: "https://www.drenpos.com/modulos" },
+    { "@type": "ListItem", position: 3, name: "Conector MCP", item: CANONICAL },
+  ],
+};
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Drenpos · Conector MCP",
+  url: CANONICAL,
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  image: [
+    `https://www.drenpos.com${IMG}/01-chat-ventas-semana.png`,
+    `https://www.drenpos.com${IMG}/02-ficha-cliente-chat.png`,
+  ],
+  description:
+    "Conector MCP (Model Context Protocol) que enlaza el software de gestión Drenpos con ChatGPT, Claude o cualquier asistente compatible. Permite consultar en lenguaje natural la analítica de ventas, las compras y ventas netas, las fichas de clientes y proveedores y la ficha y el stock de los productos. Solo lectura, con los mismos permisos que cada usuario tiene dentro de Drenpos.",
+  brand: { "@type": "Brand", name: "Drenpos" },
+  provider: { "@type": "Organization", name: "Drenpos Tech SL", url: "https://www.drenpos.com" },
+  featureList: [
+    "Conexión con ChatGPT, Claude y clientes compatibles con MCP",
+    "Analítica de ventas por rango de fechas",
+    "Compras y ventas netas por periodo",
+    "Búsqueda y ficha de clientes y proveedores",
+    "Búsqueda, ficha y stock de productos",
+    "Permisos y roles idénticos a los del usuario en Drenpos",
+    "Acceso de solo lectura",
+  ],
+  offers: {
+    "@type": "Offer",
+    price: "6",
+    priceCurrency: "EUR",
+    priceValidUntil: "2027-12-31",
+    availability: "https://schema.org/InStock",
+    url: CANONICAL,
+    valueAddedTaxIncluded: false,
+    description: "6 € al mes por empresa sin IVA, con todos los usuarios incluidos y sin permanencia.",
+    seller: { "@type": "Organization", name: "Drenpos Tech SL" },
+  },
+};
+---
+
+<Base
+  title="Conector MCP: Drenpos en ChatGPT o Claude"
+  meta_title="Conector MCP: conecta Drenpos con ChatGPT o Claude"
+  description="Conecta Drenpos con ChatGPT o Claude y pregunta por tus ventas, clientes y stock en lenguaje natural. Solo lectura, con tus permisos, por 6 € al mes."
+  canonical={CANONICAL}
+  image={`${IMG}/01-chat-ventas-semana.png`}
+>
+  <!-- Datos estructurados -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0 relative z-10 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/images/grainy.svg" alt="" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/modulos" class="hover:text-primary">Módulos</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Conector MCP</span>
+      </nav>
+
+      <div class="row gx-0 gy-12 lg:gy-0 items-center">
+        <div class="lg:col-6" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Módulo operativo · 6 € al mes por empresa
+          </span>
+
+          <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
+            Conecta Drenpos con <span class="text-primary">ChatGPT o Claude</span> y pregunta por tus ventas
+          </h1>
+          <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
+            El conector MCP de Drenpos enlaza tu sistema de gestión con el
+            asistente de inteligencia artificial que ya usas y ya pagas.
+            Preguntas «¿qué vendimos la semana pasada?» desde el móvil y
+            respondes con tus datos reales, sin abrir Drenpos, sin exportar a
+            Excel y <strong>con los mismos permisos</strong> que tienes dentro
+            del sistema. De momento, <strong>solo lectura</strong>.
+          </p>
+
+          <ul class="flex flex-wrap gap-4 mb-10">
+            <li data-aos="fade-up-sm" data-aos-delay="100">
+              <a href="/contact" class="btn btn-dark">
+                Quiero activarlo
+                <span class="icon-wrapper">
+                  <span class="icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="150">
+              <a href="#que-puedes-preguntar" class="btn btn-light">Ver qué puedes preguntar</a>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Solo lectura
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Tus permisos de siempre
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Sin permanencia
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="relative px-4 lg:px-0 pt-10 pb-10">
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
+
+            <div class="rounded-2xl relative z-10 mx-auto max-w-md bg-white p-6" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
+              <p class="text-xs uppercase tracking-wide mb-5" style="color: rgba(16,25,40,0.45);">Tu asistente de IA</p>
+
+              <div class="flex justify-end mb-4">
+                <p class="text-sm rounded-2xl rounded-br-sm px-4 py-3 max-w-[85%] text-white mb-0" style="background: #791b46;">
+                  ¿Qué vendimos la semana pasada?
+                </p>
+              </div>
+
+              <div class="flex justify-start mb-4">
+                <div class="text-sm rounded-2xl rounded-bl-sm px-4 py-3 max-w-[90%]" style="background: rgba(16,25,40,0.05);">
+                  <p class="mb-2 flex items-center gap-2 text-xs font-semibold" style="color: #791b46;">
+                    <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+                    Consultando Drenpos
+                  </p>
+                  <p class="mb-0" style="color: rgba(16,25,40,0.75);">
+                    Te paso las ventas netas del periodo, el ticket medio y los
+                    productos que más salieron, tal y como están en tu sistema.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex justify-end">
+                <p class="text-sm rounded-2xl rounded-br-sm px-4 py-3 max-w-[85%] text-white mb-0" style="background: #791b46;">
+                  Y dame la ficha de ese cliente
+                </p>
+              </div>
+            </div>
+
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0" style="background: #dcfce7;">🔐</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Tus permisos</p>
+                <p class="text-xs" style="color: #9ca3af;">Los mismos que en Drenpos</p>
+              </div>
+            </div>
+
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #fef3c7;">👁️</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Solo lectura</p>
+                <p class="text-xs" style="color: #9ca3af;">Consulta, no toca nada</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DEFINICIÓN CITABLE (AEO / featured snippet)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h4 font-bold mb-4">¿Qué es el conector MCP de Drenpos?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            El <strong>conector MCP de Drenpos</strong> es un módulo que enlaza
+            el software de gestión con el asistente de inteligencia artificial
+            que la empresa ya utiliza (ChatGPT, Claude o cualquier cliente
+            compatible con el <strong>Model Context Protocol</strong>) para
+            consultar los datos del negocio en lenguaje natural. Permite
+            preguntar por la <strong>analítica de ventas</strong>, las compras y
+            ventas netas de un periodo, la ficha de clientes y proveedores y la
+            ficha y el stock de los productos. Es de <strong>solo lectura</strong>
+            y aplica los mismos permisos que cada usuario tiene dentro de
+            Drenpos. Cuesta 6 € al mes por empresa sin IVA.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CÓMO FUNCIONA (3 pasos)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Cómo se conecta, en tres pasos</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          Ninguno necesita un técnico ni instalar nada en tus equipos.
+        </p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          pasos.map((p, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="w-11 h-11 rounded-2xl flex items-center justify-center text-lg font-bold text-white mb-4" style="background: #791b46;">{p.n}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{p.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.65);">{p.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SHOWCASE OSCURO: capturas reales + ventajas
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="en-marcha" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="rounded-[32px] overflow-hidden relative" style="background: rgba(16,25,40,0.97);">
+        <div class="absolute -top-20 -right-20 w-96 h-96 rounded-full blur-3xl pointer-events-none" style="background: rgba(211,167,118,0.18);"></div>
+        <div class="absolute -bottom-24 -left-16 w-80 h-80 rounded-full blur-3xl pointer-events-none" style="background: rgba(121,27,70,0.35);"></div>
+
+        <div class="relative p-8 lg:p-16">
+          <div class="text-center max-w-3xl mx-auto mb-14" data-aos="fade-up-sm">
+            <span class="text-white bg-white/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-5 tracking-wide">
+              Ya funcionando
+            </span>
+            <h2 class="h3 font-bold mb-4 text-white leading-tight">
+              Así se ve <span style="color: #f9b27c;">preguntar por tu negocio</span>
+            </h2>
+            <p class="text-lg leading-relaxed mb-0" style="color: rgba(255,255,255,0.78);">
+              No es una demostración de laboratorio. El conector está
+              desarrollado y en marcha: se enlaza desde el asistente, aparece
+              como una herramienta más y responde con los datos que ese usuario
+              puede ver en Drenpos.
+            </p>
+          </div>
+
+          <div class="row g-5 mb-12">
+            <div class="lg:col-6" data-aos="fade-up-sm">
+              <div class="rounded-2xl overflow-hidden h-full relative" style="border: 1px solid rgba(255,255,255,0.10);">
+                <img
+                  src={`${IMG}/01-chat-ventas-semana.png`}
+                  alt="Conversación en un asistente de IA preguntando por las ventas de la semana con la respuesta obtenida de Drenpos"
+                  width="1200"
+                  height="900"
+                  class="w-full h-full object-cover block"
+                  loading="lazy"
+                />
+                <div class="absolute bottom-0 inset-x-0 p-6" style="background: linear-gradient(to top, rgba(16,25,40,0.88), transparent);">
+                  <p class="text-white font-bold text-lg mb-1">«¿Qué vendimos la semana pasada?»</p>
+                  <p class="text-sm" style="color: rgba(255,255,255,0.75);">La analítica de ventas del periodo, contada en el chat.</p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="100">
+              <div class="rounded-2xl overflow-hidden h-full relative" style="border: 1px solid rgba(255,255,255,0.10);">
+                <img
+                  src={`${IMG}/02-ficha-cliente-chat.png`}
+                  alt="Ficha completa de un cliente de Drenpos consultada desde el chat del asistente de IA"
+                  width="1200"
+                  height="900"
+                  class="w-full h-full object-cover block"
+                  loading="lazy"
+                />
+                <div class="absolute bottom-0 inset-x-0 p-6" style="background: linear-gradient(to top, rgba(16,25,40,0.88), transparent);">
+                  <p class="text-white font-bold text-lg mb-1">«Dame la ficha de este cliente»</p>
+                  <p class="text-sm" style="color: rgba(255,255,255,0.75);">Datos de la ficha tal y como están en el sistema.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4">
+            {
+              ventajas.map((v, i) => (
+                <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 100}>
+                  <div class="rounded-2xl p-6 h-full" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
+                    <div class="text-2xl mb-3">{v.icon}</div>
+                    <p class="text-white font-semibold mb-1.5">{v.title}</p>
+                    <p class="text-sm" style="color: rgba(255,255,255,0.72);">{v.body}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       QUÉ PUEDES PREGUNTAR HOY (tabla AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="que-puedes-preguntar" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Qué puedes preguntar hoy</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          Estas son las consultas que el conector publica ahora mismo. La lista
+          crece y quien tiene el módulo recibe las nuevas sin coste.
+        </p>
+      </div>
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[720px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Consulta</th>
+              <th class="text-left p-4">Ejemplo de pregunta</th>
+              <th class="text-left p-4 rounded-tr-2xl">Módulo necesario</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              consultas.map((c, i) => (
+                <tr class={i % 2 === 0 ? "bg-primary/5" : "border-b border-dark/5"}>
+                  <td class="p-4 font-medium">{c.consulta}</td>
+                  <td class="p-4" style="color: rgba(16,25,40,0.75);">{c.ejemplo}</td>
+                  <td class="p-4">{c.modulo}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm mt-5 text-center" style="color: rgba(16,25,40,0.6);">
+        El asistente también sabe quién eres y qué datos tienes a tu alcance, así
+        que si preguntas «¿qué artículos tenemos bajo mínimos?» resuelve con la
+        búsqueda de productos y su stock. Consulta los
+        <a href="/modulos" class="text-primary underline">módulos de Drenpos</a>
+        para ver qué incluye el tuyo.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       QUÉ NO HACE (TODAVÍA)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Qué no hace (todavía)</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Preferimos contarlo antes de que lo descubras tú en la primera prueba.
+        </p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          limites.map((l, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7">
+                <div class="text-3xl mb-4">{l.icon}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{l.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{l.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SEGURIDAD
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <div class="rounded-3xl border border-dark/10 bg-body p-8 lg:p-12" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-5">Seguridad: la IA solo ve lo que ve el usuario</h2>
+            <p class="mb-6" style="color: rgba(16,25,40,0.72);">
+              Esta es la parte que conviene entender bien, porque es la duda que
+              nos plantea todo el mundo antes de activar el módulo.
+            </p>
+            <ul class="space-y-4 mb-6">
+              <li class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold mt-1" style="background: #16a34a;">✓</span>
+                <span style="color: rgba(16,25,40,0.75);"><strong>Cada usuario conecta su propia cuenta.</strong> No hay una credencial común de empresa ni un acceso técnico compartido.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold mt-1" style="background: #16a34a;">✓</span>
+                <span style="color: rgba(16,25,40,0.75);"><strong>Mismos permisos y roles que dentro de Drenpos.</strong> El conector no abre una puerta nueva: reutiliza la que esa persona ya tenía.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold mt-1" style="background: #16a34a;">✓</span>
+                <span style="color: rgba(16,25,40,0.75);"><strong>Solo aparecen las herramientas de los módulos contratados.</strong> Lo que no tienes, ni se publica.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold mt-1" style="background: #16a34a;">✓</span>
+                <span style="color: rgba(16,25,40,0.75);"><strong>Acceso de solo lectura.</strong> No hay ninguna herramienta capaz de escribir en tu sistema.</span>
+              </li>
+            </ul>
+            <p class="text-sm mb-0" style="color: rgba(16,25,40,0.62);">
+              Sobre la conversación en sí: la respuesta llega al chat del
+              asistente que uses y queda bajo las condiciones de ese proveedor.
+              Drenpos no guarda esos datos fuera de tu sistema. Si necesitas que
+              nada salga de la empresa, el conector también funciona con el
+              despliegue en local, y eso lo vemos caso por caso desde
+              <a href="/contact" class="text-primary underline">contacto</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PRECIO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-8">
+          <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-3 text-white">6 € al mes por empresa, con todos tus usuarios</h2>
+            <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+              Sin IVA y sin permanencia. Se contrata como módulo suelto encima de
+              cualquier plan y no hay coste por usuario: si sois quince en la
+              empresa, los quince pueden enlazar su cuenta, cada uno con sus
+              permisos. Las consultas que vayamos añadiendo entran incluidas.
+            </p>
+            <ul class="flex flex-wrap gap-4 justify-center mb-6">
+              <li>
+                <a href="/pricing" class="btn btn-light">Ver planes y precios</a>
+              </li>
+              <li>
+                <a href="/contact" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Activar el conector</a>
+              </li>
+            </ul>
+            <p class="text-sm max-w-xl mx-auto mb-0" style="color: rgba(255,255,255,0.55);">
+              Precios sin IVA. Los planes parten de 19 € al mes y el conector se
+              suma a cualquiera de ellos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FAQ (visible + schema)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <h2 class="h3 font-bold mb-3 text-center" data-aos="fade-up-sm">Conector MCP: lo que más nos preguntan</h2>
+          <p class="text-center mb-10" style="color: rgba(16,25,40,0.62);" data-aos="fade-up-sm">
+            Respuestas directas, sin letra pequeña.
+          </p>
+          <div class="space-y-4">
+            {
+              faqs.map((f, i) => (
+                <details class="group rounded-2xl border border-dark/10 bg-body p-5" data-aos="fade-up-sm" data-aos-delay={Math.min(i * 50, 300)}>
+                  <summary class="cursor-pointer list-none flex items-start justify-between gap-4">
+                    <h3 class="h6 font-bold leading-snug">{f.q}</h3>
+                    <span class="text-primary text-xl leading-none mt-0.5 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <p class="mt-4 text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">{f.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ENLAZADO INTERNO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center gy-6">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <h2 class="h5 font-bold mb-3">Sigue por aquí</h2>
+          <p class="text-sm mb-4" style="color: rgba(16,25,40,0.7);">
+            El conector responde con los datos que generan los módulos que uses a
+            diario. Si llevas un almacén, mira el
+            <a href="/software-gestion-almacen" class="text-primary underline">software de gestión de almacén</a>;
+            si llevas un bar o un restaurante, el
+            <a href="/software-bares-restaurantes" class="text-primary underline">software para bares y restaurantes</a>
+            con TPV, mesas y pantalla de cocina. Puedes ver todo lo que se
+            activa en
+            <a href="/modulos" class="text-primary underline">módulos</a>,
+            comparar
+            <a href="/pricing" class="text-primary underline">planes y precios</a>
+            o escribirnos desde
+            <a href="/contact" class="text-primary underline">contacto</a>
+            para que te lo dejemos enlazado.
+          </p>
+          <p class="text-sm mb-0" style="color: rgba(16,25,40,0.7);">
+            Y si ahora mismo tus datos viven en hojas de cálculo, este artículo
+            te ahorra tiempo:
+            <a href="/blog/erp-para-pymes-vs-excel" class="text-primary underline">ERP para pymes frente a Excel</a>.
+            Preguntarle a la IA por las ventas exige antes tener las ventas en un
+            sitio fiable.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>

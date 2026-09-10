@@ -3,6 +3,7 @@ title: "Cómo enviar facturas por WhatsApp de forma automática"
 meta_title: "Automatizar envío de facturas y presupuestos por WhatsApp"
 description: "Envía facturas, presupuestos y albaranes por WhatsApp automáticamente desde tu programa de gestión: cómo funciona, qué tiempo ahorra a tu pyme y cómo activarlo en Drenpos sin apps de terceros."
 date: 2026-05-21
+updated: 2026-09-10
 image: "/images/blog/enviar-facturas-por-whatsapp-automaticamente/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -80,6 +81,16 @@ Al implementar una **facturación automática** integrada con tu sistema de gest
 - **Trazabilidad real**: Sabes exactamente qué se ha enviado y cuándo.
 
 En Drenpos hemos diseñado un entorno donde **enviar facturas por WhatsApp** deja de ser una tarea pendiente para convertirse en un proceso rápido y casi invisible.
+
+## Un caso de hostelería: el catering que factura el lunes por la mañana
+
+En un catering, el documento viaja con el evento. Primero sale la **oferta** con el menú, el número de comensales y el precio por persona. El cliente contesta por WhatsApp, casi siempre desde el móvil y casi siempre a deshora, así que la oferta tiene que llegar por el mismo canal en el que va a responder.
+
+Cuando confirma, esa oferta se convierte en **pedido** sin volver a teclear nada: mismas líneas, mismos precios, con las variaciones de última hora (dos menús sin gluten, una mesa más) añadidas encima. El día del evento sale el **albarán**, que es lo que firma el responsable del salón y lo que deja constancia de lo que realmente se sirvió.
+
+El lunes por la mañana, la **factura** se genera desde ese albarán y se envía por WhatsApp al mismo contacto con el que se habló desde el principio. Todo el árbol queda referenciado: desde la factura se ve el albarán, desde el albarán el pedido y desde el pedido la oferta original. Cuando el cliente pregunta por qué la factura no coincide con lo que recordaba, la respuesta está en dos clics.
+
+Ese mismo flujo es el que usan los bares y restaurantes que además dan servicio a empresas: comidas de grupo, menús cerrados, eventos de fin de año. La caja del día a día la lleva el TPV y la parte de contrato la llevan los documentos, dentro del mismo sistema. Lo contamos con más detalle en el [software para bares y restaurantes](/software-bares-restaurantes).
 
 ## El siguiente paso (sin compromiso)
 
