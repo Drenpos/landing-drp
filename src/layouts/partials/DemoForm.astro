@@ -1,0 +1,468 @@
+---
+// ════════════════════════════════════════════════════════════════════════
+//  DemoForm · formulario de demo embebido (100 % cliente)
+//  Se puede usar en cualquier página prerenderizada: el envío se hace con
+//  fetch en modo no-cors contra el mismo webhook de n8n que usa /contact,
+//  así que no hace falta endpoint de servidor ni adaptador.
+//
+//  Uso:
+//    import DemoForm from "@/partials/DemoForm.astro";
+//    <DemoForm interes="almacen" />
+//
+//  Anclaje: por defecto el id es "demo-form", así que los botones del hero
+//  pueden apuntar a "#demo-form".
+// ════════════════════════════════════════════════════════════════════════
+import config from "@/config/config.json";
+
+export interface Props {
+  interes?:
+    | "almacen"
+    | "fichaje"
+    | "tpv"
+    | "hosteleria"
+    | "verifactu"
+    | "mcp"
+    | "todo";
+  titulo?: string;
+  subtitulo?: string;
+  id?: string;
+}
+
+const {
+  interes = "todo",
+  titulo = "Pide una demo de 20 minutos",
+  subtitulo = "Te enseñamos Drenpos funcionando con tu operativa delante, sin presentación comercial ni compromiso.",
+  id = "demo-form",
+} = Astro.props;
+
+const { contact_form_action }: { contact_form_action: string } = config.params;
+
+const WHATSAPP_URL =
+  "https://wa.me/34640315259?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Drenpos";
+
+const INTERESES = [
+  { value: "almacen", label: "Almacén e inventario" },
+  { value: "fichaje", label: "Control horario y fichaje" },
+  { value: "tpv", label: "TPV de tienda" },
+  { value: "hosteleria", label: "TPV de bar o restaurante" },
+  { value: "verifactu", label: "Facturación Verifactu" },
+  { value: "mcp", label: "Conector MCP para ChatGPT o Claude" },
+  { value: "todo", label: "Todo el sistema" },
+];
+
+const EMPLEADOS = ["1 a 5", "6 a 15", "16 a 30", "más de 30"];
+
+const VENTAJAS = [
+  {
+    title: "Sin permanencia",
+    body: "Se paga mes a mes. Si un mes no te encaja, lo dejas.",
+  },
+  {
+    title: "Demo sobre tus datos",
+    body: "Preparamos el ejemplo con tus referencias y tu forma de trabajar.",
+  },
+  {
+    title: "Respuesta en menos de 24 h laborables",
+    body: "Te escribe una persona del equipo, no un robot de reparto de leads.",
+  },
+];
+---
+
+<section class="section pt-0" id={id}>
+  <div class="container">
+    <div
+      class="rounded-3xl border border-dark/10 bg-body overflow-hidden"
+      data-aos="fade-up-sm"
+    >
+      <div class="row gx-0 items-stretch">
+        <!-- Columna izquierda: argumento y WhatsApp -->
+        <div
+          class="lg:col-5 p-8 lg:p-12"
+          style="background: rgba(121,27,70,0.04);"
+        >
+          <h2 class="h4 font-bold mb-4 leading-snug">{titulo}</h2>
+          <p class="text-base mb-8" style="color: rgba(16,25,40,0.72);">
+            {subtitulo}
+          </p>
+
+          <ul class="space-y-5 mb-10 list-none pl-0">
+            {
+              VENTAJAS.map((v) => (
+                <li class="flex items-start gap-3">
+                  <span
+                    class="w-5 h-5 mt-1 rounded-full flex items-center justify-center shrink-0 text-white text-[10px] font-bold"
+                    style="background: #16a34a;"
+                    aria-hidden="true"
+                  >
+                    ✓
+                  </span>
+                  <span>
+                    <span class="block font-semibold text-dark text-sm">
+                      {v.title}
+                    </span>
+                    <span
+                      class="block text-sm"
+                      style="color: rgba(16,25,40,0.65);"
+                    >
+                      {v.body}
+                    </span>
+                  </span>
+                </li>
+              ))
+            }
+          </ul>
+
+          <p class="text-sm mb-3" style="color: rgba(16,25,40,0.65);">
+            ¿Prefieres escribir y que te contestemos ahí mismo?
+          </p>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-3 rounded-full px-5 py-3 font-medium text-white transition hover:opacity-90"
+            style="background: #25D366;"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z"
+              ></path>
+              <path
+                d="M12.04 2.5c-5.24 0-9.5 4.26-9.5 9.5 0 1.67.44 3.3 1.27 4.74L2.5 21.5l4.9-1.28a9.46 9.46 0 0 0 4.64 1.2h.01c5.23 0 9.49-4.26 9.49-9.5 0-2.54-.99-4.92-2.78-6.71a9.42 9.42 0 0 0-6.72-2.71Zm5.57 15.07a7.87 7.87 0 0 1-5.57 2.31h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a7.85 7.85 0 0 1-1.21-4.2c0-4.35 3.55-7.89 7.9-7.89 2.11 0 4.09.82 5.58 2.31a7.83 7.83 0 0 1 2.31 5.59c0 4.35-3.55 7.89-7.9 7.89l-.11.001Z"
+              ></path>
+            </svg>
+            Escríbenos por WhatsApp
+          </a>
+        </div>
+
+        <!-- Columna derecha: formulario -->
+        <div class="lg:col-7 p-8 lg:p-12">
+          <form
+            class="dp-demo-form"
+            data-demo-form
+            data-endpoint={contact_form_action}
+          >
+            <div class="row g-4">
+              <div class="md:col-6">
+                <label class="form-label text-base! mb-2!" for={`${id}-name`}>
+                  Nombre <span class="text-primary">*</span>
+                </label>
+                <input
+                  class="form-input"
+                  id={`${id}-name`}
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  placeholder="Nombre y apellidos"
+                  required
+                />
+              </div>
+
+              <div class="md:col-6">
+                <label class="form-label text-base! mb-2!" for={`${id}-company`}>
+                  Empresa
+                </label>
+                <input
+                  class="form-input"
+                  id={`${id}-company`}
+                  name="company"
+                  type="text"
+                  autocomplete="organization"
+                  placeholder="Nombre de tu empresa"
+                />
+              </div>
+
+              <div class="md:col-6">
+                <label class="form-label text-base! mb-2!" for={`${id}-email`}>
+                  Correo electrónico <span class="text-primary">*</span>
+                </label>
+                <input
+                  class="form-input"
+                  id={`${id}-email`}
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  placeholder="nombre@empresa.com"
+                  required
+                />
+              </div>
+
+              <div class="md:col-6">
+                <label class="form-label text-base! mb-2!" for={`${id}-phone`}>
+                  Teléfono <span class="text-primary">*</span>
+                </label>
+                <input
+                  class="form-input"
+                  id={`${id}-phone`}
+                  name="phone"
+                  type="tel"
+                  inputmode="tel"
+                  autocomplete="tel"
+                  placeholder="600 000 000"
+                  required
+                />
+              </div>
+
+              <div class="md:col-6">
+                <label
+                  class="form-label text-base! mb-2!"
+                  for={`${id}-employees`}
+                >
+                  Personas en la empresa
+                </label>
+                <select
+                  class="form-input"
+                  id={`${id}-employees`}
+                  name="employees"
+                >
+                  {EMPLEADOS.map((e) => <option value={e}>{e}</option>)}
+                </select>
+              </div>
+
+              <div class="md:col-6">
+                <label
+                  class="form-label text-base! mb-2!"
+                  for={`${id}-interest`}
+                >
+                  ¿Qué te interesa?
+                </label>
+                <select class="form-input" id={`${id}-interest`} name="interest">
+                  {
+                    INTERESES.map((op) => (
+                      <option value={op.value} selected={op.value === interes}>
+                        {op.label}
+                      </option>
+                    ))
+                  }
+                </select>
+              </div>
+
+              <div class="col-12">
+                <label class="form-label text-base! mb-2!" for={`${id}-message`}>
+                  Cuéntanos tu caso (opcional)
+                </label>
+                <textarea
+                  class="form-input"
+                  id={`${id}-message`}
+                  name="message"
+                  rows="3"
+                  placeholder="Cuántos almacenes, con qué trabajas ahora, qué te gustaría resolver..."
+                  style="resize: none;"></textarea>
+              </div>
+
+              <div class="col-12">
+                <label
+                  class="flex items-start gap-3 text-sm cursor-pointer"
+                  style="color: rgba(16,25,40,0.72);"
+                >
+                  <input
+                    class="mt-1 shrink-0"
+                    id={`${id}-privacy`}
+                    name="privacy"
+                    type="checkbox"
+                    value="si"
+                    required
+                  />
+                  <span>
+                    He leído y acepto la <a
+                      href="/legal/privacidad"
+                      class="text-primary underline">política de privacidad</a
+                    >. Usamos tus datos solo para responderte.
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Trampa antispam: si un bot la rellena, no se envía nada -->
+            <div class="dp-hp" aria-hidden="true">
+              <label for={`${id}-website`}>No rellenar este campo</label>
+              <input
+                id={`${id}-website`}
+                name="website"
+                type="text"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </div>
+
+            <input type="hidden" name="form" value="demo" />
+            <input type="hidden" name="ts" value="" data-ts />
+            <input type="hidden" name="gclid" value="" />
+            <input type="hidden" name="source_page" value="" />
+            <input type="hidden" name="utm_source" value="" />
+            <input type="hidden" name="utm_medium" value="" />
+            <input type="hidden" name="utm_campaign" value="" />
+
+            <div class="mt-8 flex flex-wrap items-center gap-4">
+              <button type="submit" class="btn btn-dark ps-6! pe-6! py-3!">
+                Pedir mi demo
+              </button>
+              <span class="text-sm" style="color: rgba(16,25,40,0.55);">
+                Sin compromiso y sin tarjeta.
+              </span>
+            </div>
+
+            <p
+              class="dp-demo-error hidden mt-5 rounded-xl px-4 py-3 text-sm"
+              style="background: rgba(219,44,35,0.08); color: #b91c1c;"
+              role="alert"
+            >
+              No hemos podido enviar el formulario. Escríbenos por <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener"
+                class="underline font-medium">WhatsApp</a
+              > y lo resolvemos al momento.
+            </p>
+          </form>
+
+          <div
+            class="dp-demo-success hidden text-center py-6"
+            role="status"
+            aria-live="polite"
+          >
+            <div
+              class="w-14 h-14 rounded-full mx-auto mb-5 flex items-center justify-center text-2xl text-white font-bold"
+              style="background: #16a34a;"
+              aria-hidden="true"
+            >
+              ✓
+            </div>
+            <h3 class="h5 font-bold mb-3">Recibido, gracias</h3>
+            <p class="mb-6" style="color: rgba(16,25,40,0.7);">
+              Te escribimos en menos de 24 horas laborables para cuadrar la
+              demo. Si tienes prisa, escríbenos por WhatsApp y lo vemos hoy.
+            </p>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 rounded-full px-5 py-3 font-medium text-white transition hover:opacity-90"
+              style="background: #25D366;"
+            >
+              Hablar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Honeypot: fuera de la vista pero accesible para los bots */
+  .dp-hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  // Envío 100 % en cliente del formulario de demo.
+  function initDemoForms() {
+    const forms = document.querySelectorAll<HTMLFormElement>("[data-demo-form]");
+
+    forms.forEach((form) => {
+      if (form.dataset.bound === "true") return;
+      form.dataset.bound = "true";
+
+      // Marca de tiempo de carga: si el envío llega en menos de 3 segundos,
+      // asumimos que es un bot y no mandamos nada.
+      const tsField = form.querySelector<HTMLInputElement>("[data-ts]");
+      if (tsField) tsField.value = String(Date.now());
+
+      // Página de origen
+      const sourceField = form.querySelector<HTMLInputElement>(
+        'input[name="source_page"]',
+      );
+      if (sourceField) sourceField.value = window.location.pathname;
+
+      // Atribución guardada por el script global de Base.astro
+      try {
+        const raw = window.localStorage.getItem("drp_attr");
+        if (raw) {
+          const attr = JSON.parse(raw) as Record<string, string>;
+          const keys = ["gclid", "utm_source", "utm_medium", "utm_campaign"];
+          keys.forEach((key) => {
+            const input = form.querySelector<HTMLInputElement>(
+              `input[name="${key}"]`,
+            );
+            if (input && attr[key]) input.value = attr[key];
+          });
+        }
+      } catch (e) {
+        // localStorage bloqueado: seguimos sin atribución
+      }
+
+      const errorBox = form.parentElement?.querySelector(".dp-demo-error");
+      const successBox = form.parentElement?.querySelector(".dp-demo-success");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        if (!form.reportValidity()) return;
+
+        const data = new FormData(form);
+
+        // Honeypot relleno: cortamos sin avisar
+        if (String(data.get("website") || "").trim() !== "") return;
+
+        // Envío demasiado rápido para ser humano
+        const started = Number(data.get("ts") || 0);
+        if (started && Date.now() - started < 3000) return;
+
+        const submitBtn = form.querySelector<HTMLButtonElement>(
+          'button[type="submit"]',
+        );
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Enviando...";
+        }
+        errorBox?.classList.add("hidden");
+
+        const params = new URLSearchParams();
+        data.forEach((value, key) => {
+          if (key === "website") return;
+          params.append(key, String(value));
+        });
+
+        const win = window as any;
+        win.dataLayer = win.dataLayer || [];
+        win.dataLayer.push({
+          event: "demo_form_submit",
+          interest: String(data.get("interest") || ""),
+          page: window.location.pathname,
+        });
+
+        try {
+          await fetch(form.dataset.endpoint || "", {
+            method: "POST",
+            mode: "no-cors",
+            body: params,
+          });
+          form.classList.add("hidden");
+          successBox?.classList.remove("hidden");
+          successBox?.scrollIntoView({ behavior: "smooth", block: "center" });
+        } catch (e) {
+          errorBox?.classList.remove("hidden");
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Pedir mi demo";
+          }
+        }
+      });
+    });
+  }
+
+  initDemoForms();
+  document.addEventListener("astro:page-load", initDemoForms);
+</script>

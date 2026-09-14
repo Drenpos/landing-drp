@@ -152,3 +152,36 @@ Hay que lanzarlo desde una terminal local: ni el contenedor de Cowork ni el puen
     node agent/img-hosteleria-2026.mjs --dry     # ver qué haría
     node agent/img-hosteleria-2026.mjs           # descargar y parchear
     node agent/img-hosteleria-2026.mjs --only carta-digital-qr-restaurante-guia
+
+---
+
+# Tanda 3 (14 de septiembre de 2026): web lista para Google Ads
+
+Ejecuta la sección 2 del plan de campaña (`drenpos-google-ads-plan.md`). Build limpio, 141 páginas, sin enlaces rotos. Sin commit.
+
+## Hecho en el repo
+
+- **Formulario de demo embebido** (`src/layouts/partials/DemoForm.astro`) en las 12 landings (almacén, palets, frigorífico, huecos de palet, picking, producción, tienda, bares y restaurantes, control horario, dispositivo de fichaje, conector MCP y Verifactu), antes de la FAQ. Campos: nombre, email, teléfono, empresa, personas, interés (preseleccionado por landing), mensaje, privacidad; ocultos `form=demo`, `gclid`, `utm_*`, `source_page`; honeypot y control de tiempo. Envía al mismo webhook n8n que `/contact` (`params.contact_form_action`) y muestra el éxito sin recargar. Los botones "Pedir demo" del hero y del bloque de precio apuntan a `#demo-form`.
+- **WhatsApp**: botón flotante en todo el sitio (`WhatsAppButton.astro`, en `Base.astro`) y botón dentro del formulario, al +34 640 315 259.
+- **Medición**: script global en `Base.astro` que guarda `gclid`, `gbraid`, `wbraid` y `utm_*` en `localStorage.drp_attr` (90 días) y empuja a `dataLayer` los eventos `demo_form_submit`, `contact_form_submit`, `contact_form_sent`, `whatsapp_click`, `phone_click`, `signup_click` (contract.drenpos.com) y `calendly_click`. Cómo montar los activadores y las conversiones de Ads en GTM: `docs/gtm-conversiones.md`.
+- **/contact**: campos teléfono, empresa e interés, ocultos de atribución, y pantalla de éxito arreglada (con `prerender` nunca se mostraba el "mensaje enviado").
+- **Redirección sin www**: `src/middleware.ts` responde 301 a `www.drenpos.com` si la petición llega con `drenpos.com`. El 522 actual es anterior al worker: hay que crear en Cloudflare el registro DNS del apex (proxied) y una Redirect Rule `drenpos.com/*` a `https://www.drenpos.com/$1` (301).
+- **Páginas plantilla borradas**: careers, case-studies, features, changelog, integrations, elements, privacy-policy y terms-conditions (páginas, colecciones y partials). Copia en `_to_delete/plantilla/`. Fuera del footer y del sitemap.
+- **Precios unificados**: 19 €/mes en general; 29 €/mes (plan Pro, almacén incluido) en las landings de almacén; 39 €/mes (Full) en tienda y hostelería; terminal desde 140 €. No queda ningún "19,90".
+- **Control horario**: precio visible en el hero ("Desde 1 €/usuario/mes · terminal propio desde 140 € · sin permanencia").
+- **Prueba social**: tira de logos de clientes (`ClientLogosStrip.astro`) bajo el hero de todas las landings.
+- **Landing nueva `/software-verifactu`** (grupo G3 del plan): fechas del RDL 15/2025, huella encadenada, QR, remisión a la AEAT, qué no hace, 8 FAQ, formulario. En el menú, en `llms.txt` y enlazada desde la guía del blog y desde la landing de tienda.
+
+## Pendiente fuera de este repo (bloqueantes del plan)
+
+1. Cloudflare: DNS del apex y Redirect Rule (punto anterior).
+2. `contract.drenpos.com` (repo Contratacion-Front): instalar el contenedor GTM-PDNNFZ98 y activar el Linker entre dominios. Detalle en `docs/gtm-conversiones.md`.
+3. GTM: crear las variables, activadores y etiquetas de conversión de Google Ads según `docs/gtm-conversiones.md`. Los valores en euros del documento son orientativos.
+4. CMP certificada IAB TCF (Cookiebot, iubenda o similar) con Consent Mode v2: el banner actual (vanilla-cookieconsent) no está en la lista de CMP certificadas de Google; sin ella se pierden remarketing y conversiones modeladas en la UE.
+5. n8n: el formulario de demo llega al mismo webhook con `form=demo` y los campos nuevos (`phone`, `company`, `employees`, `interest`, `gclid`, `utm_*`, `source_page`). Ajustar el flujo para guardarlos y para reenviar el `gclid` al CRM (conversiones offline).
+6. Verificación del anunciante en Google Ads (NIF, certificado, DNI del administrador).
+
+## Avisos
+
+- Los formularios de demo se envían en `no-cors`: el navegador no puede confirmar que n8n respondió bien, así que el evento cuenta cuando la petición sale. Si quieres conversión solo con confirmación real, hay que permitir CORS en el webhook y quitar el `no-cors`.
+- Las imágenes de `/software-verifactu` son las capturas del post de la guía (`public/images/blog/verifactu/`).

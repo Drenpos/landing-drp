@@ -18,8 +18,8 @@ const contact = (await getEntry(
 const { contact_form_action }: { contact_form_action: string } = config.params;
 const { title, description, meta_title, contact_section } = contact.data;
 
-// Check if message was sent
-const messageSent = Astro.url.searchParams.get("sended") === "true";
+// El aviso de "mensaje enviado" se resuelve en cliente: la página se
+// prerenderiza, así que aquí no se puede leer el ?sended=true real.
 const SITE_KEY =
   import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY ||
   "6LebRrwqAAAAAB-QwrsbY4HNQGli2N28aoFNrn1R";
@@ -85,30 +85,42 @@ if (!SITE_KEY && import.meta.env.MODE === "production") {
           data-aos-delay="200"
         >
           {
-            messageSent ? (
-              <div class="p-8 text-center">
-                <div class="mb-6">
-                  <Icon
-                    name="random/circleCheck"
-                    class="w-20 h-20 mx-auto text-green-500"
-                  />
-                </div>
-                <h3 class="text-2xl font-bold mb-4 text-primary">
-                  ¡Mensaje enviado con éxito!
-                </h3>
-                <p class="text-lg mb-6">
-                  Gracias por contactarnos. Hemos recibido tu mensaje y nuestro
-                  equipo se pondrá en contacto contigo.
-                </p>
-                <a
-                  href="/contact"
-                  class="inline-block bg-primary text-text-dark py-3 px-8 rounded-full font-medium transition hover:opacity-80"
-                >
-                  Enviar otro mensaje
-                </a>
-              </div>
-            ) : (
-              <form action={contact_form_action} method="POST" class="p-8">
+            /* La página es prerenderizada, así que los dos bloques se
+               emiten siempre y el script decide cuál se ve según la URL. */
+          }
+          <div
+            id="contact-success"
+            class="p-8 text-center hidden"
+            role="status"
+            aria-live="polite"
+          >
+            <div class="mb-6">
+              <Icon
+                name="random/circleCheck"
+                class="w-20 h-20 mx-auto text-green-500"
+              />
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-primary">
+              ¡Mensaje enviado con éxito!
+            </h3>
+            <p class="text-lg mb-6">
+              Gracias por contactarnos. Hemos recibido tu mensaje y nuestro
+              equipo se pondrá en contacto contigo.
+            </p>
+            <a
+              href="/contact"
+              class="inline-block bg-primary text-text-dark py-3 px-8 rounded-full font-medium transition hover:opacity-80"
+            >
+              Enviar otro mensaje
+            </a>
+          </div>
+
+          <form
+            id="contact-form"
+            action={contact_form_action}
+            method="POST"
+            class="p-8"
+          >
                 <div class="mb-6">
                   <label for="name" class="form-label">
                     Nombre completo <span class="text-red-500">*</span>
@@ -136,6 +148,54 @@ if (!SITE_KEY && import.meta.env.MODE === "production") {
                   />
                 </div>
                 <div class="mb-6">
+                  <label for="phone" class="form-label">
+                    Teléfono <span class="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    class="form-input"
+                    placeholder="600 000 000"
+                    type="tel"
+                    inputmode="tel"
+                    autocomplete="tel"
+                    required
+                  />
+                </div>
+                <div class="mb-6">
+                  <label for="company" class="form-label">
+                    Empresa
+                  </label>
+                  <input
+                    id="company"
+                    name="company"
+                    class="form-input"
+                    placeholder="Nombre de tu empresa"
+                    type="text"
+                    autocomplete="organization"
+                  />
+                </div>
+                <div class="mb-6">
+                  <label for="interest" class="form-label">
+                    ¿Qué te interesa?
+                  </label>
+                  <select id="interest" name="interest" class="form-input">
+                    <option value="almacen">Almacén e inventario</option>
+                    <option value="fichaje">Control horario y fichaje</option>
+                    <option value="tpv">TPV de tienda</option>
+                    <option value="hosteleria">
+                      TPV de bar o restaurante
+                    </option>
+                    <option value="verifactu">Facturación Verifactu</option>
+                    <option value="mcp">
+                      Conector MCP para ChatGPT o Claude
+                    </option>
+                    <option value="todo" selected>
+                      Todo el sistema
+                    </option>
+                  </select>
+                </div>
+                <div class="mb-6">
                   <label for="message" class="form-label">
                     Cuéntanos más sobre tu consulta{" "}
                     <span class="text-red-500">*</span>
@@ -160,9 +220,13 @@ if (!SITE_KEY && import.meta.env.MODE === "production") {
                 >
                   Enviar
                 </button>
-              </form>
-            )
-          }
+
+                <input type="hidden" name="source_page" value="" />
+                <input type="hidden" name="gclid" value="" />
+                <input type="hidden" name="utm_source" value="" />
+                <input type="hidden" name="utm_medium" value="" />
+                <input type="hidden" name="utm_campaign" value="" />
+          </form>
         </div>
       </div>
     </div>
@@ -176,8 +240,70 @@ if (!SITE_KEY && import.meta.env.MODE === "production") {
   // Función callback de reCAPTCHA v2 Invisible
   function onContactSubmit(token) {
     console.log("reCAPTCHA validado correctamente");
+    // Medición: el envío se confirma aquí, ya validado el reCAPTCHA
+    window.dataLayer = window.dataLayer || [];
+    const interes = document.getElementById("interest");
+    window.dataLayer.push({
+      event: "contact_form_submit",
+      interest: interes ? interes.value : "",
+      page: window.location.pathname,
+    });
     // Enviar el formulario después de la validación
     document.querySelector("form").submit();
+  }
+
+  // Rellena los ocultos de atribución con lo que guardó el script global
+  // de Base.astro (localStorage.drp_attr). Si no hay nada, van vacíos.
+  function fillAttribution() {
+    const form = document.querySelector("form");
+    if (!form) return;
+
+    const sourcePage = form.querySelector('input[name="source_page"]');
+    if (sourcePage) sourcePage.value = window.location.pathname;
+
+    try {
+      const raw = window.localStorage.getItem("drp_attr");
+      if (!raw) return;
+      const attr = JSON.parse(raw);
+      ["gclid", "utm_source", "utm_medium", "utm_campaign"].forEach((key) => {
+        const input = form.querySelector(`input[name="${key}"]`);
+        if (input && attr[key]) input.value = attr[key];
+      });
+    } catch (e) {
+      // localStorage bloqueado: el formulario se envía igual
+    }
+  }
+
+  // Confirmación de envío: la página vuelve con ?sended=true
+  function trackSent() {
+    const form = document.getElementById("contact-form");
+    const success = document.getElementById("contact-success");
+
+    if (window.location.search.indexOf("sended=true") === -1) {
+      // Vuelta al formulario limpio: el próximo envío sí debe contarse
+      form?.classList.remove("hidden");
+      success?.classList.add("hidden");
+      try {
+        window.sessionStorage.removeItem("drp_contact_sent");
+      } catch (e) {}
+      return;
+    }
+
+    // Enviado: se enseña el aviso y se esconde el formulario
+    form?.classList.add("hidden");
+    success?.classList.remove("hidden");
+
+    try {
+      if (window.sessionStorage.getItem("drp_contact_sent") === "1") return;
+      window.sessionStorage.setItem("drp_contact_sent", "1");
+    } catch (e) {
+      // sin sessionStorage medimos igual, asumiendo el riesgo de duplicado
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "contact_form_sent",
+      page: window.location.pathname,
+    });
   }
 
   // Hacer la función global para que reCAPTCHA pueda llamarla
@@ -224,10 +350,16 @@ if (!SITE_KEY && import.meta.env.MODE === "production") {
     document.head.appendChild(script);
   }
 
+  function initContactPage() {
+    loadRecaptcha();
+    fillAttribution();
+    trackSent();
+  }
+
   // Ejecutar cuando el DOM esté listo
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", loadRecaptcha);
+    document.addEventListener("DOMContentLoaded", initContactPage);
   } else {
-    loadRecaptcha();
+    initContactPage();
   }
 </script>

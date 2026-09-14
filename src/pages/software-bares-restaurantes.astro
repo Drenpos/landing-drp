@@ -2,6 +2,8 @@
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
+import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
+import DemoForm from "@/partials/DemoForm.astro";
 
 // ════════════════════════════════════════════════════════════════════════
 //  Software para bares y restaurantes · landing pilar de hostelería
@@ -420,7 +422,7 @@ const faqSchema = {
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">
-              <a href="/contact" class="btn btn-dark">
+              <a href="#demo-form" class="btn btn-dark">
                 Pedir demo gratuita
                 <span class="icon-wrapper">
                   <span class="icon">
@@ -493,6 +495,8 @@ const faqSchema = {
       </div>
     </div>
   </section>
+
+  <ClientLogosStrip />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        DEFINICIÓN CITABLE (AEO / featured snippet)
@@ -807,7 +811,7 @@ const faqSchema = {
                 <a href="/pricing" class="btn btn-light">Ver planes y precios</a>
               </li>
               <li>
-                <a href="/contact" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Pedir demo de 20 minutos</a>
+                <a href="#demo-form" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Pedir demo de 20 minutos</a>
               </li>
             </ul>
             <p class="text-sm max-w-xl mx-auto" style="color: rgba(255,255,255,0.55);">
@@ -819,6 +823,8 @@ const faqSchema = {
       </div>
     </div>
   </section>
+
+  <DemoForm interes="hosteleria" />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        FAQ (visible + schema)

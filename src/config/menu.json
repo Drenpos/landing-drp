@@ -62,6 +62,10 @@
           "url": "/software-produccion-fabricacion"
         },
         {
+          "name": "Facturación Verifactu",
+          "url": "/software-verifactu"
+        },
+        {
           "name": "Módulos",
           "url": "/modulos"
         }
@@ -80,20 +84,7 @@
       "data-cc": ""
     }
   ],
-  "footer": [
-    {
-      "name": "Elements",
-      "url": "/elements",
-      "blank": false,
-      "data-cc": ""
-    },
-    {
-      "name": "Privacy Policy",
-      "url": "/privacy-policy",
-      "blank": false,
-      "data-cc": ""
-    }
-  ],
+  "footer": [],
   "footer_menu_links": [],
   "footer_info_links": [
     {

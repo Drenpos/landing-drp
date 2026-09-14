@@ -2,6 +2,8 @@
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
+import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
+import DemoForm from "@/partials/DemoForm.astro";
 
 // ════════════════════════════════════════════════════════════════════════
 //  Software de gestión de almacén · landing dedicada (SEO/AEO/GEO 2026)
@@ -222,7 +224,7 @@ const comparativa = [
     palets: "Sí, SSCC GS1 y despaletizado",
     picking: "Oleadas, móvil y expedición con escaneo",
     integracion: "Nativa: compras, ventas, TPV y facturación",
-    precio: "Desde 19,90 €/mes",
+    precio: "Desde 29 €/mes",
     destacado: true,
   },
 ];
@@ -294,7 +296,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta un software de gestión de almacén?",
-    a: "Los WMS enterprise cuestan miles de euros más un proyecto de implantación de meses. Las herramientas de facturación con inventario básico rondan 10–30 €/mes pero no tienen ubicaciones, lotes ni palets. El módulo de almacén de Drenpos cuesta desde 19,90 €/mes con multialmacén, ubicaciones QR, lotes con FEFO, palets con SSCC y picking, sin coste por uso ni permanencia.",
+    a: "Los WMS enterprise cuestan miles de euros más un proyecto de implantación de meses. Las herramientas de facturación con inventario básico rondan 10–30 €/mes pero no tienen ubicaciones, lotes ni palets. Drenpos cuesta desde 29 €/mes sin IVA (plan Pro, con almacén incluido) con multialmacén, ubicaciones QR, lotes con FEFO, palets con SSCC y picking, sin coste por uso ni permanencia.",
   },
   {
     q: "¿Puedo controlar el stock de varios almacenes a la vez?",
@@ -367,9 +369,9 @@ const productSchema = {
     "Software de gestión de almacén (SGA/WMS) para pymes: multialmacén, ubicaciones con QR, lotes con caducidad y FEFO, trazabilidad completa con informe de recall, preparación de pedidos con oleadas, palets con etiqueta SSCC estándar GS1, despiece con merma explícita, depósito de terceros con tarifario por palet/día y actas de entrega firmadas con huella sha256. Integrado con compras, ventas, TPV y facturación.",
   offers: {
     "@type": "Offer",
-    price: "19.90",
+    price: "29.00",
     priceCurrency: "EUR",
-    description: "Módulo Almacén desde 19,90 €/mes (sin IVA). Sin coste por uso ni permanencia.",
+    description: "Plan Pro con almacén incluido desde 29 €/mes (sin IVA). Sin coste por uso ni permanencia.",
     url: "https://www.drenpos.com/pricing",
   },
   featureList: [
@@ -397,7 +399,7 @@ const productSchema = {
 <Base
   title="Software de Gestión de Almacén · Drenpos"
   meta_title="Software de Gestión de Almacén y WMS para Pymes | Drenpos"
-  description="Software de gestión de almacén con potencia de WMS a precio de pyme: ubicaciones QR, lotes con FEFO, preparación de pedidos, palets con etiqueta SSCC y alquiler de huecos. Desde 19,90 €/mes."
+  description="Software de gestión de almacén con potencia de WMS a precio de pyme: ubicaciones QR, lotes con FEFO, preparación de pedidos, palets con etiqueta SSCC y alquiler de huecos. Desde 29 €/mes sin IVA."
   canonical={CANONICAL}
   image="/images/funcionalidades/almacen-tienda/01-almacen-ubicaciones.png"
 >
@@ -446,7 +448,7 @@ const productSchema = {
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">
-              <a href="/contact" class="btn btn-dark">
+              <a href="#demo-form" class="btn btn-dark">
                 Pedir demo gratuita
                 <span class="icon-wrapper">
                   <span class="icon">
@@ -523,6 +525,8 @@ const productSchema = {
       </div>
     </div>
   </section>
+
+  <ClientLogosStrip />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        DEFINICIÓN CITABLE (AEO / featured snippet)
@@ -766,7 +770,7 @@ const productSchema = {
       <div class="row justify-center">
         <div class="lg:col-8">
           <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
-            <h2 class="h3 font-bold mb-3 text-white">Todo el almacén, desde 19,90 €/mes</h2>
+            <h2 class="h3 font-bold mb-3 text-white">Todo el almacén, desde 29 €/mes sin IVA</h2>
             <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
               El módulo Almacén incluye multialmacén, ubicaciones con QR, lotes
               con caducidad y FEFO, trazabilidad con informe de recall,
@@ -781,7 +785,7 @@ const productSchema = {
                 <a href="/pricing" class="btn btn-light">Ver planes y precios</a>
               </li>
               <li>
-                <a href="/contact" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Pedir demo de 20 minutos</a>
+                <a href="#demo-form" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Pedir demo de 20 minutos</a>
               </li>
             </ul>
           </div>
@@ -789,6 +793,8 @@ const productSchema = {
       </div>
     </div>
   </section>
+
+  <DemoForm interes="almacen" />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        FAQ (visible + schema)

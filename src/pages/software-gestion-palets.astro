@@ -2,6 +2,8 @@
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
+import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
+import DemoForm from "@/partials/DemoForm.astro";
 
 // ════════════════════════════════════════════════════════════════════════
 //  Software de gestión de palets · landing dedicada (SEO/AEO/GEO 2026)
@@ -147,7 +149,7 @@ const comparativa = [
     ciclo: "Abierto, cerrado y pesado, expedido o anulado",
     mover: "Un escaneo, en móvil o tablet",
     terceros: "Propietario por palet y tarifario",
-    precio: "Desde 19,90 €/mes",
+    precio: "Desde 29 €/mes",
     destacado: true,
   },
 ];
@@ -235,7 +237,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta y cuánto se tarda en arrancar?",
-    a: "El módulo de Almacén parte de 19,90 €/mes sin IVA, con actualizaciones y soporte humano incluidos, sin coste por uso ni permanencia. La puesta en marcha se hace en días: importamos los artículos desde Excel o desde el programa anterior, definimos almacenes y ubicaciones con su QR, cargamos el stock inicial y formamos al equipo con la pistola en la mano.",
+    a: "El almacén va incluido en el plan Pro, desde 29 €/mes sin IVA, con actualizaciones y soporte humano incluidos, sin coste por uso ni permanencia. La puesta en marcha se hace en días: importamos los artículos desde Excel o desde el programa anterior, definimos almacenes y ubicaciones con su QR, cargamos el stock inicial y formamos al equipo con la pistola en la mano.",
   },
 ];
 
@@ -304,9 +306,9 @@ const productSchema = {
     "Software de gestión de palets para pymes: etiqueta SSCC estándar GS1 generada desde el propio palet, ciclo de vida abierto, cerrado y pesado con bruto, tara y neto, expedido o anulado, mezcla libre de productos, lotes y series con traza, movimiento del palet entero en un escaneo desde móvil o tablet, despaletizado en tres gestos, palets blindados dentro de albaranes y facturas y depósito de palets de terceros con propietario y tarifario. Incluido en el módulo de Almacén.",
   offers: {
     "@type": "Offer",
-    price: "19.90",
+    price: "29.00",
     priceCurrency: "EUR",
-    description: "Módulo Almacén desde 19,90 €/mes (sin IVA). Sin coste por uso ni permanencia.",
+    description: "Plan Pro con almacén incluido desde 29 €/mes (sin IVA). Sin coste por uso ni permanencia.",
     url: "https://www.drenpos.com/pricing",
   },
   featureList: [
@@ -330,7 +332,7 @@ const productSchema = {
 <Base
   title="Software de Gestión de Palets con Etiqueta SSCC · Drenpos"
   meta_title="Software de Gestión de Palets y Etiqueta SSCC | Drenpos"
-  description="Software de gestión de palets para pymes: etiqueta SSCC GS1 desde el propio palet, cierre y pesado, movimiento en un escaneo, despaletizado y palets de terceros. Desde 19,90 €/mes."
+  description="Software de gestión de palets para pymes: etiqueta SSCC GS1 desde el propio palet, cierre y pesado, movimiento en un escaneo, despaletizado y palets de terceros. Desde 29 €/mes sin IVA."
   canonical={CANONICAL}
   image="/images/funcionalidades/almacen-tienda/02-lotes-caducidad.png"
 >
@@ -378,7 +380,7 @@ const productSchema = {
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">
-              <a href="/contact" class="btn btn-dark">
+              <a href="#demo-form" class="btn btn-dark">
                 Pedir demo gratuita
                 <span class="icon-wrapper">
                   <span class="icon">
@@ -451,6 +453,8 @@ const productSchema = {
       </div>
     </div>
   </section>
+
+  <ClientLogosStrip />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        DEFINICIÓN CITABLE (AEO / featured snippet)
@@ -688,7 +692,7 @@ const productSchema = {
       <div class="row justify-center">
         <div class="lg:col-8">
           <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
-            <h2 class="h3 font-bold mb-3 text-white">Toda la gestión de palets, desde 19,90 €/mes</h2>
+            <h2 class="h3 font-bold mb-3 text-white">Toda la gestión de palets, desde 29 €/mes sin IVA</h2>
             <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
               El módulo Almacén incluye palets con etiqueta SSCC estándar
               GS1, cierre y pesado, movimiento en un escaneo, despaletizado,
@@ -702,7 +706,7 @@ const productSchema = {
                 <a href="/pricing" class="btn btn-light">Ver planes y precios</a>
               </li>
               <li>
-                <a href="/contact" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Pedir demo de 20 minutos</a>
+                <a href="#demo-form" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Pedir demo de 20 minutos</a>
               </li>
             </ul>
             <p class="text-sm max-w-xl mx-auto" style="color: rgba(255,255,255,0.55);">
@@ -715,6 +719,8 @@ const productSchema = {
       </div>
     </div>
   </section>
+
+  <DemoForm interes="almacen" />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        FAQ (visible + schema)

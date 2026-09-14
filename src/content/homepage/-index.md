@@ -80,7 +80,7 @@ features:
     button:
       enable: true
       label: "Ver Funcionalidades"
-      link: "/features"
+      link: "/funcionalidades"
 
   - title: "Verifactu sin dramas, cumple la normativa desde ya"
     image: "/images/service-3.png"
@@ -93,5 +93,5 @@ features:
     button:
       enable: true
       label: "Más sobre Verifactu"
-      link: "/features"
+      link: "/software-verifactu"
 ---

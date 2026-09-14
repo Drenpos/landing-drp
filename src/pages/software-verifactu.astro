@@ -1,0 +1,771 @@
+---
+export const prerender = true;
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
+import DemoForm from "@/partials/DemoForm.astro";
+
+// ════════════════════════════════════════════════════════════════════════
+//  Software de facturación Verifactu · landing comercial
+//  Intención de búsqueda objetivo:
+//    - "software verifactu" / "programa de facturación verifactu" (principal)
+//    - "software adaptado a verifactu" / "facturación verifactu pymes"
+//  Hechos verificados que se pueden usar aquí: RD 1007/2023,
+//  Orden HAC/1177/2024, RDL 15/2025 (1 de enero y 1 de julio de 2027),
+//  modalidad Verifactu de Drenpos (huella encadenada, QR con leyenda,
+//  remisión a la AEAT, panel de envíos), sanciones del art. 201 bis LGT.
+//  Contenido largo y normativa: /blog/verifactu-pymes-guia-2026
+//  Imágenes: /public/images/blog/verifactu/
+// ════════════════════════════════════════════════════════════════════════
+
+const CANONICAL = "https://www.drenpos.com/software-verifactu";
+const IMG = "/images/blog/verifactu";
+
+const pasos = [
+  {
+    n: "1",
+    title: "Emites la factura como siempre",
+    body: "Desde el módulo financiero o desde el TPV, con tus series y tu numeración. No hay una pantalla aparte de Verifactu ni un paso extra que recordar.",
+  },
+  {
+    n: "2",
+    title: "Drenpos crea el registro de facturación",
+    body: "Cada factura genera su registro con huella (hash) encadenada con la anterior, y la factura sale con el código QR y la leyenda VERI*FACTU impresos.",
+  },
+  {
+    n: "3",
+    title: "El registro viaja a la AEAT",
+    body: "La remisión se hace desde el propio sistema y queda anotada en el panel de envíos, donde ves qué se ha enviado y qué está pendiente. Tú no configuras nada.",
+  },
+];
+
+// Qué incluye, en formato ficha (AEO)
+const ficha = [
+  { k: "Modalidad", v: "Verifactu: Drenpos remite los registros de facturación a la AEAT, sin que el cliente tenga que elegir ni configurar la modalidad" },
+  { k: "Registro", v: "Un registro de facturación por factura, con huella (hash) encadenada con el registro anterior" },
+  { k: "En la factura", v: "Código QR y la leyenda VERI*FACTU, tanto en el PDF como en el ticket impreso" },
+  { k: "Control", v: "Panel de envíos para ver el estado de las remisiones a la AEAT" },
+  { k: "Tipos de factura", v: "Facturas completas, simplificadas y rectificativas" },
+  { k: "Series", v: "Series y numeración configurables con auto incremento" },
+  { k: "Entrega al cliente", v: "Envío de la factura por correo electrónico y por WhatsApp desde el propio sistema" },
+  { k: "Planes", v: "Incluido en todos los planes, desde 19 €/mes sin IVA (plan Essential)" },
+];
+
+const ventajas = [
+  {
+    icon: "🔗",
+    title: "Huella encadenada, factura a factura",
+    body: "Cada registro de facturación se encadena con el anterior mediante su huella. Si alguien intentase alterar una factura ya emitida, la cadena dejaría de cuadrar.",
+  },
+  {
+    icon: "🔳",
+    title: "QR y leyenda en cada documento",
+    body: "La factura sale con su código QR y con la leyenda VERI*FACTU, que es lo que permite a tu cliente comprobar el documento en la sede electrónica de la AEAT.",
+  },
+  {
+    icon: "📡",
+    title: "Remisión a la AEAT desde el sistema",
+    body: "Los registros se remiten a la Agencia Tributaria sin que instales certificados en cada ordenador ni contrates un intermediario aparte.",
+  },
+  {
+    icon: "🧭",
+    title: "Panel de envíos",
+    body: "Una pantalla donde ver el estado de las remisiones. Si un día falla la conexión, el envío queda pendiente y se reenvía, y tú lo ves sin tener que fiarte de la intuición.",
+  },
+  {
+    icon: "🧾",
+    title: "Rectificativas y simplificadas",
+    body: "El ticket simplificado del mostrador y la factura rectificativa del cliente que devuelve mercancía entran en el mismo circuito que la factura completa.",
+  },
+  {
+    icon: "⚙️",
+    title: "Sin configuración por tu parte",
+    body: "No hay un asistente de activación ni una casilla que se te pueda olvidar. Drenpos opera en modalidad Verifactu desde la primera factura que emites.",
+  },
+];
+
+// Comparativa de decisión (AEO)
+const comparativa = [
+  {
+    opcion: "Papel, Word o Excel",
+    registro: "No genera registro de facturación",
+    envio: "No",
+    qr: "No",
+    riesgo: "No cumple el RD 1007/2023",
+  },
+  {
+    opcion: "Programa antiguo sin actualizar",
+    registro: "Depende de que el fabricante lo adapte",
+    envio: "Solo si el fabricante lo implementa",
+    qr: "Solo si el fabricante lo implementa",
+    riesgo: "Pregunta a tu proveedor por su declaración responsable",
+  },
+  {
+    opcion: "Sistema no verificable",
+    registro: "Sí, conservado por el propio software",
+    envio: "No remite los registros",
+    qr: "Sí, sin la leyenda VERI*FACTU",
+    riesgo: "Tú cargas con la integridad, la conservación y la trazabilidad",
+  },
+  {
+    opcion: "Drenpos en modalidad Verifactu",
+    registro: "Sí, con huella encadenada",
+    envio: "Sí, con panel de envíos",
+    qr: "Sí, con la leyenda VERI*FACTU",
+    riesgo: "Incluido en todos los planes, desde 19 €/mes sin IVA",
+    destacado: true,
+  },
+];
+
+const casos = [
+  {
+    tag: "Autónomos y profesionales",
+    icon: "🧑‍💻",
+    title: "Facturar sin pensar en el reglamento",
+    body: "Emites tus facturas, las mandas por correo o por WhatsApp y el registro sale hacia la AEAT solo. Tu fecha límite es el 1 de julio de 2027, pero el sistema ya funciona así hoy.",
+  },
+  {
+    tag: "Comercio con TPV",
+    icon: "🛒",
+    title: "Tickets simplificados del mostrador",
+    body: "Cada venta en caja genera su registro y su QR, y el stock se descuenta del inventario en el mismo movimiento. La factura completa se emite después desde el ticket si el cliente la pide.",
+  },
+  {
+    tag: "Distribución y almacén",
+    icon: "🚚",
+    title: "De albarán a factura sin retoques",
+    body: "Agrupas los albaranes del mes en una factura y esa factura entra en el circuito de Verifactu con su serie y su numeración. Las rectificativas siguen el mismo camino.",
+  },
+  {
+    tag: "Hostelería",
+    icon: "🍽️",
+    title: "Verifactu en cada cuenta de mesa",
+    body: "El cierre de caja y la cuenta de cada mesa se apoyan en el mismo motor de facturación, así que el local no necesita un programa aparte para cumplir con el reglamento.",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Qué es Verifactu?",
+    a: "Verifactu es la modalidad de los sistemas informáticos de facturación en la que el programa genera un registro de facturación por cada factura emitida y lo remite a la Agencia Tributaria. El marco lo fijan el Real Decreto 1007/2023 y la Orden HAC/1177/2024, que definen el formato de los registros, la huella encadenada, el código QR de la factura y la forma de envío. En esta modalidad la factura lleva además la leyenda VERI*FACTU, que indica que todos los registros se están remitiendo.",
+  },
+  {
+    q: "¿Desde cuándo es obligatorio Verifactu?",
+    a: "El Real Decreto-ley 15/2025 trasladó la obligación a 2027: las sociedades, es decir los contribuyentes del Impuesto sobre Sociedades, deben tener el sistema adaptado el 1 de enero de 2027, y los autónomos, profesionales y el resto de obligados el 1 de julio de 2027. El aplazamiento cambió el calendario, no los requisitos técnicos del Real Decreto 1007/2023 ni de la Orden HAC/1177/2024.",
+  },
+  {
+    q: "¿Qué diferencia hay entre Verifactu y un sistema no verificable?",
+    a: "En modalidad Verifactu el software remite los registros de facturación a la AEAT y la factura lleva QR y la leyenda VERI*FACTU. Un sistema no verificable no remite nada, y a cambio tiene que garantizar por su cuenta la integridad, la conservación y la trazabilidad de los registros. Drenpos opera en modalidad Verifactu, así que esa carga no recae en tu negocio.",
+  },
+  {
+    q: "¿Qué pasa si sigo con mi programa de facturación actual?",
+    a: "Depende de que su fabricante lo adapte y publique su declaración responsable. Conviene preguntárselo por escrito y con tiempo, porque quien fabrica o comercializa software no conforme se expone a una multa de hasta 150.000 € por ejercicio y por tipo de sistema, y quien lo tiene o lo usa a una de hasta 50.000 € por ejercicio, según el artículo 201 bis de la Ley General Tributaria.",
+  },
+  {
+    q: "¿Cómo se envían mis facturas a la AEAT con Drenpos?",
+    a: "El envío lo hace el propio sistema. Al emitir la factura se genera su registro de facturación con la huella encadenada y ese registro se remite a la Agencia Tributaria, sin que tú actives nada ni instales certificados en cada ordenador. En el panel de envíos ves el estado de cada remisión, y si hubo una incidencia de conexión el envío queda anotado como pendiente.",
+  },
+  {
+    q: "¿Sirve para autónomos?",
+    a: "Sí. Un autónomo que emite facturas con un programa informático entra en el reglamento igual que una sociedad, con fecha límite del 1 de julio de 2027. El plan Essential parte de 19 €/mes sin IVA e incluye la facturación con Verifactu, el envío de las facturas por correo y por WhatsApp y los informes.",
+  },
+  {
+    q: "¿Incluye TPV para tienda o restaurante?",
+    a: "El TPV está en el plan Full, desde 39 €/mes sin IVA, y también como módulo suelto. Los tickets simplificados y las facturas que salen del TPV pasan por el mismo motor de facturación, con su registro, su QR y su remisión a la AEAT. Puedes verlo en la página de software de almacén y tienda.",
+  },
+  {
+    q: "¿Qué hago con mis facturas antiguas?",
+    a: "Se quedan donde están. La obligación afecta a las facturas que emitas con el nuevo sistema, no a las que ya emitiste: esas se conservan según las reglas de siempre. Cuando empiezas a facturar con Drenpos, la numeración continúa en la serie que le indiques y solo las facturas nuevas generan registro y se remiten a la AEAT.",
+  },
+];
+
+const noHacemos = [
+  "No llevamos tu contabilidad: Drenpos factura, no sustituye a tu asesoría.",
+  "No presentamos modelos ante la AEAT en tu nombre, más allá de la remisión de los registros de facturación.",
+  "No somos una solución de factura electrónica B2B de la Ley Crea y Crece: eso es otra obligación distinta.",
+];
+
+const siHacemos = [
+  "Generamos el reporte para la gestoría con compras, ventas y rectificativas, en ZIP con un Excel resumen.",
+  "Preparamos el modelo 347 con los datos que ya están en el sistema.",
+  "Guardamos la traza de cada envío en el panel, para que tu asesor vea lo que se remitió y cuándo.",
+];
+
+// ── Datos estructurados (JSON-LD) ──────────────────────────────────────
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
+    { "@type": "ListItem", position: 3, name: "Software de facturación Verifactu", item: CANONICAL },
+  ],
+};
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Drenpos · Facturación Verifactu",
+  url: CANONICAL,
+  applicationCategory: "BusinessApplication",
+  applicationSubCategory: "Software de facturación",
+  operatingSystem: "Web (navegador)",
+  image: [
+    `https://www.drenpos.com${IMG}/verifactu-qr.webp`,
+    `https://www.drenpos.com${IMG}/verifactu-drenpos-traza.webp`,
+  ],
+  description:
+    "Software de facturación en modalidad Verifactu para pymes y autónomos: registro de facturación con huella encadenada, código QR con la leyenda VERI*FACTU, remisión a la AEAT y panel de envíos, sin configuración por parte del cliente. Incluye facturas completas, simplificadas y rectificativas, series y numeración propias y envío al cliente por correo y WhatsApp.",
+  publisher: { "@type": "Organization", name: "Drenpos Tech SL", url: "https://www.drenpos.com" },
+  inLanguage: "es-ES",
+  featureList: [
+    "Registro de facturación con huella (hash) encadenada",
+    "Código QR y leyenda VERI*FACTU en la factura",
+    "Remisión de los registros a la AEAT",
+    "Panel de envíos",
+    "Facturas completas, simplificadas y rectificativas",
+    "Series y numeración configurables",
+    "Envío de facturas por correo y WhatsApp",
+  ],
+  offers: {
+    "@type": "Offer",
+    price: "19.00",
+    priceCurrency: "EUR",
+    priceValidUntil: "2027-12-31",
+    availability: "https://schema.org/InStock",
+    url: "https://www.drenpos.com/pricing",
+    valueAddedTaxIncluded: false,
+    description: "Facturación Verifactu incluida en todos los planes. Plan Essential desde 19 €/mes sin IVA, sin permanencia.",
+    seller: { "@type": "Organization", name: "Drenpos Tech SL" },
+  },
+};
+---
+
+<Base
+  title="Software de Facturación Verifactu · Drenpos"
+  meta_title="Software de Facturación Verifactu para Pymes | Drenpos"
+  description="Programa de facturación adaptado a Verifactu para pymes y autónomos: huella encadenada, QR, remisión a la AEAT y panel de envíos. Desde 19 €/mes sin IVA."
+  canonical={CANONICAL}
+  image={`${IMG}/verifactu-cover.webp`}
+>
+  <!-- Datos estructurados -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0 relative z-10 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/images/grainy.svg" alt="" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/funcionalidades" class="hover:text-primary">Funcionalidades</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Facturación Verifactu</span>
+      </nav>
+
+      <div class="row gx-0 gy-12 lg:gy-0 items-center">
+        <div class="lg:col-6" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Modalidad Verifactu · RD 1007/2023
+          </span>
+
+          <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
+            <span class="text-primary">Software de facturación Verifactu</span> para pymes, listo para 2027
+          </h1>
+          <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
+            Drenpos emite tus facturas en <strong>modalidad Verifactu</strong>:
+            cada una genera su registro de facturación con
+            <strong>huella encadenada</strong>, sale con el
+            <strong>código QR</strong> y la leyenda VERI*FACTU, y el registro se
+            <strong>remite a la AEAT</strong> desde el propio sistema. Tú no
+            configuras nada, y lo ves todo en el panel de envíos.
+          </p>
+
+          <ul class="flex flex-wrap gap-4 mb-10">
+            <li data-aos="fade-up-sm" data-aos-delay="100">
+              <a href="#demo-form" class="btn btn-dark">
+                Pedir demo gratuita
+                <span class="icon-wrapper">
+                  <span class="icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="150">
+              <a href="/pricing" class="btn btn-light">Ver precios</a>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Incluido en todos los planes
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Desde 19 €/mes sin IVA
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Sin configuración por tu parte
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="relative px-4 lg:px-0 pt-10 pb-10">
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
+
+            <div class="rounded-2xl overflow-hidden relative z-10 mx-auto" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
+              <img
+                src={`${IMG}/verifactu-qr.webp`}
+                alt="Detalle de una factura emitida con Drenpos con el código QR y la leyenda VERI*FACTU"
+                width="1200"
+                height="800"
+                class="w-full h-auto block"
+                fetchpriority="high"
+              />
+            </div>
+
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0 font-bold" style="background: #dcfce7; color: #16a34a;">✓</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Registro remitido</p>
+                <p class="text-xs" style="color: #9ca3af;">Huella encadenada con la factura anterior</p>
+              </div>
+            </div>
+
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #fef3c7;">📅</div>
+              <div>
+                <p class="text-xs font-bold text-dark">1 de enero de 2027</p>
+                <p class="text-xs" style="color: #9ca3af;">Sociedades. Autónomos, 1 de julio</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ClientLogosStrip />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DEFINICIÓN CITABLE (AEO / featured snippet)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h4 font-bold mb-4">¿Qué es un software de facturación Verifactu?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            Un <strong>software Verifactu</strong> es un programa de facturación
+            que, por cada factura que emites, genera un
+            <strong>registro de facturación</strong> con una huella (hash)
+            encadenada con el registro anterior, imprime en la factura un
+            <strong>código QR</strong> junto a la leyenda VERI*FACTU y
+            <strong>remite ese registro a la Agencia Tributaria</strong>. Los
+            requisitos los fijan el Real Decreto 1007/2023 y la Orden
+            HAC/1177/2024. Drenpos funciona así desde la primera factura, sin
+            que el cliente tenga que activar ni configurar nada.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CÓMO FUNCIONA (3 pasos)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Cómo funciona Verifactu en Drenpos</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          Tres pasos, y dos de ellos los hace el sistema.
+        </p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          pasos.map((p, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="w-11 h-11 rounded-2xl flex items-center justify-center text-lg font-bold text-white mb-4" style="background: #791b46;">{p.n}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{p.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.65);">{p.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SHOWCASE OSCURO: capturas reales + ventajas
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="como-lo-ves" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="rounded-[32px] overflow-hidden relative" style="background: rgba(16,25,40,0.97);">
+        <div class="absolute -top-20 -right-20 w-96 h-96 rounded-full blur-3xl pointer-events-none" style="background: rgba(211,167,118,0.18);"></div>
+        <div class="absolute -bottom-24 -left-16 w-80 h-80 rounded-full blur-3xl pointer-events-none" style="background: rgba(121,27,70,0.35);"></div>
+
+        <div class="relative p-8 lg:p-16">
+          <div class="text-center max-w-3xl mx-auto mb-14" data-aos="fade-up-sm">
+            <span class="text-white bg-white/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-5 tracking-wide">
+              Panel de envíos · trazabilidad
+            </span>
+            <h2 class="h3 font-bold mb-4 text-white leading-tight">
+              Lo que ves en pantalla, <span style="color: #f9b27c;">no lo que te prometemos</span>
+            </h2>
+            <p class="text-lg leading-relaxed mb-0" style="color: rgba(255,255,255,0.78);">
+              La factura sale con su QR y su leyenda, y el sistema guarda la
+              traza de cada registro y de cada remisión. Si tu asesoría pregunta
+              qué se envió y cuándo, la respuesta está en una pantalla, no en
+              una carpeta de correos.
+            </p>
+          </div>
+
+          <div class="row g-5 mb-12">
+            <div class="lg:col-5" data-aos="fade-up-sm">
+              <div class="rounded-2xl overflow-hidden h-full relative" style="border: 1px solid rgba(255,255,255,0.10);">
+                <img src={`${IMG}/verifactu-qr.webp`} alt="Factura de Drenpos con el código QR de Verifactu y la leyenda VERI*FACTU al pie del documento" width="1200" height="800" class="w-full h-full object-cover block" loading="lazy" />
+                <div class="absolute bottom-0 inset-x-0 p-6" style="background: linear-gradient(to top, rgba(16,25,40,0.85), transparent);">
+                  <p class="text-white font-bold text-lg mb-1">QR y leyenda en la factura</p>
+                  <p class="text-sm" style="color: rgba(255,255,255,0.75);">Tu cliente puede comprobar el documento en la sede de la AEAT.</p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-7">
+              <div class="flex flex-col gap-5 h-full">
+                <div class="rounded-2xl overflow-hidden relative flex-1" style="border: 1px solid rgba(255,255,255,0.10);" data-aos="fade-up-sm" data-aos-delay="100">
+                  <img src={`${IMG}/verifactu-drenpos-traza.webp`} alt="Pantalla de Drenpos con la traza de los registros de facturación remitidos a la AEAT" width="1200" height="800" class="w-full h-full object-cover block" loading="lazy" style="max-height: 340px;" />
+                  <div class="absolute bottom-0 inset-x-0 p-5" style="background: linear-gradient(to top, rgba(16,25,40,0.85), transparent);">
+                    <p class="text-white font-bold mb-0.5">Traza de cada registro</p>
+                    <p class="text-xs" style="color: rgba(255,255,255,0.75);">Huella encadenada, factura a factura, en el orden en que se emitieron.</p>
+                  </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden relative flex-1" style="border: 1px solid rgba(255,255,255,0.10);" data-aos="fade-up-sm" data-aos-delay="200">
+                  <img src={`${IMG}/verifactu-drenpos-review.webp`} alt="Panel de envíos de Verifactu en Drenpos con el estado de las remisiones a la Agencia Tributaria" width="1200" height="800" class="w-full h-full object-cover block" loading="lazy" style="max-height: 260px;" />
+                  <div class="absolute bottom-0 inset-x-0 p-5" style="background: linear-gradient(to top, rgba(16,25,40,0.85), transparent);">
+                    <p class="text-white font-bold mb-0.5">Panel de envíos</p>
+                    <p class="text-xs" style="color: rgba(255,255,255,0.75);">Qué se ha remitido a la AEAT y qué sigue pendiente de enviar.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4">
+            {
+              ventajas.map((v, i) => (
+                <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 100}>
+                  <div class="rounded-2xl p-6 h-full" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
+                    <div class="text-2xl mb-3">{v.icon}</div>
+                    <p class="text-white font-semibold mb-1.5">{v.title}</p>
+                    <p class="text-sm" style="color: rgba(255,255,255,0.72);">{v.body}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       QUÉ INCLUYE (tabla AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="que-incluye" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <div class="text-center mb-10" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-4">Qué incluye la facturación Verifactu de Drenpos</h2>
+            <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+              Lo que hace el sistema por ti, punto por punto.
+            </p>
+          </div>
+          <div class="overflow-x-auto rounded-3xl border border-dark/10" data-aos="fade-up-sm">
+            <table class="w-full text-sm border-collapse">
+              <tbody>
+                {
+                  ficha.map((f, i) => (
+                    <tr class={i % 2 === 0 ? "bg-primary/5" : ""}>
+                      <th scope="row" class="text-left p-4 font-bold align-top w-44">{f.k}</th>
+                      <td class="p-4" style="color: rgba(16,25,40,0.75);">{f.v}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs mt-4" style="color: rgba(16,25,40,0.55);" data-aos="fade-up-sm">
+            Precios sin IVA. Si quieres el detalle normativo con fechas,
+            sanciones y calendario, lo tienes en la
+            <a href="/blog/verifactu-pymes-guia-2026" class="text-primary underline">guía de Verifactu para pymes</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       COMPARATIVA (tabla de decisión, AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Con qué estás facturando ahora mismo?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          Las cuatro situaciones en las que suele estar una pyme antes de 2027.
+        </p>
+      </div>
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[900px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Cómo facturas</th>
+              <th class="text-left p-4">Registro de facturación</th>
+              <th class="text-left p-4">Envío a la AEAT</th>
+              <th class="text-left p-4">QR en la factura</th>
+              <th class="text-left p-4 rounded-tr-2xl">Qué significa para ti</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comparativa.map((r) => (
+                <tr class={r.destacado ? "bg-primary/5 font-medium" : "border-b border-dark/5"}>
+                  <td class={`p-4 ${r.destacado ? "text-primary font-bold" : "font-medium"}`}>{r.opcion}</td>
+                  <td class="p-4">{r.registro}</td>
+                  <td class="p-4">{r.envio}</td>
+                  <td class="p-4">{r.qr}</td>
+                  <td class="p-4">{r.riesgo}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs mt-4 text-center" style="color: rgba(16,25,40,0.55);">
+        El artículo 201 bis de la Ley General Tributaria sanciona con hasta
+        50.000 € por ejercicio la tenencia o el uso de sistemas que no cumplan,
+        y con hasta 150.000 € a quien los fabrica o comercializa.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CASOS DE USO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Verifactu según cómo factures</h2>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          casos.map((c, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3 leading-snug">{c.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       LO QUE NO HACEMOS (honestidad)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center gy-4">
+        <div class="lg:col-10">
+          <div class="text-center mb-8" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-3">Lo que Drenpos no hace por ti</h2>
+            <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+              Mejor decirlo antes de la demo que después de la factura.
+            </p>
+          </div>
+          <div class="row g-4">
+            <div class="md:col-6" data-aos="fade-up-sm">
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7">
+                <p class="font-bold mb-4">No lo hace</p>
+                <ul class="space-y-3 text-sm" style="color: rgba(16,25,40,0.7);">
+                  {
+                    noHacemos.map((n) => (
+                      <li class="flex items-start gap-3">
+                        <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[11px] font-bold mt-0.5" style="background: #9ca3af;">✕</span>
+                        <span>{n}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            </div>
+            <div class="md:col-6" data-aos="fade-up-sm" data-aos-delay="100">
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7">
+                <p class="font-bold mb-4">Sí lo hace</p>
+                <ul class="space-y-3 text-sm" style="color: rgba(16,25,40,0.7);">
+                  {
+                    siHacemos.map((s) => (
+                      <li class="flex items-start gap-3">
+                        <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[11px] font-bold mt-0.5" style="background: #16a34a;">✓</span>
+                        <span>{s}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PRECIO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-8">
+          <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-3 text-white">Verifactu incluido, desde 19 € al mes</h2>
+            <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+              La facturación en modalidad Verifactu entra en todos los planes,
+              también en el plan Essential de 19 €/mes sin IVA. Si además
+              necesitas almacén, el plan Pro cuesta 29 €/mes, y si vendes en
+              mostrador el plan Full con TPV cuesta 39 €/mes. Sin permanencia,
+              con actualizaciones y soporte incluidos.
+            </p>
+            <ul class="flex flex-wrap gap-4 justify-center mb-6">
+              <li>
+                <a href="#demo-form" class="btn btn-light">Pedir demo gratuita</a>
+              </li>
+              <li>
+                <a href="/pricing" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Ver planes y precios</a>
+              </li>
+            </ul>
+            <p class="text-sm max-w-xl mx-auto" style="color: rgba(255,255,255,0.55);">
+              Precios sin IVA. El módulo financiero suelto cuesta 16,45 €/mes si
+              prefieres montar tu combinación de módulos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FORMULARIO DE DEMO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <DemoForm
+    interes="verifactu"
+    titulo="Pide una demo de 20 minutos"
+    subtitulo="Te enseñamos una factura real con su QR, su registro y su envío a la AEAT."
+  />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FAQ (visible + schema)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <h2 class="h3 font-bold mb-3 text-center" data-aos="fade-up-sm">Verifactu: lo que más nos preguntan</h2>
+          <p class="text-center mb-10" style="color: rgba(16,25,40,0.62);" data-aos="fade-up-sm">
+            Respuestas directas, sin letra pequeña.
+          </p>
+          <div class="space-y-4">
+            {
+              faqs.map((f, i) => (
+                <details class="group rounded-2xl border border-dark/10 bg-body p-5" data-aos="fade-up-sm" data-aos-delay={Math.min(i * 50, 300)}>
+                  <summary class="cursor-pointer list-none flex items-start justify-between gap-4">
+                    <h3 class="h6 font-bold leading-snug">{f.q}</h3>
+                    <span class="text-primary text-xl leading-none mt-0.5 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <p class="mt-4 text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">{f.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ENLAZADO INTERNO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center gy-6">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <h2 class="h5 font-bold mb-3">Sigue por aquí</h2>
+          <ul class="row g-2 text-sm mb-8">
+            <li class="md:col-6">
+              <a href="/blog/verifactu-pymes-guia-2026" class="text-primary hover:underline">Guía de Verifactu para pymes: fechas, QR y sanciones</a>
+            </li>
+            <li class="md:col-6">
+              <a href="/pricing" class="text-primary hover:underline">Planes y precios de Drenpos</a>
+            </li>
+            <li class="md:col-6">
+              <a href="/software-almacen-tienda" class="text-primary hover:underline">TPV de tienda con Verifactu y control de stock</a>
+            </li>
+            <li class="md:col-6">
+              <a href="/software-gestion-almacen" class="text-primary hover:underline">Software de gestión de almacén</a>
+            </li>
+          </ul>
+          <p class="text-sm" style="color: rgba(16,25,40,0.7);">
+            Si vendes en mostrador, el
+            <a href="/software-almacen-tienda" class="text-primary underline">TPV de tienda</a>
+            emite sus tickets con el mismo motor de facturación. Si lo tuyo es
+            el stock, la
+            <a href="/software-gestion-almacen" class="text-primary underline">gestión de almacén</a>
+            comparte los mismos documentos, y en
+            <a href="/contact" class="text-primary underline">contacto</a>
+            resolvemos las dudas que te queden antes de decidir.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>

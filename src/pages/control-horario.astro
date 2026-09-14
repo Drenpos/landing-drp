@@ -2,6 +2,8 @@
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
+import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
+import DemoForm from "@/partials/DemoForm.astro";
 
 // ════════════════════════════════════════════════════════════════════════
 //  Control horario · landing dedicada (optimizada SEO 2026)
@@ -244,7 +246,7 @@ const productSchema = {
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">
-              <a href="/contact" class="btn btn-dark">
+              <a href="#demo-form" class="btn btn-dark">
                 Pedir demo gratuita
                 <span class="icon-wrapper">
                   <span class="icon">
@@ -265,7 +267,16 @@ const productSchema = {
             </li>
           </ul>
 
+          <p class="text-sm font-medium mb-6" style="color: rgba(16,25,40,0.72);">
+            Desde 1 €/usuario/mes · terminal propio desde 140 € · sin
+            permanencia. Precios sin IVA.
+          </p>
+
           <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Desde 1 €/usuario/mes
+            </div>
             <div class="flex items-center gap-2">
               <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
               Listo para Inspección de Trabajo
@@ -317,6 +328,8 @@ const productSchema = {
       </div>
     </div>
   </section>
+
+  <ClientLogosStrip />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        DEFINICIÓN CITABLE (AEO / featured snippet)
@@ -817,6 +830,8 @@ const productSchema = {
       </div>
     </div>
   </section>
+
+  <DemoForm interes="fichaje" />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        FAQ

@@ -40,6 +40,8 @@ El Real Decreto-ley 15/2025, de 2 de diciembre (BOE del 3 de diciembre de 2025),
   </a>
 </div>
 
+Si lo que buscas es la ficha del producto y no la normativa, la tienes en la página de [software de facturación Verifactu](/software-verifactu), con lo que incluye, el precio y las preguntas más habituales.
+
 ## Índice
 
 - [Qué es VERI\*FACTU (versión clara y sin tecnicismos)](#que-es)
@@ -152,6 +154,8 @@ Las **sociedades** el 1 de enero de 2027 y los **autónomos y el resto de obliga
 
 Si quieres minimizar riesgos de sanción, evitar requerimientos y simplificar la operativa, VERI*FACTU es la **vía más directa**: menos fricción técnica que el "no verificable" y menos carga de custodia, con una relación más fluida con la AEAT. En Drenpos te acompañamos con un entorno configurado solo en modalidad VERI*FACTU, QR y leyenda correctos, y panel de control de remisiones.
 
+Siguiente paso: revisa la página del [software de facturación Verifactu](/software-verifactu) para ver qué incluye y cuánto cuesta, y pide una demo desde allí.
+
 <div class="my-8 flex justify-center">
   <a href="/contact" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
     Activar VERI*FACTU en Drenpos
@@ -162,6 +166,7 @@ Si quieres minimizar riesgos de sanción, evitar requerimientos y simplificar la
 
 ### Enlaces internos recomendados
 
+- [Software de facturación Verifactu de Drenpos](/software-verifactu)
 - [Solicita tu demo de VERI\*FACTU](/contact)
 - [¿Tienes dudas? Contacta con nuestro equipo VERI\*FACTU](/contact) <!-- - [Obligaciones fiscales para autónomos en 2025](/blog/obligaciones-fiscales-autonomos) -->
 

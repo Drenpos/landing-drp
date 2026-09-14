@@ -2,6 +2,8 @@
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
+import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
+import DemoForm from "@/partials/DemoForm.astro";
 
 // ════════════════════════════════════════════════════════════════════════
 //  Dispositivo de fichaje · landing de producto (hardware propio)
@@ -300,7 +302,7 @@ const productSchema = {
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">
-              <a href="/contact" class="btn btn-dark">
+              <a href="#demo-form" class="btn btn-dark">
                 Pedir presupuesto
                 <span class="icon-wrapper">
                   <span class="icon">
@@ -373,6 +375,8 @@ const productSchema = {
       </div>
     </div>
   </section>
+
+  <ClientLogosStrip />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        DEFINICIÓN CITABLE (AEO / featured snippet)
@@ -640,6 +644,8 @@ const productSchema = {
       </div>
     </div>
   </section>
+
+  <DemoForm interes="fichaje" />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        FAQ (visible + schema)

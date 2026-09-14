@@ -2,6 +2,8 @@
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
+import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
+import DemoForm from "@/partials/DemoForm.astro";
 
 // ════════════════════════════════════════════════════════════════════════
 //  Landing · Software de almacén y tienda (optimizada SEO)
@@ -74,7 +76,9 @@ const tienda: Tarjeta[] = [
   {
     icon: "🧾",
     title: "Facturación Verifactu",
-    body: "De ticket a factura con QR verificable en la AEAT y hash encadenado. Listo para la normativa sin que configures nada.",
+    body: "De ticket a factura con QR verificable en la AEAT y hash encadenado. Listo para la normativa sin que configures nada, con las fechas de 2027 ya cubiertas.",
+    link: "/software-verifactu",
+    linkLabel: "Ver el software de facturación Verifactu",
   },
   {
     icon: "💬",
@@ -159,7 +163,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta?",
-    a: "El plan Pro, con módulo de Inventario incluido, cuesta 29 €/mes (sin IVA) e incluye 3 usuarios. El plan Full añade TPV por 39 €/mes. Sin permanencia, sin coste de instalación y con actualizaciones gratis.",
+    a: "El plan Full, con almacén y TPV incluidos, cuesta 39 €/mes (sin IVA) y viene con 5 usuarios. Si no necesitas TPV, el plan Pro con el módulo de Inventario cuesta 29 €/mes (sin IVA) e incluye 3 usuarios. Sin permanencia, sin coste de instalación y con actualizaciones gratis.",
   },
 ];
 
@@ -202,9 +206,9 @@ const productSchema = {
     "Software de gestión de almacén y TPV de tienda para pymes: multialmacén con ubicaciones, lotes y trazabilidad, FIFO/LIFO/FEFO, alertas de caducidad, traslados con pistola, TPV de tienda y restaurante, y facturación Verifactu.",
   offers: {
     "@type": "Offer",
-    price: "29.00",
+    price: "39.00",
     priceCurrency: "EUR",
-    description: "Plan Pro con módulo de Inventario incluido, desde 29 €/mes (sin IVA).",
+    description: "Plan Full con almacén y TPV incluidos, desde 39 €/mes (sin IVA).",
     url: "https://www.drenpos.com/pricing",
   },
   featureList: [
@@ -273,7 +277,7 @@ const faqSchema = {
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">
-              <a href="/contact" class="btn btn-dark">
+              <a href="#demo-form" class="btn btn-dark">
                 Pedir demo gratuita
                 <span class="icon-wrapper">
                   <span class="icon"><svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
@@ -328,6 +332,8 @@ const faqSchema = {
       </div>
     </div>
   </section>
+
+  <ClientLogosStrip />
 
   <!-- ═══════════════ DEFINICIÓN CITABLE ═══════════════ -->
   <section class="section-sm pb-0">
@@ -515,6 +521,8 @@ const faqSchema = {
       </div>
     </div>
   </section>
+
+  <DemoForm interes="tpv" />
 
   <!-- ═══════════════ FAQ ═══════════════ -->
   <section class="section pt-0">

@@ -6,6 +6,7 @@ import theme from "@/config/theme.json";
 import { plainify } from "@/lib/utils/textConverter";
 import Footer from "@/partials/Footer.astro";
 import Header from "@/partials/Header.astro";
+import WhatsAppButton from "@/partials/WhatsAppButton.astro";
 import "@/styles/main.css";
 import { AstroFont } from "astro-font";
 import { ClientRouter } from "astro:transitions";
@@ -310,6 +311,98 @@ const jsonLd = {
         f.parentNode.insertBefore(j, f);
       })(window, document);
     </script>
+    <script is:inline>
+      // ══════════════════════════════════════════════════════════════════
+      //  Atribución de campañas y clics medibles (Google Ads / GTM)
+      //  No toca el Consent Mode ni el snippet de GTM de arriba: solo
+      //  guarda de dónde viene la visita y empuja eventos a dataLayer.
+      // ══════════════════════════════════════════════════════════════════
+      (function (w, d) {
+        if (w.__drpAttrInit) return;
+        w.__drpAttrInit = true;
+        w.dataLayer = w.dataLayer || [];
+
+        var ATTR_KEY = "drp_attr";
+        var NOVENTA_DIAS = 90 * 24 * 60 * 60 * 1000;
+        var CAMPOS = [
+          "gclid",
+          "gbraid",
+          "wbraid",
+          "utm_source",
+          "utm_medium",
+          "utm_campaign",
+          "utm_term",
+          "utm_content",
+        ];
+
+        function leerGuardado() {
+          try {
+            var raw = w.localStorage.getItem(ATTR_KEY);
+            if (!raw) return null;
+            var datos = JSON.parse(raw);
+            if (!datos || typeof datos !== "object") return null;
+            if (datos.ts && Date.now() - datos.ts > NOVENTA_DIAS) return null;
+            return datos;
+          } catch (e) {
+            return null;
+          }
+        }
+
+        function capturar() {
+          try {
+            var params = new URLSearchParams(w.location.search);
+            var nuevo = {};
+            var hayAlgo = false;
+            for (var i = 0; i < CAMPOS.length; i++) {
+              var valor = params.get(CAMPOS[i]);
+              if (valor) {
+                nuevo[CAMPOS[i]] = valor;
+                hayAlgo = true;
+              }
+            }
+            if (!hayAlgo) return;
+
+            var previo = leerGuardado();
+            // Una visita sin gclid no debe pisar una atribución de pago.
+            if (previo && previo.gclid && !nuevo.gclid) return;
+
+            nuevo.ts = Date.now();
+            nuevo.landing = w.location.pathname;
+            w.localStorage.setItem(ATTR_KEY, JSON.stringify(nuevo));
+          } catch (e) {
+            // localStorage bloqueado o URL rara: seguimos sin atribución
+          }
+        }
+
+        function empujar(evento) {
+          try {
+            w.dataLayer.push({ event: evento, page: w.location.pathname });
+          } catch (e) {}
+        }
+
+        d.addEventListener(
+          "click",
+          function (e) {
+            var el = e.target;
+            var enlace = el && el.closest ? el.closest("a[href]") : null;
+            if (!enlace) return;
+            var href = enlace.getAttribute("href") || "";
+            if (href.indexOf("https://wa.me") === 0) empujar("whatsapp_click");
+            else if (href.indexOf("tel:") === 0) empujar("phone_click");
+            else if (href.indexOf("contract.drenpos.com") > -1)
+              empujar("signup_click");
+            else if (href.indexOf("calendly.com") > -1)
+              empujar("calendly_click");
+          },
+          true,
+        );
+
+        capturar();
+        // Con las transiciones de vista la cabecera no se vuelve a ejecutar,
+        // así que revisamos la URL en cada navegación de cliente.
+        d.addEventListener("astro:page-load", capturar);
+      })(window, document);
+    </script>
     <meta name="msvalidate.01" content="1C54C04B0BDB8940EC2C717A0CAAE934" />
     <!-- favicon -->
     <link rel="shortcut icon" href={config.site.favicon} />
@@ -484,6 +577,7 @@ const jsonLd = {
       <slot />
     </main>
     <Footer />
+    <WhatsAppButton />
 
     <script>
       import AOS from "aos";

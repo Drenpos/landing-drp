@@ -164,69 +164,6 @@ const localCollection = defineCollection({
   schema: z.object(postSchemaShape),
 });
 
-// Features Collection
-const featuresCollection = defineCollection({
-  loader: glob({
-    pattern: "**/*.{md,mdx}",
-    base: "src/content/features",
-  }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    meta_title: z.string().optional(),
-    image: z.string().optional(),
-    draft: z.boolean().optional(),
-    categories: z.array(z.string()).optional(),
-    date: z.date().optional(),
-    hero: z
-      .object({
-        title: z.string(),
-        description: z.string(),
-      })
-      .optional(),
-    section: z
-      .object({
-        enable: z.boolean(),
-        title: z.string(),
-        description: z.string(),
-        badge: z.string(),
-      })
-      .optional(),
-  }),
-});
-
-// career
-const careersCollection = defineCollection({
-  loader: glob({
-    pattern: "**/*.{md,mdx}",
-    base: "src/content/careers",
-  }),
-  schema: z.object({
-    title: z.string(),
-    meta_title: z.string().optional(),
-    description: z.string().optional(),
-    image: z.string().optional(),
-    summary: z.string().optional(),
-    location: z.string().optional(),
-    duration: z.string().optional(),
-    salary: z.string().optional(),
-    benefits: z.string().optional(),
-    hero: z
-      .object({
-        title: z.string(),
-        description: z.string(),
-      })
-      .optional(),
-    section: z
-      .object({
-        title: z.string(),
-        description: z.string(),
-        badge: z.string(),
-      })
-      .optional(),
-  }),
-});
-
 // pricingCollection
 const pricingCollection = defineCollection({
   loader: glob({
@@ -242,24 +179,6 @@ const pricingCollection = defineCollection({
       title: z.string(),
       description: z.string(),
     }),
-  }),
-});
-
-// Pages collection schema
-const pagesCollection = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/pages" }),
-  schema: z.object({
-    title: z.string(),
-    meta_title: z.string().optional(),
-    description: z.string().optional(),
-    image: z.string().optional(),
-    draft: z.boolean().optional(),
-    hero: z
-      .object({
-        title: z.string(),
-        description: z.string(),
-      })
-      .optional(),
   }),
 });
 
@@ -348,70 +267,6 @@ const pricingPlanCollection = defineCollection({
   }),
 });
 
-// integrationsPageCollection
-const integrationsPageCollection = defineCollection({
-  loader: glob({
-    pattern: "**/*.{md,mdx}",
-    base: "src/content/integrations",
-  }),
-  schema: z.object({
-    title: z.string(),
-    meta_title: z.string().optional(),
-    description: z.string(),
-    image: z.string().optional(),
-    hero: z.object({
-      title: z.string(),
-      description: z.string(),
-      image: z.string().optional(),
-    }),
-    integrations_section: z.object({
-      title: z.string(),
-      description: z.string(),
-      badge: z.string(),
-      list: z.array(
-        z.object({
-          name: z.string(),
-          image: z.string(),
-          description: z.string(),
-          button: z.object({
-            enable: z.boolean(),
-            label: z.string().optional(),
-            link: z.string(),
-          }),
-          list: z.array(z.string()).optional(),
-        }),
-      ),
-    }),
-  }),
-});
-
-// changelogPageCollection
-const changelogPageCollection = defineCollection({
-  loader: glob({
-    pattern: "**/*.{md,mdx}",
-    base: "src/content/changelog",
-  }),
-  schema: z.object({
-    title: z.string(),
-    meta_title: z.string().optional(),
-    description: z.string(),
-    image: z.string().optional(),
-    hero: z.object({
-      title: z.string(),
-      description: z.string(),
-    }),
-    list: z.array(
-      z.object({
-        version: z.string(),
-        title: z.string(),
-        date: z.string(),
-        image: z.string(),
-        content: z.string(),
-      }),
-    ),
-  }),
-});
-
 // contactPageCollection
 const contactPageCollection = defineCollection({
   loader: glob({
@@ -438,36 +293,6 @@ const contactPageCollection = defineCollection({
         }),
       ),
     }),
-  }),
-});
-
-// caseStudiesPageCollection
-const caseStudiesPageCollection = defineCollection({
-  loader: glob({
-    pattern: "**/*.{md,mdx}",
-    base: "src/content/case-studies",
-  }),
-  schema: z.object({
-    title: z.string(),
-    meta_title: z.string().optional(),
-    description: z.string(),
-    image: z.string().optional(),
-    hero: z
-      .object({
-        title: z.string(),
-        description: z.string(),
-      })
-      .optional(),
-    categories: z.array(z.string()).optional(),
-    date: z.date().optional(),
-    draft: z.boolean().optional(),
-    author: z
-      .object({
-        name: z.string(),
-        designation: z.string(),
-        avatar: z.string().optional(),
-      })
-      .optional(),
   }),
 });
 
@@ -655,14 +480,8 @@ export const collections = {
   about: aboutCollection,
   blog: blogCollection,
   local: localCollection,
-  careers: careersCollection,
-  features: featuresCollection,
   contact: contactPageCollection,
   pricing: pricingCollection,
-  pages: pagesCollection,
-  integrations: integrationsPageCollection,
-  "case-studies": caseStudiesPageCollection,
-  changelog: changelogPageCollection,
 
   // section
   clients: clientSectionCollection,

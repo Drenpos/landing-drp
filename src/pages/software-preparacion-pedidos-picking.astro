@@ -2,6 +2,8 @@
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
+import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
+import DemoForm from "@/partials/DemoForm.astro";
 
 // ════════════════════════════════════════════════════════════════════════
 //  Software de preparación de pedidos (picking) · landing dedicada
@@ -194,7 +196,7 @@ const comparativa = [
     guiado: "Asistente móvil con ubicación y lote FIFO/LIFO/FEFO",
     oleadas: "Sí, pick-to-box en una ruta consolidada",
     expedicion: "Escanear genera el albarán o la factura",
-    precio: "Desde 19,90 €/mes",
+    precio: "Desde 29 €/mes",
     destacado: true,
   },
 ];
@@ -252,7 +254,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta y cuánto se tarda en implantarlo?",
-    a: "La preparación de pedidos forma parte del módulo de Almacén de Drenpos, desde 19,90 €/mes sin IVA, sin coste por uso ni permanencia y con soporte humano incluido; existe también despliegue on-premise en el servidor del cliente, a presupuesto. La implantación estándar se hace en días: importamos los artículos, definimos almacenes y ubicaciones, imprimimos las etiquetas QR de ubicaciones y baldas, cargamos el stock inicial y formamos al equipo.",
+    a: "La preparación de pedidos forma parte del almacén de Drenpos, incluido en el plan Pro desde 29 €/mes sin IVA, sin coste por uso ni permanencia y con soporte humano incluido; existe también despliegue on-premise en el servidor del cliente, a presupuesto. La implantación estándar se hace en días: importamos los artículos, definimos almacenes y ubicaciones, imprimimos las etiquetas QR de ubicaciones y baldas, cargamos el stock inicial y formamos al equipo.",
   },
 ];
 
@@ -320,9 +322,9 @@ const productSchema = {
     "Software de preparación de pedidos (picking) para almacén: semáforo de preparabilidad, etiqueta QR por pedido, asistente de picking móvil con lote sugerido por FIFO/LIFO/FEFO, oleadas pick-to-box, zona de preparados en baldas con QR, preparación sobre palet con etiqueta SSCC, verificación configurable y expedición con escaneo que genera el albarán o la factura. Integrado con reservas de stock, recepción de mercancía, compras, ventas y facturación.",
   offers: {
     "@type": "Offer",
-    price: "19.90",
+    price: "29.00",
     priceCurrency: "EUR",
-    description: "Módulo Almacén desde 19,90 €/mes (sin IVA). Sin coste por uso ni permanencia.",
+    description: "Plan Pro con almacén incluido desde 29 €/mes (sin IVA). Sin coste por uso ni permanencia.",
     url: "https://www.drenpos.com/pricing",
   },
   featureList: [
@@ -349,7 +351,7 @@ const productSchema = {
 <Base
   title="Software de Preparación de Pedidos · Drenpos"
   meta_title="Software de Preparación de Pedidos y Picking | Drenpos"
-  description="Software de preparación de pedidos: picking guiado en móvil, oleadas, zona de preparados y expedición con escaneo que genera el albarán. Desde 19,90 €/mes."
+  description="Software de preparación de pedidos: picking guiado en móvil, oleadas, zona de preparados y expedición con escaneo que genera el albarán. Desde 29 €/mes sin IVA."
   canonical={CANONICAL}
   image="/images/funcionalidades/almacen-tienda/04-pistola-traslados.png"
 >
@@ -398,7 +400,7 @@ const productSchema = {
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">
-              <a href="/contact" class="btn btn-dark">
+              <a href="#demo-form" class="btn btn-dark">
                 Pedir demo gratuita
                 <span class="icon-wrapper">
                   <span class="icon">
@@ -471,6 +473,8 @@ const productSchema = {
       </div>
     </div>
   </section>
+
+  <ClientLogosStrip />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        DEFINICIÓN CITABLE (AEO / featured snippet)
@@ -739,7 +743,7 @@ const productSchema = {
       <div class="row justify-center">
         <div class="lg:col-8">
           <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
-            <h2 class="h3 font-bold mb-3 text-white">Preparación de pedidos incluida, desde 19,90 €/mes</h2>
+            <h2 class="h3 font-bold mb-3 text-white">Preparación de pedidos incluida, desde 29 €/mes sin IVA</h2>
             <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
               El picking no es un extra: forma parte del módulo Almacén, con
               semáforo de preparabilidad, etiqueta QR por pedido, asistente móvil
@@ -754,7 +758,7 @@ const productSchema = {
                 <a href="/pricing" class="btn btn-light">Ver planes y precios</a>
               </li>
               <li>
-                <a href="/contact" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Pedir demo de 20 minutos</a>
+                <a href="#demo-form" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Pedir demo de 20 minutos</a>
               </li>
             </ul>
           </div>
@@ -762,6 +766,8 @@ const productSchema = {
       </div>
     </div>
   </section>
+
+  <DemoForm interes="almacen" />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        FAQ (visible + schema)

@@ -2,6 +2,8 @@
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
+import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
+import DemoForm from "@/partials/DemoForm.astro";
 
 // ════════════════════════════════════════════════════════════════════════
 //  Conector MCP · landing de módulo
@@ -269,7 +271,7 @@ const softwareSchema = {
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">
-              <a href="/contact" class="btn btn-dark">
+              <a href="#demo-form" class="btn btn-dark">
                 Quiero activarlo
                 <span class="icon-wrapper">
                   <span class="icon">
@@ -360,6 +362,8 @@ const softwareSchema = {
       </div>
     </div>
   </section>
+
+  <ClientLogosStrip />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        DEFINICIÓN CITABLE (AEO / featured snippet)
@@ -639,6 +643,8 @@ const softwareSchema = {
       </div>
     </div>
   </section>
+
+  <DemoForm interes="mcp" />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        FAQ (visible + schema)

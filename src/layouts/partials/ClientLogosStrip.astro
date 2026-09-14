@@ -1,0 +1,52 @@
+---
+// Tira compacta de prueba social para las landings.
+// Reutiliza los logos de src/content/sections/clients.md (public/images/brands/).
+import { getEntry } from "astro:content";
+
+const {
+  title = "Ya confían en Drenpos",
+}: { title?: string } = Astro.props;
+
+const client = await getEntry("clients", "clients");
+const brands = client?.data?.brands ?? [];
+
+// El alt de clients.md viene como "findiur-logo": lo pasamos a nombre legible
+// para que cada imagen tenga un alt descriptivo.
+const brandName = (alt: string) =>
+  alt
+    .replace(/-logo$/i, "")
+    .split(/[-_]/)
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+---
+
+{
+  brands.length > 0 && (
+    <section class="section-sm py-8" aria-label="Clientes de Drenpos">
+      <div class="container">
+        <p
+          class="text-center text-xs font-semibold uppercase tracking-[0.18em] mb-6"
+          style="color: rgba(16,25,40,0.5);"
+        >
+          {title}
+        </p>
+        <ul class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+          {brands.map((logo) => (
+            <li class="flex items-center">
+              <img
+                src={logo.src}
+                alt={`Logo de ${brandName(logo.alt)}`}
+                width="120"
+                height="40"
+                loading="lazy"
+                decoding="async"
+                class="h-10 w-auto max-w-[120px] object-contain grayscale opacity-70 transition duration-300 hover:grayscale-0 hover:opacity-100"
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}

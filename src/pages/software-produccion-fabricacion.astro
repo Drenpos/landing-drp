@@ -2,6 +2,8 @@
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
+import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
+import DemoForm from "@/partials/DemoForm.astro";
 
 // ════════════════════════════════════════════════════════════════════════
 //  Landing · Software de producción y fabricación (SEO + GEO + AEO)
@@ -307,7 +309,7 @@ const faqSchema = {
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">
-              <a href="/contact" class="btn btn-dark">
+              <a href="#demo-form" class="btn btn-dark">
                 Pedir demo gratuita
                 <span class="icon-wrapper">
                   <span class="icon"><svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
@@ -362,6 +364,8 @@ const faqSchema = {
       </div>
     </div>
   </section>
+
+  <ClientLogosStrip />
 
   <!-- ═══════════════ DEFINICIÓN CITABLE (front-loading GEO) ═══════════════ -->
   <section class="section-sm pb-0">
@@ -569,6 +573,8 @@ const faqSchema = {
       </div>
     </div>
   </section>
+
+  <DemoForm interes="todo" />
 
   <!-- ═══════════════ FAQ ═══════════════ -->
   <section class="section pt-0">
