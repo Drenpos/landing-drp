@@ -4,6 +4,8 @@ import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
 import DemoForm from "@/partials/DemoForm.astro";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 
 // ════════════════════════════════════════════════════════════════════════
 //  Dispositivo de fichaje · landing de producto (hardware propio)
@@ -13,6 +15,8 @@ import DemoForm from "@/partials/DemoForm.astro";
 //    - "fichaje con llavero" / "fichaje con tarjeta" / "fichaje por QR"
 //    - "terminal de control de presencia sin huella" (sin biometría)
 //    - long-tail: fichaje en obra / furgoneta / 12V, terminal con logo
+//    - long-tail: fichaje sin internet / terminal de fichaje offline /
+//      fichar en obra sin cobertura (sección #sin-conexion)
 //  Diferenciación con /control-horario: aquella vende el software y todos
 //  los métodos de fichaje; esta vende el hardware físico (ficha técnica,
 //  personalización con la marca del cliente, precio y compra suelta).
@@ -22,12 +26,37 @@ import DemoForm from "@/partials/DemoForm.astro";
 const CANONICAL = "https://www.drenpos.com/dispositivo-fichaje";
 const IMG = "/images/funcionalidades/control-horario/hardware";
 
+// Imágenes opcionales: solo se renderizan si el fichero existe en /public
+const hasImg = (p: string) => existsSync(join(process.cwd(), "public", p));
+const OFFLINE_IMG = `${IMG}/v2-terminal-furgoneta.webp`;
+const showOfflineImg = hasImg(OFFLINE_IMG);
+
+// Modo sin conexión (sección #sin-conexion)
+const offline = [
+  {
+    n: "1",
+    title: "La cuadrilla ficha en el tajo",
+    body: "Cada persona pasa su llavero RFID o su QR como cualquier día. El terminal va alimentado a 12 V desde el mechero de la furgoneta o una batería auxiliar.",
+  },
+  {
+    n: "2",
+    title: "El terminal guarda cada fichaje con su hora",
+    body: "Sin red, cada entrada y salida se queda en la memoria local del terminal con la hora exacta de su reloj integrado.",
+  },
+  {
+    n: "3",
+    title: "Al volver, se sincroniza solo",
+    body: "En cuanto coge la WiFi de la oficina o de la nave, vuelca a Drenpos todos los fichajes pendientes con su hora original. Nadie tiene que hacer nada. Si quieres sincronizar antes, comparte datos desde un móvil.",
+  },
+];
+
 // Ficha técnica (solo datos reales del terminal v2)
 const ficha = [
   { k: "Lectura", v: "Llavero o tarjeta RFID y código QR personal de cada empleado" },
   { k: "Pantallas", v: "Pantalla de estado (nombre y foto del empleado, fichaje o desfichaje) y ventana de lectura iluminada" },
   { k: "Alimentación", v: "12 V y 3 A. Fuente de red, batería auxiliar o toma de mechero del vehículo" },
-  { k: "Conectividad", v: "WiFi con antena externa. Cada fichaje se sincroniza con Drenpos con sellado temporal" },
+  { k: "Conectividad", v: "WiFi con antena externa. Con red, cada fichaje se sincroniza al momento con Drenpos con sellado temporal; sin red, lo guarda y lo envía después" },
+  { k: "Sin conexión", v: "Sigue fichando: guarda cada fichaje en su memoria local con la hora de su reloj integrado y lo vuelca a Drenpos, con su hora original, al recuperar la red" },
   { k: "Electrónica", v: "Placa propia diseñada por Drenpos (revisión v2), con la versión de firmware visible en pantalla" },
   { k: "Carcasa", v: "Impresa en 3D en PETG, con el logo de tu empresa en el frontal si lo quieres" },
   { k: "Ubicación", v: "Interior: naves, almacenes, talleres, oficinas y hostelería. Portátil en obra o furgoneta" },
@@ -43,12 +72,12 @@ const pasos = [
   {
     n: "2",
     title: "Enchufas el terminal",
-    body: "Lo conectas a la red WiFi desde su panel web y lo alimentas a 12 V. En pared, sobre un mostrador o en la cabina de la furgoneta.",
+    body: "Lo alimentas a 12 V y lo conectas a tu WiFi desde su panel web. En pared, sobre un mostrador o en la cabina de la furgoneta. Si donde fichas no hay red, ficha igual y sincroniza al volver.",
   },
   {
     n: "3",
     title: "El equipo ficha en un gesto",
-    body: "Acercar el llavero o mostrar el QR. La pantalla confirma con el nombre y la foto del empleado, y el fichaje queda sellado en el sistema.",
+    body: "Acercar el llavero o mostrar el QR. La pantalla confirma con el nombre y la foto del empleado, y el fichaje queda guardado con su hora exacta: en Drenpos al momento si hay red, o en cuanto el terminal se reconecta.",
   },
 ];
 
@@ -76,12 +105,22 @@ const ventajas = [
   {
     icon: "🔌",
     title: "Funciona a 12 V",
-    body: "Se alimenta desde el mechero de cualquier coche o furgoneta y desde una batería auxiliar. El mismo terminal sirve para la nave y para la cuadrilla desplazada.",
+    body: "Se alimenta desde el mechero de cualquier coche o furgoneta o desde una batería auxiliar. Va a la obra o a la finca aunque allí no haya cobertura, y el mismo terminal sirve para la nave.",
+  },
+  {
+    icon: "📶",
+    title: "Ficha aunque no haya internet",
+    body: "Si se cae la WiFi o no hay cobertura, el terminal guarda cada fichaje con la hora de su reloj integrado. Al recuperar la red los envía solo a Drenpos, con su hora original.",
   },
   {
     icon: "📦",
     title: "Se compra suelto",
     body: "Puedes adquirir solo el terminal con sus llaveros como control de presencia. Si después quieres el resto del sistema, se integra sin perder un fichaje.",
+  },
+  {
+    icon: "🔄",
+    title: "Se actualiza desde su panel web",
+    body: "Las actualizaciones de firmware se aplican desde el panel web del propio terminal, sin desmontarlo ni enviarlo. La versión instalada se ve en la pantalla.",
   },
 ];
 
@@ -93,6 +132,7 @@ const comparativa = [
     biometria: "No",
     logo: "No",
     legal: "No es inalterable: infracción grave",
+    sinRed: "Sí, pero sin validez legal",
     precio: "«Gratis» (hasta la primera inspección)",
   },
   {
@@ -101,6 +141,7 @@ const comparativa = [
     biometria: "Sí, con evaluación de impacto",
     logo: "No",
     legal: "Depende del software al que se conecte",
+    sinRed: "Depende del modelo",
     precio: "150 a 600 € + licencia aparte",
   },
   {
@@ -109,6 +150,7 @@ const comparativa = [
     biometria: "No",
     logo: "No",
     legal: "Sí, si el software sella y traza",
+    sinRed: "Depende de la app y de la cobertura",
     precio: "Licencia por usuario",
   },
   {
@@ -117,6 +159,7 @@ const comparativa = [
     biometria: "No",
     logo: "Sí, en carcasa y llaveros",
     legal: "Sí: sellado, trazado y exportable",
+    sinRed: "Sí, guarda y sincroniza al volver",
     precio: "Desde 140 € el terminal",
     destacado: true,
   },
@@ -139,7 +182,7 @@ const casos = [
     tag: "Obra y equipos móviles",
     icon: "🚐",
     title: "El terminal viaja en la furgoneta",
-    body: "Conectado al mechero, el encargado lo enciende al llegar y la cuadrilla ficha antes de bajar la herramienta. Sin caseta, sin enchufe y sin repartir apps al personal de temporada.",
+    body: "Conectado al mechero, va a la obra aunque allí no haya cobertura. La cuadrilla ficha con su llavero antes de bajar la herramienta y el terminal guarda cada fichaje con su hora. Al volver a la nave coge la WiFi y lo sincroniza todo, sin repartir apps al personal de temporada.",
   },
   {
     tag: "Hostelería y retail",
@@ -176,7 +219,15 @@ const faqs = [
   },
   {
     q: "¿Qué pasa si se va la conexión a internet?",
-    a: "El terminal necesita red para sincronizar cada fichaje con Drenpos. Si la WiFi de la nave falla, lo habitual es compartir datos desde un móvil o usar un router 4G; en furgoneta se usa el móvil del encargado como punto de acceso. Los fichajes ya sincronizados no se pierden nunca.",
+    a: "El terminal sigue fichando. Guarda cada fichaje en su memoria local con la hora exacta de su reloj integrado y, cuando vuelve la conexión, los envía solo a Drenpos con su hora original. El empleado ficha igual con su llavero o su QR y nadie tiene que hacer nada. Conviene conectarlo con regularidad (lo normal es a diario) para que el registro esté al día si llega una inspección.",
+  },
+  {
+    q: "¿Se puede usar en una obra sin cobertura conectado al mechero del coche?",
+    a: "Sí. El terminal se alimenta a 12 V desde el mechero del coche o de la furgoneta, o desde una batería auxiliar, y ficha aunque allí no haya internet. La cuadrilla pasa su llavero o su QR, el terminal guarda los fichajes con su hora y, al volver a la oficina o a la nave, se conecta a la WiFi y sincroniza todo. Si quieres adelantarlo, comparte datos desde un móvil.",
+  },
+  {
+    q: "¿La hora de un fichaje hecho sin conexión es fiable?",
+    a: "Sí. El terminal lleva un reloj propio integrado y guarda cada fichaje con la hora exacta en que se hizo, no con la hora a la que se sincroniza. Al recuperar la red, el fichaje llega a Drenpos con esa hora original y entra en el registro inalterable como cualquier otro. Las correcciones posteriores siguen quedando trazadas con autor, momento y motivo.",
   },
   {
     q: "¿Qué ve el empleado al fichar?",
@@ -225,7 +276,7 @@ const productSchema = {
     `https://www.drenpos.com${IMG}/01-dispositivo-lector-rfid.png`,
   ],
   description:
-    "Dispositivo de fichaje para empresas con lectura de llavero RFID y código QR, pantalla de estado con nombre y foto del empleado, alimentación a 12 V, placa electrónica propia y carcasa impresa en 3D con el logo del cliente. Sin biometría. Sincroniza cada fichaje con el software de control horario de Drenpos con sellado inalterable.",
+    "Dispositivo de fichaje para empresas con lectura de llavero RFID y código QR, pantalla de estado con nombre y foto del empleado, alimentación a 12 V, placa electrónica propia y carcasa impresa en 3D con el logo del cliente. Sin biometría. Sincroniza cada fichaje con el software de control horario de Drenpos con sellado inalterable y sigue fichando sin internet: guarda los fichajes con su reloj propio y los envía al recuperar la red.",
   brand: { "@type": "Brand", name: "Drenpos" },
   manufacturer: { "@type": "Organization", name: "Drenpos Tech SL", url: "https://www.drenpos.com" },
   category: "Terminal de control de presencia",
@@ -233,6 +284,7 @@ const productSchema = {
     { "@type": "PropertyValue", name: "Lectura", value: "RFID y QR" },
     { "@type": "PropertyValue", name: "Alimentación", value: "12 V, 3 A" },
     { "@type": "PropertyValue", name: "Conectividad", value: "WiFi con antena externa" },
+    { "@type": "PropertyValue", name: "Funcionamiento sin conexión", value: "Sí. Guarda los fichajes en local con reloj propio y los sincroniza al recuperar la red" },
     { "@type": "PropertyValue", name: "Biometría", value: "No" },
     { "@type": "PropertyValue", name: "Personalización", value: "Logo del cliente en carcasa y llaveros" },
   ],
@@ -254,7 +306,7 @@ const productSchema = {
 <Base
   title="Dispositivo de Fichaje con Llavero RFID y QR · Drenpos"
   meta_title="Dispositivo de Fichaje RFID y QR para Empresas | Drenpos"
-  description="Terminal de fichaje fabricado por Drenpos: llavero RFID o QR, sin huella, pantalla con foto del empleado, 12 V y tu logo en la carcasa. Desde 140 €, también sin contratar el ERP."
+  description="Terminal de fichaje de Drenpos con llavero RFID o QR, sin huella, a 12 V y con tu logo. Ficha sin internet y sincroniza al volver. Desde 140 €."
   canonical={CANONICAL}
   image={`${IMG}/v2-terminal-cover.jpg`}
 >
@@ -335,6 +387,10 @@ const productSchema = {
             <div class="flex items-center gap-2">
               <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
               Tu logo en el frontal
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Ficha sin internet
             </div>
           </div>
         </div>
@@ -489,7 +545,7 @@ const productSchema = {
           <div class="row g-4">
             {
               ventajas.map((v, i) => (
-                <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 100}>
+                <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={(i % 4) * 100}>
                   <div class="rounded-2xl p-6 h-full" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
                     <div class="text-2xl mb-3">{v.icon}</div>
                     <p class="text-white font-semibold mb-1.5">{v.title}</p>
@@ -553,7 +609,7 @@ const productSchema = {
         </p>
       </div>
       <div class="overflow-x-auto" data-aos="fade-up-sm">
-        <table class="w-full text-sm border-collapse min-w-[900px]">
+        <table class="w-full text-sm border-collapse min-w-[1040px]">
           <thead>
             <tr class="bg-dark text-white">
               <th class="text-left p-4 rounded-tl-2xl">Opción</th>
@@ -561,6 +617,7 @@ const productSchema = {
               <th class="text-left p-4">Datos biométricos</th>
               <th class="text-left p-4">Tu logo</th>
               <th class="text-left p-4">Válido ante Inspección</th>
+              <th class="text-left p-4">Sin internet</th>
               <th class="text-left p-4 rounded-tr-2xl">Coste</th>
             </tr>
           </thead>
@@ -573,6 +630,7 @@ const productSchema = {
                   <td class="p-4">{r.biometria}</td>
                   <td class="p-4">{r.logo}</td>
                   <td class="p-4">{r.legal}</td>
+                  <td class="p-4">{r.sinRed}</td>
                   <td class="p-4">{r.precio}</td>
                 </tr>
               ))
@@ -607,6 +665,63 @@ const productSchema = {
             </div>
           ))
         }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SIN CONEXIÓN (AEO): cómo ficha el terminal sin internet
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="sin-conexion" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Modo sin conexión</span>
+        <h2 class="h3 font-bold mb-4">¿Cómo funciona el terminal de fichaje sin internet?</h2>
+        <p class="text-lg leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+          El terminal de Drenpos sigue fichando aunque no haya red. Si la WiFi
+          se cae o estás en una obra o una finca sin cobertura, guarda cada
+          fichaje en su memoria local con la hora exacta de su reloj
+          integrado. El empleado ficha igual, con su llavero RFID o su QR. Al
+          recuperar la conexión, el terminal envía solo a Drenpos todos los
+          fichajes pendientes con su hora original.
+        </p>
+      </div>
+
+      <div class="row g-5 items-center">
+        {showOfflineImg && (
+          <div class="lg:col-6" data-aos="fade-up-sm">
+            <figure class="rounded-2xl overflow-hidden mb-0" style="box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07); border: 1px solid rgba(16,25,40,0.08);">
+              <img src={OFFLINE_IMG} alt="Terminal de fichaje Drenpos alimentado desde el mechero de una furgoneta en una obra sin cobertura" width="1200" height="800" class="w-full h-auto block" loading="lazy" />
+            </figure>
+          </div>
+        )}
+        <div class={showOfflineImg ? "lg:col-6" : "col-12"}>
+          <ol class={showOfflineImg ? "grid gap-4 list-none p-0 m-0" : "grid md:grid-cols-3 gap-4 list-none p-0 m-0"}>
+            {offline.map((p, i) => (
+              <li class="h-full rounded-3xl border border-dark/10 bg-body p-7" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+                <div class="w-11 h-11 rounded-2xl flex items-center justify-center text-lg font-bold text-white mb-4" style="background: #791b46;" aria-hidden="true">{p.n}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{p.title}</h3>
+                <p class="text-sm mb-0" style="color: rgba(16,25,40,0.65);">{p.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+
+      <div class="rounded-2xl p-6 lg:p-8 mt-8" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
+        <p class="font-semibold mb-2">Un consejo para las inspecciones</p>
+        <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.72);">
+          Conecta el terminal con regularidad. Lo normal es a diario, al
+          volver a la oficina o a la nave, para que el registro esté al día si
+          llega una inspección.
+        </p>
+        <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+          Pensado para construcción y reformas, agricultura y campañas,
+          instalaciones y montajes, mantenimiento, trabajos forestales y
+          eventos. El modo sin conexión es del terminal físico: si tu equipo
+          ficha desde el móvil en ruta, mira la
+          <a href="/control-horario#geolocalizacion" class="text-primary underline">geolocalización opcional del fichaje</a>.
+        </p>
       </div>
     </div>
   </section>

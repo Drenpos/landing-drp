@@ -4,6 +4,10 @@ import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
 import DemoForm from "@/partials/DemoForm.astro";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
+const hasImg = (p: string) => existsSync(join(process.cwd(), "public", p));
 
 // ════════════════════════════════════════════════════════════════════════
 //  Software de preparación de pedidos (picking) · landing dedicada
@@ -72,7 +76,7 @@ const flujo = [
     icon: "🌊",
     tag: "Productividad",
     title: "Oleadas: varios pedidos en una sola vuelta",
-    body: "Se lanza una oleada con los pedidos que interesan y el sistema consolida una única ruta por el almacén (pick-to-box). Se recorre el almacén una vez y salen varios pedidos, no uno.",
+    body: "Se lanza una oleada con los pedidos que interesan y el sistema consolida una única ruta por el almacén (pick-to-box), en el orden de recorrido que sale del plano del almacén. Se recorre el almacén una vez y salen varios pedidos, no uno.",
   },
   {
     n: "05",
@@ -87,6 +91,24 @@ const flujo = [
     tag: "Salida",
     title: "Verificación y expedición con escaneo",
     body: "Verificación configurable antes de expedir (recuento de control) y, al escanear el pedido preparado, el sistema genera el albarán o la factura automáticamente, con trazabilidad documental completa. Nadie vuelve a teclear el pedido.",
+  },
+];
+
+// Ruta de picking desde el plano del almacén (3 pasos)
+const RUTA_IMG = "/images/funcionalidades/almacen-tienda/06-asistente-picking-orden-ruta.png";
+const rutaImg = hasImg(RUTA_IMG);
+const ruta = [
+  {
+    title: "Dibujas el plano del almacén",
+    body: "En el editor visual del módulo de Inventario colocas estanterías, paredes y puntos clave: dónde empieza la ruta, dónde se deja la carga y dónde están las escaleras. Admite varias plantas y se monta en un rato, sin delineante.",
+  },
+  {
+    title: "El sistema calcula el orden de ruta",
+    body: "A partir del plano, Drenpos ordena las ubicaciones en un recorrido fijo. Para el mismo almacén, la ruta es siempre la misma.",
+  },
+  {
+    title: "El asistente y las oleadas siguen ese orden",
+    body: "Cada línea aparece en el orden del recorrido, en un pedido suelto y en una oleada pick-to-box. El operario no consulta ningún mapa: el asistente le dice directamente a qué ubicación ir. Avanza en un sentido, no vuelve sobre sus pasos y quien entra nuevo sigue la ruta desde el primer día.",
   },
 ];
 
@@ -194,7 +216,7 @@ const comparativa = [
     opcion: "Drenpos",
     servible: "Semáforo de preparabilidad, con faltas y lo que viene de camino",
     guiado: "Asistente móvil con ubicación y lote FIFO/LIFO/FEFO",
-    oleadas: "Sí, pick-to-box en una ruta consolidada",
+    oleadas: "Sí, pick-to-box en una ruta consolidada según el plano",
     expedicion: "Escanear genera el albarán o la factura",
     precio: "Desde 29 €/mes",
     destacado: true,
@@ -233,6 +255,14 @@ const faqs = [
     a: "El picking por oleadas consiste en lanzar varios pedidos a la vez agrupados por un criterio común (urgencia, ruta de reparto u hora de salida) para recorrer el almacén una sola vez en lugar de una vez por pedido. Conviene cuando hay muchos pedidos de pocas líneas y las salidas tienen horario, porque la oleada se organiza alrededor del camión o de la recogida de la agencia. No conviene si los pedidos llegan de forma continua y hay que servirlos según entran, sin ventanas de salida. En Drenpos la oleada consolida una única ruta por el almacén con recogida pick-to-box.",
   },
   {
+    q: "¿Drenpos calcula la ruta de picking?",
+    a: "Sí. A partir del plano del almacén, que se dibuja en el módulo de Inventario, el sistema calcula un orden fijo de recorrido de las ubicaciones. El asistente de picking y las oleadas presentan las líneas en ese orden, de modo que el operario avanza en un sentido y no vuelve sobre sus pasos. El operario no mira ningún mapa mientras prepara: el asistente le dice a qué ubicación ir. Para el mismo almacén la ruta es siempre la misma.",
+  },
+  {
+    q: "¿Hace falta un WMS caro para optimizar las rutas de picking?",
+    a: "Para una pyme, no. Lo que ordena el recorrido es tener las ubicaciones bien definidas, un plano del almacén y un orden de recorrido fijo que el sistema respete al presentar las líneas. Los WMS de gran empresa tienen su sitio en naves con mucho volumen y operativas complejas, pero en un almacén pequeño o mediano esas tres piezas cubren lo esencial. En Drenpos las tres van dentro del módulo de Inventario.",
+  },
+  {
     q: "¿Cómo sé qué pedidos puedo servir completos hoy?",
     a: "Con el semáforo de preparabilidad del listado de preparación. Muestra qué pedidos se pueden servir completos con el stock actual, cuáles tienen faltas y qué está de camino en pedidos de compra, de modo que se decide qué se prepara antes de que nadie recorra el almacén. Además, las alertas de pedidos cruzan la demanda pendiente con el stock físico y avisan de cuántas unidades faltan por comprar para servirlo todo, y la propuesta de compra asistida deja el pedido de compra listo en un clic.",
   },
@@ -263,7 +293,7 @@ const hermanas = [
   {
     url: "/software-gestion-almacen",
     title: "Software de gestión de almacén (SGA)",
-    body: "El módulo completo: ubicaciones con QR, lotes con FEFO, trazabilidad, palets con SSCC e inventarios.",
+    body: "El módulo completo: ubicaciones con QR, plano del almacén, lotes con FEFO, trazabilidad, palets con SSCC e inventarios.",
   },
   {
     url: "/software-alquiler-huecos-palet",
@@ -319,7 +349,7 @@ const productSchema = {
   operatingSystem: "Web",
   url: CANONICAL,
   description:
-    "Software de preparación de pedidos (picking) para almacén: semáforo de preparabilidad, etiqueta QR por pedido, asistente de picking móvil con lote sugerido por FIFO/LIFO/FEFO, oleadas pick-to-box, zona de preparados en baldas con QR, preparación sobre palet con etiqueta SSCC, verificación configurable y expedición con escaneo que genera el albarán o la factura. Integrado con reservas de stock, recepción de mercancía, compras, ventas y facturación.",
+    "Software de preparación de pedidos (picking) para almacén: semáforo de preparabilidad, etiqueta QR por pedido, asistente de picking móvil con lote sugerido por FIFO/LIFO/FEFO, oleadas pick-to-box, orden de ruta calculado desde el plano del almacén, zona de preparados en baldas con QR, preparación sobre palet con etiqueta SSCC, verificación configurable y expedición con escaneo que genera el albarán o la factura. Integrado con reservas de stock, recepción de mercancía, compras, ventas y facturación.",
   offers: {
     "@type": "Offer",
     price: "29.00",
@@ -334,6 +364,7 @@ const productSchema = {
     "Selección de lote por FIFO, LIFO o FEFO",
     "Incidencias por línea durante la preparación",
     "Oleadas: varios pedidos en una ruta consolidada (pick-to-box)",
+    "Orden de ruta de picking calculado desde el plano del almacén",
     "Zona de preparados en baldas con etiqueta QR",
     "Preparación sobre palet con etiqueta SSCC estándar GS1",
     "Verificación configurable antes de expedir",
@@ -592,6 +623,86 @@ const productSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════
+       RUTA DE PICKING DESDE EL PLANO (AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="ruta-picking" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center mb-12">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-5">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Ruta de picking
+          </span>
+          <h2 class="h3 font-bold mb-4">¿Cómo se optimiza la ruta de picking con el plano del almacén?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            La ruta de picking se optimiza fijando un orden de recorrido para
+            las ubicaciones. En Drenpos ese orden sale del plano del almacén:
+            dibujas estanterías, paredes y el punto de inicio, y el sistema
+            calcula una ruta fija. El asistente de picking y las oleadas
+            presentan las líneas en ese orden, así el operario recorre el
+            almacén en un sentido y no vuelve sobre sus pasos.
+          </p>
+        </div>
+      </div>
+
+      <div class="row gy-8 items-center justify-center">
+        <div class={rutaImg ? "lg:col-6" : "lg:col-10"}>
+          <ol class="space-y-4">
+            {
+              ruta.map((r, i) => (
+                <li class="rounded-3xl border border-dark/10 bg-body p-6 flex items-start gap-5" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+                  <span class="text-2xl font-bold flex-shrink-0" style="color: rgba(121,27,70,0.22);">{`0${i + 1}`}</span>
+                  <div>
+                    <h3 class="h6 font-bold mb-2 leading-snug">{r.title}</h3>
+                    <p class="text-sm" style="color: rgba(16,25,40,0.68);">{r.body}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+        {rutaImg && (
+          <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="150">
+            <figure class="rounded-2xl overflow-hidden" style="box-shadow: 0 20px 60px rgba(0,0,0,0.14); border: 1px solid rgba(16,25,40,0.08);">
+              <img
+                src={RUTA_IMG}
+                alt="Asistente de picking de Drenpos en el móvil indicando la siguiente ubicación a la que ir, en el orden de ruta calculado desde el plano del almacén"
+                width="1200"
+                height="800"
+                class="w-full h-auto block"
+                loading="lazy"
+              />
+            </figure>
+          </div>
+        )}
+      </div>
+
+      <div class="row justify-center mt-12">
+        <div class="lg:col-10">
+          <div class="rounded-3xl border border-dark/10 bg-body p-7 lg:p-9" data-aos="fade-up-sm">
+            <h3 class="h5 font-bold mb-3">¿Por qué importa tanto el recorrido?</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(16,25,40,0.72);">
+              Porque preparar pedidos es una de las partidas que más pesan en un
+              almacén. La revisión de De Koster, Le-Duc y Roodbergen (2007),
+              <a href="https://www.sciencedirect.com/science/article/abs/pii/S0377221706006473" class="text-primary underline" rel="noopener">publicada en el European Journal of Operational Research</a>,
+              estima que la preparación de pedidos llega a suponer hasta el 55 %
+              del gasto operativo total de un almacén. Cada vuelta de más entre
+              estanterías forma parte de ese coste.
+            </p>
+            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.72);">
+              Un orden de recorrido fijo no necesita cálculos en cada pedido:
+              necesita ubicaciones bien definidas y un plano que las ordene.
+              Cómo se dibuja ese plano y cómo se gestionan los huecos desde él,
+              en
+              <a href="/software-gestion-almacen#plano-almacen" class="text-primary underline">el plano de almacén de Drenpos</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
        MÉTODOS DE PICKING (tabla AEO)
   ═══════════════════════════════════════════════════════════════════ -->
   <section class="section pt-0 overflow-hidden">
@@ -632,6 +743,8 @@ const productSchema = {
         En Drenpos el picking por pedido y las oleadas con recogida pick-to-box
         están soportados de serie: se lanza una oleada con los pedidos que
         interesan y el sistema consolida una única ruta por el almacén.
+        Sea cual sea el método, las líneas salen en el orden de ruta
+        calculado desde el plano del almacén.
       </p>
     </div>
   </section>

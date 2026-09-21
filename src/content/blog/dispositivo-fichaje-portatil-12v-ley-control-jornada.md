@@ -3,7 +3,7 @@ title: "Fichaje portátil 12V: cumple la ley de jornada en cualquier lugar"
 meta_title: "Dispositivo de fichaje portátil 12V para obras y equipos móviles"
 description: "El dispositivo de fichaje portátil de Drenpos funciona a 12V y 3A: enchúfalo al mechero del coche y registra la jornada con llavero RFID o QR. Cumple la ley de control horario donde no hay oficina."
 date: 2026-08-05
-updated: 2026-09-03
+updated: 2026-09-21
 image: "/images/funcionalidades/control-horario/hardware/v2-terminal-cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -32,13 +32,15 @@ faq:
   - question: "¿Puedo comprar el dispositivo sin contratar todo el sistema Drenpos?"
     answer: "Sí. El hardware de fichaje (lector RFID, llaveros personalizados y tarjetas QR) puede adquirirse como solución de control de presencia independiente. Si más adelante quieres el ecosistema completo, se integra sin perder datos."
   - question: "¿Sirve para cuadrillas que cambian de obra cada semana?"
-    answer: "Es su caso de uso ideal. Al no depender de instalación fija ni de enchufe de red, el encargado lleva el dispositivo en la furgoneta y los operarios fichan al llegar y al salir con su llavero, sin usar el móvil personal."
+    answer: "Es su caso de uso ideal. Al no depender de instalación fija ni de enchufe de red, el encargado lleva el dispositivo en la furgoneta y los operarios fichan al llegar y al salir con su llavero, sin usar el móvil personal. Si en la obra no hay cobertura, el terminal guarda los fichajes con su hora y los sincroniza al volver."
   - question: "¿Qué pasa cuando se apruebe el nuevo real decreto de registro horario?"
     answer: "El borrador exige sistemas digitales, inalterables y accesibles en remoto por la Inspección de Trabajo. Un fichaje con dispositivo físico sincronizado con software que garantiza trazabilidad ya cumple ese estándar, por lo que no necesitarás migrar de nuevo cuando se publique en el BOE."
   - question: "¿Se puede personalizar el dispositivo con el logo de mi empresa?"
     answer: "Sí. La carcasa se imprime en 3D con el logo de tu empresa en el frontal y los llaveros RFID también llevan tu marca. La revisión v2 del terminal monta una placa electrónica diseñada por Drenpos, por lo que la personalización no es una pegatina sino parte de la fabricación."
   - question: "¿Los empleados necesitan móvil o app para fichar con el dispositivo?"
     answer: "No. El fichaje se hace acercando el llavero RFID personalizado o mostrando el QR personal impreso en tarjeta. No requiere smartphone, app ni conocimientos técnicos: el gesto dura menos de tres segundos."
+  - question: "¿Funciona el dispositivo de fichaje sin internet?"
+    answer: "Sí. Si no hay red, el terminal guarda cada fichaje en su memoria local con la hora exacta de su reloj integrado y el empleado ficha igual con su llavero o su QR. Al recuperar la conexión, vuelca solo todos los fichajes pendientes a Drenpos con su hora original. Conviene conectarlo con regularidad, lo normal es a diario, para tener el registro al día si llega una inspección."
 ---
 
 ¿Se puede cumplir la ley de control de jornada sin oficina y sin un enchufe cerca? Sí: con un **dispositivo de fichaje portátil** que funciona a 12V y 3A (36 W de consumo máximo) y se alimenta desde el mechero del coche, una batería auxiliar o cualquier adaptador de red. El terminal de Drenpos lee llaveros RFID personalizados y códigos QR de empleado, registra la hora exacta de entrada y salida como exige el [art. 34.9 del Estatuto de los Trabajadores](https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430) y sincroniza cada fichaje con la plataforma con trazabilidad completa. Da igual que tu equipo trabaje en una obra, un mercadillo, una feria o repartido en tres furgonetas: donde haya una toma de 12V, hay registro horario legal.
@@ -46,7 +48,7 @@ faq:
 Y el momento de resolverlo es ahora. La Inspección de Trabajo levantó **1.869 actas de infracción por registro de jornada en 2024 (un 90% más que en 2019) con 20,2 millones de euros en sanciones**, según los datos recopilados por [Mi Fichaje Legal](https://mifichajelegal.com/blog/real-decreto-registro-horario-digital-mayo-2026-estado-tramitacion-pymes/). Además, el nuevo real decreto que endurece los requisitos sigue avanzando: el Gobierno retomó su tramitación en septiembre de 2026.
 
 <Notice type="info" title="Actualizado en septiembre de 2026">
-Este artículo incorpora la revisión v2 del terminal: placa electrónica propia diseñada por Drenpos, carcasa impresa en 3D con el logo del cliente, versión de firmware visible en pantalla y actualizaciones desde su panel web. La ficha técnica completa y el precio están en la página del [dispositivo de fichaje](/dispositivo-fichaje).
+Este artículo incorpora la revisión v2 del terminal: placa electrónica propia diseñada por Drenpos, carcasa impresa en 3D con el logo del cliente, versión de firmware visible en pantalla y actualizaciones desde su panel web. La ficha técnica completa y el precio están en la página del [dispositivo de fichaje](/dispositivo-fichaje). También explica el modo sin conexión: el terminal ficha aunque no haya internet y sincroniza al volver.
 </Notice>
 
 ## Qué exige la ley de control de jornada (y qué está a punto de cambiar)
@@ -96,7 +98,7 @@ Sus características clave:
 | **Electrónica**        | Placa propia diseñada por Drenpos (revisión v2) con WiFi y antena externa                     |
 | **Carcasa**            | Impresa en 3D en PETG, con el logo de tu empresa en el frontal                                |
 | **Sin móvil ni app**   | El empleado no necesita smartphone: acerca el llavero y la jornada se inicia o se detiene      |
-| **Sincronización**     | Los fichajes se vuelcan a la plataforma Drenpos con sellado temporal y trazabilidad            |
+| **Sincronización**     | Con WiFi, al momento. Sin red, guarda cada fichaje con su hora y lo vuelca a Drenpos al reconectar |
 | **Modalidad de compra**| Desde 140 € sin IVA, como solución independiente o integrado en el ecosistema Drenpos          |
 
 ### Novedades de la revisión v2: placa propia y tu marca en la carcasa
@@ -115,7 +117,7 @@ El gesto de fichar dura menos de tres segundos y no requiere formación: **acerc
 
 **1. La furgoneta como punto de fichaje.** El encargado conecta el dispositivo al mechero antes de que llegue la cuadrilla. Los operarios fichan al bajar y al subir. La jornada de desplazamiento queda delimitada sin discusiones.
 
-**2. Obra sin acometida eléctrica.** Las primeras semanas de una obra no suele haber red. Una batería de 12V alimenta el terminal toda la jornada con sus 36 W de consumo máximo.
+**2. Obra sin acometida eléctrica.** Las primeras semanas de una obra no suele haber red. Una batería de 12V alimenta el terminal toda la jornada con sus 36 W de consumo máximo. Y si tampoco hay cobertura, el terminal guarda los fichajes y los sincroniza al volver.
 
 **3. Mercadillos y ferias.** El puesto se monta a las 7:00 y se desmonta a las 15:00. El dispositivo viaja en la caja del género y ficha a los ayudantes del día, incluidos los contratos de temporada.
 
@@ -123,12 +125,22 @@ El gesto de fichar dura menos de tres segundos y no requiere formación: **acerc
 
 **5. Local fijo sin complicaciones.** También funciona atornillado a la entrada del almacén, [como terminal fijo clásico](/control-horario). La ficha técnica completa está en la página del [dispositivo de fichaje](/dispositivo-fichaje). La diferencia es que si mañana montas un segundo punto de venta, te lo llevas.
 
+## ¿Se puede fichar en una obra sin cobertura?
+
+Sí. El terminal de Drenpos sigue fichando aunque no haya internet. Guarda cada fichaje en su memoria local con la hora exacta de su reloj integrado, y la cuadrilla ficha con su llavero RFID o su QR como siempre. Al recuperar la conexión, por ejemplo al volver a la nave y coger la WiFi, vuelca solo todos los fichajes pendientes a Drenpos con su hora original.
+
+Sumado a la alimentación a 12V, esto resuelve el caso más difícil: la obra, la finca o el montaje donde no hay ni luz ni cobertura. El terminal va en la furgoneta, se enchufa al mechero y la cuadrilla ficha allí. Nadie tiene que acordarse de sincronizar: lo hace el propio terminal cuando encuentra red.
+
+Si quieres sincronizar antes de volver, basta con compartir datos desde un móvil, pero no es obligatorio. Nuestro consejo es conectar el terminal con regularidad (lo normal, a diario al volver) para que el registro esté al día si llega una inspección. Tienes el detalle paso a paso en [cómo funciona el terminal de fichaje sin internet](/dispositivo-fichaje#sin-conexion).
+
+¿Y quien ficha desde el móvil en ruta, como comerciales, técnicos o montadores? Drenpos permite [guardar la ubicación al fichar](/control-horario#geolocalizacion) la entrada y la salida. Es opcional, viene desactivada y no hay seguimiento durante la jornada.
+
 ## Cómo ponerlo en marcha en tu empresa
 
 1. **Da de alta a tu equipo en Drenpos** (o pídenos solo el hardware como control de presencia independiente).
 2. **Reparte los llaveros RFID personalizados** o imprime la tarjeta QR de cada empleado desde su ficha.
 3. **Conecta el dispositivo a una toma de 12V**: mechero, batería o adaptador de red.
-4. **Cada fichaje se sincroniza con la plataforma**, donde el responsable ve entradas, salidas, pausas y horas extra en tiempo real.
+4. **Cada fichaje se sincroniza con la plataforma** (al momento con WiFi, o al recuperar la red si se fichó sin cobertura), donde el responsable ve entradas, salidas, pausas y horas extra.
 5. **Exporta el informe de jornada en un clic** para gestoría, para el comité o para una inspección: los datos se conservan los 4 años que exige la ley.
 
 ¿Dudas sobre qué sistema encaja mejor con tu operativa? Nuestra [comparativa de software de control horario para pymes](/blog/comparativa-mejores-software-control-horario-pymes-2026) analiza las opciones del mercado, y en la guía de [nuevos requisitos del registro horario 2026](/blog/registro-horario-2026-nuevos-requisitos-adaptacion) tienes el plan de adaptación completo.
@@ -162,7 +174,7 @@ Sí. El hardware de fichaje (lector RFID, llaveros personalizados y tarjetas QR)
 
 ### ¿Sirve para cuadrillas que cambian de obra cada semana?
 
-Es su caso de uso ideal. Al no depender de instalación fija ni de enchufe de red, el encargado lleva el dispositivo en la furgoneta y los operarios fichan al llegar y al salir con su llavero, sin usar el móvil personal.
+Es su caso de uso ideal. Al no depender de instalación fija ni de enchufe de red, el encargado lleva el dispositivo en la furgoneta y los operarios fichan al llegar y al salir con su llavero, sin usar el móvil personal. Si en la obra no hay cobertura, el terminal guarda los fichajes con su hora y los sincroniza al volver.
 
 ### ¿Qué pasa cuando se apruebe el nuevo real decreto de registro horario?
 
@@ -175,6 +187,10 @@ Sí. La carcasa se imprime en 3D con el logo de tu empresa en el frontal y los l
 ### ¿Los empleados necesitan móvil o app para fichar con el dispositivo?
 
 No. El fichaje se hace acercando el llavero RFID personalizado o mostrando el QR personal impreso en tarjeta. No requiere smartphone, app ni conocimientos técnicos: el gesto dura menos de tres segundos.
+
+### ¿Funciona el dispositivo de fichaje sin internet?
+
+Sí. Si no hay red, el terminal guarda cada fichaje en su memoria local con la hora exacta de su reloj integrado y el empleado ficha igual con su llavero o su QR. Al recuperar la conexión, vuelca solo todos los fichajes pendientes a Drenpos con su hora original. Conviene conectarlo con regularidad, lo normal es a diario, para tener el registro al día si llega una inspección.
 
 ---
 

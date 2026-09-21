@@ -35,6 +35,8 @@ modules:
       - "Control de almacenes y ubicaciones"
       - "Gestión de stock en tiempo real"
       - "Control de lotes y trazabilidad"
+      - "Plano del almacén por plantas"
+      - "Orden de ruta de picking según el plano"
 
   - name: "Módulo Producción"
     description: "Órdenes de trabajo, fases, consumo de materiales por lectura, imputación de tiempos y coste real de fabricación"
@@ -89,6 +91,8 @@ modules:
       - "Control de asistencia"
       - "Gestión de fichajes"
       - "Informes de presencia"
+      - "Geolocalización opcional al fichar entrada y salida"
+      - "Terminal de fichaje con modo sin conexión"
 
   - name: "Módulo Usuarios"
     description: "Usuarios adicionales del sistema"

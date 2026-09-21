@@ -323,6 +323,7 @@ const productSchema = {
     "Depósito de terceros con tarifario por palet/día y kg/día",
     "Posición del depositante en vivo, simulador e informe del periodo en PDF",
     "Preparación de pedidos con semáforo, oleadas y asistente móvil",
+    "Plano de almacén por plantas con orden de ruta para el picking",
     "Informes de rotación e inmovilizado del stock en frío",
   ],
   provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
@@ -560,7 +561,7 @@ const productSchema = {
               admite pistola lectora o entrada manual — los dos caminos están
               siempre disponibles.
             </p>
-            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(16,25,40,0.72);">
               A partir de ahí, todo lo demás encaja: el lote sugerido por FEFO
               llega al asistente de picking, escanear un SSCC dentro de un
               albarán o una factura arrastra el palet entero con sus líneas
@@ -568,6 +569,14 @@ const productSchema = {
               genera su apunte tarificable en la misma operación. Lo contamos
               con más detalle en
               <a href="/blog/software-almacen-frigorifico-congelados" class="text-primary underline">software de almacén frigorífico y congelados</a>.
+            </p>
+            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.72);">
+              Y al preparar dentro de la cámara, el asistente de picking presenta
+              las líneas en el orden de ruta calculado desde el
+              <a href="/software-gestion-almacen#plano-almacen" class="text-primary underline">plano del almacén</a>:
+              el operario recorre la cámara en un sentido y no vuelve sobre sus
+              pasos. Menos vueltas dentro es menos tiempo en frío y menos rato
+              con la puerta abierta.
             </p>
           </div>
         </div>

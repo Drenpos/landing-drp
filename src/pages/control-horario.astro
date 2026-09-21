@@ -4,6 +4,8 @@ import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
 import DemoForm from "@/partials/DemoForm.astro";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 
 // ════════════════════════════════════════════════════════════════════════
 //  Control horario · landing dedicada (optimizada SEO 2026)
@@ -11,6 +13,7 @@ import DemoForm from "@/partials/DemoForm.astro";
 //    01-gestion-personal.png · 02-gestion-manager.png · 03-reporte-resumen.png
 //    04-reporte-trazabilidad.png · 05-conceptos.png · 06-calendario-laboral.png
 //    07-calendario-asignacion.png · 08-widget-rapido.png
+//    09-geolocalizacion-mapa.png (opcional: solo se pinta si existe en /public)
 //  Imágenes HARDWARE (reemplazar placeholders por fotos reales):
 //    hardware/01-dispositivo-lector-rfid.png
 //    hardware/02-llaveros-personalizados.png
@@ -19,6 +22,35 @@ import DemoForm from "@/partials/DemoForm.astro";
 // ════════════════════════════════════════════════════════════════════════
 
 const CANONICAL = "https://www.drenpos.com/control-horario";
+
+// Imágenes opcionales: solo se renderizan si el fichero existe en /public
+const hasImg = (p: string) => existsSync(join(process.cwd(), "public", p));
+const GEO_IMG = "/images/funcionalidades/control-horario/09-geolocalizacion-mapa.png";
+const showGeoImg = hasImg(GEO_IMG);
+
+// Geolocalización del fichaje (sección #geolocalizacion)
+const geo = [
+  {
+    icon: "📍",
+    title: "Solo al fichar entrada y salida",
+    body: "La ubicación se guarda en el momento de fichar la entrada y la salida, sin seguimiento ni rastreo durante la jornada. Con la opción activa, si el empleado no da permiso de ubicación no puede fichar, así ningún fichaje móvil queda sin ella.",
+  },
+  {
+    icon: "⚙️",
+    title: "Opcional y sin coste extra",
+    body: "Se activa en la configuración del módulo de fichajes y viene desactivada por defecto. Aplica al fichaje desde la app PWA y desde la web. El terminal físico no geolocaliza: está en un punto fijo o va en el vehículo.",
+  },
+  {
+    icon: "🗺️",
+    title: "Mapa e informe para la Inspección",
+    body: "El responsable ve las coordenadas de cada fichaje sobre un mapa de OpenStreetMap. La ubicación sale también en el informe de fichajes que exportas para la Inspección.",
+  },
+  {
+    icon: "⚖️",
+    title: "Qué exige la ley",
+    body: "Informar antes a la plantilla y, en su caso, a sus representantes: que existe el sistema, cómo funciona y sus derechos de acceso, rectificación, limitación y supresión. Hazlo por escrito y guarda la prueba.",
+  },
+];
 
 const requisitos = [
   "Registro diario, individualizado y por trabajador",
@@ -40,7 +72,7 @@ const metodos = [
   {
     icon: "📱",
     name: "App PWA en el móvil",
-    desc: "Instalable sin App Store ni Google Play. Solo la pantalla de fichaje.",
+    desc: "Instalable sin App Store ni Google Play. Solo la pantalla de fichaje, con ubicación opcional al fichar.",
     best: "Comerciales y trabajo en campo",
   },
   {
@@ -52,13 +84,13 @@ const metodos = [
   {
     icon: "🔑",
     name: "Llavero RFID",
-    desc: "Acerca el llavero al lector físico y ficha. Sin móvil ni pantalla.",
+    desc: "Acerca el llavero al lector físico y ficha. Sin móvil ni pantalla, y el terminal ficha aunque no haya internet.",
     best: "Almacenes, talleres, fábricas",
   },
   {
     icon: "📷",
     name: "Código QR personal",
-    desc: "Cada empleado escanea su QR imprimible para iniciar o parar jornada.",
+    desc: "Cada empleado escanea su QR imprimible para iniciar o parar jornada. El terminal ficha aunque no haya internet.",
     best: "Hostelería, retail, eventos",
   },
 ];
@@ -73,9 +105,15 @@ const casos = [
   },
   {
     tag: "Equipo comercial en movilidad",
-    title: "Fichar desde cualquier ubicación",
-    body: "Cada comercial instala la app PWA en su móvil y ficha desde donde esté. El sistema registra la hora con sellado temporal inalterable: no se puede modificar sin dejar huella. El responsable ve los fichajes en tiempo real sin llamadas ni mensajes.",
+    title: "Fichar en ruta, con la ubicación de cada fichaje",
+    body: "Cada comercial instala la app PWA en su móvil y ficha desde donde esté. Con la geolocalización activada, cada entrada y salida guarda su ubicación, sin seguimiento durante la jornada. La hora queda sellada de forma inalterable y el responsable ve los fichajes y su punto en el mapa sin llamadas ni mensajes.",
     icon: "🚗",
+  },
+  {
+    tag: "Obra o finca sin cobertura",
+    title: "El terminal va en la furgoneta, haya red o no",
+    body: "El encargado conecta el terminal al mechero de la furgoneta y la cuadrilla ficha con su llavero al llegar a la obra o a la finca. Sin cobertura, cada fichaje se guarda en el terminal con su hora exacta. Al volver a la nave coge la WiFi y todo se vuelca solo a Drenpos.",
+    icon: "🚜",
   },
 ];
 
@@ -111,6 +149,22 @@ const faqs = [
   {
     q: "¿Puedo usar conceptos de fichaje propios de mi empresa?",
     a: "Sí. Puedes crear todos los conceptos que necesites (formación, visita cliente, comida, asuntos propios, etc.), definir si computan como jornada laboral o no, e incluso establecer límites diarios o semanales por concepto.",
+  },
+  {
+    q: "¿Es legal fichar con geolocalización?",
+    a: "Sí, si informas antes a la plantilla. El artículo 90 de la LOPDGDD permite usar la geolocalización para el control laboral y exige avisar a los trabajadores, y en su caso a sus representantes, de forma expresa, clara e inequívoca sobre el sistema y sus derechos. En Drenpos es opcional y solo guarda la ubicación al fichar la entrada y la salida. Informa por escrito, guarda la prueba y consulta con tu asesor o DPD si tienes dudas.",
+  },
+  {
+    q: "¿Drenpos rastrea al empleado durante toda la jornada?",
+    a: "No. Con la geolocalización activada, Drenpos guarda la ubicación solo en el momento de fichar la entrada y la salida desde el móvil o la web. No hay seguimiento continuo ni rastreo entre un fichaje y otro. La opción viene desactivada por defecto y no tiene coste extra. El terminal físico no geolocaliza, porque está en un punto fijo o va en el vehículo.",
+  },
+  {
+    q: "¿Qué pasa si el terminal de fichaje se queda sin internet?",
+    a: "Sigue fichando. El terminal guarda cada fichaje en su memoria local con la hora exacta de su reloj integrado, y el empleado ficha igual con su llavero RFID o su QR. Cuando vuelve la conexión, envía solo todos los fichajes pendientes a Drenpos con su hora original. Conviene conectarlo con regularidad (lo normal es a diario) para tener el registro al día si llega una inspección.",
+  },
+  {
+    q: "¿Se puede fichar en una obra o en el campo sin cobertura?",
+    a: "Sí, con el terminal físico. Se alimenta a 12 V desde el mechero de la furgoneta o una batería auxiliar, la cuadrilla ficha allí con su llavero o su QR y el terminal guarda los fichajes con su hora. Al volver a la oficina o a la nave se conecta a la WiFi y sincroniza todo. Si quieres adelantarlo, comparte datos desde un móvil.",
   },
 ];
 
@@ -169,7 +223,7 @@ const productSchema = {
   operatingSystem: "Web, iOS, Android (PWA)",
   url: CANONICAL,
   description:
-    "Software de control horario y registro de jornada para empresas. Fichaje por web, móvil (PWA), widget rápido, llavero RFID y código QR. Reportes inalterables listos para la Inspección de Trabajo. Hardware de fichaje propio diseñado por Drenpos.",
+    "Software de control horario y registro de jornada para empresas. Fichaje por web, móvil (PWA), widget rápido, llavero RFID y código QR. Reportes inalterables listos para la Inspección de Trabajo. Geolocalización opcional solo al fichar la entrada y la salida desde móvil o web, sin seguimiento continuo. Hardware de fichaje propio diseñado por Drenpos que sigue fichando sin internet y sincroniza al recuperar la conexión.",
   offers: {
     "@type": "Offer",
     price: "1.09",
@@ -184,6 +238,9 @@ const productSchema = {
     "Conceptos de fichaje personalizables",
     "Reportes y trazabilidad para Inspección de Trabajo",
     "Hardware de fichaje propio (lector RFID + llaveros + tarjetas QR) con el logo del cliente en la carcasa",
+    "Geolocalización opcional del fichaje desde móvil PWA y web, solo en la entrada y la salida, sin seguimiento continuo",
+    "Mapa (OpenStreetMap) y ubicación del fichaje en el informe exportable para la Inspección",
+    "Terminal de fichaje con modo sin conexión: guarda cada fichaje con su hora y lo sincroniza al recuperar la red",
   ],
   provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
 };
@@ -192,7 +249,7 @@ const productSchema = {
 <Base
   title="Control Horario y Registro de Jornada · Drenpos"
   meta_title="Software de Control Horario y Fichajes 2026 | Drenpos"
-  description="Software de control horario para cumplir el registro de jornada 2026. Fichaje por web, móvil, QR y llavero RFID con hardware propio. Reportes listos para Inspección. Demo gratis."
+  description="Control horario 2026: fichaje por web, móvil, QR y llavero RFID, geolocalización opcional y terminal que ficha sin internet. Listo para Inspección."
   canonical={CANONICAL}
   image="/images/funcionalidades/control-horario/01-gestion-personal.png"
 >
@@ -240,8 +297,10 @@ const productSchema = {
           <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
             Drenpos digitaliza el registro de jornada de tu equipo con la
             trazabilidad que exige la Inspección de Trabajo. Fichaje por web,
-            móvil, widget, código QR o llavero RFID con hardware propio. Cumples
-            la normativa desde el primer día.
+            móvil, widget, código QR o llavero RFID con hardware propio. Si lo
+            necesitas, el fichaje desde el móvil guarda la ubicación de entrada
+            y salida, y el terminal sigue fichando aunque se caiga internet.
+            Cumples la normativa desde el primer día.
           </p>
 
           <ul class="flex flex-wrap gap-4 mb-10">
@@ -275,7 +334,7 @@ const productSchema = {
           <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
             <div class="flex items-center gap-2">
               <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
-              Desde 1 €/usuario/mes
+              Ubicación opcional al fichar
             </div>
             <div class="flex items-center gap-2">
               <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
@@ -591,7 +650,8 @@ const productSchema = {
               tarjetas personalizados para cada empleado y <strong style="color: #f9b27c;">el logo de tu empresa
               en el frontal</strong>. Tu equipo ficha sin móvil ni ordenador:
               pasa el llavero y listo. Pensado para almacenes, talleres,
-              fábricas, hostelería y retail, y funciona a 12 V en la furgoneta.
+              fábricas, hostelería y retail, y funciona a 12 V en la furgoneta,
+              con o sin internet.
             </p>
           </div>
 
@@ -654,6 +714,33 @@ const productSchema = {
             </div>
           </div>
 
+          <!-- Sin conexión -->
+          <div class="rounded-2xl p-6 lg:p-8 mb-12" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);" data-aos="fade-up-sm">
+            <div class="row gx-0 gy-6 lg:gy-0 items-center">
+              <div class="lg:col-8 lg:pe-10">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-xl" style="background: rgba(249,178,124,0.15);">📶</div>
+                  <h3 class="h5 font-bold text-white mb-0">¿Y si no hay internet donde fichas?</h3>
+                </div>
+                <p class="mb-0 leading-relaxed" style="color: rgba(255,255,255,0.78);">
+                  El terminal sigue fichando. Si se cae la WiFi o estás en un
+                  sitio sin cobertura, guarda cada fichaje en su memoria con la
+                  hora exacta de su reloj integrado, y el empleado ficha igual con
+                  su llavero RFID o su QR. Cuando recupera la conexión, envía solo
+                  a Drenpos todos los fichajes pendientes con su hora original.
+                  Nadie tiene que hacer nada.
+                </p>
+              </div>
+              <div class="lg:col-4">
+                <p class="text-sm mb-3" style="color: rgba(255,255,255,0.72);">
+                  Con la alimentación a 12 V, el terminal va a obras y fincas sin
+                  cobertura. El modo sin conexión es del terminal físico.
+                </p>
+                <a href="/dispositivo-fichaje#sin-conexion" class="font-semibold inline-flex items-center gap-1" style="color: #f9b27c;">Cómo ficha el terminal sin internet →</a>
+              </div>
+            </div>
+          </div>
+
           <!-- Standalone callout -->
           <div class="rounded-2xl p-6 lg:p-8 flex flex-col lg:flex-row items-center gap-6" style="background: rgba(249,178,124,0.12); border: 1px solid rgba(249,178,124,0.25);" data-aos="fade-up-sm">
             <div class="flex-grow text-center lg:text-left">
@@ -707,6 +794,74 @@ const productSchema = {
             <a href="/contact" class="text-primary font-semibold inline-flex items-center gap-1">Hablar con el equipo →</a>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       GEOLOCALIZACIÓN OPCIONAL DEL FICHAJE (AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="geolocalizacion" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Geolocalización opcional</span>
+        <h2 class="h3 font-bold mb-4">¿Se puede fichar con geolocalización de forma legal?</h2>
+        <p class="text-lg leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+          Sí. El artículo 90 de la LOPDGDD permite al empleador usar la
+          geolocalización para el control laboral si informa antes a la
+          plantilla de forma expresa, clara e inequívoca. En Drenpos es
+          opcional, viene desactivada y no cuesta más. Guarda la ubicación
+          solo al fichar la entrada y la salida desde el móvil o la web, sin
+          seguimiento durante la jornada. El responsable la ve en un mapa y en
+          el informe para la Inspección.
+        </p>
+      </div>
+
+      <div class="row g-5 items-center">
+        {showGeoImg && (
+          <div class="lg:col-6" data-aos="fade-up-sm">
+            <figure class="relative px-4 lg:px-0 mb-0">
+              <div class="absolute -top-10 -left-10 w-72 h-72 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.08);"></div>
+              <div class="rounded-2xl overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07); border: 1px solid rgba(16,25,40,0.08);">
+                <img src={GEO_IMG} alt="Detalle de un fichaje en Drenpos con las coordenadas de entrada y salida sobre un mapa de OpenStreetMap" width="1280" height="800" class="w-full h-auto block" loading="lazy" />
+              </div>
+            </figure>
+          </div>
+        )}
+        <div class={showGeoImg ? "lg:col-6" : "col-12"}>
+          <div class={showGeoImg ? "grid sm:grid-cols-2 gap-4" : "grid sm:grid-cols-2 lg:grid-cols-4 gap-4"}>
+            {geo.map((g, i) => (
+              <div class="border rounded-[20px] p-6 h-full" style="border-color: rgba(16,25,40,0.1); background: #fff;" data-aos="fade-up-sm" data-aos-delay={i * 80}>
+                <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-4" style="background: rgba(121,27,70,0.08);">{g.icon}</div>
+                <h3 class="h6 font-semibold mb-2">{g.title}</h3>
+                <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{g.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl p-6 lg:p-8 mt-8" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
+        <p class="font-semibold text-text-dark mb-2">Nota legal: en qué se apoya</p>
+        <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.72);">
+          La base es el <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673" rel="noopener" target="_blank" class="text-primary underline">artículo 90 de la Ley Orgánica 3/2018 (LOPDGDD)</a>,
+          que permite tratar datos de geolocalización para las funciones de
+          control del artículo 20.3 del Estatuto de los Trabajadores. A cambio,
+          obliga a informar antes a los trabajadores y, en su caso, a sus
+          representantes, de la existencia y características del sistema y de
+          sus derechos de acceso, rectificación, limitación y supresión.
+        </p>
+        <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.72);">
+          La <a href="https://www.aepd.es/prensa-y-comunicacion/notas-de-prensa/aepd-publica-guia-pd-y-relaciones-laborales" rel="noopener" target="_blank" class="text-primary underline">guía de la AEPD "Protección de datos y relaciones laborales"</a>
+          (mayo de 2021) recomienda el sistema de registro menos invasivo
+          posible y que los datos del registro de jornada no se usen para otros
+          fines. Guardar la ubicación solo al fichar va en esa línea. Si tienes
+          dudas sobre tu caso, revísalo con tu asesor o tu DPD.
+        </p>
+        <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+          Útil para comerciales, técnicos en ruta, limpieza o ayuda a domicilio
+          en casa del cliente, montadores, obra y teletrabajo.
+        </p>
       </div>
     </div>
   </section>
@@ -783,7 +938,7 @@ const productSchema = {
       </div>
       <div class="row g-5">
         {casos.map((c, i) => (
-          <div class="col-12 lg:col-6" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+          <div class="col-12 md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
             <div class="border rounded-[24px] p-8 h-full" style="border-color: rgba(16,25,40,0.1); background: #fff;">
               <div class="flex items-center gap-3 mb-4">
                 <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background: rgba(121,27,70,0.08);">{c.icon}</div>

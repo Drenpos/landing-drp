@@ -4,6 +4,10 @@ import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
 import DemoForm from "@/partials/DemoForm.astro";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
+const hasImg = (p: string) => existsSync(join(process.cwd(), "public", p));
 
 // ════════════════════════════════════════════════════════════════════════
 //  Software de gestión de almacén · landing dedicada (SEO/AEO/GEO 2026)
@@ -89,6 +93,32 @@ const wms = [
   },
 ];
 
+// Plano de almacén con orden de ruta (módulo de Inventario)
+const PLANO_IMG = "/images/funcionalidades/almacen-tienda/05-plano-almacen-editor.png";
+const planoImg = hasImg(PLANO_IMG);
+const plano = [
+  {
+    icon: "🏢",
+    title: "Varias plantas por almacén",
+    body: "Si la nave tiene entreplanta o más de un piso, cada planta lleva su propio plano dentro del mismo almacén. Cada estantería se dibuja en la planta donde está de verdad.",
+  },
+  {
+    icon: "✏️",
+    title: "Solo dibujas lo que hace falta",
+    body: "Estanterías, paredes y puntos clave: inicio de ruta, punto donde se deja la carga y escaleras. Se arrastran y se redimensionan. Lo monta cualquiera en un rato, sin formación ni delineante.",
+  },
+  {
+    icon: "📍",
+    title: "Los huecos, desde el propio plano",
+    body: "Sobre la estantería dibujada ves qué hay en cada hueco y creas o editas ubicaciones, igual que en el gestor de ubicaciones. Cada ubicación mantiene su QR imprimible.",
+  },
+  {
+    icon: "🧭",
+    title: "Orden de ruta para el picking",
+    body: "Con el plano, el sistema calcula un orden fijo para recorrer las ubicaciones. El asistente de picking y las oleadas presentan las líneas en ese orden: se avanza en un sentido y no se vuelve atrás.",
+  },
+];
+
 // Landings hermanas del clúster de almacén
 const hermanas = [
   {
@@ -109,7 +139,7 @@ const hermanas = [
   {
     url: "/software-preparacion-pedidos-picking",
     title: "Preparación de pedidos y picking",
-    body: "Oleadas, asistente móvil, zona de preparados y expedición con escaneo.",
+    body: "Oleadas, asistente móvil con orden de ruta desde el plano, zona de preparados y expedición con escaneo.",
   },
   {
     url: "/software-almacen-tienda",
@@ -220,9 +250,9 @@ const comparativa = [
     opcion: "Drenpos",
     stock: "Tiempo real, físico y disponible",
     lotes: "Sí, con FEFO y alertas",
-    ubicaciones: "Sí, con QR",
+    ubicaciones: "Sí, con QR y plano por plantas",
     palets: "Sí, SSCC GS1 y despaletizado",
-    picking: "Oleadas, móvil y expedición con escaneo",
+    picking: "Oleadas, móvil, orden de ruta desde el plano y expedición con escaneo",
     integracion: "Nativa: compras, ventas, TPV y facturación",
     precio: "Desde 29 €/mes",
     destacado: true,
@@ -285,6 +315,14 @@ const faqs = [
   {
     q: "¿Cómo funciona la preparación de pedidos (picking)?",
     a: "El listado de preparación muestra un semáforo con qué pedidos se pueden servir completos, cuáles tienen faltas y qué viene de camino. Cada pedido lleva su etiqueta QR que abre la sesión de picking, el asistente móvil guía producto a producto con el lote sugerido por FIFO, LIFO o FEFO, y se pueden lanzar oleadas para preparar varios pedidos en una sola vuelta. Al expedir, escanear el pedido genera el albarán o la factura.",
+  },
+  {
+    q: "¿Drenpos tiene plano o mapa del almacén?",
+    a: "Sí. Dentro del módulo de Inventario hay un editor visual donde dibujas el plano de cada almacén, con varias plantas si las tienes: estanterías, paredes y puntos clave como el inicio de ruta, el punto donde se deja la carga o las escaleras. Desde el plano ves qué hay en cada hueco y creas o editas ubicaciones. Con él, el sistema calcula además un orden de ruta fijo que siguen el asistente de picking y las oleadas.",
+  },
+  {
+    q: "¿Cuánto se tarda en dibujar el plano del almacén?",
+    a: "Poco: se monta en un rato, normalmente la misma mañana. No hay que reproducir la nave al detalle, solo lo que el sistema necesita para ubicar y ordenar el recorrido: estanterías, paredes y puntos clave (inicio de ruta, punto donde se deja la carga, escaleras). Todo se arrastra y se redimensiona, así que no hace falta formación ni un delineante. Si mañana cambias una estantería de sitio, la mueves en el plano.",
   },
   {
     q: "¿Puedo alquilar huecos de palet y facturar el depósito?",
@@ -366,7 +404,7 @@ const productSchema = {
   operatingSystem: "Web",
   url: CANONICAL,
   description:
-    "Software de gestión de almacén (SGA/WMS) para pymes: multialmacén, ubicaciones con QR, lotes con caducidad y FEFO, trazabilidad completa con informe de recall, preparación de pedidos con oleadas, palets con etiqueta SSCC estándar GS1, despiece con merma explícita, depósito de terceros con tarifario por palet/día y actas de entrega firmadas con huella sha256. Integrado con compras, ventas, TPV y facturación.",
+    "Software de gestión de almacén (SGA/WMS) para pymes: multialmacén, ubicaciones con QR, plano de almacén por plantas con orden de ruta para el picking, lotes con caducidad y FEFO, trazabilidad completa con informe de recall, preparación de pedidos con oleadas, palets con etiqueta SSCC estándar GS1, despiece con merma explícita, depósito de terceros con tarifario por palet/día y actas de entrega firmadas con huella sha256. Integrado con compras, ventas, TPV y facturación.",
   offers: {
     "@type": "Offer",
     price: "29.00",
@@ -377,6 +415,7 @@ const productSchema = {
   featureList: [
     "Stock en tiempo real multialmacén, físico y disponible",
     "Ubicaciones con etiquetas QR",
+    "Plano de almacén por plantas y orden de ruta",
     "Control de lotes, números de serie, caducidades y FEFO",
     "Trazabilidad completa por lote con informe de recall en PDF",
     "Recepción contra pedido de compra con ruta guiada y cross-docking",
@@ -615,6 +654,83 @@ const productSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════
+       PLANO DE ALMACÉN Y ORDEN DE RUTA (AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="plano-almacen" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center mb-12">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-5">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Ya disponible
+          </span>
+          <h2 class="h3 font-bold mb-4">¿Qué es el plano de almacén de Drenpos?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            El plano de almacén de Drenpos es un editor visual, dentro del
+            módulo de Inventario, donde dibujas tu almacén planta a planta:
+            estanterías, paredes y puntos clave, como el inicio de ruta, el
+            punto donde se deja la carga o las escaleras. Sobre cada estantería
+            creas y consultas sus huecos. A partir del plano, el sistema
+            calcula un orden de recorrido fijo que siguen el picking y las
+            oleadas.
+          </p>
+        </div>
+      </div>
+
+      <div class="row gy-8 items-center justify-center">
+        {planoImg && (
+          <div class="lg:col-6" data-aos="fade-up-sm">
+            <figure class="rounded-2xl overflow-hidden" style="box-shadow: 0 20px 60px rgba(0,0,0,0.14); border: 1px solid rgba(16,25,40,0.08);">
+              <img
+                src={PLANO_IMG}
+                alt="Editor del plano de almacén de Drenpos con estanterías, paredes, punto de inicio de ruta y punto de carga dibujados sobre una planta"
+                width="1200"
+                height="800"
+                class="w-full h-auto block"
+                loading="lazy"
+              />
+            </figure>
+          </div>
+        )}
+        <div class={planoImg ? "lg:col-6" : "col-12"}>
+          <div class="row g-4">
+            {
+              plano.map((c, i) => (
+                <div class={planoImg ? "md:col-6" : "md:col-6 lg:col-3"} data-aos="fade-up-sm" data-aos-delay={i * 100}>
+                  <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-3xl mb-4">{c.icon}</div>
+                    <h3 class="h6 font-bold mb-3 leading-snug">{c.title}</h3>
+                    <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-center mt-12">
+        <div class="lg:col-10">
+          <div class="rounded-3xl border border-dark/10 bg-body p-7 lg:p-9" data-aos="fade-up-sm">
+            <h3 class="h5 font-bold mb-3">Una ruta que siempre es la misma</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(16,25,40,0.72);">
+              El orden de ruta no cambia de un día para otro: sale del plano,
+              así que para el mismo almacén el recorrido es siempre el mismo.
+              El operario se lo aprende enseguida y quien entra nuevo lo sigue
+              desde el primer día, sin depender de quien «sabe dónde está todo».
+            </p>
+            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.72);">
+              Te contamos cómo se aplica al asistente de picking y a las oleadas,
+              paso a paso, en
+              <a href="/software-preparacion-pedidos-picking#ruta-picking" class="text-primary underline">cómo se optimiza la ruta de picking con el plano</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
        CAPACIDADES DE NIVEL WMS (bloque 2026)
   ═══════════════════════════════════════════════════════════════════ -->
   <section class="section pt-0 overflow-hidden">
@@ -772,8 +888,8 @@ const productSchema = {
           <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
             <h2 class="h3 font-bold mb-3 text-white">Todo el almacén, desde 29 €/mes sin IVA</h2>
             <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
-              El módulo Almacén incluye multialmacén, ubicaciones con QR, lotes
-              con caducidad y FEFO, trazabilidad con informe de recall,
+              El módulo Almacén incluye multialmacén, ubicaciones con QR, plano
+              de almacén por plantas con orden de ruta, lotes con caducidad y FEFO, trazabilidad con informe de recall,
               preparación de pedidos con oleadas, palets con etiqueta SSCC
               estándar GS1, despiece con merma explícita, depósito de terceros
               y entregas firmadas. Sin coste por volumen de datos, sin
