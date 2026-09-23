@@ -1,8 +1,9 @@
 ---
 title: "Por qué Excel ya no sirve para controlar horarios laborales en 2026"
 meta_title: "Excel control horario en 2026: riesgos legales y coste real"
-description: "Descubre por qué el Excel ya no es válido para el registro de jornada en 2026. Analiza el coste oculto, los requisitos legales y cómo recuperar el control sin sanciones."
+description: "Por qué el Excel se queda corto para el registro de jornada en 2026: coste oculto, qué exige la ley hoy y cómo recuperar el control sin sanciones."
 date: 2026-05-27
+updated: 2026-09-23
 image: "/images/blog/por-que-excel-ya-no-sirve-control-horario-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -17,7 +18,11 @@ hero:
   description: "Cada celda editable es una vulnerabilidad ante la Inspección de Trabajo. Conoce el coste real y la alternativa inalterable."
 ---
 
-Cada celda que editas a mano en un Excel es una [multa potencial](/blog/multas-registro-horario-2026-costo-incumplimiento) que tu empresa está acumulando sin saberlo. En 2026, la Inspección de Trabajo ya no acepta hojas de cálculo como registro oficial.
+Cada celda que editas a mano en un Excel es una [multa potencial](/blog/multas-registro-horario-2026-costo-incumplimiento) que tu empresa está acumulando sin saberlo. Un registro que se puede rehacer sin dejar rastro es muy difícil de defender ante la Inspección de Trabajo, y el real decreto en tramitación quiere dejar fuera las hojas de cálculo.
+
+<Notice type="info" title="Actualizado el 23 de septiembre de 2026">
+A esta fecha, el real decreto que obligaría a llevar el registro de jornada por medios digitales no está aprobado ni publicado en el BOE. Lo vigente es el artículo 34.9 del Estatuto de los Trabajadores, con sanción grave de 751 a 7.500 euros por infracción. Hemos añadido una sección sobre el otro Excel que casi todas las pymes tienen: el de vacaciones.
+</Notice>
 
 ## ¿Tu Excel de control horario es un activo o un riesgo legal?
 
@@ -31,18 +36,18 @@ Detrás de la aparente economía del método manual se esconde un **coste oculto
 
 > "Tener datos desactualizados es peor que no tenerlos: te venden una tranquilidad que no existe."
 
-Considera el caso de **Distribuciones López SL**. Con 12 empleados, el gerente perdía 4 horas semanales reconciliando tres versiones distintas del mismo `excel control horario`. ¿El resultado? Errores en las nóminas, reclamaciones de horas extra no pagadas y un desgaste administrativo que ya no tiene sentido.
+Piensa en una distribuidora de 12 empleados donde el gerente dedica cada semana varias horas a reconciliar tres versiones distintas del mismo `excel control horario`. El resultado habitual: errores en lo que se pasa a la gestoría, reclamaciones de horas extra y un desgaste administrativo que ya no tiene sentido.
 
 ### La trampa de la duplicidad
 - Archivos locales que se copian en USBs o correos
 - Historial de ediciones invisible para la dirección
 - Imposibilidad de auditar quién modificó un registro
 
-## Por qué la Inspección de Trabajo ya no valida el Excel
+## ¿Por qué el Excel es tan débil ante la Inspección de Trabajo?
 
-El marco legal ha cambiado y **la Inspección de Trabajo exige trazabilidad real**, no solo un listado de horas. Según el Real Decreto-ley 8/2019, el registro de jornada debe ser digital, inalterable y accesible para el trabajador. Un Excel permite sobrescribir celdas sin dejar rastro, lo que lo hace inválido ante una auditoría. Al final esto va de **seguridad jurídica** para tu empresa más que de burocracia.
+**La Inspección de Trabajo busca trazabilidad real**, no solo un listado de horas. El Real Decreto-ley 8/2019 obliga a registrar cada día la hora de inicio y fin de la jornada de cada persona y a conservarlo cuatro años; el proyecto de real decreto, pendiente de aprobación a 23 de septiembre de 2026, añade que sea digital e inalterable. Un Excel permite sobrescribir celdas sin dejar rastro, y eso lo hace muy débil ante una auditoría. Al final esto va de **seguridad jurídica** para tu empresa más que de burocracia.
 
-Si un inspector solicita el registro y solo puedes entregar un archivo que se puede editar con un clic, estás asumiendo una **sanción automática** por falta de inalterabilidad. Lo que pide la norma es un sistema que garantice que los datos registrados no pueden ser modificados a posteriori sin dejar una huella de auditoría. Nada más.
+Si un inspector solicita el registro y solo puedes entregar un archivo que se puede editar con un clic, te va a costar demostrar que refleja la jornada real. Lo que pide la norma es un sistema que garantice que los datos registrados no pueden ser modificados a posteriori sin dejar una huella de auditoría. Nada más.
 
 ### Requisitos que el Excel no cumple
 - Inalterabilidad garantizada por diseño del sistema
@@ -66,17 +71,24 @@ Esta transición elimina la fricción administrativa. Los empleados [fichan desd
 
 ## Cómo una alternativa excel fichajes a medida recupera tu control
 
-Buscar una **[alternativa excel fichajes](/blog/mejores-programas-control-horario)** va más allá de comprar un software genérico que se adapte mal a tu realidad: significa implementar un módulo que se integre nativamente con tu ERP, tu facturación y tu contabilidad. Cuando el control horario conversa directamente con la nómina, **desaparecen las transferencias manuales y los errores de cálculo**.
+Buscar una **[alternativa excel fichajes](/blog/mejores-programas-control-horario)** va más allá de comprar un software genérico que se adapte mal a tu realidad: significa implementar un módulo que se integre nativamente con tu ERP y tu facturación. Cuando el informe de jornada sale del mismo sistema, con las horas extra calculadas, **desaparecen las transferencias manuales y los errores de cálculo** antes de llegar a la gestoría.
 
-En el sector tradicional, la personalización marca la diferencia. Una solución a medida permite adaptar los turnos, las pausas y los permisos a la operativa real de tu negocio, sin forzar procesos artificiales. Además, las metodologías ágiles de implementación reducen la resistencia al cambio: los empleados ven el beneficio desde el primer día y la dirección recupera la visibilidad sin formación técnica compleja. Drenpos integra este flujo directamente con tu facturación y contabilidad, **eliminando la duplicidad de datos que frena tu crecimiento**.
+En el sector tradicional, la personalización marca la diferencia. Una solución a medida permite adaptar los turnos, las pausas y los permisos a la operativa real de tu negocio, sin forzar procesos artificiales. Además, las metodologías ágiles de implementación reducen la resistencia al cambio: los empleados ven el beneficio desde el primer día y la dirección recupera la visibilidad sin formación técnica compleja. Drenpos integra este flujo en el mismo sistema que la facturación y el almacén, **eliminando la duplicidad de datos que frena tu crecimiento**.
 
 ### Integración vs. fragmentación
 | Concepto | Método manual (Excel) | Sistema integrado (Drenpos) |
 |---|---|---|
 | Trazabilidad | Nula | Inalterable y auditada |
-| Cálculo de nómina | Manual y propenso a error | Automático y sincronizado |
+| Horas extra | Sumadas a mano a fin de mes | Calculadas día a día desde el calendario |
+| Vacaciones | Otra hoja aparte | Saldo, aprobación e informe en el mismo sistema |
 | Acceso Inspección | Archivos locales / correos | Portal cloud con historial completo |
 | Escalabilidad | Colapsa con +5 empleados | Crece con tu plantilla |
+
+## ¿Y el Excel de vacaciones?
+
+Casi todas las pymes que llevan el fichaje en una hoja tienen otra al lado: la de vacaciones. Nombres en filas, días del año en columnas y colores para cada tipo de ausencia. Funciona hasta que dos personas del mismo turno piden la misma quincena, hasta que alguien entra en julio y hay que prorratear sus días, o hasta que en enero toca decidir cuántos pasan al año siguiente.
+
+El artículo 38 del Estatuto de los Trabajadores fija un mínimo de 30 días naturales y obliga a que cada persona conozca sus fechas con dos meses de antelación. Cumplirlo con una hoja es posible; llevar bien los saldos de 15 personas con ella, bastante menos. En Drenpos las vacaciones y los permisos van dentro del módulo de fichajes sin coste extra: el empleado pide desde el móvil viendo su saldo, el responsable aprueba o propone otras fechas y la ausencia sale en el mismo informe que los fichajes. Lo contamos con detalle en [gestión de vacaciones y ausencias sin Excel](/blog/gestion-vacaciones-permisos-pymes-sin-excel).
 
 ## Audita tu cumplimiento de jornada antes de la próxima inspección
 

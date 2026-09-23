@@ -1,9 +1,9 @@
 ---
 title: "Los 10 mejores programas de control horario para pymes en 2026"
-meta_title: "Mejores programas de control horario 2026: comparativa para pymes"
-description: "Comparativa de los mejores programas de control horario en 2026. Cuál cumple la ley, cuál integra con tu operativa y por qué Drenpos gana para pymes con TPV."
+meta_title: "Mejores programas de control horario 2026 para pymes"
+description: "Comparativa de programas de control horario en 2026: cuál cumple la ley, cuál se integra con tu operativa y qué incluye cada precio."
 date: 2026-06-11
-updated: 2026-09-10
+updated: 2026-09-23
 image: "/images/blog/mejores-programas-control-horario/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -25,23 +25,23 @@ hero:
   description: "No todos los programas de control horario cumplen la ley de 2026. Compara opciones, costes reales y descubre por qué las pymes con TPV necesitan algo distinto."
 faq:
   - question: "¿Qué debe cumplir un programa de control horario en 2026?"
-    answer: "Tres requisitos: registro exclusivamente digital, sellado inalterable de cada fichaje y acceso para la Inspección de Trabajo en tiempo real. El registro de jornada es obligatorio en España desde 2019, y un sistema que no cumpla estos tres puntos no protege a la empresa aunque sea gratuito."
+    answer: "Hoy la ley (artículo 34.9 del Estatuto de los Trabajadores, desde 2019) exige registrar cada día la hora de inicio y fin de la jornada de cada persona y conservarlo cuatro años. El proyecto de real decreto, que a 23 de septiembre de 2026 no está aprobado, añade que sea digital, inalterable y accesible en remoto para la Inspección. Conviene elegir un sistema que ya cumpla las dos cosas."
   - question: "¿Cuál es el mejor programa de control horario para una pyme con TPV?"
     answer: "Para pymes con operativa presencial y TPV, la opción más eficiente es un sistema integrado en el propio ERP, como Drenpos: el fichaje convive con caja, almacén y facturación sin integraciones externas, con app móvil, QR, terminal de mostrador o llavero RFID."
   - question: "¿Cuánto cuesta un programa de control horario?"
-    answer: "Las suites de RRHH van de 1,50 a 6 € por usuario y mes, pero vigila los mínimos de facturación: algunos planes parten de más de 80 € mensuales, desproporcionado para equipos pequeños. En Drenpos el control horario es un módulo del ERP con tarifa plana, sin coste por uso."
+    answer: "Los precios de partida publicados van de 1,50 a unos 6 € por usuario y mes, pero vigila los mínimos de facturación: algunos planes parten de 80 a 100 € mensuales, desproporcionado para equipos pequeños. En Drenpos el fichaje cuesta 1 € por usuario y mes sin IVA, con vacaciones y permisos, control de entrada y salida y geolocalización incluidos sin coste extra."
   - question: "¿Sirve un Excel o una app gratuita para fichar?"
-    answer: "No. Las hojas de cálculo y la mayoría de apps gratuitas no garantizan la inalterabilidad del registro ni el acceso en tiempo real que exige la Inspección. La infracción grave se sanciona hoy con entre 751 y 7.500 euros, y el proyecto de reforma quiere calcularla por trabajador afectado. Lo barato puede acabar siendo lo más caro."
+    answer: "No es buena idea. Las hojas de cálculo y la mayoría de apps gratuitas no garantizan la inalterabilidad del registro ni el acceso en tiempo real que pide el proyecto de reforma. La infracción grave se sanciona hoy con entre 751 y 7.500 euros, y versiones del proyecto de reforma plantean calcularla por trabajador afectado, algo que no está en vigor. Lo barato puede acabar siendo lo más caro."
   - question: "¿Qué programa de control horario tiene terminal físico propio?"
     answer: "Drenpos fabrica su propio terminal de fichaje: lee llaveros RFID y códigos QR, muestra el nombre y la foto del empleado en pantalla, funciona a 12 voltios y se imprime en 3D con el logo de la empresa cliente. Se vende desde 140 euros sin IVA, también sin contratar el resto del sistema."
 ---
 
 Buscar el **mejor programa de control horario** en 2026 es más difícil de lo que parece. No porque falten opciones, sino porque la mayoría están diseñadas para un problema distinto al tuyo. Una herramienta pensada para equipos de software remotos no tiene la misma lógica que una pyme con turno de tarde, TPV y cinco empleados rotando entre mostrador y almacén.
 
-El [registro de jornada es obligatorio en España desde 2019](/blog/registro-horario-digital) y el real decreto en tramitación exige que sea **exclusivamente digital**, inalterable y accesible para la Inspección de Trabajo en remoto. Un sistema que no cumpla estos tres requisitos no vale de nada, aunque sea gratuito. De hecho, puede costarte más que no tener nada: la infracción grave ya se sanciona con 751 a 7.500 euros y el proyecto de reforma quiere [calcular las multas por trabajador afectado](/blog/multas-registro-horario-2026-costo-incumplimiento).
+El [registro de jornada es obligatorio en España desde 2019](/blog/registro-horario-digital) y el real decreto en tramitación (a 23 de septiembre de 2026, sin aprobar ni publicar en el BOE) quiere que sea **exclusivamente digital**, inalterable y accesible para la Inspección de Trabajo en remoto. Un sistema que no cumpla esos tres requisitos se quedará corto en cuanto se apruebe, aunque sea gratuito. De hecho, puede costarte más que no tener nada: la infracción grave ya se sanciona con 751 a 7.500 euros y versiones del proyecto de reforma plantean [calcular las multas por trabajador afectado](/blog/multas-registro-horario-2026-costo-incumplimiento).
 
 <Notice type="info" title="Actualizado en septiembre de 2026">
-Revisada con el estado real de la normativa: el real decreto de registro horario digital sigue en tramitación (el Gobierno la retomó en septiembre de 2026 tras el dictamen del Consejo de Estado) y con la revisión v2 del terminal de fichaje de Drenpos, que ahora se entrega con la marca de cada cliente en la carcasa.
+Revisada el 23 de septiembre de 2026: el real decreto de registro horario digital sigue sin aprobarse ni publicarse en el BOE (el Gobierno retomó su tramitación en septiembre tras el dictamen del Consejo de Estado). Hemos añadido dos criterios de elección, vacaciones y ausencias incluidas o de pago y control de entrada y salida, con una tabla de precios con fuente y fecha.
 </Notice>
 
 Esta comparativa ordena por lo que le importa a una pyme española: cumplimiento real, integración con la operativa diaria y coste total sin sorpresas. La popularidad y el presupuesto de marketing se quedan fuera.
@@ -57,7 +57,7 @@ Antes de comparar opciones, define el filtro mínimo. Todo sistema válido en 20
 - **Registrar modificaciones** con fecha, hora y persona que las autorizó
 - **Prohibir ediciones retroactivas** sin huella auditable
 
-Si un software no supera este filtro, queda fuera de la comparativa. El resto son diferenciadores de valor.
+Ojo con un matiz: lo que exige hoy la ley es registrar cada día la hora de inicio y fin de cada persona (art. 34.9 del Estatuto de los Trabajadores). El acceso remoto de la Inspección y la obligación de que sea digital vienen del proyecto de real decreto, que a 23 de septiembre de 2026 no está aprobado. Aun así, elegir hoy un sistema que no los cumpla es comprar algo con fecha de caducidad. El resto son diferenciadores de valor.
 
 ## Comparativa rápida: los 10 mejores programas de control horario
 
@@ -67,31 +67,36 @@ Si un software no supera este filtro, queda fuera de la comparativa. El resto so
 | Factorial   | RRHH + fichaje              | ✅ Sí             | ⚠️ Vía integración       | Desde 5,50 €/usuario/mes    |
 | Sesame HR   | RRHH + fichaje              | ✅ Sí             | ⚠️ Vía integración       | Desde 5,50 €/usuario/mes    |
 | Bizneo HR   | Suite RRHH modular          | ✅ Sí             | ⚠️ Limitada              | Desde 6 €/usuario/mes       |
-| Kenjo       | RRHH + experiencia empleado | ✅ Sí             | ⚠️ Vía integración       | Desde 5,40 €/usuario/mes    |
+| Kenjo       | RRHH + experiencia empleado | ✅ Sí             | ⚠️ Vía integración       | A consultar (calculadora)   |
 | Woffu       | Turnos + fichaje            | ✅ Sí             | ❌ No                    | Desde 1,50 €/usuario/mes    |
 | netTime one | Presencia + accesos         | ✅ Sí             | ❌ No                    | Bajo petición               |
 | Clockify    | Proyectos + tiempo          | ⚠️ Parcial        | ❌ No                    | Freemium / desde 7,99 $/mes |
 | Hubstaff    | Equipos remotos             | ⚠️ Parcial        | ❌ No                    | Desde 4,99 $/usuario/mes    |
 | TrackPeople | Turnos + presencia          | ✅ Sí             | ❌ No                    | Desde 2,50 €/usuario/mes    |
 
+Precios orientativos recogidos al publicar esta comparativa. Los que hemos podido verificar con fuente y fecha están en la tabla de precios de más abajo, junto a qué incluye cada uno.
+
 ![Equipo de trabajo utilizando software integrado de gestión empresarial.](/images/blog/mejores-programas-control-horario/cover.jpg)
 
 ## 1. Drenpos: el mejor para pymes con TPV y operativa presencial
 
-Drenpos va más allá de un programa de control horario: es el **sistema que gestiona tu negocio completo**. Cuando el fichaje vive en el mismo sistema que el TPV, la facturación, el stock y las nóminas, el dato de jornada deja de ser un trámite para convertirse en inteligencia operativa.
+Drenpos va más allá de un programa de control horario: es el **sistema que gestiona tu negocio completo**. Cuando el fichaje vive en el mismo sistema que el TPV, la facturación y el stock, el dato de jornada deja de ser un trámite para convertirse en inteligencia operativa.
 
-La diferencia fundamental respecto a cualquier otra opción de esta lista: **no necesitas integrar nada**. Los datos fluyen solos. Un empleado que hace horas extra ese turno lo ve el sistema de nóminas automáticamente, sin que nadie exporte, copie ni concilie.
+La diferencia fundamental respecto a cualquier otra opción de esta lista: **no necesitas integrar nada**. Los datos fluyen solos. Si un empleado hace horas extra en ese turno, aparecen calculadas día a día en el informe que va a la gestoría, sin que nadie exporte, copie ni concilie.
 
 **Funcionalidades de control horario en Drenpos:**
 
 - [Fichaje desde app móvil](/blog/fichar-desde-el-movil-legal-2026), QR, portal web o [terminal físico propio con llavero RFID](/dispositivo-fichaje), fabricado por Drenpos y personalizado con el logo del cliente
-- Geolocalización configurable por puesto de trabajo
-- Registro de pausas, horas ordinarias, complementarias y extraordinarias
+- Geolocalización opcional, solo en el momento de fichar (viene apagada y nunca hay seguimiento continuo)
+- Registro de pausas y horas extra calculadas día a día desde el calendario laboral de cada persona
+- [Vacaciones y permisos](/blog/gestion-vacaciones-permisos-pymes-sin-excel) con cupos, aprobación y contrapropuesta de fechas, incluidos sin coste extra
+- [Control de entrada y salida](/blog/control-entrada-salida-retrasos-empleados) opcional, con tolerancias e incidencias que se justifican con una nota
+- Calendarios laborales con vigencias y festivos por región o por persona
 - Acceso inmediato del trabajador a sus registros
 - Exportación lista para Inspección de Trabajo en un clic
 - Conservación automática de datos durante el período legal
 - Trazabilidad completa de modificaciones con auditoría
-- Reportes listos para la gestoría y para nómina, en el mismo sistema que el TPV y la facturación
+- Reportes listos para la gestoría, en el mismo sistema que el TPV y la facturación
 
 **Por qué Drenpos gana para pymes con operativa física:**
 
@@ -157,7 +162,7 @@ Kenjo pone el foco en el bienestar y el engagement del equipo, combinando herram
 
 **Limitación real:** el enfoque en experiencia del empleado puede ser secundario para pymes que necesitan, antes que nada, cumplir la ley y controlar costes de personal.
 
-**Precio:** desde 5,40 €/empleado/mes.
+**Precio:** a consultar; su [página de tarifas](https://www.kenjo.io/es/tarifas) calcula el importe por empleado.
 
 **Ideal para:** empresas con alta rotación que quieren reducir absentismo y mejorar retención.
 
@@ -185,7 +190,7 @@ netTime one es la opción cuando el control de jornada va ligado al control de a
 
 **Puntos fuertes:** fichaje con múltiples métodos (web, app, huella, tarjeta), control de accesos integrado, instalación local posible, informes personalizables.
 
-**Limitación real:** la biometría tiene restricciones bajo la nueva normativa de 2026 (solo si no hay alternativa viable). Si lo usas con huella, revisa el cumplimiento RGPD antes de implantar.
+**Limitación real:** la biometría tiene restricciones por protección de datos: la huella es un dato de categoría especial y la AEPD solo la ve justificada si no hay alternativa viable. Si lo usas con huella, revisa el cumplimiento RGPD antes de implantar.
 
 **Precio:** bajo petición.
 
@@ -235,9 +240,9 @@ TrackPeople combina planificación de turnos con control de presencia y comunica
 
 ---
 
-## Cómo elegir tu programa de control horario: 4 preguntas antes de decidir
+## Cómo elegir tu programa de control horario: 6 preguntas antes de decidir
 
-Antes de firmar ninguna licencia, hazte estas cuatro preguntas:
+Antes de firmar ninguna licencia, hazte estas seis preguntas:
 
 **1. ¿Necesitas solo fichar o también gestionar tu operativa completa?**
 Si tu negocio tiene TPV, facturas a clientes, gestiona stock o tiene caja diaria, un software de RRHH aislado te creará silos de datos. Necesitas un sistema integrado. Drenpos resuelve esto de raíz. Lee también cómo gestionar el [control horario en teletrabajo](/blog/control-horario-teletrabajo-cumplir-ley-2026) y los [requisitos del registro horario 2026](/blog/registro-horario-2026-nuevos-requisitos-adaptacion).
@@ -250,6 +255,28 @@ Si la respuesta es "más de 10 minutos", tu sistema actual no cumple el estánda
 
 **4. ¿El coste mensual incluye actualizaciones normativas automáticas?**
 La legislación laboral española cambia. Un software que no se actualiza solo ante cambios en el RD-ley 8/2019 te dejará desprotegido sin avisarte.
+
+**5. ¿Las vacaciones y ausencias van incluidas o se pagan aparte?**
+Casi todas las herramientas gestionan vacaciones, pero no todas igual ni en el mismo plan. En Woffu, por ejemplo, las vacaciones van en todos los planes, pero las reglas de coincidencia por departamento y las varias políticas de vacaciones quedan para Pro y Enterprise, a presupuesto ([precios de Woffu](https://www.woffu.com/es/precios/)). Pregunta tres cosas: si el cupo se puede consolidar mes a mes o reiniciar en el aniversario de contratación, si el responsable puede proponer otras fechas y si las ausencias aprobadas salen en el mismo informe que los fichajes. En Drenpos van incluidas en el módulo de fichajes sin coste extra; lo contamos en [gestión de vacaciones y ausencias sin Excel](/blog/gestion-vacaciones-permisos-pymes-sin-excel).
+
+**6. ¿Te avisa de retrasos, olvidos y exceso de horas?**
+Registrar la jornada es la obligación; enterarte a tiempo de que alguien llega tarde o no ha fichado es gestión. Busca un control de entrada y salida que puedas activar o no, con tolerancias en minutos, incidencias que se justifican o descartan con una nota y que no penalice los fichajes hechos sin conexión. Cómo usarlo sin convertirlo en una herramienta de castigo, en [control de entrada y salida y retrasos](/blog/control-entrada-salida-retrasos-empleados).
+
+## ¿Cuánto cuesta y qué incluye el precio?
+
+Precios de partida que hemos podido comprobar con fuente, consultados el 23 de septiembre de 2026, tal como los publica cada fuente. Confírmalos en la web de cada proveedor antes de decidir.
+
+| Solución | Precio de partida publicado | Vacaciones y ausencias | Fuente |
+| --- | --- | --- | --- |
+| **Drenpos** | 1 €/usuario/mes sin IVA | Incluidas, con control de entrada y salida y geolocalización | [Precios de Drenpos](/pricing) |
+| Woffu (plan Lite) | Desde 1,50 €/usuario activo/mes | Incluidas; reglas de coincidencia por departamento solo en Pro y Enterprise | [Web oficial de Woffu](https://www.woffu.com/es/precios/) |
+| Holded | RR. HH. desde 1,50 €/empleado/mes (ERP desde 14,50 €/mes) | Incluidas en RR. HH. | [Blog de Holded, actualizado el 24/07/2026](https://www.holded.com/es/blog/mejores-softwares-gestion-vacaciones) |
+| Bixpe (Premium) | Desde 2 €/usuario/mes, mínimo de 20 a 30 € | No lo detalla la fuente | [IAT, actualizado el 11/02/2026](https://iat.es/blog/precios-apps-control-horario/) |
+| Kronjop | Desde 2,40 €/usuario/mes, sin mínimos | Jornada, vacaciones y ausencias | [IAT, actualizado el 11/02/2026](https://iat.es/blog/precios-apps-control-horario/) |
+| Sesame HR | Desde 3,75 €/usuario/mes, mínimo de 80 a 100 €/mes | Control horario, vacaciones y ausencias | [IAT, actualizado el 11/02/2026](https://iat.es/blog/precios-apps-control-horario/) |
+| Factorial | Desde 5,50 €/usuario/mes, mínimo de unos 99 €/mes | No lo detalla la fuente | [IAT, actualizado el 11/02/2026](https://iat.es/blog/precios-apps-control-horario/) |
+
+Las comparativas de terceros no siempre coinciden entre sí (para Sesame HR, por ejemplo, [controlhorario.com](https://controlhorario.com/software/precio/) da en septiembre de 2026 una cuota base de 82,50 € más 5,50 € por usuario). Por eso la columna de fuente importa tanto como la de precio. Y si quieres que los festivos de cada persona cuadren con sus horas esperadas el año que viene, mira el [calendario laboral 2027](/blog/calendario-laboral-2027-festivos-horas-extra).
 
 ![Propietario de pequeño negocio revisando gestión de horarios en portátil.](/images/blog/mejores-programas-control-horario/section-2.jpg)
 
@@ -273,20 +300,20 @@ Una pyme con 8 empleados que usa tres herramientas desconectadas (fichaje + nóm
 
 Sí. El Real Decreto-ley 8/2019 obliga a todas las empresas españolas, sin excepción de tamaño ni sector, a registrar diariamente la jornada laboral de cada trabajador. Este registro debe conservarse durante cuatro años y estar disponible para la Inspección de Trabajo.
 
-La nueva normativa de 2026 añade la obligación de que el sistema sea exclusivamente digital y garantice la inalterabilidad de los datos. Los registros en papel, Excel o cualquier sistema modificable sin rastro quedan **expresamente prohibidos**.
+El proyecto de real decreto quiere añadir la obligación de que el sistema sea exclusivamente digital y garantice la inalterabilidad de los datos, lo que dejaría fuera el papel, el Excel y cualquier sistema modificable sin rastro. A 23 de septiembre de 2026 no está aprobado ni publicado en el BOE, así que todavía no es obligatorio.
 
 Las sanciones vigentes son las de la LISOS (artículo 7.5), por infracción:
 
 - **Infracción grave** (sin sistema, registros incompletos o sistema no fiable): de 751 a 7.500 €
 - **Infracción muy grave** (manipulación de datos): de 7.501 a 225.018 €
 
-El proyecto de reforma eleva el tope de la grave a 10.000 € y lo aplica **por trabajador afectado**. Si se aprueba tal cual, una empresa con 10 empleados sin sistema válido pasaría de una sanción de hasta 7.500 € a una de hasta 100.000 € en una única inspección.
+Versiones del proyecto de reforma que se han conocido elevan el tope de la grave a 10.000 € y lo aplican **por trabajador afectado**; nada de eso está en vigor. Si se aprobara así, una empresa con 10 empleados sin sistema válido pasaría de una sanción de hasta 7.500 € a una de hasta 100.000 € en una única inspección.
 
 ## Preguntas frecuentes
 
 ### ¿Puede Drenpos sustituir completamente a un software de RRHH independiente?
 
-Para la mayoría de pymes con operativa presencial, sí. Drenpos cubre control horario, gestión de nóminas, facturación, TPV y stock en un único sistema. Si necesitas funcionalidades avanzadas de evaluación de desempeño o reclutamiento, puedes complementarlo, pero el núcleo operativo y de cumplimiento legal está cubierto de forma nativa.
+Para muchas pymes con operativa presencial, sí. Drenpos cubre control horario, vacaciones y permisos, facturación, TPV y stock en un único sistema. Las nóminas las sigue haciendo tu gestoría con el informe que le mandas. Si necesitas funcionalidades avanzadas de evaluación de desempeño o reclutamiento, puedes complementarlo, pero el núcleo operativo y de cumplimiento legal está cubierto de forma nativa.
 
 ### ¿Los empleados necesitan instalar una app para fichar?
 
@@ -312,7 +339,7 @@ Elegir el programa de control horario correcto es, ante todo, una **decisión op
 
 ### ¿Qué debe cumplir un programa de control horario en 2026?
 
-Tres requisitos: registro exclusivamente digital, sellado inalterable de cada fichaje y acceso para la Inspección de Trabajo en tiempo real. El registro de jornada es obligatorio en España desde 2019, y un sistema que no cumpla estos tres puntos no protege a la empresa aunque sea gratuito.
+Hoy la ley (artículo 34.9 del Estatuto de los Trabajadores, desde 2019) exige registrar cada día la hora de inicio y fin de la jornada de cada persona y conservarlo cuatro años. El proyecto de real decreto, que a 23 de septiembre de 2026 no está aprobado, añade que sea digital, inalterable y accesible en remoto para la Inspección. Conviene elegir un sistema que ya cumpla las dos cosas.
 
 ### ¿Cuál es el mejor programa de control horario para una pyme con TPV?
 
@@ -320,11 +347,11 @@ Para pymes con operativa presencial y TPV, la opción más eficiente es un siste
 
 ### ¿Cuánto cuesta un programa de control horario?
 
-Las suites de RRHH van de 1,50 a 6 € por usuario y mes, pero vigila los mínimos de facturación: algunos planes parten de más de 80 € mensuales, desproporcionado para equipos pequeños. En Drenpos el control horario es un módulo del ERP con tarifa plana, sin coste por uso.
+Los precios de partida publicados van de 1,50 a unos 6 € por usuario y mes, pero vigila los mínimos de facturación: algunos planes parten de 80 a 100 € mensuales, desproporcionado para equipos pequeños. En Drenpos el fichaje cuesta 1 € por usuario y mes sin IVA, con vacaciones y permisos, control de entrada y salida y geolocalización incluidos sin coste extra.
 
 ### ¿Sirve un Excel o una app gratuita para fichar?
 
-No. Las hojas de cálculo y la mayoría de apps gratuitas no garantizan la inalterabilidad del registro ni el acceso en tiempo real que exige la Inspección. La infracción grave se sanciona hoy con entre 751 y 7.500 euros, y el proyecto de reforma quiere calcularla por trabajador afectado. Lo barato puede acabar siendo lo más caro.
+No es buena idea. Las hojas de cálculo y la mayoría de apps gratuitas no garantizan la inalterabilidad del registro ni el acceso en tiempo real que pide el proyecto de reforma. La infracción grave se sanciona hoy con entre 751 y 7.500 euros, y versiones del proyecto de reforma plantean calcularla por trabajador afectado, algo que no está en vigor. Lo barato puede acabar siendo lo más caro.
 
 ### ¿Qué programa de control horario tiene terminal físico propio?
 

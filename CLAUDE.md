@@ -61,6 +61,7 @@ Key collections:
 - `software-alquiler-huecos-palet.astro` — depósito de terceros / 3PL
 - `software-almacen-tienda.astro` — almacén + TPV para retail
 - `software-produccion-fabricacion.astro` — producción y fabricación (órdenes de trabajo, fases, tiempos, coste real)
+- `software-control-stock.astro`: control de stock e inventario (mínimos y máximos con alertas, propuesta de compra, lotes y caducidad, inventarios físicos, valoración)
 
 Al tocar una, revisa: `src/config/menu.json` (submenú Funcionalidades), `src/pages/llms.txt.ts` y `src/pages/llms-full.txt.ts` (bloque "Páginas de solución"), y los enlaces cruzados del array `hermanas` en `software-gestion-almacen.astro`. `seoGraph` valida en build enlaces internos, unicidad de metadatos y H1 único: un enlace roto o un `meta_title` duplicado rompe el build.
 

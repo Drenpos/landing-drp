@@ -29,7 +29,7 @@ const sintomas = [
   {
     icon: "🧤",
     title: "El operario apunta en papel con guantes y luego alguien lo teclea",
-    body: "Dos capturas para el mismo dato: la de la cámara y la de la oficina. Entre una y otra se pierden lotes, kilos y ubicaciones — y el descuadre aparece días después.",
+    body: "Dos capturas para el mismo dato: la de la cámara y la de la oficina. Entre una y otra se pierden lotes, kilos y ubicaciones, y el descuadre aparece días después.",
   },
   {
     icon: "🗓️",
@@ -60,7 +60,7 @@ const capacidades = [
     icon: "🏷️",
     tag: "Palets y unidades logísticas",
     title: "Etiqueta SSCC estándar GS1 y palet pesado",
-    body: "Cada palet nace con su etiqueta SSCC estándar GS1 imprimible en rollo o A4 — la misma que exigen las grandes plataformas logísticas. Ciclo de vida completo: abierto mientras se carga, cerrado y pesado con bruto, tara y neto, expedido o anulado, con permisos separados para cada paso.",
+    body: "Cada palet nace con su etiqueta SSCC estándar GS1 imprimible en rollo o A4, la misma que exigen las grandes plataformas logísticas. Ciclo de vida completo: abierto mientras se carga, cerrado y pesado con bruto, tara y neto, expedido o anulado, con permisos separados para cada paso.",
     bullets: [
       "Mover el palet entero de cámara o ubicación en un escaneo",
       "Despaletizado en tres gestos: vaciar, pasar a otro o partir en varios",
@@ -93,7 +93,7 @@ const capacidades = [
     icon: "🔪",
     tag: "Despiece y transformación",
     title: "Lote nuevo, caducidad propia y merma registrada",
-    body: "Sala de despiece, obrador o envasado: se marca qué sale del palet y qué productos entran a cambio, con su lote nuevo, su caducidad y su destino — el mismo palet, otro, o suelto en cualquier almacén y ubicación. Con borrador en espera para corregir con los kilos reales antes de ejecutar.",
+    body: "Sala de despiece, obrador o envasado: se marca qué sale del palet y qué productos entran a cambio, con su lote nuevo, su caducidad y su destino: el mismo palet, otro, o suelto en cualquier almacén y ubicación. Con borrador en espera para corregir con los kilos reales antes de ejecutar.",
     bullets: [
       "Ejecución en bloque todo o nada: nunca una salida sin su entrada",
       "La merma se registra explícita, como una línea más",
@@ -113,14 +113,14 @@ const capacidades = [
   },
 ];
 
-// Comparativa (tabla AEO — decisión de compra)
+// Comparativa (tabla AEO, decisión de compra)
 const comparativa = [
   {
     opcion: "Excel y papel",
     lotes: "Manual y siempre desfasado",
-    palets: "—",
+    palets: "No",
     camara: "Papel y guantes",
-    deposito: "—",
+    deposito: "No",
     precio: "«Gratis» (se paga en horas y en merma)",
   },
   {
@@ -129,7 +129,7 @@ const comparativa = [
     palets: "No",
     camara: "No",
     deposito: "No",
-    precio: "10–30 €/mes",
+    precio: "10 a 30 €/mes",
   },
   {
     opcion: "WMS enterprise",
@@ -209,7 +209,7 @@ const faqs = [
   },
   {
     q: "¿Sirve para congelado y refrigerado a la vez?",
-    a: "Sí. Drenpos es multialmacén: cada cámara, túnel o zona puede ser un almacén con su stock independiente y sus ubicaciones con QR, y la visión consolidada se mantiene para compras y análisis. El producto de frío negativo y el refrigerado se gestionan con las mismas herramientas — lotes, caducidad, FEFO, palets y traslados — sin duplicar sistemas ni maestros de artículos.",
+    a: "Sí. Drenpos es multialmacén: cada cámara, túnel o zona puede ser un almacén con su stock independiente y sus ubicaciones con QR, y la visión consolidada se mantiene para compras y análisis. El producto de frío negativo y el refrigerado se gestionan con las mismas herramientas (lotes, caducidad, FEFO, palets y traslados), sin duplicar sistemas ni maestros de artículos.",
   },
   {
     q: "¿Cómo controla las caducidades y el FEFO?",
@@ -258,6 +258,11 @@ const hermanas = [
     url: "/software-gestion-palets",
     title: "Gestión de palets y etiqueta SSCC",
     body: "El palet como unidad logística: SSCC GS1, cierre y pesado, movimiento en un escaneo y despaletizado.",
+  },
+  {
+    url: "/software-control-stock",
+    title: "Control de stock e inventario",
+    body: "Mínimos y máximos con alertas, propuesta de compra, lotes con caducidad e inventarios con regularización de diferencias.",
   },
 ];
 
@@ -476,7 +481,7 @@ const productSchema = {
             caduca</em> y <em>cuánta merma</em> se generó al transformarla. Por
             eso incorpora salidas por FEFO, alertas de caducidad, etiqueta SSCC
             estándar GS1, trazabilidad con informe de retirada y operativa en
-            móvil a pie de cámara — porque en frío las decisiones se toman
+            móvil a pie de cámara, porque en frío las decisiones se toman
             donde está la mercancía, no en la oficina.
           </p>
         </div>
@@ -512,7 +517,7 @@ const productSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════
-       CAPACIDADES (tarjetas con icono — producto real)
+       CAPACIDADES (tarjetas con icono, producto real)
   ═══════════════════════════════════════════════════════════════════ -->
   <section class="section pt-0 overflow-hidden">
     <div class="container">
@@ -558,7 +563,7 @@ const productSchema = {
               nace donde ocurre la operación: no hay una libreta con guantes
               primero y un teclado en la oficina después. Todas las pantallas
               de palets de Drenpos funcionan en móvil y tablet, y el montaje
-              admite pistola lectora o entrada manual — los dos caminos están
+              admite pistola lectora o entrada manual: los dos caminos están
               siempre disponibles.
             </p>
             <p class="text-sm leading-relaxed mb-4" style="color: rgba(16,25,40,0.72);">
@@ -585,7 +590,7 @@ const productSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════
-       COMPARATIVA (tabla de decisión — AEO)
+       COMPARATIVA (tabla de decisión, AEO)
   ═══════════════════════════════════════════════════════════════════ -->
   <section class="section pt-0 overflow-hidden">
     <div class="container">
@@ -647,6 +652,80 @@ const productSchema = {
             </div>
           ))
         }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       MERCADO DEL FRÍO (cifras DBK) + TARIFAS DE DEPÓSITO Y SIMULADOR
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="mercado-frio" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <div class="rounded-3xl p-8 lg:p-12 text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-4 text-white">¿Cuánto mueve la logística del frío en España?</h2>
+            <p class="text-lg leading-relaxed mb-8" style="color: rgba(255,255,255,0.82);">
+              Según el informe «Logística del Frío» del observatorio sectorial
+              DBK de Informa, que recoge
+              <a href="https://empresaexterior.com/la-logistica-del-frio-en-espana-supera-los-6-000-millones-de-euros-impulsada-por-el-retail-y-el-sector-farmaceutico/" class="underline" style="color: #fcd9b6;" rel="noopener">Empresa Exterior</a>,
+              el sector facturó <strong>6.000 millones de euros en 2025</strong>,
+              un 4,3 % más que el año anterior. El transporte y la distribución
+              se llevan el 79,2 % y el <strong>almacenaje y las operaciones el
+              20,8 %</strong>, unos 1.250 millones, que crecieron un 6,4 %. Las
+              diez primeras empresas concentran el 55,8 % del negocio.
+            </p>
+            <div class="row g-4 mb-8">
+              <div class="md:col-4">
+                <p class="text-h3 font-bold text-white mb-1">6.000 M€</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.7);">facturación de la logística del frío en España en 2025 (DBK)</p>
+              </div>
+              <div class="md:col-4">
+                <p class="text-h3 font-bold text-white mb-1">20,8 %</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.7);">corresponde a almacenaje y operaciones, con un crecimiento del 6,4 %</p>
+              </div>
+              <div class="md:col-4">
+                <p class="text-h3 font-bold text-white mb-1">55,8 %</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.7);">del negocio lo concentran las diez primeras empresas</p>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.7);">
+              Traducido a un frigorífico pequeño: compites por los mismos
+              clientes que operadores con sistemas de gran empresa, y el
+              cliente espera lo mismo de ti. Saber en qué hueco está su lote,
+              qué caduca primero y cuánto le debes cobrar a fin de mes, sin
+              esperar a que alguien cuadre una hoja.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-center mt-10">
+        <div class="lg:col-10">
+          <div class="rounded-3xl border border-dark/10 bg-body p-7 lg:p-9" data-aos="fade-up-sm">
+            <h3 class="h5 font-bold mb-3">¿Cuánto cobrar por palet y día, y cómo liquidarlo sin hojas de cálculo?</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(16,25,40,0.72);">
+              Si alquilas huecos de cámara, la tarifa la pones tú y el sistema la
+              aplica como la cuentas tú: por palet y día, por kilo y día, por
+              entrada, por salida, por manipulación o por bulto preparado, con
+              días de franquicia, mínimos por liquidación, precios distintos por
+              tipo de soporte y fechas de vigencia. Cada concepto elige cómo se
+              mide: día a día, foto a fin de mes, pico máximo o aniversario de
+              entrada. Las entradas, salidas y despieces de palets de un cliente
+              generan su apunte solos, en la misma operación.
+            </p>
+            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.72);">
+              Antes de dar precio, el <strong>simulador</strong> responde a
+              «¿cuánto le costaría a este cliente tener 20 palets un mes?» con el
+              desglose día a día. Y a fin de periodo sacas la posición del
+              cliente y el informe formal en PDF, factures desde Drenpos o desde
+              otro programa. Más detalle en el
+              <a href="/software-alquiler-huecos-palet" class="text-primary underline">software de alquiler de huecos de palet</a>
+              y en la guía de
+              <a href="/blog/alquiler-huecos-palet-tarifas" class="text-primary underline">tarifas y contrato de alquiler de huecos</a>.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>

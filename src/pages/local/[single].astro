@@ -45,7 +45,11 @@ const breadcrumbs = [
   modified_date={updated || date}
   author={author && {
     name: author.name,
-    url: "https://www.linkedin.com/in/alonso-bermejo/",
+    jobTitle: author.designation,
+    ...(author.name?.startsWith("Alonso Bermejo") && {
+      url: "/about",
+      sameAs: ["https://www.linkedin.com/in/alonso-bermejo/"],
+    }),
   }}
   keywords={tags || categories}
   breadcrumbs={breadcrumbs}

@@ -3,7 +3,7 @@ title: "Diferencia entre WMS y ERP: qué es un SGA y cuál necesitas"
 meta_title: "Diferencia entre WMS y ERP (y qué es un SGA)"
 description: "WMS, SGA y ERP explicados sin humo: qué resuelve cada sistema, qué capacidades definen un WMS real y cuánto cuesta tener el almacén fuera del ERP."
 date: 2026-08-12
-updated: 2026-09-03
+updated: 2026-09-23
 image: "/images/blog/wms-sga-erp-diferencias/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -81,6 +81,8 @@ El patrón más frecuente es una empresa con un buen programa de facturación qu
 
 Un sistema merece llamarse WMS cuando sabe responder tres preguntas sin que nadie mire físicamente: dónde está una referencia, de qué lote es y en qué unidad logística viaja. Todo lo demás —oleadas, cross-docking, reservas, actas— se construye encima de esas tres respuestas. Si el software solo sabe cuántas unidades hay en total, es un control de stock, y llamarlo de otro modo no cambia lo que hace.
 
+Que un sistema sea «solo» control de stock no es un defecto: para muchas pymes es justo lo que hace falta. Saber qué está bajo mínimos, qué comprar y cuánto, qué lote caduca primero y cuánto dinero hay parado resuelve el día a día de una tienda, una ferretería o una distribuidora pequeña sin tocar rutas ni palets. Si ese es tu caso, empieza por el [software de control de stock](/software-control-stock) y deja la parte de SGA para cuando la necesites: en Drenpos es el mismo módulo.
+
 Esta es la lista con la que puedes auditar cualquier propuesta, incluida la nuestra.
 
 | Capacidad de un WMS | Qué significa en el día a día | ¿Lo cubre Drenpos? |
@@ -111,7 +113,7 @@ El precio de las licencias es la parte fácil de calcular. El coste real de sepa
 
 El síntoma clásico: alguien da de alta un artículo en un sistema y se olvida del otro.
 
-Un WMS separado no es mala idea: simplemente hay que sumar su coste entero. Si tu volumen y tu automatización lo justifican, es la decisión correcta; si no, pagas dos veces por el mismo dato.
+Un WMS separado no es mala idea: simplemente hay que sumar su coste entero. Si tu volumen y tu automatización lo justifican, es la decisión correcta; si no, pagas dos veces por el mismo dato. Tienes la decisión desarrollada, con una tabla de partidas y las señales que sí justifican un SGA aparte, en [¿SGA aparte o ERP con almacén?](/blog/sga-o-erp-con-almacen-que-necesita-una-pyme).
 
 ## ¿Cómo saber si necesitas un WMS?
 

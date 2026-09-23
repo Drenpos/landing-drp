@@ -40,7 +40,7 @@ const wms = [
     icon: "🏷️",
     tag: "Palets y unidades logísticas",
     title: "Etiqueta SSCC estándar GS1 y ciclo de vida del palet",
-    body: "Cada palet nace con su etiqueta SSCC imprimible en rollo o A4 — la misma que exigen las grandes plataformas logísticas. Ciclo de vida completo: abierto, cerrado y pesado (bruto, tara y neto), expedido o anulado, con permisos separados por paso y trazabilidad de todo lo que ha entrado y salido del palet.",
+    body: "Cada palet nace con su etiqueta SSCC imprimible en rollo o A4, la misma que exigen las grandes plataformas logísticas. Ciclo de vida completo: abierto, cerrado y pesado (bruto, tara y neto), expedido o anulado, con permisos separados por paso y trazabilidad de todo lo que ha entrado y salido del palet.",
     bullets: [
       "Mezcla libre de productos, lotes y series dentro del palet",
       "Mover el palet entero de ubicación o almacén en un escaneo",
@@ -62,7 +62,7 @@ const wms = [
     icon: "🔪",
     tag: "Despiece y transformación",
     title: "De un producto salen varios, con lote nuevo y merma explícita",
-    body: "Sala de despiece, cocina central, obrador o envasado: se marca qué sale del palet y qué productos entran a cambio, con su lote nuevo y su caducidad. Los despieces se ejecutan en bloque todo o nada, y la merma queda registrada como una línea más — nunca desaparece en silencio.",
+    body: "Sala de despiece, cocina central, obrador o envasado: se marca qué sale del palet y qué productos entran a cambio, con su lote nuevo y su caducidad. Los despieces se ejecutan en bloque todo o nada, y la merma queda registrada como una línea más: nunca desaparece en silencio.",
     bullets: [
       "Borrador en espera: se corrige con los kilos reales antes de ejecutar",
       "Traza de qué cantidades se dedicaron a fabricar qué",
@@ -122,6 +122,11 @@ const plano = [
 // Landings hermanas del clúster de almacén
 const hermanas = [
   {
+    url: "/software-control-stock",
+    title: "Control de stock e inventario",
+    body: "Mínimos y máximos con alertas, propuesta de compra, lotes y caducidad, inventarios y valoración del stock.",
+  },
+  {
     url: "/software-gestion-palets",
     title: "Gestión de palets y etiqueta SSCC",
     body: "El palet como unidad logística: SSCC GS1, cierre y pesado, movimiento en un escaneo y despaletizado.",
@@ -153,7 +158,60 @@ const hermanas = [
   },
 ];
 
-// Síntomas (dolores que busca el usuario — long-tail AEO)
+// ¿SGA aparte o módulo de almacén del ERP? Tabla de decisión (sin cifras inventadas)
+const decisionSga = [
+  {
+    criterio: "Equipo de almacén",
+    erp: "Pocas personas que comparten nave y sistema; quien compra y vende también ve el almacén",
+    sga: "Varios turnos y equipos dedicados solo al almacén, con sus jefes y sus indicadores",
+  },
+  {
+    criterio: "Ubicaciones",
+    erp: "Estanterías y huecos identificados con QR que caben en un plano de la nave",
+    sga: "Almacén de gran altura con reglas de ubicación automática (slotting) que recolocan la mercancía a diario",
+  },
+  {
+    criterio: "Operativa",
+    erp: "Manual o semiautomática: transpaleta, carretilla, pistola o móvil",
+    sga: "Automatizada: transelevadores, clasificadores o AGV que hay que gobernar en tiempo real",
+  },
+  {
+    criterio: "Preparación de pedidos",
+    erp: "Picking guiado por pedido u oleada, zona de preparados y expedición con escaneo",
+    sga: "Sistemas de voz o de luz (pick to light) y optimización de rutas que cambian con cada ola",
+  },
+  {
+    criterio: "Integraciones",
+    erp: "Quieres un solo maestro de artículos y que el almacén facture sin sincronizar nada",
+    sga: "Ya tienes un ERP grande que funciona bien y no lo vas a tocar: el almacén se conecta por API",
+  },
+  {
+    criterio: "Presupuesto y plazo",
+    erp: "Cuota mensual y puesta en marcha en días o semanas",
+    sga: "Licencia propia, proyecto de implantación y la integración con tu ERP",
+  },
+];
+
+// Pistola, móvil o PDA: formas de leer códigos en el almacén
+const lectura = [
+  {
+    icon: "🔫",
+    title: "Pistola lectora",
+    body: "Conectada al ordenador o a la tablet, lee el código de barras del artículo, el QR de la ubicación y la etiqueta SSCC del palet. Los traslados, la recepción y el montaje de palets tienen un flujo lineal pensado para no tocar la pantalla.",
+  },
+  {
+    icon: "📱",
+    title: "Cámara del móvil o PDA",
+    body: "En cada dispositivo eliges si lee con pistola o con la cámara. El móvil del mozo sirve como lector el primer día, y las pantallas de picking y de palets funcionan en móvil y tablet, dentro de la nave o de la cámara.",
+  },
+  {
+    icon: "🏷️",
+    title: "QR por ubicación",
+    body: "Cada ubicación tiene su QR imprimible. Se pega en la estantería y el operario escanea ubicación, producto y cantidad: el sistema sabe exactamente de dónde sale o dónde entra la mercancía, sin teclear códigos.",
+  },
+];
+
+// Síntomas (dolores que busca el usuario, long-tail AEO)
 const sintomas = [
   {
     icon: "📉",
@@ -168,7 +226,7 @@ const sintomas = [
   {
     icon: "🗓️",
     title: "Productos caducados en la estantería",
-    body: "Sin control de caducidades por lote, la merma se descubre cuando ya es pérdida — o peor, cuando el producto ya está vendido.",
+    body: "Sin control de caducidades por lote, la merma se descubre cuando ya es pérdida. O peor, cuando el producto ya está vendido.",
   },
   {
     icon: "⏸️",
@@ -214,16 +272,16 @@ const capacidades = [
   },
 ];
 
-// Comparativa (tabla AEO — decisión de compra)
+// Comparativa (tabla AEO, decisión de compra)
 const comparativa = [
   {
     opcion: "Excel / papel",
     stock: "Manual, siempre desfasado",
-    lotes: "—",
-    ubicaciones: "—",
-    palets: "—",
+    lotes: "No",
+    ubicaciones: "No",
+    palets: "No",
     picking: "Lista en papel",
-    integracion: "—",
+    integracion: "No",
     precio: "«Gratis» (te cuesta en horas y errores)",
   },
   {
@@ -234,7 +292,7 @@ const comparativa = [
     palets: "No",
     picking: "No",
     integracion: "Solo facturación",
-    precio: "10–30 €/mes",
+    precio: "10 a 30 €/mes",
   },
   {
     opcion: "WMS / SGA enterprise",
@@ -309,6 +367,14 @@ const faqs = [
     a: "Ninguna de fondo: SGA es Sistema de Gestión de Almacenes y WMS es Warehouse Management System, el mismo concepto en dos idiomas. Lo que sí marca la diferencia es si el sistema conoce la ubicación, el lote y la unidad logística, y si está integrado con compras, ventas y facturación o hay que sincronizarlo con tu ERP.",
   },
   {
+    q: "¿Necesito un SGA aparte o me vale el módulo de almacén del ERP?",
+    a: "Si tu almacén se mueve con personas, pistolas y carretillas, te vale un ERP cuyo módulo de almacén sepa de ubicaciones, lotes, reservas, picking y palets: te ahorras un segundo maestro de artículos y la integración. Un SGA aparte compensa cuando hay automatismos que gobernar en tiempo real (transelevadores, clasificadores, AGV) o cuando ya tienes un ERP grande que funciona y prefieres no tocarlo.",
+  },
+  {
+    q: "¿Funciona con pistola lectora o PDA?",
+    a: "Sí. En cada dispositivo eliges si se lee con una pistola lectora o con la cámara del móvil, la tablet o el ordenador, y las pantallas de almacén funcionan en el navegador. Cada ubicación tiene un QR imprimible para pegarlo en la estantería, cada artículo admite un código de barras por formato y los palets llevan etiqueta SSCC, así que traslados, recepciones, picking e inventarios se hacen escaneando.",
+  },
+  {
     q: "¿Drenpos gestiona palets con etiqueta SSCC?",
     a: "Sí. Cada palet nace con su etiqueta SSCC estándar GS1 imprimible en rollo o A4, con ciclo de vida completo (abierto, cerrado y pesado con bruto, tara y neto, expedido o anulado). Dentro cabe cualquier mezcla de productos, lotes y series, el palet entero se mueve en un escaneo y el despaletizado permite vaciarlo, pasarlo a otro o partirlo en varios nuevos ya etiquetados.",
   },
@@ -334,7 +400,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta un software de gestión de almacén?",
-    a: "Los WMS enterprise cuestan miles de euros más un proyecto de implantación de meses. Las herramientas de facturación con inventario básico rondan 10–30 €/mes pero no tienen ubicaciones, lotes ni palets. Drenpos cuesta desde 29 €/mes sin IVA (plan Pro, con almacén incluido) con multialmacén, ubicaciones QR, lotes con FEFO, palets con SSCC y picking, sin coste por uso ni permanencia.",
+    a: "Los WMS enterprise cuestan miles de euros más un proyecto de implantación de meses. Las herramientas de facturación con inventario básico rondan los 10 a 30 €/mes pero no tienen ubicaciones, lotes ni palets. Drenpos cuesta desde 29 €/mes sin IVA (plan Pro, con almacén incluido) con multialmacén, ubicaciones QR, lotes con FEFO, palets con SSCC y picking, sin coste por uso ni permanencia.",
   },
   {
     q: "¿Puedo controlar el stock de varios almacenes a la vez?",
@@ -373,6 +439,9 @@ const articulos = [
   { t: "Despiece, merma y trazabilidad cárnica", s: "despiece-merma-trazabilidad-carnica" },
   { t: "Cómo organizar el almacén de una pyme", s: "como-organizar-almacen-pyme" },
   { t: "Control de stock sin roturas: guía práctica", s: "control-de-stock-sin-roturas" },
+  { t: "¿SGA aparte o ERP con almacén? Qué necesita una pyme", s: "sga-o-erp-con-almacen-que-necesita-una-pyme" },
+  { t: "Software para distribuidores de bebidas: cajas, palés y formatos", s: "software-distribuidor-bebidas-cajas-palets-formatos" },
+  { t: "Cuánto cuesta un SGA para una pyme en 2026", s: "cuanto-cuesta-sga-wms-pyme-2026" },
 ];
 
 // ── Datos estructurados (JSON-LD) ──────────────────────────────────────
@@ -415,6 +484,7 @@ const productSchema = {
   featureList: [
     "Stock en tiempo real multialmacén, físico y disponible",
     "Ubicaciones con etiquetas QR",
+    "Lectura con pistola lectora o con la cámara del móvil",
     "Plano de almacén por plantas y orden de ruta",
     "Control de lotes, números de serie, caducidades y FEFO",
     "Trazabilidad completa por lote con informe de recall en PDF",
@@ -438,7 +508,7 @@ const productSchema = {
 <Base
   title="Software de Gestión de Almacén · Drenpos"
   meta_title="Software de Gestión de Almacén y WMS para Pymes | Drenpos"
-  description="Software de gestión de almacén con potencia de WMS a precio de pyme: ubicaciones QR, lotes con FEFO, preparación de pedidos, palets con etiqueta SSCC y alquiler de huecos. Desde 29 €/mes sin IVA."
+  description="Software de gestión de almacén (SGA/WMS) para pymes: ubicaciones QR, lotes con FEFO, picking, palets SSCC y depósito. Plan Pro desde 29 €/mes sin IVA."
   canonical={CANONICAL}
   image="/images/funcionalidades/almacen-tienda/01-almacen-ubicaciones.png"
 >
@@ -481,7 +551,7 @@ const productSchema = {
             <strong>palets con etiqueta SSCC estándar GS1</strong>,
             <strong>despiece con merma explícita</strong> y
             <strong>depósito de terceros con alquiler de huecos de palet</strong>.
-            Todo integrado con tus compras, ventas y facturación — sin
+            Todo integrado con tus compras, ventas y facturación, sin
             proyectos de meses ni precios de gran empresa.
           </p>
 
@@ -586,8 +656,8 @@ const productSchema = {
             trazabilidad de cada movimiento. La diferencia con un inventario
             básico es simple: un inventario sabe <em>cuánto</em> tienes; un SGA
             sabe además <em>dónde está, de qué lote es, en qué palet va y quién
-            lo tocó</em>. Drenpos pone esa capacidad — hasta ahora reservada a
-            sistemas de gran empresa — al alcance de cualquier pyme, integrada
+            lo tocó</em>. Drenpos pone esa capacidad (hasta ahora reservada a
+            sistemas de gran empresa) al alcance de cualquier pyme, integrada
             con sus compras, ventas y facturación.
           </p>
         </div>
@@ -650,6 +720,48 @@ const productSchema = {
           </div>
         ))
       }
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PISTOLA, MÓVIL O PDA (AEO: "software de almacén con pistola")
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="pistola-pda" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center mb-12">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h3 font-bold mb-4">¿Funciona con pistola lectora o PDA?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            Sí. Drenpos funciona en el navegador y en cada dispositivo eliges si
+            lee con una pistola lectora o con la cámara del móvil, la tablet o el
+            ordenador. Cada ubicación lleva un QR imprimible que se pega en la
+            estantería, cada artículo admite un código de barras por formato
+            (botella, caja o palé) y los palets llevan su etiqueta SSCC. Así,
+            traslados, recepciones, picking e inventarios se hacen escaneando,
+            sin teclear referencias.
+          </p>
+        </div>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          lectura.map((c, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{c.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <p class="text-center mt-10 text-sm max-w-2xl mx-auto" style="color: rgba(16,25,40,0.6);" data-aos="fade-up-sm">
+        ¿Qué hardware comprar y cuánto cuesta? Lo repasamos en
+        <a href="/blog/cuanto-cuesta-sga-wms-pyme-2026" class="text-primary underline">cuánto cuesta un SGA para una pyme</a>.
+        Y si lo que buscas es sobre todo llevar bien el stock, con alertas y
+        propuesta de compra, empieza por el
+        <a href="/software-control-stock" class="text-primary underline">software de control de stock</a>.
+      </p>
     </div>
   </section>
 
@@ -800,7 +912,65 @@ const productSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════
-       COMPARATIVA (tabla de decisión — AEO)
+       ERRORES DE PICKING (cifras citables con fuente)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="errores-picking" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <div class="rounded-3xl p-8 lg:p-12 text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-4 text-white">¿Cuánto cuesta un error de preparación de pedidos?</h2>
+            <p class="text-lg leading-relaxed mb-8" style="color: rgba(255,255,255,0.82);">
+              Según el estudio de Intermec publicado en 2013, hecho con 250
+              directores de centros de distribución de Estados Unidos y Europa y
+              recogido por
+              <a href="https://www.cadenadesuministro.es/noticias/los-errores-en-los-procesos-de-picking-originan-perdidas-de-hasta-290-000-euros-por-almacen_1053375_102.html" class="underline" style="color: #fcd9b6;" rel="noopener">Cadena de Suministro</a>,
+              un centro de distribución pierde de media <strong>291.000 €</strong>
+              por errores en la preparación de pedidos y cada error cuesta
+              <strong>16,82 €</strong>. Más de la mitad de esos almacenes (el
+              52 %) servía correctamente menos del 97 % de sus pedidos.
+            </p>
+            <div class="row g-4 mb-8">
+              <div class="md:col-4">
+                <p class="text-h3 font-bold text-white mb-1">291.000 €</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.7);">de pérdida media por centro de distribución por errores de picking (Intermec, 2013)</p>
+              </div>
+              <div class="md:col-4">
+                <p class="text-h3 font-bold text-white mb-1">16,82 €</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.7);">de coste medio por cada error en un pedido</p>
+              </div>
+              <div class="md:col-4">
+                <p class="text-h3 font-bold text-white mb-1">55 %</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.7);">del gasto operativo de un almacén puede irse en preparar pedidos (De Koster et al., 2007)</p>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(255,255,255,0.7);">
+              Y preparar pedidos ya es, de por sí, la partida grande: la revisión
+              de De Koster, Le-Duc y Roodbergen (2007),
+              <a href="https://www.sciencedirect.com/science/article/abs/pii/S0377221706006473" class="underline" style="color: #fcd9b6;" rel="noopener">publicada en el European Journal of Operational Research</a>,
+              estima que puede llegar hasta el 55 % del gasto operativo total de
+              un almacén. Son datos de centros grandes y de hace años; en una
+              pyme la cifra será otra, pero cada error sigue siendo una
+              devolución, unos portes de más y un cliente con motivos para
+              cambiar de proveedor.
+            </p>
+            <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.7);">
+              Lo que hace Drenpos para que no pase: el asistente de picking, pensado
+              para móvil y pistola, guía producto a producto y ubicación a
+              ubicación, sugiere el lote según FIFO, LIFO o FEFO, admite un
+              recuento de control antes de expedir y, al escanear el pedido
+              preparado, genera el albarán sin volver a teclear nada.
+              Paso a paso en el
+              <a href="/software-preparacion-pedidos-picking" class="underline" style="color: #fcd9b6;">software de preparación de pedidos</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       COMPARATIVA (tabla de decisión, AEO)
   ═══════════════════════════════════════════════════════════════════ -->
   <section class="section pt-0 overflow-hidden">
     <div class="container">
@@ -846,6 +1016,80 @@ const productSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════
+       ¿SGA APARTE O MÓDULO DEL ERP? (página de decisión dentro de la pilar)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="sga-o-erp" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center mb-10">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h3 font-bold mb-4">¿Necesito un SGA aparte o me vale el módulo de almacén del ERP?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            Depende de cómo se mueve tu almacén, no de cuántos metros tiene. Si
+            la operativa es manual o semiautomática, con pistola, carretilla y
+            pedidos preparados por personas, te vale un ERP cuyo módulo de
+            almacén sepa de ubicaciones, lotes, reservas, picking y palets. Un
+            SGA aparte compensa cuando hay automatismos que gobernar en tiempo
+            real o cuando ya tienes un ERP grande que funciona y no quieres
+            tocarlo.
+          </p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[860px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Qué mirar</th>
+              <th class="text-left p-4">Te vale el módulo de almacén del ERP</th>
+              <th class="text-left p-4 rounded-tr-2xl">Conviene un SGA aparte</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              decisionSga.map((r) => (
+                <tr class="border-b border-dark/5">
+                  <td class="p-4 font-medium">{r.criterio}</td>
+                  <td class="p-4">{r.erp}</td>
+                  <td class="p-4">{r.sga}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row justify-center mt-10">
+        <div class="lg:col-10">
+          <div class="rounded-3xl border border-dark/10 bg-body p-7 lg:p-9" data-aos="fade-up-sm">
+            <h3 class="h5 font-bold mb-3">Lo que no te dicen los artículos de «SGA frente a ERP»</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(16,25,40,0.72);">
+              La tesis que más se repite es que el ERP solo lleva un control
+              básico del inventario y que el SGA es el que se especializa en la
+              operativa del almacén (así lo explica, por ejemplo,
+              <a href="https://www.mecalux.es/blog/erp-definicion-diferencias-sga" class="text-primary underline" rel="noopener">Mecalux</a>).
+              Para muchos ERP es cierto. Por eso la pregunta útil no es «¿ERP o
+              SGA?», sino «¿mi ERP sabe de ubicaciones, lotes, reservas, picking y
+              palets?». Si la respuesta es sí, te ahorras un segundo maestro de
+              artículos, una integración que vigilar y los descuadres entre lo
+              que ve el mozo y lo que factura la oficina.
+            </p>
+            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.72);">
+              Drenpos es ese caso: el módulo de Inventario hace de SGA dentro del
+              mismo sistema que compra, vende y factura. Y lo decimos igual de
+              claro al revés: con un almacén robotizado, o con un SAP o un
+              Navision que funciona, no te proponemos cambiarlo. Tienes la
+              decisión desarrollada, con el coste de cada vía, en
+              <a href="/blog/sga-o-erp-con-almacen-que-necesita-una-pyme" class="text-primary underline">¿SGA aparte o ERP con almacén?</a>,
+              y las definiciones en
+              <a href="/blog/wms-sga-erp-diferencias" class="text-primary underline">diferencia entre WMS, SGA y ERP</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
        CASOS DE USO SECTORIALES
   ═══════════════════════════════════════════════════════════════════ -->
   <section class="section pt-0 overflow-hidden">
@@ -869,7 +1113,7 @@ const productSchema = {
       </div>
 
       <p class="text-center mt-10 text-sm max-w-2xl mx-auto" style="color: rgba(16,25,40,0.6);" data-aos="fade-up-sm">
-        ¿Tu almacén tiene un reto que ningún software estándar resuelve —
+        ¿Tu almacén tiene un reto que ningún software estándar resuelve, como la
         identificación de miles de referencias pequeñas, producto cortado a
         medida, búsqueda por compatibilidad…? Las
         <a href="/blog/ayuda-innovacion-abierta-extremadura-2026" class="text-primary underline">ayudas de innovación abierta de la Junta de Extremadura</a>

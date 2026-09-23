@@ -13,6 +13,9 @@ import DemoForm from "@/partials/DemoForm.astro";
 //    - "TPV con pantalla de cocina" / "gestión de mesas restaurante"
 //  Diferenciación con /software-almacen-tienda: esa ataca almacén + TPV de
 //  tienda; esta ataca sala, cocina, barra y carta.
+//  Secciones GEO (23/09/2026): #cuanto-cuesta (precios publicados del
+//  mercado con URL y fecha), #verifactu-hosteleria, #fichaje-hosteleria.
+//  Precios de terceros consultados el 23/09/2026: revisar cada trimestre.
 //  Capturas UI: /public/images/funcionalidades/hosteleria/
 // ════════════════════════════════════════════════════════════════════════
 
@@ -217,6 +220,108 @@ const comparativa = [
   },
 ];
 
+// Precios publicados por los fabricantes (consultados el 23/09/2026).
+// Solo cifras oficiales o de distribuidor con URL (notas de investigación
+// hosteleria.md, pregunta 2). Si una marca no publica tarifa, no entra.
+const preciosMercado = [
+  {
+    nombre: "Last.app",
+    precio: "50, 95 o 175 €/mes + IVA por local",
+    nota: "Pantalla de cocina aparte (+35 €/mes por local) e instalación de 500 € + IVA. Incluye integración con delivery y fichaje.",
+    fuente: "last.app/precios",
+    url: "https://www.last.app/precios",
+  },
+  {
+    nombre: "Square for Restaurants",
+    precio: "59 €/mes + IVA por punto de venta",
+    nota: "Licencias de TPV ilimitadas. Comisión por pago presencial con tarjeta de la UE: 1,25 % + 0,05 €.",
+    fuente: "squareup.com",
+    url: "https://squareup.com/es/es/pricing",
+  },
+  {
+    nombre: "SumUp TPV",
+    precio: "0 €/mes (Free) o 49 €/mes (Plus)",
+    nota: "En el plan gratuito, comisión del 1,49 % por transacción. El terminal se compra aparte.",
+    fuente: "sumup.com",
+    url: "https://www.sumup.com/es-es/sumup-tpv/",
+  },
+  {
+    nombre: "Holded (gema TPV)",
+    precio: "25 €/mes por tienda",
+    nota: "Módulo de TPV dentro de un ERP generalista, con cierres de caja y app para tablet.",
+    fuente: "holded.com",
+    url: "https://www.holded.com/es/gemas/tpv",
+  },
+  {
+    nombre: "Numier",
+    precio: "499 a 550 € de licencia básica, pago único",
+    nota: "Sin cuota mensual. Cocina, carta digital, comandero e inventario son módulos aparte.",
+    fuente: "ventatpv.com (distribuidor)",
+    url: "https://ventatpv.com/blog/software-numier-guia-caracteristicas-tipos-y-precios-guia-2021-n12",
+  },
+  {
+    nombre: "Drenpos (plan Full)",
+    precio: "39 €/mes sin IVA",
+    nota: "TPV con mesas y pantallas de cocina y barra, almacén, facturación con Verifactu, 5 usuarios y fichaje para 5 personas. Cada persona más que ficha, 1 €/mes.",
+    fuente: "drenpos.com/pricing",
+    url: "",
+    destacado: true,
+  },
+];
+
+// Verifactu en hostelería: solo lo que dice /software-verifactu y el RDL 15/2025
+const verifactuHosteleria = [
+  {
+    icon: "📅",
+    title: "Dos fechas, según cómo factures",
+    body: "Si el bar es una sociedad (paga el Impuesto sobre Sociedades), el 1 de enero de 2027. Si eres autónomo, el 1 de julio de 2027. El aplazamiento movió el calendario, no los requisitos.",
+  },
+  {
+    icon: "🧾",
+    title: "El ticket de la barra también entra",
+    body: "Cada venta en caja genera su registro de facturación y su QR, y el stock se descuenta en el mismo movimiento. Si el cliente pide factura completa, se emite después desde el propio ticket.",
+  },
+  {
+    icon: "📡",
+    title: "La remisión la hace el sistema",
+    body: "Los tickets simplificados y las facturas del TPV pasan por el mismo motor que el resto de la facturación, con su huella encadenada y su envío a la AEAT. No hay que activar nada en cada terminal.",
+  },
+];
+
+// Fichaje en hostelería: solo funciones del módulo de Fichajes (products_modules.md)
+const fichajeHosteleria = [
+  {
+    icon: "🔑",
+    title: "Terminal en la barra, con llavero",
+    body: "Se pasa el llavero RFID o la tarjeta QR y listo, sin sacar el móvil. Si se cae la línea, el terminal guarda el fichaje con su hora real y lo sube cuando vuelve.",
+  },
+  {
+    icon: "📱",
+    title: "App en el móvil de cada uno",
+    body: "Una app instalable sin tiendas para fichar, ver el historial y pedir vacaciones. Útil para quien empieza el turno en el mercado o hace el reparto.",
+  },
+  {
+    icon: "🗓️",
+    title: "Calendarios por turno y por temporada",
+    body: "Un calendario para el turno de mañana, otro para el de tarde, otro para el partido y uno de verano con fechas de vigencia para la terraza. Se asignan a varias personas de golpe.",
+  },
+  {
+    icon: "⏱️",
+    title: "Horas extra y festivos, día a día",
+    body: "Las horas esperadas salen del calendario y de los festivos de cada persona. Lo que pase de ahí es extra, día a día, y trabajar un festivo cuenta como extra en el informe.",
+  },
+  {
+    icon: "🏖️",
+    title: "Vacaciones desde el móvil",
+    body: "El camarero pide los días viendo su saldo, el encargado aprueba o propone otras fechas y el calendario del equipo avisa de que ese sábado ya faltan dos.",
+  },
+  {
+    icon: "🚦",
+    title: "Control de entrada y salida",
+    body: "Opcional y sin coste extra: avisa de entradas tarde, salidas antes de hora o de quien no ha fichado, con los minutos de tolerancia que tú decidas.",
+  },
+];
+
 // Casos de uso reales de hostelería
 const casos = [
   {
@@ -275,8 +380,24 @@ const faqs = [
     a: "Todavía no. Los pedidos desde la mesa y el pago desde la mesa están en desarrollo y preferimos no dar una fecha hasta tenerlos terminados. Cuando lleguen, aprovecharán el mismo QR que ya estás usando, así que no habrá que cambiar nada de lo que tengas impreso ni pegado en las mesas.",
   },
   {
-    q: "¿Cuánto cuesta el TPV de hostelería?",
-    a: "El plan Full cuesta 39 €/mes (sin IVA), incluye el módulo TPV y viene con 5 usuarios. Si ya tienes otro plan y solo quieres añadir el TPV, el módulo suelto son 20,58 €/mes (sin IVA). El fichaje del personal se añade por 1 €/usuario/mes. Sin permanencia, sin coste de instalación y con actualizaciones y soporte incluidos.",
+    q: "¿Cuánto cuesta un TPV para un bar?",
+    a: "Con los precios que publicaban los fabricantes el 23 de septiembre de 2026, el software va de 0 a 175 € al mes en suscripción (con comisión por pago con tarjeta en algunos casos) o ronda los 499 a 550 € en licencia sin cuota, con los módulos aparte. En Drenpos, el plan Full cuesta 39 €/mes sin IVA e incluye el TPV, el almacén, la facturación con Verifactu, 5 usuarios y fichaje para 5 personas. El módulo TPV suelto son 20,58 €/mes sin IVA. Sin permanencia ni coste de instalación.",
+  },
+  {
+    q: "¿Es obligatorio Verifactu en un bar?",
+    a: "Sí, si el bar factura con un programa informático, y el ticket simplificado de la barra también entra. Según el Real Decreto-ley 15/2025, las sociedades tienen que estar adaptadas el 1 de enero de 2027 y los autónomos el 1 de julio de 2027. En Drenpos cada ticket que sale del TPV genera su registro de facturación y su QR y se remite a la AEAT desde el propio sistema, sin configuración por tu parte.",
+  },
+  {
+    q: "¿El software para bares integra el fichaje del personal?",
+    a: "Sí, en el mismo sistema que la caja. El equipo ficha con un llavero RFID o una tarjeta QR en el terminal de la barra (desde 140 € sin IVA, sigue fichando aunque se caiga internet) o con la app del móvil. Hay calendarios por turno y por temporada, festivos por comunidad, horas extra calculadas día a día, vacaciones pedidas desde el móvil y control de entrada y salida opcional. El plan Full incluye 5 personas con fichaje; cada una más cuesta 1 €/mes sin IVA.",
+  },
+  {
+    q: "¿Sirve para una cafetería o un food truck?",
+    a: "Para una cafetería, sí: desayunos en dos toques, menús con pasos configurados, pantalla de barra y cierre de caja por turno. En un food truck el TPV funciona en el navegador de una tablet o un móvil con datos, pero hoy no te prometemos que cobre sin cobertura; si trabajas en sitios sin señal, pregúntanos antes. El terminal de fichaje sí guarda los fichajes sin conexión y se puede alimentar a 12 V.",
+  },
+  {
+    q: "¿Qué no hace Drenpos en un bar o un restaurante?",
+    a: "Preferimos decirlo claro. Hoy no se integra con plataformas de delivery como Glovo, Uber Eats o Just Eat, no tiene motor de reservas de mesa y no tiene datáfono propio: cobras con el datáfono de tu banco o proveedor y el TPV registra el método de pago. Tampoco hace escandallos por receta. Los pedidos y el pago desde la mesa están en desarrollo, y la carta digital con alérgenos llega en las próximas semanas.",
   },
 ];
 
@@ -310,6 +431,8 @@ const articulos = [
   { t: "Gestión de mesas en un restaurante y mapa de sala", s: "gestion-mesas-restaurante-mapa-sala" },
   { t: "TPV para bares y restaurantes: cómo elegirlo en 2026", s: "tpv-bares-restaurantes-como-elegir-2026" },
   { t: "Pedidos y pago desde la mesa con QR: qué esperar", s: "pedidos-pago-desde-la-mesa-qr-restaurante" },
+  { t: "Cuánto cuesta un TPV para un bar o restaurante en 2026", s: "cuanto-cuesta-tpv-bar-restaurante-2026" },
+  { t: "Control horario en hostelería: turnos partidos y horas extra", s: "control-horario-hosteleria-turnos-partidos" },
 ];
 
 // ── Datos estructurados (JSON-LD) ──────────────────────────────────────
@@ -331,12 +454,12 @@ const productSchema = {
   operatingSystem: "Web, iOS, Android (PWA)",
   url: CANONICAL,
   description:
-    "Software para bares y restaurantes con TPV de hostelería: salas y mesas persistentes con editor de mapa de sala, flujo guiado de combinados y extras con precio por opción, pantallas de cocina y barra por familias que consultan al servidor cada 3 segundos, QR de mesa imprimible con analítica de escaneos, cierre de caja con desglose por método de pago, stock descontado automáticamente, Verifactu en cada ticket y fichaje del personal.",
+    "Software para bares y restaurantes con TPV de hostelería: mapa de sala editable, combinados y extras guiados con precio por opción, pantallas de cocina y barra por familias, QR de mesa con analítica de escaneos y cierre de caja con el stock descontado. Cada ticket simplificado genera su registro Verifactu y su QR (obligatorio el 1 de enero de 2027 para sociedades y el 1 de julio de 2027 para autónomos). Incluye fichaje del personal con terminal RFID en la barra que funciona sin conexión, app móvil, calendarios por turno, horas extra día a día y vacaciones. Plan Full 39 €/mes sin IVA con 5 usuarios y fichaje para 5 personas.",
   offers: {
     "@type": "Offer",
     price: "39.00",
     priceCurrency: "EUR",
-    description: "Plan Full con módulo TPV incluido y 5 usuarios, 39 €/mes (sin IVA). Módulo TPV suelto 20,58 €/mes.",
+    description: "Plan Full con TPV, almacén, facturación con Verifactu, 5 usuarios y fichaje para 5 personas, 39 €/mes sin IVA. Módulo TPV suelto 20,58 €/mes. Fichaje adicional 1 €/persona/mes.",
     url: "https://www.drenpos.com/pricing",
   },
   featureList: [
@@ -354,9 +477,17 @@ const productSchema = {
     "Cierre de caja con desglose por método de pago y cobro mixto",
     "Reimpresión de tickets e historial",
     "Stock descontado automáticamente del inventario",
-    "Verifactu en cada ticket y factura",
+    "Verifactu en cada ticket simplificado y factura, con registro y código QR",
+    "Factura completa emitida desde el ticket cuando el cliente la pide",
     "Envío de facturas por WhatsApp",
     "Fichaje del personal con llavero RFID, QR o app",
+    "Terminal de fichaje en la barra que guarda los fichajes sin conexión",
+    "Calendarios laborales por turno con fechas de vigencia por temporada",
+    "Festivos nacionales y autonómicos por persona",
+    "Horas extra calculadas día a día según el calendario",
+    "Vacaciones y permisos pedidos desde el móvil, sin coste extra",
+    "Control de entrada y salida opcional con incidencias, sin coste extra",
+    "Sin coste por pantalla de cocina ni por número de tickets",
   ],
   provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
 };
@@ -374,8 +505,8 @@ const faqSchema = {
 
 <Base
   title="Software para Bares y Restaurantes · Drenpos"
-  meta_title="Software para Bares y Restaurantes | TPV Drenpos"
-  description="Software para bares y restaurantes con mapa de sala, pantallas de cocina y barra, QR de mesa y cierre de caja con Verifactu. Plan Full 39 €/mes sin IVA."
+  meta_title="Software para Bares y Restaurantes: TPV y Fichaje | Drenpos"
+  description="Software para bares y restaurantes: TPV con mapa de sala, pantallas de cocina, Verifactu en cada ticket y fichaje por turnos. Plan Full 39 €/mes sin IVA."
   canonical={CANONICAL}
   image={`${IMG}/01-mapa-sala-mesas.png`}
 >
@@ -506,19 +637,52 @@ const faqSchema = {
       <div class="row justify-center">
         <div class="lg:col-9 text-center" data-aos="fade-up-sm">
           <h2 class="h4 font-bold mb-4">¿Qué es un software para bares y restaurantes?</h2>
-          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
-            Un <strong>software para bares y restaurantes</strong> es el sistema
-            que lleva <strong>la sala, la cocina y la caja</strong> en un mismo
-            sitio: qué mesas están abiertas y cuánto llevan, qué ha pedido cada
-            una, qué tiene que preparar cocina y qué barra, y qué se ha cobrado y
-            por qué método. Se diferencia de un TPV de tienda en que trabaja
-            sobre <em>mesas</em> y no sobre tickets sueltos, y en que la comanda
-            viaja sola a las pantallas de cocina y barra en cuanto se marca. En
-            Drenpos eso incluye mapa de sala editable, flujo guiado de
-            combinados y extras, pantallas de órdenes por familias, QR de mesa
-            con analítica de escaneos y cierre de caja con el stock descontado y
-            Verifactu en cada ticket.
+          <p class="text-lg leading-relaxed mb-5" style="color: rgba(16,25,40,0.72);">
+            Un <strong>software para bares y restaurantes</strong> es el programa
+            que lleva la sala, la cocina y la caja de un local de hostelería en
+            un mismo sistema: qué mesas están abiertas y qué ha pedido cada una,
+            qué comandas van a cocina y cuáles a barra, qué se ha cobrado y cómo.
+            A diferencia de un TPV de tienda, trabaja con cuentas que siguen
+            abiertas durante horas. Los más completos suman stock, facturación
+            con Verifactu y fichaje del personal.
           </p>
+          <p class="leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">
+            En Drenpos todo eso va en el <strong>plan Full, por 39 €/mes sin
+            IVA</strong>: mapa de sala, combinados y extras guiados, pantallas de
+            cocina y barra, QR de mesa con analítica, cierre de caja con el stock
+            descontado, Verifactu en cada ticket y fichaje con llavero en la
+            propia barra.
+          </p>
+        </div>
+      </div>
+
+      <!-- Cifras del sector, con fuente -->
+      <div class="row justify-center mt-10">
+        <div class="lg:col-10">
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="rounded-2xl border border-dark/10 bg-body p-6" data-aos="fade-up-sm">
+              <p class="h3 font-bold text-primary mb-2">Más de 300.000</p>
+              <p class="text-sm leading-relaxed mb-2" style="color: rgba(16,25,40,0.72);">
+                establecimientos de hostelería había en España en 2023, y los
+                bares son el 54 % de todos ellos.
+              </p>
+              <p class="text-xs mb-0" style="color: rgba(16,25,40,0.55);">
+                Fuente: Anuario de la Hostelería de España 2024, resumido por
+                <a href="https://www.hosteleriamadrid.com/blog/anuario-hosteleria-espana-2024/" rel="noopener" target="_blank" class="text-primary underline">Hostelería Madrid</a>.
+              </p>
+            </div>
+            <div class="rounded-2xl border border-dark/10 bg-body p-6" data-aos="fade-up-sm" data-aos-delay="100">
+              <p class="h3 font-bold text-primary mb-2">58 %</p>
+              <p class="text-sm leading-relaxed mb-2" style="color: rgba(16,25,40,0.72);">
+                de los comensales dice recurrir a menudo a la carta digital
+                cuando puede elegir entre ella y la de papel.
+              </p>
+              <p class="text-xs mb-0" style="color: rgba(16,25,40,0.55);">
+                Fuente: estudio de Square publicado en marzo de 2024, recogido por
+                <a href="https://www.hosteleriadigital.es/2024/03/22/los-menus-digitales-se-han-extendido-por-la-mayoria-de-locales-de-restauracion-y-ya-son-la-opcion-favorita-de-los-comensales-espanoles-para-consultar-la-carta/" rel="noopener" target="_blank" class="text-primary underline">Hostelería Digital</a>.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -755,12 +919,210 @@ const faqSchema = {
         </table>
       </div>
       <p class="text-sm mt-6 max-w-3xl" style="color: rgba(16,25,40,0.6);">
-        No damos nombres de otras marcas a propósito: cada fabricante tiene su
-        forma de trabajar y su precio, y lo que aquí importa es qué necesita tu
-        local. Si ya tienes un TPV que te funciona, quizá lo que te falte sea
-        solo la parte de stock y facturación, y eso lo cuenta mejor
+        Esta tabla compara formas de trabajar, no marcas. Los precios que cada
+        fabricante publica los tienes justo debajo, con su enlace y la fecha en
+        que los consultamos. Si ya tienes un TPV que te funciona, quizá lo que
+        te falte sea solo la parte de stock y facturación, y eso lo cuenta mejor
         <a href="/software-almacen-tienda" class="text-primary underline">la página de almacén y tienda</a>.
       </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ¿CUÁNTO CUESTA? Precios publicados del mercado frente a Drenpos (AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="cuanto-cuesta" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto mb-10" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Precios de mercado</span>
+        <h2 class="h3 font-bold mb-4">¿Cuánto cuesta un software TPV para un bar o un restaurante?</h2>
+        <p class="text-lg leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+          Según las tarifas que publican los fabricantes, un TPV de hostelería
+          en suscripción va de 0 a 175 € al mes, y algunos cobran además una
+          comisión por cada pago con tarjeta o la pantalla de cocina aparte.
+          Una licencia sin cuota ronda los 499 a 550 € de pago único, con los
+          módulos por separado. Drenpos cuesta 39 €/mes sin IVA con TPV,
+          almacén, facturación con Verifactu y fichaje para cinco personas.
+        </p>
+      </div>
+
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[900px]">
+          <caption class="sr-only">Precios publicados de software TPV para hostelería en España, consultados el 23 de septiembre de 2026</caption>
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Solución</th>
+              <th class="text-left p-4">Precio publicado</th>
+              <th class="text-left p-4">Qué conviene saber</th>
+              <th class="text-left p-4 rounded-tr-2xl">Fuente</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              preciosMercado.map((r) => (
+                <tr class={r.destacado ? "bg-primary/5 font-medium" : "border-b border-dark/5"}>
+                  <td class={`p-4 ${r.destacado ? "text-primary font-bold" : "font-medium"}`}>{r.nombre}</td>
+                  <td class="p-4">{r.precio}</td>
+                  <td class="p-4">{r.nota}</td>
+                  <td class="p-4">
+                    {r.url ? (
+                      <a href={r.url} rel="noopener" target="_blank" class="text-primary underline">{r.fuente}</a>
+                    ) : (
+                      <a href="/pricing" class="text-primary underline">{r.fuente}</a>
+                    )}
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm mt-6 max-w-4xl" style="color: rgba(16,25,40,0.6);">
+        Precios consultados el 23/09/2026 en la web de cada fabricante (en el
+        caso de Numier, en la de un distribuidor). Pueden cambiar: antes de
+        decidir, compruébalos en el enlace. No incluimos marcas que no publican
+        tarifa. Todos los precios de Drenpos son sin IVA.
+      </p>
+
+      <div class="row justify-center mt-8">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <div class="rounded-3xl border border-dark/10 bg-body p-6 lg:p-8">
+            <h3 class="h5 font-bold mb-3">Lo que no sale en la cuota</h3>
+            <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.72);">
+              La cifra de entrada engaña poco si miras tres cosas. La primera, la
+              <strong>comisión por pago con tarjeta</strong>: si cobras 10.000 € al
+              mes con tarjeta, un 1,49 % son 149 € al mes que no aparecen en la
+              cuota. La segunda, lo que se cobra <strong>por local, por terminal o
+              por pantalla</strong>, que crece al sacar la terraza o abrir el
+              segundo local. La tercera, lo que <strong>no hace el TPV</strong> y
+              acabas pagando en otra herramienta: el fichaje, el almacén o la
+              facturación a empresas.
+            </p>
+            <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+              En Drenpos no hay coste por pantalla de cocina ni por número de
+              tickets. El plan Full trae 5 usuarios y 5 personas con fichaje; a
+              partir de ahí, cada persona más que ficha suma 1 €/mes y cada
+              usuario más del sistema, 5 €/mes. El terminal de fichaje, si lo
+              quieres, parte de 140 € sin IVA en un único pago. Hacemos las
+              cuentas con tres locales tipo en
+              <a href="/blog/cuanto-cuesta-tpv-bar-restaurante-2026" class="text-primary underline">cuánto cuesta un TPV para un bar o restaurante en 2026</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       VERIFACTU EN HOSTELERÍA (AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="verifactu-hosteleria" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto mb-10" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Verifactu en hostelería</span>
+        <h2 class="h3 font-bold mb-4">¿Es obligatorio Verifactu en un bar o un restaurante?</h2>
+        <p class="text-lg leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+          Sí, si facturas con un programa informático, y el ticket de la barra
+          también cuenta. Tras el Real Decreto-ley 15/2025, el bar que funciona
+          como sociedad tiene que estar adaptado el 1 de enero de 2027, y el
+          autónomo el 1 de julio de 2027. En Drenpos cada ticket simplificado
+          que sale del TPV genera su registro de facturación y su código QR, sin
+          que el camarero haga nada distinto.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center">
+        {
+          verifactuHosteleria.map((v, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7">
+                <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-4" style="background: rgba(121,27,70,0.08);">{v.icon}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{v.title}</h3>
+                <p class="text-sm mb-0" style="color: rgba(16,25,40,0.68);">{v.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="rounded-2xl p-6 lg:p-8 mt-8" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
+        <p class="font-semibold text-text-dark mb-2">En qué se apoya</p>
+        <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+          Los requisitos técnicos los fijan el Real Decreto 1007/2023 y la Orden
+          HAC/1177/2024. El calendario vigente es el del
+          <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-24446" rel="noopener" target="_blank" class="text-primary underline">Real Decreto-ley 15/2025 (BOE)</a>,
+          que aplazó la obligación a 2027 sin cambiar lo que tiene que hacer el
+          programa. Lo contamos entero, con qué pasa si sigues con tu programa
+          actual, en
+          <a href="/software-verifactu" class="text-primary underline">software de facturación Verifactu</a>
+          y en la <a href="/blog/verifactu-pymes-guia-2026" class="text-primary underline">guía de Verifactu para pymes y autónomos</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FICHAJE EN HOSTELERÍA (AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="fichaje-hosteleria" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto mb-10" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Fichaje del personal</span>
+        <h2 class="h3 font-bold mb-4">¿Cómo se registra la jornada en un bar con turnos partidos?</h2>
+        <p class="text-lg leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+          Con un fichaje por cada entrada y cada salida, también en el hueco
+          de la tarde, y un calendario por turno que diga cuántas horas tocaban
+          ese día. En Drenpos el equipo ficha con un llavero en el terminal de
+          la barra o desde el móvil, y el sistema calcula las horas extra día a
+          día. Vacaciones y control de entrada y salida van incluidos, sin
+          coste extra.
+        </p>
+      </div>
+
+      <div class="row g-5 items-center">
+        <div class="lg:col-5" data-aos="fade-up-sm">
+          <figure class="relative px-4 lg:px-0 mb-0">
+            <div class="rounded-2xl overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07); border: 1px solid rgba(16,25,40,0.08);">
+              <img src="/images/funcionalidades/control-horario/hardware/v2-terminal-en-mano.webp" alt="Terminal de fichaje de Drenpos sostenido en la mano, con lector de llaveros RFID y códigos QR" width="1200" height="800" class="w-full h-auto block" loading="lazy" />
+            </div>
+            <figcaption class="text-xs mt-3 text-center" style="color: rgba(16,25,40,0.55);">El terminal va junto a la caja: se ficha con el llavero al empezar el turno.</figcaption>
+          </figure>
+        </div>
+        <div class="lg:col-7">
+          <div class="grid sm:grid-cols-2 gap-4">
+            {fichajeHosteleria.map((f, i) => (
+              <div class="border rounded-[20px] p-6 h-full" style="border-color: rgba(16,25,40,0.1); background: #fff;" data-aos="fade-up-sm" data-aos-delay={(i % 2) * 80}>
+                <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-4" style="background: rgba(121,27,70,0.08);">{f.icon}</div>
+                <h3 class="h6 font-semibold mb-2">{f.title}</h3>
+                <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{f.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl p-6 lg:p-8 mt-8" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
+        <p class="font-semibold text-text-dark mb-2">Qué exige hoy la ley</p>
+        <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.72);">
+          El registro diario de jornada es obligatorio desde 2019 por el
+          <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" rel="noopener" target="_blank" class="text-primary underline">artículo 34.9 del Estatuto de los Trabajadores</a>,
+          que introdujo el
+          <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2019-3481" rel="noopener" target="_blank" class="text-primary underline">Real Decreto-ley 8/2019</a>:
+          hora de entrada y de salida de cada persona, registros guardados
+          cuatro años. No llevarlo es una infracción grave de la
+          <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2000-15060" rel="noopener" target="_blank" class="text-primary underline">LISOS</a>
+          (artículo 7.5), con multa de 751 a 7.500 € por infracción.
+        </p>
+        <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+          El real decreto que haría obligatorio el registro digital y
+          calcularía la multa por trabajador sigue sin aprobarse ni publicarse
+          en el BOE a fecha de 23 de septiembre de 2026. Todo el detalle, con
+          los casos de hostelería, en
+          <a href="/control-horario" class="text-primary underline">control horario</a>,
+          en el <a href="/dispositivo-fichaje" class="text-primary underline">dispositivo de fichaje</a>
+          y en <a href="/blog/control-horario-hosteleria-turnos-partidos" class="text-primary underline">control horario en hostelería con turnos partidos</a>.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -804,7 +1166,8 @@ const faqSchema = {
               combinados, pantallas de cocina y barra, QR de mesa con analítica,
               cierre de caja, stock y facturación con Verifactu. Si prefieres
               añadir el TPV a otro plan, el <strong>módulo suelto son 20,58
-              €/mes</strong>, y el <strong>fichaje del personal 1 €/usuario/mes</strong>.
+              €/mes</strong>. El plan trae fichaje para 5 personas y cada una
+              más suma <strong>1 €/mes</strong>.
             </p>
             <ul class="flex flex-wrap gap-4 justify-center mb-6">
               <li>

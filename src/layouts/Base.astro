@@ -42,7 +42,7 @@ export interface Props {
   type?: "website" | "article";
   published_date?: string | Date;
   modified_date?: string | Date;
-  author?: { name?: string; url?: string };
+  author?: { name?: string; url?: string; sameAs?: string[]; jobTitle?: string };
   keywords?: string[];
   breadcrumbs?: Array<{ name: string; item: string }>;
 }
@@ -119,22 +119,51 @@ const pageId = `${canonicalURL}#webpage`;
 const articleId = `${canonicalURL}#article`;
 const imageId = `${canonicalURL}#primaryimage`;
 
-const sameAs = social.main.map((s) => s.link);
+// Entidad: perfiles de social.json (los del pie) más los perfiles de empresa.
+const COMPANY_PROFILES = [
+  "https://www.linkedin.com/company/drenpos",
+  "https://x.com/Drenpos",
+];
+const sameAs = Array.from(
+  new Set([...social.main.map((s) => s.link), ...COMPANY_PROFILES]),
+);
+
+// Fundador: mismo @id en Organization.founder y en el autor de los posts.
+const founderId = `${siteUrl}/#founder`;
+const FOUNDER_NAME = "Alonso Bermejo Pérez";
+const FOUNDER_LINKEDIN = "https://www.linkedin.com/in/alonso-bermejo/";
+
+const orgLogo = {
+  "@type": "ImageObject",
+  url: `${siteUrl}${config.site.logo}`,
+  width: Number(config.site.logo_width),
+  height: Number(config.site.logo_height),
+};
 
 const graph: Record<string, unknown>[] = [
   {
     "@type": "Organization",
     "@id": orgId,
     name: "Drenpos",
+    legalName: "Drenpos Tech SL",
     url: siteUrl,
-    logo: {
-      "@type": "ImageObject",
-      url: `${siteUrl}${config.site.logo}`,
-      width: Number(config.site.logo_width),
-      height: Number(config.site.logo_height),
-    },
+    logo: orgLogo,
     description:
-      "Plataforma ERP SaaS modular para pymes y autónomos en España. Gestión de inventario, ventas, facturación electrónica Verifactu y control horario.",
+      "Drenpos Tech SL desarrolla Drenpos, un ERP SaaS modular para pymes y autónomos en España, con sede en Solana de los Barros (Badajoz, Extremadura). Gestión de almacén e inventario, ventas, TPV, facturación electrónica Verifactu y control horario.",
+    founder: {
+      "@type": "Person",
+      "@id": founderId,
+      name: FOUNDER_NAME,
+      jobTitle: "CEO & Founder",
+      url: `${siteUrl}/about`,
+      sameAs: [FOUNDER_LINKEDIN],
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Solana de los Barros",
+      addressRegion: "Badajoz",
+      addressCountry: "ES",
+    },
     sameAs,
     contactPoint: {
       "@type": "ContactPoint",
@@ -142,14 +171,18 @@ const graph: Record<string, unknown>[] = [
       url: `${siteUrl}/contact`,
       availableLanguage: ["Spanish", "es"],
     },
-    areaServed: { "@type": "Country", name: "España" },
+    areaServed: "ES",
     knowsAbout: [
       "ERP",
       "Facturación electrónica",
       "Verifactu",
       "Control horario",
+      "Gestión de vacaciones y ausencias",
       "TPV",
+      "TPV para hostelería",
       "Gestión de inventario",
+      "Control de stock",
+      "Sistema de gestión de almacén (SGA)",
       "Software para pymes",
     ],
     publishingPrinciples: `${siteUrl}/legal/aviso-legal`,
@@ -164,7 +197,7 @@ const graph: Record<string, unknown>[] = [
     operatingSystem: "Web",
     url: siteUrl,
     description:
-      "ERP SaaS modular para pymes españolas. Incluye almacén multialmacén, TPV de tienda y TPV de restaurante con mapa de mesas, pantallas de cocina y QR de mesa, facturación electrónica con Verifactu (AEAT), control de producción con coste real de fabricación, control horario laboral, módulo médico y conector MCP para consultar los datos desde ChatGPT, Claude u otro asistente compatible. Sin costes por uso. Soporte humano incluido.",
+      "ERP SaaS modular para pymes españolas. Incluye almacén multialmacén, TPV de tienda y TPV de restaurante con mapa de mesas, pantallas de cocina y QR de mesa, facturación electrónica con Verifactu (AEAT), control de producción con coste real de fabricación, control horario laboral con vacaciones y permisos, control de stock con propuesta de compra, conector con Holded, módulo médico y conector MCP para consultar los datos desde ChatGPT, Claude u otro asistente compatible. Sin costes por uso. Soporte humano incluido.",
     offers: {
       "@type": "AggregateOffer",
       priceCurrency: "EUR",
@@ -188,8 +221,14 @@ const graph: Record<string, unknown>[] = [
       "Control de producción y coste real de fabricación",
       "Órdenes de trabajo con fases e imputación de tiempos",
       "Control horario laboral",
+      "Vacaciones y permisos con cupos y aprobación",
+      "Control de entrada y salida con incidencias y tolerancias",
+      "Calendarios laborales y festivos por comunidad y por persona",
       "Geolocalización opcional al fichar entrada y salida",
       "Terminal de fichaje con modo sin conexión",
+      "Fichaje del personal integrado con el TPV de hostelería",
+      "Control de stock con alertas de mínimos y propuesta de compra",
+      "Conector Holded: artículos, contactos y pedidos desde Holded, albarán de vuelta al cerrarlo",
       "Gestión de pedidos y albaranes",
       "Trazabilidad de lotes",
       "Envío de documentos por correo y WhatsApp",
@@ -263,14 +302,27 @@ if (type === "article" && pubDate) {
     dateModified: modDate || pubDate,
     inLanguage: "es-ES",
     isPartOf: { "@id": websiteId },
-    publisher: { "@id": orgId },
+    publisher: {
+      "@type": "Organization",
+      "@id": orgId,
+      name: "Drenpos",
+      logo: orgLogo,
+    },
     ...(image && { image: { "@id": imageId } }),
     ...(keywords && keywords.length > 0 && { keywords: keywords.join(", ") }),
     ...(author?.name && {
       author: {
         "@type": "Person",
+        ...(author.name === FOUNDER_NAME && { "@id": founderId }),
         name: author.name,
-        ...(author.url && { url: author.url, sameAs: [author.url] }),
+        ...(author.url && {
+          url: author.url.startsWith("http")
+            ? author.url
+            : `${siteUrl}${author.url}`,
+        }),
+        ...(author.sameAs &&
+          author.sameAs.length > 0 && { sameAs: author.sameAs }),
+        ...(author.jobTitle && { jobTitle: author.jobTitle }),
         worksFor: { "@id": orgId },
       },
     }),

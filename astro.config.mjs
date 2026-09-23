@@ -123,12 +123,10 @@ export default defineConfig({
           href.startsWith("/schema/") ||
           href.startsWith("https://"),
       },
-      llmsTxt: {
-        title: "Drenpos — ERP SaaS modular para pymes en España",
-        siteUrl: SITE_URL,
-        summary:
-          "Drenpos es un ERP SaaS modular para pymes y autónomos en España. Inventario, TPV, facturación electrónica Verifactu, control horario, módulo médico.",
-      },
+      // llmsTxt desactivado a propósito: el plugin escribía su propio
+      // dist/llms.txt (lista automática de páginas, con la 404 incluida) y
+      // pisaba el documento redactado a mano de src/pages/llms.txt.ts, que es
+      // el que deben leer los asistentes de IA.
       markdownAlternate: true,
       ...(isProductionBuild && {
         indexNow: {

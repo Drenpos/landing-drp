@@ -38,6 +38,10 @@
           "url": "/software-gestion-almacen"
         },
         {
+          "name": "Control de Stock",
+          "url": "/software-control-stock"
+        },
+        {
           "name": "Preparación de Pedidos",
           "url": "/software-preparacion-pedidos-picking"
         },

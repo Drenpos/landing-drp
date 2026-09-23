@@ -50,6 +50,20 @@ const offline = [
   },
 ];
 
+// Llaveros desconocidos y trazabilidad del terminal (bloque dentro de #sin-conexion)
+const trazaTerminal = [
+  {
+    icon: "🗃️",
+    title: "Llaveros desconocidos, en cuarentena",
+    body: "Si alguien ficha con un llavero o una tarjeta que todavía no está asignado a nadie, el fichaje ni se pierde ni entra en falso: queda apartado en una bandeja. Cuando sabes de quién era (el temporero nuevo al que le diste la llave antes de darlo de alta), se lo asignas desde ahí y entra con su hora original.",
+  },
+  {
+    icon: "🧾",
+    title: "Qué ha subido cada terminal",
+    body: "Desde Drenpos consultas qué fichajes ha subido cada terminal y qué le ha pasado a su reloj. Si un día falta alguien en el informe, miras el terminal de la nave o el de la furgoneta y sales de dudas sin desmontar nada.",
+  },
+];
+
 // Ficha técnica (solo datos reales del terminal v2)
 const ficha = [
   { k: "Lectura", v: "Llavero o tarjeta RFID y código QR personal de cada empleado" },
@@ -57,6 +71,8 @@ const ficha = [
   { k: "Alimentación", v: "12 V y 3 A. Fuente de red, batería auxiliar o toma de mechero del vehículo" },
   { k: "Conectividad", v: "WiFi con antena externa. Con red, cada fichaje se sincroniza al momento con Drenpos con sellado temporal; sin red, lo guarda y lo envía después" },
   { k: "Sin conexión", v: "Sigue fichando: guarda cada fichaje en su memoria local con la hora de su reloj integrado y lo vuelca a Drenpos, con su hora original, al recuperar la red" },
+  { k: "Llaveros sin asignar", v: "El fichaje queda en cuarentena en una bandeja y se asigna después a su dueño, con su hora original" },
+  { k: "Trazabilidad", v: "Desde Drenpos se consulta qué ha subido cada terminal y qué le ha pasado a su reloj" },
   { k: "Electrónica", v: "Placa propia diseñada por Drenpos (revisión v2), con la versión de firmware visible en pantalla" },
   { k: "Carcasa", v: "Impresa en 3D en PETG, con el logo de tu empresa en el frontal si lo quieres" },
   { k: "Ubicación", v: "Interior: naves, almacenes, talleres, oficinas y hostelería. Portátil en obra o furgoneta" },
@@ -227,7 +243,11 @@ const faqs = [
   },
   {
     q: "¿La hora de un fichaje hecho sin conexión es fiable?",
-    a: "Sí. El terminal lleva un reloj propio integrado y guarda cada fichaje con la hora exacta en que se hizo, no con la hora a la que se sincroniza. Al recuperar la red, el fichaje llega a Drenpos con esa hora original y entra en el registro inalterable como cualquier otro. Las correcciones posteriores siguen quedando trazadas con autor, momento y motivo.",
+    a: "Sí. El terminal lleva un reloj propio integrado y guarda cada fichaje con la hora exacta en que se hizo, no con la hora a la que se sincroniza. Al recuperar la red, el fichaje llega a Drenpos con esa hora original y entra en el registro inalterable como cualquier otro. Desde Drenpos puedes consultar qué ha subido cada terminal y qué le ha pasado a su reloj, y las correcciones posteriores siguen quedando trazadas con autor, momento y motivo. Si tienes activo el control de entrada y salida, un fichaje con hora reconstruida nunca cuenta como retraso ni como salida anticipada.",
+  },
+  {
+    q: "¿Qué pasa si alguien ficha con un llavero que no está dado de alta?",
+    a: "El fichaje no se pierde ni se asigna a quien no toca. Queda en cuarentena, en una bandeja aparte, con la hora a la que se hizo. Cuando sabes de quién era ese llavero o esa tarjeta, se lo asignas desde la bandeja y el fichaje entra en su registro con su hora original. Por ejemplo, con alguien de temporada al que le das la llave antes de darlo de alta en el sistema.",
   },
   {
     q: "¿Qué ve el empleado al fichar?",
@@ -285,6 +305,8 @@ const productSchema = {
     { "@type": "PropertyValue", name: "Alimentación", value: "12 V, 3 A" },
     { "@type": "PropertyValue", name: "Conectividad", value: "WiFi con antena externa" },
     { "@type": "PropertyValue", name: "Funcionamiento sin conexión", value: "Sí. Guarda los fichajes en local con reloj propio y los sincroniza al recuperar la red" },
+    { "@type": "PropertyValue", name: "Llaveros o tarjetas desconocidos", value: "El fichaje queda en cuarentena y se asigna después a su dueño con su hora original" },
+    { "@type": "PropertyValue", name: "Trazabilidad del terminal", value: "Se consulta qué ha subido cada terminal y qué le ha pasado a su reloj" },
     { "@type": "PropertyValue", name: "Biometría", value: "No" },
     { "@type": "PropertyValue", name: "Personalización", value: "Logo del cliente en carcasa y llaveros" },
   ],
@@ -708,12 +730,27 @@ const productSchema = {
         </div>
       </div>
 
+      <div class="grid md:grid-cols-2 gap-4 mt-8">
+        {trazaTerminal.map((t, i) => (
+          <div class="h-full rounded-3xl border border-dark/10 bg-body p-7" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-11 h-11 rounded-2xl flex items-center justify-center text-xl flex-shrink-0" style="background: rgba(121,27,70,0.08);" aria-hidden="true">{t.icon}</div>
+              <h3 class="h6 font-bold mb-0 leading-snug">{t.title}</h3>
+            </div>
+            <p class="text-sm mb-0" style="color: rgba(16,25,40,0.65);">{t.body}</p>
+          </div>
+        ))}
+      </div>
+
       <div class="rounded-2xl p-6 lg:p-8 mt-8" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
         <p class="font-semibold mb-2">Un consejo para las inspecciones</p>
         <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.72);">
           Conecta el terminal con regularidad. Lo normal es a diario, al
           volver a la oficina o a la nave, para que el registro esté al día si
-          llega una inspección.
+          llega una inspección. Y si usas el
+          <a href="/control-horario#entrada-salida" class="text-primary underline">control de entrada y salida</a>,
+          tranquilo: un fichaje con la hora reconstruida por el terminal nunca
+          cuenta como retraso ni como salida anticipada.
         </p>
         <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
           Pensado para construcción y reformas, agricultura y campañas,
@@ -739,8 +776,9 @@ const productSchema = {
               El terminal incluye los llaveros personalizados de tu plantilla
               inicial y la fuente de alimentación. La licencia de fichaje de
               Drenpos da acceso al panel, a los calendarios laborales, a los
-              conceptos y a los reportes para la Inspección. En las
-              implantaciones acompañadas el terminal va incluido.
+              conceptos, a las vacaciones y permisos, al control de entrada y
+              salida y a los reportes para la Inspección, sin coste extra. En
+              las implantaciones acompañadas el terminal va incluido.
             </p>
             <ul class="flex flex-wrap gap-4 justify-center mb-6">
               <li>
@@ -812,7 +850,10 @@ const productSchema = {
             El terminal es la puerta física del
             <a href="/control-horario" class="text-primary underline">software de control horario de Drenpos</a>:
             calendarios laborales, conceptos de fichaje, reportes y
-            trazabilidad. Consulta los
+            trazabilidad, además de
+            <a href="/control-horario#vacaciones" class="text-primary underline">vacaciones y permisos</a>
+            y <a href="/control-horario#entrada-salida" class="text-primary underline">control de entrada y salida</a>.
+            Consulta los
             <a href="/pricing" class="text-primary underline">planes y precios</a>
             o escríbenos desde el
             <a href="/contact" class="text-primary underline">formulario de contacto</a>

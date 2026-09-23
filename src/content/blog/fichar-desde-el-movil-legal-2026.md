@@ -1,8 +1,9 @@
 ---
 title: "Cómo fichar desde el móvil de forma legal en 2026: guía operativa"
 meta_title: "Fichar desde el móvil legal en 2026: guía para pymes"
-description: "Descubre cómo fichar desde el móvil de forma legal en 2026. Deja atrás el Excel, evita sanciones y convierte el control horario en un activo financiero real."
+description: "Cómo fichar desde el móvil de forma legal en 2026: deja atrás el Excel, evita sanciones y pide las vacaciones desde la misma app de fichajes."
 date: 2026-07-27
+updated: 2026-09-23
 image: "/images/blog/fichar-desde-el-movil-legal-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -35,7 +36,7 @@ El [Excel fue útil cuando eras cinco personas](/blog/por-que-excel-ya-no-sirve-
 
 ![Two workers in a warehouse discussing logistics near a forklift captured from above.](/images/blog/fichar-desde-el-movil-legal-2026/section-1.jpg)
 
-Piensa en una empresa de mantenimiento como *Instalaciones Ruiz S.L.* Tenían fichajes por WhatsApp y un Excel maestro. Cuando llegó la inspección, el tiempo de preparación superó las tres semanas. ¿Por qué? Porque tuvieron que reconstruir cronologías, validar firmas digitales y explicar por qué tres técnicos tenían el mismo horario de entrada en ciudades distintas. El coste real fue la parálisis operativa y la pérdida de margen por horas mal registradas, mucho más que la multa potencial.
+Piensa en una empresa de mantenimiento con fichajes por WhatsApp y un Excel maestro. Si llega una inspección, alguien tiene que reconstruir cronologías y explicar por qué tres técnicos tienen el mismo horario de entrada en ciudades distintas. Esa preparación paraliza la oficina durante días, y la pérdida de margen por horas mal registradas suele pesar más que la multa potencial.
 
 Las soluciones manuales o genéricas generan tres fugas de dinero que nadie cuantifica:
 - Horas no facturadas por duplicidad o errores de cálculo manual
@@ -58,6 +59,12 @@ Huella dactilar o reconocimiento facial son herramientas potentes, pero la LOPDG
 El registro debe ser digital, inalterable y accesible para el trabajador. El consentimiento no se agota en un checkbox al contratar: hablamos de un registro de auditoría que demuestra que cada dato fue introducido con conocimiento de causa. La ley exige conservar estos registros durante cuatro años. Si tu plataforma borra logs, permite ediciones sin firma digital o no exporta en formatos válidos para la administración, estás construyendo sobre arena.
 
 > "Un sistema de registro jornada app que no guarda trazabilidad de quién, cuándo y cómo se modificó un dato, no es una herramienta de cumplimiento: es una prueba en contra."
+
+## ¿Y las vacaciones? También desde el móvil
+
+La app de fichajes no sirve solo para fichar. En Drenpos, la misma app instalable (sin pasar por App Store ni Google Play) tiene una pantalla de vacaciones: cada persona ve su saldo por tipo de ausencia, sus solicitudes y los festivos, y pide días viendo cuántos laborables gasta antes de enviar. Si su responsable le propone otras fechas con un motivo, lo acepta o lo rechaza desde el mismo móvil.
+
+Para un técnico que pasa la semana en ruta o un comercial que casi no pisa la oficina, es la diferencia entre pedir las vacaciones por WhatsApp y que se pierdan, o dejarlas pedidas y aprobadas con su rastro. Las ausencias aprobadas salen en el mismo informe que los fichajes. Cómo se configuran los cupos y las aprobaciones lo contamos en [gestión de vacaciones y ausencias sin Excel](/blog/gestion-vacaciones-permisos-pymes-sin-excel).
 
 ## Implementación real: de la app al ERP sin romper la operativa diaria
 

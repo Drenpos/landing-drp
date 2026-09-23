@@ -1,8 +1,9 @@
 ---
 title: "Control de stock: elimina roturas y recupera margen"
-meta_title: "Control de stock sin caos: elimina roturas y protege tu margen"
+meta_title: "Control de stock sin caos: evita roturas y protege tu margen"
 description: "Control de stock sin caos operativo. Descubre cómo eliminar roturas, sincronizar ventas y recuperar tu margen con un sistema a medida y normativo."
 date: 2026-08-11
+updated: 2026-09-23
 image: "/images/blog/control-de-stock-sin-roturas/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -46,7 +47,13 @@ Imagina que un cliente entra buscando un artículo que tú crees que tienes. El 
 
 La intuición fue tu mejor amiga cuando abrías la primera tienda. Hoy, cuando gestionas múltiples referencias y canales, la intuición se convierte en el **mayor riesgo financiero** de tu negocio.
 
-> **Actualizado en agosto de 2026:** hemos añadido una sección sobre el stock disponible frente al stock físico, con el funcionamiento del motor de reservas y su conexión con la propuesta de compra asistida, además de dos preguntas frecuentes nuevas.
+> **Actualizado en septiembre de 2026:** hemos añadido una sección sobre cuánto cuesta de verdad una rotura de stock, con las cifras del estudio de Corsten y Gruen y su fuente, y hemos retirado dos ejemplos que no podíamos respaldar con datos. En agosto ya se había sumado la parte de stock disponible frente a stock físico.
+
+## ¿Cuánto cuesta de verdad una rotura de stock?
+
+Más de lo que se ve en caja. El estudio de Corsten y Gruen (2004) sobre distribución minorista, que recoge [Slimstock](https://www.slimstock.com/blog/the-hidden-cost-of-stockouts-why-retailers-cant-afford-empty-shelves/), calcula que las roturas se llevan de media un 4 % de las ventas y que el 72 % nacen de problemas de planificación que la propia empresa puede gestionar. Ante el hueco, el cliente sustituye el producto, espera, abandona la compra o se va a la competencia.
+
+Son datos de gran distribución y en tu negocio la cifra será otra. Pero el patrón se repite en cualquier tienda o almacén: la mayoría de las roturas no las provoca el proveedor, las provoca un aviso que no llegó o un pedido que se hizo a ojo. Por eso las dos palancas más baratas son el stock mínimo con alerta y la propuesta de compra. Cómo funcionan las dos, con lotes, pistola e inventarios, lo explicamos en el [software de control de stock](/software-control-stock).
 
 ## El ciclo invisible que destruye tu margen
 
@@ -56,7 +63,7 @@ Todo empieza con un archivo que funciona. Al principio, cargar productos, ajusta
 
 Empiezan las versiones desactualizadas. Tu responsable de tienda edita una hoja, el almacenero otra, y nadie sabe cuál es la real. **Cada desconexión genera dos problemas simultáneos:** roturas de stock en punto de venta y capital inmovilizado en productos que nadie compra.
 
-Toma el caso de Ferretería Martínez. Con dos empleados, el Excel bastaba. Con seis y tres líneas de producto, perdían **dos horas diarias** reconciliando datos y un 12% de las ventas potenciales por desabastecimiento.
+Piensa en una ferretería que empezó con dos personas y un Excel que bastaba. Con seis personas y tres líneas de producto, el mismo archivo lo tocan varios a la vez, y cada tarde alguien pierde un rato cuadrando lo que se vendió con lo que dice la hoja.
 
 El ciclo se repite sin pausa:
 
@@ -94,9 +101,9 @@ La tranquilidad operativa nace cuando dejas de gestionar el pasado y empiezas a 
 
 La visibilidad en tiempo real elimina la adivinanza. Cada entrada, salida o devolución se refleja al instante. Tu margen deja de depender de la memoria de tu equipo.
 
-La sincronización omnicanal es el siguiente salto: marketplaces, web y punto de venta comparten un **único registro**. Cuando se agota una unidad en cualquiera de los canales, el stock se actualiza automáticamente en todos. La sobreventa desaparece.
+La sincronización omnicanal es el siguiente salto: marketplaces, web y punto de venta comparten un **único registro**. Cuando se agota una unidad en cualquiera de los canales, el stock se actualiza automáticamente en todos. La sobreventa desaparece. Un aviso honesto: hoy Drenpos no se conecta con marketplaces. Lo que sí comparte un único stock es el TPV, los documentos de venta y, con el conector Holded, los pedidos que llegan desde Holded.
 
-Y queda la predicción inteligente, que aplica lógica matemática a tu realidad comercial. La IA pragmática analiza tu historial, la estacionalidad y los picos de demanda para sugerir reabastecimientos. Deja de adivinar: el sistema te indica cuándo y cuánto pedir.
+Y queda la reposición con datos. Una propuesta de compra que mira el stock mínimo y máximo, el consumo real de los últimos meses, lo reservado y lo que ya viene de camino te dice qué pedir y cuánto. Deja de adivinar: tú revisas la propuesta y decides.
 
 ## ¿Qué es el stock disponible y por qué no es el físico?
 
@@ -126,13 +133,13 @@ Migrar no significa reinventar tu operativa diaria: consiste en sustituir el esf
 
 1. Ordena físicamente el almacén: zonas, ubicaciones codificadas y reglas de salida. Tienes el método completo en nuestra [guía para organizar el almacén de una pyme](/blog/como-organizar-almacen-pyme).
 2. Centraliza tu catálogo en una única fuente de verdad.
-3. Conecta todos tus canales de venta mediante sincronización automática.
+3. Haz que todos tus canales de venta descuenten del mismo stock, sin hojas intermedias.
 4. Configura alertas de stock mínimo y rotación para evitar inmovilizaciones.
 5. Automatiza la gestión de inventario vinculada a tu facturación y contabilidad.
 
 Plataformas como Drenpos están diseñadas para actuar como ese puente. Combinan la simplicidad que tu día a día necesita con el cumplimiento normativo y la escalabilidad que tu crecimiento exige. Tu equipo no necesita convertirse en informático; solo necesita operar con claridad.
 
-Cuando Moda Urbana SL migró su operativa, recuperaron las horas perdidas en conteos y además eliminaron el **90% de las roturas críticas** en el primer trimestre. El foco dejó de ser salvar el día y pasó a ser gestionar el crecimiento.
+Lo que cambia en la práctica es dónde se va el tiempo: menos horas contando y cuadrando, y más decidiendo qué comprar y qué dejar de comprar.
 
 ## Pasa de la intuición a la tranquilidad operativa
 

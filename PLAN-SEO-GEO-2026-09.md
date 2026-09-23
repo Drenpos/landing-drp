@@ -185,3 +185,15 @@ Ejecuta la sección 2 del plan de campaña (`drenpos-google-ads-plan.md`). Build
 
 - Los formularios de demo se envían en `no-cors`: el navegador no puede confirmar que n8n respondió bien, así que el evento cuenta cuando la petición sale. Si quieres conversión solo con confirmación real, hay que permitir CORS en el webhook y quitar el `no-cors`.
 - Las imágenes de `/software-verifactu` son las capturas del post de la guía (`public/images/blog/verifactu/`).
+
+---
+
+# Tanda 4 (23 de septiembre de 2026): control horario ampliado, control de stock, hostelería y llms.txt real
+
+Detalle completo en `docs/novedades-2026-09-23-control-horario-almacen-hosteleria.md` y mapa de keywords en `docs/keywords-intenciones-2026-09.md`. Build limpio (152 páginas, 226 JSON-LD válidos). Sin commit.
+
+- **Corregido el llms.txt de producción:** el plugin `astro-seo-graph` generaba su propio `dist/llms.txt` (lista automática, con la 404 y "módulo médico") y pisaba el redactado en `src/pages/llms.txt.ts`. Opción `llmsTxt` retirada de `astro.config.mjs`.
+- `/control-horario`: secciones `#vacaciones`, `#entrada-salida`, `#calendarios`, 7 FAQ, hero nuevo, precio del schema a 1 €. `/dispositivo-fichaje`: cuarentena de llaveros.
+- Landing nueva `/software-control-stock`. Secciones nuevas en gestión de almacén (`#sga-o-erp`, `#errores-picking`, `#pistola-pda`), frigorífico (`#mercado-frio`) y bares y restaurantes (`#cuanto-cuesta`, `#verifactu-hosteleria`, `#fichaje-hosteleria`).
+- 7 posts nuevos y 7 refrescados con `updated: 2026-09-23`.
+- Entidad en `Base.astro` (razón social, sede, fundador con LinkedIn), autor con `sameAs` en posts, módulo Conector Holded en la tabla, menú y FAQ.

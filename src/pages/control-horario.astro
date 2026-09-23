@@ -14,6 +14,8 @@ import { join } from "node:path";
 //    04-reporte-trazabilidad.png · 05-conceptos.png · 06-calendario-laboral.png
 //    07-calendario-asignacion.png · 08-widget-rapido.png
 //    09-geolocalizacion-mapa.png (opcional: solo se pinta si existe en /public)
+//    10-vacaciones-calendario.png · 11-incidencias-entrada-salida.png ·
+//    12-calendarios-laborales.png (opcionales, 1280×800, mismo guard hasImg)
 //  Imágenes HARDWARE (reemplazar placeholders por fotos reales):
 //    hardware/01-dispositivo-lector-rfid.png
 //    hardware/02-llaveros-personalizados.png
@@ -27,6 +29,116 @@ const CANONICAL = "https://www.drenpos.com/control-horario";
 const hasImg = (p: string) => existsSync(join(process.cwd(), "public", p));
 const GEO_IMG = "/images/funcionalidades/control-horario/09-geolocalizacion-mapa.png";
 const showGeoImg = hasImg(GEO_IMG);
+const VAC_IMG = "/images/funcionalidades/control-horario/10-vacaciones-calendario.png";
+const showVacImg = hasImg(VAC_IMG);
+const INC_IMG = "/images/funcionalidades/control-horario/11-incidencias-entrada-salida.png";
+const showIncImg = hasImg(INC_IMG);
+const CAL_IMG = "/images/funcionalidades/control-horario/12-calendarios-laborales.png";
+const showCalImg = hasImg(CAL_IMG);
+
+// Fuentes legales enlazadas en las secciones nuevas
+const ET_URL = "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430";
+const LISOS_URL = "https://www.boe.es/buscar/act.php?id=BOE-A-2000-15060";
+
+// Vacaciones y permisos (sección #vacaciones)
+const vacaciones = [
+  {
+    icon: "🗂️",
+    title: "Tipos de ausencia a tu medida",
+    body: "Vienen de serie vacaciones, asuntos propios, baja médica, permiso retribuido, maternidad o paternidad y fallecimiento de un familiar, y creas los que falten. Cada tipo decide si cuenta días laborables o naturales, si pide aprobación, si admite medio día, la antelación mínima y a quién aplica.",
+  },
+  {
+    icon: "📆",
+    title: "Un cupo con política de verdad",
+    body: "Días por periodo (por ejemplo, 22 de vacaciones) con reinicio el 1 de enero o en el aniversario de la contratación. Todo el cupo desde el primer día o consolidado mes a mes, prorrateo el año que entra la persona y días que pasan al año siguiente con tope y fecha de caducidad.",
+  },
+  {
+    icon: "📱",
+    title: "Se pide desde el móvil, con el saldo delante",
+    body: "Desde la app o el portal, el empleado ve sus ausencias, los festivos y los días que no trabaja. Antes de enviar, el sistema le dice cuántos días laborables gasta y le enseña su saldo: disponibles, consolidados a hoy, arrastrados, usados y pendientes.",
+  },
+  {
+    icon: "🔁",
+    title: "Aprobar, rechazar o proponer otras fechas",
+    body: "El responsable contesta siempre con un motivo. Si propone otra semana, el empleado acepta o rechaza la propuesta desde la app. Cada paso (nueva solicitud, aprobada, rechazada, propuesta, cancelada) llega como aviso dentro de la aplicación.",
+  },
+  {
+    icon: "👥",
+    title: "Calendario del equipo",
+    body: "Quién falta cada día, para no quedarte con dos personas menos en el turno de tarde en plena campaña. Los responsables se definen por usuarios o grupos; si no defines ninguno, aprueban los administradores.",
+  },
+  {
+    icon: "📄",
+    title: "Todo en el informe legal",
+    body: "Un día de vacaciones aprobado no exige horas y sale con su nombre en el informe. El PDF recoge las ausencias del periodo con tipo, fechas, días, quién las aprobó y el motivo. Si alguien trabaja en vacaciones o en festivo, cuenta como horas extra.",
+  },
+];
+
+// Control de entrada y salida (sección #entrada-salida)
+const incidenciasTipos = [
+  "Entrada tarde",
+  "Salida anticipada",
+  "Sin fichar la entrada o la salida",
+  "Exceso de horas al día",
+  "Exceso de horas a la semana",
+  "Trabajo en festivo",
+  "Trabajo en vacaciones",
+];
+
+const entradaSalida = [
+  {
+    icon: "⏱️",
+    title: "Tolerancias que pones tú",
+    body: "Minutos de margen y límites de horas configurables. Con 5 minutos de tolerancia y horario a las 8:00, entrar a las 8:04 no genera nada; entrar a las 8:14 genera «Entrada tarde +14 min».",
+  },
+  {
+    icon: "🔎",
+    title: "Revisión automática diaria y semanal",
+    body: "Las incidencias se detectan al fichar y en una revisión automática cada día y cada semana, así también aparece quien no ha fichado. Avisan al empleado y a sus responsables.",
+  },
+  {
+    icon: "✍️",
+    title: "Se justifica o se descarta con una nota",
+    body: "Pantalla de Incidencias con filtros por persona, tipo y estado, resumen por persona y botón «Revisar hoy». Si hubo médico o una avería en la carretera, el responsable la justifica con una nota; si no procede, la descarta.",
+  },
+  {
+    icon: "📄",
+    title: "Todo queda en el informe",
+    body: "Cada día sale con su estado (Normal, Tarde, Salida anticipada, Extra, Sin fichar, Festivo, Vacaciones) y el PDF lleva la lista de incidencias con su estado y la nota del responsable.",
+  },
+];
+
+// Calendarios laborales, festivos y horas extra (sección #calendarios)
+const calendarios = [
+  {
+    icon: "🗓️",
+    title: "Calendarios con vigencias y turnos",
+    body: "Horario de invierno y de verano, turno de mañana y turno de tarde, cada uno con sus fechas de vigencia y su entrada, salida y pausa de cada día. Uno queda marcado por defecto para quien no tenga otro asignado.",
+  },
+  {
+    icon: "🏖️",
+    title: "Festivos por comunidad y por persona",
+    body: "Festivos nacionales, autonómicos y por trabajador. Un empleado en Extremadura no tiene los mismos festivos que uno en Cataluña, y el sistema los descuenta solo de las horas esperadas. Los fijos se marcan como recurrentes y valen para todos los años.",
+  },
+  {
+    icon: "⚡",
+    title: "Asignación en bloque en un minuto",
+    body: "Una pantalla con todas las personas y su calendario, sus festivos y su fecha de contratación, editables ahí mismo. Seleccionas a un grupo y le asignas el calendario de golpe. Quien no tiene ninguno sale en rojo y lo filtras con «solo sin asignar».",
+  },
+  {
+    icon: "➕",
+    title: "Horas extra con una sola cuenta",
+    body: "Las extra son lo trabajado por encima de lo esperado, día a día; la semana y el periodo son la suma de los días. La misma cifra en pantalla, en las incidencias y en el informe PDF.",
+  },
+];
+
+// Widgets del panel de inicio relacionados con fichajes
+const widgets = [
+  { icon: "🏖️", title: "Mis vacaciones", body: "Saldo por tipo de ausencia, próxima ausencia y propuestas de fechas por responder.", who: "Cada empleado" },
+  { icon: "☀️", title: "Hoy en el trabajo", body: "El horario de hoy y las incidencias abiertas del mes.", who: "Cada empleado" },
+  { icon: "📥", title: "Solicitudes por revisar", body: "Lo que está pendiente de aprobar y quién falta hoy, mañana y esta semana.", who: "Responsables" },
+  { icon: "🚩", title: "Incidencias abiertas", body: "Cuántas hay, de quién y de qué tipo en los últimos 7 días.", who: "Responsables" },
+];
 
 // Geolocalización del fichaje (sección #geolocalizacion)
 const geo = [
@@ -59,6 +171,7 @@ const requisitos = [
   "Acceso del propio trabajador a su historial de fichajes",
   "Compatible con teletrabajo y empleados desplazados",
   "Exportable en formato legible para la autoridad laboral",
+  "Vacaciones, festivos e incidencias del periodo en el mismo informe",
 ];
 
 // Métodos de fichaje (tabla comparativa, buena para SEO/AEO)
@@ -115,12 +228,24 @@ const casos = [
     body: "El encargado conecta el terminal al mechero de la furgoneta y la cuadrilla ficha con su llavero al llegar a la obra o a la finca. Sin cobertura, cada fichaje se guarda en el terminal con su hora exacta. Al volver a la nave coge la WiFi y todo se vuelca solo a Drenpos.",
     icon: "🚜",
   },
+  {
+    tag: "Vacaciones y permisos",
+    title: "Vacaciones sin hojas de cálculo",
+    body: "La empresa configura «Vacaciones» con 22 días consolidados mes a mes y «Asuntos propios» con 3. Una persona que entró en julio ve 11 días en su saldo ese año. Pide una semana desde el móvil y el sistema le dice cuántos días laborables gasta, sin contar el festivo del jueves. Su responsable ve en el calendario del equipo que ya faltan dos del mismo grupo y le propone la semana siguiente con un motivo. Ella acepta desde la app y el PDF de fin de mes ya lo lleva.",
+    icon: "🏖️",
+  },
+  {
+    tag: "Entrada y salida · 5 min de tolerancia",
+    title: "Retrasos sin discusiones",
+    body: "La empresa activa el control de entrada y salida con 5 minutos de tolerancia. Quien entra a las 8:14 con horario de 8:00 genera «Entrada tarde +14 min», que le llega a él y a su responsable. Si había motivo, el responsable la justifica con una nota; si no, la descarta. A las 10:00 el sistema avisa de quien no ha fichado la entrada ese día laborable. Todo queda en el informe.",
+    icon: "⏰",
+  },
 ];
 
 const faqs = [
   {
     q: "¿El registro horario es realmente obligatorio en 2026?",
-    a: "Sí. Todas las empresas con empleados por cuenta ajena están obligadas a llevar un registro horario diario, individualizado e inalterable. La Inspección de Trabajo puede solicitarlo en cualquier momento y la falta de registro está tipificada como infracción grave, con sanciones de 751 € a 7.500 € por infracción grave según la LISOS vigente en 2026.",
+    a: "Sí. Desde 2019, el artículo 34.9 del Estatuto de los Trabajadores obliga a todas las empresas con personas por cuenta ajena a llevar un registro diario de jornada con la hora de inicio y de fin de cada trabajador, y a conservarlo cuatro años. La Inspección de Trabajo puede pedirlo en cualquier momento y no llevarlo es infracción grave, con sanciones de 751 € a 7.500 € según la LISOS. A fecha de 23 de septiembre de 2026, el real decreto que haría obligatorio el registro digital y endurecería las multas no está aprobado ni publicado en el BOE.",
   },
   {
     q: "¿Qué es exactamente el control horario digital?",
@@ -166,6 +291,34 @@ const faqs = [
     q: "¿Se puede fichar en una obra o en el campo sin cobertura?",
     a: "Sí, con el terminal físico. Se alimenta a 12 V desde el mechero de la furgoneta o una batería auxiliar, la cuadrilla ficha allí con su llavero o su QR y el terminal guarda los fichajes con su hora. Al volver a la oficina o a la nave se conecta a la WiFi y sincroniza todo. Si quieres adelantarlo, comparte datos desde un móvil.",
   },
+  {
+    q: "¿Puedo dejar de llevar las vacaciones en Excel?",
+    a: "Sí. Las vacaciones y los permisos van dentro del módulo de fichajes de Drenpos, sin coste extra. Defines los tipos de ausencia y el cupo de cada uno: por año natural o desde la fecha de contratación, entero o consolidado mes a mes, con los días que pasan al año siguiente y cuándo caducan. El empleado pide desde el móvil viendo su saldo, el responsable aprueba o propone otras fechas y el informe de fin de mes ya recoge cada ausencia con quién la aprobó.",
+  },
+  {
+    q: "¿Cuántos días de vacaciones corresponden por ley?",
+    a: "El artículo 38 del Estatuto de los Trabajadores fija un mínimo de 30 días naturales de vacaciones retribuidas al año, que no se pueden cambiar por dinero. Tu convenio o tu contrato pueden mejorarlo. Los 22 días laborables que se ven a menudo son la equivalencia habitual de esos 30 naturales, no la cifra de la ley. Además, el trabajador tiene que conocer sus fechas al menos dos meses antes. En Drenpos eliges si cada tipo de ausencia cuenta días naturales o laborables.",
+  },
+  {
+    q: "¿Cómo calcula Drenpos las horas extra?",
+    a: "Las horas esperadas de cada día salen del calendario laboral de la persona (entrada, salida y pausa), descontando sus festivos y sus ausencias. Las horas extra son lo trabajado por encima de eso, día a día, y la semana o el periodo son la suma de los días. Trabajar en festivo o en vacaciones cuenta como extra. Es la misma cuenta en pantalla, en las incidencias y en el PDF. Ten presente que el artículo 35 del Estatuto de los Trabajadores limita las horas extraordinarias a 80 al año.",
+  },
+  {
+    q: "¿Drenpos me avisa si alguien llega tarde?",
+    a: "Sí, si activas el control de entrada y salida, que viene apagado. Compara cada fichaje con el horario del calendario de esa persona y crea una incidencia por entrada tarde, salida anticipada, fichaje olvidado, exceso de horas o trabajo en festivo o en vacaciones. Tú pones los minutos de tolerancia. La incidencia avisa al empleado y al responsable, que la justifica o la descarta con una nota. Es una ayuda de gestión: el registro legal siguen siendo los fichajes.",
+  },
+  {
+    q: "¿Se pueden poner festivos autonómicos y locales distintos para cada trabajador?",
+    a: "Sí. A cada persona le asignas los festivos nacionales y los de su comunidad autónoma, y puedes añadir festivos por trabajador, por ejemplo las fiestas locales de su municipio. Un empleado en Extremadura y otro en Cataluña tienen festivos distintos y el sistema los descuenta solo de las horas esperadas. Los festivos fijos se marcan como recurrentes y valen para todos los años. La asignación se hace en bloque, desde una sola pantalla.",
+  },
+  {
+    q: "¿El responsable puede rechazar unas vacaciones o proponer otras fechas?",
+    a: "Sí. El responsable aprueba, rechaza o propone otras fechas, siempre con un motivo, y el empleado acepta o rechaza la propuesta desde la app o el portal. En el calendario del equipo ve quién falta cada día para evitar solapes. Los responsables se definen por usuarios o grupos; si no defines ninguno, deciden los administradores. La ley pide fijar las fechas de común acuerdo (artículo 38 del Estatuto), así que la propuesta con motivo deja rastro de esa negociación.",
+  },
+  {
+    q: "¿Las vacaciones y el control de entrada y salida tienen coste extra?",
+    a: "No. Vacaciones y permisos, control de entrada y salida, calendarios laborales y geolocalización van incluidos en el módulo de fichajes, que cuesta 1 € por usuario y mes sin IVA. Son opciones que activas cuando las necesitas. Un matiz: quien aprueba vacaciones o revisa incidencias necesita licencia de fichaje aunque no fiche.",
+  },
 ];
 
 // Enlazado interno · control horario por ciudad (clúster local)
@@ -185,6 +338,9 @@ const ciudades = [
 
 // Artículos relacionados (clúster temático)
 const articulos = [
+  { t: "Vacaciones y permisos en la pyme, sin Excel", s: "gestion-vacaciones-permisos-pymes-sin-excel" },
+  { t: "Control de entrada y salida: retrasos y cómo documentarlos", s: "control-entrada-salida-retrasos-empleados" },
+  { t: "Calendario laboral 2027: festivos y horas extra", s: "calendario-laboral-2027-festivos-horas-extra" },
   { t: "Fichaje portátil 12V: cumple la ley de jornada en cualquier lugar", s: "dispositivo-fichaje-portatil-12v-ley-control-jornada" },
   { t: "Registro horario 2026: nuevos requisitos y cómo adaptarte", s: "registro-horario-2026-nuevos-requisitos-adaptacion" },
   { t: "Multas del registro horario 2026: lo que cuesta incumplir", s: "multas-registro-horario-2026-costo-incumplimiento" },
@@ -223,18 +379,25 @@ const productSchema = {
   operatingSystem: "Web, iOS, Android (PWA)",
   url: CANONICAL,
   description:
-    "Software de control horario y registro de jornada para empresas. Fichaje por web, móvil (PWA), widget rápido, llavero RFID y código QR. Reportes inalterables listos para la Inspección de Trabajo. Geolocalización opcional solo al fichar la entrada y la salida desde móvil o web, sin seguimiento continuo. Hardware de fichaje propio diseñado por Drenpos que sigue fichando sin internet y sincroniza al recuperar la conexión.",
+    "Software de control horario y registro de jornada para pymes. Fichaje por web, móvil (PWA), widget rápido, llavero RFID y código QR. Vacaciones y permisos con cupo por política, solicitud desde el móvil y aprobación con contrapropuesta de fechas. Control opcional de entrada y salida con incidencias y tolerancias. Calendarios laborales con vigencias, festivos por comunidad autónoma y por persona, y horas extra calculadas día a día. Geolocalización opcional solo al fichar. Terminal de fichaje propio que sigue fichando sin internet. Informes inalterables para la Inspección de Trabajo.",
   offers: {
     "@type": "Offer",
-    price: "1.09",
+    price: "1",
     priceCurrency: "EUR",
-    description: "Módulo Fichajes desde 1,09 €/mes por usuario. Incluido en todos los planes Drenpos.",
+    valueAddedTaxIncluded: false,
+    description: "Licencia de fichaje desde 1 € por usuario y mes, sin IVA. Vacaciones y permisos, control de entrada y salida y geolocalización incluidos sin coste extra.",
     url: "https://www.drenpos.com/pricing",
   },
   featureList: [
     "Registro horario diario e individualizado",
     "Fichaje por web, móvil PWA, widget, RFID y QR",
-    "Calendarios laborales y festivos por empleado",
+    "Calendarios laborales con vigencias y turnos, asignables en bloque",
+    "Festivos nacionales, autonómicos y por persona, descontados de las horas esperadas",
+    "Horas extra calculadas día a día con una sola cuenta en pantalla, incidencias e informe",
+    "Vacaciones y permisos: tipos de ausencia configurables y cupo por año natural o aniversario de contratación, con consolidación mensual, prorrateo y arrastre con caducidad",
+    "Solicitud de vacaciones desde la app con saldo, aprobación, rechazo o contrapropuesta de fechas y calendario del equipo",
+    "Control de entrada y salida opcional: incidencias por entrada tarde, salida anticipada, fichaje olvidado, exceso de horas y trabajo en festivo, con tolerancias en minutos",
+    "Widgets de panel: Mis vacaciones, Hoy en el trabajo, Solicitudes por revisar e Incidencias abiertas",
     "Conceptos de fichaje personalizables",
     "Reportes y trazabilidad para Inspección de Trabajo",
     "Hardware de fichaje propio (lector RFID + llaveros + tarjetas QR) con el logo del cliente en la carcasa",
@@ -247,9 +410,9 @@ const productSchema = {
 ---
 
 <Base
-  title="Control Horario y Registro de Jornada · Drenpos"
-  meta_title="Software de Control Horario y Fichajes 2026 | Drenpos"
-  description="Control horario 2026: fichaje por web, móvil, QR y llavero RFID, geolocalización opcional y terminal que ficha sin internet. Listo para Inspección."
+  title="Control Horario, Vacaciones y Registro de Jornada · Drenpos"
+  meta_title="Control Horario, Vacaciones y Fichajes para Pymes | Drenpos"
+  description="Control horario para pymes: fichaje por web, móvil o llavero RFID, vacaciones, incidencias de entrada y salida y festivos. Desde 1 €/usuario sin IVA."
   canonical={CANONICAL}
   image="/images/funcionalidades/control-horario/01-gestion-personal.png"
 >
@@ -288,19 +451,21 @@ const productSchema = {
             class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6"
           >
             <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
-            Registro de jornada · Ley 2026
+            Fichajes · vacaciones · incidencias · calendarios
           </span>
 
           <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
-            Software de <span class="text-primary">control horario</span> para cumplir la ley sin Excel ni multas
+            Software de <span class="text-primary">control horario</span>: fichajes, vacaciones y retrasos sin Excel
           </h1>
           <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
-            Drenpos digitaliza el registro de jornada de tu equipo con la
-            trazabilidad que exige la Inspección de Trabajo. Fichaje por web,
-            móvil, widget, código QR o llavero RFID con hardware propio. Si lo
-            necesitas, el fichaje desde el móvil guarda la ubicación de entrada
-            y salida, y el terminal sigue fichando aunque se caiga internet.
-            Cumples la normativa desde el primer día.
+            Drenpos lleva el registro de jornada de tu equipo con la
+            trazabilidad que pide la Inspección de Trabajo: fichaje por web,
+            móvil, código QR o llavero RFID con terminal propio, que sigue
+            fichando aunque se caiga internet. En el mismo módulo, y sin pagar
+            más, gestionas <a href="#vacaciones" class="text-primary underline">vacaciones y permisos</a>,
+            ves quién <a href="#entrada-salida" class="text-primary underline">llega tarde o sale antes</a>
+            y montas los <a href="#calendarios" class="text-primary underline">calendarios laborales</a>
+            con los festivos de cada comunidad.
           </p>
 
           <ul class="flex flex-wrap gap-4 mb-10">
@@ -332,6 +497,10 @@ const productSchema = {
           </p>
 
           <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Vacaciones e incidencias incluidas
+            </div>
             <div class="flex items-center gap-2">
               <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
               Ubicación opcional al fichar
@@ -378,8 +547,8 @@ const productSchema = {
             <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
               <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #fef3c7;">⚖️</div>
               <div>
-                <p class="text-xs font-bold text-dark">100% legal</p>
-                <p class="text-xs" style="color: #9ca3af;">Registro 2026</p>
+                <p class="text-xs font-bold text-dark">Registro de jornada</p>
+                <p class="text-xs" style="color: #9ca3af;">Art. 34.9 del Estatuto</p>
               </div>
             </div>
           </div>
@@ -403,9 +572,10 @@ const productSchema = {
             digital que registra la entrada y salida de cada trabajador de forma
             fiable, individualizada e inalterable, y conserva esos datos durante
             cuatro años para cumplir la ley de registro de jornada. Drenpos
-            permite fichar desde el ordenador, el móvil, un widget rápido, un
-            código QR o un llavero RFID, y genera reportes auditables listos
-            para la Inspección de Trabajo.
+            permite fichar desde el ordenador, el móvil, un código QR o un
+            llavero RFID, y en el mismo módulo lleva las vacaciones, los
+            retrasos y los calendarios laborales, con informes auditables
+            listos para la Inspección de Trabajo.
           </p>
         </div>
       </div>
@@ -430,6 +600,17 @@ const productSchema = {
               motivo de sanción. La Inspección de Trabajo puede pedir tu registro
               horario en cualquier momento y debes presentarlo individualizado,
               diario, inalterable y conservado durante 4 años.
+            </p>
+            <p class="text-sm mt-4 mb-0 leading-relaxed" style="color: rgba(16,25,40,0.62);">
+              <strong>Estado a fecha de 23 de septiembre de 2026:</strong> lo
+              vigente es el <a href={`${ET_URL}#a34`} rel="noopener" target="_blank" class="text-primary underline">artículo 34.9 del Estatuto de los Trabajadores</a>
+              (Real Decreto-ley 8/2019), y no llevar el registro es infracción
+              grave de 751 a 7.500 € según la <a href={LISOS_URL} rel="noopener" target="_blank" class="text-primary underline">LISOS</a>.
+              El real decreto del registro digital obligatorio, con multas por
+              trabajador, no está aprobado ni publicado en el BOE: el Consejo de
+              Estado emitió dictamen desfavorable el 23 de marzo de 2026 y el
+              Ministerio de Trabajo dice que lo aprobará
+              <a href="https://www.registrahora.es/noticias/registro-horario-digital-aplazado-septiembre-2026" rel="noopener" target="_blank" class="text-primary underline">«a la mayor brevedad»</a>.
             </p>
           </div>
           <div class="lg:col-5">
@@ -867,6 +1048,245 @@ const productSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════
+       VACACIONES Y PERMISOS (AEO: software de gestión de vacaciones y ausencias)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="vacaciones" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Vacaciones y permisos · sin coste extra</span>
+        <h2 class="h3 font-bold mb-4">¿Se pueden gestionar las vacaciones y los permisos desde el control horario?</h2>
+        <p class="text-lg leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+          Sí. En Drenpos las vacaciones, los asuntos propios, las bajas y los
+          permisos van dentro del módulo de fichajes, sin coste extra ni
+          herramienta aparte. Funciona como un software de gestión de
+          vacaciones y ausencias: el empleado pide desde la app del móvil
+          viendo su saldo, el responsable aprueba, rechaza o propone otras
+          fechas, y el calendario del equipo enseña quién falta cada día. Todo
+          acaba en el mismo informe de fichajes.
+        </p>
+      </div>
+
+      {showVacImg && (
+        <figure class="relative max-w-4xl mx-auto px-4 lg:px-0 mb-12" data-aos="fade-up-sm">
+          <div class="absolute -top-10 -right-10 w-72 h-72 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.08);"></div>
+          <div class="rounded-2xl overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07); border: 1px solid rgba(16,25,40,0.08);">
+            <img src={VAC_IMG} alt="Calendario de vacaciones de Drenpos con el saldo de días del empleado y las ausencias del equipo" width="1280" height="800" class="w-full h-auto block" loading="lazy" />
+          </div>
+        </figure>
+      )}
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {vacaciones.map((v, i) => (
+          <div class="border rounded-[20px] p-6 h-full" style="border-color: rgba(16,25,40,0.1); background: #fff;" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 80}>
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-4" style="background: rgba(121,27,70,0.08);">{v.icon}</div>
+            <h3 class="h6 font-semibold mb-2">{v.title}</h3>
+            <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{v.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="rounded-2xl p-6 lg:p-8 mt-8" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
+        <p class="font-semibold text-text-dark mb-2">Lo que dice la ley sobre vacaciones</p>
+        <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.72);">
+          El <a href={`${ET_URL}#a38`} rel="noopener" target="_blank" class="text-primary underline">artículo 38 del Estatuto de los Trabajadores</a>
+          fija un mínimo de <strong>30 días naturales</strong> de vacaciones
+          retribuidas al año, que no se pueden cambiar por dinero. Las fechas
+          se fijan de común acuerdo y el trabajador tiene que conocerlas al
+          menos dos meses antes. Los 22 días laborables que ves en muchos
+          convenios son la equivalencia habitual, no la cifra de la ley: en
+          Drenpos eliges si cada tipo de ausencia cuenta días naturales o
+          laborables.
+        </p>
+        <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+          Va incluido en la licencia de fichaje (1 € por usuario y mes, sin
+          IVA). Quien aprueba vacaciones necesita licencia aunque no fiche.
+          Si quieres el paso a paso para dejar el Excel, lee
+          <a href="/blog/gestion-vacaciones-permisos-pymes-sin-excel" class="text-primary underline">cómo gestionar vacaciones y permisos en una pyme sin hojas de cálculo</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CONTROL DE ENTRADA Y SALIDA (AEO: retrasos, llegar tarde)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="entrada-salida" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Control de entrada y salida · opcional</span>
+        <h2 class="h3 font-bold mb-4">¿Cómo saber si un empleado llega tarde o sale antes de su hora?</h2>
+        <p class="text-lg leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+          Con el control de entrada y salida de Drenpos, una opción que
+          activas tú (viene apagada). Compara cada fichaje con el horario del
+          calendario de esa persona, sus festivos y sus ausencias. Si alguien
+          entra tarde, sale antes, no ficha o se pasa de horas, crea una
+          incidencia que avisa al empleado y a su responsable. Tú decides los
+          minutos de tolerancia, y todo queda en el informe.
+        </p>
+      </div>
+
+      <div class="row g-5 items-center">
+        {showIncImg && (
+          <div class="lg:col-6" data-aos="fade-up-sm">
+            <figure class="relative px-4 lg:px-0 mb-0">
+              <div class="absolute -top-10 -left-10 w-72 h-72 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.08);"></div>
+              <div class="rounded-2xl overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07); border: 1px solid rgba(16,25,40,0.08);">
+                <img src={INC_IMG} alt="Pantalla de incidencias de Drenpos con entradas tarde, salidas anticipadas y fichajes olvidados filtrados por persona y estado" width="1280" height="800" class="w-full h-auto block" loading="lazy" />
+              </div>
+            </figure>
+          </div>
+        )}
+        <div class={showIncImg ? "lg:col-6" : "col-12"}>
+          <p class="text-sm font-semibold mb-3" style="color: rgba(16,25,40,0.72);">Qué detecta:</p>
+          <ul class="flex flex-wrap gap-2 mb-6 list-none p-0">
+            {incidenciasTipos.map((t) => (
+              <li class="text-sm px-3 py-1.5 rounded-full" style="background: rgba(211,167,118,0.15); color: #7c4a14;">{t}</li>
+            ))}
+          </ul>
+          <div class={showIncImg ? "grid sm:grid-cols-2 gap-4" : "grid sm:grid-cols-2 lg:grid-cols-4 gap-4"}>
+            {entradaSalida.map((e, i) => (
+              <div class="border rounded-[20px] p-6 h-full" style="border-color: rgba(16,25,40,0.1); background: #fff;" data-aos="fade-up-sm" data-aos-delay={i * 80}>
+                <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-4" style="background: rgba(121,27,70,0.08);">{e.icon}</div>
+                <h3 class="h6 font-semibold mb-2">{e.title}</h3>
+                <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{e.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl p-6 lg:p-8 mt-8" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
+        <p class="font-semibold text-text-dark mb-2">Una ayuda de gestión, no el registro legal</p>
+        <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.72);">
+          El registro de jornada que pide la ley siguen siendo los fichajes,
+          con su hora sellada y la traza de cada cambio. Las incidencias
+          sirven para hablar con datos, y no de memoria, cuando alguien llega
+          tarde tres lunes seguidos. Cuántos minutos se toleran y qué pasa
+          con un retraso lo marcan tu convenio y el contrato, no el software.
+        </p>
+        <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+          Si el <a href="/dispositivo-fichaje#sin-conexion" class="text-primary underline">terminal de fichaje</a>
+          estuvo sin conexión y tuvo que reconstruir la hora de un fichaje,
+          ese fichaje nunca genera «tarde» ni «salida anticipada». Más
+          detalle en
+          <a href="/blog/control-entrada-salida-retrasos-empleados" class="text-primary underline">control de entrada y salida: qué hacer con los retrasos de la plantilla</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CALENDARIOS LABORALES, FESTIVOS Y HORAS EXTRA (AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="calendarios" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Calendarios, festivos y horas extra</span>
+        <h2 class="h3 font-bold mb-4">¿Cómo se calculan las horas extra con el calendario laboral y los festivos?</h2>
+        <p class="text-lg leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+          Drenpos saca las horas esperadas de cada día del calendario laboral
+          de la persona (entrada, salida y pausa) y descuenta sus festivos y
+          sus ausencias. Las horas extra son lo trabajado por encima de lo
+          esperado, día a día, y la semana o el mes son la suma de los días.
+          Es la misma cuenta en pantalla, en las incidencias y en el informe
+          PDF, así que nunca tienes dos cifras distintas.
+        </p>
+      </div>
+
+      <div class="row g-5 items-center">
+        {showCalImg && (
+          <div class="lg:col-6" data-aos="fade-up-sm">
+            <figure class="relative px-4 lg:px-0 mb-0">
+              <div class="absolute -top-10 -left-10 w-72 h-72 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.14);"></div>
+              <div class="rounded-2xl overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07); border: 1px solid rgba(16,25,40,0.08);">
+                <img src={CAL_IMG} alt="Pantalla de personas y calendarios de Drenpos con el calendario laboral, los festivos nacionales y autonómicos y la fecha de contratación de cada persona" width="1280" height="800" class="w-full h-auto block" loading="lazy" />
+              </div>
+            </figure>
+          </div>
+        )}
+        <div class={showCalImg ? "lg:col-6" : "col-12"}>
+          <div class={showCalImg ? "grid sm:grid-cols-2 gap-4" : "grid sm:grid-cols-2 lg:grid-cols-4 gap-4"}>
+            {calendarios.map((c, i) => (
+              <div class="border rounded-[20px] p-6 h-full" style="border-color: rgba(16,25,40,0.1); background: #fff;" data-aos="fade-up-sm" data-aos-delay={i * 80}>
+                <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-4" style="background: rgba(211,167,118,0.15);">{c.icon}</div>
+                <h3 class="h6 font-semibold mb-2">{c.title}</h3>
+                <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{c.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 mt-8">
+        <div class="rounded-2xl p-6 lg:p-8 h-full" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
+          <p class="font-semibold text-text-dark mb-2">El límite de las horas extra</p>
+          <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+            El <a href={`${ET_URL}#a35`} rel="noopener" target="_blank" class="text-primary underline">artículo 35 del Estatuto de los Trabajadores</a>
+            limita las horas extraordinarias a <strong>80 al año</strong> y
+            pide registrarlas día a día y totalizarlas en el periodo de pago
+            de la nómina. Con las extra calculadas día a día desde el
+            calendario de cada persona, la suma del periodo ya la tienes
+            hecha, y el mismo PDF que mandas a la gestoría la recoge.
+          </p>
+        </div>
+        <div class="rounded-2xl p-6 lg:p-8 h-full" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm" data-aos-delay="100">
+          <p class="font-semibold text-text-dark mb-2">Festivos de 2027: qué hay publicado</p>
+          <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.72);">
+            Extremadura ya tiene su calendario de 2027 en el DOE, publicado el
+            8 de junio de 2026: como el 15 de agosto cae en domingo, se pasa al
+            lunes 11 de octubre, que junto al 12 deja un puente de cuatro días
+            (<a href="https://portalempleado.juntaex.es/w/calendario-de-fiestas-laborales-de-extremadura-para-el-a%C3%B1o-2027" rel="noopener" target="_blank" class="text-primary underline">Junta de Extremadura</a>).
+            El calendario nacional con todas las comunidades lo publica el BOE
+            en otoño; el de 2026 salió el
+            <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-21667" rel="noopener" target="_blank" class="text-primary underline">28 de octubre de 2025</a>.
+          </p>
+          <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+            Lo contamos, con lo que ya es oficial, en
+            <a href="/blog/calendario-laboral-2027-festivos-horas-extra" class="text-primary underline">calendario laboral 2027: festivos y horas extra</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PANEL DE INICIO · widgets de fichajes y vacaciones
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="rounded-[28px] p-8 lg:p-12" style="background: linear-gradient(135deg, rgba(121,27,70,0.08) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
+        <div class="row gx-0 gy-8 lg:gy-0 items-center">
+          <div class="lg:col-4 lg:pe-10">
+            <span class="text-primary bg-white/70 px-3 py-1 inline-block rounded-full uppercase text-xs font-medium mb-5 tracking-wide">Panel de inicio</span>
+            <h2 class="h4 mb-4 font-bold leading-tight">Lo que te toca hoy, <span class="text-primary">nada más entrar</span></h2>
+            <p class="mb-0 leading-relaxed" style="color: rgba(16,25,40,0.72);">
+              Cada persona monta su panel arrastrando widgets. Además del
+              fichaje rápido, hay cuatro para vacaciones e incidencias: dos
+              pensados para el empleado y dos para quien aprueba y revisa.
+            </p>
+          </div>
+          <div class="lg:col-8">
+            <div class="grid sm:grid-cols-2 gap-4">
+              {widgets.map((w, i) => (
+                <div class="rounded-2xl p-5 h-full" style="background: white; box-shadow: 0 4px 16px rgba(0,0,0,0.05);" data-aos="fade-up-sm" data-aos-delay={i * 80}>
+                  <div class="flex items-center gap-3 mb-2">
+                    <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: rgba(121,27,70,0.08);">{w.icon}</div>
+                    <div>
+                      <h3 class="text-base font-bold mb-0 leading-snug">{w.title}</h3>
+                      <p class="text-xs uppercase tracking-wide mb-0" style="color: #b45309;">{w.who}</p>
+                    </div>
+                  </div>
+                  <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{w.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
        CONFIGURACIÓN A MEDIDA · grid de 3 features
   ═══════════════════════════════════════════════════════════════════ -->
   <section class="section pt-0 overflow-hidden">
@@ -963,12 +1383,18 @@ const productSchema = {
           <div class="lg:col-6 lg:pe-10">
             <span class="text-white bg-white/10 px-3 py-1 inline-block rounded-full uppercase text-xs font-medium mb-5 tracking-wide" data-aos="fade-up-sm">Cumplimiento legal</span>
             <h2 class="h3 font-bold mb-5 text-white leading-tight" data-aos="fade-up-sm">
-              Cumples la nueva ley <span style="color: #f9b27c;">desde el primer fichaje</span>
+              Cumples la ley <span style="color: #f9b27c;">desde el primer fichaje</span>
             </h2>
-            <p class="text-lg leading-relaxed mb-0" style="color: rgba(255,255,255,0.78);" data-aos="fade-up-sm">
-              Drenpos está diseñado para encajar con los requisitos del registro
-              horario digital obligatorio de 2026. No tienes que configurar nada
-              para estar al día.
+            <p class="text-lg leading-relaxed mb-4" style="color: rgba(255,255,255,0.78);" data-aos="fade-up-sm">
+              Drenpos cubre lo que exige hoy el registro de jornada y ya lo lleva
+              en digital, con pausas, horas extra y la traza de cada cambio. No
+              tienes que configurar nada para estar al día.
+            </p>
+            <p class="text-sm leading-relaxed mb-0" style="color: rgba(255,255,255,0.62);" data-aos="fade-up-sm">
+              A fecha de 23 de septiembre de 2026, el real decreto que haría
+              obligatorio el registro digital sigue sin aprobarse ni publicarse
+              en el BOE. Cuando salga, revisaremos esta página con lo que diga
+              el texto final.
             </p>
           </div>
           <div class="lg:col-6">

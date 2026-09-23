@@ -135,7 +135,8 @@ const {
                               </div>
                               {module.price_monthly !== "Incluido" &&
                                 module.price_monthly !==
-                                  "Incluido hasta fin 2026" && (
+                                  "Incluido hasta fin 2026" &&
+                                module.price_monthly !== "A consultar" && (
                                   <>
                                     <span class="text-sm text-text/60 module-price-desc-monthly">
                                       /mes
@@ -240,7 +241,8 @@ const {
                           </span>
                           {module.price_monthly !== "Incluido" &&
                             module.price_monthly !==
-                              "Incluido hasta fin 2026" && (
+                              "Incluido hasta fin 2026" &&
+                            module.price_monthly !== "A consultar" && (
                               <>
                                 <span class="text-sm module-price-desc-monthly">
                                   {" "}

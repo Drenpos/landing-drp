@@ -37,6 +37,8 @@ modules:
       - "Control de lotes y trazabilidad"
       - "Plano del almacén por plantas"
       - "Orden de ruta de picking según el plano"
+      - "Control de stock con mínimos y máximos y alertas automáticas"
+      - "Propuesta de compra asistida con el consumo real y lo que ya viene de camino"
 
   - name: "Módulo Producción"
     description: "Órdenes de trabajo, fases, consumo de materiales por lectura, imputación de tiempos y coste real de fabricación"
@@ -91,6 +93,10 @@ modules:
       - "Control de asistencia"
       - "Gestión de fichajes"
       - "Informes de presencia"
+      - "Vacaciones y permisos con cupos, aprobación y saldo desde el móvil"
+      - "Control de entrada y salida con incidencias y tolerancias (opcional)"
+      - "Calendarios laborales con vigencias y festivos por comunidad y por persona"
+      - "Horas extra calculadas día a día"
       - "Geolocalización opcional al fichar entrada y salida"
       - "Terminal de fichaje con modo sin conexión"
 
@@ -161,6 +167,19 @@ modules:
       - "Búsqueda de productos con su ficha y su stock"
       - "Solo lectura y con los mismos permisos que el usuario"
       - "Precio por empresa, todos los usuarios incluidos"
+
+  - name: "Conector Holded"
+    description: "Si llevas la contabilidad y el catálogo en Holded, sigues ahí y el almacén pasa a Drenpos. Precio a consultar"
+    price_monthly: "A consultar"
+    price_yearly: "A consultar"
+    included_in: []
+    features:
+      - "Artículos, clientes y proveedores entran desde Holded"
+      - "Los pedidos de venta de Holded llegan como pedidos a Drenpos"
+      - "Al cerrar el albarán en Drenpos se envía a Holded, para facturarlo allí"
+      - "Los packs de Holded se convierten en formatos: vendes en cajas y se descuentan las unidades reales"
+      - "El stock real es siempre el de Drenpos"
+      - "Monitor de incidencias con botón de reintentar"
 
   - name: "Módulo Cloud Storage"
     description: "Conecta con tu Dropbox para guardar tus anexos en la nube"

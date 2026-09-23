@@ -1,0 +1,851 @@
+---
+export const prerender = true;
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
+import DemoForm from "@/partials/DemoForm.astro";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
+const hasImg = (p: string) => existsSync(join(process.cwd(), "public", p));
+
+// ════════════════════════════════════════════════════════════════════════
+//  Software de control de stock · landing dedicada (SEO/AEO/GEO 2026)
+//  Intención de búsqueda objetivo:
+//    - "software de control de stock" / "programa de control de stock"
+//    - "programa control de stock e inventario" / "software de inventario pymes"
+//    - "control de stock con lotes y caducidad" / "control de stock con pistola"
+//  Diferenciación con /software-gestion-almacen: esa es el SGA (operativa
+//  física: ubicaciones, rutas, picking, palets, depósito). Esta es el stock:
+//  mínimos y máximos, alertas, propuesta de compra, lotes y caducidades,
+//  inventarios físicos y valoración.
+//  Captura pendiente: /images/funcionalidades/almacen-tienda/07-control-stock-alertas.png
+//  (1200×800). Se muestra solo si existe (existsSync).
+// ════════════════════════════════════════════════════════════════════════
+
+const CANONICAL = "https://www.drenpos.com/software-control-stock";
+
+const HERO_IMG = "/images/funcionalidades/almacen-tienda/02-lotes-caducidad.png";
+const ALERTAS_IMG = "/images/funcionalidades/almacen-tienda/07-control-stock-alertas.png";
+const alertasImg = hasImg(ALERTAS_IMG);
+
+// Síntomas (dolores con los que se busca "programa de control de stock")
+const sintomas = [
+  {
+    icon: "📉",
+    title: "Te enteras de que falta algo cuando el cliente ya lo ha pedido",
+    body: "El pedido entra, vas a la estantería y no hay. Nadie avisó de que ese artículo estaba bajo mínimos porque el mínimo vivía en la cabeza de alguien.",
+  },
+  {
+    icon: "🛒",
+    title: "Las compras se hacen a ojo el día que alguien se acuerda",
+    body: "Se pide de más lo que ya había y de menos lo que se vende rápido. El resultado es dinero parado en unas referencias y huecos vacíos en otras.",
+  },
+  {
+    icon: "🗓️",
+    title: "La caducidad se descubre en la estantería",
+    body: "Sin lotes ni fechas en el sistema, el producto caducado aparece cuando lo coge el cliente o cuando toca tirarlo. Y nadie sabe a quién se vendió el lote anterior.",
+  },
+  {
+    icon: "📋",
+    title: "El inventario no cuadra y nadie sabe por qué",
+    body: "Cuentas, tecleas en una hoja y a los dos meses el descuadre ha vuelto. Sin movimientos registrados, no hay forma de saber dónde se perdió la diferencia.",
+  },
+];
+
+// Bloques de producto: H2 en pregunta + cápsula citable + detalles
+const bloques = [
+  {
+    id: "alertas-minimos",
+    icon: "🔔",
+    h2: "¿Cómo te avisa el programa de que un artículo está bajo mínimos?",
+    capsula:
+      "Cada artículo lleva su stock mínimo y su stock máximo. Cuando el stock cae por debajo del mínimo o supera el máximo, Drenpos lanza una notificación en el panel en tiempo real, sin que nadie tenga que revisar listados. Además, las alertas de pedidos cruzan lo que te han pedido los clientes con el stock físico y te dicen cuántas unidades faltan por comprar para poder servirlo todo.",
+    bullets: [
+      "Mínimo y máximo configurables en la ficha de cada artículo",
+      "Aviso de bajo mínimos y de exceso de stock en el panel de notificaciones",
+      "Widget de alertas de pedidos en el panel de inicio con los productos más urgentes",
+      "Con el conector de IA (6 €/mes sin IVA) puedes preguntar a ChatGPT o Claude qué artículos están bajo mínimos",
+    ],
+    img: alertasImg ? ALERTAS_IMG : undefined,
+    alt: "Panel de Drenpos con alertas de artículos bajo mínimos y el widget de propuesta de compra",
+  },
+  {
+    id: "propuesta-compra",
+    icon: "🧮",
+    h2: "¿Puede el programa decirme qué comprar y cuánto?",
+    capsula:
+      "Sí. La propuesta de compra asistida sugiere qué reponer y en qué cantidad combinando el stock mínimo y máximo, el consumo real de los últimos meses, las unidades reservadas para pedidos, la demanda que no tiene stock detrás y lo que ya viene de camino en pedidos de compra. Tú revisas, ajustas las cantidades y generas el pedido al proveedor con un clic. Nunca compra sola.",
+    bullets: [
+      "El último proveedor se arrastra solo al pedido de compra",
+      "Lo que ya está pedido y no ha llegado se descuenta de la propuesta",
+      "Un artículo desactivado desaparece de las propuestas sin perder su histórico",
+      "Widget de propuesta de compra en el panel, con lo que costaría reponer",
+    ],
+  },
+  {
+    id: "lotes-caducidad",
+    icon: "🗓️",
+    h2: "¿Cómo se controlan los lotes y las fechas de caducidad?",
+    capsula:
+      "Activas el control por lotes en los artículos que lo necesitan y cada entrada guarda su código de lote, la fecha de fabricación y la de caducidad. El sistema avisa los días antes que tú configures, puede elegir solo el lote de salida por FEFO (primero lo que antes caduca), FIFO o LIFO, y la pantalla de trazabilidad te dice de qué proveedor entró cada lote y a qué clientes salió, con informe PDF.",
+    bullets: [
+      "Alerta de caducidad con artículo, almacén y ubicación",
+      "Salida automática por FEFO, FIFO o LIFO según el artículo",
+      "Números de serie con las mismas garantías que los lotes",
+      "El OCR lee el albarán del proveedor y da de alta los lotes que vengan en él (con una revisión rápida)",
+    ],
+    nota: true,
+  },
+  {
+    id: "pistola",
+    icon: "🔫",
+    h2: "¿Se puede llevar el control de stock con pistola lectora o con el móvil?",
+    capsula:
+      "Sí, con las dos cosas. En cada dispositivo eliges si lees con una pistola externa o con la cámara del móvil u ordenador. Un artículo puede tener un código de barras por cada formato, así que la pistola distingue si has leído una botella o una caja. Las ubicaciones llevan un QR imprimible que se pega en la estantería, y los traslados siguen un flujo lineal: ubicación de origen, producto, cantidad y ubicación de destino.",
+    bullets: [
+      "Pistola lectora o cámara del móvil, configurable por dispositivo",
+      "Varios códigos de barras por artículo, uno por unidad de medida",
+      "QR por ubicación para saber de dónde sale y dónde entra cada cosa",
+      "Recepción contra pedido de compra comparando lo esperado con lo recibido",
+    ],
+  },
+  {
+    id: "formatos",
+    icon: "📦",
+    h2: "¿Puedo ver el stock en cajas y palés, no solo en unidades?",
+    capsula:
+      "Sí. Declaras los formatos como se dicen en el almacén («una caja lleva 12 unidades», «un palé lleva 5 cajas») y el sistema calcula las equivalencias. El stock se lleva siempre en la unidad base, así que abrir una caja no pierde ni una botella, y en la ficha, en cada lote y en cada ubicación ves la traducción: «1.300 ud ≈ 21 palés · 3 cajas · 4 ud», con su peso al lado.",
+    bullets: [
+      "Precio y código de barras propios para cada formato",
+      "Si la caja pasa de 12 a 10 unidades, el palé se recalcula al guardar",
+      "Peso y bultos de albaranes y facturas calculados solos",
+      "Si falta el peso de algún artículo, el sistema lo dice en vez de inventar un total",
+    ],
+  },
+  {
+    id: "inventario-fisico",
+    icon: "📋",
+    h2: "¿Cómo se hace un inventario físico sin cerrar el almacén?",
+    capsula:
+      "Con recuentos por zonas o ubicaciones en lugar de un gran recuento anual. Cuentas una parte, el sistema compara con el stock teórico y regulariza las diferencias con una entrada o una salida según sobre o falte. Si el recuento deja el stock por debajo de lo que ya está reservado para pedidos, te avisa. Al terminar tienes un informe imprimible de diferencias para saber qué se ajustó.",
+    bullets: [
+      "Regularización automática de sobrantes y faltantes",
+      "Aviso si el recuento pisa stock comprometido con clientes",
+      "Foto del stock actual por almacén y ubicación, exportable a Excel",
+      "Mermas, roturas y bajas registradas como salidas de stock",
+    ],
+  },
+  {
+    id: "valoracion",
+    icon: "💶",
+    h2: "¿Cómo se valora el stock y se ve el dinero parado?",
+    capsula:
+      "Cada artículo se valora a precio medio ponderado o a un precio que fijas tú. Con eso, el informe de productos sin movimiento te dice qué stock lleva meses parado, en qué ubicación está y cuánto dinero hay atado en él. El de rotación ordena lo que más sale por unidades y por valor, con la cobertura en días, y el análisis de costes enseña cómo ha evolucionado el precio de compra de cada producto mes a mes.",
+    bullets: [
+      "Precio medio ponderado o precio manual, por artículo",
+      "Inmovilizado: stock parado con su valor y su ubicación",
+      "Rotación con cobertura de stock en días",
+      "Evolución del precio de compra para negociar con proveedores",
+    ],
+  },
+];
+
+// Comparativa (tabla de decisión: cuatro vías)
+const comparativa = [
+  {
+    opcion: "Excel o papel",
+    alertas: "No: alguien tiene que mirar",
+    compras: "A ojo",
+    lotes: "Columnas a mano, sin trazabilidad",
+    lectura: "No",
+    inventario: "Contar y teclear",
+    valoracion: "Fórmulas a mano",
+    precio: "Sin licencia, se paga en horas y errores",
+  },
+  {
+    opcion: "Programa de facturación con stock",
+    alertas: "Depende del programa",
+    compras: "Rara vez asistida",
+    lotes: "No o muy limitado",
+    lectura: "A veces, solo para vender",
+    inventario: "Ajuste manual de cantidades",
+    valoracion: "Básica",
+    precio: "La cuota del programa",
+  },
+  {
+    opcion: "Control de stock en Drenpos",
+    alertas: "Mínimo y máximo con notificación, y alertas de pedidos",
+    compras: "Propuesta asistida: consumo, reservas y lo que viene de camino",
+    lotes: "Sí, con FEFO, alertas e informe de trazabilidad en PDF",
+    lectura: "Pistola, cámara del móvil y QR por ubicación",
+    inventario: "Recuentos por zona con regularización e informe de diferencias",
+    valoracion: "Precio medio ponderado o manual, inmovilizado y rotación",
+    precio: "Plan Pro, 29 €/mes sin IVA",
+    destacado: true,
+  },
+  {
+    opcion: "SGA aparte conectado a tu ERP",
+    alertas: "Sí",
+    compras: "Suele quedarse en el ERP",
+    lotes: "Sí",
+    lectura: "Sí",
+    inventario: "Sí",
+    valoracion: "Normalmente en el ERP",
+    precio: "Licencia propia más la integración con tu ERP",
+  },
+];
+
+// Casos de uso por sector
+const casos = [
+  {
+    tag: "Tienda de alimentación con frescos",
+    icon: "🥫",
+    title: "Embutidos, mermeladas y platos preparados por lote",
+    body: "Cada producto entra con su lote y su fecha de caducidad. Quince días antes de que caduque un lote llega un aviso con el producto, la ubicación y las unidades que quedan, y FEFO hace que se venda primero lo que antes caduca. Si viene una inspección de Sanidad, la pantalla de trazabilidad dice en segundos a qué clientes se vendió cada lote y el informe sale en PDF.",
+  },
+  {
+    tag: "Distribuidor de bebidas",
+    icon: "🥤",
+    title: "Agua en palés de 5 cajas de 12, vendida de las tres formas",
+    body: "El almacén lee en la ficha «1.300 ud ≈ 21 palés · 3 cajas · 4 ud» y sabe lo que tiene sin ponerse a dividir. El comercial factura en cajas y el albarán sale con su peso y sus bultos calculados. Cuando hay que servir tres botellas sueltas, el mozo abre una caja desde «Sacar / mover» y queda un traslado con su número, como cualquier otro.",
+  },
+  {
+    tag: "Materiales de construcción",
+    icon: "🧱",
+    title: "Sacos, palés y granel en el mismo almacén",
+    body: "El cemento se compra por palés y se vende por sacos; la arena se vende a granel por kilos. Cada formato tiene su precio y su código, el stock mínimo avisa antes de quedarte sin la referencia que más sale y la propuesta de compra prepara el pedido al proveedor. El albarán lleva el peso para el transportista, y 12,5 kg de granel pesan pero no cuentan como 13 bultos.",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Qué es un programa de control de stock?",
+    a: "Es el software que lleva la cuenta de cuánto tienes de cada artículo, en qué almacén, de qué lote y cuánto vale, y que te avisa antes de que algo falte o caduque. A diferencia de una hoja de cálculo, cada compra, venta, traslado o merma mueve el stock en el momento y deja rastro, así que el número de la pantalla se parece al de la estantería.",
+  },
+  {
+    q: "¿Qué diferencia hay entre un control de stock y un SGA?",
+    a: "El control de stock responde a cuánto hay, qué falta, qué caduca y cuánto vale. Un SGA (o WMS) añade la operativa física del almacén: ubicaciones, rutas de preparación, oleadas de picking, palets con etiqueta SSCC y depósito de terceros. En Drenpos las dos cosas son el mismo módulo de Inventario: empiezas por el stock y activas la parte de almacén cuando la necesitas, sin cambiar de programa.",
+  },
+  {
+    q: "¿Cómo funcionan las alertas de stock mínimo y máximo?",
+    a: "En la ficha de cada artículo pones un stock mínimo y un máximo. Cuando el stock baja del mínimo o supera el máximo, aparece una notificación en el panel en tiempo real. Aparte, las alertas de pedidos cruzan lo que tienes vendido pendiente de servir con el stock físico y te dicen cuántas unidades faltan por comprar, con un widget en el panel de inicio.",
+  },
+  {
+    q: "¿Puedo llevar el control de stock con pistola lectora o con el móvil?",
+    a: "Sí. En cada dispositivo eliges si lees con una pistola externa o con la cámara del móvil u ordenador. Cada artículo admite varios códigos de barras, uno por unidad de medida, así que el sistema distingue una botella de una caja. Las ubicaciones llevan un QR imprimible y los traslados, las recepciones y los recuentos se hacen escaneando.",
+  },
+  {
+    q: "¿Controla lotes y fechas de caducidad?",
+    a: "Sí. Cada lote guarda su código, su fecha de fabricación y su fecha de caducidad. El sistema avisa los días antes que configures, elige el lote de salida por FEFO, FIFO o LIFO y, con la pantalla de trazabilidad, localiza de qué proveedor entró un lote y a qué clientes salió, con informe PDF. Es la base documental que pide el artículo 18 del Reglamento (CE) 178/2002 a quien trabaja con alimentos.",
+  },
+  {
+    q: "¿Qué diferencia hay entre stock físico y stock disponible?",
+    a: "El físico es lo que hay en la estantería; el disponible es el físico menos lo reservado para pedidos ya confirmados. Drenpos enseña las dos cifras en todas las pantallas, también al elegir lote o número de serie, y los traslados, las salidas y los inventarios avisan si una operación deja el stock por debajo de lo comprometido.",
+  },
+  {
+    q: "¿Cómo se valora el inventario?",
+    a: "Cada artículo se valora a precio medio ponderado o a un precio manual. Con esa valoración, el informe de productos sin movimiento te dice cuánto dinero hay parado y dónde, el de rotación ordena lo que más sale por unidades y por valor con su cobertura en días, y el análisis de costes muestra la evolución del precio de compra mes a mes.",
+  },
+  {
+    q: "¿Cuánto cuesta y puedo pasar mis datos desde Excel?",
+    a: "El control de stock va en el módulo de Inventario, incluido en el plan Pro por 29 €/mes sin IVA, con 3 usuarios, soporte y actualizaciones. Cada usuario adicional cuesta 5 €/mes sin IVA. Los artículos, grupos, almacenes, listas de precios, clientes y proveedores se cargan desde plantillas de Excel, y el stock de partida entra como una entrada de inventario inicial.",
+  },
+];
+
+// Landings hermanas del clúster de almacén
+const hermanas = [
+  {
+    url: "/software-gestion-almacen",
+    title: "Software de gestión de almacén (SGA)",
+    body: "Cuando además necesitas ubicaciones, plano, rutas, palets con SSCC y depósito de terceros.",
+  },
+  {
+    url: "/software-preparacion-pedidos-picking",
+    title: "Preparación de pedidos y picking",
+    body: "Semáforo de pedidos, oleadas, asistente móvil y expedición con escaneo que genera el albarán.",
+  },
+  {
+    url: "/software-almacen-tienda",
+    title: "Almacén y TPV para tienda",
+    body: "Si vendes en mostrador: cada ticket descuenta stock y el cierre de caja cuadra con el almacén.",
+  },
+  {
+    url: "/software-almacen-frigorifico",
+    title: "Almacén frigorífico y de congelados",
+    body: "Lotes y FEFO a pie de cámara, palets con SSCC y depósito de mercancía de terceros.",
+  },
+];
+
+const articulos = [
+  { t: "Control de stock: cómo evitar roturas y recuperar margen", s: "control-de-stock-sin-roturas" },
+  { t: "¿SGA aparte o ERP con almacén? Qué necesita una pyme", s: "sga-o-erp-con-almacen-que-necesita-una-pyme" },
+  { t: "Software para distribuidores de bebidas: cajas, palés y formatos", s: "software-distribuidor-bebidas-cajas-palets-formatos" },
+  { t: "Trazabilidad alimentaria: lotes y retirada de producto", s: "trazabilidad-alimentaria-lotes-recall" },
+  { t: "Cómo organizar el almacén de una pyme", s: "como-organizar-almacen-pyme" },
+  { t: "Cuánto cuesta un SGA para una pyme en 2026", s: "cuanto-cuesta-sga-wms-pyme-2026" },
+];
+
+// ── Datos estructurados (JSON-LD) ──────────────────────────────────────
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
+    { "@type": "ListItem", position: 3, name: "Software de control de stock", item: CANONICAL },
+  ],
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Drenpos · Control de Stock",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  url: CANONICAL,
+  description:
+    "Software de control de stock e inventario para pymes: stock mínimo y máximo con alertas, alertas de pedidos, propuesta de compra asistida, lotes con caducidad y FEFO, trazabilidad con informe PDF, lectura con pistola o cámara del móvil, formatos en cajas y palés, inventarios físicos con regularización y valoración a precio medio ponderado. Integrado con compras, ventas y facturación.",
+  offers: {
+    "@type": "Offer",
+    price: "29.00",
+    priceCurrency: "EUR",
+    description: "Plan Pro con el módulo de Inventario incluido, 29 €/mes (sin IVA). Sin coste por uso ni permanencia.",
+    url: "https://www.drenpos.com/pricing",
+  },
+  featureList: [
+    "Stock mínimo y máximo por artículo con notificaciones",
+    "Alertas de pedidos: unidades que faltan para servir lo vendido",
+    "Propuesta de compra asistida con consumo real, reservas y pedidos en camino",
+    "Lotes y números de serie con fecha de fabricación y caducidad",
+    "Alertas de caducidad configurables y salida por FEFO, FIFO o LIFO",
+    "Trazabilidad de lotes con informe PDF",
+    "Lectura con pistola o con la cámara del móvil y QR por ubicación",
+    "Formatos en jerarquía (unidad, caja, palé) con stock en unidad base",
+    "Peso y bultos de documentos calculados",
+    "Stock físico y disponible con reservas",
+    "Inventarios físicos con regularización e informe de diferencias",
+    "Valoración a precio medio ponderado o manual",
+    "Informes de rotación, inmovilizado y evolución del coste",
+  ],
+  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
+};
+---
+
+<Base
+  title="Software de Control de Stock · Drenpos"
+  meta_title="Software de Control de Stock con Lotes y Alertas | Drenpos"
+  description="Programa de control de stock para pymes: mínimos y máximos con alertas, propuesta de compra, lotes, caducidad y pistola o móvil. Pro 29 €/mes sin IVA."
+  canonical={CANONICAL}
+  image={HERO_IMG}
+>
+  <!-- Datos estructurados -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0 relative z-10 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/images/grainy.svg" alt="" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/funcionalidades" class="hover:text-primary">Funcionalidades</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Control de Stock</span>
+      </nav>
+
+      <div class="row gx-0 gy-12 lg:gy-0 items-center">
+        <div class="lg:col-6" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Control de stock e inventario
+          </span>
+
+          <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
+            Software de <span class="text-primary">control de stock</span> para pymes: sabes lo que tienes, lo que falta y lo que caduca
+          </h1>
+          <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
+            Un programa de control de stock e inventario que te avisa cuando un
+            artículo baja del mínimo, te propone qué comprar y cuánto, lleva
+            <strong>lotes y caducidades</strong> con FEFO y se maneja con
+            <strong>pistola lectora o con el móvil</strong>. Con el stock en
+            unidades, cajas y palés, inventarios sin cerrar y el valor de lo que
+            tienes parado. Dentro del plan Pro, por
+            <strong>29 €/mes sin IVA</strong>.
+          </p>
+
+          <ul class="flex flex-wrap gap-4 mb-10">
+            <li data-aos="fade-up-sm" data-aos-delay="100">
+              <a href="#demo-form" class="btn btn-dark">
+                Pedir demo gratuita
+                <span class="icon-wrapper">
+                  <span class="icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="150">
+              <a href="/pricing" class="btn btn-light">Ver precios</a>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Alertas de mínimos y máximos
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Propuesta de compra
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Lotes, caducidad y FEFO
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Sin permanencia
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="relative px-4 lg:px-0 pt-10 pb-10">
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
+
+            <div class="rounded-2xl overflow-hidden relative z-10" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
+              <img
+                src={HERO_IMG}
+                alt="Control de lotes y fechas de caducidad en el programa de control de stock de Drenpos"
+                width="720"
+                height="480"
+                class="w-full h-auto block"
+                fetchpriority="high"
+              />
+            </div>
+
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0 font-bold" style="background: #fee2e2; color: #dc2626;">!</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Bajo mínimos</p>
+                <p class="text-xs" style="color: #9ca3af;">Agua 1,5 L · propuesta de compra lista</p>
+              </div>
+            </div>
+
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #fef3c7;">📦</div>
+              <div>
+                <p class="text-xs font-bold text-dark">1.300 ud</p>
+                <p class="text-xs" style="color: #9ca3af;">≈ 21 palés · 3 cajas · 4 ud</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ClientLogosStrip />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DEFINICIÓN CITABLE (AEO / featured snippet)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h4 font-bold mb-4">¿Qué es un software de control de stock?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            Un <strong>software de control de stock</strong> es el programa que
+            lleva la cuenta de cuánto tienes de cada artículo, en qué almacén,
+            de qué lote y cuánto vale, y que <strong>te avisa antes de que algo
+            falte o caduque</strong>. Cada compra, venta, traslado o merma mueve
+            el stock en el momento y deja rastro. Con eso puede decirte qué
+            reponer y cuánto, y cuadrar el inventario sin cerrar. En Drenpos va
+            integrado con las compras, las ventas y la facturación.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SÍNTOMAS
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Te pasa alguna de estas?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          Son las cuatro razones por las que una pyme acaba buscando un programa de control de stock.
+        </p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          sintomas.map((s, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{s.icon}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{s.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.65);">{s.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       COSTE DE LAS ROTURAS (cifras citables con fuente)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="coste-roturas" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <div class="rounded-3xl p-8 lg:p-12 text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-4 text-white">¿Cuánto te cuesta una rotura de stock?</h2>
+            <p class="text-lg leading-relaxed mb-8" style="color: rgba(255,255,255,0.82);">
+              Más de lo que parece. El estudio de Corsten y Gruen (2004) sobre
+              distribución minorista, que recoge
+              <a href="https://www.slimstock.com/blog/the-hidden-cost-of-stockouts-why-retailers-cant-afford-empty-shelves/" class="underline" style="color: #fcd9b6;" rel="noopener">Slimstock</a>,
+              calcula que las roturas de stock se llevan de media un
+              <strong>4 % de las ventas</strong>, y que el <strong>72 %</strong>
+              de esas roturas nacen de problemas de planificación que la propia
+              empresa puede gestionar. Es decir: la mayoría se pueden evitar con
+              mejores avisos y mejores pedidos.
+            </p>
+            <div class="row g-4">
+              <div class="md:col-4">
+                <p class="text-h3 font-bold text-white mb-1">4 %</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.7);">de ventas perdidas de media por roturas de stock (Corsten y Gruen, 2004)</p>
+              </div>
+              <div class="md:col-4">
+                <p class="text-h3 font-bold text-white mb-1">72 %</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.7);">de las roturas nacen de problemas de planificación gestionables</p>
+              </div>
+              <div class="md:col-4">
+                <p class="text-h3 font-bold text-white mb-1">4 salidas</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.7);">del cliente ante el hueco: sustituye, espera, no compra o se va a la competencia</p>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed mt-8" style="color: rgba(255,255,255,0.62);">
+              Son datos de gran distribución y tu cifra será otra. Pero el
+              patrón se repite en una ferretería o en un almacén de bebidas:
+              cuando nadie avisa de que algo baja del mínimo, la rotura la
+              descubre el cliente. Lo contamos con ejemplos en
+              <a href="/blog/control-de-stock-sin-roturas" class="underline" style="color: #fcd9b6;">control de stock sin roturas</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       BLOQUES DE PRODUCTO (H2 en pregunta + cápsula)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      {
+        bloques.map((b, i) => (
+          <div id={b.id} class={`row gy-8 items-start scroll-mt-24 ${i > 0 ? "mt-16 lg:mt-24" : ""}`}>
+            <div class="lg:col-6" data-aos="fade-up-sm">
+              <div class="text-3xl mb-4">{b.icon}</div>
+              <h2 class="h4 mb-4 font-bold leading-tight">{b.h2}</h2>
+              <p class="text-lg leading-relaxed mb-4" style="color: rgba(16,25,40,0.75);">{b.capsula}</p>
+              {b.nota && (
+                <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.65);">
+                  Si trabajas con alimentos, el
+                  <a href="https://www.boe.es/buscar/doc.php?id=DOUE-L-2002-80201" class="text-primary underline" rel="noopener">artículo 18 del Reglamento (CE) 178/2002</a>
+                  te obliga a poder identificar a quién le compraste cada producto
+                  y a qué empresas se lo suministraste, y a dar esa información a
+                  la autoridad sanitaria si la pide. El programa no sustituye a
+                  tu plan de trazabilidad, pero hace que responder sea cuestión
+                  de minutos. Más detalle en
+                  <a href="/blog/trazabilidad-alimentaria-lotes-recall" class="text-primary underline">trazabilidad alimentaria por lotes</a>.
+                </p>
+              )}
+            </div>
+            <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="150">
+              {b.img && (
+                <figure class="rounded-2xl overflow-hidden mb-6" style="box-shadow: 0 20px 60px rgba(0,0,0,0.14); border: 1px solid rgba(16,25,40,0.08);">
+                  <img src={b.img} alt={b.alt} width="1200" height="800" class="w-full h-auto block" loading="lazy" />
+                </figure>
+              )}
+              <div class="rounded-3xl border border-dark/10 bg-body p-7">
+                <ul class="space-y-3">
+                  {b.bullets.map((t) => (
+                    <li class="flex items-start gap-3">
+                      <span class="w-5 h-5 mt-0.5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+                      <span class="text-sm" style="color: rgba(16,25,40,0.75);">{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       COMPARATIVA (tabla de decisión, AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Excel, tu programa de facturación o un control de stock de verdad?</h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Las cuatro formas que tiene una pyme de llevar el stock, comparadas en lo que de verdad te ahorra disgustos.
+        </p>
+      </div>
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[1080px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Opción</th>
+              <th class="text-left p-4">Alertas de mínimos</th>
+              <th class="text-left p-4">Qué comprar</th>
+              <th class="text-left p-4">Lotes y caducidad</th>
+              <th class="text-left p-4">Pistola o móvil</th>
+              <th class="text-left p-4">Inventario físico</th>
+              <th class="text-left p-4">Valoración</th>
+              <th class="text-left p-4 rounded-tr-2xl">Coste</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comparativa.map((r) => (
+                <tr class={r.destacado ? "bg-primary/5 font-medium" : "border-b border-dark/5"}>
+                  <td class={`p-4 ${r.destacado ? "text-primary font-bold" : "font-medium"}`}>{r.opcion}</td>
+                  <td class="p-4">{r.alertas}</td>
+                  <td class="p-4">{r.compras}</td>
+                  <td class="p-4">{r.lotes}</td>
+                  <td class="p-4">{r.lectura}</td>
+                  <td class="p-4">{r.inventario}</td>
+                  <td class="p-4">{r.valoracion}</td>
+                  <td class="p-4">{r.precio}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="text-center mt-6 text-sm max-w-3xl mx-auto" style="color: rgba(16,25,40,0.6);" data-aos="fade-up-sm">
+        Si estás valorando un SGA aparte, suma su licencia, su implantación y
+        la integración con tu ERP. Lo desglosamos en
+        <a href="/blog/cuanto-cuesta-sga-wms-pyme-2026" class="text-primary underline">cuánto cuesta un SGA para una pyme</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CONTROL DE STOCK O SGA (diferenciación con la pilar)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="stock-o-sga" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <div class="rounded-3xl border border-dark/10 bg-body p-7 lg:p-10" data-aos="fade-up-sm">
+            <h2 class="h4 font-bold mb-4">¿Necesito un control de stock o un SGA completo?</h2>
+            <p class="text-lg leading-relaxed mb-5" style="color: rgba(16,25,40,0.75);">
+              Depende de dónde te duela. Si el problema es saber cuánto hay,
+              qué falta, qué caduca y cuánto vale, necesitas control de stock.
+              Si además te cuesta encontrar la mercancía, preparar pedidos sin
+              vueltas o trabajar con palets etiquetados, necesitas la parte de
+              SGA. En Drenpos es el mismo módulo de Inventario: empiezas por el
+              stock y activas ubicaciones, picking y palets cuando te hagan
+              falta, sin cambiar de programa ni migrar datos.
+            </p>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(16,25,40,0.7);">
+              En España hay 1.143.130 microempresas de 1 a 9 asalariados y
+              181.605 pequeñas empresas de 10 a 49, según
+              <a href="https://ipyme.org/Publicaciones/Cifras%20PYME/CifrasPyme_mayo_2026.pdf" class="text-primary underline" rel="noopener">Cifras PYME de mayo de 2026</a>
+              (Ministerio de Industria y Turismo). Para muchas de ellas, con una
+              trastienda o una nave pequeña, el problema del día a día es el
+              stock y no la ruta de picking.
+            </p>
+            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">
+              Si tu almacén ya pide más, mira el
+              <a href="/software-gestion-almacen" class="text-primary underline">software de gestión de almacén</a>
+              y la tabla de decisión sobre
+              <a href="/software-gestion-almacen#sga-o-erp" class="text-primary underline">si necesitas un SGA aparte o te vale el módulo del ERP</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CASOS DE USO SECTORIALES
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Cómo lo usan negocios como el tuyo</h2>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          casos.map((c, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3">{c.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <p class="text-center mt-10 text-sm max-w-2xl mx-auto" style="color: rgba(16,25,40,0.6);" data-aos="fade-up-sm">
+        ¿Distribuyes bebidas o alimentación? Te contamos cómo se trabaja con
+        unidades, cajas y palés en
+        <a href="/blog/software-distribuidor-bebidas-cajas-palets-formatos" class="text-primary underline">software para distribuidores de bebidas</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PRECIO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-8">
+          <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-3 text-white">Control de stock completo por 29 €/mes sin IVA</h2>
+            <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+              El plan Pro incluye el módulo de Inventario (mínimos y máximos,
+              alertas, propuesta de compra, lotes y caducidades, pistola o
+              móvil, inventarios y valoración) junto a facturación, informes,
+              correo y WhatsApp, con 3 usuarios. Cada usuario adicional cuesta
+              5 €/mes sin IVA. Soporte y actualizaciones incluidos, sin
+              permanencia.
+            </p>
+            <ul class="flex flex-wrap gap-4 justify-center">
+              <li>
+                <a href="/pricing" class="btn btn-light">Ver planes y precios</a>
+              </li>
+              <li>
+                <a href="#demo-form" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Pedir demo de 20 minutos</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <DemoForm interes="almacen" />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FAQ (visible + schema)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <h2 class="h3 font-bold mb-3 text-center" data-aos="fade-up-sm">Control de stock: lo que más nos preguntan</h2>
+          <p class="text-center mb-10" style="color: rgba(16,25,40,0.62);" data-aos="fade-up-sm">
+            Respuestas directas, sin letra pequeña.
+          </p>
+          <div class="space-y-4">
+            {
+              faqs.map((f, i) => (
+                <details class="group rounded-2xl border border-dark/10 bg-body p-5" data-aos="fade-up-sm" data-aos-delay={Math.min(i * 50, 300)}>
+                  <summary class="cursor-pointer list-none flex items-start justify-between gap-4">
+                    <h3 class="h6 font-bold leading-snug">{f.q}</h3>
+                    <span class="text-primary text-xl leading-none mt-0.5 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <p class="mt-4 text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">{f.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ENLAZADO INTERNO (clúster)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-3">Cuando el almacén pide más que stock</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          El mismo sistema, explicado desde el problema concreto de cada operativa.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center mb-14">
+        {
+          hermanas.map((h, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <a href={h.url} class="block h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl hover:border-primary/30 transition-all duration-300">
+                <h3 class="h6 font-bold mb-2 leading-snug text-primary">{h.title}</h3>
+                <p class="text-sm mb-3" style="color: rgba(16,25,40,0.68);">{h.body}</p>
+                <span class="text-primary text-sm font-medium">Ver solución →</span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center gy-6">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <h2 class="h5 font-bold mb-3">Sigue leyendo sobre stock, compras y lotes</h2>
+          <ul class="row g-2 text-sm mb-6">
+            {
+              articulos.map((a) => (
+                <li class="md:col-6">
+                  <a href={`/blog/${a.s}`} class="text-primary hover:underline">{a.t}</a>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="text-sm" style="color: rgba(16,25,40,0.65);">
+            ¿Quieres ver el sistema completo? Repasa
+            <a href="/modulos" class="text-primary underline">todos los módulos de Drenpos</a>,
+            consulta los <a href="/pricing" class="text-primary underline">planes y precios</a>
+            o <a href="/contact" class="text-primary underline">escríbenos</a> y
+            te enseñamos tu propio stock funcionando en veinte minutos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>

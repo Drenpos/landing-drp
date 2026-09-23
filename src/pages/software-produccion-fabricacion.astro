@@ -185,6 +185,11 @@ const hermanas = [
     title: "Almacén y TPV para tienda",
     body: "Si además vendes en mostrador lo que fabricas, con el stock descontado en cada ticket.",
   },
+  {
+    url: "/software-control-stock",
+    title: "Control de stock e inventario",
+    body: "Que no falte materia prima: mínimos con alertas, propuesta de compra y lotes con caducidad.",
+  },
 ];
 
 // Enlazado interno local
@@ -613,7 +618,7 @@ const faqSchema = {
         <h2 class="h4 font-bold mb-2">Sigue por aquí</h2>
         <p class="text-base mb-0" style="color: rgba(16,25,40,0.65);">Producción no vive sola: se apoya en el almacén, la expedición y el control horario.</p>
       </div>
-      <div class="row g-4">
+      <div class="row g-4 justify-center">
         {hermanas.map((h, i) => (
           <div class="col-12 md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 80}>
             <a href={h.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
