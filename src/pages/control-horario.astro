@@ -16,6 +16,8 @@ import { join } from "node:path";
 //    09-geolocalizacion-mapa.png (opcional: solo se pinta si existe en /public)
 //    10-vacaciones-calendario.png · 11-incidencias-entrada-salida.png ·
 //    12-calendarios-laborales.png (opcionales, 1280×800, mismo guard hasImg)
+//    13-planificacion-anual-equipo.png (opcional, 1280×800, sección
+//    #planificacion-anual: vista Equipo con personas en filas y días del mes)
 //  Imágenes HARDWARE (reemplazar placeholders por fotos reales):
 //    hardware/01-dispositivo-lector-rfid.png
 //    hardware/02-llaveros-personalizados.png
@@ -35,10 +37,14 @@ const INC_IMG = "/images/funcionalidades/control-horario/11-incidencias-entrada-
 const showIncImg = hasImg(INC_IMG);
 const CAL_IMG = "/images/funcionalidades/control-horario/12-calendarios-laborales.png";
 const showCalImg = hasImg(CAL_IMG);
+const PLAN_IMG = "/images/funcionalidades/control-horario/13-planificacion-anual-equipo.png";
+const showPlanImg = hasImg(PLAN_IMG);
 
 // Fuentes legales enlazadas en las secciones nuevas
 const ET_URL = "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430";
 const LISOS_URL = "https://www.boe.es/buscar/act.php?id=BOE-A-2000-15060";
+const RD1561_URL = "https://www.boe.es/buscar/act.php?id=BOE-A-1995-21346";
+const CONVENIO_SEG_URL = "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-8569";
 
 // Vacaciones y permisos (sección #vacaciones)
 const vacaciones = [
@@ -65,7 +71,7 @@ const vacaciones = [
   {
     icon: "👥",
     title: "Calendario del equipo",
-    body: "Quién falta cada día, para no quedarte con dos personas menos en el turno de tarde en plena campaña. Los responsables se definen por usuarios o grupos; si no defines ninguno, aprueban los administradores.",
+    body: "Quién falta cada día, para no quedarte con dos personas menos en el turno de tarde en plena campaña. Los responsables se definen por usuarios o grupos; si no defines ninguno, aprueban los administradores. Nadie puede aprobar su propia solicitud.",
   },
   {
     icon: "📄",
@@ -112,13 +118,33 @@ const entradaSalida = [
 const calendarios = [
   {
     icon: "🗓️",
-    title: "Calendarios con vigencias y turnos",
-    body: "Horario de invierno y de verano, turno de mañana y turno de tarde, cada uno con sus fechas de vigencia y su entrada, salida y pausa de cada día. Uno queda marcado por defecto para quien no tenga otro asignado.",
+    title: "Semanal o rotativo, con vigencias",
+    body: "El semanal es el de siempre, de lunes a domingo. Horario de invierno y de verano, turno de mañana y de tarde, cada uno con sus fechas de vigencia y su entrada, salida y pausa. Uno queda por defecto para quien no tenga otro.",
+  },
+  {
+    icon: "🔄",
+    title: "Ciclos 4/4, 5/2, 6/3 y noches",
+    body: "El rotativo es para lo que no encaja en la semana: 4 días de trabajo y 4 de descanso, 5/2 rotando, 6/3, o mañanas y noches dentro del mismo ciclo. Indicas días de trabajo, de descanso y horario, y el sistema va alternando solo. Cada día del ciclo se ajusta a mano.",
+  },
+  {
+    icon: "👥",
+    title: "Primer día del ciclo por persona",
+    body: "Si dos vigilantes se turnan (uno trabaja mientras el otro libra), no duplicas el calendario: a cada uno le pones su primer día del ciclo. Se hace en la misma pantalla donde asignas los calendarios, persona a persona o por grupos.",
+  },
+  {
+    icon: "👀",
+    title: "Vista previa del mes y horario validado",
+    body: "Antes de guardar ves cómo caen los turnos en el mes. Si la pausa cae fuera de la jornada, no deja guardar y te dice por qué. Si la salida es anterior a la entrada (de 22:00 a 6:00), lo entiende como turno de noche y te avisa.",
   },
   {
     icon: "🏖️",
-    title: "Festivos por comunidad y por persona",
-    body: "Festivos nacionales, autonómicos y por trabajador. Un empleado en Extremadura no tiene los mismos festivos que uno en Cataluña, y el sistema los descuenta solo de las horas esperadas. Los fijos se marcan como recurrentes y valen para todos los años.",
+    title: "Festivos nacionales, autonómicos y por persona",
+    body: "Un calendario nacional por defecto y otro por comunidad autónoma. A quien solo tenga el autonómico se le aplican también los nacionales de su país. Y festivos por trabajador para las fiestas locales. Todos se descuentan de las horas esperadas.",
+  },
+  {
+    icon: "📌",
+    title: "Permanentes: nada que reasignar en enero",
+    body: "Los calendarios se crean una vez y no se vuelven a asignar cada año. Los festivos fijos son recurrentes; los que cambian de fecha, como el Jueves Santo, se añaden por año, y el botón «Copiar festivos de 2026 a 2027» te deja solo retocar los que cambien.",
   },
   {
     icon: "⚡",
@@ -128,8 +154,47 @@ const calendarios = [
   {
     icon: "➕",
     title: "Horas extra con una sola cuenta",
-    body: "Las extra son lo trabajado por encima de lo esperado, día a día; la semana y el periodo son la suma de los días. La misma cifra en pantalla, en las incidencias y en el informe PDF.",
+    body: "Las extra son lo trabajado por encima de lo esperado, día a día; la semana y el periodo son la suma de los días. Con un ciclo rotativo, los días de descanso no suman horas ni gastan vacaciones. La misma cifra en pantalla, en las incidencias y en el PDF.",
   },
+];
+
+// Cuadrante de ejemplo 4/4 con dos personas (bloque rotativo de #calendarios)
+const ciclo44 = Array.from({ length: 16 }, (_, i) => i + 1);
+const turno44 = (dia: number, desfase: number) => ((dia - 1 + desfase) % 8) < 4;
+
+// Planificación anual del equipo (sección #planificacion-anual)
+const planificacion = [
+  {
+    icon: "👥",
+    title: "Vista Equipo",
+    body: "Las personas en filas y los días del mes en columnas. De un vistazo ves quién trabaja, quién libra por su ciclo, quién está de vacaciones y qué solicitudes siguen pendientes. Filtras por personas y cambias de mes.",
+  },
+  {
+    icon: "🧑",
+    title: "Vista Persona",
+    body: "El año completo de un trabajador: sus días de trabajo y de descanso (también los de un ciclo rotativo), sus festivos y sus vacaciones y permisos, aprobados y pendientes. Cambias de año con un clic.",
+  },
+  {
+    icon: "📄",
+    title: "PDF del año, una página por trabajador",
+    body: "Un botón descarga el PDF del año: cada persona en su página, con la rejilla de los doce meses, la lista de sus festivos y el resumen de días laborables, festivos y ausencias. Listo para imprimir, colgar o entregar.",
+  },
+  {
+    icon: "🎨",
+    title: "Una leyenda para todo el módulo",
+    body: "Trabajo, descanso, festivo, vacaciones y pendiente llevan los mismos colores en la planificación, en el calendario de vacaciones y en el PDF. Nadie tiene que aprender dos códigos distintos.",
+  },
+];
+
+// Primeros pasos del módulo (bloque #primeros-pasos)
+const primerosPasos = [
+  "Perfiles de fichaje",
+  "Calendario laboral",
+  "Festivos del año",
+  "Concepto por defecto",
+  "Tipos de ausencia y responsables",
+  "Control de entrada y salida",
+  "Dispositivos",
 ];
 
 // Widgets del panel de inicio relacionados con fichajes
@@ -185,7 +250,7 @@ const metodos = [
   {
     icon: "📱",
     name: "App PWA en el móvil",
-    desc: "Instalable sin App Store ni Google Play. Solo la pantalla de fichaje, con ubicación opcional al fichar.",
+    desc: "Instalable sin App Store ni Google Play, con guía para iPhone y Android. Botón grande para entrar o salir, conceptos en chips y aviso si no hay cobertura.",
     best: "Comerciales y trabajo en campo",
   },
   {
@@ -197,7 +262,7 @@ const metodos = [
   {
     icon: "🔑",
     name: "Llavero RFID",
-    desc: "Acerca el llavero al lector físico y ficha. Sin móvil ni pantalla, y el terminal ficha aunque no haya internet.",
+    desc: "Acerca el llavero al lector físico y ficha. Sin móvil ni pantalla, cada lector con su concepto y fichando aunque no haya internet.",
     best: "Almacenes, talleres, fábricas",
   },
   {
@@ -240,12 +305,18 @@ const casos = [
     body: "La empresa activa el control de entrada y salida con 5 minutos de tolerancia. Quien entra a las 8:14 con horario de 8:00 genera «Entrada tarde +14 min», que le llega a él y a su responsable. Si había motivo, el responsable la justifica con una nota; si no, la descarta. A las 10:00 el sistema avisa de quien no ha fichado la entrada ese día laborable. Todo queda en el informe.",
     icon: "⏰",
   },
+  {
+    tag: "Seguridad · vigilantes a turnos de 4 días",
+    title: "Un 4/4 sin cuadrante en papel",
+    body: "Una empresa de seguridad tiene dos vigilantes que trabajan 4 días y descansan 4, turnándose. Crea un calendario rotativo «Vigilantes 4/4» con el horario, lo asigna a los dos y al segundo le pone su primer día del ciclo cuatro días después. Las horas esperadas del mes salen bien, los descansos no cuentan como faltas, las vacaciones solo descuentan días de trabajo y administración ve en la planificación anual quién cubre cada día.",
+    icon: "🛡️",
+  },
 ];
 
 const faqs = [
   {
     q: "¿El registro horario es realmente obligatorio en 2026?",
-    a: "Sí. Desde 2019, el artículo 34.9 del Estatuto de los Trabajadores obliga a todas las empresas con personas por cuenta ajena a llevar un registro diario de jornada con la hora de inicio y de fin de cada trabajador, y a conservarlo cuatro años. La Inspección de Trabajo puede pedirlo en cualquier momento y no llevarlo es infracción grave, con sanciones de 751 € a 7.500 € según la LISOS. A fecha de 23 de septiembre de 2026, el real decreto que haría obligatorio el registro digital y endurecería las multas no está aprobado ni publicado en el BOE.",
+    a: "Sí. Desde 2019, el artículo 34.9 del Estatuto de los Trabajadores obliga a todas las empresas con personas por cuenta ajena a llevar un registro diario de jornada con la hora de inicio y de fin de cada trabajador, y a conservarlo cuatro años. La Inspección de Trabajo puede pedirlo en cualquier momento y no llevarlo es infracción grave, con sanciones de 751 € a 7.500 € según la LISOS. A fecha de 28 de septiembre de 2026, el real decreto que haría obligatorio el registro digital y endurecería las multas no está aprobado ni publicado en el BOE.",
   },
   {
     q: "¿Qué es exactamente el control horario digital?",
@@ -273,7 +344,7 @@ const faqs = [
   },
   {
     q: "¿Puedo usar conceptos de fichaje propios de mi empresa?",
-    a: "Sí. Puedes crear todos los conceptos que necesites (formación, visita cliente, comida, asuntos propios, etc.), definir si computan como jornada laboral o no, e incluso establecer límites diarios o semanales por concepto.",
+    a: "Sí. Creas los conceptos que necesites (trabajo, comida, formación, visita a cliente, reunión), decides si cuentan como tiempo de trabajo y les pones un tiempo límite, como 30 minutos de descanso. Uno queda marcado por defecto, normalmente «Trabajo»: es el que se usa al pulsar Iniciar sin elegir nada y tiene que contar como trabajo, así nadie empieza la jornada «comiendo» por error. Y cada terminal de fichaje puede tener su concepto: el de la puerta ficha «Trabajo» y el del comedor, «Comida».",
   },
   {
     q: "¿Es legal fichar con geolocalización?",
@@ -312,12 +383,32 @@ const faqs = [
     a: "Sí. A cada persona le asignas los festivos nacionales y los de su comunidad autónoma, y puedes añadir festivos por trabajador, por ejemplo las fiestas locales de su municipio. Un empleado en Extremadura y otro en Cataluña tienen festivos distintos y el sistema los descuenta solo de las horas esperadas. Los festivos fijos se marcan como recurrentes y valen para todos los años. La asignación se hace en bloque, desde una sola pantalla.",
   },
   {
+    q: "¿Drenpos sirve para turnos rotativos como el 4x4, el 5/2 o el 6/3?",
+    a: "Sí. Además del calendario semanal, Drenpos tiene calendarios rotativos: indicas los días de trabajo, los de descanso, el horario y el primer día del ciclo, y el sistema va alternando solo. Vale para 4 días de trabajo y 4 de descanso, 5/2 rotando, 6/3 o mañanas y noches en el mismo ciclo, y cada día se puede ajustar a mano. Una vista previa enseña cómo caen los turnos en el mes antes de guardar, y las horas esperadas, las extra y las vacaciones ya cuentan con el ciclo.",
+  },
+  {
+    q: "¿Cómo configuro a dos personas que se turnan en el mismo puesto?",
+    a: "Con un solo calendario rotativo asignado a las dos y un primer día del ciclo distinto para cada una. En un 4/4, la segunda persona empieza su ciclo cuatro días después que la primera, así una trabaja mientras la otra libra. No hace falta duplicar el calendario. Los días de descanso no suman horas esperadas ni cuentan como faltas, y las vacaciones solo descuentan días de trabajo.",
+  },
+  {
+    q: "¿Puedo sacar el calendario laboral anual de cada trabajador en PDF?",
+    a: "Sí, desde la planificación anual del equipo. Un botón descarga el PDF del año con una página por trabajador: la rejilla de los doce meses con sus días de trabajo y descanso, sus festivos y sus vacaciones y permisos, la lista de festivos y el resumen de días laborables, festivos y ausencias. El artículo 34.6 del Estatuto de los Trabajadores obliga a la empresa a elaborar cada año el calendario laboral y a exponerlo en un lugar visible de cada centro de trabajo.",
+  },
+  {
+    q: "¿Hay que volver a asignar los calendarios a la plantilla cada enero?",
+    a: "No. En Drenpos los calendarios son permanentes: se crean y se asignan una vez. Los festivos fijos se marcan como recurrentes y valen para todos los años. Los que cambian de fecha, como el Jueves Santo, se añaden por año, y el botón «Copiar festivos de 2026 a 2027» lleva los del año anterior al siguiente para que solo retoques los que cambian.",
+  },
+  {
+    q: "¿Un responsable puede aprobarse sus propias vacaciones?",
+    a: "No. En Drenpos nadie puede aprobar su propia solicitud. Quién aprueba se decide en la configuración: si hay una lista de responsables (usuarios o grupos), solo ellos deciden; si no se define ninguna, aprueban los administradores. Así la solicitud del encargado la revisa otra persona, y el informe recoge quién la aprobó.",
+  },
+  {
     q: "¿El responsable puede rechazar unas vacaciones o proponer otras fechas?",
     a: "Sí. El responsable aprueba, rechaza o propone otras fechas, siempre con un motivo, y el empleado acepta o rechaza la propuesta desde la app o el portal. En el calendario del equipo ve quién falta cada día para evitar solapes. Los responsables se definen por usuarios o grupos; si no defines ninguno, deciden los administradores. La ley pide fijar las fechas de común acuerdo (artículo 38 del Estatuto), así que la propuesta con motivo deja rastro de esa negociación.",
   },
   {
     q: "¿Las vacaciones y el control de entrada y salida tienen coste extra?",
-    a: "No. Vacaciones y permisos, control de entrada y salida, calendarios laborales y geolocalización van incluidos en el módulo de fichajes, que cuesta 1 € por usuario y mes sin IVA. Son opciones que activas cuando las necesitas. Un matiz: quien aprueba vacaciones o revisa incidencias necesita licencia de fichaje aunque no fiche.",
+    a: "No. Vacaciones y permisos, control de entrada y salida, calendarios laborales (también los rotativos), planificación anual y geolocalización van incluidos en el módulo de fichajes, que cuesta 1 € por usuario y mes sin IVA. Son opciones que activas cuando las necesitas. Un matiz: quien aprueba vacaciones o revisa incidencias necesita licencia de fichaje aunque no fiche.",
   },
 ];
 
@@ -338,6 +429,7 @@ const ciudades = [
 
 // Artículos relacionados (clúster temático)
 const articulos = [
+  { t: "Cuadrante de turnos rotativos: ejemplos 4x4, 5/2 y 6/3", s: "cuadrante-turnos-rotativos-4x4-ejemplos-estatuto" },
   { t: "Vacaciones y permisos en la pyme, sin Excel", s: "gestion-vacaciones-permisos-pymes-sin-excel" },
   { t: "Control de entrada y salida: retrasos y cómo documentarlos", s: "control-entrada-salida-retrasos-empleados" },
   { t: "Calendario laboral 2027: festivos y horas extra", s: "calendario-laboral-2027-festivos-horas-extra" },
@@ -379,7 +471,7 @@ const productSchema = {
   operatingSystem: "Web, iOS, Android (PWA)",
   url: CANONICAL,
   description:
-    "Software de control horario y registro de jornada para pymes. Fichaje por web, móvil (PWA), widget rápido, llavero RFID y código QR. Vacaciones y permisos con cupo por política, solicitud desde el móvil y aprobación con contrapropuesta de fechas. Control opcional de entrada y salida con incidencias y tolerancias. Calendarios laborales con vigencias, festivos por comunidad autónoma y por persona, y horas extra calculadas día a día. Geolocalización opcional solo al fichar. Terminal de fichaje propio que sigue fichando sin internet. Informes inalterables para la Inspección de Trabajo.",
+    "Software de control horario y registro de jornada para pymes. Fichaje por web, móvil (PWA), widget rápido, llavero RFID y código QR. Vacaciones y permisos con cupo por política, solicitud desde el móvil y aprobación con contrapropuesta de fechas. Control opcional de entrada y salida con incidencias y tolerancias. Calendarios laborales semanales y rotativos (4/4, 5/2, 6/3, turnos de noche) con primer día del ciclo por persona, calendarios permanentes con copia de festivos de un año al siguiente, festivos por comunidad autónoma y por persona, y horas extra calculadas día a día. Planificación anual del equipo con PDF de una página por trabajador. Geolocalización opcional solo al fichar. Terminal de fichaje propio que sigue fichando sin internet. Informes inalterables para la Inspección de Trabajo.",
   offers: {
     "@type": "Offer",
     price: "1",
@@ -392,13 +484,23 @@ const productSchema = {
     "Registro horario diario e individualizado",
     "Fichaje por web, móvil PWA, widget, RFID y QR",
     "Calendarios laborales con vigencias y turnos, asignables en bloque",
+    "Calendarios rotativos para ciclos que no encajan en la semana (4/4, 5/2 rotando, 6/3, mañanas y noches) con vista previa del mes",
+    "Primer día del ciclo por persona: dos personas se turnan sobre el mismo calendario rotativo sin duplicarlo",
+    "Validación del horario al guardar: pausa fuera de jornada bloqueada y salida anterior a la entrada tratada como turno de noche",
+    "Calendarios permanentes con festivos recurrentes y botón para copiar los festivos de un año al siguiente",
+    "Calendario nacional y autonómico por defecto: quien solo tiene el autonómico recibe también los nacionales",
+    "Planificación anual del equipo con vistas Equipo y Persona y PDF del año con una página por trabajador",
     "Festivos nacionales, autonómicos y por persona, descontados de las horas esperadas",
     "Horas extra calculadas día a día con una sola cuenta en pantalla, incidencias e informe",
     "Vacaciones y permisos: tipos de ausencia configurables y cupo por año natural o aniversario de contratación, con consolidación mensual, prorrateo y arrastre con caducidad",
     "Solicitud de vacaciones desde la app con saldo, aprobación, rechazo o contrapropuesta de fechas y calendario del equipo",
     "Control de entrada y salida opcional: incidencias por entrada tarde, salida anticipada, fichaje olvidado, exceso de horas y trabajo en festivo, con tolerancias en minutos",
     "Widgets de panel: Mis vacaciones, Hoy en el trabajo, Solicitudes por revisar e Incidencias abiertas",
-    "Conceptos de fichaje personalizables",
+    "Conceptos de fichaje personalizables, con uno por defecto que cuenta como trabajo",
+    "Concepto asignado por terminal: el lector de la puerta ficha Trabajo y el del comedor, Comida",
+    "App PWA con guía de instalación para iPhone y Android, conceptos en chips y aviso cuando no hay cobertura",
+    "Aprobación de vacaciones por responsables definidos; nadie aprueba su propia solicitud",
+    "Página de primeros pasos con lo que falta por configurar y ayuda en pantalla en cada campo",
     "Reportes y trazabilidad para Inspección de Trabajo",
     "Hardware de fichaje propio (lector RFID + llaveros + tarjetas QR) con el logo del cliente en la carcasa",
     "Geolocalización opcional del fichaje desde móvil PWA y web, solo en la entrada y la salida, sin seguimiento continuo",
@@ -411,8 +513,8 @@ const productSchema = {
 
 <Base
   title="Control Horario, Vacaciones y Registro de Jornada · Drenpos"
-  meta_title="Control Horario, Vacaciones y Fichajes para Pymes | Drenpos"
-  description="Control horario para pymes: fichaje por web, móvil o llavero RFID, vacaciones, incidencias de entrada y salida y festivos. Desde 1 €/usuario sin IVA."
+  meta_title="Control Horario, Turnos Rotativos y Vacaciones | Drenpos"
+  description="Control horario para pymes: fichaje por web, móvil o llavero, turnos rotativos 4x4, calendario anual en PDF y vacaciones. Desde 1 €/usuario sin IVA."
   canonical={CANONICAL}
   image="/images/funcionalidades/control-horario/01-gestion-personal.png"
 >
@@ -451,7 +553,7 @@ const productSchema = {
             class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6"
           >
             <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
-            Fichajes · vacaciones · incidencias · calendarios
+            Fichajes · turnos rotativos · vacaciones · incidencias
           </span>
 
           <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
@@ -464,8 +566,9 @@ const productSchema = {
             fichando aunque se caiga internet. En el mismo módulo, y sin pagar
             más, gestionas <a href="#vacaciones" class="text-primary underline">vacaciones y permisos</a>,
             ves quién <a href="#entrada-salida" class="text-primary underline">llega tarde o sale antes</a>
-            y montas los <a href="#calendarios" class="text-primary underline">calendarios laborales</a>
-            con los festivos de cada comunidad.
+            y montas los <a href="#calendarios" class="text-primary underline">calendarios laborales</a>,
+            también rotativos (4x4, 5/2, 6/3), con los festivos de cada
+            comunidad y el <a href="#planificacion-anual" class="text-primary underline">calendario del año de cada trabajador en PDF</a>.
           </p>
 
           <ul class="flex flex-wrap gap-4 mb-10">
@@ -574,7 +677,8 @@ const productSchema = {
             cuatro años para cumplir la ley de registro de jornada. Drenpos
             permite fichar desde el ordenador, el móvil, un código QR o un
             llavero RFID, y en el mismo módulo lleva las vacaciones, los
-            retrasos y los calendarios laborales, con informes auditables
+            retrasos y los calendarios laborales, incluidos los turnos
+            rotativos, con informes auditables
             listos para la Inspección de Trabajo.
           </p>
         </div>
@@ -602,7 +706,7 @@ const productSchema = {
               diario, inalterable y conservado durante 4 años.
             </p>
             <p class="text-sm mt-4 mb-0 leading-relaxed" style="color: rgba(16,25,40,0.62);">
-              <strong>Estado a fecha de 23 de septiembre de 2026:</strong> lo
+              <strong>Estado a fecha de 28 de septiembre de 2026:</strong> lo
               vigente es el <a href={`${ET_URL}#a34`} rel="noopener" target="_blank" class="text-primary underline">artículo 34.9 del Estatuto de los Trabajadores</a>
               (Real Decreto-ley 8/2019), y no llevar el registro es infracción
               grave de 751 a 7.500 € según la <a href={LISOS_URL} rel="noopener" target="_blank" class="text-primary underline">LISOS</a>.
@@ -976,6 +1080,45 @@ const productSchema = {
           </div>
         </div>
       </div>
+
+      <div id="conceptos" class="grid md:grid-cols-2 gap-4 mt-8 scroll-mt-24">
+        <div class="rounded-2xl p-6 lg:p-8 h-full" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
+          <h3 class="h6 font-bold mb-2">Conceptos: uno por defecto y cada lector con el suyo</h3>
+          <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.72);">
+            Trabajo, comida, descanso, reunión o viaje: los conceptos los
+            creas tú y decides cuáles cuentan como trabajo. Uno queda
+            marcado por defecto, normalmente «Trabajo», y el botón lo dice
+            («Iniciar · Trabajo»). Tiene que existir y contar como trabajo,
+            así nadie empieza la jornada «comiendo» por error. Para pasar a
+            comida basta con iniciarla: el concepto anterior se cierra solo.
+          </p>
+          <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+            Con el <a href="/dispositivo-fichaje" class="text-primary underline">terminal de fichaje</a>
+            pasa lo mismo sin tocar ninguna pantalla: a cada lector le asignas
+            su concepto. El de la puerta del almacén ficha «Trabajo» y el del
+            comedor, «Comida». Si no le pones ninguno, usa el de la
+            configuración o el concepto por defecto.
+          </p>
+        </div>
+        <div class="rounded-2xl p-6 lg:p-8 h-full" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm" data-aos-delay="100">
+          <h3 class="h6 font-bold mb-2">La app del móvil, pensada para una mano</h3>
+          <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.72);">
+            Se instala sin App Store ni Google Play, con una guía de «Añadir a
+            pantalla de inicio» para iPhone y para Android y tres pantallas
+            de introducción la primera vez. Arriba, el estado claro
+            («Fichado · Trabajo · desde las 08:02»); abajo, un botón grande
+            para entrar o salir y los conceptos como chips para pasar de
+            trabajo a comida y volver.
+          </p>
+          <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+            Pide confirmación antes de salir, avisa si se olvidó cerrar la
+            jornada y, si el móvil pierde la cobertura, lo dice con un aviso
+            en pantalla sin mostrar estados falsos ni cerrar la sesión. Desde
+            ahí se piden las vacaciones viendo el saldo. Más en
+            <a href="/blog/fichar-desde-el-movil-legal-2026" class="text-primary underline">fichar desde el móvil de forma legal</a>.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1100,6 +1243,8 @@ const productSchema = {
         <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
           Va incluido en la licencia de fichaje (1 € por usuario y mes, sin
           IVA). Quien aprueba vacaciones necesita licencia aunque no fiche.
+          Para ver el año entero de todo el equipo, con un PDF por persona,
+          tienes la <a href="#planificacion-anual" class="text-primary underline">planificación anual</a>.
           Si quieres el paso a paso para dejar el Excel, lee
           <a href="/blog/gestion-vacaciones-permisos-pymes-sin-excel" class="text-primary underline">cómo gestionar vacaciones y permisos en una pyme sin hojas de cálculo</a>.
         </p>
@@ -1181,7 +1326,7 @@ const productSchema = {
   <section id="calendarios" class="section pt-0 overflow-hidden scroll-mt-24">
     <div class="container">
       <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up-sm">
-        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Calendarios, festivos y horas extra</span>
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Calendarios, turnos rotativos, festivos y horas extra</span>
         <h2 class="h3 font-bold mb-4">¿Cómo se calculan las horas extra con el calendario laboral y los festivos?</h2>
         <p class="text-lg leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
           Drenpos saca las horas esperadas de cada día del calendario laboral
@@ -1207,12 +1352,87 @@ const productSchema = {
         <div class={showCalImg ? "lg:col-6" : "col-12"}>
           <div class={showCalImg ? "grid sm:grid-cols-2 gap-4" : "grid sm:grid-cols-2 lg:grid-cols-4 gap-4"}>
             {calendarios.map((c, i) => (
-              <div class="border rounded-[20px] p-6 h-full" style="border-color: rgba(16,25,40,0.1); background: #fff;" data-aos="fade-up-sm" data-aos-delay={i * 80}>
+              <div class="border rounded-[20px] p-6 h-full" style="border-color: rgba(16,25,40,0.1); background: #fff;" data-aos="fade-up-sm" data-aos-delay={(i % 4) * 80}>
                 <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-4" style="background: rgba(211,167,118,0.15);">{c.icon}</div>
                 <h3 class="h6 font-semibold mb-2">{c.title}</h3>
                 <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{c.body}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Turnos rotativos: cápsula + cuadrante de ejemplo 4/4 -->
+      <div id="turnos-rotativos" class="border rounded-[24px] p-6 lg:p-10 mt-10 scroll-mt-24" style="border-color: rgba(16,25,40,0.1); background: #fff;" data-aos="fade-up-sm">
+        <div class="row gx-0 gy-8 lg:gy-0 items-start">
+          <div class="lg:col-5 lg:pe-10">
+            <h3 class="h4 font-bold mb-4 leading-tight">¿Se pueden llevar turnos rotativos 4x4, 5/2 o 6/3?</h3>
+            <p class="leading-relaxed mb-4" style="color: rgba(16,25,40,0.72);">
+              Sí. En Drenpos el calendario laboral puede ser rotativo: indicas
+              los días de trabajo, los de descanso, el horario y el primer día
+              del ciclo, y el sistema alterna solo, también con mañanas y
+              noches dentro del mismo ciclo. Si dos personas se turnan, cada
+              una tiene su propio primer día sobre el mismo calendario. Las
+              horas esperadas, las extra y el cupo de vacaciones ya cuentan
+              con el ciclo: los descansos no suman horas ni gastan vacaciones.
+            </p>
+            <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.62);">
+              Ejemplos completos de 4x4, 5/2 y 6/3, y cuánta gente hace falta
+              para cubrir un puesto las 24 horas, en
+              <a href="/blog/cuadrante-turnos-rotativos-4x4-ejemplos-estatuto" class="text-primary underline">cuadrante de turnos rotativos: ejemplos que cumplen el Estatuto</a>.
+            </p>
+          </div>
+          <div class="lg:col-7">
+            <div class="overflow-x-auto rounded-2xl border" style="border-color: rgba(16,25,40,0.1);">
+              <table class="w-full text-xs border-collapse min-w-[560px]">
+                <caption class="text-left text-sm font-semibold p-4 pb-2" style="color: rgba(16,25,40,0.78);">
+                  Calendario «Vigilantes 4/4»: un solo ciclo, dos primeros días distintos
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-left px-3 py-2 font-semibold">Día</th>
+                    {ciclo44.map((d) => (
+                      <th scope="col" class="px-1 py-2 font-semibold text-center">{d}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { n: "Vigilante A (empieza el día 1)", desfase: 0 },
+                    { n: "Vigilante B (empieza el día 5)", desfase: 4 },
+                  ].map((p) => (
+                    <tr>
+                      <th scope="row" class="text-left px-3 py-2 font-medium whitespace-nowrap">{p.n}</th>
+                      {ciclo44.map((d) => (
+                        turno44(d, p.desfase)
+                          ? <td class="px-1 py-2 text-center font-bold" style="background: rgba(121,27,70,0.12); color: #791b46;">T</td>
+                          : <td class="px-1 py-2 text-center" style="background: rgba(16,25,40,0.04); color: rgba(16,25,40,0.45);">D</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p class="text-xs px-4 py-3 mb-0" style="color: rgba(16,25,40,0.6);">
+                T = trabaja, D = descansa. Cada día hay un vigilante de servicio y
+                ninguno acumula más de cuatro jornadas seguidas.
+              </p>
+            </div>
+            <div class="rounded-2xl p-5 mt-4" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);">
+              <p class="font-semibold text-text-dark text-sm mb-2">Lo que el ciclo tiene que respetar</p>
+              <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+                Doce horas entre el final de una jornada y el comienzo de la
+                siguiente (<a href={`${ET_URL}#a34`} rel="noopener" target="_blank" class="text-primary underline">art. 34.3 del Estatuto</a>),
+                que en trabajo a turnos pueden bajar a siete el día del cambio
+                de turno si se compensan en los días siguientes; día y medio de
+                descanso semanal, acumulable hasta 14 días (art. 37.1), y en
+                turnos el medio día acumulable hasta cuatro semanas
+                (<a href={RD1561_URL} rel="noopener" target="_blank" class="text-primary underline">art. 19 del RD 1561/1995</a>);
+                y, en procesos continuos de 24 horas, nadie más de dos semanas
+                seguidas de noche salvo que lo pida (<a href={`${ET_URL}#a36`} rel="noopener" target="_blank" class="text-primary underline">art. 36.3</a>).
+                Drenpos aplica el ciclo que tú definas: que encaje con tu
+                convenio lo decides con tu asesoría.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -1240,10 +1460,119 @@ const productSchema = {
             en otoño; el de 2026 salió el
             <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-21667" rel="noopener" target="_blank" class="text-primary underline">28 de octubre de 2025</a>.
           </p>
+          <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.72);">
+            No tendrás que empezar de cero: los festivos fijos ya valen para
+            todos los años y el botón «Copiar festivos de 2026 a 2027» trae
+            los del año anterior para que solo cambies los que se muevan.
+          </p>
           <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
             Lo contamos, con lo que ya es oficial, en
             <a href="/blog/calendario-laboral-2027-festivos-horas-extra" class="text-primary underline">calendario laboral 2027: festivos y horas extra</a>.
           </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PLANIFICACIÓN ANUAL DEL EQUIPO (AEO: calendario laboral anual por trabajador)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="planificacion-anual" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Planificación anual del equipo</span>
+        <h2 class="h3 font-bold mb-4">¿Me sacas el calendario laboral del año con los festivos y las vacaciones de cada uno?</h2>
+        <p class="text-lg leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+          Sí. La planificación anual de Drenpos junta en un calendario los
+          días de trabajo y de descanso de cada persona, incluidos los ciclos
+          rotativos, sus festivos y sus vacaciones y permisos, aprobados y
+          pendientes. La ves por equipo, mes a mes, o por persona, con el año
+          entero. Y un botón descarga el PDF del año con una página por
+          trabajador: los doce meses, sus festivos y el resumen de días.
+        </p>
+      </div>
+
+      <div class="row g-5 items-center">
+        {showPlanImg && (
+          <div class="lg:col-6" data-aos="fade-up-sm">
+            <figure class="relative px-4 lg:px-0 mb-0">
+              <div class="absolute -top-10 -left-10 w-72 h-72 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.08);"></div>
+              <div class="rounded-2xl overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07); border: 1px solid rgba(16,25,40,0.08);">
+                <img src={PLAN_IMG} alt="Planificación anual del equipo en Drenpos: personas en filas y días del mes en columnas con trabajo, descanso, festivos y vacaciones en colores" width="1280" height="800" class="w-full h-auto block" loading="lazy" />
+              </div>
+            </figure>
+          </div>
+        )}
+        <div class={showPlanImg ? "lg:col-6" : "col-12"}>
+          <div class={showPlanImg ? "grid sm:grid-cols-2 gap-4" : "grid sm:grid-cols-2 lg:grid-cols-4 gap-4"}>
+            {planificacion.map((p, i) => (
+              <div class="border rounded-[20px] p-6 h-full" style="border-color: rgba(16,25,40,0.1); background: #fff;" data-aos="fade-up-sm" data-aos-delay={i * 80}>
+                <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-4" style="background: rgba(121,27,70,0.08);">{p.icon}</div>
+                <h3 class="h6 font-semibold mb-2">{p.title}</h3>
+                <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{p.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl p-6 lg:p-8 mt-8" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
+        <p class="font-semibold text-text-dark mb-2">Lo que dice la ley del calendario anual</p>
+        <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.72);">
+          El <a href={`${ET_URL}#a34`} rel="noopener" target="_blank" class="text-primary underline">artículo 34.6 del Estatuto de los Trabajadores</a>
+          dice que la empresa elaborará cada año el calendario laboral y que
+          debe exponer un ejemplar en un lugar visible de cada centro de
+          trabajo. El Estatuto no obliga a entregar una copia a cada persona,
+          pero es lo primero que te piden cuando alguien quiere saber qué días
+          le tocan en agosto.
+        </p>
+        <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+          En seguridad privada va más allá. El
+          <a href={CONVENIO_SEG_URL} rel="noopener" target="_blank" class="text-primary underline">convenio colectivo estatal de empresas de seguridad 2026-2030</a>
+          (BOE del 18 de abril de 2026) pide, en los servicios fijos o
+          estables, un cuadrante anual con los días de servicio, los descansos
+          y los periodos de vacaciones, entregado a cada persona afectada y a
+          su representación legal un mes antes de que surta efecto. El PDF por
+          trabajador te da esa hoja sin montarla a mano; lo que tenga que
+          llevar en tu caso lo marca tu convenio.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PRIMEROS PASOS · qué configurar y en qué orden
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="primeros-pasos" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="border rounded-[28px] p-8 lg:p-12" style="border-color: rgba(16,25,40,0.1); background: #fff;" data-aos="fade-up-sm">
+        <div class="row gx-0 gy-8 lg:gy-0 items-center">
+          <div class="lg:col-5 lg:pe-10">
+            <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-xs font-medium mb-5 tracking-wide">Primeros pasos</span>
+            <h2 class="h4 mb-4 font-bold leading-tight">El módulo te dice <span class="text-primary">qué configurar y en qué orden</span></h2>
+            <p class="mb-3 leading-relaxed" style="color: rgba(16,25,40,0.72);">
+              Al abrir el módulo de fichajes aparece una lista con lo que hay
+              que dejar hecho, marcando lo que ya está y lo que falta, con
+              enlace a cada pantalla. Y avisos concretos: «3 personas no tienen
+              perfil de fichaje» o «no hay festivos que cubran 2026».
+            </p>
+            <p class="text-sm mb-0 leading-relaxed" style="color: rgba(16,25,40,0.62);">
+              Los campos que suelen dar dudas llevan un icono de ayuda que
+              explica qué son y qué pasa si se configuran mal, como el primer
+              día del ciclo o qué significa «por defecto» en un concepto. Y si
+              un botón de Guardar está bloqueado, la pantalla te dice por qué.
+            </p>
+          </div>
+          <div class="lg:col-7">
+            <ol class="grid sm:grid-cols-2 gap-3 list-none p-0 m-0">
+              {primerosPasos.map((paso, i) => (
+                <li class="flex items-center gap-3 rounded-2xl p-4" style="background: rgba(16,25,40,0.03); border: 1px solid rgba(16,25,40,0.06);">
+                  <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold text-white" style="background: #791b46;" aria-hidden="true">{i + 1}</span>
+                  <span class="text-sm font-medium" style="color: rgba(16,25,40,0.85);">{paso}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </div>
     </div>
@@ -1308,7 +1637,7 @@ const productSchema = {
                 <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl" style="background: rgba(121,27,70,0.10);">🏷️</div>
                 <h3 class="h6 font-semibold mb-0">Conceptos de fichaje</h3>
               </div>
-              <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.65);">Crea conceptos propios (trabajo, formación, visita cliente, comida, asuntos propios…), define si imputan como jornada y pon límites diarios o semanales.</p>
+              <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.65);">Crea conceptos propios (trabajo, formación, visita a cliente, comida…), define si cuentan como jornada y ponles un tiempo límite. Uno va por defecto y cada lector físico puede fichar con el suyo.</p>
             </div>
           </div>
         </div>
@@ -1324,7 +1653,7 @@ const productSchema = {
                 <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl" style="background: rgba(211,167,118,0.15);">📅</div>
                 <h3 class="h6 font-semibold mb-0">Calendarios y festivos</h3>
               </div>
-              <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.65);">Define horarios y festivos por región o trabajador. Drenpos calcula horas dedicadas, pendientes y extras según el calendario de cada empleado.</p>
+              <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.65);">Define horarios semanales o rotativos y festivos por región o trabajador. Drenpos calcula horas dedicadas, pendientes y extras según el calendario de cada empleado.</p>
             </div>
           </div>
         </div>
@@ -1391,7 +1720,7 @@ const productSchema = {
               tienes que configurar nada para estar al día.
             </p>
             <p class="text-sm leading-relaxed mb-0" style="color: rgba(255,255,255,0.62);" data-aos="fade-up-sm">
-              A fecha de 23 de septiembre de 2026, el real decreto que haría
+              A fecha de 28 de septiembre de 2026, el real decreto que haría
               obligatorio el registro digital sigue sin aprobarse ni publicarse
               en el BOE. Cuando salga, revisaremos esta página con lo que diga
               el texto final.

@@ -70,6 +70,10 @@
           "url": "/software-verifactu"
         },
         {
+          "name": "Documento de control (DeCA)",
+          "url": "/documento-control-transporte-deca"
+        },
+        {
           "name": "Módulos",
           "url": "/modulos"
         }

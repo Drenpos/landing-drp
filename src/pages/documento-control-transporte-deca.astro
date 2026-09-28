@@ -1,0 +1,1066 @@
+---
+export const prerender = true;
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
+import DemoForm from "@/partials/DemoForm.astro";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
+const hasImg = (p: string) => existsSync(join(process.cwd(), "public", p));
+
+// ════════════════════════════════════════════════════════════════════════
+//  DeCA · documento electrónico de control administrativo del transporte
+//  Landing de cumplimiento legal (misma estructura que /software-verifactu)
+//  Intención de búsqueda objetivo:
+//    - "DeCA transporte" / "documento electrónico de control administrativo"
+//    - "documento de control digital transporte" / "documento de control 5 octubre 2026"
+//    - "generar DeCA desde albarán" / "DeCA ERP" / "software DeCA"
+//  Ángulo propio: el cargador contractual (la empresa que vende y contrata
+//  el porte) que ya emite albaranes en su ERP.
+//  Fuentes: notas de investigación del 28/09/2026 (BOE, transportes.gob.es).
+//  Producto: products_modules.md, sección DeCA del módulo Financiero.
+//  Capturas pendientes (se muestran solas cuando existan en /public):
+//    images/funcionalidades/deca/01-albaran-activar-deca.png (1280×800)
+//    images/funcionalidades/deca/02-pdf-control-qr.png (1280×800)
+// ════════════════════════════════════════════════════════════════════════
+
+const CANONICAL = "https://www.drenpos.com/documento-control-transporte-deca";
+
+const IMG_ALBARAN = "/images/funcionalidades/deca/01-albaran-activar-deca.png";
+const IMG_PDF = "/images/funcionalidades/deca/02-pdf-control-qr.png";
+const showAlbaranImg = hasImg(IMG_ALBARAN);
+const showPdfImg = hasImg(IMG_PDF);
+const OG_FALLBACK = "/images/blog/etiqueta-sscc-gs1-palets/cover.jpg";
+const OG_IMG = showPdfImg ? IMG_PDF : OG_FALLBACK;
+
+// Fuentes oficiales
+const ORDEN_URL = "https://www.boe.es/buscar/act.php?id=BOE-A-2013-154";
+const LEY_URL = "https://www.boe.es/buscar/act.php?id=BOE-A-2025-24545&tn=1&p=20251204#dt-8";
+const RES_URL = "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-12784";
+const LOTT_URL = "https://www.boe.es/buscar/act.php?id=BOE-A-1987-17803";
+const MIN_URL =
+  "https://www.transportes.gob.es/transporte-terrestre/profesionales-transporte/servicios-transportista/documento-electronico-control-administrativo-deca";
+const FAQ_MIN_URL =
+  "https://www.transportes.gob.es/transporte-terrestre/profesionales-transporte/servicios-transportista/documento-electronico-control-administrativo-deca/preguntas-frecuentes-faq-deca";
+const EMPRESAS_URL =
+  "https://www.cadenadesuministro.es/transporte-carretera/transporte-mercancias-por-carretera-gana-casi-1300-empresas-en-agosto-2026_1518197_102.html";
+const OBSERVATORIO_URL =
+  "https://cdn.transportes.gob.es/portal-web-transportes/transporte-terrestre/servicios_transportista/observatorio-mercacnias-carretera/observatorio-mercancias-oferta-y-demanda_2026-01_vaccv2.pdf";
+const TARIFA_DOC_URL = "https://www.controldigitaltransporte.es/";
+const TARIFA_MES_URL = "https://pretiumgestion.com/documento-control-digital/";
+const FENADISMER_PRECIOS_URL =
+  "https://transporte3.com/noticia/24424-nuevo-documento-electronico-de-control-administrativo-deca-ojo-con-las-ofertas-claramente-abusivas/";
+
+// Requisitos de la Resolución de 5 de junio de 2026 (solo lo verificado en el BOE)
+const requisitos = [
+  {
+    icon: "📄",
+    title: "PDF generado desde los datos",
+    body: "El fichero tiene que salir de los datos del programa, no de escanear un papel ni de una foto. Formato PDF de 5 MB como máximo, con la fecha y hora de creación y de modificación guardadas como metadatos del propio PDF.",
+  },
+  {
+    icon: "🔳",
+    title: "QR con una dirección web única",
+    body: "Dentro del PDF va un código QR con la URL de ese documento. Tiene que empezar por https:// y descargar el PDF directamente: sin usuario, sin contraseña y sin botones que pulsar.",
+  },
+  {
+    icon: "⏱️",
+    title: "Creado antes de salir",
+    body: "El documento se crea antes del inicio efectivo del servicio. Para demostrarlo, el programa registra la fecha y hora de creación del fichero, y también la de cada modificación.",
+  },
+  {
+    icon: "📱",
+    title: "Copia al conductor antes de arrancar",
+    body: "El conductor lleva una copia en el móvil o en papel, siempre con el QR. En un control puede enseñar el documento o solo el QR. Lo que se escriba a mano en la copia impresa no cuenta.",
+  },
+  {
+    icon: "🔁",
+    title: "Cambios sin borrar lo anterior",
+    body: "Si algo cambia en ruta, se añaden los datos nuevos y el motivo conservando los antiguos marcados como no válidos (misma URL), o se genera un PDF nuevo con otra URL guardando el original. En los dos casos, el conductor recibe el PDF actualizado.",
+  },
+  {
+    icon: "🗄️",
+    title: "Un año guardado",
+    body: "Cargador contractual y transportista efectivo conservan los ficheros al menos un año. Si uno de los dos lo generó, basta con que el otro pueda descargarlo durante ese año.",
+  },
+  {
+    icon: "🧾",
+    title: "Los ocho datos del artículo 6",
+    body: "El contenido mínimo es el de siempre, el del artículo 6 de la Orden FOM/2861/2012: cargador, transportista, origen y destino, mercancía y peso, autorización especial, fecha, matrículas y observaciones.",
+  },
+  {
+    icon: "🏷️",
+    title: "Cargador y transportista bien separados",
+    body: "Vale cualquier formato de documento de transporte (albarán, carta de porte…) si lleva todos esos datos y deja identificados de forma expresa y diferenciada al cargador contractual y al transportista efectivo.",
+  },
+];
+
+// Artículo 6 de la Orden FOM/2861/2012 y quién responde de cada dato (art. 7)
+const apartados = [
+  { l: "a", dato: "Nombre o razón social, NIF y domicilio del cargador contractual", responde: "Cargador contractual" },
+  { l: "b", dato: "Nombre o razón social y NIF del transportista efectivo", responde: "Cargador contractual" },
+  { l: "c", dato: "Lugar de origen y de destino del envío", responde: "Cargador contractual" },
+  { l: "d", dato: "Naturaleza y peso de la mercancía (si el peso exacto es difícil de saber, otra magnitud)", responde: "Cargador contractual" },
+  { l: "e", dato: "Autorización especial de circulación, cuando el vehículo la necesite", responde: "Transportista efectivo" },
+  { l: "f", dato: "Fecha de realización del transporte", responde: "Transportista efectivo" },
+  { l: "g", dato: "Matrícula del vehículo; en un conjunto articulado, la del tractor y la del semirremolque o remolque", responde: "Transportista efectivo" },
+  { l: "h", dato: "Observaciones, reservas o indicaciones que pidan las partes", responde: "Quien las incluya" },
+];
+
+// Cómo se genera en Drenpos (products_modules.md, sección DeCA)
+const pasos = [
+  {
+    n: "1",
+    title: "Haces el albarán como siempre",
+    body: "Con tu cliente, sus direcciones y sus líneas. Si el cliente tiene transportista por defecto (compañía, conductor y vehículo), entra solo, y el peso del documento se calcula con el de cada artículo.",
+  },
+  {
+    n: "2",
+    title: "Pulsas «Activar DeCA»",
+    body: "Un botón en el albarán de venta. Activarlo pide un permiso específico y es irreversible: una vez activado, el documento de control ya no se quita.",
+  },
+  {
+    n: "3",
+    title: "El sistema te dice qué falta",
+    body: "Comprueba los datos que exige la norma (cargador con NIF y domicilio, transportista con NIF, origen, destino, mercancía y peso, fecha, matrícula y remolque, autorización especial si la hay) y te avisa de lo que falta para completarlo ahí mismo.",
+  },
+  {
+    n: "4",
+    title: "Sale el PDF oficial con su QR",
+    body: "Una página de control con los ocho apartados rotulados y, detrás, el albarán con el formato de siempre. El QR lleva a una dirección web única desde la que se descarga el PDF sin usuario ni contraseña.",
+  },
+  {
+    n: "5",
+    title: "El conductor se lleva la copia",
+    body: "El QR sale también en todos los formatos de albarán y en el modelo de carta de porte, así que la copia en papel ya vale. Desde el albarán ves el PDF, copias la dirección, descargas el QR suelto o lo imprimes.",
+  },
+  {
+    n: "6",
+    title: "Si algo cambia, versión nueva",
+    body: "Otra matrícula u otro peso generan una versión nueva con la misma dirección web y el historial de cambios con su motivo. Si anulas el albarán, el documento lo indica. Nada se borra y todo se conserva el año que exige la ley.",
+  },
+];
+
+// Qué incluye, en formato ficha (AEO)
+const ficha = [
+  { k: "Dónde", v: "En el albarán de venta, con el botón «Activar DeCA». Sin plataforma externa ni programa aparte" },
+  { k: "Comprobación", v: "Revisa los datos del artículo 6 de la Orden FOM/2861/2012 y avisa de lo que falta antes de generar" },
+  { k: "Documento", v: "PDF con la página de control (los ocho apartados rotulados) seguida del albarán con su formato habitual" },
+  { k: "QR", v: "Dirección web única de descarga directa, sin usuario ni contraseña. También sale en los formatos de albarán y en la carta de porte" },
+  { k: "Cambios", v: "Versión nueva con la misma dirección web e historial de cambios con su motivo. El albarán anulado queda indicado" },
+  { k: "Control", v: "Activarlo requiere un permiso específico y no se puede deshacer" },
+  { k: "Conservación", v: "Nada se borra: se conserva el tiempo que exige la ley, al menos un año" },
+  { k: "Precio", v: "Incluido en el módulo Financiero sin coste extra. Todos los planes, desde 19 €/mes sin IVA" },
+];
+
+const obligados = [
+  {
+    title: "Transportista efectivo",
+    body: "La empresa o el autónomo titular de la autorización con la que se hace el transporte. Responde de la autorización especial, la fecha y las matrículas.",
+  },
+  {
+    title: "Cargador contractual",
+    body: "Quien contrata directamente el porte con el transportista: la empresa que vende y envía su mercancía, pero también una cooperativa, un almacenista distribuidor, un operador logístico, una agencia o un transitario. Responde de sus datos, los del transportista, origen, destino, mercancía y peso.",
+  },
+  {
+    title: "El transportista que subcontrata",
+    body: "Si un transportista pasa el servicio a otro, el que subcontrata se convierte en cargador contractual y el que lo hace, en transportista efectivo.",
+  },
+];
+
+const excluidos = [
+  "Transporte privado complementario: repartes tu mercancía con tus propios vehículos y tu actividad no es el transporte.",
+  "Paquetería y envíos de pocos bultos que una persona manipula sola.",
+  "Mudanzas.",
+  "Vehículos accidentados o averiados llevados en vehículos especiales.",
+  "Transportes que no necesitan autorización.",
+  "Transporte internacional: sigue con el CMR de los convenios. El cabotaje dentro de España sí entra.",
+];
+
+const sanciones = [
+  {
+    hecho: "No llevar el documento de control, llevarlo sin datos esenciales, ocultarlo o no conservarlo",
+    tipo: "Grave (art. 141.17 LOTT)",
+    multa: "401 a 600 € (art. 143.1.d)",
+    href: `${LOTT_URL}#a141`,
+  },
+  {
+    hecho: "Circular sin la documentación formal exigible, cuando no encaja como grave o muy grave",
+    tipo: "Leve (art. 142.8 LOTT)",
+    multa: "201 a 300 € (art. 143.1.b)",
+    href: `${LOTT_URL}#a142`,
+  },
+  {
+    hecho: "Varias expediciones sin documento",
+    tipo: "Una infracción por expedición (art. 138.3 LOTT)",
+    multa: "Cada envío se sanciona aparte",
+    href: `${LOTT_URL}#a138`,
+  },
+];
+
+// Comparativa de decisión (AEO), sin marcas
+const comparativa = [
+  {
+    opcion: "Albarán en papel o PDF escaneado",
+    vale: "No: la Resolución exige un PDF generado desde los datos y con QR",
+    datos: "Los que tenga el papel",
+    coste: "Sin coste, con riesgo de 401 a 600 € por expedición",
+  },
+  {
+    opcion: "Plataforma externa de DeCA",
+    vale: "Sí, si cumple la Resolución",
+    datos: "Vuelves a teclear lo que ya está en el albarán, o pagas una integración",
+    coste: "Pago por documento o cuota mensual (ver fuentes debajo)",
+  },
+  {
+    opcion: "Desde el albarán en Drenpos",
+    vale: "Sí, con el PDF oficial y su QR",
+    datos: "Los del albarán: cliente, direcciones, líneas, peso y transportista",
+    coste: "Incluido en el módulo Financiero, sin coste extra",
+    destacado: true,
+  },
+];
+
+const casos = [
+  {
+    tag: "Distribución de alimentación",
+    icon: "🚚",
+    title: "Vendes a tiendas y contratas los portes",
+    body: "Tus albaranes ya llevan cliente, dirección de entrega y líneas con peso. Asignas a cada cliente su transportista por defecto, activas el DeCA en los albaranes que viajan con él y el conductor se lleva el albarán impreso con su QR. Los repartos que haces con tu propia furgoneta siguen igual, sin DeCA.",
+  },
+  {
+    tag: "Cooperativa o almacén agrícola",
+    icon: "🌾",
+    title: "Palets que salen con un conductor distinto cada día",
+    body: "La Orden cita expresamente a las cooperativas entre los cargadores contractuales. Escaneas los palets con su SSCC en el albarán, el peso del documento se calcula con el de los artículos, identificas al conductor y la matrícula del día y el QR va impreso también en la carta de porte.",
+  },
+  {
+    tag: "Frigorífico con depósito",
+    icon: "❄️",
+    title: "Salidas de mercancía de tus depositantes",
+    body: "Si el porte lo contrata tu cliente, el DeCA le toca a él y a su transportista, no a ti. Si el transporte lo contratas tú, lo generas desde el albarán de venta, con el peso ya calculado y la matrícula del camión que carga en tu muelle.",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Qué es el DeCA?",
+    a: "El DeCA es el documento electrónico de control administrativo que acompaña cada envío de transporte público de mercancías por carretera dentro de España. Es el documento de control de la Orden FOM/2861/2012 en formato digital: un PDF generado desde los datos, con un código QR que lleva a una dirección web única desde la que la inspección lo descarga. Es obligatorio desde el 5 de octubre de 2026 y los requisitos técnicos están en la Resolución de 5 de junio de 2026.",
+  },
+  {
+    q: "¿Desde cuándo es obligatorio el documento de control digital?",
+    a: "Desde el 5 de octubre de 2026. La disposición transitoria octava de la Ley 9/2025 de Movilidad Sostenible dice que el documento de control será necesariamente digital a los diez meses de su entrada en vigor, que fue el 5 de diciembre de 2025. El Ministerio de Transportes confirma en su página de preguntas frecuentes que no hay un periodo transitorio adicional sin sanciones.",
+  },
+  {
+    q: "¿Me afecta si reparto con mis propias furgonetas?",
+    a: "No, si es transporte privado complementario: repartes tu propia mercancía con vehículos de tu empresa y tu actividad principal no es el transporte. El DeCA se exige en el transporte público, cuando contratas a un transportista con autorización. Eso sí, en el privado complementario hay que llevar la documentación que acredita que la mercancía es tuya y que el vehículo y el conductor están vinculados a la empresa.",
+  },
+  {
+    q: "¿Vale mi albarán como documento de control?",
+    a: "Sí, si lleva los ocho datos del artículo 6 de la Orden FOM/2861/2012, identifica de forma expresa y diferenciada al cargador contractual y al transportista efectivo, y desde el 5 de octubre de 2026 se genera como PDF desde los datos con un QR de descarga directa. Un albarán en papel o un PDF escaneado ya no sirve. En Drenpos, el albarán con el DeCA activado sale con la página de control y el QR.",
+  },
+  {
+    q: "¿Qué pasa si cambia la matrícula en ruta?",
+    a: "Hay que dejarlo reflejado y hacer llegar el PDF actualizado al conductor. La Resolución admite dos vías: añadir los datos nuevos y el motivo en el mismo PDF, conservando los antiguos marcados como no válidos, o generar un PDF nuevo con otra URL guardando el original. En Drenpos se genera una versión nueva con la misma dirección web y el historial de cambios con su motivo, así que el QR que ya lleva el conductor sigue valiendo.",
+  },
+  {
+    q: "¿Hay que firmar el DeCA?",
+    a: "No. La propia Resolución de 5 de junio de 2026 explica que la firma no es obligatoria, porque ni la Orden FOM/2861/2012 ni la de transporte de viajeros la exigen. Solo si el documento se usa además como contrato entre las partes tiene que llevar, como mínimo, firma electrónica avanzada.",
+  },
+  {
+    q: "¿Cuánto tiempo hay que guardar el documento de control?",
+    a: "Al menos un año, tanto el cargador contractual como el transportista efectivo. Si lo generó uno de los dos, basta con que el otro pueda descargarlo durante ese año. La descarga desde el QR para la inspección se puede desactivar a los siete días naturales de terminar el servicio, pero el fichero se sigue conservando. En Drenpos no se borra nada.",
+  },
+  {
+    q: "¿Cuánto cuesta el DeCA en Drenpos?",
+    a: "Nada aparte. Va incluido en el módulo Financiero, que está en todos los planes: Esencial desde 19 €/mes sin IVA, Pro 29 €/mes y Full 39 €/mes, sin permanencia. No hay pago por documento ni cuota de una plataforma externa.",
+  },
+  {
+    q: "¿Necesito una aplicación o un registro del Ministerio?",
+    a: "No. El Ministerio de Transportes no ofrece una aplicación propia de DeCA ni certifica aplicaciones, y la Resolución de 2026 eliminó la comunicación previa del dominio donde se guardan los documentos. Cualquier programa que cumpla los requisitos técnicos sirve, también tu ERP si genera el PDF con su QR.",
+  },
+  {
+    q: "¿Sirve para transporte internacional?",
+    a: "No hace falta. El transporte internacional sigue usando los documentos de los convenios que ha firmado España, es decir, el CMR, y el Ministerio aclara que el eCMR no es obligatorio. El DeCA es para el transporte interior, incluido el cabotaje que hace un transportista extranjero dentro de España.",
+  },
+];
+
+// ── Datos estructurados (JSON-LD) ──────────────────────────────────────
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
+    { "@type": "ListItem", position: 3, name: "Documento de control del transporte (DeCA)", item: CANONICAL },
+  ],
+};
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Drenpos · DeCA desde el albarán",
+  url: CANONICAL,
+  applicationCategory: "BusinessApplication",
+  applicationSubCategory: "Documento electrónico de control administrativo del transporte",
+  operatingSystem: "Web (navegador)",
+  image: [`https://www.drenpos.com${OG_IMG}`],
+  description:
+    "Generación del documento electrónico de control administrativo (DeCA) del transporte de mercancías por carretera desde el albarán de venta, obligatorio en España desde el 5 de octubre de 2026: comprobación de los datos del artículo 6 de la Orden FOM/2861/2012, PDF con página de control y código QR de descarga directa en una dirección web única, QR también en los formatos de albarán y carta de porte, versiones con historial y motivo, y conservación. Incluido en el módulo Financiero sin coste extra.",
+  publisher: { "@type": "Organization", name: "Drenpos Tech SL", url: "https://www.drenpos.com" },
+  inLanguage: "es-ES",
+  featureList: [
+    "Botón «Activar DeCA» en el albarán de venta",
+    "Comprobación de los datos del artículo 6 de la Orden FOM/2861/2012",
+    "PDF con página de control de ocho apartados y el albarán",
+    "Código QR con dirección web única de descarga directa",
+    "QR en los formatos de albarán y en la carta de porte",
+    "Versiones con historial de cambios y motivo",
+    "Albarán anulado indicado en el documento",
+    "Activación con permiso específico e irreversible",
+  ],
+  offers: {
+    "@type": "Offer",
+    price: "19.00",
+    priceCurrency: "EUR",
+    priceValidUntil: "2027-12-31",
+    availability: "https://schema.org/InStock",
+    url: "https://www.drenpos.com/pricing",
+    valueAddedTaxIncluded: false,
+    description: "DeCA incluido sin coste extra en el módulo Financiero, presente en todos los planes. Plan Esencial desde 19 €/mes sin IVA, sin permanencia.",
+    seller: { "@type": "Organization", name: "Drenpos Tech SL" },
+  },
+};
+---
+
+<Base
+  title="Documento de control del transporte (DeCA) · Drenpos"
+  meta_title="DeCA: documento de control del transporte digital | Drenpos"
+  description="Genera el DeCA desde el albarán de venta: PDF con QR de descarga directa, versiones con historial y copia para el conductor. Obligatorio el 5/10/2026."
+  canonical={CANONICAL}
+  image={OG_IMG}
+>
+  <!-- Datos estructurados -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0 relative z-10 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/images/grainy.svg" alt="" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/funcionalidades" class="hover:text-primary">Funcionalidades</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Documento de control (DeCA)</span>
+      </nav>
+
+      <div class="row gx-0 gy-12 lg:gy-0 items-center">
+        <div class="lg:col-6" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Obligatorio desde el 5 de octubre de 2026
+          </span>
+
+          <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
+            <span class="text-primary">Documento de control del transporte digital (DeCA)</span> desde el albarán
+          </h1>
+          <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
+            Si contratas transportistas para mover tu mercancía, desde el 5 de
+            octubre el documento de control tiene que ser un
+            <strong>PDF con código QR</strong>. En Drenpos lo generas desde el
+            <strong>albarán de venta</strong> con un botón: el sistema revisa
+            los datos que pide la norma, crea el PDF con su
+            <strong>dirección web de descarga directa</strong> y guarda cada
+            versión. Sin plataforma aparte y sin teclear nada dos veces.
+          </p>
+
+          <ul class="flex flex-wrap gap-4 mb-10">
+            <li data-aos="fade-up-sm" data-aos-delay="100">
+              <a href="#demo-form" class="btn btn-dark">
+                Pedir demo gratuita
+                <span class="icon-wrapper">
+                  <span class="icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="150">
+              <a href="#que-exige" class="btn btn-light">Qué exige la norma</a>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Incluido sin coste extra
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Desde 19 €/mes sin IVA
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Sin plataforma externa
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="relative px-4 lg:px-0 pt-10 pb-10">
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
+
+            {showAlbaranImg ? (
+              <div class="rounded-2xl overflow-hidden relative z-10 mx-auto" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
+                <img
+                  src={IMG_ALBARAN}
+                  alt="Albarán de venta en Drenpos con el botón Activar DeCA y los datos del transportista"
+                  width="1280"
+                  height="800"
+                  class="w-full h-auto block"
+                  fetchpriority="high"
+                />
+              </div>
+            ) : (
+              <div class="rounded-2xl relative z-10 mx-auto bg-white p-6 lg:p-8 max-w-md" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);" aria-label="Esquema de la página de control de un DeCA generado desde el albarán">
+                <div class="flex items-start justify-between gap-4 mb-5">
+                  <div>
+                    <p class="text-xs uppercase font-semibold tracking-wide text-primary mb-1">Documento de control</p>
+                    <p class="font-bold text-dark leading-snug">DeCA · Orden FOM/2861/2012, art. 6</p>
+                  </div>
+                  <svg width="64" height="64" viewBox="0 0 21 21" class="flex-shrink-0" aria-hidden="true">
+                    <rect width="21" height="21" fill="#fff" />
+                    <path fill="#101928" d="M0 0h7v7H0zM1 1v5h5V1zM2 2h3v3H2zM14 0h7v7h-7zM15 1v5h5V1zM16 2h3v3h-3zM0 14h7v7H0zM1 15v5h5v-5zM2 16h3v3H2zM8 0h1v1H8zM10 0h2v1h-2zM9 1h1v2H9zM11 2h2v1h-2zM8 3h1v1H8zM10 4h1v2h-1zM12 4h1v1h-1zM8 6h1v1H8zM0 8h2v1H0zM3 8h1v1H3zM5 8h3v1H5zM9 8h2v1H9zM12 8h1v2h-1zM14 8h1v1h-1zM16 8h3v1h-3zM1 9h1v1H1zM4 9h1v2H4zM7 9h2v1H7zM10 9h1v1h-1zM15 9h1v2h-1zM19 9h2v1h-2zM0 10h1v2H0zM2 10h2v1H2zM6 10h1v1H6zM8 10h2v2H8zM13 10h2v1h-2zM17 10h1v1h-1zM20 10h1v2h-1zM2 12h3v1H2zM6 12h1v1H6zM10 12h3v1h-3zM14 12h2v1h-2zM17 12h2v1h-2zM8 13h2v1H8zM12 13h1v2h-1zM15 13h1v1h-1zM18 13h1v1h-1zM8 15h1v1H8zM10 15h1v2h-1zM13 15h3v1h-3zM17 15h1v2h-1zM19 15h2v1h-2zM9 17h1v1H9zM12 17h2v1h-2zM15 17h1v2h-1zM18 17h3v1h-3zM8 19h2v1H8zM11 19h1v2h-1zM13 19h1v1h-1zM17 19h1v2h-1zM19 19h1v1h-1zM14 20h2v1h-2z" />
+                  </svg>
+                </div>
+                <ul class="space-y-2.5 text-sm">
+                  {apartados.map((a) => (
+                    <li class="flex items-center gap-3">
+                      <span class="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 text-[11px] font-bold text-white" style="background: #791b46;">{a.l}</span>
+                      <span class="h-2 rounded-full flex-1" style="background: rgba(16,25,40,0.08);"></span>
+                    </li>
+                  ))}
+                </ul>
+                <p class="text-xs mt-5 mb-0" style="color: rgba(16,25,40,0.55);">
+                  Página de control con los ocho apartados, seguida del albarán
+                  con su formato de siempre.
+                </p>
+              </div>
+            )}
+
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3 z-20" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0 font-bold" style="background: #dcfce7; color: #16a34a;">✓</div>
+              <div>
+                <p class="text-xs font-bold text-dark">QR de descarga directa</p>
+                <p class="text-xs" style="color: #9ca3af;">Sin usuario ni contraseña</p>
+              </div>
+            </div>
+
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5 z-20" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #fef3c7;">📅</div>
+              <div>
+                <p class="text-xs font-bold text-dark">5 de octubre de 2026</p>
+                <p class="text-xs" style="color: #9ca3af;">Sin periodo transitorio</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ClientLogosStrip />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DEFINICIÓN CITABLE (AEO / featured snippet)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h4 font-bold mb-4">¿Qué es el DeCA?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            El <strong>DeCA (documento electrónico de control administrativo)</strong>
+            es el documento que acompaña cada envío de transporte público de
+            mercancías por carretera en España, ahora en PDF con un
+            <strong>código QR</strong> que descarga el documento desde una
+            dirección web única. Es obligatorio desde el
+            <strong>5 de octubre de 2026</strong>. Lo regulan la
+            <a href={ORDEN_URL} class="text-primary underline" target="_blank" rel="noopener">Orden FOM/2861/2012</a>,
+            la <a href={LEY_URL} class="text-primary underline" target="_blank" rel="noopener">Ley 9/2025 (disposición transitoria octava)</a>
+            y la <a href={RES_URL} class="text-primary underline" target="_blank" rel="noopener">Resolución de 5 de junio de 2026</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       QUÉ EXIGE LA RESOLUCIÓN
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="que-exige" class="section-sm scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center mb-12">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h3 font-bold mb-4">¿Qué exige la Resolución de 5 de junio de 2026?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            La <a href={RES_URL} class="text-primary underline" target="_blank" rel="noopener">Resolución de 5 de junio de 2026</a>
+            (BOE del 12 de junio) no cambia qué datos lleva el documento de
+            control: cambia cómo tiene que ser. Un PDF creado desde los datos
+            antes de salir, con un QR que lo descarga sin contraseñas, una
+            copia para el conductor, los cambios sin borrar lo anterior y un
+            año de conservación. Estos son los requisitos, uno por uno.
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        {
+          requisitos.map((r, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={(i % 4) * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{r.icon}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{r.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{r.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center mt-14">
+        <div class="lg:col-10">
+          <h3 class="h5 font-bold mb-3 text-center" data-aos="fade-up-sm">Los ocho datos del artículo 6 y quién responde de cada uno</h3>
+          <p class="text-sm text-center mb-6 max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);" data-aos="fade-up-sm">
+            Según el <a href={`${ORDEN_URL}#a6`} class="text-primary underline" target="_blank" rel="noopener">artículo 6</a>
+            y el <a href={`${ORDEN_URL}#a7`} class="text-primary underline" target="_blank" rel="noopener">artículo 7</a>
+            de la Orden FOM/2861/2012.
+          </p>
+          <div class="overflow-x-auto rounded-3xl border border-dark/10" data-aos="fade-up-sm">
+            <table class="w-full text-sm border-collapse min-w-[640px]">
+              <thead>
+                <tr class="bg-dark text-white">
+                  <th class="text-left p-4 w-16">Apartado</th>
+                  <th class="text-left p-4">Dato</th>
+                  <th class="text-left p-4 w-48">Responde</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  apartados.map((a, i) => (
+                    <tr class={i % 2 === 0 ? "bg-primary/5" : ""}>
+                      <td class="p-4 font-bold text-primary">{a.l})</td>
+                      <td class="p-4" style="color: rgba(16,25,40,0.78);">{a.dato}</td>
+                      <td class="p-4 font-medium">{a.responde}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs mt-4" style="color: rgba(16,25,40,0.55);" data-aos="fade-up-sm">
+            Si el conjunto cambia de vehículo una vez empezado el transporte,
+            la empresa de transportes lo tiene que hacer constar en el
+            documento. El documento es de libre edición: no hay un modelo
+            oficial, y el
+            <a href={MIN_URL} class="text-primary underline" target="_blank" rel="noopener">Ministerio de Transportes</a>
+            no ofrece una aplicación propia.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CÓMO SE GENERA EN DRENPOS (showcase oscuro + pasos)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="como-se-genera" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="rounded-[32px] overflow-hidden relative" style="background: rgba(16,25,40,0.97);">
+        <div class="absolute -top-20 -right-20 w-96 h-96 rounded-full blur-3xl pointer-events-none" style="background: rgba(211,167,118,0.18);"></div>
+        <div class="absolute -bottom-24 -left-16 w-80 h-80 rounded-full blur-3xl pointer-events-none" style="background: rgba(121,27,70,0.35);"></div>
+
+        <div class="relative p-8 lg:p-16">
+          <div class="text-center max-w-3xl mx-auto mb-14" data-aos="fade-up-sm">
+            <span class="text-white bg-white/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-5 tracking-wide">
+              Módulo Financiero · albarán de venta
+            </span>
+            <h2 class="h3 font-bold mb-4 text-white leading-tight">
+              ¿Cómo se genera el DeCA <span style="color: #f9b27c;">en Drenpos</span>?
+            </h2>
+            <p class="text-lg leading-relaxed mb-0" style="color: rgba(255,255,255,0.78);">
+              Desde el albarán de venta que ya haces. Pulsas «Activar DeCA», el
+              sistema comprueba que están los datos que pide la Orden y te dice
+              qué falta, y genera un PDF con la página de control y el albarán
+              detrás. El QR lleva a una dirección web única de descarga directa,
+              y sale también en el albarán normal y en la carta de porte, así
+              que la copia del conductor ya vale.
+            </p>
+          </div>
+
+          {showPdfImg && (
+            <div class="row justify-center mb-12">
+              <div class="lg:col-10" data-aos="fade-up-sm">
+                <figure class="rounded-2xl overflow-hidden relative" style="border: 1px solid rgba(255,255,255,0.10);">
+                  <img
+                    src={IMG_PDF}
+                    alt="PDF del DeCA generado por Drenpos: página de control con los ocho apartados rotulados y el código QR de descarga"
+                    width="1280"
+                    height="800"
+                    class="w-full h-auto block"
+                    loading="lazy"
+                  />
+                </figure>
+              </div>
+            </div>
+          )}
+
+          <div class="row g-4">
+            {
+              pasos.map((p, i) => (
+                <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 100}>
+                  <div class="rounded-2xl p-6 h-full" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center text-base font-bold text-white mb-4" style="background: #791b46;">{p.n}</div>
+                    <h3 class="text-white font-semibold mb-1.5 text-base">{p.title}</h3>
+                    <p class="text-sm mb-0" style="color: rgba(255,255,255,0.72);">{p.body}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       QUÉ INCLUYE (tabla AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="que-incluye" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <div class="text-center mb-10" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-4">Qué incluye el DeCA de Drenpos</h2>
+            <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+              Lo que hace el sistema, punto por punto.
+            </p>
+          </div>
+          <div class="overflow-x-auto rounded-3xl border border-dark/10" data-aos="fade-up-sm">
+            <table class="w-full text-sm border-collapse">
+              <tbody>
+                {
+                  ficha.map((f, i) => (
+                    <tr class={i % 2 === 0 ? "bg-primary/5" : ""}>
+                      <th scope="row" class="text-left p-4 font-bold align-top w-44">{f.k}</th>
+                      <td class="p-4" style="color: rgba(16,25,40,0.75);">{f.v}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs mt-4" style="color: rgba(16,25,40,0.55);" data-aos="fade-up-sm">
+            Precios sin IVA. La guía completa, con ejemplos y qué hacer si algo
+            cambia en ruta, está en
+            <a href="/blog/deca-documento-control-transporte-digital-5-octubre-2026" class="text-primary underline">DeCA: el documento de control del transporte pasa a digital el 5 de octubre</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       A QUIÉN OBLIGA Y A QUIÉN NO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="a-quien-obliga" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center mb-12">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h3 font-bold mb-4">¿A quién obliga el DeCA y a quién no?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            Obliga a los dos lados del porte en el transporte público de
+            mercancías dentro de España: al <strong>transportista efectivo</strong>,
+            que tiene la autorización, y al <strong>cargador contractual</strong>,
+            que es quien le contrata el viaje. Si vendes y pagas el transporte
+            de tu mercancía, eres cargador contractual. Quedan fuera el reparto
+            con vehículos propios, la paquetería, las mudanzas y el transporte
+            internacional.
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-4 justify-center">
+        <div class="lg:col-7" data-aos="fade-up-sm">
+          <div class="h-full rounded-3xl border border-dark/10 bg-body p-7">
+            <p class="font-bold mb-5">Están obligados</p>
+            <div class="space-y-5">
+              {
+                obligados.map((o) => (
+                  <div class="flex items-start gap-3">
+                    <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[11px] font-bold mt-0.5" style="background: #16a34a;">✓</span>
+                    <div>
+                      <h3 class="h6 font-bold mb-1">{o.title}</h3>
+                      <p class="text-sm mb-0" style="color: rgba(16,25,40,0.7);">{o.body}</p>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-5" data-aos="fade-up-sm" data-aos-delay="100">
+          <div class="h-full rounded-3xl border border-dark/10 bg-body p-7">
+            <p class="font-bold mb-5">No lo necesitan</p>
+            <ul class="space-y-3 text-sm" style="color: rgba(16,25,40,0.7);">
+              {
+                excluidos.map((e) => (
+                  <li class="flex items-start gap-3">
+                    <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[11px] font-bold mt-0.5" style="background: #9ca3af;">✕</span>
+                    <span>{e}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-sm text-center mt-8 max-w-3xl mx-auto" style="color: rgba(16,25,40,0.62);" data-aos="fade-up-sm">
+        Sujetos y exenciones: artículos
+        <a href={`${ORDEN_URL}#a2`} class="text-primary underline" target="_blank" rel="noopener">2</a> y
+        <a href={`${ORDEN_URL}#a4`} class="text-primary underline" target="_blank" rel="noopener">4</a>
+        de la Orden FOM/2861/2012. El Ministerio aclara en sus
+        <a href={FAQ_MIN_URL} class="text-primary underline" target="_blank" rel="noopener">preguntas frecuentes sobre el DeCA</a>
+        que no hay un periodo transitorio adicional: desde el 5 de octubre de
+        2026 es obligatorio y sancionable.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SANCIONES
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="sanciones" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center mb-10">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h3 font-bold mb-4">¿Qué pasa si no llevas el DeCA?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            Circular sin documento de control, o con uno al que le faltan
+            datos esenciales, es una infracción grave de la Ley de Ordenación
+            de los Transportes Terrestres: multa de <strong>401 a 600 €</strong>.
+            Y cada expedición cuenta como una infracción distinta. Responden el
+            cargador contractual y el transportista, salvo que el cargador
+            pruebe que emitió el documento. Desde el 5 de octubre, un albarán
+            en papel no lo sustituye.
+          </p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[760px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Qué pasa</th>
+              <th class="text-left p-4">Tipo</th>
+              <th class="text-left p-4 rounded-tr-2xl">Multa</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              sanciones.map((s) => (
+                <tr class="border-b border-dark/5">
+                  <td class="p-4 font-medium">{s.hecho}</td>
+                  <td class="p-4">
+                    <a href={s.href} class="text-primary underline" target="_blank" rel="noopener">{s.tipo}</a>
+                  </td>
+                  <td class="p-4">{s.multa}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row justify-center mt-10">
+        <div class="lg:col-10">
+          <div class="rounded-2xl p-6 lg:p-8" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
+            <p class="font-semibold mb-2">Quién responde de qué</p>
+            <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+              Según el <a href={`${ORDEN_URL}#a7`} class="text-primary underline" target="_blank" rel="noopener">artículo 7 de la Orden FOM/2861/2012</a>,
+              los dos responden de no formalizar el documento, y también de que
+              no vaya a bordo, salvo que el cargador pruebe que lo emitió.
+              De los datos, el cargador responde del nombre, NIF y domicilio,
+              del transportista, del origen y destino y de la mercancía y su
+              peso; el transportista, de la autorización especial, la fecha y
+              las matrículas. En Drenpos el documento emitido queda guardado con
+              su historial, a mano si tienes que acreditarlo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       COMPARATIVA (tabla de decisión, AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="comparativa" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Plataforma de DeCA aparte o desde tu albarán?</h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Las tres situaciones en las que suele estar un cargador que ya hace
+          albaranes con su programa de gestión.
+        </p>
+      </div>
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[900px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Cómo lo haces</th>
+              <th class="text-left p-4">¿Vale desde el 5 de octubre?</th>
+              <th class="text-left p-4">De dónde salen los datos</th>
+              <th class="text-left p-4 rounded-tr-2xl">Coste</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comparativa.map((r) => (
+                <tr class={r.destacado ? "bg-primary/5 font-medium" : "border-b border-dark/5"}>
+                  <td class={`p-4 ${r.destacado ? "text-primary font-bold" : "font-medium"}`}>{r.opcion}</td>
+                  <td class="p-4">{r.vale}</td>
+                  <td class="p-4">{r.datos}</td>
+                  <td class="p-4">{r.coste}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs mt-4 max-w-4xl mx-auto" style="color: rgba(16,25,40,0.55);">
+        Tarifas públicas de plataformas de DeCA consultadas el 28 de septiembre
+        de 2026: bonos desde 0,25 €/documento (60 documentos) hasta 0,10
+        €/documento a partir de 12.000
+        (<a href={TARIFA_DOC_URL} class="underline" target="_blank" rel="nofollow noopener">fuente</a>),
+        y suscripciones de 19,99 a 89,99 €/mes según el número de documentos
+        (<a href={TARIFA_MES_URL} class="underline" target="_blank" rel="nofollow noopener">fuente</a>).
+        También hay aplicaciones gratuitas, pensadas sobre todo para el
+        transportista. Fenadismer ha avisado de diferencias de precio de hasta
+        el 1.000 % entre ofertas y de herramientas que no cumplen todos los
+        requisitos (<a href={FENADISMER_PRECIOS_URL} class="underline" target="_blank" rel="noopener">Transporte 3, 10/09/2026</a>).
+        Una plataforma aparte encaja si no tienes programa de gestión; si ya
+        haces los albaranes en uno, lo lógico es que el DeCA salga de ahí.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CIFRAS DEL SECTOR
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="rounded-3xl p-8 lg:p-12" style="background: #101928;" data-aos="fade-up-sm">
+        <h2 class="h4 font-bold mb-8 text-white text-center">¿A cuántas empresas y camiones afecta?</h2>
+        <div class="row g-6 text-center">
+          <div class="md:col-4">
+            <p class="text-3xl lg:text-4xl font-bold mb-2" style="color: #f9b27c;">157.116</p>
+            <p class="text-sm mb-0" style="color: rgba(255,255,255,0.75);">
+              empresas de transporte de mercancías por carretera en España a 1
+              de septiembre de 2026
+            </p>
+          </div>
+          <div class="md:col-4">
+            <p class="text-3xl lg:text-4xl font-bold mb-2" style="color: #f9b27c;">104.635</p>
+            <p class="text-sm mb-0" style="color: rgba(255,255,255,0.75);">
+              de ellas son de transporte público, las que llevan el DeCA a bordo
+            </p>
+          </div>
+          <div class="md:col-4">
+            <p class="text-3xl lg:text-4xl font-bold mb-2" style="color: #f9b27c;">393.593</p>
+            <p class="text-sm mb-0" style="color: rgba(255,255,255,0.75);">
+              vehículos autorizados en servicio público a 1 de enero de 2026
+            </p>
+          </div>
+        </div>
+        <p class="text-xs mt-8 mb-0 text-center" style="color: rgba(255,255,255,0.55);">
+          Fuentes: datos del Ministerio de Transportes recogidos por
+          <a href={EMPRESAS_URL} class="underline" target="_blank" rel="noopener">Cadena de Suministro (septiembre de 2026)</a>
+          y <a href={OBSERVATORIO_URL} class="underline" target="_blank" rel="noopener">Observatorio de oferta y demanda del transporte de mercancías por carretera, enero de 2026</a>.
+          A esas empresas se suman todos los cargadores que les contratan
+          portes, cuyo número no publica el Ministerio.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CASOS DE USO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">El DeCA según cómo expides</h2>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          casos.map((c, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3 leading-snug">{c.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PRECIO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-8">
+          <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-3 text-white">DeCA incluido, sin pagar por documento</h2>
+            <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+              El documento de control va dentro del módulo Financiero, sin coste
+              extra, y el módulo Financiero está en todos los planes: Esencial
+              desde 19 €/mes, Pro con almacén 29 €/mes y Full con TPV 39 €/mes.
+              Emitas diez albaranes o mil, el precio es el mismo. Sin
+              permanencia, con actualizaciones y soporte incluidos.
+            </p>
+            <ul class="flex flex-wrap gap-4 justify-center mb-6">
+              <li>
+                <a href="#demo-form" class="btn btn-light">Pedir demo gratuita</a>
+              </li>
+              <li>
+                <a href="/pricing" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Ver planes y precios</a>
+              </li>
+            </ul>
+            <p class="text-sm max-w-xl mx-auto mb-0" style="color: rgba(255,255,255,0.55);">
+              Precios sin IVA. El módulo Financiero suelto cuesta 16,45 €/mes si
+              prefieres montar tu combinación de módulos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FORMULARIO DE DEMO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <DemoForm
+    interes="deca"
+    titulo="Pide una demo de 20 minutos"
+    subtitulo="Te enseñamos un albarán real con el DeCA activado: la página de control, el QR y el historial de versiones."
+  />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FAQ (visible + schema)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <h2 class="h3 font-bold mb-3 text-center" data-aos="fade-up-sm">DeCA: lo que más nos preguntan</h2>
+          <p class="text-center mb-10" style="color: rgba(16,25,40,0.62);" data-aos="fade-up-sm">
+            Respuestas directas, con la norma a mano.
+          </p>
+          <div class="space-y-4">
+            {
+              faqs.map((f, i) => (
+                <details class="group rounded-2xl border border-dark/10 bg-body p-5" data-aos="fade-up-sm" data-aos-delay={Math.min(i * 50, 300)}>
+                  <summary class="cursor-pointer list-none flex items-start justify-between gap-4">
+                    <h3 class="h6 font-bold leading-snug">{f.q}</h3>
+                    <span class="text-primary text-xl leading-none mt-0.5 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <p class="mt-4 text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">{f.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ENLAZADO INTERNO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center gy-6">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <h2 class="h5 font-bold mb-3">Sigue por aquí</h2>
+          <ul class="row g-2 text-sm mb-8">
+            <li class="md:col-6">
+              <a href="/blog/deca-documento-control-transporte-digital-5-octubre-2026" class="text-primary hover:underline">Guía del DeCA para cargadores y pequeños transportistas</a>
+            </li>
+            <li class="md:col-6">
+              <a href="/software-gestion-almacen" class="text-primary hover:underline">Software de gestión de almacén</a>
+            </li>
+            <li class="md:col-6">
+              <a href="/software-preparacion-pedidos-picking" class="text-primary hover:underline">Preparación de pedidos, picking y expedición</a>
+            </li>
+            <li class="md:col-6">
+              <a href="/software-almacen-frigorifico" class="text-primary hover:underline">Software de almacén frigorífico</a>
+            </li>
+            <li class="md:col-6">
+              <a href="/software-verifactu" class="text-primary hover:underline">Facturación Verifactu</a>
+            </li>
+            <li class="md:col-6">
+              <a href="/pricing" class="text-primary hover:underline">Planes y precios de Drenpos</a>
+            </li>
+          </ul>
+          <p class="text-sm" style="color: rgba(16,25,40,0.7);">
+            El DeCA sale al final de un camino que empieza antes: en la
+            <a href="/software-preparacion-pedidos-picking" class="text-primary underline">preparación de pedidos</a>,
+            donde escanear el pedido preparado ya genera el albarán, y en la
+            <a href="/software-gestion-almacen" class="text-primary underline">gestión de almacén</a>,
+            de donde salen el peso y los palets. Ese mismo albarán acaba en una
+            factura con <a href="/software-verifactu" class="text-primary underline">Verifactu</a>.
+            Si trabajas con frío, mira también el
+            <a href="/software-almacen-frigorifico" class="text-primary underline">software de almacén frigorífico</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>

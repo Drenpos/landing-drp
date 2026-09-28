@@ -3,7 +3,7 @@ title: "Cómo fichar desde el móvil de forma legal en 2026: guía operativa"
 meta_title: "Fichar desde el móvil legal en 2026: guía para pymes"
 description: "Cómo fichar desde el móvil de forma legal en 2026: deja atrás el Excel, evita sanciones y pide las vacaciones desde la misma app de fichajes."
 date: 2026-07-27
-updated: 2026-09-23
+updated: 2026-09-28
 image: "/images/blog/fichar-desde-el-movil-legal-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -56,13 +56,25 @@ El control horario móvil puede incluir ubicación, pero debe ser contextual. El
 Huella dactilar o reconocimiento facial son herramientas potentes, pero la LOPDGDD y el RGPD las tratan como datos de categoría especial. Su uso exige una evaluación de impacto previa, consentimiento explícito y una justificación operativa irrefutable. Si tu app genérica activa la cámara o el sensor biométrico sin un protocolo claro, estás ante un incumplimiento grave. La biometría solo es legal si es la **única vía** para garantizar la identidad y está respaldada por un protocolo interno firmado.
 
 ### Consentimiento y trazabilidad: el escudo ante la inspección
-El registro debe ser digital, inalterable y accesible para el trabajador. El consentimiento no se agota en un checkbox al contratar: hablamos de un registro de auditoría que demuestra que cada dato fue introducido con conocimiento de causa. La ley exige conservar estos registros durante cuatro años. Si tu plataforma borra logs, permite ediciones sin firma digital o no exporta en formatos válidos para la administración, estás construyendo sobre arena.
+El registro tiene que reflejar la jornada real y estar a disposición del trabajador. A fecha de 28 de septiembre de 2026 la ley no obliga todavía a que sea digital, pero si lo llevas en una app, que no se pueda cambiar un dato sin dejar rastro. El consentimiento no se agota en un checkbox al contratar: hablamos de un registro de auditoría que demuestra que cada dato fue introducido con conocimiento de causa. La ley exige conservar estos registros durante cuatro años. Si tu plataforma borra logs, permite ediciones sin firma digital o no exporta en formatos válidos para la administración, estás construyendo sobre arena.
 
 > "Un sistema de registro jornada app que no guarda trazabilidad de quién, cuándo y cómo se modificó un dato, no es una herramienta de cumplimiento: es una prueba en contra."
 
+## ¿Cómo es la app de fichajes de Drenpos?
+
+Es una app web instalable (PWA): no pasa por App Store ni Google Play y funciona en cualquier móvil. La hemos pensado para quien ficha con una mano mientras con la otra sujeta una caja, las llaves de la furgoneta o una bandeja.
+
+- **Se instala sola, con guía.** La primera vez enseña cómo hacer «Añadir a pantalla de inicio» en iPhone y en Android, y tres pantallas de introducción. Cuando hay versión nueva, avisa.
+- **Estado claro y un botón grande.** Arriba pone en qué estás («Fichado · Trabajo · desde las 08:02») y abajo hay un botón grande para entrar o salir. Antes de cerrar la jornada pide confirmación, y si se te olvidó cerrarla, te lo recuerda.
+- **Conceptos en chips.** Trabajo, comida, reunión o los que tenga tu empresa aparecen como botones pequeños para pasar de uno a otro y volver. Al iniciar uno, el anterior se cierra solo. Si pulsas entrar sin elegir, ficha con el concepto por defecto, normalmente «Trabajo».
+- **Sin cobertura, sin engaños.** Si el móvil se queda sin señal en una nave o en un sótano, la app lo dice con un aviso en pantalla, no muestra un estado que no es real y no te cierra la sesión. Si en tu obra no hay cobertura nunca, lo que ficha y guarda sin red es el [terminal de fichaje](/dispositivo-fichaje#sin-conexion).
+- **Ayuda a mano.** Un botón «¿Cómo funciona?» explica cada pantalla sin tener que llamar a nadie.
+
+Con la geolocalización activada por la empresa, la app guarda la ubicación solo al fichar la entrada y la salida, como explicamos arriba. Todo lo demás del módulo lo tienes en [control horario](/control-horario#conceptos).
+
 ## ¿Y las vacaciones? También desde el móvil
 
-La app de fichajes no sirve solo para fichar. En Drenpos, la misma app instalable (sin pasar por App Store ni Google Play) tiene una pantalla de vacaciones: cada persona ve su saldo por tipo de ausencia, sus solicitudes y los festivos, y pide días viendo cuántos laborables gasta antes de enviar. Si su responsable le propone otras fechas con un motivo, lo acepta o lo rechaza desde el mismo móvil.
+La app de fichajes no sirve solo para fichar. En Drenpos, la misma app instalable tiene una pantalla de vacaciones: cada persona ve su saldo con un desglose que cuadra (generados hasta hoy, del año pasado, disfrutados y por aprobar), sus solicitudes y los festivos, y al pedir días ve cuántos le quedarán después. Si su responsable le propone otras fechas con un motivo, lo acepta o lo rechaza desde el mismo móvil.
 
 Para un técnico que pasa la semana en ruta o un comercial que casi no pisa la oficina, es la diferencia entre pedir las vacaciones por WhatsApp y que se pierdan, o dejarlas pedidas y aprobadas con su rastro. Las ausencias aprobadas salen en el mismo informe que los fichajes. Cómo se configuran los cupos y las aprobaciones lo contamos en [gestión de vacaciones y ausencias sin Excel](/blog/gestion-vacaciones-permisos-pymes-sin-excel).
 

@@ -49,6 +49,32 @@ const horario = [
     url: "/control-horario#entrada-salida",
     cta: "Ver control de entrada y salida",
   },
+  {
+    icon: "📅",
+    title: "Turnos rotativos y año en PDF",
+    body: "Ciclos 4x4, 5/2 o 6/3 con el primer día de cada persona y la planificación anual del equipo, con un PDF del año por trabajador.",
+    url: "/control-horario#planificacion-anual",
+    cta: "Ver la planificación anual",
+  },
+];
+
+// Bloque de facturación y cumplimiento: obligaciones que se resuelven desde
+// los documentos de venta, con enlace a su landing.
+const cumplimiento = [
+  {
+    icon: "🧾",
+    title: "Facturación Verifactu",
+    body: "Cada factura con su huella encadenada y su QR, y el registro enviado a la AEAT desde el propio sistema. Obligatorio en 2027: el 1 de enero para sociedades y el 1 de julio para autónomos.",
+    url: "/software-verifactu",
+    cta: "Ver facturación Verifactu",
+  },
+  {
+    icon: "🚚",
+    title: "Documento de control del transporte (DeCA)",
+    body: "Si contratas transportistas, desde el 5 de octubre de 2026 cada envío lleva un PDF con QR. Lo activas desde el albarán de venta, sin coste extra en el módulo Financiero.",
+    url: "/documento-control-transporte-deca",
+    cta: "Ver el DeCA desde el albarán",
+  },
 ];
 ---
 
@@ -78,15 +104,48 @@ const horario = [
         <h2 class="h3 font-bold mb-4">El registro de jornada, las vacaciones y los retrasos en el mismo sitio</h2>
         <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
           El módulo de fichajes cuesta 1 €/usuario/mes sin IVA y ya incluye
-          vacaciones y permisos, calendarios con festivos y control de entrada
-          y salida.
+          vacaciones y permisos, calendarios con festivos (también
+          rotativos) y control de entrada y salida.
         </p>
       </div>
 
       <div class="row g-4 justify-center">
         {
           horario.map((h, i) => (
-            <div class="col-12 md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+            <div class="col-12 md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <a href={h.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(121,27,70,0.08);">{h.icon}</div>
+                <h3 class="h6 font-semibold mb-2">{h.title}</h3>
+                <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.65);">{h.body}</p>
+                <span class="text-sm font-medium text-primary">{h.cta} →</span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       Facturación y cumplimiento: Verifactu y DeCA
+  ══════════════════════════════════════════ -->
+  <section id="cumplimiento" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">
+          Facturación y cumplimiento
+        </span>
+        <h2 class="h3 font-bold mb-4">Las obligaciones que salen de tus facturas y albaranes</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Van en el módulo Financiero, que está en todos los planes desde
+          19 €/mes sin IVA.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center">
+        {
+          cumplimiento.map((h, i) => (
+            <div class="col-12 md:col-6 lg:col-5" data-aos="fade-up-sm" data-aos-delay={i * 100}>
               <a href={h.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
                 <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(121,27,70,0.08);">{h.icon}</div>
                 <h3 class="h6 font-semibold mb-2">{h.title}</h3>

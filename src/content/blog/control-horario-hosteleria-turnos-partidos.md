@@ -3,6 +3,7 @@ title: "Control horario en hostelería: cómo fichar turnos partidos y horas ext
 meta_title: "Control horario en hostelería: turnos partidos y horas extra"
 description: "Registro de jornada de camareros y cocina con turnos partidos, extras de fin de semana y festivos: qué exige hoy la ley y cómo llevarlo en un bar."
 date: 2026-09-23
+updated: 2026-09-28
 image: "/images/blog/gestion-mesas-restaurante-mapa-sala/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -21,21 +22,23 @@ featured: false
 draft: false
 hero:
   title: "En un bar la jornada tiene dos mitades, y el registro también"
-  description: "Qué obliga la ley a fecha de 23 de septiembre de 2026, dónde se complica en hostelería y cómo se resuelve con un llavero en la barra."
+  description: "Qué obliga la ley a fecha de 28 de septiembre de 2026, dónde se complica en hostelería y cómo se resuelve con un llavero en la barra."
 faq:
   - question: "¿Es obligatorio el registro de jornada en un bar o un restaurante?"
     answer: "Sí. Desde el 12 de mayo de 2019, el artículo 34.9 del Estatuto de los Trabajadores obliga a toda empresa con trabajadores a registrar cada día la hora de inicio y de fin de la jornada de cada persona y a guardar esos registros cuatro años. La hostelería no tiene ninguna excepción. No llevarlo es una infracción grave de la LISOS, con multa de 751 a 7.500 € por infracción."
   - question: "¿Cómo se ficha un turno partido?"
     answer: "Con dos entradas y dos salidas en el mismo día: al empezar el servicio de mediodía, al terminarlo, al volver por la noche y al cerrar. Así el registro refleja el horario real y el hueco de la tarde no cuenta como trabajo. Con un calendario que recoja ese turno, el sistema sabe cuántas horas tocaban y calcula las extra."
   - question: "¿Ya es obligatorio el registro horario digital?"
-    answer: "No a fecha de 23 de septiembre de 2026. El real decreto que haría obligatorio el registro digital no está aprobado ni publicado en el BOE, y el Consejo de Estado emitió un dictamen desfavorable el 23 de marzo de 2026. Lo vigente es el artículo 34.9 del Estatuto de los Trabajadores, que no fija un formato concreto pero sí la obligación de registrar la jornada cada día."
+    answer: "No a fecha de 28 de septiembre de 2026. El real decreto que haría obligatorio el registro digital no está aprobado ni publicado en el BOE, y el Consejo de Estado emitió un dictamen desfavorable el 23 de marzo de 2026. Lo vigente es el artículo 34.9 del Estatuto de los Trabajadores, que no fija un formato concreto pero sí la obligación de registrar la jornada cada día."
   - question: "¿Cómo se cuentan las horas extra de los camareros?"
     answer: "El Estatuto de los Trabajadores pide registrar la jornada día a día y totalizarla en el periodo de pago de la nómina, con copia del resumen para el trabajador, y limita las horas extra a ochenta al año. En Drenpos las horas esperadas salen del calendario de cada persona y de sus festivos, y lo trabajado por encima es extra, día a día, con su total en el informe del periodo."
   - question: "¿Cuánto cuesta el control horario para un bar en Drenpos?"
     answer: "El fichaje cuesta 1 € por persona y mes sin IVA. El plan Full, de 39 €/mes sin IVA, ya trae fichaje para cinco personas junto al TPV, y el plan Esencial, de 19 €, trae dos. Vacaciones, control de entrada y salida y geolocalización van incluidos sin coste extra. El terminal de fichaje para la barra parte de 140 € sin IVA en un único pago."
+  - question: "¿Se pueden llevar libranzas que cambian cada semana en un restaurante?"
+    answer: "Sí, con un calendario rotativo. En lugar de lunes a domingo, indicas los días de trabajo, los de descanso, el horario y el primer día del ciclo, y Drenpos va alternando solo: 5/2 con libranzas que se mueven, 6/3 o mañanas y noches dentro del mismo ciclo. Si dos personas se turnan, cada una tiene su primer día sobre el mismo calendario. Las horas esperadas, las extra y las vacaciones ya cuentan con el ciclo."
 ---
 
-> En hostelería el registro de jornada es obligatorio desde 2019, como en cualquier empresa: hora de entrada y de salida de cada persona, cada día, guardadas cuatro años. Con turno partido son dos entradas y dos salidas en el mismo día, y con extras de fin de semana hay que saber cuántas horas tocaban. No llevarlo se multa hoy con **751 a 7.500 € por infracción grave**. El reglamento del registro digital sigue sin publicarse a 23 de septiembre de 2026.
+> En hostelería el registro de jornada es obligatorio desde 2019, como en cualquier empresa: hora de entrada y de salida de cada persona, cada día, guardadas cuatro años. Con turno partido son dos entradas y dos salidas en el mismo día, y con extras de fin de semana hay que saber cuántas horas tocaban. No llevarlo se multa hoy con **751 a 7.500 € por infracción grave**. El reglamento del registro digital sigue sin publicarse a 28 de septiembre de 2026.
 
 <div class="my-8 flex justify-center">
   <a href="/software-bares-restaurantes#fichaje-hosteleria" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
@@ -53,7 +56,7 @@ No llevar el registro es una infracción grave del artículo 7.5 de la [Ley sobr
 
 ## ¿En qué punto está el nuevo real decreto de registro horario?
 
-A fecha de 23 de septiembre de 2026, **no está aprobado ni publicado en el BOE**. El Consejo de Estado emitió un dictamen desfavorable el 23 de marzo de 2026, como recoge [Mi Fichaje Legal](https://mifichajelegal.com/blog/real-decreto-registro-horario-digital-mayo-2026-estado-tramitacion-pymes/) en su seguimiento de la tramitación. El texto en trámite quiere que el registro sea digital, con trazabilidad de cualquier cambio y acceso a distancia para la Inspección.
+A fecha de 28 de septiembre de 2026, **no está aprobado ni publicado en el BOE**. El Consejo de Estado emitió un dictamen desfavorable el 23 de marzo de 2026, como recoge [Mi Fichaje Legal](https://mifichajelegal.com/blog/real-decreto-registro-horario-digital-mayo-2026-estado-tramitacion-pymes/) en su seguimiento de la tramitación. El texto en trámite quiere que el registro sea digital, con trazabilidad de cualquier cambio y acceso a distancia para la Inspección.
 
 Mientras tanto se aplica la norma de 2019 con las multas de la LISOS. Si alguien te dice que ya hay multa por trabajador, no es así. El estado completo lo mantenemos al día en la [guía del registro horario digital](/blog/registro-horario-digital).
 
@@ -79,6 +82,14 @@ Para que el sistema sepa si ese día hubo horas extra, necesita saber qué horar
 La comida del personal también se puede registrar: los conceptos de fichaje (trabajo, descanso, comida o los que necesites) llevan su tiempo límite y la marca de si cuentan como tiempo de trabajo. Así el informe separa horas efectivas de pausas. Y los calendarios se asignan a varias personas de golpe desde una sola pantalla.
 
 Y para el despiste de no fichar la vuelta de la tarde está el **control de entrada y salida**, que es opcional y viene apagado. Si lo activas, el sistema compara cada fichaje con el calendario de esa persona y avisa al empleado y al encargado de una entrada tarde, una salida antes de hora o de quien no ha fichado. El encargado lo justifica o lo descarta con una nota y queda en el informe.
+
+## ¿Y si los turnos no encajan en la semana?
+
+Pasa mucho en hostelería: el cocinero que libra dos días que cambian cada semana para que todos pillen algún fin de semana, la camarera de pisos del hotel que trabaja 6 días y libra 3, o dos camareros que se turnan la barra de noche. Un calendario de lunes a domingo no lo refleja, y entonces las horas esperadas salen mal y los días libres parecen faltas.
+
+Para eso está el **calendario rotativo**. Indicas los días de trabajo, los de descanso, el horario y el primer día del ciclo, y Drenpos va alternando solo; cada día del ciclo se puede ajustar a mano y una vista previa te enseña cómo caen los turnos en el mes antes de guardar. Si dos personas se turnan, no duplicas nada: cada una tiene su propio primer día sobre el mismo calendario. Los días de descanso no suman horas ni gastan vacaciones.
+
+El cierre tardío también está resuelto. Si el horario va de 19:00 a 1:30 y la salida queda antes que la entrada, el sistema lo entiende como turno de noche y te avisa al guardar, en lugar de dar un error. Y si la pausa de la cena del personal cae fuera de la jornada, no deja guardar y te dice por qué. Ten presente que las horas entre las 22:00 y las 6:00 son trabajo nocturno según el artículo 36 del Estatuto. Tienes ejemplos de 4x4, 5/2 y 6/3 con sus reglas en [cuadrante de turnos rotativos](/blog/cuadrante-turnos-rotativos-4x4-ejemplos-estatuto), y todo el detalle en [calendarios del control horario](/control-horario#calendarios).
 
 ## ¿Cómo se cuentan las horas extra del fin de semana y los festivos?
 
@@ -116,7 +127,7 @@ Con dos entradas y dos salidas en el mismo día: al empezar el servicio de medio
 
 ### ¿Ya es obligatorio el registro horario digital?
 
-No a fecha de 23 de septiembre de 2026. El real decreto que haría obligatorio el registro digital no está aprobado ni publicado en el BOE, y el Consejo de Estado emitió un dictamen desfavorable el 23 de marzo de 2026. Lo vigente es el artículo 34.9 del Estatuto de los Trabajadores, que no fija un formato concreto pero sí la obligación de registrar la jornada cada día.
+No a fecha de 28 de septiembre de 2026. El real decreto que haría obligatorio el registro digital no está aprobado ni publicado en el BOE, y el Consejo de Estado emitió un dictamen desfavorable el 23 de marzo de 2026. Lo vigente es el artículo 34.9 del Estatuto de los Trabajadores, que no fija un formato concreto pero sí la obligación de registrar la jornada cada día.
 
 ### ¿Cómo se cuentan las horas extra de los camareros?
 
@@ -125,6 +136,10 @@ El Estatuto de los Trabajadores pide registrar la jornada día a día y totaliza
 ### ¿Cuánto cuesta el control horario para un bar en Drenpos?
 
 El fichaje cuesta 1 € por persona y mes sin IVA. El plan Full, de 39 €/mes sin IVA, ya trae fichaje para cinco personas junto al TPV, y el plan Esencial, de 19 €, trae dos. Vacaciones, control de entrada y salida y geolocalización van incluidos sin coste extra. El terminal de fichaje para la barra parte de 140 € sin IVA en un único pago.
+
+### ¿Se pueden llevar libranzas que cambian cada semana en un restaurante?
+
+Sí, con un calendario rotativo. En lugar de lunes a domingo, indicas los días de trabajo, los de descanso, el horario y el primer día del ciclo, y Drenpos va alternando solo: 5/2 con libranzas que se mueven, 6/3 o mañanas y noches dentro del mismo ciclo. Si dos personas se turnan, cada una tiene su primer día sobre el mismo calendario. Las horas esperadas, las extra y las vacaciones ya cuentan con el ciclo.
 
 ## Siguiente paso
 

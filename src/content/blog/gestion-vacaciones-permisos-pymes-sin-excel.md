@@ -3,6 +3,7 @@ title: "Gestión de vacaciones y ausencias en la pyme: cómo dejar el Excel"
 meta_title: "Gestión de vacaciones y ausencias para pymes, sin Excel"
 description: "Qué dice la ley sobre vacaciones y permisos, por qué el Excel falla con solapes y prorrateos, y cómo llevar cupos, aprobaciones y saldos desde el móvil."
 date: 2026-09-23
+updated: 2026-09-28
 image: "/images/blog/comparativa-mejores-software-control-horario-pymes-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -36,6 +37,10 @@ faq:
     answer: "Se prorratean por el tiempo trabajado. Con 30 días naturales salen 2,5 por mes; con 22 laborables, quien entra el 1 de julio genera 11 días ese año. En Drenpos el prorrateo sale solo de la fecha de contratación."
   - question: "¿Cuánto cuesta un software de gestión de vacaciones para una pyme?"
     answer: "Los precios de partida publicados van de 1,50 € a más de 5 € por usuario y mes, y algunos llevan mínimo mensual. En Drenpos las vacaciones van incluidas en el módulo de fichajes, a 1 € por usuario y mes sin IVA."
+  - question: "¿Puede un encargado aprobarse sus propias vacaciones?"
+    answer: "No debería, y en Drenpos no puede: nadie aprueba su propia solicitud. Quién aprueba se decide en la configuración. Si hay una lista de responsables (usuarios o grupos), solo ellos deciden; si no se define ninguna, aprueban los administradores. La solicitud del encargado la revisa otra persona y el informe recoge quién la aprobó."
+  - question: "¿Se puede sacar un calendario anual con las vacaciones de todo el equipo?"
+    answer: "Sí. En Drenpos la planificación anual del equipo enseña los días de trabajo y descanso de cada persona, sus festivos y sus vacaciones y permisos, aprobados y pendientes, por equipo mes a mes o por persona con el año entero. Un botón descarga el PDF del año con una página por trabajador."
 ---
 
 > Gestionar vacaciones y ausencias es saber, para cada persona, cuántos días le tocan, cuántos ha gastado y quién falta cada día. La ley pone el suelo: 30 días naturales al año (art. 38 del Estatuto de los Trabajadores), fechas conocidas con dos meses de antelación y permisos tasados en el art. 37.3. Lo difícil son las cuentas: prorrateos, solapes y días que pasan de un año a otro. Ahí es donde el Excel se rompe.
@@ -97,7 +102,7 @@ En Drenpos las vacaciones y los permisos van dentro del [módulo de fichajes](/c
 
 **El empleado pide desde el móvil.** Desde el portal o la [app de fichajes](/blog/fichar-desde-el-movil-legal-2026) ve sus ausencias, los festivos y los días que no trabaja. Antes de enviar sabe cuántos días laborables gasta y ve su saldo: disponibles, consolidados a hoy, arrastrados, usados y pendientes.
 
-**El responsable aprueba, rechaza o propone otras fechas** con un motivo, y el empleado acepta o rechaza la propuesta desde la app. El calendario del equipo enseña quién falta cada día, así que el solape se ve antes de aprobar. Cada paso genera un aviso dentro de la aplicación.
+**El responsable aprueba, rechaza o propone otras fechas** con un motivo, y el empleado acepta o rechaza la propuesta desde la app. Quién aprueba se decide en la configuración: si hay una lista de responsables, solo ellos deciden, y nadie puede aprobar su propia solicitud, tampoco el encargado. El calendario del equipo enseña quién falta cada día, así que el solape se ve antes de aprobar. Cada paso genera un aviso dentro de la aplicación.
 
 **El informe ya lo lleva.** Un día de vacaciones aprobado no exige horas y sale en el informe PDF con tipo, fechas, días, quién lo aprobó y el motivo. Es el mismo informe del [registro horario](/blog/registro-horario-digital), así que lo que mandas a la gestoría y lo que vería la Inspección coinciden.
 
@@ -110,6 +115,12 @@ La empresa configura "Vacaciones" con 22 días, consolidación mes a mes y reini
 Una persona contratada en julio ve 11 días en su saldo ese año, que se van consolidando cada mes. Pide una semana desde el móvil y el sistema le dice que son 5 días laborables: el festivo del jueves no gasta. Su responsable abre el calendario del equipo, ve que ya faltan dos del mismo grupo esa semana y le propone la siguiente con un motivo. Ella acepta desde la app.
 
 El PDF de fin de mes ya lleva esa ausencia y no cuenta esos días como horas pendientes.
+
+## ¿Cómo se ven las vacaciones de todo el equipo en el año?
+
+Con la planificación anual. En Drenpos es un calendario de administración que junta los días de trabajo y de descanso de cada persona (también los de quien trabaja a turnos rotativos), sus festivos y sus vacaciones y permisos, aprobados y pendientes, con la misma leyenda de colores que el resto del módulo. En la vista de equipo tienes a las personas en filas y los días del mes en columnas: en marzo ya ves si la segunda quincena de agosto se te queda el almacén con dos personas. En la vista de persona, su año entero.
+
+Un botón descarga el PDF del año con una página por trabajador: la rejilla de los doce meses, sus festivos y el resumen de días laborables, festivos y ausencias. Es la respuesta a «¿me sacas el calendario del año con las vacaciones de cada uno?» sin tocar una hoja de cálculo. Lo tienes en [planificación anual del equipo](/control-horario#planificacion-anual).
 
 ## ¿Cuánto cuesta un software de gestión de vacaciones y permisos?
 
@@ -152,6 +163,14 @@ Se prorratean por el tiempo trabajado. Con 30 días naturales salen 2,5 por mes;
 ### ¿Cuánto cuesta un software de gestión de vacaciones para una pyme?
 
 Los precios de partida publicados van de 1,50 € a más de 5 € por usuario y mes, y algunos llevan mínimo mensual. En Drenpos las vacaciones van incluidas en el módulo de fichajes, a 1 € por usuario y mes sin IVA.
+
+### ¿Puede un encargado aprobarse sus propias vacaciones?
+
+No debería, y en Drenpos no puede: nadie aprueba su propia solicitud. Quién aprueba se decide en la configuración. Si hay una lista de responsables (usuarios o grupos), solo ellos deciden; si no se define ninguna, aprueban los administradores. La solicitud del encargado la revisa otra persona y el informe recoge quién la aprobó.
+
+### ¿Se puede sacar un calendario anual con las vacaciones de todo el equipo?
+
+Sí. En Drenpos la planificación anual del equipo enseña los días de trabajo y descanso de cada persona, sus festivos y sus vacaciones y permisos, aprobados y pendientes, por equipo mes a mes o por persona con el año entero. Un botón descarga el PDF del año con una página por trabajador.
 
 ## Siguiente paso
 

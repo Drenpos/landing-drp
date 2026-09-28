@@ -191,6 +191,28 @@ const siHacemos = [
   "Guardamos la traza de cada envío en el panel, para que tu asesor vea lo que se remitió y cuándo.",
 ];
 
+// Otras obligaciones legales que se resuelven desde Drenpos
+const otrasObligaciones = [
+  {
+    tag: "Transporte · 5 de octubre de 2026",
+    title: "Documento de control del transporte (DeCA)",
+    body: "Si contratas transportistas, cada envío lleva un PDF con QR. Se genera desde el albarán de venta, incluido en el módulo Financiero sin coste extra.",
+    url: "/documento-control-transporte-deca",
+  },
+  {
+    tag: "Laboral · artículo 34.9 ET",
+    title: "Registro de la jornada",
+    body: "El registro diario de entrada y salida de cada trabajador, con informes para la Inspección. Desde 1 €/usuario/mes sin IVA.",
+    url: "/control-horario",
+  },
+  {
+    tag: "Alimentación · Reglamento (CE) 178/2002",
+    title: "Trazabilidad de lotes",
+    body: "Saber de dónde vino y a quién fue cada lote, con el informe de retirada en PDF cuando hace falta.",
+    url: "/blog/trazabilidad-alimentaria-lotes-recall",
+  },
+];
+
 // ── Datos estructurados (JSON-LD) ──────────────────────────────────────
 const faqSchema = {
   "@context": "https://schema.org",
@@ -731,6 +753,34 @@ const softwareSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════
+       OTRAS OBLIGACIONES QUE DRENPOS CUBRE
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="otras-obligaciones" class="section pt-0 scroll-mt-24">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-3">Otras obligaciones que Drenpos cubre</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Verifactu no es la única norma que se resuelve desde el mismo sistema.
+        </p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          otrasObligaciones.map((o, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <a href={o.url} class="block h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl hover:border-primary/30 transition-all duration-300">
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{o.tag}</p>
+                <h3 class="h6 font-bold mb-2 leading-snug">{o.title}</h3>
+                <p class="text-sm mb-3" style="color: rgba(16,25,40,0.68);">{o.body}</p>
+                <span class="text-primary text-sm font-medium">Ver cómo lo hace →</span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
        ENLAZADO INTERNO
   ═══════════════════════════════════════════════════════════════════ -->
   <section class="section pt-0">
@@ -750,6 +800,9 @@ const softwareSchema = {
             </li>
             <li class="md:col-6">
               <a href="/software-gestion-almacen" class="text-primary hover:underline">Software de gestión de almacén</a>
+            </li>
+            <li class="md:col-6">
+              <a href="/documento-control-transporte-deca" class="text-primary hover:underline">Documento de control del transporte (DeCA) desde el albarán</a>
             </li>
           </ul>
           <p class="text-sm" style="color: rgba(16,25,40,0.7);">

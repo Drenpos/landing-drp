@@ -5,6 +5,7 @@
 /images/favicon.ico
 /images/404.png
 /images/eof.svg
+/images/.DS_Store
 /images/changelog/changelog.png
 /images/logo-footer.svg
 /images/grainy.svg
@@ -234,6 +235,7 @@
 /images/avatar/F.png
 /images/random/so2.png
 /images/random/so1.png
+/images/funcionalidades/.DS_Store
 /images/funcionalidades/hosteleria/04-flujo-combinados.png
 /images/funcionalidades/hosteleria/01-mapa-sala-mesas.png
 /images/funcionalidades/hosteleria/02-pantalla-cocina.png
@@ -255,8 +257,10 @@
 /images/funcionalidades/control-horario/hardware/04-hardware-conjunto.png
 /images/funcionalidades/control-horario/hardware/v2-terminal-cover.jpg
 /images/funcionalidades/control-horario/hardware/02-llaveros-personalizados.png
+/images/funcionalidades/control-horario/.DS_Store
 /images/funcionalidades/control-horario/09-geolocalizacion-mapa.png
 /images/funcionalidades/control-horario/01-gestion-personal.png
+/images/funcionalidades/control-horario/10-vacaciones-calendario.png
 /images/funcionalidades/control-horario/03-reporte-resumen.png
 /images/funcionalidades/control-horario/07-calendario-asignacion.png
 /images/funcionalidades/control-horario/05-conceptos.png

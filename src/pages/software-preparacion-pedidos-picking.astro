@@ -315,6 +315,11 @@ const hermanas = [
     title: "Control de stock e inventario",
     body: "Para que lo que se prepara esté: mínimos con alertas, propuesta de compra, lotes y caducidades.",
   },
+  {
+    url: "/documento-control-transporte-deca",
+    title: "Documento de control del transporte (DeCA)",
+    body: "Para lo que sale con transportista: el DeCA obligatorio desde el 5/10/2026, desde el albarán y con su QR.",
+  },
 ];
 
 const articulos = [
@@ -324,6 +329,7 @@ const articulos = [
   { t: "Control de stock sin roturas: guía práctica", s: "control-de-stock-sin-roturas" },
   { t: "Cómo organizar el almacén de una pyme", s: "como-organizar-almacen-pyme" },
   { t: "¿SGA aparte o ERP con almacén? Qué necesita una pyme", s: "sga-o-erp-con-almacen-que-necesita-una-pyme" },
+  { t: "DeCA: el documento de control del transporte pasa a digital", s: "deca-documento-control-transporte-digital-5-octubre-2026" },
 ];
 
 // ── Datos estructurados (JSON-LD) ──────────────────────────────────────
@@ -621,6 +627,19 @@ const productSchema = {
               línea donde ocurre y, al expedir, convierte el escaneo en albarán o
               factura sin pasar por un teclado. Lo explicamos en detalle en
               <a href="/blog/preparacion-de-pedidos-picking-almacen" class="text-primary underline">la guía práctica de preparación de pedidos y picking</a>.
+            </p>
+          </div>
+          <div id="expedicion-deca" class="rounded-3xl border border-dark/10 bg-body p-7 lg:p-9 mt-6 scroll-mt-24" data-aos="fade-up-sm">
+            <h3 class="h5 font-bold mb-3">Si el pedido sale con transportista, el albarán ya lleva el DeCA</h3>
+            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.72);">
+              Desde el 5 de octubre de 2026, cada envío con un transportista
+              contratado necesita el documento de control en digital: un PDF
+              con código QR. Al expedir, el albarán que genera el escaneo puede
+              llevar ya el DeCA: lo activas desde el propio albarán, el sistema
+              revisa que estén el transportista, la matrícula y el peso, y el QR
+              sale impreso en el albarán que se lleva el conductor. Lo tienes
+              explicado en
+              <a href="/documento-control-transporte-deca" class="text-primary underline">documento de control del transporte (DeCA) desde el albarán</a>.
             </p>
           </div>
         </div>

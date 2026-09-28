@@ -1,8 +1,9 @@
 ---
 title: "Calendario laboral 2027: festivos, horas esperadas y horas extra"
 meta_title: "Calendario laboral 2027: festivos y cálculo de horas extra"
-description: "Qué se sabe del calendario laboral 2027 a 23/09/2026, festivos de Extremadura ya publicados en el DOE y cómo pasar de festivos a horas y horas extra."
+description: "Qué se sabe del calendario laboral 2027 a 28/09/2026, festivos de Extremadura ya publicados en el DOE y cómo pasar de festivos a horas y horas extra."
 date: 2026-09-23
+updated: 2026-09-28
 image: "/images/blog/control-horario-teletrabajo-cumplir-ley-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -25,7 +26,7 @@ hero:
   description: "El BOE aún no ha publicado los festivos nacionales de 2027. Te contamos qué es fijo, qué ha publicado ya Extremadura y cómo se convierten los festivos en horas."
 faq:
   - question: "¿Está publicado el calendario laboral 2027 en el BOE?"
-    answer: "A 23 de septiembre de 2026, no. La relación de fiestas laborales de cada año la publica la Dirección General de Trabajo cuando las comunidades autónomas han aprobado las suyas. La de 2026 salió en el BOE del 28 de octubre de 2025, así que la de 2027 se espera en otoño de 2026."
+    answer: "A 28 de septiembre de 2026, no. La relación de fiestas laborales de cada año la publica la Dirección General de Trabajo cuando las comunidades autónomas han aprobado las suyas. La de 2026 salió en el BOE del 28 de octubre de 2025, así que la de 2027 se espera en otoño de 2026."
   - question: "¿Cuántos festivos hay al año en España?"
     answer: "Como máximo 14 fiestas laborales retribuidas y no recuperables, dos de ellas locales, según el artículo 37.2 del Estatuto de los Trabajadores. Cada comunidad completa su lista dentro de ese máximo y cada ayuntamiento propone sus dos fiestas locales."
   - question: "¿Qué festivos tiene Extremadura en 2027?"
@@ -34,11 +35,13 @@ faq:
     answer: "Como máximo 80 horas extraordinarias al año, según el artículo 35.2 del Estatuto de los Trabajadores, en proporción si la jornada es menor. No cuentan para ese límite las compensadas con descanso dentro de los cuatro meses siguientes a su realización."
   - question: "¿Cómo se calculan las horas extra de un trabajador?"
     answer: "Se comparan las horas trabajadas cada día con las que le tocaban según su calendario laboral, descontando festivos y ausencias. Lo que pasa de lo esperado es extra. El artículo 35.5 del Estatuto obliga a registrar la jornada día a día y totalizarla en el periodo de pago."
+  - question: "¿Hay que rehacer el calendario laboral y los festivos cada año?"
+    answer: "El artículo 34.6 del Estatuto obliga a elaborar el calendario laboral cada año y a exponerlo en cada centro de trabajo. En Drenpos no hay que rehacerlo ni reasignarlo en enero: los calendarios son permanentes, los festivos fijos son recurrentes y el botón «Copiar festivos de 2026 a 2027» trae los del año anterior para que solo retoques los que cambian de fecha, como el Jueves Santo. Después, la planificación anual descarga el PDF del año con una página por trabajador."
 ---
 
-> El calendario laboral 2027 todavía no está completo: a 23 de septiembre de 2026 el BOE no ha publicado la lista nacional de festivos, que el año pasado salió a finales de octubre. Lo que sí es fijo es el marco: como máximo 14 fiestas al año, dos de ellas locales. Extremadura ya publicó sus festivos de 2027 en el DOE. Con eso puedes calcular las horas que debe hacer cada persona y, a partir de ahí, sus horas extra.
+> El calendario laboral 2027 todavía no está completo: a 28 de septiembre de 2026 el BOE no ha publicado la lista nacional de festivos, que el año pasado salió a finales de octubre. Lo que sí es fijo es el marco: como máximo 14 fiestas al año, dos de ellas locales. Extremadura ya publicó sus festivos de 2027 en el DOE. Con eso puedes calcular las horas que debe hacer cada persona y, a partir de ahí, sus horas extra.
 
-<Notice type="info" title="Estado a 23 de septiembre de 2026">
+<Notice type="info" title="Estado a 28 de septiembre de 2026">
 El BOE todavía no ha publicado la relación de fiestas laborales de 2027. Este artículo recoge lo que ya es oficial (el calendario de Extremadura, publicado en el DOE) y lo que marca la ley. En cuanto salga la resolución del BOE, lo actualizamos con los festivos de todas las comunidades.
 </Notice>
 
@@ -122,8 +125,9 @@ Las cuatro horas del festivo cuentan como extra, que es como lo calcula Drenpos;
 
 En Drenpos el calendario laboral y los festivos forman parte del [módulo de fichajes](/control-horario#calendarios):
 
-- **Varios calendarios con vigencias.** Horario de invierno y de verano, turno de mañana y de tarde, cada uno con sus fechas de entrada, salida y pausa, y uno por defecto para quien no tenga otro asignado.
-- **Festivos por región y por persona.** Un empleado en Extremadura y otro en Cataluña tienen festivos distintos, y el sistema los descuenta de sus horas esperadas. Los fijos se marcan como recurrentes y valen para todos los años.
+- **Varios calendarios con vigencias, semanales o rotativos.** Horario de invierno y de verano, turno de mañana y de tarde, cada uno con sus fechas de entrada, salida y pausa, y uno por defecto para quien no tenga otro asignado. Si tu gente trabaja en ciclos que no encajan en la semana (4 días de trabajo y 4 de descanso, 6/3, turnos de noche), el calendario puede ser rotativo, con el primer día del ciclo de cada persona. Tienes ejemplos en [cuadrante de turnos rotativos 4x4, 5/2 y 6/3](/blog/cuadrante-turnos-rotativos-4x4-ejemplos-estatuto).
+- **Festivos por región y por persona.** Hay un calendario nacional por defecto y otro por comunidad autónoma, y a quien solo tenga asignado el autonómico se le aplican también los nacionales de su país. Un empleado en Extremadura y otro en Cataluña tienen festivos distintos, y el sistema los descuenta de sus horas esperadas.
+- **Permanentes, sin reasignar en enero.** Los calendarios se crean una vez. Los festivos fijos se marcan como recurrentes y valen para todos los años; los que cambian de fecha, como el Jueves Santo, se añaden por año, y el botón «Copiar festivos de 2026 a 2027» te trae los del año anterior para retocar solo los que se muevan.
 - **Asignación en bloque.** Una pantalla con todas las personas, su calendario, sus festivos nacionales y autonómicos y su fecha de contratación, editables ahí mismo. Seleccionas un grupo y le asignas el calendario de golpe; quien no tiene ninguno sale en rojo.
 - **Horas extra día a día.** Las esperadas salen del calendario, los festivos y las ausencias de cada persona, y las extra son lo trabajado por encima, día a día. Trabajar en festivo o en vacaciones cuenta como extra. Es la misma cifra en pantalla, en las incidencias y en el informe PDF.
 
@@ -133,9 +137,15 @@ Un caso típico: una empresa de 20 personas en dos turnos crea dos calendarios (
 
 ![Asignación de calendarios laborales a varias personas a la vez en Drenpos](/images/funcionalidades/control-horario/07-calendario-asignacion.png)
 
+## ¿Cómo se saca el calendario laboral anual de cada trabajador?
+
+Con la planificación anual del equipo. En Drenpos es un calendario de administración que junta, para cada persona, sus días de trabajo y de descanso (también los de un ciclo rotativo), sus festivos y sus vacaciones y permisos, aprobados y pendientes. Lo ves por equipo, con las personas en filas y los días del mes en columnas, o por persona, con el año entero. Un botón descarga el PDF del año con una página por trabajador.
+
+Cada página lleva la rejilla de los doce meses, la lista de festivos de esa persona y el resumen de días laborables, festivos y ausencias. Es lo que te piden en cuanto alguien quiere saber qué días libra en agosto, y va más allá de lo que pide el artículo 34.6, que solo obliga a exponer un ejemplar del calendario en cada centro. Más detalle en [planificación anual del equipo](/control-horario#planificacion-anual).
+
 ## ¿Qué conviene hacer ya, antes de que salga el BOE?
 
-- Cargar los festivos de Extremadura de 2027 si tienes gente allí, y marcar como recurrentes los fijos (1 de enero, 1 de mayo, 12 de octubre, 25 de diciembre).
+- Cargar los festivos de Extremadura de 2027 si tienes gente allí, y marcar como recurrentes los fijos (1 de enero, 1 de mayo, 12 de octubre, 25 de diciembre). En Drenpos, copia los de 2026 a 2027 con un botón y cambia solo los que se mueven.
 - Pedir a cada centro las dos fiestas locales de su ayuntamiento.
 - Crear el calendario de verano con sus fechas de vigencia, si cambias de horario.
 - Dejar hecho el calendario de vacaciones: la ley pide que cada persona conozca sus fechas con dos meses de antelación. Tienes cómo llevarlo en [gestión de vacaciones y ausencias sin Excel](/blog/gestion-vacaciones-permisos-pymes-sin-excel).
@@ -144,7 +154,7 @@ Un caso típico: una empresa de 20 personas en dos turnos crea dos calendarios (
 
 ### ¿Está publicado el calendario laboral 2027 en el BOE?
 
-A 23 de septiembre de 2026, no. La relación de fiestas laborales de cada año la publica la Dirección General de Trabajo cuando las comunidades autónomas han aprobado las suyas. La de 2026 salió en el BOE del 28 de octubre de 2025, así que la de 2027 se espera en otoño de 2026.
+A 28 de septiembre de 2026, no. La relación de fiestas laborales de cada año la publica la Dirección General de Trabajo cuando las comunidades autónomas han aprobado las suyas. La de 2026 salió en el BOE del 28 de octubre de 2025, así que la de 2027 se espera en otoño de 2026.
 
 ### ¿Cuántos festivos hay al año en España?
 
@@ -161,6 +171,10 @@ Como máximo 80 horas extraordinarias al año, según el artículo 35.2 del Esta
 ### ¿Cómo se calculan las horas extra de un trabajador?
 
 Se comparan las horas trabajadas cada día con las que le tocaban según su calendario laboral, descontando festivos y ausencias. Lo que pasa de lo esperado es extra. El artículo 35.5 del Estatuto obliga a registrar la jornada día a día y totalizarla en el periodo de pago.
+
+### ¿Hay que rehacer el calendario laboral y los festivos cada año?
+
+El artículo 34.6 del Estatuto obliga a elaborar el calendario laboral cada año y a exponerlo en cada centro de trabajo. En Drenpos no hay que rehacerlo ni reasignarlo en enero: los calendarios son permanentes, los festivos fijos son recurrentes y el botón «Copiar festivos de 2026 a 2027» trae los del año anterior para que solo retoques los que cambian de fecha, como el Jueves Santo. Después, la planificación anual descarga el PDF del año con una página por trabajador.
 
 ## Siguiente paso
 

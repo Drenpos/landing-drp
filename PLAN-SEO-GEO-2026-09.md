@@ -197,3 +197,18 @@ Detalle completo en `docs/novedades-2026-09-23-control-horario-almacen-hosteleri
 - Landing nueva `/software-control-stock`. Secciones nuevas en gestión de almacén (`#sga-o-erp`, `#errores-picking`, `#pistola-pda`), frigorífico (`#mercado-frio`) y bares y restaurantes (`#cuanto-cuesta`, `#verifactu-hosteleria`, `#fichaje-hosteleria`).
 - 7 posts nuevos y 7 refrescados con `updated: 2026-09-23`.
 - Entidad en `Base.astro` (razón social, sede, fundador con LinkedIn), autor con `sameAs` en posts, módulo Conector Holded en la tabla, menú y FAQ.
+
+---
+
+# Tanda 5 (28 de septiembre de 2026): DeCA del transporte y turnos rotativos
+
+Sin build en este entorno (snapshot sin `node_modules`): hay que pasar `npm run build` en el Mac antes de publicar. Sin commit.
+
+- **Landing nueva `/documento-control-transporte-deca`:** el DeCA obligatorio desde el 5 de octubre de 2026 (Ley 9/2025, Resolución de 5 de junio de 2026, Orden FOM/2861/2012), quién está obligado y quién no, sanción de 401 a 600 € por expedición y cómo se genera desde el albarán en Drenpos, incluido en el módulo Financiero. `DemoForm` con `interes="deca"`. Capturas pendientes en `images/funcionalidades/deca/`.
+- **Post nuevo `/blog/deca-documento-control-transporte-digital-5-octubre-2026`:** guía para el cargador contractual, con tabla de datos del artículo 6, requisitos del PDF y el QR, multas y lista de tareas antes del 5 de octubre.
+- **Enlaces al DeCA** desde Verifactu (`#otras-obligaciones`), gestión de almacén (`#deca`), picking (`#expedicion-deca`) y frigorífico. En el menú, junto a Verifactu, y en el bloque nuevo "Facturación y cumplimiento" de `/funcionalidades`.
+- **Control horario:** anclas nuevas `#turnos-rotativos` (calendarios rotativos 4x4, 5/2, 6/3 con primer día del ciclo por persona), `#planificacion-anual` (vistas Equipo y Persona y PDF del año por trabajador), `#conceptos` (concepto por defecto, concepto por lector y app PWA) y `#primeros-pasos`. Refrescos con `updated: 2026-09-28` en los posts del clúster de fichaje y concepto por lector en `/dispositivo-fichaje`.
+- **Post nuevo `/blog/cuadrante-turnos-rotativos-4x4-ejemplos-estatuto`:** tres cuadrantes (4x4, 5/2, 6/3), reglas del Estatuto y cuánta gente hace falta para cubrir un puesto 24 horas.
+- **Guion de vídeo** del DeCA para Reels y Shorts en `docs/video-deca-guion-rodaje.md`.
+- **Capa IA:** `llms.txt` y `llms-full.txt` con novedades del 28/09, el DeCA como cuarta obligación legal, intenciones nuevas y datos citables con fuente; `featureList` y `knowsAbout` de `Base.astro`, `modules.md` y dos FAQ nuevas en `faq.md`.
+- **Pendiente (urgente):** pedir la indexación en Search Console de las 3 URLs nuevas antes del 5 de octubre: `https://www.drenpos.com/documento-control-transporte-deca`, `https://www.drenpos.com/blog/deca-documento-control-transporte-digital-5-octubre-2026` y `https://www.drenpos.com/blog/cuadrante-turnos-rotativos-4x4-ejemplos-estatuto`.

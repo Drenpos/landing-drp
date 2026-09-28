@@ -20,6 +20,7 @@ modules:
       - "Gestión de pagos y cobros"
       - "Gestión de impuestos"
       - "Remesas bancarías SEPA"
+      - "Documento de control del transporte (DeCA) desde el albarán, con PDF y QR"
       - "Reportes e informes"
 
   - name: "Módulo Inventario"
@@ -96,6 +97,9 @@ modules:
       - "Vacaciones y permisos con cupos, aprobación y saldo desde el móvil"
       - "Control de entrada y salida con incidencias y tolerancias (opcional)"
       - "Calendarios laborales con vigencias y festivos por comunidad y por persona"
+      - "Calendarios rotativos (4x4, 5/2, 6/3) con el primer día del ciclo de cada persona"
+      - "Planificación anual del equipo con PDF del año por trabajador"
+      - "Concepto de fichaje por lector: la puerta ficha trabajo y el comedor, comida"
       - "Horas extra calculadas día a día"
       - "Geolocalización opcional al fichar entrada y salida"
       - "Terminal de fichaje con modo sin conexión"

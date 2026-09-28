@@ -264,6 +264,11 @@ const hermanas = [
     title: "Control de stock e inventario",
     body: "Mínimos y máximos con alertas, propuesta de compra, lotes con caducidad e inventarios con regularización de diferencias.",
   },
+  {
+    url: "/documento-control-transporte-deca",
+    title: "Documento de control del transporte (DeCA)",
+    body: "Para las salidas con transportista: el DeCA obligatorio desde el 5/10/2026, desde el albarán y con su QR.",
+  },
 ];
 
 const articulos = [
@@ -712,7 +717,13 @@ const productSchema = {
               tipo de soporte y fechas de vigencia. Cada concepto elige cómo se
               mide: día a día, foto a fin de mes, pico máximo o aniversario de
               entrada. Las entradas, salidas y despieces de palets de un cliente
-              generan su apunte solos, en la misma operación.
+              generan su apunte solos, en la misma operación. Y cuando una
+              salida viaja con un transportista que contratas tú, el albarán
+              puede llevar el
+              <a href="/documento-control-transporte-deca" class="text-primary underline">documento de control digital (DeCA)</a>
+              con su QR, obligatorio desde el 5 de octubre de 2026; si el porte
+              lo contrata tu depositante, el documento les corresponde a él y a
+              su transportista.
             </p>
             <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.72);">
               Antes de dar precio, el <strong>simulador</strong> responde a

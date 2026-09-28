@@ -119,6 +119,25 @@ const plano = [
   },
 ];
 
+// DeCA: documento de control del transporte desde el albarán (módulo Financiero)
+const deca = [
+  {
+    icon: "🔘",
+    title: "Un botón en el albarán",
+    body: "«Activar DeCA» en el albarán de venta. El sistema comprueba cargador, transportista, origen, destino, mercancía y peso, fecha y matrículas, y te dice qué falta.",
+  },
+  {
+    icon: "🔳",
+    title: "PDF con QR de descarga directa",
+    body: "Página de control con los ocho apartados y el albarán detrás. El QR sale también en tus formatos de albarán y en la carta de porte: la copia del conductor ya vale.",
+  },
+  {
+    icon: "🔁",
+    title: "Cambios con historial",
+    body: "Si cambia la matrícula o el peso, versión nueva con la misma dirección web y el motivo del cambio. Nada se borra.",
+  },
+];
+
 // Landings hermanas del clúster de almacén
 const hermanas = [
   {
@@ -155,6 +174,11 @@ const hermanas = [
     url: "/software-produccion-fabricacion",
     title: "Producción y fabricación",
     body: "Si además fabricas: órdenes de trabajo por fases, consumo por lectura y coste real de fabricación.",
+  },
+  {
+    url: "/documento-control-transporte-deca",
+    title: "Documento de control del transporte (DeCA)",
+    body: "Si tu mercancía sale con transportista: el DeCA obligatorio desde el 5/10/2026, generado desde el albarán con su QR.",
   },
 ];
 
@@ -423,6 +447,10 @@ const faqs = [
     a: "Es que no es una integración: es el mismo sistema. Cada venta, compra, albarán o ticket de TPV mueve el stock automáticamente, y escanear un SSCC dentro de un albarán o una factura arrastra el palet entero con sus líneas agrupadas y blindadas. Sin exportaciones, sin sincronizaciones que fallan y sin descuadres entre programas.",
   },
   {
+    q: "¿Drenpos genera el documento de control del transporte (DeCA)?",
+    a: "Sí. Desde el 5 de octubre de 2026 el documento de control de cada envío con transportista tiene que ser un PDF con código QR. En Drenpos se activa desde el albarán de venta: el sistema comprueba los datos que exige la Orden FOM/2861/2012, genera el PDF con la página de control y un QR de descarga directa, y guarda cada versión con su motivo. El QR sale también en los formatos de albarán y en la carta de porte. Va incluido en el módulo Financiero, sin coste extra.",
+  },
+  {
     q: "¿Cuánto se tarda en ponerlo en marcha?",
     a: "La implantación estándar se hace en días: importamos tus artículos desde Excel o desde tu sistema anterior, definimos almacenes y ubicaciones, cargamos el stock inicial y formamos al equipo. Acompañamos la puesta en marcha en persona, con soporte humano incluido.",
   },
@@ -442,6 +470,7 @@ const articulos = [
   { t: "¿SGA aparte o ERP con almacén? Qué necesita una pyme", s: "sga-o-erp-con-almacen-que-necesita-una-pyme" },
   { t: "Software para distribuidores de bebidas: cajas, palés y formatos", s: "software-distribuidor-bebidas-cajas-palets-formatos" },
   { t: "Cuánto cuesta un SGA para una pyme en 2026", s: "cuanto-cuesta-sga-wms-pyme-2026" },
+  { t: "DeCA: el documento de control del transporte pasa a digital", s: "deca-documento-control-transporte-digital-5-octubre-2026" },
 ];
 
 // ── Datos estructurados (JSON-LD) ──────────────────────────────────────
@@ -1086,6 +1115,52 @@ const productSchema = {
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DeCA: DOCUMENTO DE CONTROL DEL TRANSPORTE DESDE EL ALBARÁN (AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="deca" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center mb-12">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-5">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Obligatorio desde el 5 de octubre de 2026
+          </span>
+          <h2 class="h3 font-bold mb-4">¿Tu mercancía sale con transportista? El DeCA sale del albarán</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            Desde el 5 de octubre de 2026, el documento de control de cada
+            envío con transportista tiene que ser un PDF con código QR: el
+            DeCA. Y si tú contratas el porte, eres cargador contractual y
+            respondes de él. En Drenpos lo generas desde el albarán de venta
+            con un botón: el sistema revisa los datos que pide la norma, crea el
+            PDF con su QR de descarga directa y guarda cada versión. Sin coste
+            extra.
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-4 justify-center">
+        {
+          deca.map((c, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{c.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="text-center mt-10 text-sm max-w-2xl mx-auto" style="color: rgba(16,25,40,0.6);" data-aos="fade-up-sm">
+        Qué exige la Resolución de 5 de junio de 2026, a quién obliga y cómo
+        queda el PDF, en
+        <a href="/documento-control-transporte-deca" class="text-primary underline">documento de control del transporte (DeCA) desde el albarán</a>.
+      </p>
     </div>
   </section>
 

@@ -63,6 +63,10 @@ Key collections:
 - `software-produccion-fabricacion.astro` — producción y fabricación (órdenes de trabajo, fases, tiempos, coste real)
 - `software-control-stock.astro`: control de stock e inventario (mínimos y máximos con alertas, propuesta de compra, lotes y caducidad, inventarios físicos, valoración)
 
+**Landings de cumplimiento legal** (`prerender = true`, mismo patrón de JSON-LD Breadcrumb + SoftwareApplication + FAQPage, enlazadas en el submenú Funcionalidades y en el bloque "Facturación y cumplimiento" de `funcionalidades.astro`):
+- `software-verifactu.astro`: facturación en modalidad Verifactu (sección `#otras-obligaciones` con enlaces a las demás obligaciones)
+- `documento-control-transporte-deca.astro`: documento de control del transporte (DeCA) desde el albarán, obligatorio desde el 5/10/2026. Usa `<DemoForm interes="deca" />`: `DemoForm` admite `interes="deca"` (valor añadido al tipo y a las opciones del select en `src/layouts/partials/DemoForm.astro`)
+
 Al tocar una, revisa: `src/config/menu.json` (submenú Funcionalidades), `src/pages/llms.txt.ts` y `src/pages/llms-full.txt.ts` (bloque "Páginas de solución"), y los enlaces cruzados del array `hermanas` en `software-gestion-almacen.astro`. `seoGraph` valida en build enlaces internos, unicidad de metadatos y H1 único: un enlace roto o un `meta_title` duplicado rompe el build.
 
 ### Auto-imported shortcodes

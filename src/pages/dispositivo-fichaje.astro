@@ -73,6 +73,7 @@ const ficha = [
   { k: "Sin conexión", v: "Sigue fichando: guarda cada fichaje en su memoria local con la hora de su reloj integrado y lo vuelca a Drenpos, con su hora original, al recuperar la red" },
   { k: "Llaveros sin asignar", v: "El fichaje queda en cuarentena en una bandeja y se asigna después a su dueño, con su hora original" },
   { k: "Trazabilidad", v: "Desde Drenpos se consulta qué ha subido cada terminal y qué le ha pasado a su reloj" },
+  { k: "Concepto por lector", v: "A cada terminal se le asigna el concepto con el que registra las pasadas: el de la puerta ficha «Trabajo» y el del comedor, «Comida». Sin concepto asignado, usa el de la configuración del módulo o el concepto por defecto" },
   { k: "Electrónica", v: "Placa propia diseñada por Drenpos (revisión v2), con la versión de firmware visible en pantalla" },
   { k: "Carcasa", v: "Impresa en 3D en PETG, con el logo de tu empresa en el frontal si lo quieres" },
   { k: "Ubicación", v: "Interior: naves, almacenes, talleres, oficinas y hostelería. Portátil en obra o furgoneta" },
@@ -191,8 +192,8 @@ const casos = [
   {
     tag: "Taller y fábrica",
     icon: "🔧",
-    title: "Tiempos por concepto sin teclado",
-    body: "El mismo llavero inicia y detiene la jornada. Los conceptos de fichaje (producción, mantenimiento, formación) se configuran en Drenpos y los reportes reparten las horas donde toca.",
+    title: "Un lector en la puerta y otro en el comedor",
+    body: "Cada terminal ficha con su concepto. El de la puerta registra «Trabajo» y el del comedor, «Comida», así la pausa queda separada sin que nadie toque una pantalla. Los reportes reparten las horas entre lo que cuenta como trabajo y lo que no.",
   },
   {
     tag: "Obra y equipos móviles",
@@ -248,6 +249,10 @@ const faqs = [
   {
     q: "¿Qué pasa si alguien ficha con un llavero que no está dado de alta?",
     a: "El fichaje no se pierde ni se asigna a quien no toca. Queda en cuarentena, en una bandeja aparte, con la hora a la que se hizo. Cuando sabes de quién era ese llavero o esa tarjeta, se lo asignas desde la bandeja y el fichaje entra en su registro con su hora original. Por ejemplo, con alguien de temporada al que le das la llave antes de darlo de alta en el sistema.",
+  },
+  {
+    q: "¿Puedo poner un terminal en el comedor que fiche la comida?",
+    a: "Sí. A cada terminal se le asigna el concepto con el que registra las pasadas: el de la puerta del almacén ficha «Trabajo» y el del comedor, «Comida». El empleado pasa su llavero como siempre y la pasada queda con el concepto de ese lector, sin tocar ninguna pantalla. Si un terminal no tiene concepto asignado, usa el que marque la configuración del módulo o el concepto por defecto, que normalmente es «Trabajo» y siempre cuenta como tiempo de trabajo.",
   },
   {
     q: "¿Qué ve el empleado al fichar?",
@@ -307,6 +312,7 @@ const productSchema = {
     { "@type": "PropertyValue", name: "Funcionamiento sin conexión", value: "Sí. Guarda los fichajes en local con reloj propio y los sincroniza al recuperar la red" },
     { "@type": "PropertyValue", name: "Llaveros o tarjetas desconocidos", value: "El fichaje queda en cuarentena y se asigna después a su dueño con su hora original" },
     { "@type": "PropertyValue", name: "Trazabilidad del terminal", value: "Se consulta qué ha subido cada terminal y qué le ha pasado a su reloj" },
+    { "@type": "PropertyValue", name: "Concepto por terminal", value: "Cada terminal ficha con el concepto que tiene asignado, por ejemplo Trabajo en la puerta y Comida en el comedor" },
     { "@type": "PropertyValue", name: "Biometría", value: "No" },
     { "@type": "PropertyValue", name: "Personalización", value: "Logo del cliente en carcasa y llaveros" },
   ],
