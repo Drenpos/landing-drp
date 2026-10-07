@@ -4,6 +4,7 @@ import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
 import DemoForm from "@/partials/DemoForm.astro";
+import LandingMeta from "@/partials/LandingMeta.astro";
 
 // ════════════════════════════════════════════════════════════════════════
 //  Conector MCP · landing de módulo
@@ -219,6 +220,11 @@ const softwareSchema = {
     seller: { "@type": "Organization", name: "Drenpos Tech SL" },
   },
 };
+
+// Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
+// Publicación = primer commit de la página; actualización = último cambio de contenido.
+const PAGE_PUBLISHED = "2026-09-10";
+const PAGE_UPDATED = "2026-09-14";
 ---
 
 <Base
@@ -227,6 +233,9 @@ const softwareSchema = {
   description="Conecta Drenpos con ChatGPT o Claude y pregunta por tus ventas, clientes y stock en lenguaje natural. Solo lectura, con tus permisos, por 6 € al mes."
   canonical={CANONICAL}
   image={`${IMG}/01-chat-ventas-semana.png`}
+  published_date={PAGE_PUBLISHED}
+  modified_date={PAGE_UPDATED}
+  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
 >
   <!-- Datos estructurados -->
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -268,6 +277,8 @@ const softwareSchema = {
             Excel y <strong>con los mismos permisos</strong> que tienes dentro
             del sistema. De momento, <strong>solo lectura</strong>.
           </p>
+
+          <LandingMeta updated={PAGE_UPDATED} published={PAGE_PUBLISHED} class="-mt-4 mb-8" />
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">

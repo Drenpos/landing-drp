@@ -1,0 +1,84 @@
+---
+// Línea de fecha y autor para las landings de producto.
+// Señal de frescura y de autoría (E-E-A-T) visible para personas y para los
+// asistentes de IA. Las mismas fechas deben pasarse a <Base> como
+// published_date / modified_date para que coincidan con el JSON-LD.
+//
+// Uso:
+//   <LandingMeta updated="2026-10-07" published="2026-09-10" />
+//   <LandingMeta updated="2026-10-07" compact />
+//
+// Fechas en formato ISO "yyyy-mm-dd". Se renderiza en build (sin JS en
+// cliente), válido en páginas prerenderizadas.
+import dateFormat from "@/lib/utils/dateFormat";
+
+interface Props {
+  updated: string;
+  published?: string;
+  compact?: boolean;
+  class?: string;
+}
+
+const {
+  updated,
+  published,
+  compact = false,
+  class: className = "mb-6",
+} = Astro.props;
+
+const AUTHOR_NAME = "Alonso Bermejo Pérez";
+const AUTHOR_URL = "/about";
+const PATTERN = "d 'de' MMMM 'de' yyyy";
+
+// "2026-10-07" se interpreta como medianoche UTC: en una zona horaria negativa
+// saldría el día anterior. Se fija a mediodía para que el día no cambie.
+const toDate = (value: string): Date =>
+  /^\d{4}-\d{2}-\d{2}$/.test(value)
+    ? new Date(`${value}T12:00:00`)
+    : new Date(value);
+
+const updatedDate = toDate(updated);
+const publishedDate = published ? toDate(published) : null;
+const showPublished =
+  !compact &&
+  publishedDate !== null &&
+  publishedDate.toDateString() !== updatedDate.toDateString();
+---
+
+<p
+  class:list={["text-sm flex flex-wrap items-center gap-x-2 gap-y-1", className]}
+  style="color: rgba(16,25,40,0.62);"
+>
+  {
+    !compact && (
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        class="flex-shrink-0"
+      >
+        <rect x="3" y="4" width="18" height="18" rx="2" />
+        <path d="M16 2v4M8 2v4M3 10h18" />
+      </svg>
+    )
+  }
+  <span>Actualizado el <time datetime={updated}>{dateFormat(updatedDate, PATTERN)}</time></span>
+  {
+    showPublished && publishedDate && (
+      <>
+        <span aria-hidden="true">·</span>
+        <span>Publicado el <time datetime={published}>{dateFormat(publishedDate, PATTERN)}</time></span>
+      </>
+    )
+  }
+  <span aria-hidden="true">·</span>
+  <span>
+    Por <a href={AUTHOR_URL} rel="author" class="font-medium underline-offset-2 hover:underline hover:text-primary">{AUTHOR_NAME}</a>{!compact && ", fundador de Drenpos"}
+  </span>
+</p>

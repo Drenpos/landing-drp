@@ -15,6 +15,7 @@ import remarkCollapse from "remark-collapse";
 import remarkToc from "remark-toc";
 import tailwindcss from "@tailwindcss/vite";
 import { loadEnv } from "vite";
+import { execFileSync } from "child_process";
 import config from "./src/config/config.json";
 
 // Carga .env + process.env (Jenkins) para tenerlos disponibles en config-time.
@@ -59,17 +60,96 @@ const blogPosts = enumerateCollection("blog", "/blog");
 const localPosts = enumerateCollection("local", "/local");
 const allPosts = [...blogPosts, ...localPosts];
 
+// Páginas estáticas de src/pages (.astro), para que también tengan lastmod
+// real en el sitemap. Se excluyen las rutas dinámicas ([slug], [...rest]),
+// las de error (404, 500) y las que no son .astro (robots.txt.ts, llms.txt.ts,
+// rss.xml.js: generan texto y no van al sitemap). index.astro de una carpeta
+// se publica como la carpeta (/blog), el de la raíz como "/".
+function enumerateStaticPages() {
+  const pagesDir = path.join(process.cwd(), "src/pages");
+  const out = [];
+  const walk = (dir) => {
+    let entries;
+    try {
+      entries = fs.readdirSync(dir, { withFileTypes: true });
+    } catch (error) {
+      console.warn(`No se pudo leer ${dir}:`, error.message);
+      return;
+    }
+    for (const entry of entries) {
+      if (entry.name.includes("[")) continue; // ruta dinámica
+      const abs = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        walk(abs);
+        continue;
+      }
+      if (!entry.name.endsWith(".astro")) continue;
+      const rel = path
+        .relative(pagesDir, abs)
+        .split(path.sep)
+        .join("/")
+        .replace(/\.astro$/, "");
+      const name = rel.split("/").pop();
+      if (name === "404" || name === "500") continue;
+      const route = rel === "index" ? "" : rel.replace(/\/index$/, "");
+      out.push({ url: `${SITE_URL}/${route}`, filePath: abs });
+    }
+  };
+  walk(pagesDir);
+  return out;
+}
+
+const staticPages = enumerateStaticPages();
+
+// Clave de búsqueda: sin barra final salvo la raíz, para que "/foo" y "/foo/"
+// (o "https://www.drenpos.com" y ".../") encuentren el mismo fichero.
+function urlKey(url) {
+  const u = url.replace(/\/+$/, "");
+  return u === SITE_URL.replace(/\/+$/, "") ? `${u}/` : u;
+}
+
 // Map a URL back to its source file for git-based lastmod lookup.
-const urlToFile = new Map(allPosts.map((p) => [p.url, p.filePath]));
+// Los posts van al final para que, si coincidiera una URL, gane el .md.
+const urlToFile = new Map(
+  [...staticPages, ...allPosts].map((p) => [urlKey(p.url), p.filePath]),
+);
+
+// En un clon superficial (git clone --depth 1, habitual en CI) "git log -- fichero"
+// devuelve el único commit disponible para TODOS los ficheros, y todas las URLs
+// saldrían con el mismo lastmod. En ese caso no se usa git: los posts caen a la
+// fecha del frontmatter y las páginas se quedan sin lastmod (mejor que uno falso).
+function isShallowRepo() {
+  try {
+    return (
+      execFileSync("git", ["rev-parse", "--is-shallow-repository"], {
+        encoding: "utf-8",
+        stdio: ["ignore", "pipe", "ignore"],
+      }).trim() === "true"
+    );
+  } catch {
+    return false; // sin git: gitLastmod devolverá null de todos modos
+  }
+}
+const SHALLOW_REPO = isShallowRepo();
+if (SHALLOW_REPO) {
+  console.warn(
+    "[sitemap] Repositorio git superficial (shallow): lastmod de git desactivado. " +
+      "Haz el build con historial completo (git fetch --unshallow) para tener fechas reales.",
+  );
+}
 
 function lastmodForUrl(url) {
-  const file = urlToFile.get(url);
+  const file = urlToFile.get(urlKey(url));
   if (!file) return null;
-  const fromGit = gitLastmod(file, { excludeCommits: BULK_COMMITS });
-  if (fromGit) return fromGit;
+  if (!SHALLOW_REPO) {
+    const fromGit = gitLastmod(file, { excludeCommits: BULK_COMMITS });
+    if (fromGit) return fromGit;
+  }
+  if (!/\.(md|mdx)$/.test(file)) return null;
   try {
     const fm = matter(fs.readFileSync(file, "utf-8"));
-    if (fm.data?.date) return new Date(fm.data.date);
+    const fmDate = fm.data?.updated || fm.data?.date;
+    if (fmDate) return new Date(fmDate);
   } catch {
     /* swallow */
   }

@@ -25,8 +25,8 @@ const hosteleria = [
   },
 ];
 
-// Bloque de control horario: fichaje, vacaciones e incidencias, con enlaces a
-// las anclas de /control-horario.
+// Bloque de control horario: fichaje, vacaciones e incidencias. La primera
+// tarjeta lleva al hub /control-horario; las demás a su landing dedicada.
 const horario = [
   {
     icon: "🔑",
@@ -38,23 +38,23 @@ const horario = [
   {
     icon: "🏖️",
     title: "Vacaciones y permisos",
-    body: "Cupos por tipo de ausencia, solicitud desde el móvil con el saldo a la vista y aprobación o contrapropuesta de fechas. Sin coste extra.",
-    url: "/control-horario#vacaciones",
-    cta: "Ver vacaciones y permisos",
+    body: "Cupos por tipo de ausencia, solicitud desde el móvil con el saldo a la vista y aprobación o contrapropuesta de fechas del responsable. Sin coste extra.",
+    url: "/software-vacaciones-ausencias",
+    cta: "Ver vacaciones y ausencias",
   },
   {
     icon: "⏱️",
     title: "Entrada, salida e incidencias",
-    body: "Si lo activas, avisa cuando alguien llega tarde, sale antes o no ficha, con tolerancias en minutos y nota del responsable.",
-    url: "/control-horario#entrada-salida",
+    body: "Si lo activas, registra incidencias cuando alguien llega tarde, sale antes o no ficha, con tolerancias en minutos y nota del responsable.",
+    url: "/control-entrada-salida-empleados",
     cta: "Ver control de entrada y salida",
   },
   {
     icon: "📅",
-    title: "Turnos rotativos y año en PDF",
-    body: "Ciclos 4x4, 5/2 o 6/3 con el primer día de cada persona y la planificación anual del equipo, con un PDF del año por trabajador.",
-    url: "/control-horario#planificacion-anual",
-    cta: "Ver la planificación anual",
+    title: "Turnos rotativos 4x4, 5/2 y 6/3",
+    body: "Ciclos 4x4, 5/2 o 6/3 con el primer día de cada persona: los descansos no cuentan como faltas ni gastan vacaciones. Y el año del equipo en PDF.",
+    url: "/software-turnos-rotativos",
+    cta: "Ver turnos rotativos",
   },
 ];
 

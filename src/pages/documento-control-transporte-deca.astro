@@ -4,6 +4,7 @@ import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
 import DemoForm from "@/partials/DemoForm.astro";
+import LandingMeta from "@/partials/LandingMeta.astro";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 
@@ -343,6 +344,11 @@ const softwareSchema = {
   },
 };
 
+
+// Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
+// Publicación = primer commit de la página; actualización = último cambio de contenido.
+const PAGE_PUBLISHED = "2026-09-28";
+const PAGE_UPDATED = "2026-10-07";
 ---
 
 <Base
@@ -351,6 +357,9 @@ const softwareSchema = {
   description="Genera el DeCA desde el albarán de venta: PDF con QR de descarga directa, versiones con historial y copia para el conductor. Obligatorio el 5/10/2026."
   canonical={CANONICAL}
   image={OG_IMG}
+  published_date={PAGE_PUBLISHED}
+  modified_date={PAGE_UPDATED}
+  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
 >
   <!-- Datos estructurados -->
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -393,6 +402,8 @@ const softwareSchema = {
             <strong>dirección web de descarga directa</strong> y guarda cada
             versión. Sin plataforma aparte y sin teclear nada dos veces.
           </p>
+
+          <LandingMeta updated={PAGE_UPDATED} published={PAGE_PUBLISHED} class="-mt-4 mb-8" />
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">

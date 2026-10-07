@@ -4,6 +4,7 @@ import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
 import DemoForm from "@/partials/DemoForm.astro";
+import LandingMeta from "@/partials/LandingMeta.astro";
 
 // ════════════════════════════════════════════════════════════════════════
 //  Software de almacén frigorífico · landing dedicada (SEO/AEO/GEO 2026)
@@ -338,6 +339,11 @@ const productSchema = {
   ],
   provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
 };
+
+// Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
+// Publicación = primer commit de la página; actualización = último cambio de contenido.
+const PAGE_PUBLISHED = "2026-08-12";
+const PAGE_UPDATED = "2026-09-28";
 ---
 
 <Base
@@ -346,6 +352,9 @@ const productSchema = {
   description="Software de almacén frigorífico para congelados y refrigerados: lotes con FEFO, palets con etiqueta SSCC, trazabilidad y depósito. Desde 29 €/mes sin IVA."
   canonical={CANONICAL}
   image="/images/funcionalidades/almacen-tienda/02-lotes-caducidad.png"
+  published_date={PAGE_PUBLISHED}
+  modified_date={PAGE_UPDATED}
+  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
 >
   <!-- Datos estructurados -->
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -388,6 +397,8 @@ const productSchema = {
             Todas las pantallas de palets funcionan en móvil y tablet: la
             operativa se hace a pie de cámara, no en la oficina.
           </p>
+
+          <LandingMeta updated={PAGE_UPDATED} published={PAGE_PUBLISHED} class="-mt-4 mb-8" />
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">

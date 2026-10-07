@@ -49,7 +49,32 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
+# Un bot que tiene su propio bloque ignora el de "User-agent: *", por eso los
+# bloques nuevos repiten "Disallow: /api/".
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /api/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /api/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /api/
+
+# Buscadores con respuestas generadas (Apple Intelligence / Spotlight, Bing y Copilot)
+User-agent: Applebot
+Allow: /
+Disallow: /api/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+
 Sitemap: ${new URL("sitemap-index.xml", base).href}
+# "Schemamap" no es una directiva estándar de robots.txt: ningún motor de
+# búsqueda ni asistente la reconoce a día de hoy. Se deja por si acaso.
 Schemamap: ${new URL("schemamap.xml", base).href}
 `.trim();
 

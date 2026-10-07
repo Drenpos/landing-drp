@@ -4,6 +4,7 @@ import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
 import DemoForm from "@/partials/DemoForm.astro";
+import LandingMeta from "@/partials/LandingMeta.astro";
 
 // ════════════════════════════════════════════════════════════════════════
 //  Landing · Software de almacén y tienda (optimizada SEO)
@@ -236,6 +237,11 @@ const faqSchema = {
     acceptedAnswer: { "@type": "Answer", text: f.a },
   })),
 };
+
+// Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
+// Publicación = primer commit de la página; actualización = último cambio de contenido.
+const PAGE_PUBLISHED = "2026-06-16";
+const PAGE_UPDATED = "2026-10-07";
 ---
 
 <Base
@@ -244,6 +250,9 @@ const faqSchema = {
   description="Software de gestión de almacén y tienda para pymes: multialmacén, ubicaciones, lotes con FIFO/LIFO/FEFO, alertas de caducidad, traslados con pistola y TPV con Verifactu. Pide demo gratis."
   canonical={CANONICAL}
   image="/images/power/stock.png"
+  published_date={PAGE_PUBLISHED}
+  modified_date={PAGE_UPDATED}
+  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
 >
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
@@ -279,6 +288,8 @@ const faqSchema = {
             traslados con pistola y un TPV de tienda y restaurante integrado con
             facturación Verifactu. Todo en un solo sistema, sin duplicar datos.
           </p>
+
+          <LandingMeta updated={PAGE_UPDATED} published={PAGE_PUBLISHED} class="-mt-4 mb-8" />
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">

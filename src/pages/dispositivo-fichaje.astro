@@ -4,6 +4,7 @@ import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
 import DemoForm from "@/partials/DemoForm.astro";
+import LandingMeta from "@/partials/LandingMeta.astro";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 
@@ -30,6 +31,40 @@ const IMG = "/images/funcionalidades/control-horario/hardware";
 const hasImg = (p: string) => existsSync(join(process.cwd(), "public", p));
 const OFFLINE_IMG = `${IMG}/v2-terminal-furgoneta.webp`;
 const showOfflineImg = hasImg(OFFLINE_IMG);
+const VAC_IMG = "/images/funcionalidades/control-horario/10-vacaciones-calendario.png";
+const showVacImg = hasImg(VAC_IMG);
+
+// Gestión de equipo incluida en la licencia (sección #gestion-equipo)
+const gestionEquipo = [
+  {
+    icon: "🏖️",
+    title: "Vacaciones y permisos",
+    body: "Tipos de ausencia a tu medida y cupos con política real: reinicio en enero o en el aniversario, consolidación mes a mes y días que pasan al año siguiente. El empleado pide desde el móvil viendo su saldo y el responsable aprueba, rechaza o propone otras fechas.",
+    href: "/software-vacaciones-ausencias",
+    cta: "Vacaciones y ausencias",
+  },
+  {
+    icon: "⏰",
+    title: "Control de entrada y salida",
+    body: "Una opción que activas tú. Compara cada fichaje con el horario de la persona y crea incidencias por entrada tarde, salida anticipada o fichaje olvidado, con los minutos de tolerancia que marques. Un fichaje con hora reconstruida por el terminal sin conexión nunca cuenta como retraso.",
+    href: "/control-entrada-salida-empleados",
+    cta: "Control de entrada y salida",
+  },
+  {
+    icon: "🔄",
+    title: "Turnos rotativos",
+    body: "Calendarios semanales o rotativos para ciclos como el 4x4, el 5/2 o el 6/3, también con mañanas y noches. Si dos personas se turnan, cada una tiene su primer día del ciclo sobre el mismo calendario. Los descansos no suman horas ni gastan vacaciones.",
+    href: "/software-turnos-rotativos",
+    cta: "Turnos rotativos",
+  },
+  {
+    icon: "📄",
+    title: "Calendario anual en PDF",
+    body: "La planificación anual junta los días de trabajo y descanso, los festivos y las vacaciones de todo el equipo. Un botón descarga el PDF del año con una página por trabajador.",
+    href: "/control-horario#planificacion-anual",
+    cta: "Planificación anual",
+  },
+];
 
 // Modo sin conexión (sección #sin-conexion)
 const offline = [
@@ -223,6 +258,10 @@ const faqs = [
     a: "El terminal parte de 140 € sin IVA, con llaveros personalizados incluidos para tu plantilla inicial, y la licencia de fichaje de Drenpos cuesta desde 1 € por usuario y mes. En las implantaciones acompañadas el terminal va incluido con las llaves. Pide presupuesto si necesitas varios terminales, tarjetas adicionales o una carcasa con acabado especial.",
   },
   {
+    q: "¿El terminal de fichaje sirve también para gestionar las vacaciones del equipo?",
+    a: "Sí, aunque las vacaciones no se piden en el aparato. El terminal registra entradas y salidas, y la licencia de fichaje de 1 € por usuario y mes incluye las vacaciones y los permisos sin coste extra. El empleado pide los días desde la app del móvil o el portal viendo su saldo, el responsable aprueba, rechaza o propone otras fechas, y el calendario del equipo enseña quién falta cada día.",
+  },
+  {
     q: "¿Se puede poner el logo de mi empresa en el terminal?",
     a: "Sí. La carcasa se imprime en 3D con el logo de tu empresa en el frontal, y los llaveros RFID también se personalizan con tu marca. Es la misma pieza que fabricamos para nosotros, con tu identidad: no es una pegatina.",
   },
@@ -334,9 +373,12 @@ const productSchema = {
 <Base
   title="Dispositivo de Fichaje con Llavero RFID y QR · Drenpos"
   meta_title="Dispositivo de Fichaje RFID y QR para Empresas | Drenpos"
-  description="Terminal de fichaje de Drenpos con llavero RFID o QR, sin huella, a 12 V y con tu logo. Ficha sin internet y sincroniza al volver. Desde 140 €."
+  description="Terminal de fichaje Drenpos con llavero RFID o QR, sin huella, a 12 V y con tu logo. Ficha sin internet, con vacaciones y turnos incluidos. Desde 140 €."
   canonical={CANONICAL}
   image={`${IMG}/v2-terminal-cover.jpg`}
+  published_date="2026-09-03"
+  modified_date="2026-10-07"
+  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
 >
   <!-- Datos estructurados -->
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -370,7 +412,7 @@ const productSchema = {
           <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
             <span class="text-primary">Dispositivo de fichaje</span> con llavero RFID y QR, con tu logo en la carcasa
           </h1>
-          <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
+          <p class="text-lg mb-4 max-w-xl" style="color: rgba(16,25,40,0.72);">
             Un terminal de fichaje que tu equipo usa sin móvil y sin huella:
             acerca el llavero, la pantalla enseña su nombre y su foto, y la
             jornada queda registrada en Drenpos con sellado inalterable.
@@ -379,6 +421,9 @@ const productSchema = {
             <strong>marca de tu empresa</strong>. Se compra suelto o con el
             sistema completo.
           </p>
+          <div class="mb-8">
+            <LandingMeta updated="2026-10-07" published="2026-09-03" />
+          </div>
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">
@@ -511,6 +556,60 @@ const productSchema = {
           ))
         }
       </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       GESTIÓN DE EQUIPO (AEO): lo que hay detrás del terminal
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="gestion-equipo" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Incluido en la licencia de fichaje</span>
+        <h2 class="h3 font-bold mb-4">¿El terminal solo ficha o también gestiona vacaciones, turnos y retrasos?</h2>
+        <p class="text-lg leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+          El terminal registra las entradas y las salidas, y detrás va la
+          gestión del equipo completa. La licencia de fichaje de Drenpos, de
+          1 € por usuario y mes sin IVA, incluye vacaciones y permisos con
+          cupos, solicitud desde el móvil y aprobación del responsable,
+          control de entrada y salida con
+          incidencias y tolerancias, calendarios con turnos rotativos y
+          planificación anual en PDF, y geolocalización opcional para quien
+          ficha desde el móvil.
+        </p>
+      </div>
+
+      <div class="row g-5 items-center">
+        {showVacImg && (
+          <div class="lg:col-5" data-aos="fade-up-sm">
+            <figure class="rounded-2xl overflow-hidden mb-0" style="box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07); border: 1px solid rgba(16,25,40,0.08);">
+              <img src={VAC_IMG} alt="Calendario de vacaciones de Drenpos con el saldo de días del empleado y las ausencias del equipo" width="1280" height="800" class="w-full h-auto block" loading="lazy" />
+            </figure>
+          </div>
+        )}
+        <div class={showVacImg ? "lg:col-7" : "col-12"}>
+          <div class={showVacImg ? "grid sm:grid-cols-2 gap-4" : "grid md:grid-cols-2 lg:grid-cols-4 gap-4"}>
+            {gestionEquipo.map((g, i) => (
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 flex flex-col hover:shadow-xl transition-shadow duration-300" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+                <div class="w-11 h-11 rounded-2xl flex items-center justify-center text-xl mb-4" style="background: rgba(121,27,70,0.08);" aria-hidden="true">{g.icon}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{g.title}</h3>
+                <p class="text-sm mb-4 flex-grow" style="color: rgba(16,25,40,0.65);">{g.body}</p>
+                <a href={g.href} class="text-primary font-semibold text-sm inline-flex items-center gap-1 hover:underline">
+                  {g.cta}
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <p class="text-sm text-center mt-8 mb-0 max-w-2xl mx-auto" style="color: rgba(16,25,40,0.62);" data-aos="fade-up-sm">
+        Son opciones que activas cuando las necesitas, sin pagar más. Quien
+        aprueba vacaciones o revisa incidencias necesita licencia de fichaje
+        aunque no fiche. Todo el módulo, en
+        <a href="/control-horario" class="text-primary underline">control horario y gestión de equipo</a>.
+      </p>
     </div>
   </section>
 
@@ -785,6 +884,11 @@ const productSchema = {
               conceptos, a las vacaciones y permisos, al control de entrada y
               salida y a los reportes para la Inspección, sin coste extra. En
               las implantaciones acompañadas el terminal va incluido.
+            </p>
+            <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+              Ese 1 € por usuario y mes incluye vacaciones y permisos, control
+              de entrada y salida, calendarios laborales, turnos rotativos y
+              geolocalización opcional del fichaje desde el móvil.
             </p>
             <ul class="flex flex-wrap gap-4 justify-center mb-6">
               <li>

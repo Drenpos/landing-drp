@@ -4,6 +4,7 @@ import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
 import DemoForm from "@/partials/DemoForm.astro";
+import LandingMeta from "@/partials/LandingMeta.astro";
 
 // ════════════════════════════════════════════════════════════════════════
 //  Software de facturación Verifactu · landing comercial
@@ -277,6 +278,11 @@ const softwareSchema = {
     seller: { "@type": "Organization", name: "Drenpos Tech SL" },
   },
 };
+
+// Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
+// Publicación = primer commit de la página; actualización = último cambio de contenido.
+const PAGE_PUBLISHED = "2026-09-14";
+const PAGE_UPDATED = "2026-10-07";
 ---
 
 <Base
@@ -285,6 +291,9 @@ const softwareSchema = {
   description="Programa de facturación adaptado a Verifactu para pymes y autónomos: huella encadenada, QR, remisión a la AEAT y panel de envíos. Desde 19 €/mes sin IVA."
   canonical={CANONICAL}
   image={`${IMG}/verifactu-cover.webp`}
+  published_date={PAGE_PUBLISHED}
+  modified_date={PAGE_UPDATED}
+  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
 >
   <!-- Datos estructurados -->
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -331,6 +340,8 @@ const softwareSchema = {
             2026, pendiente de publicación en el BOE.
             <a href="/blog/verifactu-aplazado-octubre-2028" class="text-primary underline">Lee qué cambia con el aplazamiento a octubre de 2028</a>.
           </p>
+
+          <LandingMeta updated={PAGE_UPDATED} published={PAGE_PUBLISHED} class="-mt-4 mb-8" />
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">

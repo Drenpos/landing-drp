@@ -75,7 +75,8 @@
 		"deploy": "wrangler deploy",
 		"deploy:manual": "astro build && wrangler deploy",
 		"dev": "astro dev",
-		"preview": "astro build && wrangler dev"
+		"preview": "astro build && wrangler dev",
+		"purge:cf": "node scripts/purge-cloudflare.mjs"
 	},
 	"type": "module"
 }

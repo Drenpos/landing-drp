@@ -1,0 +1,878 @@
+---
+export const prerender = true;
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
+import DemoForm from "@/partials/DemoForm.astro";
+import LandingMeta from "@/partials/LandingMeta.astro";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
+const hasImg = (p: string) => existsSync(join(process.cwd(), "public", p));
+
+// ════════════════════════════════════════════════════════════════════════
+//  Control de entrada y salida de empleados · landing dedicada (SEO/AEO 2026)
+//  Tarea 1.3 del plan SEO/AEO de 7/10/2026 (clúster "gestión de equipo").
+//  Intención de búsqueda objetivo:
+//    - "control de entrada y salida de empleados"
+//    - "retrasos de empleados" / "empleado llega tarde" / "llegar tarde al trabajo"
+//    - "incidencias de fichaje" / "tolerancia de minutos" / "exceso de horas"
+//    - "puntualidad" solo como palabra secundaria
+//  Diferenciación con /blog/control-entrada-salida-retrasos-empleados: el post
+//  explica qué dice la ley ante los retrasos; esta landing vende la función.
+//  Diferenciación con /control-horario#entrada-salida: el hub resume, esta
+//  página desarrolla (responsable, empleado, terminal sin conexión, tabla).
+//  Captura pendiente: /images/funcionalidades/control-horario/11-incidencias-entrada-salida.png
+//  (1280×800). Se muestra solo si existe (existsSync).
+// ════════════════════════════════════════════════════════════════════════
+
+const CANONICAL = "https://www.drenpos.com/control-entrada-salida-empleados";
+
+const HERO_IMG = "/images/funcionalidades/control-horario/02-gestion-manager.png";
+const INC_IMG = "/images/funcionalidades/control-horario/11-incidencias-entrada-salida.png";
+const incImg = hasImg(INC_IMG);
+
+// Fuentes legales
+const ET_URL = "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430";
+const RDL8_URL = "https://www.boe.es/buscar/act.php?id=BOE-A-2019-3481";
+const ABSENTISMO_URL =
+  "https://www.elespanol.com/invertia/economia/empleo/20260611/cifras-absentismo-empresa-deja-euros-ano-trabajador-ausencias-sin-justificar/1003744281355_0.html";
+
+// Cápsulas citables (50 a 80 palabras, sin enlaces)
+const capsulas = {
+  definicion:
+    "El control de entrada y salida de empleados compara la hora a la que ficha cada persona con el horario que le tocaba ese día y avisa cuando algo no cuadra: llega tarde, se va antes, no ficha o se pasa de horas. No sustituye al registro de jornada, trabaja encima de él. En Drenpos es una opción del módulo de fichajes que viene apagada y que enciendes cuando quieras, con la tolerancia que tú decidas.",
+  sintomas:
+    "Casi siempre te enteras por el equipo. Que un compañero llega tarde todos los lunes, que otro se va diez minutos antes, que en la nómina aparecen horas que nadie esperaba. Los fichajes están ahí, pero nadie los compara con el horario de cada persona porque hacerlo a mano lleva una tarde entera. Estas son las cuatro situaciones que más se repiten en una pyme.",
+  registro:
+    "No. El registro de jornada es la obligación legal: la hora de inicio y de fin de cada persona, cada día. El control de entrada y salida trabaja encima de esos fichajes, los compara con el horario y crea incidencias para que alguien las revise. Es una ayuda de gestión. Lo que vale ante la Inspección de Trabajo siguen siendo los fichajes, con su hora sellada y la traza de cada cambio.",
+  funcionamiento:
+    "Cada vez que alguien ficha, el sistema mira el horario de su calendario laboral para ese día, sus festivos y sus ausencias. Si la entrada llega después de la hora más la tolerancia, o la salida antes de la hora menos la tolerancia, crea una incidencia. Además, una revisión automática diaria y otra semanal encuentran lo que no se ve al fichar: quien no ha fichado y quien se ha pasado de horas.",
+  horasExtra:
+    "Todo sale de la misma cuenta. Las horas esperadas de cada día vienen del calendario de la persona, descontando sus festivos y sus ausencias. Lo trabajado por encima es hora extra, día a día, y la semana o el mes son la suma de los días. Las incidencias de exceso de horas usan esa misma cifra, así que la pantalla, los avisos y el informe PDF nunca te dan dos números distintos.",
+  comparativa:
+    "Hay cuatro formas de saber quién llega tarde, y las cuatro funcionan con dos personas. La diferencia aparece con quince: revisar a mano deja de hacerse, el Excel depende de quien mantiene las fórmulas y una app de recursos humanos lo resuelve según el plan que contrates. Esta tabla compara lo que de verdad importa en el día a día de un encargado, con el coste de cada opción.",
+  precio:
+    "Nada aparte. Va incluido en la licencia de fichaje de Drenpos, que cuesta 1 € por usuario y mes sin IVA, junto con las vacaciones y permisos, los calendarios rotativos y la planificación anual del equipo. Un matiz: quien revisa incidencias necesita licencia de fichaje aunque no fiche. El terminal es opcional y parte de 140 € sin IVA; también se ficha desde el móvil o el ordenador.",
+};
+
+// Síntomas (cómo se busca "control de entrada y salida" en la práctica)
+const sintomas = [
+  {
+    icon: "⏰",
+    title: "Los retrasos los descubren los compañeros",
+    body: "El encargado no lo ve porque entra a otra hora. Se entera cuando el turno de mañana protesta porque siempre abren los mismos, y para entonces ya nadie recuerda qué días fueron.",
+  },
+  {
+    icon: "🗂️",
+    title: "Revisar fichajes uno a uno no cabe en la semana",
+    body: "Con 15 personas y cuatro fichajes al día salen más de 1.300 líneas al mes. Nadie las compara con el horario de cada uno, así que los retrasos pasan sin que nadie los vea.",
+  },
+  {
+    icon: "🌙",
+    title: "Las horas de más aparecen en la nómina",
+    body: "Alguien se queda una hora cada tarde y no lo sabe nadie hasta que la gestoría pregunta por qué hay tantas extra. O hasta que esa persona las reclama todas juntas.",
+  },
+  {
+    icon: "💬",
+    title: "Cada conversación acaba en «no es para tanto»",
+    body: "Sin datos, el responsable queda como el que tiene manía a alguien. Con la fecha, la hora y el horario delante, se habla de hechos y la conversación dura dos minutos.",
+  },
+];
+
+// Qué detecta (chips)
+const incidenciasTipos = [
+  "Entrada tarde",
+  "Salida anticipada",
+  "Sin fichar la entrada o la salida",
+  "Exceso de horas al día",
+  "Exceso de horas a la semana",
+  "Trabajo en festivo",
+  "Trabajo en vacaciones",
+];
+
+// Cómo funciona (tarjetas)
+const funcionamiento = [
+  {
+    icon: "⏱️",
+    title: "Tolerancia y límites a tu medida",
+    body: "Pones los minutos de margen y el límite de horas al día y a la semana. Con 5 minutos y horario a las 8:00, entrar a las 8:04 no genera nada y entrar a las 8:14 genera «Entrada tarde +14 min».",
+  },
+  {
+    icon: "🔎",
+    title: "Al fichar y en la revisión diaria y semanal",
+    body: "Las incidencias salen en el momento del fichaje. La revisión automática, a la hora que configures, detecta además lo que no se ve al fichar: quien no ha pasado el llavero o quien acumula horas de más en la semana.",
+  },
+  {
+    icon: "🔔",
+    title: "Aviso al empleado y a sus responsables",
+    body: "Cada incidencia llega a la persona y a quien la supervisa. A quién avisar se decide en la configuración del módulo, así nadie se entera por terceros ni a fin de mes.",
+  },
+  {
+    icon: "✍️",
+    title: "Justificar o descartar con una nota",
+    body: "Si hubo médico o un atasco en la autovía, el responsable la justifica con una nota. Si no procede, la descarta. La nota queda guardada con la incidencia y sale en el informe.",
+  },
+];
+
+// Bloques: H2 en pregunta + cápsula + detalles
+const bloques = [
+  {
+    id: "responsable",
+    icon: "🧑‍💼",
+    h2: "¿Qué ve el responsable cada mañana?",
+    capsula:
+      "Una lista de lo que hay que mirar, no un listado de fichajes. En la ficha del equipo cada fichaje lleva su etiqueta y un resumen del periodo. La pantalla de Incidencias se filtra por persona, tipo y estado, enseña un resumen por persona y tiene un botón «Revisar hoy» que deja delante solo lo del día. Lo de ayer no se queda para fin de mes, cuando ya nadie se acuerda.",
+    bullets: [
+      "Etiquetas en cada fichaje: «Tarde +12 min», «Salió 20 min antes», «Festivo», «En vacaciones»",
+      "Pantalla de Incidencias con filtros por persona, tipo y estado",
+      "Resumen por persona para ver quién acumula incidencias y de qué tipo",
+      "Widget «Incidencias abiertas» en el panel: cuántas, de quién y de qué tipo en los últimos 7 días",
+      "Fichajes activos de todo el equipo en tiempo real, sin tocar los registros",
+    ],
+    img: incImg ? INC_IMG : undefined,
+    alt: "Pantalla de Incidencias de Drenpos con entradas tarde, salidas anticipadas y fichajes olvidados filtrados por persona, tipo y estado",
+  },
+  {
+    id: "empleado",
+    icon: "🙋",
+    h2: "¿Y qué ve el empleado?",
+    capsula:
+      "Sus propias incidencias, a tiempo. Cada incidencia que le afecta le llega como aviso, igual que a su responsable, así se entera el mismo día y no cuando ya hay que hablar en serio. En su panel de inicio tiene el widget «Hoy en el trabajo», con el horario del día y las incidencias abiertas del mes. Si ficha desde el móvil, la app le avisa cuando se ha olvidado de cerrar la jornada.",
+    bullets: [
+      "Aviso de cada incidencia que le afecta",
+      "Widget «Hoy en el trabajo»: horario de hoy e incidencias abiertas del mes",
+      "App del móvil con aviso si olvidó cerrar la jornada",
+      "Sus fichajes en «Mis fichajes», con la hora de cada uno",
+    ],
+  },
+  {
+    id: "sin-conexion",
+    icon: "📡",
+    h2: "¿Qué pasa si el terminal de fichaje estaba sin internet?",
+    capsula:
+      "Nadie sale perjudicado. El terminal de Drenpos lleva su propio reloj: si se cae la línea o el router, guarda cada fichaje en el aparato y lo sube cuando vuelve la red, con la hora a la que se hizo de verdad. Esos fichajes con hora reconstruida nunca generan «tarde» ni «salida anticipada», para que un corte de internet no acabe en una incidencia injusta contra alguien que llegó puntual.",
+    bullets: [
+      "El terminal sigue fichando con llavero RFID o QR aunque no haya red",
+      "Cada fichaje sube con su hora real, no con la hora de la reconexión",
+      "Desde el sistema ves qué ha subido cada terminal y qué le ha pasado a su reloj",
+      "Terminal opcional desde 140 € sin IVA, con tu logo en la carcasa",
+    ],
+    nota: true,
+  },
+];
+
+// Tabla de decisión
+const comparativa = [
+  {
+    opcion: "Revisar los fichajes a mano",
+    retrasos: "Solo si alguien se pone a mirar",
+    sinFichar: "Cuando se nota la ausencia",
+    exceso: "Al cerrar la nómina",
+    justificacion: "De palabra",
+    sinRed: "Depende del sistema de fichaje",
+    precio: "Sin licencia, se paga en horas de encargado",
+  },
+  {
+    opcion: "Excel con los fichajes exportados",
+    retrasos: "Con fórmulas que alguien mantiene",
+    sinFichar: "Con fórmulas, sin aviso",
+    exceso: "Con fórmulas, a toro pasado",
+    justificacion: "Una columna de comentarios",
+    sinRed: "No distingue una hora reconstruida",
+    precio: "Sin licencia, más el tiempo de montarlo",
+  },
+  {
+    opcion: "App de RRHH con reglas de presencia",
+    retrasos: "Sí, según el plan contratado",
+    sinFichar: "Según el plan contratado",
+    exceso: "Según el plan contratado",
+    justificacion: "Según la app",
+    sinRed: "Depende del terminal que use",
+    precio: "Licencia por usuario, que varía con el plan",
+  },
+  {
+    opcion: "Control de entrada y salida en Drenpos",
+    retrasos: "Al fichar, con tolerancia en minutos",
+    sinFichar: "En la revisión automática diaria",
+    exceso: "Límites al día y a la semana, avisados",
+    justificacion: "Nota del responsable, que sale en el informe",
+    sinRed: "Hora real; nunca genera «tarde»",
+    precio: "Incluido en el fichaje de 1 €/usuario/mes sin IVA",
+    destacado: true,
+  },
+];
+
+// Casos de uso (sin nombres de clientes)
+const casos = [
+  {
+    tag: "Almacén · 5 minutos de tolerancia",
+    icon: "🏭",
+    title: "Retrasos a las 8:00 sin discusiones",
+    body: "La empresa activa el control con 5 minutos de tolerancia. Quien entra a las 8:14 con horario de 8:00 genera «Entrada tarde +14 min», que le llega a él y a su responsable. Si había motivo, el responsable la justifica con una nota; si no, la descarta. A las 10:00 el sistema avisa de quien no ha fichado la entrada ese día laborable. Todo queda en el informe.",
+  },
+  {
+    tag: "Servicio técnico · límite semanal",
+    icon: "🚐",
+    title: "Las horas de más, antes de la nómina",
+    body: "La empresa pone un límite de horas al día y otro de 40 a la semana. Un técnico que alarga las rutas todas las tardes genera «Exceso de horas a la semana» en la revisión semanal, no a final de mes. El responsable habla con él a tiempo y la gestoría recibe el PDF con las horas extra ya calculadas día a día.",
+  },
+  {
+    tag: "Nave con terminal en la puerta",
+    icon: "🔌",
+    title: "Se cae el router y nadie llega tarde",
+    body: "Un lunes se va la conexión de la nave a las 7:30. La plantilla ficha igual con el llavero y el terminal guarda cada fichaje con su hora. Cuando vuelve la red a media mañana, todo sube con la hora real y ninguno de esos fichajes genera «tarde». El responsable no tiene que deshacer nada.",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Cuántos minutos de tolerancia es razonable poner?",
+    a: "La ley no fija una cifra: el margen lo marcan el convenio, el contrato o la política interna de la empresa. Cinco minutos es un margen habitual y fácil de explicar. Lo importante es ponerlo por escrito y aplicarlo igual a todo el equipo. En Drenpos la tolerancia se configura en minutos: con 5 minutos y horario a las 8:00, entrar a las 8:04 no genera nada y entrar a las 8:14 sí.",
+  },
+  {
+    q: "¿Puedo descontar del sueldo un retraso?",
+    a: "Eso no lo decide el software. Qué consecuencias tiene un retraso, y si afecta o no a la nómina, lo regulan tu convenio y la normativa laboral, y conviene revisarlo con tu asesor laboral antes de tocar una nómina. Drenpos solo registra y documenta: la hora del fichaje, el horario que tocaba, la incidencia y la nota del responsable.",
+  },
+  {
+    q: "¿Se avisa al empleado cuando tiene una incidencia?",
+    a: "Sí. Cada incidencia avisa al empleado y a sus responsables, y el empleado ve sus incidencias abiertas del mes en el widget «Hoy en el trabajo». Antes de activar la función conviene explicar a la plantilla qué se compara, qué tolerancia hay y quién ve los avisos.",
+  },
+  {
+    q: "¿Viene activado por defecto?",
+    a: "No. Es una opción del módulo de fichajes que viene apagada: hasta que la enciendes no cambia nada, nadie recibe avisos ni aparece ninguna etiqueta. Al activarla configuras las tolerancias, la hora de la revisión automática, los límites de horas y a quién avisar.",
+  },
+  {
+    q: "¿Qué pasa si el terminal de fichaje estaba sin internet?",
+    a: "El terminal de Drenpos sigue fichando con su propio reloj, guarda los fichajes y los sube al volver la red con la hora real. Esos fichajes con hora reconstruida nunca generan una incidencia de entrada tarde ni de salida anticipada, para que un corte de línea no penalice a nadie.",
+  },
+  {
+    q: "¿Sirve como prueba ante un despido?",
+    a: "Documenta los hechos: cada fichaje con su hora sellada y la traza de cambios, cada incidencia con su estado y la nota que escribió el responsable en su día. Pero si eso basta en un caso concreto es una valoración jurídica que corresponde a tu asesor laboral o a tu abogado, no al software.",
+  },
+  {
+    q: "¿Cuenta el trabajo en festivo como hora extra?",
+    a: "En Drenpos sí: trabajar en un festivo o en vacaciones cuenta como horas extra y, con el control activo, genera su incidencia. Cómo se pagan o se compensan esas horas lo fija tu convenio. Recuerda que el artículo 35 del Estatuto de los Trabajadores limita las horas extraordinarias a 80 al año.",
+  },
+  {
+    q: "¿Cuánto cuesta el control de entrada y salida?",
+    a: "Va incluido sin coste extra en la licencia de fichaje, que cuesta 1 € por usuario y mes sin IVA, con vacaciones y permisos, calendarios rotativos y planificación anual. Quien revisa incidencias necesita licencia de fichaje aunque no fiche. El terminal de fichaje es opcional y parte de 140 € sin IVA.",
+  },
+];
+
+// Landings hermanas del clúster de equipo
+const hermanas = [
+  {
+    url: "/control-horario",
+    title: "Control horario y registro de jornada",
+    body: "El módulo completo: fichaje por web, móvil, llavero o QR, informes para la Inspección y todo lo que va dentro.",
+  },
+  {
+    url: "/software-turnos-rotativos",
+    title: "Turnos rotativos",
+    body: "Ciclos 4x4, 5/2 y 6/3 con primer día por persona, para que el horario con el que se compara cada fichaje sea el bueno.",
+  },
+  {
+    url: "/software-vacaciones-ausencias",
+    title: "Vacaciones y ausencias",
+    body: "Cupos, solicitudes desde el móvil y aprobación con contrapropuesta. Un día de vacaciones aprobado no exige horas.",
+  },
+  {
+    url: "/dispositivo-fichaje",
+    title: "Terminal de fichaje",
+    body: "Llavero RFID o QR, sin huella y con tu logo. Sigue fichando sin internet y nunca genera un «tarde» por un corte.",
+  },
+];
+
+const articulos = [
+  { t: "Control de entrada y salida: qué hacer con los retrasos", s: "control-entrada-salida-retrasos-empleados" },
+  { t: "Registro horario digital: qué exige la ley", s: "registro-horario-digital" },
+  { t: "Multas por no llevar el registro horario en 2026", s: "multas-registro-horario-2026-costo-incumplimiento" },
+  { t: "Calendario laboral 2027: festivos y horas extra", s: "calendario-laboral-2027-festivos-horas-extra" },
+  { t: "Control horario en hostelería con turnos partidos", s: "control-horario-hosteleria-turnos-partidos" },
+  { t: "Gestión de vacaciones y ausencias sin Excel", s: "gestion-vacaciones-permisos-pymes-sin-excel" },
+];
+
+// ── Datos estructurados (JSON-LD) ──────────────────────────────────────
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
+    { "@type": "ListItem", position: 3, name: "Control horario", item: "https://www.drenpos.com/control-horario" },
+    { "@type": "ListItem", position: 4, name: "Control de entrada y salida de empleados", item: CANONICAL },
+  ],
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Drenpos · Control de entrada y salida de empleados",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web, iOS, Android (PWA)",
+  url: CANONICAL,
+  description:
+    "Control de entrada y salida de empleados dentro del módulo de fichajes de Drenpos. Compara cada fichaje con el calendario laboral de la persona, sus festivos y sus ausencias y crea incidencias por entrada tarde, salida anticipada, fichaje olvidado, exceso de horas al día o a la semana y trabajo en festivo o en vacaciones. Tolerancias en minutos y límites configurables, revisión automática diaria y semanal, aviso al empleado y a sus responsables y justificación o descarte con nota. Viene apagado hasta que la empresa lo activa. Los fichajes con hora reconstruida del terminal sin conexión nunca generan retraso ni salida anticipada. Es una ayuda de gestión: el registro legal siguen siendo los fichajes.",
+  offers: {
+    "@type": "Offer",
+    price: "1",
+    priceCurrency: "EUR",
+    valueAddedTaxIncluded: false,
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: "1",
+      priceCurrency: "EUR",
+      valueAddedTaxIncluded: false,
+      unitText: "usuario y mes",
+    },
+    description:
+      "Incluido en la licencia de fichaje de 1 € por usuario y mes, sin IVA, sin coste extra. Terminal de fichaje opcional desde 140 € sin IVA.",
+    url: "https://www.drenpos.com/pricing",
+  },
+  featureList: [
+    "Opción apagada por defecto que activa la empresa",
+    "Comparación de cada fichaje con el calendario laboral, los festivos y las ausencias de la persona",
+    "Incidencias por entrada tarde y salida anticipada",
+    "Incidencias por no fichar la entrada o la salida",
+    "Incidencias por exceso de horas al día o a la semana",
+    "Incidencias por trabajo en festivo o en vacaciones",
+    "Tolerancias en minutos y límites de horas configurables",
+    "Detección al fichar y revisión automática diaria y semanal",
+    "Aviso al empleado y a sus responsables",
+    "Justificación o descarte de cada incidencia con nota del responsable",
+    "Etiquetas en cada fichaje («Tarde +12 min», «Salió 20 min antes», «Festivo», «En vacaciones»)",
+    "Pantalla de Incidencias con filtros, resumen por persona y botón «Revisar hoy»",
+    "Widgets «Hoy en el trabajo» e «Incidencias abiertas»",
+    "Fichajes con hora reconstruida del terminal sin conexión excluidos de retrasos y salidas anticipadas",
+    "Estado de cada día e incidencias con su nota en el informe PDF",
+  ],
+  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
+};
+---
+
+<Base
+  title="Control de Entrada y Salida de Empleados · Drenpos"
+  meta_title="Control de Entrada y Salida de Empleados | Drenpos"
+  description="Retrasos, salidas antes de hora y exceso de horas con la tolerancia que tú decidas. Incluido en el fichaje de 1 €/usuario/mes sin IVA. Viene apagado."
+  canonical={CANONICAL}
+  image={HERO_IMG}
+  published_date="2026-10-07"
+  modified_date="2026-10-07"
+  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
+>
+  <!-- Datos estructurados -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0 relative z-10 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/images/grainy.svg" alt="" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/funcionalidades" class="hover:text-primary">Funcionalidades</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/control-horario" class="hover:text-primary">Control horario</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Control de entrada y salida</span>
+      </nav>
+
+      <div class="row gx-0 gy-12 lg:gy-0 items-center">
+        <div class="lg:col-6" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Retrasos · salidas · horas de más
+          </span>
+
+          <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
+            <span class="text-primary">Control de entrada y salida</span> de empleados: retrasos, salidas antes de hora y exceso de horas con la tolerancia que tú decidas
+          </h1>
+          <p class="text-lg mb-6 max-w-xl" style="color: rgba(16,25,40,0.72);">
+            Drenpos compara cada fichaje con el horario de cada persona y te
+            avisa cuando alguien llega tarde, se va antes, no ficha o se pasa
+            de horas. El responsable lo justifica o lo descarta con una nota y
+            todo queda en el informe. Va <strong>incluido en el fichaje de
+            1 €/usuario/mes sin IVA</strong> y viene apagado hasta que lo
+            activas.
+          </p>
+
+          <LandingMeta updated="2026-10-07" published="2026-10-07" />
+
+          <ul class="flex flex-wrap gap-4 mb-10">
+            <li data-aos="fade-up-sm" data-aos-delay="100">
+              <a href="#demo-form" class="btn btn-dark">
+                Pedir demo gratuita
+                <span class="icon-wrapper">
+                  <span class="icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="150">
+              <a href="#como-funciona" class="btn btn-light">Ver cómo funciona</a>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Tolerancia en minutos
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Aviso al empleado y al responsable
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Sin coste extra
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Sin permanencia
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="relative px-4 lg:px-0 pt-10 pb-10">
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
+
+            <div class="rounded-2xl overflow-hidden relative z-10" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
+              <img
+                src={HERO_IMG}
+                alt="Vista del responsable en Drenpos con los fichajes del equipo y su estado"
+                width="720"
+                height="480"
+                class="w-full h-auto block"
+                fetchpriority="high"
+              />
+            </div>
+
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0 font-bold" style="background: #fee2e2; color: #dc2626;">!</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Tarde +12 min</p>
+                <p class="text-xs" style="color: #9ca3af;">Entrada 8:12 · horario 8:00 · margen de 5 min</p>
+              </div>
+            </div>
+
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #fef3c7;">🚪</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Salió 20 min antes</p>
+                <p class="text-xs" style="color: #9ca3af;">Justificada · «Médico, trae justificante»</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ClientLogosStrip />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DEFINICIÓN CITABLE (AEO / featured snippet)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h4 font-bold mb-4">¿Qué es el control de entrada y salida de empleados?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">{capsulas.definicion}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SÍNTOMAS
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="text-center mb-12 max-w-3xl mx-auto" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Cómo sabes que te hace falta controlar las entradas y salidas?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">{capsulas.sintomas}</p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          sintomas.map((s, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{s.icon}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{s.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.65);">{s.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       REGISTRO LEGAL Y AYUDA DE GESTIÓN (cifras citables con fuente)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="registro-de-jornada" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <div class="rounded-3xl p-8 lg:p-12 text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-4 text-white">¿El control de entrada y salida sustituye al registro de jornada?</h2>
+            <p class="text-lg leading-relaxed mb-6" style="color: rgba(255,255,255,0.82);">{capsulas.registro}</p>
+            <p class="leading-relaxed mb-8" style="color: rgba(255,255,255,0.72);">
+              El <a href={`${ET_URL}#a34`} class="underline" style="color: #fcd9b6;" rel="noopener" target="_blank">artículo 34.9 del Estatuto de los Trabajadores</a>
+              obliga a llevar ese registro diario desde el 12 de mayo de 2019
+              (<a href={RDL8_URL} class="underline" style="color: #fcd9b6;" rel="noopener" target="_blank">Real Decreto-ley 8/2019</a>).
+              No llevarlo es infracción grave, con sanciones de 751 a 7.500 €
+              por empresa o centro de trabajo, no por trabajador. Controlar la
+              puntualidad, en cambio, no es obligatorio: es una decisión de
+              gestión que tomas tú.
+            </p>
+            <div class="row g-4">
+              <div class="md:col-4">
+                <p class="text-h3 font-bold text-white mb-1">12/05/2019</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.7);">desde cuando el registro diario de jornada es obligatorio (art. 34.9 ET)</p>
+              </div>
+              <div class="md:col-4">
+                <p class="text-h3 font-bold text-white mb-1">751 a 7.500 €</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.7);">sanción vigente por no llevarlo, infracción grave por empresa o centro</p>
+              </div>
+              <div class="md:col-4">
+                <p class="text-h3 font-bold text-white mb-1">721 €</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.7);">al año por trabajador en ausencias sin justificar, según <a href={ABSENTISMO_URL} class="underline" style="color: #fcd9b6;" rel="noopener" target="_blank">El Español</a> (11/06/2026)</p>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed mt-8" style="color: rgba(255,255,255,0.62);">
+              La cifra de El Español mide ausencias sin justificar, no
+              retrasos, y tu caso será distinto. Pero el patrón se repite: lo
+              que nadie ve, nadie lo corrige. Qué pasa después con una
+              incidencia lo marcan tu convenio y el contrato, no el software.
+              Más detalle sobre las sanciones en
+              <a href="/blog/multas-registro-horario-2026-costo-incumplimiento" class="underline" style="color: #fcd9b6;">multas por no llevar el registro horario</a>
+              y sobre la obligación en
+              <a href="/blog/registro-horario-digital" class="underline" style="color: #fcd9b6;">registro horario digital</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CÓMO FUNCIONA
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="como-funciona" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Cómo funciona · opción que activas tú</span>
+        <h2 class="h3 font-bold mb-4">¿Cómo detecta Drenpos un retraso o una salida antes de hora?</h2>
+        <p class="text-lg leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">{capsulas.funcionamiento}</p>
+      </div>
+
+      <p class="text-sm font-semibold mb-3 text-center" style="color: rgba(16,25,40,0.72);">Qué detecta:</p>
+      <ul class="flex flex-wrap justify-center gap-2 mb-10 list-none p-0" data-aos="fade-up-sm">
+        {incidenciasTipos.map((t) => (
+          <li class="text-sm px-3 py-1.5 rounded-full" style="background: rgba(211,167,118,0.15); color: #7c4a14;">{t}</li>
+        ))}
+      </ul>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {funcionamiento.map((e, i) => (
+          <div class="border rounded-[20px] p-6 h-full" style="border-color: rgba(16,25,40,0.1); background: #fff;" data-aos="fade-up-sm" data-aos-delay={i * 80}>
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-4" style="background: rgba(121,27,70,0.08);">{e.icon}</div>
+            <h3 class="h6 font-semibold mb-2">{e.title}</h3>
+            <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{e.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       BLOQUES: RESPONSABLE, EMPLEADO, TERMINAL SIN CONEXIÓN
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      {
+        bloques.map((b, i) => (
+          <div id={b.id} class={`row gy-8 items-start scroll-mt-24 ${i > 0 ? "mt-16 lg:mt-24" : ""}`}>
+            <div class="lg:col-6" data-aos="fade-up-sm">
+              <div class="text-3xl mb-4">{b.icon}</div>
+              <h2 class="h4 mb-4 font-bold leading-tight">{b.h2}</h2>
+              <p class="text-lg leading-relaxed mb-4" style="color: rgba(16,25,40,0.75);">{b.capsula}</p>
+              {b.nota && (
+                <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.65);">
+                  La ficha técnica del terminal, con su modo sin conexión,
+                  está en
+                  <a href="/dispositivo-fichaje#sin-conexion" class="text-primary underline">terminal de fichaje sin internet</a>.
+                </p>
+              )}
+            </div>
+            <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="150">
+              {b.img && (
+                <figure class="rounded-2xl overflow-hidden mb-6" style="box-shadow: 0 20px 60px rgba(0,0,0,0.14); border: 1px solid rgba(16,25,40,0.08);">
+                  <img src={b.img} alt={b.alt} width="1280" height="800" class="w-full h-auto block" loading="lazy" />
+                </figure>
+              )}
+              <div class="rounded-3xl border border-dark/10 bg-body p-7">
+                <ul class="space-y-3">
+                  {b.bullets.map((t) => (
+                    <li class="flex items-start gap-3">
+                      <span class="w-5 h-5 mt-0.5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+                      <span class="text-sm" style="color: rgba(16,25,40,0.75);">{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       HORAS EXTRA Y CALENDARIO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="horas-extra" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <div class="rounded-3xl border border-dark/10 bg-body p-7 lg:p-10" data-aos="fade-up-sm">
+            <h2 class="h4 font-bold mb-4">¿Qué relación tiene con las horas extra y el calendario laboral?</h2>
+            <p class="text-lg leading-relaxed mb-5" style="color: rgba(16,25,40,0.75);">{capsulas.horasExtra}</p>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(16,25,40,0.7);">
+              Dos límites que conviene tener a mano: el
+              <a href={`${ET_URL}#a35`} class="text-primary underline" rel="noopener" target="_blank">artículo 35 del Estatuto de los Trabajadores</a>
+              limita las horas extraordinarias a 80 al año, y el
+              <a href={`${ET_URL}#a34`} class="text-primary underline" rel="noopener" target="_blank">artículo 34.1</a>
+              fija la jornada en 40 horas semanales de promedio en cómputo
+              anual. Con un límite semanal en la configuración, el aviso llega
+              la misma semana y no cuando ya se ha convertido en costumbre.
+              Trabajar en festivo o en vacaciones también cuenta como hora
+              extra y genera su propia incidencia.
+            </p>
+            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">
+              Para que la comparación sea justa, el horario de cada persona
+              tiene que estar bien. Si tu equipo trabaja por ciclos, mira el
+              <a href="/software-turnos-rotativos" class="text-primary underline">software de turnos rotativos</a>;
+              para los festivos del año que viene, el
+              <a href="/blog/calendario-laboral-2027-festivos-horas-extra" class="text-primary underline">calendario laboral 2027</a>;
+              y para cómo se calculan las horas esperadas, los
+              <a href="/control-horario#calendarios" class="text-primary underline">calendarios laborales del control horario</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       COMPARATIVA (tabla de decisión, AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-10 max-w-3xl mx-auto" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Revisar a mano, Excel, una app de RRHH o Drenpos?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">{capsulas.comparativa}</p>
+      </div>
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[1080px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Opción</th>
+              <th class="text-left p-4">Retrasos y salidas</th>
+              <th class="text-left p-4">Quien no ficha</th>
+              <th class="text-left p-4">Exceso de horas</th>
+              <th class="text-left p-4">Justificación</th>
+              <th class="text-left p-4">Terminal sin internet</th>
+              <th class="text-left p-4 rounded-tr-2xl">Coste</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comparativa.map((r) => (
+                <tr class={r.destacado ? "bg-primary/5 font-medium" : "border-b border-dark/5"}>
+                  <td class={`p-4 ${r.destacado ? "text-primary font-bold" : "font-medium"}`}>{r.opcion}</td>
+                  <td class="p-4">{r.retrasos}</td>
+                  <td class="p-4">{r.sinFichar}</td>
+                  <td class="p-4">{r.exceso}</td>
+                  <td class="p-4">{r.justificacion}</td>
+                  <td class="p-4">{r.sinRed}</td>
+                  <td class="p-4">{r.precio}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs mt-4 text-center max-w-3xl mx-auto" style="color: rgba(16,25,40,0.55);">
+        Las apps de RRHH cambian de planes y de precios a menudo: revisa en su
+        web qué incluye cada plan antes de comparar. Los precios de Drenpos son
+        sin IVA.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CASOS DE USO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Cómo lo usan empresas como la tuya?</h2>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          casos.map((c, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3">{c.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <p class="text-center mt-10 text-sm max-w-2xl mx-auto" style="color: rgba(16,25,40,0.6);" data-aos="fade-up-sm">
+        ¿Qué dice la ley cuando los retrasos se repiten? Lo contamos en
+        <a href="/blog/control-entrada-salida-retrasos-empleados" class="text-primary underline">control de entrada y salida: qué hacer con los retrasos</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PRECIO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-8">
+          <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-3 text-white">¿Cuánto cuesta el control de entrada y salida?</h2>
+            <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">{capsulas.precio}</p>
+            <ul class="flex flex-wrap gap-4 justify-center">
+              <li>
+                <a href="/pricing" class="btn btn-light">Ver planes y precios</a>
+              </li>
+              <li>
+                <a href="#demo-form" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Pedir demo de 20 minutos</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <DemoForm interes="fichaje" />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FAQ (visible + schema)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <h2 class="h3 font-bold mb-3 text-center" data-aos="fade-up-sm">Control de entrada y salida: lo que más nos preguntan</h2>
+          <p class="text-center mb-10" style="color: rgba(16,25,40,0.62);" data-aos="fade-up-sm">
+            Respuestas directas, sin letra pequeña.
+          </p>
+          <div class="space-y-4">
+            {
+              faqs.map((f, i) => (
+                <details class="group rounded-2xl border border-dark/10 bg-body p-5" data-aos="fade-up-sm" data-aos-delay={Math.min(i * 50, 300)}>
+                  <summary class="cursor-pointer list-none flex items-start justify-between gap-4">
+                    <h3 class="h6 font-bold leading-snug">{f.q}</h3>
+                    <span class="text-primary text-xl leading-none mt-0.5 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <p class="mt-4 text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">{f.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ENLAZADO INTERNO (clúster de equipo)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-3">El resto del equipo, en el mismo módulo</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Fichaje, turnos, vacaciones y terminal: todo con la misma licencia de 1 € por usuario y mes.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center mb-14">
+        {
+          hermanas.map((h, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <a href={h.url} class="block h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl hover:border-primary/30 transition-all duration-300">
+                <h3 class="h6 font-bold mb-2 leading-snug text-primary">{h.title}</h3>
+                <p class="text-sm mb-3" style="color: rgba(16,25,40,0.68);">{h.body}</p>
+                <span class="text-primary text-sm font-medium">Ver solución →</span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center gy-6">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <h2 class="h5 font-bold mb-3">Sigue leyendo sobre fichajes, retrasos y horas extra</h2>
+          <ul class="row g-2 text-sm mb-6">
+            {
+              articulos.map((a) => (
+                <li class="md:col-6">
+                  <a href={`/blog/${a.s}`} class="text-primary hover:underline">{a.t}</a>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="text-sm" style="color: rgba(16,25,40,0.65);">
+            ¿Quieres ver el sistema completo? Repasa
+            <a href="/funcionalidades" class="text-primary underline">todas las funcionalidades de Drenpos</a>
+            o consulta los <a href="/pricing" class="text-primary underline">planes y precios</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>

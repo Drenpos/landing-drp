@@ -271,6 +271,22 @@ const graph: Record<string, unknown>[] = [
     ...(image && { primaryImageOfPage: { "@id": imageId } }),
     ...(modDate && { dateModified: modDate }),
     ...(pubDate && { datePublished: pubDate }),
+    // Autor de la página (landings con LandingMeta): mismo @id que el fundador
+    // de Organization para que los buscadores unan la entidad.
+    ...(author?.name && {
+      author:
+        author.name === FOUNDER_NAME
+          ? { "@id": founderId }
+          : {
+              "@type": "Person",
+              name: author.name,
+              ...(author.url && {
+                url: author.url.startsWith("http")
+                  ? author.url
+                  : `${siteUrl}${author.url}`,
+              }),
+            },
+    }),
   },
 ];
 

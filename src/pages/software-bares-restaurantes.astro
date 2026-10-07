@@ -4,6 +4,7 @@ import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
 import DemoForm from "@/partials/DemoForm.astro";
+import LandingMeta from "@/partials/LandingMeta.astro";
 
 // ════════════════════════════════════════════════════════════════════════
 //  Software para bares y restaurantes · landing pilar de hostelería
@@ -502,6 +503,11 @@ const faqSchema = {
     acceptedAnswer: { "@type": "Answer", text: f.a },
   })),
 };
+
+// Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
+// Publicación = primer commit de la página; actualización = último cambio de contenido.
+const PAGE_PUBLISHED = "2026-09-10";
+const PAGE_UPDATED = "2026-10-07";
 ---
 
 <Base
@@ -510,6 +516,9 @@ const faqSchema = {
   description="Software para bares y restaurantes: TPV con mapa de sala, pantallas de cocina, Verifactu en cada ticket y fichaje por turnos. Plan Full 39 €/mes sin IVA."
   canonical={CANONICAL}
   image={`${IMG}/01-mapa-sala-mesas.png`}
+  published_date={PAGE_PUBLISHED}
+  modified_date={PAGE_UPDATED}
+  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
 >
   <!-- Datos estructurados -->
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -551,6 +560,8 @@ const faqSchema = {
             caja sale cuadrado, el stock se descuenta solo y cada ticket lleva
             Verifactu.
           </p>
+
+          <LandingMeta updated={PAGE_UPDATED} published={PAGE_PUBLISHED} class="-mt-4 mb-8" />
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">

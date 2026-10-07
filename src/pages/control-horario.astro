@@ -4,6 +4,7 @@ import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
 import DemoForm from "@/partials/DemoForm.astro";
+import LandingMeta from "@/partials/LandingMeta.astro";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 
@@ -43,75 +44,57 @@ const showPlanImg = hasImg(PLAN_IMG);
 // Fuentes legales enlazadas en las secciones nuevas
 const ET_URL = "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430";
 const LISOS_URL = "https://www.boe.es/buscar/act.php?id=BOE-A-2000-15060";
-const RD1561_URL = "https://www.boe.es/buscar/act.php?id=BOE-A-1995-21346";
 const CONVENIO_SEG_URL = "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-8569";
 
-// Vacaciones y permisos (sección #vacaciones)
-const vacaciones = [
+// Mapa del módulo (bloque bajo el hero): la página hace de hub
+const mapaModulo = [
   {
-    icon: "🗂️",
-    title: "Tipos de ausencia a tu medida",
-    body: "Vienen de serie vacaciones, asuntos propios, baja médica, permiso retribuido, maternidad o paternidad y fallecimiento de un familiar, y creas los que falten. Cada tipo decide si cuenta días laborables o naturales, si pide aprobación, si admite medio día, la antelación mínima y a quién aplica.",
+    icon: "🔑",
+    title: "Fichaje y dispositivo",
+    body: "Web, móvil, QR o llavero RFID, y el terminal propio que ficha sin internet.",
+    href: "/dispositivo-fichaje",
   },
   {
-    icon: "📆",
-    title: "Un cupo con política de verdad",
-    body: "Días por periodo (por ejemplo, 22 de vacaciones) con reinicio el 1 de enero o en el aniversario de la contratación. Todo el cupo desde el primer día o consolidado mes a mes, prorrateo el año que entra la persona y días que pasan al año siguiente con tope y fecha de caducidad.",
+    icon: "🏖️",
+    title: "Vacaciones y ausencias",
+    body: "Cupos con política real, solicitud desde el móvil y aprobación con contrapropuesta.",
+    href: "/software-vacaciones-ausencias",
   },
   {
-    icon: "📱",
-    title: "Se pide desde el móvil, con el saldo delante",
-    body: "Desde la app o el portal, el empleado ve sus ausencias, los festivos y los días que no trabaja. Antes de enviar, el sistema le dice cuántos días laborables gasta y le enseña su saldo: disponibles, consolidados a hoy, arrastrados, usados y pendientes.",
+    icon: "⏰",
+    title: "Entrada y salida",
+    body: "Retrasos, salidas anticipadas y fichajes olvidados, con tus tolerancias.",
+    href: "/control-entrada-salida-empleados",
   },
   {
-    icon: "🔁",
-    title: "Aprobar, rechazar o proponer otras fechas",
-    body: "El responsable contesta siempre con un motivo. Si propone otra semana, el empleado acepta o rechaza la propuesta desde la app. Cada paso (nueva solicitud, aprobada, rechazada, propuesta, cancelada) llega como aviso dentro de la aplicación.",
-  },
-  {
-    icon: "👥",
-    title: "Calendario del equipo",
-    body: "Quién falta cada día, para no quedarte con dos personas menos en el turno de tarde en plena campaña. Los responsables se definen por usuarios o grupos; si no defines ninguno, aprueban los administradores. Nadie puede aprobar su propia solicitud.",
-  },
-  {
-    icon: "📄",
-    title: "Todo en el informe legal",
-    body: "Un día de vacaciones aprobado no exige horas y sale con su nombre en el informe. El PDF recoge las ausencias del periodo con tipo, fechas, días, quién las aprobó y el motivo. Si alguien trabaja en vacaciones o en festivo, cuenta como horas extra.",
+    icon: "🔄",
+    title: "Turnos y calendario anual",
+    body: "Ciclos 4x4, 5/2 y 6/3, y el calendario del año de cada trabajador en PDF.",
+    href: "/software-turnos-rotativos",
+    extra: { t: "Calendario anual en PDF", href: "#planificacion-anual" },
   },
 ];
 
-// Control de entrada y salida (sección #entrada-salida)
-const incidenciasTipos = [
-  "Entrada tarde",
-  "Salida anticipada",
-  "Sin fichar la entrada o la salida",
-  "Exceso de horas al día",
-  "Exceso de horas a la semana",
-  "Trabajo en festivo",
-  "Trabajo en vacaciones",
+// Páginas del módulo (bloque de enlazado interno al final)
+const paginasModulo = [
+  { t: "Dispositivo de fichaje con llavero RFID y QR", href: "/dispositivo-fichaje" },
+  { t: "Software de vacaciones y ausencias", href: "/software-vacaciones-ausencias" },
+  { t: "Control de entrada y salida de empleados", href: "/control-entrada-salida-empleados" },
+  { t: "Software de turnos rotativos", href: "/software-turnos-rotativos" },
 ];
 
-const entradaSalida = [
-  {
-    icon: "⏱️",
-    title: "Tolerancias que pones tú",
-    body: "Minutos de margen y límites de horas configurables. Con 5 minutos de tolerancia y horario a las 8:00, entrar a las 8:04 no genera nada; entrar a las 8:14 genera «Entrada tarde +14 min».",
-  },
-  {
-    icon: "🔎",
-    title: "Revisión automática diaria y semanal",
-    body: "Las incidencias se detectan al fichar y en una revisión automática cada día y cada semana, así también aparece quien no ha fichado. Avisan al empleado y a sus responsables.",
-  },
-  {
-    icon: "✍️",
-    title: "Se justifica o se descarta con una nota",
-    body: "Pantalla de Incidencias con filtros por persona, tipo y estado, resumen por persona y botón «Revisar hoy». Si hubo médico o una avería en la carretera, el responsable la justifica con una nota; si no procede, la descarta.",
-  },
-  {
-    icon: "📄",
-    title: "Todo queda en el informe",
-    body: "Cada día sale con su estado (Normal, Tarde, Salida anticipada, Extra, Sin fichar, Festivo, Vacaciones) y el PDF lleva la lista de incidencias con su estado y la nota del responsable.",
-  },
+// Vacaciones y permisos (sección #vacaciones, resumen; el detalle vive en /software-vacaciones-ausencias)
+const vacacionesClave = [
+  "Cupo con política real: reinicio el 1 de enero o en el aniversario de la contratación, consolidación mes a mes y días que pasan al año siguiente con caducidad.",
+  "El empleado pide desde el móvil viendo su saldo. El responsable aprueba, rechaza o propone otras fechas con un motivo.",
+  "Calendario del equipo para ver quién falta cada día. Cada ausencia sale en el informe de fichajes con quién la aprobó.",
+];
+
+// Control de entrada y salida (sección #entrada-salida, resumen; el detalle vive en /control-entrada-salida-empleados)
+const entradaSalidaClave = [
+  "Detecta entrada tarde, salida anticipada, fichaje olvidado, exceso de horas y trabajo en festivo o en vacaciones.",
+  "Los minutos de tolerancia los pones tú. El responsable justifica o descarta cada incidencia con una nota.",
+  "Es una ayuda de gestión: el registro legal siguen siendo los fichajes. Un fichaje con hora reconstruida por el terminal sin conexión nunca cuenta como tarde.",
 ];
 
 // Calendarios laborales, festivos y horas extra (sección #calendarios)
@@ -158,9 +141,12 @@ const calendarios = [
   },
 ];
 
-// Cuadrante de ejemplo 4/4 con dos personas (bloque rotativo de #calendarios)
-const ciclo44 = Array.from({ length: 16 }, (_, i) => i + 1);
-const turno44 = (dia: number, desfase: number) => ((dia - 1 + desfase) % 8) < 4;
+// Turnos rotativos (bloque #turnos-rotativos, resumen; el detalle vive en /software-turnos-rotativos)
+const turnosClave = [
+  "Ciclos 4x4, 5/2, 6/3 o mañanas y noches en el mismo ciclo, con vista previa del mes antes de guardar.",
+  "Dos personas se turnan sobre el mismo calendario, cada una con su propio primer día del ciclo.",
+  "Los descansos no suman horas esperadas ni gastan vacaciones, y las horas extra ya cuentan con el ciclo.",
+];
 
 // Planificación anual del equipo (sección #planificacion-anual)
 const planificacion = [
@@ -513,10 +499,13 @@ const productSchema = {
 
 <Base
   title="Control Horario, Vacaciones y Registro de Jornada · Drenpos"
-  meta_title="Control Horario, Turnos Rotativos y Vacaciones | Drenpos"
-  description="Control horario para pymes: fichaje por web, móvil o llavero, turnos rotativos 4x4, calendario anual en PDF y vacaciones. Desde 1 €/usuario sin IVA."
+  meta_title="Control horario, vacaciones y turnos: gestión de equipo | Drenpos"
+  description="Control horario y gestión de equipo: fichaje por web, móvil o llavero, vacaciones, retrasos, turnos rotativos y calendario anual. Desde 1 €/usuario sin IVA."
   canonical={CANONICAL}
   image="/images/funcionalidades/control-horario/01-gestion-personal.png"
+  published_date="2026-05-27"
+  modified_date="2026-10-07"
+  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
 >
   <!-- Datos estructurados -->
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -557,9 +546,9 @@ const productSchema = {
           </span>
 
           <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
-            Software de <span class="text-primary">control horario</span>: fichajes, vacaciones y retrasos sin Excel
+            Software de <span class="text-primary">control horario</span> y gestión de equipo: fichajes, vacaciones y turnos sin Excel
           </h1>
-          <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
+          <p class="text-lg mb-4 max-w-xl" style="color: rgba(16,25,40,0.72);">
             Drenpos lleva el registro de jornada de tu equipo con la
             trazabilidad que pide la Inspección de Trabajo: fichaje por web,
             móvil, código QR o llavero RFID con terminal propio, que sigue
@@ -570,6 +559,9 @@ const productSchema = {
             también rotativos (4x4, 5/2, 6/3), con los festivos de cada
             comunidad y el <a href="#planificacion-anual" class="text-primary underline">calendario del año de cada trabajador en PDF</a>.
           </p>
+          <div class="mb-8">
+            <LandingMeta updated="2026-10-07" published="2026-05-27" />
+          </div>
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">
@@ -657,6 +649,35 @@ const productSchema = {
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       MAPA DEL MÓDULO (hub): una página por tarea
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <nav aria-label="Mapa del módulo de control horario" class="rounded-[28px] p-6 lg:p-8" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
+        <h2 class="h6 font-bold mb-1">Todo el módulo, página a página</h2>
+        <p class="text-sm mb-5" style="color: rgba(16,25,40,0.62);">
+          Fichaje, vacaciones, retrasos y turnos van en la misma licencia. Cada
+          parte tiene su página con el detalle.
+        </p>
+        <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 list-none p-0 m-0">
+          {mapaModulo.map((m) => (
+            <li class="rounded-2xl p-5 h-full flex flex-col" style="background: white; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="w-9 h-9 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: rgba(121,27,70,0.08);" aria-hidden="true">{m.icon}</span>
+                <a href={m.href} class="font-bold text-primary hover:underline leading-snug">{m.title} <span aria-hidden="true">→</span></a>
+              </div>
+              <p class="text-sm leading-relaxed mb-0 flex-grow" style="color: rgba(16,25,40,0.65);">{m.body}</p>
+              {m.extra && (
+                <a href={m.extra.href} class="text-sm text-primary underline mt-2">{m.extra.t}</a>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
   </section>
 
@@ -1191,11 +1212,11 @@ const productSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════
-       VACACIONES Y PERMISOS (AEO: software de gestión de vacaciones y ausencias)
+       VACACIONES Y PERMISOS (resumen; detalle en /software-vacaciones-ausencias)
   ═══════════════════════════════════════════════════════════════════ -->
   <section id="vacaciones" class="section pt-0 overflow-hidden scroll-mt-24">
     <div class="container">
-      <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up-sm">
+      <div class="text-center max-w-3xl mx-auto mb-10" data-aos="fade-up-sm">
         <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Vacaciones y permisos · sin coste extra</span>
         <h2 class="h3 font-bold mb-4">¿Se pueden gestionar las vacaciones y los permisos desde el control horario?</h2>
         <p class="text-lg leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
@@ -1209,55 +1230,55 @@ const productSchema = {
         </p>
       </div>
 
-      {showVacImg && (
-        <figure class="relative max-w-4xl mx-auto px-4 lg:px-0 mb-12" data-aos="fade-up-sm">
-          <div class="absolute -top-10 -right-10 w-72 h-72 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.08);"></div>
-          <div class="rounded-2xl overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07); border: 1px solid rgba(16,25,40,0.08);">
-            <img src={VAC_IMG} alt="Calendario de vacaciones de Drenpos con el saldo de días del empleado y las ausencias del equipo" width="1280" height="800" class="w-full h-auto block" loading="lazy" />
+      <div class="row g-5 items-center">
+        {showVacImg && (
+          <div class="lg:col-6" data-aos="fade-up-sm">
+            <figure class="relative px-4 lg:px-0 mb-0">
+              <div class="absolute -top-10 -right-10 w-72 h-72 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.08);"></div>
+              <div class="rounded-2xl overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 4px 16px rgba(0,0,0,0.07); border: 1px solid rgba(16,25,40,0.08);">
+                <img src={VAC_IMG} alt="Calendario de vacaciones de Drenpos con el saldo de días del empleado y las ausencias del equipo" width="1280" height="800" class="w-full h-auto block" loading="lazy" />
+              </div>
+            </figure>
           </div>
-        </figure>
-      )}
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {vacaciones.map((v, i) => (
-          <div class="border rounded-[20px] p-6 h-full" style="border-color: rgba(16,25,40,0.1); background: #fff;" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 80}>
-            <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-4" style="background: rgba(121,27,70,0.08);">{v.icon}</div>
-            <h3 class="h6 font-semibold mb-2">{v.title}</h3>
-            <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{v.body}</p>
+        )}
+        <div class={showVacImg ? "lg:col-6" : "col-12 lg:col-8 mx-auto"} data-aos="fade-up-sm">
+          <ul class="flex flex-col gap-4 list-none p-0 mb-8">
+            {vacacionesClave.map((item) => (
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-white text-xs font-bold mt-0.5" style="background: #16a34a;" aria-hidden="true">✓</span>
+                <span style="color: rgba(16,25,40,0.78);">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a href="/software-vacaciones-ausencias" class="btn btn-dark">
+              Ver todo sobre vacaciones y ausencias
+              <span class="icon-wrapper">
+                  <span class="icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+            </a>
+            <a href="/blog/gestion-vacaciones-permisos-pymes-sin-excel" class="text-sm text-primary underline">Guía: vacaciones sin Excel</a>
           </div>
-        ))}
-      </div>
-
-      <div class="rounded-2xl p-6 lg:p-8 mt-8" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
-        <p class="font-semibold text-text-dark mb-2">Lo que dice la ley sobre vacaciones</p>
-        <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.72);">
-          El <a href={`${ET_URL}#a38`} rel="noopener" target="_blank" class="text-primary underline">artículo 38 del Estatuto de los Trabajadores</a>
-          fija un mínimo de <strong>30 días naturales</strong> de vacaciones
-          retribuidas al año, que no se pueden cambiar por dinero. Las fechas
-          se fijan de común acuerdo y el trabajador tiene que conocerlas al
-          menos dos meses antes. Los 22 días laborables que ves en muchos
-          convenios son la equivalencia habitual, no la cifra de la ley: en
-          Drenpos eliges si cada tipo de ausencia cuenta días naturales o
-          laborables.
-        </p>
-        <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
-          Va incluido en la licencia de fichaje (1 € por usuario y mes, sin
-          IVA). Quien aprueba vacaciones necesita licencia aunque no fiche.
-          Para ver el año entero de todo el equipo, con un PDF por persona,
-          tienes la <a href="#planificacion-anual" class="text-primary underline">planificación anual</a>.
-          Si quieres el paso a paso para dejar el Excel, lee
-          <a href="/blog/gestion-vacaciones-permisos-pymes-sin-excel" class="text-primary underline">cómo gestionar vacaciones y permisos en una pyme sin hojas de cálculo</a>.
-        </p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════
-       CONTROL DE ENTRADA Y SALIDA (AEO: retrasos, llegar tarde)
+       CONTROL DE ENTRADA Y SALIDA (resumen; detalle en /control-entrada-salida-empleados)
   ═══════════════════════════════════════════════════════════════════ -->
   <section id="entrada-salida" class="section pt-0 overflow-hidden scroll-mt-24">
     <div class="container">
-      <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up-sm">
+      <div class="text-center max-w-3xl mx-auto mb-10" data-aos="fade-up-sm">
         <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Control de entrada y salida · opcional</span>
         <h2 class="h3 font-bold mb-4">¿Cómo saber si un empleado llega tarde o sale antes de su hora?</h2>
         <p class="text-lg leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
@@ -1281,41 +1302,34 @@ const productSchema = {
             </figure>
           </div>
         )}
-        <div class={showIncImg ? "lg:col-6" : "col-12"}>
-          <p class="text-sm font-semibold mb-3" style="color: rgba(16,25,40,0.72);">Qué detecta:</p>
-          <ul class="flex flex-wrap gap-2 mb-6 list-none p-0">
-            {incidenciasTipos.map((t) => (
-              <li class="text-sm px-3 py-1.5 rounded-full" style="background: rgba(211,167,118,0.15); color: #7c4a14;">{t}</li>
+        <div class={showIncImg ? "lg:col-6" : "col-12 lg:col-8 mx-auto"} data-aos="fade-up-sm">
+          <ul class="flex flex-col gap-4 list-none p-0 mb-8">
+            {entradaSalidaClave.map((item) => (
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-white text-xs font-bold mt-0.5" style="background: #16a34a;" aria-hidden="true">✓</span>
+                <span style="color: rgba(16,25,40,0.78);">{item}</span>
+              </li>
             ))}
           </ul>
-          <div class={showIncImg ? "grid sm:grid-cols-2 gap-4" : "grid sm:grid-cols-2 lg:grid-cols-4 gap-4"}>
-            {entradaSalida.map((e, i) => (
-              <div class="border rounded-[20px] p-6 h-full" style="border-color: rgba(16,25,40,0.1); background: #fff;" data-aos="fade-up-sm" data-aos-delay={i * 80}>
-                <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-4" style="background: rgba(121,27,70,0.08);">{e.icon}</div>
-                <h3 class="h6 font-semibold mb-2">{e.title}</h3>
-                <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{e.body}</p>
-              </div>
-            ))}
+          <div class="flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a href="/control-entrada-salida-empleados" class="btn btn-dark">
+              Ver el control de entrada y salida
+              <span class="icon-wrapper">
+                  <span class="icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+            </a>
+            <a href="/blog/control-entrada-salida-retrasos-empleados" class="text-sm text-primary underline">Qué hacer con los retrasos</a>
           </div>
         </div>
-      </div>
-
-      <div class="rounded-2xl p-6 lg:p-8 mt-8" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
-        <p class="font-semibold text-text-dark mb-2">Una ayuda de gestión, no el registro legal</p>
-        <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.72);">
-          El registro de jornada que pide la ley siguen siendo los fichajes,
-          con su hora sellada y la traza de cada cambio. Las incidencias
-          sirven para hablar con datos, y no de memoria, cuando alguien llega
-          tarde tres lunes seguidos. Cuántos minutos se toleran y qué pasa
-          con un retraso lo marcan tu convenio y el contrato, no el software.
-        </p>
-        <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
-          Si el <a href="/dispositivo-fichaje#sin-conexion" class="text-primary underline">terminal de fichaje</a>
-          estuvo sin conexión y tuvo que reconstruir la hora de un fichaje,
-          ese fichaje nunca genera «tarde» ni «salida anticipada». Más
-          detalle en
-          <a href="/blog/control-entrada-salida-retrasos-empleados" class="text-primary underline">control de entrada y salida: qué hacer con los retrasos de la plantilla</a>.
-        </p>
       </div>
     </div>
   </section>
@@ -1362,12 +1376,12 @@ const productSchema = {
         </div>
       </div>
 
-      <!-- Turnos rotativos: cápsula + cuadrante de ejemplo 4/4 -->
+      <!-- Turnos rotativos: resumen; detalle y cuadrantes de ejemplo en /software-turnos-rotativos -->
       <div id="turnos-rotativos" class="border rounded-[24px] p-6 lg:p-10 mt-10 scroll-mt-24" style="border-color: rgba(16,25,40,0.1); background: #fff;" data-aos="fade-up-sm">
         <div class="row gx-0 gy-8 lg:gy-0 items-start">
-          <div class="lg:col-5 lg:pe-10">
+          <div class="lg:col-6 lg:pe-10">
             <h3 class="h4 font-bold mb-4 leading-tight">¿Se pueden llevar turnos rotativos 4x4, 5/2 o 6/3?</h3>
-            <p class="leading-relaxed mb-4" style="color: rgba(16,25,40,0.72);">
+            <p class="leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
               Sí. En Drenpos el calendario laboral puede ser rotativo: indicas
               los días de trabajo, los de descanso, el horario y el primer día
               del ciclo, y el sistema alterna solo, también con mañanas y
@@ -1376,62 +1390,33 @@ const productSchema = {
               horas esperadas, las extra y el cupo de vacaciones ya cuentan
               con el ciclo: los descansos no suman horas ni gastan vacaciones.
             </p>
-            <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.62);">
-              Ejemplos completos de 4x4, 5/2 y 6/3, y cuánta gente hace falta
-              para cubrir un puesto las 24 horas, en
-              <a href="/blog/cuadrante-turnos-rotativos-4x4-ejemplos-estatuto" class="text-primary underline">cuadrante de turnos rotativos: ejemplos que cumplen el Estatuto</a>.
-            </p>
           </div>
-          <div class="lg:col-7">
-            <div class="overflow-x-auto rounded-2xl border" style="border-color: rgba(16,25,40,0.1);">
-              <table class="w-full text-xs border-collapse min-w-[560px]">
-                <caption class="text-left text-sm font-semibold p-4 pb-2" style="color: rgba(16,25,40,0.78);">
-                  Calendario «Vigilantes 4/4»: un solo ciclo, dos primeros días distintos
-                </caption>
-                <thead>
-                  <tr>
-                    <th scope="col" class="text-left px-3 py-2 font-semibold">Día</th>
-                    {ciclo44.map((d) => (
-                      <th scope="col" class="px-1 py-2 font-semibold text-center">{d}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    { n: "Vigilante A (empieza el día 1)", desfase: 0 },
-                    { n: "Vigilante B (empieza el día 5)", desfase: 4 },
-                  ].map((p) => (
-                    <tr>
-                      <th scope="row" class="text-left px-3 py-2 font-medium whitespace-nowrap">{p.n}</th>
-                      {ciclo44.map((d) => (
-                        turno44(d, p.desfase)
-                          ? <td class="px-1 py-2 text-center font-bold" style="background: rgba(121,27,70,0.12); color: #791b46;">T</td>
-                          : <td class="px-1 py-2 text-center" style="background: rgba(16,25,40,0.04); color: rgba(16,25,40,0.45);">D</td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              <p class="text-xs px-4 py-3 mb-0" style="color: rgba(16,25,40,0.6);">
-                T = trabaja, D = descansa. Cada día hay un vigilante de servicio y
-                ninguno acumula más de cuatro jornadas seguidas.
-              </p>
-            </div>
-            <div class="rounded-2xl p-5 mt-4" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);">
-              <p class="font-semibold text-text-dark text-sm mb-2">Lo que el ciclo tiene que respetar</p>
-              <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
-                Doce horas entre el final de una jornada y el comienzo de la
-                siguiente (<a href={`${ET_URL}#a34`} rel="noopener" target="_blank" class="text-primary underline">art. 34.3 del Estatuto</a>),
-                que en trabajo a turnos pueden bajar a siete el día del cambio
-                de turno si se compensan en los días siguientes; día y medio de
-                descanso semanal, acumulable hasta 14 días (art. 37.1), y en
-                turnos el medio día acumulable hasta cuatro semanas
-                (<a href={RD1561_URL} rel="noopener" target="_blank" class="text-primary underline">art. 19 del RD 1561/1995</a>);
-                y, en procesos continuos de 24 horas, nadie más de dos semanas
-                seguidas de noche salvo que lo pida (<a href={`${ET_URL}#a36`} rel="noopener" target="_blank" class="text-primary underline">art. 36.3</a>).
-                Drenpos aplica el ciclo que tú definas: que encaje con tu
-                convenio lo decides con tu asesoría.
-              </p>
+          <div class="lg:col-6">
+            <ul class="flex flex-col gap-4 list-none p-0 mb-8">
+              {turnosClave.map((item) => (
+                <li class="flex items-start gap-3">
+                  <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-white text-xs font-bold mt-0.5" style="background: #16a34a;" aria-hidden="true">✓</span>
+                  <span style="color: rgba(16,25,40,0.78);">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-4">
+              <a href="/software-turnos-rotativos" class="btn btn-dark">
+                Ver los turnos rotativos
+                <span class="icon-wrapper">
+                  <span class="icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+              </a>
+              <a href="/blog/cuadrante-turnos-rotativos-4x4-ejemplos-estatuto" class="text-sm text-primary underline">Cuadrantes 4x4, 5/2 y 6/3 de ejemplo</a>
             </div>
           </div>
         </div>
@@ -1776,13 +1761,27 @@ const productSchema = {
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════
-       ENLAZADO INTERNO · control horario por ciudad + artículos
+       ENLAZADO INTERNO · páginas del módulo + control horario por ciudad + artículos
   ═══════════════════════════════════════════════════════════════════ -->
   <section class="section pt-0">
     <div class="container">
       <div class="row gx-0 gy-12 lg:gy-0">
-        <!-- Ciudades -->
         <div class="lg:col-7 lg:pe-12">
+          <!-- Páginas del módulo -->
+          <h2 class="h5 font-bold mb-2">Páginas del módulo de control horario</h2>
+          <p class="text-sm mb-6" style="color: rgba(16,25,40,0.6);">Cada parte de la gestión del equipo, con su detalle.</p>
+          <ul class="grid sm:grid-cols-2 gap-3 mb-12">
+            {paginasModulo.map((pg) => (
+              <li>
+                <a href={pg.href} class="flex items-start gap-3 group">
+                  <span class="text-primary mt-1 flex-shrink-0" aria-hidden="true">→</span>
+                  <span class="text-sm font-medium group-hover:text-primary transition-colors" style="color: rgba(16,25,40,0.78);">{pg.t}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <!-- Ciudades -->
           <h2 class="h5 font-bold mb-2">Control horario por ciudad</h2>
           <p class="text-sm mb-6" style="color: rgba(16,25,40,0.6);">Soporte cercano y contenido específico para empresas de Extremadura.</p>
           <div class="flex flex-wrap gap-2.5">

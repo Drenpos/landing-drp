@@ -1,0 +1,914 @@
+---
+export const prerender = true;
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
+import DemoForm from "@/partials/DemoForm.astro";
+import LandingMeta from "@/partials/LandingMeta.astro";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
+const hasImg = (p: string) => existsSync(join(process.cwd(), "public", p));
+
+// ════════════════════════════════════════════════════════════════════════
+//  Software de vacaciones y ausencias · landing dedicada (plan SEO/AEO
+//  2026-10-07, tarea 1.2, clúster "gestión de equipo")
+//  Intención de búsqueda objetivo:
+//    - "software de gestión de vacaciones y ausencias"
+//    - "gestor de vacaciones" / "app vacaciones empleados"
+//    - "programa vacaciones pyme" / "software ausencias y permisos"
+//  Diferenciación:
+//    - /control-horario es el hub del módulo de fichajes (sección #vacaciones
+//      resumida). Esta landing vende la gestión de vacaciones y ausencias.
+//    - /blog/gestion-vacaciones-permisos-pymes-sin-excel explica la ley y el
+//      cálculo. Aquí solo se cita lo imprescindible y se enlaza al post.
+//  Fuente de producto: context/products_modules.md (Módulo de Fichajes:
+//  Vacaciones y permisos, App PWA de fichajes, Planificación anual) y
+//  context/pricing.md.
+//  Capturas:
+//    10-vacaciones-calendario.png (hero), 07-calendario-asignacion.png,
+//    06-calendario-laboral.png: existentes.
+//    15-app-vacaciones-saldo.png (pantalla de vacaciones de la app, saldo y
+//    solicitud) y 13-planificacion-anual-equipo.png: opcionales, solo se
+//    pintan si existen en /public (existsSync). Captura 11 pendiente.
+// ════════════════════════════════════════════════════════════════════════
+
+const CANONICAL = "https://www.drenpos.com/software-vacaciones-ausencias";
+
+const IMG_DIR = "/images/funcionalidades/control-horario";
+const VAC_IMG = `${IMG_DIR}/10-vacaciones-calendario.png`;
+const CAL_IMG = `${IMG_DIR}/06-calendario-laboral.png`;
+const ASIG_IMG = `${IMG_DIR}/07-calendario-asignacion.png`;
+const APP_IMG = `${IMG_DIR}/15-app-vacaciones-saldo.png`;
+const PLAN_IMG = `${IMG_DIR}/13-planificacion-anual-equipo.png`;
+
+const HERO_IMG = hasImg(VAC_IMG) ? VAC_IMG : CAL_IMG;
+const appImg = hasImg(APP_IMG);
+const planImg = hasImg(PLAN_IMG);
+const asigImg = hasImg(ASIG_IMG);
+const calImg = hasImg(CAL_IMG);
+
+// Fuentes citadas (verificadas en docs/keywords-intenciones-2026-09.md, 5.1)
+const ET_URL = "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430";
+const ABSENTISMO_URL =
+  "https://www.elespanol.com/invertia/economia/empleo/20260611/cifras-absentismo-empresa-deja-euros-ano-trabajador-ausencias-sin-justificar/1003744281355_0.html";
+const WOFFU_URL = "https://www.woffu.com/es/precios/";
+const HOLDED_URL = "https://www.holded.com/es/blog/mejores-softwares-gestion-vacaciones";
+const FACTORIAL_URL = "https://controlhorario.com/software/precio/";
+
+// Cápsulas citables (50 a 80 palabras, sin enlaces) bajo cada H2
+const cap = {
+  definicion:
+    "Un software de gestión de vacaciones y ausencias es el programa donde cada trabajador pide sus días libres, el responsable los aprueba y el sistema lleva el saldo de cada persona sin cuentas a mano. Sabe cuántos días le tocan a cada uno según la política de la empresa, cuántos ha gastado y quién falta cada día. En Drenpos va dentro del módulo de fichajes, así que las ausencias salen en el mismo informe que las horas.",
+  sintomas:
+    "Son las cuatro razones por las que una pyme acaba buscando un programa de vacaciones. Ninguna es grave por sí sola, pero juntas se comen horas de quien lleva el personal y generan discusiones que no hacían falta. Todas tienen el mismo origen: las peticiones, los saldos y el calendario del equipo están en sitios distintos y nadie los ve a la vez.",
+  ley:
+    "El Estatuto de los Trabajadores fija un mínimo de 30 días naturales de vacaciones retribuidas al año, que no se pueden cambiar por dinero mientras dure el contrato. Las fechas se pactan entre empresa y trabajador, y este tiene que conocerlas al menos dos meses antes. Los permisos retribuidos, como el de matrimonio o el de hospitalización de un familiar, tienen sus causas y sus días tasados en la ley o en el convenio.",
+  noHace:
+    "No es un planificador que reparte la plantilla según la demanda: aplica el calendario y las reglas que tú defines. Tampoco interpreta tu convenio ni sustituye a tu asesor laboral, así que si el convenio da 23 días o un permiso más largo, lo configuras así. Y no es una suite de recursos humanos con evaluación del desempeño o selección de personal; las nóminas las sigue haciendo tu gestoría con el informe.",
+  comparativa:
+    "Hay cuatro caminos habituales en una pyme: seguir con Excel o papel, contratar una aplicación de recursos humanos aparte, activar el módulo de personal de tu programa de facturación o llevar las vacaciones en el mismo sistema que los fichajes y el resto del negocio. Ninguno es el mejor para todos. Depende de cuántos sois, de si trabajáis a turnos y de dónde tienes ya la facturación.",
+  casos:
+    "Tres situaciones típicas en las que el Excel de vacaciones deja de dar abasto: un almacén con turnos donde no pueden faltar dos personas del mismo turno, un bar con turnos partidos y temporada alta en verano, y una oficina pequeña donde parte del equipo teletrabaja. En los tres casos las reglas se configuran una vez y el día a día se lleva desde el móvil.",
+  precio:
+    "Nada aparte: las vacaciones y los permisos van incluidos en la licencia de fichaje, que cuesta 1 € por usuario y mes sin IVA, junto con los calendarios laborales, los turnos rotativos y el control de entrada y salida. Quien aprueba vacaciones necesita licencia aunque no fiche. El terminal de fichaje es opcional y parte de 140 € sin IVA, con llaveros personalizados para la plantilla inicial.",
+  faq:
+    "Estas son las dudas típicas de una empresa que quiere dejar la hoja de cálculo: cuánto cuesta, cómo se calculan los días de quien entra a mitad de año, qué pasa con los que sobran en diciembre y quién aprueba qué. Las respuestas son cortas y describen cómo funciona Drenpos hoy, en octubre de 2026, con los precios sin IVA.",
+  hermanas:
+    "La misma licencia de 1 € por usuario y mes cubre el registro de jornada, los calendarios laborales y rotativos, el control de entrada y salida y la planificación anual. Cada página explica una parte desde el problema que resuelve. Todas trabajan sobre los mismos datos, así que lo que configuras para las vacaciones sirve también para los turnos y las horas extra.",
+  lecturas:
+    "La ley de vacaciones y permisos, la tabla de permisos retribuidos y el cálculo paso a paso de prorrateos y arrastres están en el blog, con sus fuentes. Esta página explica qué hace el programa; los artículos explican qué dice la norma y cómo se hacen las cuentas. Si vas a cambiar de herramienta, conviene leer primero el de vacaciones sin Excel.",
+};
+
+// Síntomas
+const sintomas = [
+  {
+    icon: "📊",
+    title: "El Excel de vacaciones vive en el ordenador de una persona",
+    body: "Las peticiones llegan por WhatsApp, de palabra o en un pósit, y alguien las pasa a la hoja cuando puede. Si esa persona se va de vacaciones, nadie sabe quién ha pedido qué.",
+  },
+  {
+    icon: "🔀",
+    title: "Dos del mismo turno, la misma quincena",
+    body: "Cada uno lo pidió a un responsable distinto y los dos dijeron que sí. Te enteras el lunes, cuando falta gente para abrir o para cargar el camión.",
+  },
+  {
+    icon: "🗓️",
+    title: "El que entra en septiembre",
+    body: "No le tocan los días de un año entero, pero ¿cuántos? Cada uno hace la cuenta a su manera y luego hay que explicar por qué a su compañero le salía otra cifra.",
+  },
+  {
+    icon: "❓",
+    title: "«¿Cuántos días me quedan?»",
+    body: "La pregunta llega cada semana. Para contestarla hay que sumar lo pedido, lo aprobado, lo cancelado y lo que pasó del año anterior, y casi nunca cuadra a la primera.",
+  },
+];
+
+// Bloques de producto: H2 en pregunta + cápsula citable + detalles
+const bloques = [
+  {
+    id: "cupo",
+    icon: "📆",
+    h2: "¿Cómo se configura el cupo de vacaciones de cada trabajador?",
+    capsula:
+      "Defines los días por periodo, por ejemplo 22 de vacaciones, y cuándo se reinicia el cupo: el 1 de enero o en el aniversario de la contratación de cada persona. Eliges si el cupo está entero desde el primer día o se consolida mes a mes, y el año de entrada se prorratea solo a partir de la fecha de contratación. Los días que pasan al año siguiente llevan tope y fecha de caducidad.",
+    bullets: [
+      "Reinicio el 1 de enero o en el aniversario de la contratación",
+      "Cupo entero desde el primer día o consolidado mes a mes",
+      "Prorrateo automático el año en que entra la persona",
+      "Días que pasan al año siguiente, con tope y caducidad",
+      "Opción de dejar pedir días que todavía no se han consolidado",
+      "Cupo distinto para una persona concreta y ajustes de días con motivo, a favor o en contra",
+      "La fecha de contratación se edita en la misma tabla donde asignas el calendario a cada persona",
+    ],
+    img: asigImg ? ASIG_IMG : undefined,
+    alt: "Asignación de calendarios laborales a la plantilla en Drenpos",
+  },
+  {
+    id: "tipos-ausencia",
+    icon: "🗂️",
+    h2: "¿Qué tipos de ausencia se pueden gestionar además de las vacaciones?",
+    capsula:
+      "Vienen de serie vacaciones, asuntos propios, baja médica, permiso retribuido, maternidad o paternidad y fallecimiento de un familiar, y puedes crear los que necesites. Cada tipo tiene sus reglas: si cuenta días laborables o naturales, si exige aprobación, si admite medio día, el máximo de días por solicitud, la antelación mínima y a quién se aplica, a toda la plantilla o solo a ciertas personas o grupos.",
+    bullets: [
+      "Días laborables o naturales, a elegir en cada tipo",
+      "Con aprobación o sin ella, según el tipo",
+      "Medio día permitido o no",
+      "Máximo de días por solicitud y antelación mínima para pedir",
+      "Tipos que se aplican solo a ciertas personas o grupos",
+      "Cada tipo con su color en el calendario del equipo",
+    ],
+  },
+  {
+    id: "solicitud-movil",
+    icon: "📱",
+    h2: "¿Cómo pide un empleado sus vacaciones desde el móvil?",
+    capsula:
+      "Desde la app de fichajes o desde el portal, sobre un calendario donde ve sus ausencias, los festivos y los días que no trabaja. Antes de enviar, el sistema le dice cuántos días laborables gasta y cuántos le quedarán después. El responsable aprueba, rechaza o propone otras fechas, siempre con un motivo, y el empleado acepta o rechaza la propuesta desde el mismo sitio.",
+    bullets: [
+      "Saldo con un desglose que cuadra: generados hasta hoy, del año pasado, disfrutados y por aprobar",
+      "«Después te quedarán N» antes de enviar la solicitud",
+      "La propuesta de otras fechas aparece destacada arriba, para aceptarla o rechazarla",
+      "Avisos dentro de la aplicación en cada paso: nueva, aprobada, rechazada, propuesta o cancelada",
+      "Nadie puede aprobar su propia solicitud, tampoco el encargado",
+      "App instalable en iPhone y Android sin pasar por App Store ni Google Play",
+    ],
+    nota: "Quién aprueba se decide en la configuración. Si defines una lista de responsables, por usuarios o por grupos, solo ellos deciden; si no defines ninguna, aprueban los administradores.",
+    img: appImg ? APP_IMG : undefined,
+    alt: "Pantalla de vacaciones de la app de fichajes de Drenpos con el saldo de días y una solicitud en curso",
+  },
+  {
+    id: "calendario-equipo",
+    icon: "👥",
+    h2: "¿Cómo se ve quién falta cada día en el equipo?",
+    capsula:
+      "Con el calendario del equipo y la planificación anual, que tiene tres vistas: Equipo, con las personas en filas y los días del mes en columnas; Mes, con quién está de vacaciones o de permiso cada día y el color de cada tipo; y Persona, con el año completo de un trabajador. En todas aparecen también los días de descanso, los festivos y las ausencias pendientes de aprobar.",
+    bullets: [
+      "Vista Equipo para ver un solape antes de aprobar",
+      "Vista Mes con resumen por tipo y filtro por tipo de ausencia",
+      "Vista Persona con el año entero, también con turnos rotativos",
+      "PDF del año con una página por trabajador: los doce meses, sus festivos y el resumen de días",
+      "Festivos nacionales, autonómicos y por persona en el mismo calendario",
+    ],
+    img: planImg ? PLAN_IMG : undefined,
+    alt: "Planificación anual del equipo en Drenpos con las personas en filas y los días del mes en columnas",
+  },
+  {
+    id: "fichaje-horas-extra",
+    icon: "⏱️",
+    h2: "¿Cómo encajan las vacaciones con el fichaje y las horas extra?",
+    capsula:
+      "Las horas que se esperan de cada persona salen de su calendario laboral, de sus festivos y de sus ausencias. Por eso un día de vacaciones aprobado no exige horas ni aparece como pendiente, y si alguien trabaja en vacaciones o en un festivo, esas horas cuentan como extra. Todo acaba en un único informe con los fichajes, las horas extra y las ausencias del periodo.",
+    bullets: [
+      "Cada ausencia en el informe con tipo, fechas, días, quién la aprobó y el motivo",
+      "Con turnos rotativos, los días de descanso no gastan vacaciones",
+      "Si el tipo cuenta días laborables, el festivo que cae en medio no gasta",
+      "El mismo informe que mandas a la gestoría o enseñas a la Inspección de Trabajo",
+    ],
+    img: calImg ? CAL_IMG : undefined,
+    alt: "Calendario laboral de empresa en Drenpos con la jornada de cada día",
+  },
+];
+
+// Tabla de decisión (cuatro vías)
+const comparativa = [
+  {
+    opcion: "Excel o papel",
+    piden: "Por WhatsApp o de palabra, y alguien lo apunta",
+    saldo: "Se suma a mano",
+    donde: "Aparte: la hoja no sabe quién fichó ni qué se facturó",
+    precio: "Sin licencia; se paga en horas de cuadrar saldos",
+    encaja: "Sois pocos, nadie entra a mitad de año y no hay turnos",
+  },
+  {
+    opcion: "App de RR. HH. aparte (Factorial, Woffu)",
+    piden: "Desde su propia app, con flujo de aprobación",
+    saldo: "Sí",
+    donde: "Fichaje y ausencias en la app; facturación y almacén en otro programa",
+    precio: "Woffu desde 1,50 €/usuario activo/mes (Lite). Factorial no publica precio oficial",
+    encaja: "Quieres una herramienta de personal dedicada y el negocio ya lo llevas en otro sistema",
+  },
+  {
+    opcion: "Módulo de RR. HH. de Holded",
+    piden: "Desde Holded, en su módulo de RR. HH.",
+    saldo: "Según el proveedor, vacaciones incluidas en el módulo",
+    donde: "Facturación en Holded; RR. HH. es un módulo que se paga aparte por empleado",
+    precio: "1,50 €/empleado/mes el módulo de RR. HH.",
+    encaja: "Ya facturas con Holded y no necesitas almacén ni TPV en el mismo sitio",
+  },
+  {
+    opcion: "Drenpos",
+    piden: "App del móvil o portal, viendo el saldo; aprobar, rechazar o proponer fechas con motivo",
+    saldo: "Sí, con consolidación, prorrateo y arrastre con caducidad",
+    donde: "Mismo programa que fichajes, almacén, TPV y facturación; un solo informe",
+    precio: "Incluido en la licencia de fichaje: 1 €/usuario/mes sin IVA",
+    encaja: "Quieres vacaciones, fichajes y el resto del negocio juntos, sin evaluación del desempeño ni selección",
+    destacado: true,
+  },
+];
+
+// Casos de uso (sin nombres de clientes)
+const casos = [
+  {
+    tag: "Almacén con turnos",
+    icon: "📦",
+    title: "Tres mozos por turno y la misma quincena de agosto",
+    body: "Cada mozo tiene su ciclo rotativo en el calendario, así que sus días de descanso no gastan vacaciones. En marzo, la vista Equipo ya enseña que dos del turno de mañana han pedido la segunda quincena de agosto. El encargado aprueba la primera solicitud y a la segunda le propone otras fechas con un motivo; el mozo la acepta desde el móvil.",
+  },
+  {
+    tag: "Bar con turnos partidos",
+    icon: "☕",
+    title: "Verano lleno y asuntos propios de medio día",
+    body: "Las vacaciones llevan una antelación mínima y los asuntos propios admiten medio día, para quien necesita una mañana y vuelve al turno de la noche. Agosto aparece lleno en la vista Mes y el encargado propone septiembre a quien llega tarde a pedirlo. Si un camarero trabaja un festivo, esas horas salen como extra en el informe.",
+  },
+  {
+    tag: "Oficina con teletrabajo",
+    icon: "💻",
+    title: "Seis personas, dos en casa y una gerente que no ficha",
+    body: "Todos fichan y piden desde la app, estén en la oficina o en casa, y el cupo se reinicia en el aniversario de la contratación de cada uno. La gerente aprueba las solicitudes, así que tiene licencia de fichaje aunque no fiche. Sus propias vacaciones las aprueba su socio, que también está en la lista de responsables.",
+  },
+];
+
+// Comparación de precio (fuentes consultadas el 23/09/2026)
+const preciosCompetencia = [
+  {
+    nombre: "Woffu",
+    texto: "Parte de 1,50 € por usuario activo y mes en el plan Lite. Las reglas de coincidencia y varias políticas de ausencia quedan para los planes Pro y Enterprise.",
+    fuente: "su web de precios",
+    url: WOFFU_URL,
+  },
+  {
+    nombre: "Holded",
+    texto: "El módulo de RR. HH., que incluye las vacaciones, cuesta 1,50 € por empleado y mes.",
+    fuente: "el blog de Holded",
+    url: HOLDED_URL,
+  },
+  {
+    nombre: "Factorial",
+    texto: "No publica un precio oficial. Terceros citan una tarifa plana de 115,90 € al mes hasta 19 empleados.",
+    fuente: "controlhorario.com",
+    url: FACTORIAL_URL,
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Cuánto cuesta un software de vacaciones para 10 empleados?",
+    a: "Diez licencias de fichaje son 10 € al mes sin IVA, porque las vacaciones y los permisos van incluidos en la licencia de 1 € por usuario y mes; quien aprueba y no ficha necesita su propia licencia, así que con una encargada que solo aprueba serían 11 €. A eso se suma la cuenta de administración de Drenpos (incluida en cualquier plan). El terminal es opcional y parte de 140 €. Como referencia, Woffu parte de 1,50 € por usuario activo y Holded cobra 1,50 € por empleado en su módulo de RR. HH., según sus webs a fecha 23/09/2026.",
+  },
+  {
+    q: "¿Cómo se consolidan las vacaciones mes a mes?",
+    a: "Con la consolidación mensual, el cupo no está entero desde el primer día: se va generando cada mes, y con 22 días al año cada mes suma algo menos de dos (22 entre 12). El saldo enseña lo generado hasta hoy y lo disponible, y la empresa decide si se pueden pedir días que todavía no se han consolidado. Si prefieres dar el cupo entero desde el primer día, también se puede.",
+  },
+  {
+    q: "¿Qué pasa con las vacaciones de alguien que entra en septiembre?",
+    a: "Se prorratean por el tiempo que trabaja ese año, y Drenpos hace la cuenta solo a partir de la fecha de contratación. Con 22 días laborables al año y reinicio el 1 de enero, quien entra el 1 de septiembre genera la parte de cuatro meses (22 × 4 / 12, algo más de 7 días); con 30 días naturales serían 10, a 2,5 por mes. Desde el 1 de enero siguiente tiene el cupo de un año completo, entero o consolidado según tu política.",
+  },
+  {
+    q: "¿Se pueden pasar días de vacaciones al año siguiente?",
+    a: "La regla general es disfrutarlas dentro del año, con excepciones como una baja que lo impida: el artículo 38.3 del Estatuto de los Trabajadores da entonces hasta 18 meses desde el final del año en que se generaron. Si tu empresa además deja pasar días por acuerdo, en Drenpos configuras cuántos como máximo y hasta cuándo valen. Para un caso suelto puedes hacer un ajuste de días con motivo, y el saldo enseña aparte los días del año pasado.",
+  },
+  {
+    q: "¿Puede el empleado pedir las vacaciones desde el móvil?",
+    a: "Sí, desde la app de fichajes, que se instala en cualquier iPhone o Android sin pasar por las tiendas de aplicaciones, o desde el portal web. Ve su saldo con el desglose, elige los días sobre un calendario con sus festivos y sus descansos, y antes de enviar sabe cuántos días gasta y cuántos le quedarán. Si el responsable le propone otras fechas, la propuesta le aparece destacada arriba para aceptarla o rechazarla.",
+  },
+  {
+    q: "¿Puede un responsable aprobar sus propias vacaciones?",
+    a: "No: nadie puede aprobar su propia solicitud. Quién aprueba se decide en la configuración, por usuarios o por grupos, y si no defines a nadie aprueban los administradores. Las vacaciones del encargado las revisa otra persona, y el informe recoge quién aprobó cada ausencia y con qué motivo.",
+  },
+  {
+    q: "¿Se puede sacar el calendario del año en PDF?",
+    a: "Sí. Desde la planificación anual del equipo, un botón descarga el PDF del año con una página por trabajador: la rejilla de los doce meses con sus días de trabajo y descanso, sus vacaciones y permisos, la lista de festivos y el resumen de días laborables, festivos y ausencias. Responde a la petición de siempre: «sácame el calendario del año con las vacaciones de cada uno».",
+  },
+  {
+    q: "¿Sirve sin el terminal de fichaje?",
+    a: "Sí. El terminal es opcional: se puede fichar y pedir vacaciones desde la app del móvil o desde el portal web, con la misma licencia de 1 € por usuario y mes sin IVA. El terminal, desde 140 € sin IVA, encaja cuando parte del equipo no va a fichar con su teléfono, por ejemplo en la puerta de un almacén, y con él se ficha con un llavero RFID o un QR mientras las vacaciones se siguen pidiendo desde la app o el portal.",
+  },
+];
+
+// Landings hermanas del clúster de gestión de equipo
+const hermanas = [
+  {
+    url: "/control-horario",
+    title: "Control horario y fichaje",
+    body: "El registro de jornada por web, móvil, QR o llavero, con informes listos para la Inspección de Trabajo.",
+  },
+  {
+    url: "/control-entrada-salida-empleados",
+    title: "Control de entrada y salida",
+    body: "Retrasos, salidas anticipadas y fichajes olvidados, con tolerancias en minutos. Viene apagado hasta que lo activas.",
+  },
+  {
+    url: "/software-turnos-rotativos",
+    title: "Turnos rotativos",
+    body: "Ciclos 4x4, 5/2 o 6/3 con un primer día por persona. Los días de descanso no gastan vacaciones.",
+  },
+  {
+    url: "/dispositivo-fichaje",
+    title: "Terminal de fichaje",
+    body: "Llavero RFID o QR, tu logo en la carcasa y fichajes guardados aunque se caiga internet. Desde 140 € sin IVA.",
+  },
+];
+
+const articulos = [
+  { t: "Vacaciones y permisos en la pyme: la ley y el cálculo, sin Excel", s: "gestion-vacaciones-permisos-pymes-sin-excel" },
+  { t: "Calendario laboral 2027: festivos y horas extra", s: "calendario-laboral-2027-festivos-horas-extra" },
+  { t: "Cuadrante de turnos rotativos: ejemplos 4x4, 5/2 y 6/3", s: "cuadrante-turnos-rotativos-4x4-ejemplos-estatuto" },
+  { t: "Control de entrada y salida: retrasos y cómo documentarlos", s: "control-entrada-salida-retrasos-empleados" },
+  { t: "Registro horario digital: qué pide y cómo llevarlo", s: "registro-horario-digital" },
+  { t: "Los mejores programas de control horario para pymes", s: "mejores-programas-control-horario" },
+];
+
+// ── Datos estructurados (JSON-LD) ──────────────────────────────────────
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
+    { "@type": "ListItem", position: 3, name: "Control horario", item: "https://www.drenpos.com/control-horario" },
+    { "@type": "ListItem", position: 4, name: "Vacaciones y ausencias", item: CANONICAL },
+  ],
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Drenpos · Vacaciones y Ausencias",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web, iOS, Android (PWA)",
+  url: CANONICAL,
+  description:
+    "Software de gestión de vacaciones, permisos y ausencias para pymes, dentro del módulo de fichajes de Drenpos. Tipos de ausencia configurables, cupo con reinicio el 1 de enero o en el aniversario de la contratación, consolidación mes a mes, prorrateo automático y días que pasan al año siguiente con tope y caducidad. El empleado pide desde la app del móvil o el portal viendo su saldo; el responsable aprueba, rechaza o propone otras fechas con un motivo y nadie aprueba su propia solicitud. Calendario del equipo con vistas Equipo, Mes y Persona y PDF del año por trabajador. Las ausencias salen en el mismo informe que los fichajes y las horas extra.",
+  offers: {
+    "@type": "Offer",
+    price: "1",
+    priceCurrency: "EUR",
+    valueAddedTaxIncluded: false,
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: "1",
+      priceCurrency: "EUR",
+      unitText: "mes por usuario",
+      valueAddedTaxIncluded: false,
+    },
+    description:
+      "Vacaciones y permisos incluidos en la licencia de fichaje de Drenpos, sin coste extra: 1 € por usuario y mes, sin IVA. Quien aprueba vacaciones necesita licencia aunque no fiche. Terminal de fichaje opcional desde 140 € sin IVA.",
+    url: "https://www.drenpos.com/pricing",
+  },
+  featureList: [
+    "Tipos de ausencia de serie y personalizables: vacaciones, asuntos propios, baja médica, permiso retribuido, maternidad o paternidad y fallecimiento de un familiar",
+    "Por tipo: días laborables o naturales, aprobación, medio día, máximo por solicitud, antelación mínima y a quién aplica",
+    "Cupo con reinicio el 1 de enero o en el aniversario de la contratación",
+    "Cupo entero o consolidado mes a mes, con prorrateo automático el año de entrada",
+    "Días que pasan al año siguiente con tope y caducidad",
+    "Cupo distinto por persona y ajustes de días con motivo",
+    "Solicitud desde la app PWA o el portal con saldo y aviso de los días que quedarán",
+    "Aprobación, rechazo o propuesta de otras fechas con motivo; nadie aprueba su propia solicitud",
+    "Avisos dentro de la aplicación en cada paso de la solicitud",
+    "Calendario del equipo y planificación anual con vistas Equipo, Mes y Persona",
+    "PDF del año con una página por trabajador",
+    "Integración con fichajes: un día de vacaciones aprobado no exige horas y trabajar en vacaciones o festivo cuenta como horas extra",
+    "Ausencias en el informe de fichajes con tipo, fechas, días, quién aprobó y motivo",
+  ],
+  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
+};
+---
+
+<Base
+  title="Software de Vacaciones y Ausencias · Drenpos"
+  meta_title="Software de Vacaciones y Ausencias para Pymes | Drenpos"
+  description="Gestión de vacaciones y permisos para pymes: se piden desde el móvil, el saldo se calcula solo y el responsable aprueba. Incluido en el fichaje, 1 €/usuario."
+  canonical={CANONICAL}
+  image={HERO_IMG}
+  published_date="2026-10-07"
+  modified_date="2026-10-07"
+  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
+>
+  <!-- Datos estructurados -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0 relative z-10 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/images/grainy.svg" alt="" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/funcionalidades" class="hover:text-primary">Funcionalidades</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/control-horario" class="hover:text-primary">Control horario</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Vacaciones y ausencias</span>
+      </nav>
+
+      <div class="row gx-0 gy-12 lg:gy-0 items-center">
+        <div class="lg:col-6" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Vacaciones · permisos · ausencias
+          </span>
+
+          <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
+            Software de <span class="text-primary">vacaciones y ausencias</span> para pymes: se piden desde el móvil y el saldo se calcula solo
+          </h1>
+          <p class="text-lg mb-6 max-w-xl" style="color: rgba(16,25,40,0.72);">
+            Tu equipo pide vacaciones, asuntos propios o permisos desde la app
+            del móvil, ve cuántos días le quedarán antes de enviar y el
+            responsable aprueba, rechaza o propone otras fechas. El cupo de cada
+            persona se calcula solo, con <strong>consolidación mes a mes,
+            prorrateo y días que pasan al año siguiente</strong>. Está
+            <strong>incluido en la licencia de fichaje de 1 €/usuario/mes sin IVA</strong>.
+          </p>
+
+          <LandingMeta updated="2026-10-07" published="2026-10-07" />
+
+          <ul class="flex flex-wrap gap-4 mt-8 mb-6">
+            <li data-aos="fade-up-sm" data-aos-delay="100">
+              <a href="#demo-form" class="btn btn-dark">
+                Pedir demo gratuita
+                <span class="icon-wrapper">
+                  <span class="icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="150">
+              <a href="#cupo" class="btn btn-light">Ver cómo funciona</a>
+            </li>
+          </ul>
+
+          <p class="text-sm font-medium mb-6" style="color: rgba(16,25,40,0.72);">
+            1 €/usuario/mes · terminal opcional desde 140 € · sin permanencia.
+            Precios sin IVA.
+          </p>
+
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Incluido en el fichaje
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              App para iPhone y Android
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Nadie aprueba lo suyo
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              PDF del año por trabajador
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="relative px-4 lg:px-0 pt-10 pb-10">
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
+
+            <div class="rounded-2xl overflow-hidden relative z-10" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
+              <img
+                src={HERO_IMG}
+                alt="Calendario de vacaciones de Drenpos con el saldo de días del empleado y las ausencias del equipo"
+                width="1280"
+                height="800"
+                class="w-full h-auto block"
+                fetchpriority="high"
+              />
+            </div>
+
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0 font-bold" style="background: #dcfce7; color: #16a34a;">5</div>
+              <div>
+                <p class="text-xs font-bold text-dark">5 días laborables</p>
+                <p class="text-xs" style="color: #9ca3af;">Después te quedarán 6</p>
+              </div>
+            </div>
+
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #fef3c7;">🔁</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Propuesta de fechas</p>
+                <p class="text-xs" style="color: #9ca3af;">La semana siguiente · aceptar o rechazar</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ClientLogosStrip />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DEFINICIÓN CITABLE (AEO / featured snippet)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h4 font-bold mb-4">¿Qué es un software de gestión de vacaciones y ausencias?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">{cap.definicion}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SÍNTOMAS
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="text-center mb-12 max-w-3xl mx-auto" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Te suena alguna de estas situaciones?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">{cap.sintomas}</p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          sintomas.map((s, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{s.icon}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{s.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.65);">{s.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       LA LEY Y EL COSTE (cifras citables con fuente)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="ley" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <div class="rounded-3xl p-8 lg:p-12 text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-4 text-white">¿Qué dice la ley sobre las vacaciones y los permisos?</h2>
+            <p class="text-lg leading-relaxed mb-8" style="color: rgba(255,255,255,0.82);">{cap.ley}</p>
+            <div class="row g-4">
+              <div class="md:col-4">
+                <p class="text-h3 font-bold text-white mb-1">30 días</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.7);">naturales de vacaciones al año como mínimo (art. 38 del Estatuto)</p>
+              </div>
+              <div class="md:col-4">
+                <p class="text-h3 font-bold text-white mb-1">2 meses</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.7);">de antelación para que el trabajador conozca sus fechas</p>
+              </div>
+              <div class="md:col-4">
+                <p class="text-h3 font-bold text-white mb-1">721 €</p>
+                <p class="text-sm" style="color: rgba(255,255,255,0.7);">al año por trabajador en ausencias sin justificar (El Español, 11/06/2026)</p>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed mt-8" style="color: rgba(255,255,255,0.62);">
+              Lo recoge el
+              <a href={`${ET_URL}#a38`} class="underline" style="color: #fcd9b6;" rel="noopener" target="_blank">artículo 38 del Estatuto de los Trabajadores</a>.
+              Si una baja impide disfrutar las vacaciones, hay hasta 18 meses
+              desde el final del año en que se generaron. Los permisos
+              retribuidos están en el
+              <a href={`${ET_URL}#a37`} class="underline" style="color: #fcd9b6;" rel="noopener" target="_blank">artículo 37.3</a>,
+              y tu convenio puede mejorarlos.
+            </p>
+            <p class="text-sm leading-relaxed mt-4" style="color: rgba(255,255,255,0.62);">
+              Las ausencias sin justificar cuestan de media 721 € al año por
+              trabajador, según
+              <a href={ABSENTISMO_URL} class="underline" style="color: #fcd9b6;" rel="noopener" target="_blank">El Español (11/06/2026)</a>.
+              Tener cada permiso pedido y aprobado en el sistema separa una
+              ausencia justificada de una falta. La ley explicada con la tabla
+              de permisos y el cálculo paso a paso está en
+              <a href="/blog/gestion-vacaciones-permisos-pymes-sin-excel" class="underline" style="color: #fcd9b6;">vacaciones y permisos en la pyme, sin Excel</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       BLOQUES DE PRODUCTO (H2 en pregunta + cápsula)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      {
+        bloques.map((b, i) => (
+          <div id={b.id} class={`row gy-8 items-start scroll-mt-24 ${i > 0 ? "mt-16 lg:mt-24" : ""}`}>
+            <div class="lg:col-6" data-aos="fade-up-sm">
+              <div class="text-3xl mb-4">{b.icon}</div>
+              <h2 class="h4 mb-4 font-bold leading-tight">{b.h2}</h2>
+              <p class="text-lg leading-relaxed mb-4" style="color: rgba(16,25,40,0.75);">{b.capsula}</p>
+              {b.nota && (
+                <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.65);">{b.nota}</p>
+              )}
+            </div>
+            <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="150">
+              {b.img && (
+                <figure class="rounded-2xl overflow-hidden mb-6" style="box-shadow: 0 20px 60px rgba(0,0,0,0.14); border: 1px solid rgba(16,25,40,0.08);">
+                  <img src={b.img} alt={b.alt} width="1280" height="800" class="w-full h-auto block" loading="lazy" />
+                </figure>
+              )}
+              <div class="rounded-3xl border border-dark/10 bg-body p-7">
+                <ul class="space-y-3">
+                  {b.bullets.map((t) => (
+                    <li class="flex items-start gap-3">
+                      <span class="w-5 h-5 mt-0.5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+                      <span class="text-sm" style="color: rgba(16,25,40,0.75);">{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       LO QUE NO HACE (honestidad, AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="lo-que-no-hace" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <div class="rounded-3xl border border-dark/10 bg-body p-7 lg:p-10" data-aos="fade-up-sm">
+            <h2 class="h4 font-bold mb-4">¿Qué no hace el módulo de vacaciones de Drenpos?</h2>
+            <p class="text-lg leading-relaxed mb-5" style="color: rgba(16,25,40,0.75);">{cap.noHace}</p>
+            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">
+              Si lo que buscas es organizar quién trabaja cada día con ciclos
+              fijos, eso lo hacen los
+              <a href="/software-turnos-rotativos" class="text-primary underline">turnos rotativos</a>,
+              que también aplican el ciclo que defines y no reparten personas
+              según la carga de trabajo. Para comparar con herramientas de
+              recursos humanos dedicadas, tienes
+              <a href="/blog/mejores-programas-control-horario" class="text-primary underline">los mejores programas de control horario para pymes</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       TABLA DE DECISIÓN (AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="que-opcion" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center mb-10 max-w-3xl mx-auto" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Qué opción te encaja para llevar las vacaciones?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">{cap.comparativa}</p>
+      </div>
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[1080px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Opción</th>
+              <th class="text-left p-4">Cómo se piden y aprueban</th>
+              <th class="text-left p-4">Saldo de cada persona</th>
+              <th class="text-left p-4">Fichaje y facturación</th>
+              <th class="text-left p-4">Coste publicado</th>
+              <th class="text-left p-4 rounded-tr-2xl">Te encaja si</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comparativa.map((r) => (
+                <tr class={r.destacado ? "bg-primary/5 font-medium" : "border-b border-dark/5"}>
+                  <td class={`p-4 ${r.destacado ? "text-primary font-bold" : "font-medium"}`}>{r.opcion}</td>
+                  <td class="p-4">{r.piden}</td>
+                  <td class="p-4">{r.saldo}</td>
+                  <td class="p-4">{r.donde}</td>
+                  <td class="p-4">{r.precio}</td>
+                  <td class="p-4">{r.encaja}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs mt-4 text-center max-w-3xl mx-auto" style="color: rgba(16,25,40,0.55);">
+        Precios de terceros tal como los publica cada fuente a fecha 23/09/2026:
+        <a href={WOFFU_URL} class="text-primary underline" rel="noopener" target="_blank">web de precios de Woffu</a>,
+        <a href={HOLDED_URL} class="text-primary underline" rel="noopener" target="_blank">blog de Holded</a> y,
+        para Factorial, que no publica precio oficial,
+        <a href={FACTORIAL_URL} class="text-primary underline" rel="noopener" target="_blank">controlhorario.com</a>.
+        Cambian a menudo: compruébalos antes de decidir. Los de Drenpos, sin IVA.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CASOS DE USO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12 max-w-3xl mx-auto" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Cómo lo usan un almacén, un bar y una oficina pequeña?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">{cap.casos}</p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          casos.map((c, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3">{c.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <p class="text-center mt-10 text-sm max-w-2xl mx-auto" style="color: rgba(16,25,40,0.6);" data-aos="fade-up-sm">
+        ¿Trabajáis con ciclos de 4 días de trabajo y 4 de descanso? Mira los
+        ejemplos de
+        <a href="/blog/cuadrante-turnos-rotativos-4x4-ejemplos-estatuto" class="text-primary underline">cuadrantes de turnos rotativos 4x4, 5/2 y 6/3</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PRECIO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="precio" class="section pt-0 scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <div class="rounded-3xl p-8 lg:p-12 text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <div class="text-center">
+              <h2 class="h3 font-bold mb-3 text-white">¿Cuánto cuesta el software de vacaciones de Drenpos?</h2>
+              <p class="mb-6 max-w-2xl mx-auto" style="color: rgba(255,255,255,0.78);">{cap.precio}</p>
+              <p class="text-sm mb-8 max-w-2xl mx-auto" style="color: rgba(255,255,255,0.65);">
+                Un ejemplo: diez personas que fichan y una encargada que solo
+                aprueba son 11 licencias, 11 € al mes sin IVA, más la cuenta de
+                administración desde la que se configura el módulo. Si ya usas
+                Drenpos para facturar o para el almacén, tu plan incluye
+                licencias de fichaje: 2 en Esencial, 3 en Pro y 5 en Full y en
+                Producción.
+              </p>
+            </div>
+
+            <div class="row g-4 mb-8">
+              {
+                preciosCompetencia.map((p) => (
+                  <div class="md:col-4">
+                    <div class="h-full rounded-2xl p-5" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);">
+                      <p class="font-bold text-white mb-2">{p.nombre}</p>
+                      <p class="text-sm mb-3" style="color: rgba(255,255,255,0.75);">{p.texto}</p>
+                      <p class="text-xs" style="color: rgba(255,255,255,0.55);">
+                        Según <a href={p.url} class="underline" style="color: #fcd9b6;" rel="noopener" target="_blank">{p.fuente}</a> a fecha 23/09/2026.
+                      </p>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+
+            <ul class="flex flex-wrap gap-4 justify-center">
+              <li>
+                <a href="#demo-form" class="btn btn-light">Pedir demo de 20 minutos</a>
+              </li>
+              <li>
+                <a href="/dispositivo-fichaje" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Ver el terminal de fichaje</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <DemoForm
+    interes="fichaje"
+    titulo="¿Te enseñamos las vacaciones de tu equipo en 20 minutos?"
+    subtitulo="Configuramos contigo un tipo de ausencia con tu política real y ves cómo lo pide un empleado desde el móvil. Sin presentación comercial ni compromiso."
+  />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FAQ (visible + schema)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <h2 class="h3 font-bold mb-3 text-center" data-aos="fade-up-sm">¿Qué preguntan las pymes antes de dejar el Excel de vacaciones?</h2>
+          <p class="text-center mb-10" style="color: rgba(16,25,40,0.62);" data-aos="fade-up-sm">{cap.faq}</p>
+          <div class="space-y-4">
+            {
+              faqs.map((f, i) => (
+                <details class="group rounded-2xl border border-dark/10 bg-body p-5" data-aos="fade-up-sm" data-aos-delay={Math.min(i * 50, 300)}>
+                  <summary class="cursor-pointer list-none flex items-start justify-between gap-4">
+                    <h3 class="h6 font-bold leading-snug">{f.q}</h3>
+                    <span class="text-primary text-xl leading-none mt-0.5 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <p class="mt-4 text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">{f.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ENLAZADO INTERNO (clúster gestión de equipo)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="text-center mb-10 max-w-3xl mx-auto" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-3">¿Qué más lleva la licencia de fichaje?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">{cap.hermanas}</p>
+      </div>
+
+      <div class="row g-4 justify-center mb-14">
+        {
+          hermanas.map((h, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <a href={h.url} class="block h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl hover:border-primary/30 transition-all duration-300">
+                <h3 class="h6 font-bold mb-2 leading-snug text-primary">{h.title}</h3>
+                <p class="text-sm mb-3" style="color: rgba(16,25,40,0.68);">{h.body}</p>
+                <span class="text-primary text-sm font-medium">Ver solución →</span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center gy-6">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <h2 class="h5 font-bold mb-3">¿Dónde está explicada la ley y el cálculo de las vacaciones?</h2>
+          <p class="text-sm mb-4" style="color: rgba(16,25,40,0.65);">{cap.lecturas}</p>
+          <ul class="row g-2 text-sm mb-6">
+            {
+              articulos.map((a) => (
+                <li class="md:col-6">
+                  <a href={`/blog/${a.s}`} class="text-primary hover:underline">{a.t}</a>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="text-sm" style="color: rgba(16,25,40,0.65);">
+            ¿Quieres ver el sistema completo? Repasa
+            <a href="/funcionalidades" class="text-primary underline">todas las funcionalidades de Drenpos</a>
+            o vuelve al
+            <a href="/control-horario" class="text-primary underline">control horario</a>,
+            donde están el fichaje, los calendarios y la planificación anual.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>

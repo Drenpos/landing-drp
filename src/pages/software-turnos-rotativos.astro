@@ -1,0 +1,623 @@
+---
+export const prerender = true;
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
+import DemoForm from "@/partials/DemoForm.astro";
+import LandingMeta from "@/partials/LandingMeta.astro";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
+const hasImg = (p: string) => existsSync(join(process.cwd(), "public", p));
+
+// ════════════════════════════════════════════════════════════════════════
+//  Software de turnos rotativos · landing corta (SEO/AEO 2026)
+//  Tarea 1.4 del plan SEO/AEO de 7/10/2026 (clúster "gestión de equipo").
+//  Intención de búsqueda objetivo:
+//    - "software de turnos rotativos" / "programa de turnos pymes"
+//    - "cuadrante 4x4" / "turnos 5/2" / "turnos 6/3" / "calendario de turnos"
+//  Mensaje clave: aplica el ciclo que define la empresa; NO reparte la
+//  plantilla según la demanda (no es un planificador tipo Skello o Combo).
+//  Diferenciación con /blog/cuadrante-turnos-rotativos-4x4-ejemplos-estatuto:
+//  el post explica las reglas y los ejemplos; esta landing vende la función.
+//  Captura pendiente: /images/funcionalidades/control-horario/14-calendario-rotativo-preview.png
+//  (1280×800). Se muestra solo si existe (existsSync).
+// ════════════════════════════════════════════════════════════════════════
+
+const CANONICAL = "https://www.drenpos.com/software-turnos-rotativos";
+
+const HERO_IMG = "/images/funcionalidades/control-horario/06-calendario-laboral.png";
+const ASIGNACION_IMG = "/images/funcionalidades/control-horario/07-calendario-asignacion.png";
+const PREVIEW_IMG = "/images/funcionalidades/control-horario/14-calendario-rotativo-preview.png";
+const previewImg = hasImg(PREVIEW_IMG);
+
+const ET_URL = "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430";
+
+// Cápsulas citables (50 a 80 palabras, sin enlaces)
+const capsulas = {
+  definicion:
+    "Un turno rotativo es un horario en el que cada persona pasa por ciclos de trabajo y descanso que no coinciden con la semana, o por turnos distintos (mañana, tarde, noche) que cambian cada cierto tiempo. El 4x4 son cuatro días de trabajo y cuatro de descanso. Como el ciclo no cuadra con el calendario, el cuadrante cambia cada mes, y en Excel toca rehacerlo una y otra vez.",
+  montaje:
+    "En cuatro pasos y una sola vez. Creas el calendario con su ciclo, revisas cómo cae en el mes, se lo asignas a las personas con su primer día y a partir de ahí el sistema hace las cuentas: horas esperadas, horas extra y vacaciones. En enero no hay que reasignar nada, porque los calendarios son permanentes y el ciclo sigue corriendo solo.",
+  noHace:
+    "No decide por ti. No reparte la plantilla según la demanda ni calcula cuánta gente necesitas en cada franja: aplica el ciclo que define la empresa y lo cumple día a día. Tampoco es un planificador de turnos del estilo de Skello o Combo. Es el calendario laboral de cada persona, conectado con su fichaje, sus festivos y sus vacaciones, para que nadie tenga que rehacer el cuadrante.",
+  ley:
+    "El Estatuto de los Trabajadores no fija el 4x4 ni ningún otro ciclo: lo deciden el convenio y la empresa. Lo que sí marca son mínimos que cualquier cuadrante tiene que respetar, como doce horas entre el final de una jornada y el comienzo de la siguiente, día y medio de descanso a la semana y 40 horas semanales de promedio en cómputo anual. Que tu ciclo encaje, confírmalo con tu asesoría.",
+  precio:
+    "Nada aparte. Los calendarios rotativos van incluidos en la licencia de fichaje de Drenpos, que cuesta 1 € por usuario y mes sin IVA, con vacaciones y permisos, control de entrada y salida y planificación anual del equipo. El terminal de fichaje es opcional y parte de 140 € sin IVA; la plantilla también puede fichar desde el móvil o el ordenador.",
+};
+
+// Ejemplos de ciclo
+const ejemplos = [
+  {
+    ciclo: "4x4",
+    body: "Cuatro días de trabajo y cuatro de descanso. Con dos personas desfasadas, el puesto se cubre todos los días.",
+  },
+  {
+    ciclo: "5/2 rotando",
+    body: "Cinco días de trabajo y dos de descanso, cambiando de turno cada semana: mañana, tarde y noche.",
+  },
+  {
+    ciclo: "6/3",
+    body: "Seis de trabajo y tres de descanso. Con tres personas desfasadas, cada día hay dos en el turno.",
+  },
+  {
+    ciclo: "Mañanas y noches",
+    body: "Mañana y noche dentro del mismo ciclo, sin calendarios aparte.",
+  },
+];
+
+// Cuadrante de ejemplo 4/4 con dos personas
+const ciclo44 = Array.from({ length: 16 }, (_, i) => i + 1);
+const turno44 = (dia: number, desfase: number) => ((dia - 1 + desfase) % 8) < 4;
+
+// Cómo se monta (4 pasos)
+const pasos = [
+  {
+    n: "1",
+    title: "Crea el calendario rotativo",
+    body: "Días de trabajo, días de descanso, horario (entrada, salida y pausa) y primer día del ciclo. El sistema va alternando solo.",
+  },
+  {
+    n: "2",
+    title: "Revisa la vista previa del mes",
+    body: "Ves cómo caen los turnos y ajustas a mano cualquier día. Una pausa fuera de la jornada no deja guardar; una salida anterior a la entrada se trata como turno de noche.",
+  },
+  {
+    n: "3",
+    title: "Asígnalo con el primer día de cada persona",
+    body: "Lo asignas a varias personas de golpe. Si dos se turnan, comparten calendario y cada una lleva su primer día del ciclo.",
+  },
+  {
+    n: "4",
+    title: "Deja que haga las cuentas",
+    body: "Los descansos no suman horas ni gastan vacaciones. Horas esperadas, extra y vacaciones siguen el ciclo, y la planificación anual saca un PDF del año por trabajador.",
+  },
+];
+
+// Para quién
+const sectores = [
+  { icon: "🏭", title: "Almacén a turnos", body: "Carga nocturna y 5/2 rotando." },
+  { icon: "🍽️", title: "Hostelería", body: "Locales abiertos todos los días, con descansos que cambian de semana." },
+  { icon: "🛡️", title: "Vigilancia", body: "Dos vigilantes a 4x4 sobre un mismo calendario." },
+  { icon: "⚙️", title: "Industria con turnos", body: "Líneas que no paran, con mañanas y noches." },
+];
+
+const faqs = [
+  {
+    q: "¿Cómo monto un cuadrante 4x4 para dos personas que se turnan?",
+    a: "Creas un calendario rotativo con cuatro días de trabajo, cuatro de descanso y el horario, y se lo asignas a las dos personas. A la primera le pones como primer día del ciclo el día 1 y a la segunda, el día 5. Comparten calendario, una trabaja mientras la otra libra y no hay que duplicar nada.",
+  },
+  {
+    q: "¿Los días de descanso del turno gastan vacaciones?",
+    a: "No. En un calendario rotativo los días de descanso no suman horas esperadas ni gastan vacaciones: el cupo solo se descuenta de los días que a esa persona le toca trabajar según su ciclo. Las horas extra también se calculan sobre el ciclo, día a día.",
+  },
+  {
+    q: "¿Drenpos reparte los turnos según la demanda?",
+    a: "No. No reparte la plantilla según la demanda ni calcula cuánta gente hace falta en cada franja. Aplica el ciclo que define la empresa (días de trabajo, días de descanso, horario y primer día de cada persona) y lo cumple día a día. No es un planificador de turnos del estilo de Skello o Combo.",
+  },
+  {
+    q: "¿Sirve para turnos de noche?",
+    a: "Sí. Un ciclo puede combinar mañanas y noches, y si la hora de salida es anterior a la de entrada (por ejemplo, de 22:00 a 6:00), el sistema lo interpreta como turno de noche y te avisa al guardar. Si la pausa cae fuera de la jornada, no deja guardar y explica por qué.",
+  },
+  {
+    q: "¿Puedo sacar el calendario del año de cada trabajador en PDF?",
+    a: "Sí. La planificación anual del equipo junta los días de trabajo y descanso de cada persona, incluidos los ciclos rotativos, con sus festivos y sus vacaciones. Un botón descarga el PDF del año con una página por trabajador: los doce meses, sus festivos y el resumen de días.",
+  },
+  {
+    q: "¿Cuánto cuesta el software de turnos rotativos?",
+    a: "Va incluido sin coste extra en la licencia de fichaje de Drenpos, que cuesta 1 € por usuario y mes sin IVA, con vacaciones y permisos, control de entrada y salida y planificación anual. El terminal de fichaje es opcional y parte de 140 € sin IVA.",
+  },
+];
+
+const hermanas = [
+  {
+    url: "/control-horario#turnos-rotativos",
+    title: "Turnos dentro del control horario",
+    body: "Festivos, horas extra y registro de jornada con el mismo calendario.",
+  },
+  {
+    url: "/control-entrada-salida-empleados",
+    title: "Control de entrada y salida",
+    body: "Cada fichaje comparado con el turno que tocaba.",
+  },
+  {
+    url: "/software-vacaciones-ausencias",
+    title: "Vacaciones y ausencias",
+    body: "Cupos que respetan el ciclo y solicitudes desde el móvil.",
+  },
+  {
+    url: "/dispositivo-fichaje",
+    title: "Terminal de fichaje",
+    body: "Llavero RFID o QR que ficha aunque se caiga internet.",
+  },
+];
+
+const articulos = [
+  { t: "Cuadrante de turnos rotativos: ejemplos 4x4, 5/2 y 6/3", s: "cuadrante-turnos-rotativos-4x4-ejemplos-estatuto" },
+  { t: "Calendario laboral 2027: festivos y horas extra", s: "calendario-laboral-2027-festivos-horas-extra" },
+  { t: "Control horario en hostelería con turnos partidos", s: "control-horario-hosteleria-turnos-partidos" },
+];
+
+// ── Datos estructurados (JSON-LD) ──────────────────────────────────────
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
+    { "@type": "ListItem", position: 3, name: "Control horario", item: "https://www.drenpos.com/control-horario" },
+    { "@type": "ListItem", position: 4, name: "Software de turnos rotativos", item: CANONICAL },
+  ],
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Drenpos · Turnos rotativos",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web, iOS, Android (PWA)",
+  url: CANONICAL,
+  description:
+    "Calendarios laborales rotativos dentro del módulo de fichajes de Drenpos para ciclos que no encajan en la semana (4x4, 5/2 rotando, 6/3, mañanas y noches). Días de trabajo, días de descanso, horario y primer día del ciclo por persona; dos personas que se turnan comparten calendario. Vista previa del mes, ajuste manual de cada día y validación del horario al guardar. Los días de descanso no suman horas ni gastan vacaciones, y las horas esperadas, las horas extra y el cupo de vacaciones respetan el ciclo. Planificación anual del equipo con PDF por trabajador. Aplica el ciclo que define la empresa: no reparte la plantilla según la demanda.",
+  offers: {
+    "@type": "Offer",
+    price: "1",
+    priceCurrency: "EUR",
+    valueAddedTaxIncluded: false,
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: "1",
+      priceCurrency: "EUR",
+      valueAddedTaxIncluded: false,
+      unitText: "usuario y mes",
+    },
+    description:
+      "Incluido en la licencia de fichaje de 1 € por usuario y mes, sin IVA, sin coste extra. Terminal de fichaje opcional desde 140 € sin IVA.",
+    url: "https://www.drenpos.com/pricing",
+  },
+  featureList: [
+    "Calendario rotativo con días de trabajo, días de descanso, horario y primer día del ciclo",
+    "Ciclos 4x4, 5/2 rotando, 6/3 y mañanas y noches en el mismo ciclo",
+    "Primer día del ciclo por persona: dos personas se turnan sobre el mismo calendario",
+    "Vista previa del mes antes de guardar",
+    "Cada día del ciclo ajustable a mano",
+    "Validación al guardar: pausa fuera de jornada bloqueada y salida anterior a la entrada tratada como turno de noche",
+    "Días de descanso que no suman horas ni gastan vacaciones",
+    "Horas esperadas, horas extra y cupo de vacaciones calculados sobre el ciclo",
+    "Asignación a varias personas a la vez",
+    "Calendarios permanentes, sin reasignar cada año",
+    "Planificación anual del equipo con PDF del año por trabajador",
+  ],
+  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
+};
+---
+
+<Base
+  title="Software de Turnos Rotativos · Drenpos"
+  meta_title="Software de Turnos Rotativos 4x4, 5/2 y 6/3 | Drenpos"
+  description="Turnos rotativos 4x4, 5/2 y 6/3 con primer día del ciclo por persona, vista previa del mes y PDF anual. Incluido en el fichaje de 1 €/usuario/mes sin IVA."
+  canonical={CANONICAL}
+  image={HERO_IMG}
+  published_date="2026-10-07"
+  modified_date="2026-10-07"
+  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
+>
+  <!-- Datos estructurados -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0 relative z-10 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/images/grainy.svg" alt="" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/funcionalidades" class="hover:text-primary">Funcionalidades</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/control-horario" class="hover:text-primary">Control horario</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Turnos rotativos</span>
+      </nav>
+
+      <div class="row gx-0 gy-12 lg:gy-0 items-center">
+        <div class="lg:col-6" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Calendarios rotativos
+          </span>
+
+          <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
+            <span class="text-primary">Software de turnos rotativos</span> para pymes: 4x4, 5/2 y 6/3 sin rehacer el cuadrante cada mes
+          </h1>
+          <p class="text-lg mb-6 max-w-xl" style="color: rgba(16,25,40,0.72);">
+            Defines el ciclo una vez: días de trabajo, días de descanso,
+            horario y el primer día de cada persona. Drenpos lo alterna solo
+            y lo cruza con los festivos, las vacaciones y los fichajes. Va
+            <strong>incluido en el fichaje de 1 €/usuario/mes sin IVA</strong>.
+          </p>
+
+          <LandingMeta updated="2026-10-07" published="2026-10-07" />
+
+          <ul class="flex flex-wrap gap-4 mb-10">
+            <li data-aos="fade-up-sm" data-aos-delay="100">
+              <a href="#demo-form" class="btn btn-dark">
+                Pedir demo gratuita
+                <span class="icon-wrapper">
+                  <span class="icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="150">
+              <a href="#como-se-monta" class="btn btn-light">Ver cómo se monta</a>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Primer día por persona
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Turnos de noche
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              PDF del año por trabajador
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="relative px-4 lg:px-0 pt-10 pb-10">
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
+
+            <div class="rounded-2xl overflow-hidden relative z-10" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
+              <img
+                src={HERO_IMG}
+                alt="Calendario laboral de Drenpos con el horario de entrada, salida y pausa de cada día"
+                width="720"
+                height="480"
+                class="w-full h-auto block"
+                fetchpriority="high"
+              />
+            </div>
+
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0" style="background: #dcfce7;">🔄</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Vigilantes 4/4</p>
+                <p class="text-xs" style="color: #9ca3af;">A empieza el día 1 · B empieza el día 5</p>
+              </div>
+            </div>
+
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #fef3c7;">🌙</div>
+              <div>
+                <p class="text-xs font-bold text-dark">22:00 a 6:00</p>
+                <p class="text-xs" style="color: #9ca3af;">Turno de noche detectado al guardar</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ClientLogosStrip />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DEFINICIÓN CITABLE + EJEMPLOS
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center mb-12" data-aos="fade-up-sm">
+          <h2 class="h4 font-bold mb-4">¿Qué es un turno rotativo?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">{capsulas.definicion}</p>
+        </div>
+      </div>
+
+      <div class="row g-4 justify-center">
+        {
+          ejemplos.map((e, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
+                <p class="text-h4 font-bold text-primary mb-3">{e.ciclo}</p>
+                <p class="text-sm" style="color: rgba(16,25,40,0.65);">{e.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center mt-10">
+        <div class="lg:col-9" data-aos="fade-up-sm">
+          <div class="overflow-x-auto rounded-2xl border" style="border-color: rgba(16,25,40,0.1); background: #fff;">
+            <table class="w-full text-xs border-collapse min-w-[560px]">
+              <caption class="text-left text-sm font-semibold p-4 pb-2" style="color: rgba(16,25,40,0.78);">
+                Un 4x4 con dos personas: un solo calendario, dos primeros días distintos
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="text-left px-3 py-2 font-semibold">Día</th>
+                  {ciclo44.map((d) => (
+                    <th scope="col" class="px-1 py-2 font-semibold text-center">{d}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { n: "Persona A (empieza el día 1)", desfase: 0 },
+                  { n: "Persona B (empieza el día 5)", desfase: 4 },
+                ].map((p) => (
+                  <tr>
+                    <th scope="row" class="text-left px-3 py-2 font-medium whitespace-nowrap">{p.n}</th>
+                    {ciclo44.map((d) => (
+                      turno44(d, p.desfase)
+                        ? <td class="px-1 py-2 text-center font-bold" style="background: rgba(121,27,70,0.12); color: #791b46;">T</td>
+                        : <td class="px-1 py-2 text-center" style="background: rgba(16,25,40,0.04); color: rgba(16,25,40,0.45);">D</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p class="text-xs px-4 py-3 mb-0" style="color: rgba(16,25,40,0.6);">
+              T = trabaja, D = descansa.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CÓMO SE MONTA (4 pasos)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="como-se-monta" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Cómo se monta un cuadrante rotativo en Drenpos?</h2>
+        <p class="text-lg leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">{capsulas.montaje}</p>
+      </div>
+
+      <div class="row g-5 items-start">
+        <div class="lg:col-6" data-aos="fade-up-sm">
+          <ol class="space-y-4 list-none p-0">
+            {pasos.map((p) => (
+              <li class="flex items-start gap-4 rounded-[20px] border p-6" style="border-color: rgba(16,25,40,0.1); background: #fff;">
+                <span class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-white" style="background: #791b46;">{p.n}</span>
+                <div>
+                  <h3 class="h6 font-semibold mb-2">{p.title}</h3>
+                  <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{p.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+        <div class="lg:col-6 space-y-6" data-aos="fade-up-sm" data-aos-delay="150">
+          {previewImg && (
+            <figure class="rounded-2xl overflow-hidden" style="box-shadow: 0 20px 60px rgba(0,0,0,0.14); border: 1px solid rgba(16,25,40,0.08);">
+              <img src={PREVIEW_IMG} alt="Vista previa del mes de un calendario rotativo en Drenpos con los días de trabajo y de descanso del ciclo" width="1280" height="800" class="w-full h-auto block" loading="lazy" />
+            </figure>
+          )}
+          <figure class="rounded-2xl overflow-hidden" style="box-shadow: 0 20px 60px rgba(0,0,0,0.14); border: 1px solid rgba(16,25,40,0.08);">
+            <img src={ASIGNACION_IMG} alt="Pantalla de Drenpos para asignar calendarios laborales a varias personas a la vez" width="1280" height="800" class="w-full h-auto block" loading="lazy" />
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       LO QUE NO HACE
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="lo-que-no-hace" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <div class="rounded-3xl p-8 lg:p-12 text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-4 text-white">¿Qué no hace el software de turnos de Drenpos?</h2>
+            <p class="text-lg leading-relaxed mb-0" style="color: rgba(255,255,255,0.82);">{capsulas.noHace}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       QUÉ TIENE QUE RESPETAR EL CICLO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="que-respetar" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <div class="rounded-3xl border border-dark/10 bg-body p-7 lg:p-10" data-aos="fade-up-sm">
+            <h2 class="h4 font-bold mb-4">¿Qué tiene que respetar un turno rotativo?</h2>
+            <p class="text-lg leading-relaxed mb-5" style="color: rgba(16,25,40,0.75);">{capsulas.ley}</p>
+            <p class="text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">
+              Fuente:
+              <a href={`${ET_URL}#a34`} class="text-primary underline" rel="noopener" target="_blank">artículos 34.1 y 34.3</a>
+              y
+              <a href={`${ET_URL}#a37`} class="text-primary underline" rel="noopener" target="_blank">37.1 del Estatuto de los Trabajadores</a>.
+              Tres cuadrantes de ejemplo con sus cuentas de horas en
+              <a href="/blog/cuadrante-turnos-rotativos-4x4-ejemplos-estatuto" class="text-primary underline">cuadrante de turnos rotativos: ejemplos 4x4, 5/2 y 6/3</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PARA QUIÉN
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Para qué empresas sirve?</h2>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          sectores.map((c, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <h3 class="h6 font-bold mb-2">{c.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PRECIO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-8">
+          <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-3 text-white">¿Cuánto cuesta el software de turnos rotativos?</h2>
+            <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">{capsulas.precio}</p>
+            <ul class="flex flex-wrap gap-4 justify-center">
+              <li>
+                <a href="/pricing" class="btn btn-light">Ver planes y precios</a>
+              </li>
+              <li>
+                <a href="#demo-form" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Pedir demo de 20 minutos</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <DemoForm interes="fichaje" />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FAQ (visible + schema)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <h2 class="h3 font-bold mb-3 text-center" data-aos="fade-up-sm">Turnos rotativos: lo que más nos preguntan</h2>
+          <p class="text-center mb-10" style="color: rgba(16,25,40,0.62);" data-aos="fade-up-sm">
+            Respuestas directas, sin letra pequeña.
+          </p>
+          <div class="space-y-4">
+            {
+              faqs.map((f, i) => (
+                <details class="group rounded-2xl border border-dark/10 bg-body p-5" data-aos="fade-up-sm" data-aos-delay={Math.min(i * 50, 300)}>
+                  <summary class="cursor-pointer list-none flex items-start justify-between gap-4">
+                    <h3 class="h6 font-bold leading-snug">{f.q}</h3>
+                    <span class="text-primary text-xl leading-none mt-0.5 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <p class="mt-4 text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">{f.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ENLAZADO INTERNO (clúster de equipo)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-3">Los turnos, conectados con el resto del equipo</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          El mismo calendario alimenta el fichaje y las vacaciones.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center mb-14">
+        {
+          hermanas.map((h, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <a href={h.url} class="block h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl hover:border-primary/30 transition-all duration-300">
+                <h3 class="h6 font-bold mb-2 leading-snug text-primary">{h.title}</h3>
+                <p class="text-sm mb-3" style="color: rgba(16,25,40,0.68);">{h.body}</p>
+                <span class="text-primary text-sm font-medium">Ver solución →</span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center gy-6">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <h2 class="h5 font-bold mb-3">Sigue leyendo sobre turnos y calendarios</h2>
+          <ul class="row g-2 text-sm mb-6">
+            {
+              articulos.map((a) => (
+                <li class="md:col-6">
+                  <a href={`/blog/${a.s}`} class="text-primary hover:underline">{a.t}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>

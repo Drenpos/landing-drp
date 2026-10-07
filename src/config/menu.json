@@ -26,6 +26,18 @@
           "url": "/dispositivo-fichaje"
         },
         {
+          "name": "Vacaciones y Ausencias",
+          "url": "/software-vacaciones-ausencias"
+        },
+        {
+          "name": "Control de Entrada y Salida",
+          "url": "/control-entrada-salida-empleados"
+        },
+        {
+          "name": "Turnos Rotativos",
+          "url": "/software-turnos-rotativos"
+        },
+        {
           "name": "Bares y Restaurantes",
           "url": "/software-bares-restaurantes"
         },

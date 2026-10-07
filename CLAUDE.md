@@ -69,6 +69,12 @@ Key collections:
 
 Al tocar una, revisa: `src/config/menu.json` (submenú Funcionalidades), `src/pages/llms.txt.ts` y `src/pages/llms-full.txt.ts` (bloque "Páginas de solución"), y los enlaces cruzados del array `hermanas` en `software-gestion-almacen.astro`. `seoGraph` valida en build enlaces internos, unicidad de metadatos y H1 único: un enlace roto o un `meta_title` duplicado rompe el build.
 
+**Fecha y autor visibles en landings**: `src/layouts/partials/LandingMeta.astro` (`<LandingMeta updated="AAAA-MM-DD" published="AAAA-MM-DD" />`, bajo el lead del hero). Cada landing pasa además `published_date`, `modified_date` y `author` a `<Base>`, que los vuelca en `dateModified`/`datePublished`/`author` del `WebPage`. Al cambiar de fondo una landing, actualiza su `PAGE_UPDATED`.
+
+**Clúster de gestión de equipo** (hub `control-horario.astro`, con anclas `#vacaciones`, `#entrada-salida`, `#turnos-rotativos`, `#planificacion-anual`, `#calendarios`, `#conceptos`, `#geolocalizacion` que no deben cambiar porque llms.txt y posts enlazan a ellas): `software-vacaciones-ausencias.astro`, `control-entrada-salida-empleados.astro`, `software-turnos-rotativos.astro`, `dispositivo-fichaje.astro` (sección `#gestion-equipo`). Capturas pendientes con guarda `existsSync`: `control-horario/11-incidencias-entrada-salida.png`, `12-calendarios-laborales.png`, `13-planificacion-anual-equipo.png`, `14-calendario-rotativo-preview.png`, `15-app-vacaciones-saldo.png`.
+
+**Caché**: no hay `public/_headers` (decisión del 07/10/2026: malas experiencias previas con cabeceras en Cloudflare). Tras cada despliegue que cambie páginas existentes, purgar la caché a mano en el panel de Cloudflare (Caching, Purge Everything) o con `npm run purge:cf`. El despliegue se hace con `git push` a `main`.
+
 ### Auto-imported shortcodes
 Available in all `.md`/`.mdx` without import (`astro.config.mjs`): `Button`, `Accordion`, `Notice`, `Video`, `Youtube`, `Tab`, `Tabs`. Sources in `src/layouts/shortcodes/`.
 
@@ -122,6 +128,8 @@ node agent/index.mjs --idea "..." --keywords "k1,k2" \
 - `SITE` — base URL (overrides `src/config/config.json` `site.base_url`)
 - `PUBLIC_CLERK_PUBLISHABLE_KEY` / `CLERK_SECRET_KEY`
 - `PUBLIC_RECAPTCHA_SITE_KEY` / `RECAPTCHA_SECRET_KEY`
+
+- `CF_ZONE_ID` / `CF_API_TOKEN` — opcionales, solo para la purga manual de caché de Cloudflare con `npm run purge:cf` (`scripts/purge-cloudflare.mjs`). El deploy no purga automáticamente: la purga se hace a mano en el panel o con ese script. Token limitado a "Zone > Cache Purge > Purge".
 
 `PUBLIC_*` vars are exposed to the client by Astro — keep secrets server-only.
 
