@@ -74,6 +74,10 @@
           "url": "/software-almacen-tienda"
         },
         {
+          "name": "Tienda de Recambios",
+          "url": "/software-tienda-recambios"
+        },
+        {
           "name": "Producción y Fabricación",
           "url": "/software-produccion-fabricacion"
         },

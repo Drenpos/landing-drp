@@ -93,6 +93,34 @@ const tienda: Tarjeta[] = [
   },
 ];
 
+// Tipos de tienda (enlazan a la landing específica cuando existe)
+const tiposTienda: Tarjeta[] = [
+  {
+    icon: "🥫",
+    title: "Alimentación y productos frescos",
+    body: "Cada producto entra con su lote y su fecha de caducidad, y el sistema avisa antes de que caduque. FEFO hace que salga primero lo que antes caduca y la trazabilidad dice a qué clientes se vendió cada lote.",
+    link: "/software-control-stock",
+    linkLabel: "Ver el control de stock con lotes",
+  },
+  {
+    icon: "🚗",
+    title: "Recambios y repuestos",
+    body: "Stock por referencia con varios códigos de barras por artículo, mínimos con propuesta de compra y venta en el mostrador con el TPV. No trae catálogo de recambios ni búsqueda por matrícula, y lo decimos claro.",
+    link: "/software-tienda-recambios",
+    linkLabel: "Ver el programa para tiendas de recambios",
+  },
+  {
+    icon: "🔩",
+    title: "Ferretería y suministros",
+    body: "Lo que entra en cajas y se vende suelto tiene un precio y un código de barras por formato, con el stock siempre en la unidad base. Los clientes profesionales pueden tener su propia lista de precios.",
+  },
+  {
+    icon: "🏬",
+    title: "Tienda con almacén detrás",
+    body: "El almacén y la tienda son dos almacenes del mismo sistema, cada uno con sus ubicaciones. La tienda se repone con un traslado hecho con pistola que descuenta de un sitio y suma en el otro.",
+  },
+];
+
 // Flujo de ventas
 const flujo = ["Oferta", "Pedido", "Albarán", "Factura"];
 
@@ -143,6 +171,11 @@ const hermanas = [
     url: "/software-control-stock",
     title: "Control de stock e inventario",
     body: "Que no falte en el lineal: mínimos con alertas, propuesta de compra, lotes y caducidades.",
+  },
+  {
+    url: "/software-tienda-recambios",
+    title: "Tienda de recambios y repuestos",
+    body: "Stock por referencia, mostrador con TPV y pedidos a proveedor, sin catálogo de piezas integrado.",
   },
 ];
 
@@ -246,8 +279,8 @@ const PAGE_UPDATED = "2026-10-07";
 
 <Base
   title="Software de Almacén y Tienda · Drenpos"
-  meta_title="Software de Almacén y TPV para Tiendas | Drenpos"
-  description="Software de gestión de almacén y tienda para pymes: multialmacén, ubicaciones, lotes con FIFO/LIFO/FEFO, alertas de caducidad, traslados con pistola y TPV con Verifactu. Pide demo gratis."
+  meta_title="Programa de Gestión para Tiendas: Almacén y TPV | Drenpos"
+  description="Programa de gestión para tiendas con almacén y TPV: stock por ubicaciones, lotes y caducidad, pistola lectora y Verifactu en caja. Desde 29 €/mes sin IVA."
   canonical={CANONICAL}
   image="/images/power/stock.png"
   published_date={PAGE_PUBLISHED}
@@ -281,12 +314,14 @@ const PAGE_UPDATED = "2026-10-07";
           </span>
 
           <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
-            Software de <span class="text-primary">almacén y tienda</span> que cuadra el stock y vende sin fricción
+            Programa de gestión para tiendas con <span class="text-primary">almacén y TPV</span> en el mismo sistema
           </h1>
           <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
-            Multialmacén con ubicaciones, lotes, caducidad y trazabilidad total,
-            traslados con pistola y un TPV de tienda y restaurante integrado con
-            facturación Verifactu. Todo en un solo sistema, sin duplicar datos.
+            Un programa de gestión para tiendas que une el almacén y el punto de
+            venta: multialmacén con ubicaciones, lotes, caducidad y trazabilidad,
+            traslados con pistola y un TPV de tienda y restaurante con facturación
+            Verifactu. Es el software para tiendas que necesitan saber qué tienen,
+            dónde lo tienen y qué venden, sin duplicar datos.
           </p>
 
           <LandingMeta updated={PAGE_UPDATED} published={PAGE_PUBLISHED} class="-mt-4 mb-8" />
@@ -356,17 +391,44 @@ const PAGE_UPDATED = "2026-10-07";
     <div class="container">
       <div class="row justify-center">
         <div class="lg:col-9 text-center" data-aos="fade-up-sm">
-          <h2 class="h4 font-bold mb-4">Almacén y tienda, en un único sistema</h2>
+          <h2 class="h4 font-bold mb-4">¿Qué es un programa de gestión para tiendas?</h2>
           <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
-            Drenpos une la <strong>gestión de almacén</strong> (multialmacén,
-            ubicaciones, lotes, caducidad y trazabilidad) con un <strong>TPV de
-            tienda y restaurante</strong> y la facturación. Cada venta descuenta
-            stock automáticamente y cada movimiento queda auditado, así que dejas
-            de cuadrar inventarios a mano y de reescribir datos entre programas.
-            Es el punto donde Drenpos supera a cualquier alternativa de su rango
-            de precio.
+            Un <strong>programa de gestión para tiendas</strong> es el software
+            que une el almacén, el <strong>punto de venta</strong> y la
+            facturación: Drenpos junta la gestión de almacén (multialmacén,
+            ubicaciones, lotes, caducidad y trazabilidad) con un TPV de tienda y
+            restaurante. Cada venta descuenta stock automáticamente y cada
+            movimiento queda auditado, así que dejas de cuadrar inventarios a mano
+            y de pasar datos entre programas. Es el punto donde Drenpos supera a
+            cualquier software para tiendas de su rango de precio.
           </p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ TIPOS DE TIENDA ═══════════════ -->
+  <section id="tipos-de-tienda" class="section-sm pb-0 scroll-mt-24">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Para qué tipos de tienda sirve?</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Para cualquier tienda que tenga stock que controlar y un mostrador en el que vender. Estas son las que más nos preguntan.
+        </p>
+      </div>
+      <div class="row g-4">
+        {tiposTienda.map((f, i) => (
+          <div class="col-12 md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 80}>
+            <div class="border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(121,27,70,0.08);">{f.icon}</div>
+              <h3 class="h6 font-semibold mb-2">{f.title}</h3>
+              <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{f.body}</p>
+              {f.link && (
+                <a href={f.link} class="text-primary text-sm font-medium underline inline-block mt-3">{f.linkLabel} →</a>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>

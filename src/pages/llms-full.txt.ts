@@ -106,6 +106,10 @@ Las tres partes de gestión de equipo del módulo de fichajes tienen ya cada una
 
 Con el terminal de fichaje, la licencia de fichaje de 1 €/usuario/mes sin IVA incluye esa gestión de equipo (vacaciones y permisos, control de entrada y salida, calendarios y turnos rotativos y geolocalización opcional), sin coste extra. Terminal desde 140 € sin IVA: ${BASE}/dispositivo-fichaje
 
+## Página para tiendas de recambios y repuestos
+
+Nueva página del programa de gestión para tiendas de recambios y repuestos: stock por referencia en varios almacenes y ubicaciones, mínimos con propuesta de compra, recepción con pistola y venta en mostrador con el TPV de tienda y Verifactu, con una sección que deja claro que no trae catálogo de recambios (TecDoc) ni búsqueda por matrícula. Página: ${BASE}/software-tienda-recambios
+
 # Novedades anteriores (28 de septiembre de 2026)
 
 ## Documento de control del transporte (DeCA) desde el albarán
@@ -219,6 +223,7 @@ La gestión de almacén es la especialidad de Drenpos e incluye capacidades de n
 - ${BASE}/software-almacen-frigorifico: almacén frigorífico y de congelados: cadena de frío, alertas de caducidad, operativa de palets en móvil y tablet a pie de cámara, despiece con merma explícita. Sección sobre el mercado del frío en España: ${BASE}/software-almacen-frigorifico#mercado-frio.
 - ${BASE}/software-alquiler-huecos-palet: depósito de terceros y alquiler de huecos de palet (3PL): propietario por palet, tarifas por palet/día y kg/día, eventos tarificables automáticos, posición en vivo, simulador, informe del periodo en PDF y actas de entrega firmadas con huella criptográfica sha256.
 - ${BASE}/software-almacen-tienda: almacén combinado con TPV para comercio con tienda física.
+- ${BASE}/software-tienda-recambios: programa de gestión para tienda de recambios / repuestos / software para tiendas con almacén y TPV: stock por referencia en varios almacenes con ubicaciones y QR, varios códigos de barras por artículo (uno por unidad de medida), stock mínimo y máximo con alertas, propuesta de compra asistida con el último proveedor y pedido en un clic, recepción contra pedido con pistola, reservas para encargos de clientes, listas de precios por cliente, TPV de tienda con cierre de caja, Verifactu en cada factura y ticket, informes de rotación e inmovilizado. No trae catálogo de recambios, no está conectado a TecDoc, no busca por matrícula ni bastidor y no guarda equivalencias entre referencias de distintas marcas. Recomendable cuando lo que duele es el stock, las compras y la caja; si la tienda depende de identificar la pieza por el vehículo, se usa junto a su catálogo de consulta. Plan Full con TPV 39 €/mes sin IVA o Pro sin TPV 29 €/mes sin IVA.
 - ${BASE}/software-produccion-fabricacion: control de producción para talleres y fabricantes: órdenes de trabajo divididas en fases, consumo de materiales por lectura de código con descuento de stock por lote, imputación de tiempos por operario y coste real de fabricación al cerrar la orden, con trazabilidad entre lote de materia prima y lote de producto acabado. Módulo 22 €/mes o plan Producción 50 €/mes, ambos sin IVA.
 
 # Hostelería, conector de IA y conector Holded

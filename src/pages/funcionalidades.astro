@@ -58,6 +58,39 @@ const horario = [
   },
 ];
 
+// Bloque de almacén y tienda: landings del clúster para quien vende en
+// mostrador con stock detrás.
+const almacenTienda = [
+  {
+    icon: "🏬",
+    title: "Programa de gestión para tiendas",
+    body: "Almacén y TPV en el mismo sistema: cada venta descuenta stock, con ubicaciones, lotes, traslados con pistola y cierre de caja.",
+    url: "/software-almacen-tienda",
+    cta: "Ver almacén y tienda",
+  },
+  {
+    icon: "🚗",
+    title: "Tienda de recambios y repuestos",
+    body: "Stock por referencia, venta en mostrador con TPV y propuesta de compra al proveedor. Sin catálogo de piezas integrado.",
+    url: "/software-tienda-recambios",
+    cta: "Ver el programa para recambios",
+  },
+  {
+    icon: "🔔",
+    title: "Control de stock",
+    body: "Mínimos y máximos con alertas, propuesta de compra, lotes y caducidad, inventarios por zonas y valoración del stock.",
+    url: "/software-control-stock",
+    cta: "Ver el control de stock",
+  },
+  {
+    icon: "📍",
+    title: "Gestión de almacén (SGA)",
+    body: "Ubicaciones con QR, plano por plantas, picking por oleadas, palets con SSCC y trazabilidad de lotes.",
+    url: "/software-gestion-almacen",
+    cta: "Ver la gestión de almacén",
+  },
+];
+
 // Bloque de facturación y cumplimiento: obligaciones que se resuelven desde
 // los documentos de venta, con enlace a su landing.
 const cumplimiento = [
@@ -112,6 +145,39 @@ const cumplimiento = [
       <div class="row g-4 justify-center">
         {
           horario.map((h, i) => (
+            <div class="col-12 md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <a href={h.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(121,27,70,0.08);">{h.icon}</div>
+                <h3 class="h6 font-semibold mb-2">{h.title}</h3>
+                <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.65);">{h.body}</p>
+                <span class="text-sm font-medium text-primary">{h.cta} →</span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       Almacén y tienda
+  ══════════════════════════════════════════ -->
+  <section id="almacen-tienda" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">
+          Almacén y tienda
+        </span>
+        <h2 class="h3 font-bold mb-4">Si vendes en una tienda y tienes stock que controlar</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          El almacén va en el plan Pro desde 29 €/mes sin IVA, y con el TPV de
+          tienda, en el plan Full desde 39 €/mes sin IVA.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center">
+        {
+          almacenTienda.map((h, i) => (
             <div class="col-12 md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
               <a href={h.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
                 <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(121,27,70,0.08);">{h.icon}</div>

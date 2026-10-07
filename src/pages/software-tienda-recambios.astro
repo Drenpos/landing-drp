@@ -1,0 +1,845 @@
+---
+export const prerender = true;
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
+import DemoForm from "@/partials/DemoForm.astro";
+import LandingMeta from "@/partials/LandingMeta.astro";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
+const hasImg = (p: string) => existsSync(join(process.cwd(), "public", p));
+
+// ════════════════════════════════════════════════════════════════════════
+//  Programa de gestión para tiendas de recambios y repuestos (SEO/AEO 2026)
+//  Intención de búsqueda objetivo (Search Console, julio a octubre de 2026):
+//    - "programa de gestión tienda de recambios" / "programa gestion tienda repuestos"
+//    - "software gestion tienda" / "programas para tiendas" / "software para tiendas"
+//    - "sistema gestion almacen recambios" / "software punto de venta retail"
+//  Hoy esas consultas aterrizan en /software-almacen-tienda en página 2 y 3.
+//  Diferenciación: esa página es la general de almacén + TPV para cualquier
+//  tienda; esta habla el idioma del mostrador de recambios y dice con claridad
+//  lo que no hace (sin catálogo TecDoc ni búsqueda por matrícula).
+//  Fuente de las funciones: context/products_modules.md y pricing.md.
+// ════════════════════════════════════════════════════════════════════════
+
+const CANONICAL = "https://www.drenpos.com/software-tienda-recambios";
+
+const HERO_IMG = "/images/funcionalidades/almacen-tienda/03-tpv-tienda.png";
+const UBICACIONES_IMG = "/images/funcionalidades/almacen-tienda/01-almacen-ubicaciones.png";
+const PISTOLA_IMG = "/images/funcionalidades/almacen-tienda/04-pistola-traslados.png";
+const LOTES_IMG = "/images/funcionalidades/almacen-tienda/02-lotes-caducidad.png";
+
+// Síntomas (con lo que se busca "programa de gestión para tienda de recambios")
+const sintomas = [
+  {
+    icon: "🔍",
+    title: "«Espera, que miro si lo tengo»",
+    body: "El cliente está delante y tú vas a la estantería o llamas al almacén. A veces el papel dice que hay y no hay, y otras la pieza está pero nadie sabe en qué hueco.",
+  },
+  {
+    icon: "📦",
+    title: "El pedido al proveedor sale tarde",
+    body: "La referencia que más vendes se acaba un viernes y el pedido se hace el lunes. Lo que hay que reponer depende de que alguien repase la estantería y se acuerde.",
+  },
+  {
+    icon: "🏷️",
+    title: "La referencia que no aparece",
+    body: "Buscas la pieza y no sale porque se dio de alta con otro nombre o no se dio de alta. Acabas vendiendo una línea suelta y el stock deja de cuadrar.",
+  },
+  {
+    icon: "🧮",
+    title: "El cierre de caja, a mano",
+    body: "Al final del día sumas tickets, efectivo y tarjeta en un papel. Si no cuadra, no hay forma rápida de saber qué venta falta.",
+  },
+];
+
+// Bloques de producto: H2 en pregunta + cápsula citable (50 a 80 palabras, sin enlaces) + detalles
+type Bloque = {
+  id: string;
+  icon: string;
+  h2: string;
+  capsula: string;
+  bullets: string[];
+  img?: string;
+  alt?: string;
+};
+
+const bloques: Bloque[] = [
+  {
+    id: "ficha-articulo",
+    icon: "🏷️",
+    h2: "¿Cómo se organiza cada referencia en el programa?",
+    capsula:
+      "Cada recambio es un artículo con su código, su nombre y su grupo, que puede ser la familia con la que ya ordenas la tienda. Admite varios códigos de barras, uno por unidad de medida, así que la pistola distingue si lees una unidad o la caja entera. También lleva su almacén y su ubicación por defecto, su stock mínimo y máximo y, si hace falta, control por lote o por número de serie.",
+    bullets: [
+      "Código, nombre y grupo en la ficha de cada artículo",
+      "Varios códigos de barras por artículo, uno por cada unidad de medida, cada una con su precio",
+      "Lista de precios asignada al artículo o al cliente, con listas que heredan de otras con un porcentaje",
+      "Artículos, grupos y listas de precios cargados desde plantillas de Excel",
+      "Una referencia que ya no se vende se desactiva sin perder su histórico",
+    ],
+    img: LOTES_IMG,
+    alt: "Ficha de artículo en Drenpos con control por lote y fecha para recambios que lo necesitan",
+  },
+  {
+    id: "reposicion",
+    icon: "🔔",
+    h2: "¿Cómo sabe el programa qué recambios hay que pedir?",
+    capsula:
+      "Pones un stock mínimo y un máximo a cada referencia y Drenpos avisa en el panel cuando una baja del mínimo. La propuesta de compra va más allá: combina esos límites con el consumo real de los últimos meses, lo reservado para encargos de clientes y lo que ya viene pedido. Revisas las cantidades y generas el pedido al proveedor con un clic, con el último proveedor ya puesto.",
+    bullets: [
+      "Aviso de bajo mínimos y de exceso de stock en el panel de notificaciones",
+      "Alertas de pedidos: lo vendido pendiente de servir frente al stock físico",
+      "Lo pedido que aún no ha llegado se descuenta de la propuesta",
+      "Nunca compra sola: siempre revisas tú antes de pedir",
+    ],
+  },
+  {
+    id: "mostrador",
+    icon: "🛒",
+    h2: "¿Cómo se vende en el mostrador con el TPV?",
+    capsula:
+      "El TPV de tienda enseña tus grupos de artículos y tiene un buscador global para añadir cualquier referencia que no esté a la vista. Puedes dejar una cuenta en espera mientras atiendes a otro cliente, cambiar precio o cantidad en cada línea y calcular el cambio. Cada venta descuenta el stock en el momento, el ticket sale en modalidad Verifactu y al final del turno el cierre de caja te dice cuánto debería haber.",
+    bullets: [
+      "Líneas manuales para una pieza que todavía no está dada de alta",
+      "Métodos de pago configurables y asistente de cambio",
+      "Cierre de caja con desglose por método de pago y reporte imprimible",
+      "Historial de tickets y reimpresión de cualquiera de ellos",
+      "Albaranes y facturas a talleres y empresas, enviados por WhatsApp o por correo",
+    ],
+    img: HERO_IMG,
+    alt: "TPV de tienda de Drenpos con grupos de artículos para vender recambios en el mostrador",
+  },
+  {
+    id: "almacen-y-tienda",
+    icon: "📍",
+    h2: "¿Puedo llevar el almacén y la tienda en el mismo programa?",
+    capsula:
+      "Sí: Drenpos trabaja con varios almacenes, cada uno con sus ubicaciones (estantes, pasillos o zonas), y la tienda puede ser uno más. Cada ubicación lleva un QR imprimible que se pega en la estantería. Para reponer la tienda desde el almacén se hace un traslado con pistola: escaneas origen, producto, cantidad y destino, y el stock baja en un sitio y sube en el otro, con el movimiento registrado.",
+    bullets: [
+      "Stock por almacén y por ubicación en la ficha de cada referencia",
+      "Pantalla de contenido de una ubicación con lo reservado y lo disponible",
+      "Un pedido confirmado deja la pieza reservada para ese cliente",
+      "Varios usuarios a la vez, sin límite de sesiones simultáneas",
+    ],
+    img: UBICACIONES_IMG,
+    alt: "Almacenes y ubicaciones con QR en Drenpos para el stock de una tienda de recambios",
+  },
+  {
+    id: "pistola",
+    icon: "🔫",
+    h2: "¿Para qué sirve la pistola lectora en una tienda de repuestos?",
+    capsula:
+      "Para no teclear códigos: en cada dispositivo eliges pistola externa o la cámara del móvil u ordenador. Con ella recibes la mercancía del proveedor comparando lo pedido con lo que llega, mueves stock entre ubicaciones y haces recuentos por zonas. En cada recuento el sistema compara con el stock teórico y regulariza la diferencia con una entrada o una salida, y te deja un informe de diferencias.",
+    bullets: [
+      "Recepción contra pedido con incidencias por línea: faltas, roturas o mercancía no pedida",
+      "Al cerrar la recepción se genera el albarán de compra",
+      "Etiquetas GS1 al recibir, en hoja A4 o en rollo",
+      "Líneas de albaranes y facturas añadidas leyendo el código de barras",
+    ],
+    img: PISTOLA_IMG,
+    alt: "Traslado de stock con pistola lectora entre almacén y tienda en Drenpos",
+  },
+  {
+    id: "proveedores",
+    icon: "🚚",
+    h2: "¿Cómo se gestionan los pedidos y las facturas de proveedor?",
+    capsula:
+      "El pedido de compra sale de la propuesta o se hace a mano, y sigue el mismo circuito que las ventas: pedido, albarán y factura, con los datos arrastrados de un documento al siguiente. Si el proveedor te da la factura en papel, el OCR lee la foto, detecta las líneas y el proveedor y genera el documento. El análisis de costes enseña cómo ha cambiado el precio de compra de cada pieza mes a mes.",
+    bullets: [
+      "Ficha de proveedor con NIF, direcciones, contactos y forma de pago por defecto",
+      "Si el proveedor no existe, el OCR lo crea con los datos de la factura",
+      "Reporte de gestoría: ZIP con facturas de compra y venta y un Excel resumen",
+      "Remesas SEPA para cobrar a los clientes que pagan por domiciliación",
+    ],
+  },
+  {
+    id: "informes",
+    icon: "📊",
+    h2: "¿Qué informes te dicen qué referencias se venden y cuáles no?",
+    capsula:
+      "En una tienda de recambios el dinero se queda parado en piezas que nadie pide. El informe de productos sin movimiento dice qué stock lleva meses quieto, dónde está y cuánto vale. El de rotación ordena lo que más sale por unidades y por valor, con la cobertura en días, y la analítica de ventas da el ticket medio, los productos más vendidos y los mejores clientes, todo exportable a Excel.",
+    bullets: [
+      "Inmovilizado con su valor y su ubicación",
+      "Rotación con cobertura de stock en días",
+      "Auditoría de stock: cada movimiento de una referencia con el documento que lo originó",
+      "Con el conector de IA (6 €/mes sin IVA) preguntas a ChatGPT o Claude qué está bajo mínimos",
+    ],
+  },
+];
+
+// Lo que no hace (honestidad: nada de esto está en el producto)
+const noHace = [
+  "No trae catálogo de recambios ni está conectado a TecDoc u otros catálogos de fabricantes",
+  "No busca piezas por matrícula ni por número de bastidor",
+  "No guarda equivalencias entre referencias de distintas marcas",
+  "No incluye tienda online propia",
+  "No tiene datáfono propio: cobras con el de tu banco y el TPV registra el método de pago",
+];
+
+// Tabla de decisión: cuatro vías
+const comparativa = [
+  {
+    opcion: "Excel y libreta",
+    stock: "A mano, se desfasa en días",
+    mostrador: "Caja registradora aparte",
+    compras: "A ojo",
+    catalogo: "No",
+    verifactu: "No: hace falta otro programa para facturar",
+    precio: "Sin licencia, se paga en horas y descuadres",
+  },
+  {
+    opcion: "Programa de recambios de nicho",
+    stock: "Sí",
+    mostrador: "Normalmente sí",
+    compras: "Normalmente sí",
+    catalogo: "Suele incluirlo o conectarse a uno",
+    verifactu: "Depende del fabricante",
+    precio: "Cuota más alta: pregunta también por la implantación",
+  },
+  {
+    opcion: "TPV genérico",
+    stock: "Básico, sin ubicaciones",
+    mostrador: "Sí",
+    compras: "Pocas veces asistidas",
+    catalogo: "No",
+    verifactu: "Depende del TPV",
+    precio: "Cuota baja, con el almacén fuera",
+  },
+  {
+    opcion: "Drenpos",
+    stock: "Por almacén y ubicación, con mínimos y alertas",
+    mostrador: "TPV de tienda con cierre de caja",
+    compras: "Propuesta de compra y pedido en un clic",
+    catalogo: "No: tus referencias, cargadas desde Excel",
+    verifactu: "Sí, en cada factura y cada ticket",
+    precio: "Pro 29 €/mes o Full con TPV 39 €/mes, sin IVA",
+    destacado: true,
+  },
+];
+
+// Casos de uso (sin nombres de clientes)
+const casos = [
+  {
+    tag: "Recambios de automoción",
+    icon: "🚗",
+    title: "Un mostrador con talleres de la zona como clientes",
+    body: "Cada taller tiene su lista de precios asignada, así que nadie tiene que acordarse del descuento que le toca. Lo que se lleva durante el mes sale en albaranes y a fin de mes se juntan todos en una factura que se manda por WhatsApp. Las referencias que más rotan tienen su mínimo y la propuesta de compra prepara el pedido al distribuidor.",
+  },
+  {
+    tag: "Repuestos de electrodomésticos",
+    icon: "🔧",
+    title: "Piezas que se piden para un cliente concreto",
+    body: "Cuando un cliente encarga una pieza que no hay, se crea su pedido y la propuesta de compra la incluye porque hay demanda sin stock detrás. Al recibirla con la pistola, la recepción avisa de que hay un pedido esperándola, así que sale directa sin pasar por la estantería. Las piezas que lo necesitan se controlan por número de serie, una a una.",
+  },
+  {
+    tag: "Ferretería y suministro industrial",
+    icon: "🔩",
+    title: "Tornillería por cajas, venta suelta y almacén detrás",
+    body: "La tornillería entra en cajas y se vende por unidades: cada formato tiene su precio y su código de barras, y el stock se lleva siempre en la unidad base. La tienda se repone desde el almacén con un traslado hecho con pistola. El informe de productos sin movimiento dice qué referencias llevan meses paradas y cuánto dinero suponen.",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Sirve Drenpos para una tienda de recambios de coche?",
+    a: "Sí, para llevar el stock de cada referencia, vender en el mostrador, cuadrar la caja y comprar a tus proveedores. Lo que no hace es identificar la pieza a partir del vehículo: no tiene catálogo TecDoc ni búsqueda por matrícula o bastidor. Si ya consultas un catálogo de piezas, lo sigues usando y en Drenpos llevas el stock, las ventas y las compras.",
+  },
+  {
+    q: "¿Busca por referencia del fabricante o por código de barras?",
+    a: "Cada artículo tiene su código, su nombre y uno o varios códigos de barras, uno por unidad de medida, que se leen con pistola o con la cámara del móvil. En el mostrador, el TPV tiene un buscador global para añadir cualquier artículo del catálogo. Lo que no guarda son equivalencias entre referencias de distintos fabricantes.",
+  },
+  {
+    q: "¿Tiene catálogo de recambios?",
+    a: "No. Drenpos no trae un catálogo de piezas ni está conectado a TecDoc ni a otros catálogos de fabricantes. Tus artículos, grupos y listas de precios se cargan desde plantillas de Excel, así que la tarifa que tengas en una hoja de cálculo se adapta a la plantilla y entra de una vez.",
+  },
+  {
+    q: "¿Cuánto cuesta un programa de gestión para tienda de recambios con Drenpos?",
+    a: "Con mostrador, el plan Full: 39 €/mes sin IVA con almacén, TPV de tienda, facturación con Verifactu, informes, correo y WhatsApp, 5 usuarios y fichaje para 5 personas. Sin TPV, el plan Pro cuesta 29 €/mes sin IVA con 3 usuarios. Cada usuario adicional son 5 €/mes y cada fichaje adicional 1 €/usuario/mes, sin IVA, sin permanencia ni coste de instalación.",
+  },
+  {
+    q: "¿Puedo vender en el mostrador y llevar el almacén a la vez?",
+    a: "Sí, es el mismo sistema. El TPV descuenta del inventario cada venta, el almacén y la tienda pueden ser dos almacenes con sus ubicaciones y la tienda se repone con un traslado hecho con pistola. Un pedido confirmado reserva la pieza para ese cliente, y en todas las pantallas ves el stock físico y el disponible.",
+  },
+  {
+    q: "¿Cumple Verifactu?",
+    a: "Sí: cada factura y cada ticket llevan su huella encadenada y su QR verificable en la AEAT, sin que tengas que configurar nada. Hacienda anunció el 5 de octubre de 2026 que la obligación pasa a octubre de 2028 para todos, pendiente de publicarse en el BOE; hasta entonces la fecha legal sigue siendo la del RDL 15/2025. Drenpos ya funciona en modalidad Verifactu hoy.",
+  },
+  {
+    q: "¿Funciona con pistola lectora?",
+    a: "Sí. En cada dispositivo eliges si lees con una pistola externa o con la cámara del móvil u ordenador. Se escanea para añadir líneas a albaranes y facturas, recibir pedidos de proveedor, hacer traslados entre almacén y tienda y contar el inventario, y cada ubicación lleva su QR para saber de dónde sale y dónde entra cada pieza.",
+  },
+  {
+    q: "¿Cuánto se tarda en empezar a usarlo?",
+    a: "La puesta en marcha se cuenta en días, no en meses. Los artículos, grupos, almacenes, listas de precios, clientes y proveedores se cargan desde plantillas de Excel, y el stock de partida entra como una entrada de inventario inicial. Antes puedes pedir una demo de 20 minutos con tu forma de trabajar delante.",
+  },
+];
+
+// Landings hermanas
+const hermanas = [
+  {
+    url: "/software-almacen-tienda",
+    title: "Programa de gestión para tiendas",
+    body: "La visión general de almacén y TPV para cualquier tienda: alimentación, ferretería o tienda con almacén detrás.",
+  },
+  {
+    url: "/software-control-stock",
+    title: "Control de stock e inventario",
+    body: "Mínimos y máximos con alertas, propuesta de compra, inventarios por zonas y valoración del stock.",
+  },
+  {
+    url: "/software-gestion-almacen",
+    title: "Software de gestión de almacén (SGA)",
+    body: "Si el almacén crece: ubicaciones con QR, plano por plantas, picking, palets y trazabilidad.",
+  },
+  {
+    url: "/software-verifactu",
+    title: "Facturación Verifactu",
+    body: "Huella encadenada, QR y envío a la AEAT en cada factura y cada ticket, sin configurar nada.",
+  },
+  {
+    url: "/control-horario",
+    title: "Control horario del equipo",
+    body: "El fichaje de quien atiende el mostrador, con vacaciones y turnos, desde 1 €/usuario/mes sin IVA.",
+  },
+];
+
+const articulos = [
+  { t: "Control de stock: cómo evitar roturas y recuperar margen", s: "control-de-stock-sin-roturas" },
+  { t: "Cómo organizar el almacén de una pyme", s: "como-organizar-almacen-pyme" },
+  { t: "ERP para pymes: cuándo dejar de usar Excel", s: "erp-para-pymes-vs-excel" },
+  { t: "Verifactu para pymes: guía práctica", s: "verifactu-pymes-guia-2026" },
+  { t: "Enviar facturas por WhatsApp de forma automática", s: "enviar-facturas-por-whatsapp-automaticamente" },
+  { t: "¿SGA aparte o ERP con almacén? Qué necesita una pyme", s: "sga-o-erp-con-almacen-que-necesita-una-pyme" },
+];
+
+// ── Datos estructurados (JSON-LD) ──────────────────────────────────────
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
+    { "@type": "ListItem", position: 3, name: "Programa para tienda de recambios", item: CANONICAL },
+  ],
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Drenpos · Programa de gestión para tiendas de recambios y repuestos",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  url: CANONICAL,
+  description:
+    "Programa de gestión para tiendas de recambios y repuestos: stock por referencia en varios almacenes y ubicaciones, varios códigos de barras por artículo, stock mínimo y máximo con alertas, propuesta de compra asistida, pedidos y recepción de proveedor con pistola, TPV de tienda con cierre de caja, facturación Verifactu e informes de rotación e inmovilizado. No incluye catálogo de recambios ni búsqueda por matrícula.",
+  offers: {
+    "@type": "Offer",
+    price: "29.00",
+    priceCurrency: "EUR",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: "29.00",
+      priceCurrency: "EUR",
+      unitCode: "MON",
+      valueAddedTaxIncluded: false,
+    },
+    description:
+      "Plan Pro con almacén, 29 €/mes sin IVA. Con TPV de tienda, plan Full, 39 €/mes sin IVA. Sin permanencia.",
+    url: "https://www.drenpos.com/pricing",
+  },
+  featureList: [
+    "Varios almacenes con ubicaciones y QR imprimible por ubicación",
+    "Varios códigos de barras por artículo, uno por unidad de medida",
+    "Stock mínimo y máximo con notificaciones",
+    "Propuesta de compra asistida con consumo real, reservas y pedidos en camino",
+    "Recepción contra pedido de compra con pistola lectora",
+    "TPV de tienda con varias cuentas abiertas, asistente de cambio y cierre de caja",
+    "Facturación y tickets en modalidad Verifactu",
+    "Listas de precios por cliente",
+    "Reservas de stock para encargos de clientes",
+    "Inventarios físicos con regularización e informe de diferencias",
+    "Informes de rotación, inmovilizado y evolución del coste de compra",
+    "OCR de facturas de proveedor",
+  ],
+  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
+};
+
+// Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
+const PAGE_PUBLISHED = "2026-10-07";
+const PAGE_UPDATED = "2026-10-07";
+---
+
+<Base
+  title="Programa para Tienda de Recambios · Drenpos"
+  meta_title="Tienda de Recambios y Repuestos: Programa de Gestión | Drenpos"
+  description="Programa de gestión para tienda de recambios y repuestos: stock por referencia, mínimos, pedidos a proveedor y TPV con Verifactu. Desde 29 €/mes sin IVA."
+  canonical={CANONICAL}
+  image={HERO_IMG}
+  published_date={PAGE_PUBLISHED}
+  modified_date={PAGE_UPDATED}
+  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
+>
+  <!-- Datos estructurados -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0 relative z-10 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/images/grainy.svg" alt="" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/funcionalidades" class="hover:text-primary">Funcionalidades</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Tienda de recambios</span>
+      </nav>
+
+      <div class="row gx-0 gy-12 lg:gy-0 items-center">
+        <div class="lg:col-6" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            Tiendas de recambios y repuestos
+          </span>
+
+          <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
+            Programa de gestión para <span class="text-primary">tiendas de recambios y repuestos</span>: stock por referencia, mostrador y proveedores en el mismo sistema
+          </h1>
+          <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
+            Un programa de gestión para tienda de recambios que lleva el
+            <strong>stock de cada referencia</strong> por almacén y ubicación,
+            vende en el mostrador con un <strong>punto de venta</strong> que
+            descuenta lo vendido y te propone qué pedir a cada proveedor. Sirve
+            para recambios de automoción, repuestos de electrodomésticos o
+            suministro industrial. Desde <strong>29 €/mes sin IVA</strong>, o
+            39 € con el TPV de tienda.
+          </p>
+
+          <LandingMeta updated={PAGE_UPDATED} published={PAGE_PUBLISHED} class="-mt-4 mb-8" />
+
+          <ul class="flex flex-wrap gap-4 mb-10">
+            <li data-aos="fade-up-sm" data-aos-delay="100">
+              <a href="#demo-form" class="btn btn-dark">
+                Pedir demo gratuita
+                <span class="icon-wrapper">
+                  <span class="icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="150">
+              <a href="/pricing" class="btn btn-light">Ver precios</a>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Stock por almacén y ubicación
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Propuesta de compra
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              TPV con Verifactu
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              Sin permanencia
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="relative px-4 lg:px-0 pt-10 pb-10">
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
+
+            <div class="rounded-2xl overflow-hidden relative z-10" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
+              <img
+                src={HERO_IMG}
+                alt="Punto de venta de Drenpos para el mostrador de una tienda de recambios"
+                width="720"
+                height="480"
+                class="w-full h-auto block"
+                fetchpriority="high"
+              />
+            </div>
+
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0 font-bold" style="background: #fee2e2; color: #dc2626;">!</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Bajo mínimos</p>
+                <p class="text-xs" style="color: #9ca3af;">Filtro de aceite · pedido al proveedor listo</p>
+              </div>
+            </div>
+
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #dcfce7;">📍</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Tienda 4 ud · Almacén 12 ud</p>
+                <p class="text-xs" style="color: #9ca3af;">Estante B-2</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ClientLogosStrip />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DEFINICIÓN CITABLE (AEO / featured snippet)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h4 font-bold mb-4">¿Qué es un programa de gestión para una tienda de recambios?</h2>
+          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+            Un <strong>programa de gestión para tienda de recambios</strong> es
+            el software que lleva el stock de cada referencia, vende en el
+            mostrador con un TPV que descuenta lo vendido, avisa de lo que baja
+            del mínimo y prepara el pedido al proveedor. Es software para tiendas
+            que sustituye a la libreta, a la hoja de cálculo y a la caja
+            registradora por un solo sistema.
+            Así sabes si una pieza está, dónde está y cuándo llega la que falta.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SÍNTOMAS
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Te pasa alguna de estas en el mostrador?</h2>
+        <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          Son las cuatro razones por las que una tienda de repuestos acaba buscando un programa de gestión.
+        </p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          sintomas.map((s, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{s.icon}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{s.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.65);">{s.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CÓMO FUNCIONA, POR BLOQUES (H2 en pregunta + cápsula)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      {
+        bloques.map((b, i) => (
+          <div id={b.id} class={`row gy-8 items-start scroll-mt-24 ${i > 0 ? "mt-16 lg:mt-24" : ""}`}>
+            <div class="lg:col-6" data-aos="fade-up-sm">
+              <div class="text-3xl mb-4">{b.icon}</div>
+              <h2 class="h4 mb-4 font-bold leading-tight">{b.h2}</h2>
+              <p class="text-lg leading-relaxed mb-4" style="color: rgba(16,25,40,0.75);">{b.capsula}</p>
+            </div>
+            <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="150">
+              {b.img && hasImg(b.img) && (
+                <figure class="rounded-2xl overflow-hidden mb-6" style="box-shadow: 0 20px 60px rgba(0,0,0,0.14); border: 1px solid rgba(16,25,40,0.08);">
+                  <img src={b.img} alt={b.alt} width="640" height="420" class="w-full h-auto block" loading="lazy" />
+                </figure>
+              )}
+              <div class="rounded-3xl border border-dark/10 bg-body p-7">
+                <ul class="space-y-3">
+                  {b.bullets.map((t) => (
+                    <li class="flex items-start gap-3">
+                      <span class="w-5 h-5 mt-0.5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+                      <span class="text-sm" style="color: rgba(16,25,40,0.75);">{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       QUÉ NO HACE (honestidad)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="que-no-hace" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <div class="rounded-3xl p-8 lg:p-12 text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-4 text-white">¿Qué no hace Drenpos en una tienda de recambios?</h2>
+            <p class="text-lg leading-relaxed mb-8" style="color: rgba(255,255,255,0.82);">
+              No trae catálogo de recambios. No está conectado a TecDoc ni a
+              otros catálogos de fabricantes, no busca piezas por matrícula ni
+              por bastidor y no guarda equivalencias entre referencias de
+              distintas marcas. Tus referencias las das de alta tú o las cargas
+              desde Excel, y tampoco incluye tienda online propia.
+            </p>
+            <div class="row g-6 items-start">
+              <div class="md:col-6">
+                <ul class="space-y-3">
+                  {
+                    noHace.map((t) => (
+                      <li class="flex items-start gap-3">
+                        <span class="w-5 h-5 mt-0.5 rounded-full flex items-center justify-center flex-shrink-0 text-[11px] font-bold" style="background: rgba(255,255,255,0.12); color: #fcd9b6;" aria-hidden="true">✕</span>
+                        <span class="text-sm" style="color: rgba(255,255,255,0.8);">{t}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+              <div class="md:col-6">
+                <p class="text-sm leading-relaxed mb-4" style="color: rgba(255,255,255,0.72);">
+                  Si en tu tienda la pieza se identifica a partir del coche, lo
+                  normal es seguir usando tu catálogo de consulta. En Drenpos
+                  llevas lo que ese catálogo no hace: el stock real, el
+                  mostrador, la caja y las compras.
+                </p>
+                <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.72);">
+                  Si ya vendes por internet con Holded, el conector Holded trae
+                  esos pedidos a Drenpos y el stock real se lleva aquí. Con otras
+                  plataformas, las integraciones se estudian a medida:
+                  <a href="/contact" class="underline" style="color: #fcd9b6;">cuéntanos qué usas</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       TABLA DE DECISIÓN (AEO)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Excel, un programa de recambios, un TPV genérico o Drenpos?</h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Las cuatro formas habituales de llevar una tienda de recambios,
+          comparadas en lo que se nota en el mostrador. Lo de los programas de
+          nicho y los TPV genéricos varía según el fabricante: pide detalle antes
+          de decidir.
+        </p>
+      </div>
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[1000px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Opción</th>
+              <th class="text-left p-4">Stock por referencia</th>
+              <th class="text-left p-4">Mostrador y caja</th>
+              <th class="text-left p-4">Compras a proveedor</th>
+              <th class="text-left p-4">Catálogo de piezas</th>
+              <th class="text-left p-4">Verifactu</th>
+              <th class="text-left p-4 rounded-tr-2xl">Coste</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comparativa.map((r) => (
+                <tr class={r.destacado ? "bg-primary/5 font-medium" : "border-b border-dark/5"}>
+                  <td class={`p-4 ${r.destacado ? "text-primary font-bold" : "font-medium"}`}>{r.opcion}</td>
+                  <td class="p-4">{r.stock}</td>
+                  <td class="p-4">{r.mostrador}</td>
+                  <td class="p-4">{r.compras}</td>
+                  <td class="p-4">{r.catalogo}</td>
+                  <td class="p-4">{r.verifactu}</td>
+                  <td class="p-4">{r.precio}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="text-center mt-6 text-sm max-w-3xl mx-auto" style="color: rgba(16,25,40,0.6);" data-aos="fade-up-sm">
+        Si lo que más pesa es identificar la pieza por el vehículo, un programa
+        de nicho tiene sentido. Si lo que duele es el stock, las compras y la
+        caja, Drenpos lo resuelve dentro de una cuota de 29 o 39 €/mes sin IVA.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       CASOS DE USO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">Cómo lo usan tiendas como la tuya</h2>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          casos.map((c, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3">{c.title}</h3>
+                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PRECIO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="precio" class="section pt-0 scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-8">
+          <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-3 text-white">¿Cuánto cuesta un programa de gestión para una tienda de recambios?</h2>
+            <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+              Con mostrador, lo normal es el plan Full: 39 €/mes sin IVA con
+              almacén, TPV de tienda, facturación con Verifactu, informes,
+              correo, WhatsApp y 5 usuarios. Si solo necesitas almacén y
+              facturación, el plan Pro cuesta 29 €/mes sin IVA con 3 usuarios.
+              Cada usuario adicional son 5 €/mes y cada fichaje adicional
+              1 €/usuario/mes, sin IVA, sin permanencia ni coste de instalación.
+            </p>
+            <ul class="flex flex-wrap gap-4 justify-center">
+              <li>
+                <a href="/pricing" class="btn btn-light">Ver planes y precios</a>
+              </li>
+              <li>
+                <a href="#demo-form" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Pedir demo de 20 minutos</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <DemoForm interes="tpv" />
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       FAQ (visible + schema)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <h2 class="h3 font-bold mb-3 text-center" data-aos="fade-up-sm">Tienda de recambios: lo que más nos preguntan</h2>
+          <p class="text-center mb-10" style="color: rgba(16,25,40,0.62);" data-aos="fade-up-sm">
+            Respuestas directas, también sobre lo que no hace.
+          </p>
+          <div class="space-y-4">
+            {
+              faqs.map((f, i) => (
+                <details class="group rounded-2xl border border-dark/10 bg-body p-5" data-aos="fade-up-sm" data-aos-delay={Math.min(i * 50, 300)}>
+                  <summary class="cursor-pointer list-none flex items-start justify-between gap-4">
+                    <h3 class="h6 font-bold leading-snug">{f.q}</h3>
+                    <span class="text-primary text-xl leading-none mt-0.5 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <p class="mt-4 text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">{f.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ENLAZADO INTERNO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-3">El mismo sistema, visto desde otros problemas</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+          Si tu tienda necesita algo más que el mostrador, empieza por aquí.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-center mb-14">
+        {
+          hermanas.map((h, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <a href={h.url} class="block h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl hover:border-primary/30 transition-all duration-300">
+                <h3 class="h6 font-bold mb-2 leading-snug text-primary">{h.title}</h3>
+                <p class="text-sm mb-3" style="color: rgba(16,25,40,0.68);">{h.body}</p>
+                <span class="text-primary text-sm font-medium">Ver solución →</span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center gy-6">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <h2 class="h5 font-bold mb-3">Sigue leyendo sobre stock, almacén y facturación</h2>
+          <ul class="row g-2 text-sm mb-6">
+            {
+              articulos.map((a) => (
+                <li class="md:col-6">
+                  <a href={`/blog/${a.s}`} class="text-primary hover:underline">{a.t}</a>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="text-sm" style="color: rgba(16,25,40,0.65);">
+            ¿Quieres ver el sistema completo? Repasa
+            <a href="/modulos" class="text-primary underline">todos los módulos de Drenpos</a>,
+            consulta los <a href="/pricing" class="text-primary underline">planes y precios</a>
+            o <a href="/contact" class="text-primary underline">escríbenos</a> y
+            te enseñamos tu tienda funcionando en veinte minutos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>
