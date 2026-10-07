@@ -42,9 +42,9 @@ faq:
 
 > El **DeCA** (documento electrónico de control administrativo) es el documento de control del transporte de mercancías por carretera en **PDF con un código QR** que lo descarga desde una dirección web única. Es obligatorio desde el **5 de octubre de 2026** en el transporte público dentro de España, sin periodo de adaptación. Lo formalizan el **transportista** y el **cargador contractual** (quien contrata el porte). Si ya haces albaranes en tu programa de gestión, tu albarán puede ser el DeCA.
 
-<Notice type="info" title="Estado a 28 de septiembre de 2026">
-Esta guía recoge la Orden FOM/2861/2012, la Ley 9/2025 y la Resolución de 5 de junio de 2026 tal y como están publicadas en el BOE a 28 de septiembre de 2026, y las preguntas frecuentes del Ministerio de Transportes de esa fecha. Si el Ministerio publica criterios nuevos o la Inspección aclara cómo va a revisar el documento en carretera, la actualizaremos.
-</Notice>
+> **Estado a 28 de septiembre de 2026**
+>
+> Esta guía recoge la Orden FOM/2861/2012, la Ley 9/2025 y la Resolución de 5 de junio de 2026 tal y como están publicadas en el BOE a 28 de septiembre de 2026, y las preguntas frecuentes del Ministerio de Transportes de esa fecha. Si el Ministerio publica criterios nuevos o la Inspección aclara cómo va a revisar el documento en carretera, la actualizaremos.
 
 <div class="my-8 flex justify-center">
   <a href="/documento-control-transporte-deca" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">

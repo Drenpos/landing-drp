@@ -20,9 +20,9 @@ hero:
 
 Cada celda que editas a mano en un Excel es una [multa potencial](/blog/multas-registro-horario-2026-costo-incumplimiento) que tu empresa está acumulando sin saberlo. Un registro que se puede rehacer sin dejar rastro es muy difícil de defender ante la Inspección de Trabajo, y el real decreto en tramitación quiere dejar fuera las hojas de cálculo.
 
-<Notice type="info" title="Actualizado el 23 de septiembre de 2026">
-A esta fecha, el real decreto que obligaría a llevar el registro de jornada por medios digitales no está aprobado ni publicado en el BOE. Lo vigente es el artículo 34.9 del Estatuto de los Trabajadores, con sanción grave de 751 a 7.500 euros por infracción. Hemos añadido una sección sobre el otro Excel que casi todas las pymes tienen: el de vacaciones.
-</Notice>
+> **Actualizado el 23 de septiembre de 2026**
+>
+> A esta fecha, el real decreto que obligaría a llevar el registro de jornada por medios digitales no está aprobado ni publicado en el BOE. Lo vigente es el artículo 34.9 del Estatuto de los Trabajadores, con sanción grave de 751 a 7.500 euros por infracción. Hemos añadido una sección sobre el otro Excel que casi todas las pymes tienen: el de vacaciones.
 
 ## ¿Tu Excel de control horario es un activo o un riesgo legal?
 

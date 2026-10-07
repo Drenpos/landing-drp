@@ -3,7 +3,7 @@ title: "TPV para bares y restaurantes: cómo elegirlo en 2026"
 meta_title: "TPV para bares y restaurantes: cómo elegirlo en 2026"
 description: "Checklist de 11 puntos para elegir un TPV de hostelería en 2026: mesas, cocina, QR, stock, Verifactu, cierre de caja y coste total con el fichaje dentro."
 date: 2026-09-10
-updated: 2026-09-23
+updated: 2026-10-07
 image: "/images/blog/tpv-bares-restaurantes-como-elegir-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -35,7 +35,7 @@ faq:
   - question: "¿Vale una app de carta QR como TPV?"
     answer: "No, son cosas distintas y conviene no confundirlas. Una app de carta QR resuelve enseñar el menú y, a veces, recoger pedidos, pero no cobra, no cierra caja, no descuenta stock ni emite facturas conformes. Como complemento está bien; como sistema del local se queda corta el primer día que haya que cuadrar la caja."
   - question: "¿El TPV tiene que emitir tickets conformes a Verifactu?"
-    answer: "Sí, el ticket de un bar es una factura simplificada y entra dentro del alcance del Real Decreto 1007/2023. Tras el aplazamiento del Real Decreto-ley 15/2025, las sociedades deben tener el sistema adaptado el 1 de enero de 2027 y los autónomos el 1 de julio de 2027. Conviene comprobar hoy que el TPV que estás mirando ya lo cumple."
+    answer: "Sí, el ticket de un bar es una factura simplificada y entra dentro del alcance del Real Decreto 1007/2023. Hacienda anunció el 5 de octubre de 2026 que la obligación se aplaza a octubre de 2028 para todos, pendiente de publicación en el BOE; hasta entonces, el Real Decreto-ley 15/2025 marcaba el 1 de enero de 2027 para las sociedades y el 1 de julio de 2027 para los autónomos. Conviene comprobar hoy que el TPV que estás mirando ya lo cumple."
   - question: "¿Cómo calculo el coste total de un TPV de hostelería?"
     answer: "Suma a tres años la cuota o la licencia, el hardware que te falte, las comisiones por pago con tarjeta si el TPV trae su propio cobro, la pantalla de cocina si se paga aparte y el fichaje del personal, que es obligatorio aunque el TPV no lo traiga. En Drenpos, el plan Full a tres años son 1.404 euros sin IVA con TPV, pantallas de cocina, almacén, Verifactu y fichaje para cinco personas."
 ---
@@ -135,7 +135,7 @@ La pregunta que ordena la decisión es sencilla: además de cobrar, ¿tu negocio
 
 ## ¿Y la parte legal? Verifactu y registro horario
 
-Dos obligaciones que llegan al mismo mostrador. El ticket de un bar es una factura simplificada y entra en el alcance del Real Decreto 1007/2023: tras el aplazamiento del Real Decreto-ley 15/2025, las sociedades deben tener el sistema adaptado el 1 de enero de 2027 y los autónomos el 1 de julio de 2027. Los detalles están en la [guía de Verifactu para pymes](/blog/verifactu-pymes-guia-2026).
+Dos obligaciones que llegan al mismo mostrador. El ticket de un bar es una factura simplificada y entra en el alcance del Real Decreto 1007/2023. Hacienda anunció el 5 de octubre de 2026 que la obligación pasa a octubre de 2028 para todos, aunque el real decreto aún no está en el BOE; hasta entonces, el Real Decreto-ley 15/2025 marcaba el 1 de enero de 2027 para las sociedades y el 1 de julio de 2027 para los autónomos. Lo contamos en [Verifactu se aplaza a octubre de 2028](/blog/verifactu-aplazado-octubre-2028) y el resto de detalles están en la [guía de Verifactu para pymes](/blog/verifactu-pymes-guia-2026).
 
 ![Mostrador de una cafetería con la caja y el terminal de cobro](/images/blog/tpv-bares-restaurantes-como-elegir-2026/section-2.jpg)
 
@@ -188,7 +188,7 @@ No, son cosas distintas y conviene no confundirlas. Una app de carta QR resuelve
 
 ### ¿El TPV tiene que emitir tickets conformes a Verifactu?
 
-Sí, el ticket de un bar es una factura simplificada y entra dentro del alcance del Real Decreto 1007/2023. Tras el aplazamiento del Real Decreto-ley 15/2025, las sociedades deben tener el sistema adaptado el 1 de enero de 2027 y los autónomos el 1 de julio de 2027. Conviene comprobar hoy que el TPV que estás mirando ya lo cumple.
+Sí, el ticket de un bar es una factura simplificada y entra dentro del alcance del Real Decreto 1007/2023. Hacienda anunció el 5 de octubre de 2026 que la obligación se aplaza a octubre de 2028 para todos, pendiente de publicación en el BOE; hasta entonces, el Real Decreto-ley 15/2025 marcaba el 1 de enero de 2027 para las sociedades y el 1 de julio de 2027 para los autónomos. Conviene comprobar hoy que el TPV que estás mirando ya lo cumple.
 
 ### ¿Cómo calculo el coste total de un TPV de hostelería?
 

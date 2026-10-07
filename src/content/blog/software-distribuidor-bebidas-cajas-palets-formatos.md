@@ -3,6 +3,7 @@ title: "Software para distribuidores de bebidas: vender en unidades, cajas y pal
 meta_title: "Software para distribuidores de bebidas: cajas y palés"
 description: "Software para distribuidor de bebidas y alimentación: vende en unidades, cajas y palés, con peso y bultos calculados, lotes, caducidad y palets SSCC."
 date: 2026-09-23
+updated: 2026-10-07
 image: "/images/blog/preparacion-de-pedidos-picking-almacen/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -54,7 +55,7 @@ Necesita entender los formatos. Una distribuidora compra en palés, almacena en 
 - Preparación de varios pedidos en una sola vuelta y expedición con escaneo.
 - Palets con etiqueta SSCC para clientes que la exigen.
 - Tarifas por cliente, comerciales con su cartera y remesas SEPA.
-- Facturación con Verifactu, obligatoria desde el 1 de enero de 2027 para sociedades y desde el 1 de julio de 2027 para autónomos.
+- Facturación con Verifactu, ya operativa; la obligación [se ha aplazado a octubre de 2028](/blog/verifactu-aplazado-octubre-2028).
 
 ## ¿Cómo se vende el mismo producto en unidades, cajas y palés?
 

@@ -41,9 +41,9 @@ faq:
 
 > El calendario laboral 2027 todavía no está completo: a 28 de septiembre de 2026 el BOE no ha publicado la lista nacional de festivos, que el año pasado salió a finales de octubre. Lo que sí es fijo es el marco: como máximo 14 fiestas al año, dos de ellas locales. Extremadura ya publicó sus festivos de 2027 en el DOE. Con eso puedes calcular las horas que debe hacer cada persona y, a partir de ahí, sus horas extra.
 
-<Notice type="info" title="Estado a 28 de septiembre de 2026">
-El BOE todavía no ha publicado la relación de fiestas laborales de 2027. Este artículo recoge lo que ya es oficial (el calendario de Extremadura, publicado en el DOE) y lo que marca la ley. En cuanto salga la resolución del BOE, lo actualizamos con los festivos de todas las comunidades.
-</Notice>
+> **Estado a 28 de septiembre de 2026**
+>
+> El BOE todavía no ha publicado la relación de fiestas laborales de 2027. Este artículo recoge lo que ya es oficial (el calendario de Extremadura, publicado en el DOE) y lo que marca la ley. En cuanto salga la resolución del BOE, lo actualizamos con los festivos de todas las comunidades.
 
 <div class="my-8 flex justify-center">
   <a href="/control-horario#calendarios" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">

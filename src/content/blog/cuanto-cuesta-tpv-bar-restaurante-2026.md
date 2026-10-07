@@ -3,6 +3,7 @@ title: "¿Cuánto cuesta un TPV para un bar o restaurante en 2026?"
 meta_title: "Cuánto cuesta un TPV para un bar o restaurante en 2026"
 description: "Precio real de un TPV para bar o restaurante en 2026: hardware, software, comisiones, pantalla de cocina, fichaje y Verifactu, con tres ejemplos de coste."
 date: 2026-09-23
+updated: 2026-10-07
 image: "/images/blog/tpv-bares-restaurantes-como-elegir-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -70,7 +71,7 @@ Ojo a la unidad: por local, por punto de venta o por tienda no es lo mismo cuand
 
 Tiene truco: se compara un pago único con una cuota sin mirar el plazo. [VentaTPV calcula](https://ventatpv.com/blog/cuanto-cuesta-un-tpv-completo-para-hosteleria-precios-y-que-incluyen-en-2026-n33) que un software por suscripción de 40 a 80 € al mes supone entre 1.440 y 2.880 € a tres años. Con la misma cuenta, el plan Full de Drenpos son 39 × 36 = **1.404 € sin IVA a tres años**, y dentro van el almacén, la facturación, el fichaje y las actualizaciones.
 
-Con una licencia sin cuota, las preguntas útiles son otras: qué módulos van aparte (en Numier, la cocina, la carta digital y el inventario), quién te actualiza el programa cuando cambia la normativa y qué cuesta ese cambio. Con Verifactu en 2027, esa última no es teórica.
+Con una licencia sin cuota, las preguntas útiles son otras: qué módulos van aparte (en Numier, la cocina, la carta digital y el inventario), quién te actualiza el programa cuando cambia la normativa y qué cuesta ese cambio. Con Verifactu en el horizonte (octubre de 2028, según el último anuncio de Hacienda), esa última no es teórica.
 
 ## ¿Qué comisiones se pagan por cobrar con tarjeta?
 
@@ -90,7 +91,7 @@ El **fichaje** va en el mismo sistema: el plan Full trae cinco personas y cada u
 
 ## ¿Y Verifactu, cuesta algo?
 
-Debería ir incluido, pero pregúntalo. Por el [Real Decreto-ley 15/2025](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-24446), las sociedades tienen que facturar con un sistema adaptado el 1 de enero de 2027 y los autónomos el 1 de julio de 2027, y el ticket de la barra también entra. En Drenpos va en todos los planes: cada ticket simplificado genera su registro de facturación y su QR y se remite a la AEAT desde el propio sistema. El detalle está en [software de facturación Verifactu](/software-verifactu).
+Debería ir incluido, pero pregúntalo. Hacienda anunció el 5 de octubre de 2026 que la obligación se aplaza a octubre de 2028 para todos ([qué cambia](/blog/verifactu-aplazado-octubre-2028)), pendiente de publicación en el BOE; hasta entonces, el [Real Decreto-ley 15/2025](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-24446) marcaba el 1 de enero de 2027 para las sociedades y el 1 de julio de 2027 para los autónomos. El ticket de la barra también entra. En Drenpos va en todos los planes: cada ticket simplificado genera su registro de facturación y su QR y se remite a la AEAT desde el propio sistema. El detalle está en [software de facturación Verifactu](/software-verifactu).
 
 ## Tres locales tipo: cuánto cuesta en Drenpos
 

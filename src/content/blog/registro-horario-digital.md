@@ -27,9 +27,9 @@ hero:
 
 La pregunta ya no es si debes llevar un **registro horario**: la ley te lo exige desde 2019, y el real decreto en tramitación quiere que sea digital y endurecer el control. Hoy la infracción grave por no llevar registro, o por llevarlo de forma que no refleje la jornada real, se sanciona con entre 751 y 7.500 euros. Versiones del proyecto de reforma que se han conocido plantean calcular esa multa por trabajador afectado, hasta 10.000 euros por cabeza; no está en vigor y no todos los análisis lo leen así. Consulta el desglose completo en nuestra guía de [multas de registro horario 2026](/blog/multas-registro-horario-2026-costo-incumplimiento).
 
-<Notice type="info" title="Actualizado en septiembre de 2026">
-Estado a 23 de septiembre de 2026: el real decreto de registro horario digital no está aprobado por el Consejo de Ministros ni publicado en el BOE. El Consejo de Estado emitió dictamen desfavorable el 23 de marzo de 2026, en julio se aplazó a septiembre y el Ministerio de Trabajo dijo el 2 de septiembre que lo aprobará "a la mayor brevedad", sin fecha ([Registrahora](https://www.registrahora.es/noticias/registro-horario-digital-aplazado-septiembre-2026)). Lo vigente es el artículo 34.9 del Estatuto de los Trabajadores (Real Decreto-ley 8/2019), con sanción grave de 751 a 7.500 euros por infracción según la LISOS. Revisaremos esta guía el día que se publique.
-</Notice>
+> **Actualizado en septiembre de 2026**
+>
+> Estado a 23 de septiembre de 2026: el real decreto de registro horario digital no está aprobado por el Consejo de Ministros ni publicado en el BOE. El Consejo de Estado emitió dictamen desfavorable el 23 de marzo de 2026, en julio se aplazó a septiembre y el Ministerio de Trabajo dijo el 2 de septiembre que lo aprobará "a la mayor brevedad", sin fecha ([Registrahora](https://www.registrahora.es/noticias/registro-horario-digital-aplazado-septiembre-2026)). Lo vigente es el artículo 34.9 del Estatuto de los Trabajadores (Real Decreto-ley 8/2019), con sanción grave de 751 a 7.500 euros por infracción según la LISOS. Revisaremos esta guía el día que se publique.
 
 El [registro en papel o Excel](/blog/por-que-excel-ya-no-sirve-control-horario-2026) se queda fuera en cuanto se apruebe el real decreto y, además, ya hoy es una **trampa contable activa**. Cada hora no trazada es una hora que puede convertirse en litigio, sanción o pérdida de margen. La digitalización del registro es la estructura mínima de seguridad jurídica que cualquier empresa necesita para operar sin sobresaltos.
 

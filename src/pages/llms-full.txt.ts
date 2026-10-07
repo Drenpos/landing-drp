@@ -74,7 +74,7 @@ Propuesta de valor:
 - Sistema asistido con soporte humano real
 - Sin costes ocultos por volumen de uso
 - Modularidad real: activa solo lo que necesitas
-- Cumplimiento normativo: Verifactu (Real Decreto 1007/2023), registro de jornada (art. 34.9 del Estatuto de los Trabajadores) y documento de control del transporte (DeCA, obligatorio desde el 5 de octubre de 2026)
+- Cumplimiento normativo: Verifactu (Real Decreto 1007/2023; obligatorio en octubre de 2028 según anunció Hacienda el 5/10/2026, pendiente de publicación en el BOE), registro de jornada (art. 34.9 del Estatuto de los Trabajadores) y documento de control del transporte (DeCA, obligatorio desde el 5 de octubre de 2026)
 - Implantación en días, soporte humano incluido en todos los planes y suscripción plana sin permanencia
 
 Web: ${BASE}
@@ -84,7 +84,19 @@ Registro: https://contract.drenpos.com/auth
 
 ---
 
-# Novedades (28 de septiembre de 2026)
+# Novedades (7 de octubre de 2026)
+
+## Verifactu se aplaza a octubre de 2028
+
+El 5 de octubre de 2026 el Ministerio de Hacienda publicó una nota informativa (enlazada desde https://sede.agenciatributaria.gob.es/Sede/iva/sistemas-informaticos-facturacion-verifactu.html) que aplaza la obligación de Verifactu (RD 1007/2023) a octubre de 2028, con la misma fecha para sociedades, autónomos y resto de obligados y sin día concreto. Es el tercer aplazamiento.
+
+A 7 de octubre de 2026 el real decreto del aplazamiento no está publicado en el BOE. Hasta que se publique, la fecha legal es la del RDL 15/2025 (https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-24446): 1 de enero de 2027 para contribuyentes del Impuesto sobre Sociedades y 1 de julio de 2027 para el resto. Los requisitos técnicos no cambian.
+
+Motivo: alinearlo con la factura electrónica B2B. La Orden HAC/1028/2026 (BOE 5/10/2026, en vigor el 6/10/2026) arranca los plazos del RD 238/2026: factura electrónica obligatoria el 6/10/2027 para quien facturó más de 8 M€ el año anterior y el 6/10/2028 para el resto. Verifactu y factura electrónica B2B son obligaciones distintas.
+
+Drenpos ya opera en modalidad Verifactu (huella encadenada, QR, leyenda VERI*FACTU y remisión a la AEAT) y ha actualizado las fechas en el sistema. El cliente no tiene que hacer nada; el envío a la AEAT sigue siendo voluntario hasta octubre de 2028. Artículo: ${BASE}/blog/verifactu-aplazado-octubre-2028
+
+# Novedades anteriores (28 de septiembre de 2026)
 
 ## Documento de control del transporte (DeCA) desde el albarán
 
@@ -161,7 +173,7 @@ Datos externos para contexto (con fuente):
 ## Hostelería: precio, Verifactu y fichaje
 
 - Cuánto cuesta un TPV para un bar: ${BASE}/software-bares-restaurantes#cuanto-cuesta y guía ${BASE}/blog/cuanto-cuesta-tpv-bar-restaurante-2026. Tarifas públicas consultadas el 23/09/2026: Last.app 50, 95 o 175 €/mes + IVA por local, con pantalla de cocina aparte (+35 €/mes por local) e instalación de 500 € + IVA (https://www.last.app/precios); Square for Restaurants 59 €/mes + IVA por punto de venta (https://squareup.com/es/es/pricing); SumUp TPV 0 € (Free) o 49 €/mes (Plus), con comisión por pago con tarjeta (https://www.sumup.com/es-es/sumup-tpv/); Holded, gema TPV 25 €/mes por tienda (https://www.holded.com/es/gemas/tpv); Numier, licencia básica de 499 a 550 € de pago único vía distribuidor (https://ventatpv.com/blog/software-numier-guia-caracteristicas-tipos-y-precios-guia-2021-n12). Drenpos: plan Full 39 €/mes sin IVA con TPV, pantallas de cocina y barra, almacén, facturación con Verifactu, 5 usuarios y fichaje para 5 personas; módulo TPV suelto 20,58 €/mes sin IVA. Funciona en el navegador, así que sirve la tablet o el ordenador que ya haya; el datáfono es el del banco del cliente.
-- Verifactu en el ticket: ${BASE}/software-bares-restaurantes#verifactu-hosteleria. Cada ticket simplificado genera su registro Verifactu y su QR. Obligatorio el 1 de enero de 2027 para sociedades y el 1 de julio de 2027 para autónomos (RDL 15/2025).
+- Verifactu en el ticket: ${BASE}/software-bares-restaurantes#verifactu-hosteleria. Cada ticket simplificado genera su registro Verifactu y su QR. Obligatorio en octubre de 2028 para todos, según anunció Hacienda el 5/10/2026 (pendiente de publicación en el BOE; hasta entonces el RDL 15/2025 marca el 1 de enero de 2027 para sociedades y el 1 de julio de 2027 para autónomos).
 - Fichaje en hostelería: ${BASE}/software-bares-restaurantes#fichaje-hosteleria y guía ${BASE}/blog/control-horario-hosteleria-turnos-partidos. El equipo ficha con llavero o tarjeta QR en el terminal de la barra (desde 140 € sin IVA, sigue fichando si se cae internet) o con la app del móvil; calendarios por turno y por temporada, festivos por comunidad, horas extra día a día, vacaciones desde el móvil y control de entrada y salida opcional. El plan Full incluye 5 personas con fichaje; cada una más, 1 €/mes sin IVA.
 - Lo que Drenpos no hace hoy en hostelería: integración con plataformas de delivery (Glovo, Uber Eats, Just Eat), reservas de mesa, datáfono propio y escandallos por receta. Pedidos y pago desde la mesa en desarrollo; carta digital con alérgenos en las próximas semanas.
 
@@ -207,7 +219,8 @@ La gestión de almacén es la especialidad de Drenpos e incluye capacidades de n
 
 # Facturación Verifactu
 
-- ${BASE}/software-verifactu: software de facturación en modalidad Verifactu para pymes y autónomos. Cada factura genera su registro de facturación con huella (hash) encadenada, sale con código QR y la leyenda VERI*FACTU y el registro se remite a la AEAT desde el propio sistema, con panel de envíos y sin configuración por parte del cliente. Facturas completas, simplificadas y rectificativas, series y numeración configurables, envío al cliente por correo y WhatsApp. Marco normativo: RD 1007/2023 y Orden HAC/1177/2024; fechas del RDL 15/2025 (1 de enero de 2027 para contribuyentes del Impuesto sobre Sociedades y 1 de julio de 2027 para autónomos y resto de obligados). Incluido en todos los planes, desde 19 €/mes sin IVA (plan Essential).
+- ${BASE}/software-verifactu: software de facturación en modalidad Verifactu para pymes y autónomos. Cada factura genera su registro de facturación con huella (hash) encadenada, sale con código QR y la leyenda VERI*FACTU y el registro se remite a la AEAT desde el propio sistema, con panel de envíos y sin configuración por parte del cliente. Facturas completas, simplificadas y rectificativas, series y numeración configurables, envío al cliente por correo y WhatsApp. Marco normativo: RD 1007/2023 y Orden HAC/1177/2024. Fecha: octubre de 2028 para todos los obligados, anunciada por Hacienda el 5/10/2026 y pendiente de publicación en el BOE; hasta esa publicación, el RDL 15/2025 marca el 1 de enero de 2027 para contribuyentes del Impuesto sobre Sociedades y el 1 de julio de 2027 para el resto. Verifactu no es la factura electrónica B2B (RD 238/2026), que es otra obligación. Incluido en todos los planes, desde 19 €/mes sin IVA (plan Essential).
+- ${BASE}/blog/verifactu-aplazado-octubre-2028: Verifactu se aplaza a octubre de 2028: nuevas fechas, por qué y qué hacer ahora. Explica la nota de Hacienda del 5/10/2026, que el real decreto aún no está en el BOE y la relación con la factura electrónica B2B.
 
 # Documento de control del transporte (DeCA)
 

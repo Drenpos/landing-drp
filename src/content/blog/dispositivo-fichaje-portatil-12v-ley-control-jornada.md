@@ -47,9 +47,9 @@ faq:
 
 Y el momento de resolverlo es ahora. La Inspección de Trabajo levantó **1.869 actas de infracción por registro de jornada en 2024 (un 90% más que en 2019) con 20,2 millones de euros en sanciones**, según los datos recopilados por [Mi Fichaje Legal](https://mifichajelegal.com/blog/real-decreto-registro-horario-digital-mayo-2026-estado-tramitacion-pymes/). Además, el nuevo real decreto que endurece los requisitos sigue avanzando: el Gobierno retomó su tramitación en septiembre de 2026.
 
-<Notice type="info" title="Actualizado en septiembre de 2026">
-Este artículo incorpora la revisión v2 del terminal: placa electrónica propia diseñada por Drenpos, carcasa impresa en 3D con el logo del cliente, versión de firmware visible en pantalla y actualizaciones desde su panel web. La ficha técnica completa y el precio están en la página del [dispositivo de fichaje](/dispositivo-fichaje). También explica el modo sin conexión: el terminal ficha aunque no haya internet y sincroniza al volver.
-</Notice>
+> **Actualizado en septiembre de 2026**
+>
+> Este artículo incorpora la revisión v2 del terminal: placa electrónica propia diseñada por Drenpos, carcasa impresa en 3D con el logo del cliente, versión de firmware visible en pantalla y actualizaciones desde su panel web. La ficha técnica completa y el precio están en la página del [dispositivo de fichaje](/dispositivo-fichaje). También explica el modo sin conexión: el terminal ficha aunque no haya internet y sincroniza al volver.
 
 ## Qué exige la ley de control de jornada (y qué está a punto de cambiar)
 

@@ -276,7 +276,7 @@ Sesión práctica (1-2 h): **presupuestos/pedidos/facturas**, **cierres de caja*
 - [Módulo de Facturación](/modulos/facturacion)
 - [Módulo de TPV](/modulos/tpv)
 - [Módulo de Almacén](/modulos/almacen)
-- [Guía VERI\*FACTU](/blog/verifactu-que-es-guia-2025)
+- [Guía VERI\*FACTU](/blog/verifactu-pymes-guia-2026)
 - [Contacto](/contact) -->
 
 ---

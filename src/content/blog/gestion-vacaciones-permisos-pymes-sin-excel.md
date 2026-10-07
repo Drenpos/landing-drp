@@ -76,9 +76,9 @@ Los permisos del [artículo 37.3 del Estatuto](https://www.conceptosjuridicos.co
 | Fuerza mayor por motivos familiares urgentes | Hasta 4 días al año, por horas o días | Art. 37.9, según [Protime](https://www.protime.eu/es-es/noticias/permisos-retribuidos) |
 | Asuntos propios | Lo que diga tu convenio | Convenio colectivo |
 
-<Notice type="info" title="Permiso por fallecimiento: situación a 23 de septiembre de 2026">
-El Gobierno y los sindicatos acordaron en diciembre de 2025 ampliar el permiso por fallecimiento a 10 días, pero la reforma no está publicada en el BOE. Como recoge [Woffu en su guía del 19 de agosto de 2026](https://woffu.com/es/blog/normativa/es-blog-permiso-fallecimiento/), "a día de hoy, esta ampliación no está en vigor". Siguen siendo 2 días, o 4 con desplazamiento. Revisaremos esta tabla cuando se publique.
-</Notice>
+> **Permiso por fallecimiento: situación a 23 de septiembre de 2026**
+>
+> El Gobierno y los sindicatos acordaron en diciembre de 2025 ampliar el permiso por fallecimiento a 10 días, pero la reforma no está publicada en el BOE. Como recoge [Woffu en su guía del 19 de agosto de 2026](https://woffu.com/es/blog/normativa/es-blog-permiso-fallecimiento/), "a día de hoy, esta ampliación no está en vigor". Siguen siendo 2 días, o 4 con desplazamiento. Revisaremos esta tabla cuando se publique.
 
 ## ¿Por qué el Excel de vacaciones falla en cuanto crece el equipo?
 

@@ -11,10 +11,16 @@ import DemoForm from "@/partials/DemoForm.astro";
 //    - "software verifactu" / "programa de facturación verifactu" (principal)
 //    - "software adaptado a verifactu" / "facturación verifactu pymes"
 //  Hechos verificados que se pueden usar aquí: RD 1007/2023,
-//  Orden HAC/1177/2024, RDL 15/2025 (1 de enero y 1 de julio de 2027),
+//  Orden HAC/1177/2024, RDL 15/2025 (1 de enero y 1 de julio de 2027:
+//  fecha legal vigente mientras no se publique otra en el BOE), nota de
+//  Hacienda del 5/10/2026 (aplaza la obligación a octubre de 2028 para
+//  todos, sin día concreto; real decreto pendiente de BOE a 7/10/2026),
+//  Orden HAC/1028/2026 (BOE 5/10/2026: factura electrónica B2B el
+//  6/10/2027 si facturas más de 8 M€ y el 6/10/2028 el resto),
 //  modalidad Verifactu de Drenpos (huella encadenada, QR con leyenda,
 //  remisión a la AEAT, panel de envíos), sanciones del art. 201 bis LGT.
 //  Contenido largo y normativa: /blog/verifactu-pymes-guia-2026
+//  Aplazamiento a octubre de 2028: /blog/verifactu-aplazado-octubre-2028
 //  Imágenes: /public/images/blog/verifactu/
 // ════════════════════════════════════════════════════════════════════════
 
@@ -122,7 +128,7 @@ const casos = [
     tag: "Autónomos y profesionales",
     icon: "🧑‍💻",
     title: "Facturar sin pensar en el reglamento",
-    body: "Emites tus facturas, las mandas por correo o por WhatsApp y el registro sale hacia la AEAT solo. Tu fecha límite es el 1 de julio de 2027, pero el sistema ya funciona así hoy.",
+    body: "Emites tus facturas, las mandas por correo o por WhatsApp y el registro sale hacia la AEAT solo. Hacienda anunció el 5 de octubre de 2026 que la obligación pasa a octubre de 2028, pendiente de publicación en el BOE. El sistema ya funciona así hoy.",
   },
   {
     tag: "Comercio con TPV",
@@ -151,7 +157,7 @@ const faqs = [
   },
   {
     q: "¿Desde cuándo es obligatorio Verifactu?",
-    a: "El Real Decreto-ley 15/2025 trasladó la obligación a 2027: las sociedades, es decir los contribuyentes del Impuesto sobre Sociedades, deben tener el sistema adaptado el 1 de enero de 2027, y los autónomos, profesionales y el resto de obligados el 1 de julio de 2027. El aplazamiento cambió el calendario, no los requisitos técnicos del Real Decreto 1007/2023 ni de la Orden HAC/1177/2024.",
+    a: "Hacienda anunció el 5 de octubre de 2026 que la obligación se aplaza a octubre de 2028, con la misma fecha para sociedades, autónomos y el resto de obligados. Es el tercer aplazamiento y el real decreto aún tiene que publicarse en el BOE. Hasta que se publique, la fecha legal sigue siendo la del Real Decreto-ley 15/2025: el 1 de enero de 2027 para los contribuyentes del Impuesto sobre Sociedades y el 1 de julio de 2027 para el resto. El motivo es hacerla coincidir con la factura electrónica B2B. Cambia el calendario; los requisitos técnicos del Real Decreto 1007/2023 y de la Orden HAC/1177/2024 siguen igual.",
   },
   {
     q: "¿Qué diferencia hay entre Verifactu y un sistema no verificable?",
@@ -167,7 +173,7 @@ const faqs = [
   },
   {
     q: "¿Sirve para autónomos?",
-    a: "Sí. Un autónomo que emite facturas con un programa informático entra en el reglamento igual que una sociedad, con fecha límite del 1 de julio de 2027. El plan Essential parte de 19 €/mes sin IVA e incluye la facturación con Verifactu, el envío de las facturas por correo y por WhatsApp y los informes.",
+    a: "Sí. Un autónomo que emite facturas con un programa informático entra en el reglamento igual que una sociedad. La fecha es octubre de 2028, anunciada por Hacienda el 5 de octubre de 2026 y pendiente de publicación en el BOE; hasta entonces el RDL 15/2025 mantiene el 1 de julio de 2027. El plan Essential parte de 19 €/mes sin IVA e incluye la facturación con Verifactu, el envío de las facturas por correo y por WhatsApp y los informes.",
   },
   {
     q: "¿Incluye TPV para tienda o restaurante?",
@@ -310,15 +316,20 @@ const softwareSchema = {
           </span>
 
           <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
-            <span class="text-primary">Software de facturación Verifactu</span> para pymes, listo para 2027
+            <span class="text-primary">Software de facturación Verifactu</span> para pymes. Ya cumple hoy; obligatorio en octubre de 2028
           </h1>
-          <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
+          <p class="text-lg mb-4 max-w-xl" style="color: rgba(16,25,40,0.72);">
             Drenpos emite tus facturas en <strong>modalidad Verifactu</strong>:
             cada una genera su registro de facturación con
             <strong>huella encadenada</strong>, sale con el
             <strong>código QR</strong> y la leyenda VERI*FACTU, y el registro se
             <strong>remite a la AEAT</strong> desde el propio sistema. Tú no
             configuras nada, y lo ves todo en el panel de envíos.
+          </p>
+          <p class="text-sm mb-8 max-w-xl" style="color: rgba(16,25,40,0.62);">
+            Octubre de 2028 es la fecha que anunció Hacienda el 5 de octubre de
+            2026, pendiente de publicación en el BOE.
+            <a href="/blog/verifactu-aplazado-octubre-2028" class="text-primary underline">Lee qué cambia con el aplazamiento a octubre de 2028</a>.
           </p>
 
           <ul class="flex flex-wrap gap-4 mb-10">
@@ -384,11 +395,11 @@ const softwareSchema = {
               </div>
             </div>
 
-            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5 max-w-[17rem]" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
               <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #fef3c7;">📅</div>
               <div>
-                <p class="text-xs font-bold text-dark">1 de enero de 2027</p>
-                <p class="text-xs" style="color: #9ca3af;">Sociedades. Autónomos, 1 de julio</p>
+                <p class="text-xs font-bold text-dark">Octubre de 2028, todos los obligados</p>
+                <p class="text-[10px] leading-snug" style="color: #9ca3af;">Anunciado por Hacienda el 5/10/2026, pendiente de BOE. Hasta su publicación, el RDL 15/2025 marca el 1/1/2027 (sociedades) y el 1/7/2027 (autónomos).</p>
               </div>
             </div>
           </div>
@@ -568,7 +579,7 @@ const softwareSchema = {
       <div class="text-center mb-10" data-aos="fade-up-sm">
         <h2 class="h3 font-bold mb-4">¿Con qué estás facturando ahora mismo?</h2>
         <p class="text-lg" style="color: rgba(16,25,40,0.65);">
-          Las cuatro situaciones en las que suele estar una pyme antes de 2027.
+          Las cuatro situaciones en las que suele estar una pyme antes de que Verifactu sea obligatorio.
         </p>
       </div>
       <div class="overflow-x-auto" data-aos="fade-up-sm">
@@ -789,6 +800,9 @@ const softwareSchema = {
         <div class="lg:col-10" data-aos="fade-up-sm">
           <h2 class="h5 font-bold mb-3">Sigue por aquí</h2>
           <ul class="row g-2 text-sm mb-8">
+            <li class="md:col-6">
+              <a href="/blog/verifactu-aplazado-octubre-2028" class="text-primary hover:underline">Verifactu se aplaza a octubre de 2028: nuevas fechas y qué hacer ahora</a>
+            </li>
             <li class="md:col-6">
               <a href="/blog/verifactu-pymes-guia-2026" class="text-primary hover:underline">Guía de Verifactu para pymes: fechas, QR y sanciones</a>
             </li>

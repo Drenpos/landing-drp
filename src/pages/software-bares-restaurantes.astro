@@ -269,12 +269,13 @@ const preciosMercado = [
   },
 ];
 
-// Verifactu en hostelería: solo lo que dice /software-verifactu y el RDL 15/2025
+// Verifactu en hostelería: solo lo que dice /software-verifactu, el RDL 15/2025
+// y la nota de Hacienda del 5/10/2026 (octubre de 2028, pendiente de BOE)
 const verifactuHosteleria = [
   {
     icon: "📅",
-    title: "Dos fechas, según cómo factures",
-    body: "Si el bar es una sociedad (paga el Impuesto sobre Sociedades), el 1 de enero de 2027. Si eres autónomo, el 1 de julio de 2027. El aplazamiento movió el calendario, no los requisitos.",
+    title: "Octubre de 2028, para todos",
+    body: "Sociedad o autónomo, la fecha es la misma: octubre de 2028, anunciada por Hacienda el 5 de octubre de 2026 y pendiente de publicación en el BOE. Hasta entonces el RDL 15/2025 marca el 1 de enero de 2027 para sociedades y el 1 de julio de 2027 para autónomos. Cambia el calendario, no los requisitos.",
   },
   {
     icon: "🧾",
@@ -385,7 +386,7 @@ const faqs = [
   },
   {
     q: "¿Es obligatorio Verifactu en un bar?",
-    a: "Sí, si el bar factura con un programa informático, y el ticket simplificado de la barra también entra. Según el Real Decreto-ley 15/2025, las sociedades tienen que estar adaptadas el 1 de enero de 2027 y los autónomos el 1 de julio de 2027. En Drenpos cada ticket que sale del TPV genera su registro de facturación y su QR y se remite a la AEAT desde el propio sistema, sin configuración por tu parte.",
+    a: "Sí, si el bar factura con un programa informático, y el ticket simplificado de la barra también entra. La fecha pasa a octubre de 2028 para todos, sociedades y autónomos: lo anunció Hacienda el 5 de octubre de 2026 y está pendiente de publicación en el BOE. Mientras no se publique, el Real Decreto-ley 15/2025 mantiene el 1 de enero de 2027 para sociedades y el 1 de julio de 2027 para autónomos. En Drenpos cada ticket que sale del TPV genera su registro de facturación y su QR y se remite a la AEAT desde el propio sistema, sin configuración por tu parte.",
   },
   {
     q: "¿El software para bares integra el fichaje del personal?",
@@ -454,7 +455,7 @@ const productSchema = {
   operatingSystem: "Web, iOS, Android (PWA)",
   url: CANONICAL,
   description:
-    "Software para bares y restaurantes con TPV de hostelería: mapa de sala editable, combinados y extras guiados con precio por opción, pantallas de cocina y barra por familias, QR de mesa con analítica de escaneos y cierre de caja con el stock descontado. Cada ticket simplificado genera su registro Verifactu y su QR (obligatorio el 1 de enero de 2027 para sociedades y el 1 de julio de 2027 para autónomos). Incluye fichaje del personal con terminal RFID en la barra que funciona sin conexión, app móvil, calendarios por turno, horas extra día a día y vacaciones. Plan Full 39 €/mes sin IVA con 5 usuarios y fichaje para 5 personas.",
+    "Software para bares y restaurantes con TPV de hostelería: mapa de sala editable, combinados y extras guiados con precio por opción, pantallas de cocina y barra por familias, QR de mesa con analítica de escaneos y cierre de caja con el stock descontado. Cada ticket simplificado genera su registro Verifactu y su QR (obligatorio en octubre de 2028 para todos, según anunció Hacienda el 5 de octubre de 2026, pendiente de publicación en el BOE). Incluye fichaje del personal con terminal RFID en la barra que funciona sin conexión, app móvil, calendarios por turno, horas extra día a día y vacaciones. Plan Full 39 €/mes sin IVA con 5 usuarios y fichaje para 5 personas.",
   offers: {
     "@type": "Offer",
     price: "39.00",
@@ -1023,9 +1024,10 @@ const faqSchema = {
         <h2 class="h3 font-bold mb-4">¿Es obligatorio Verifactu en un bar o un restaurante?</h2>
         <p class="text-lg leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
           Sí, si facturas con un programa informático, y el ticket de la barra
-          también cuenta. Tras el Real Decreto-ley 15/2025, el bar que funciona
-          como sociedad tiene que estar adaptado el 1 de enero de 2027, y el
-          autónomo el 1 de julio de 2027. En Drenpos cada ticket simplificado
+          también cuenta. Lo que cambia es la fecha: Hacienda anunció el 5 de
+          octubre de 2026 que pasa a octubre de 2028, igual para el bar que
+          funciona como sociedad y para el autónomo. Está pendiente de
+          publicación en el BOE. En Drenpos cada ticket simplificado
           que sale del TPV genera su registro de facturación y su código QR, sin
           que el camarero haga nada distinto.
         </p>
@@ -1049,10 +1051,16 @@ const faqSchema = {
         <p class="font-semibold text-text-dark mb-2">En qué se apoya</p>
         <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
           Los requisitos técnicos los fijan el Real Decreto 1007/2023 y la Orden
-          HAC/1177/2024. El calendario vigente es el del
-          <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-24446" rel="noopener" target="_blank" class="text-primary underline">Real Decreto-ley 15/2025 (BOE)</a>,
-          que aplazó la obligación a 2027 sin cambiar lo que tiene que hacer el
-          programa. Lo contamos entero, con qué pasa si sigues con tu programa
+          HAC/1177/2024. El 5 de octubre de 2026 Hacienda anunció un nuevo
+          aplazamiento a octubre de 2028 para todos, para hacerlo coincidir con
+          la factura electrónica B2B. Hasta que ese real decreto salga en el
+          BOE, la fecha legal es la del
+          <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-24446" rel="noopener" target="_blank" class="text-primary underline">Real Decreto-ley 15/2025 (BOE)</a>:
+          1 de enero de 2027 para sociedades y 1 de julio de 2027 para
+          autónomos. Ningún aplazamiento ha cambiado lo que tiene que hacer el
+          programa. Tienes las nuevas fechas en
+          <a href="/blog/verifactu-aplazado-octubre-2028" class="text-primary underline">Verifactu se aplaza a octubre de 2028</a>.
+          Lo contamos entero, con qué pasa si sigues con tu programa
           actual, en
           <a href="/software-verifactu" class="text-primary underline">software de facturación Verifactu</a>
           y en la <a href="/blog/verifactu-pymes-guia-2026" class="text-primary underline">guía de Verifactu para pymes y autónomos</a>.

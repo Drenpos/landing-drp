@@ -40,9 +40,9 @@ Buscar el **mejor programa de control horario** en 2026 es más difícil de lo q
 
 El [registro de jornada es obligatorio en España desde 2019](/blog/registro-horario-digital) y el real decreto en tramitación (a 23 de septiembre de 2026, sin aprobar ni publicar en el BOE) quiere que sea **exclusivamente digital**, inalterable y accesible para la Inspección de Trabajo en remoto. Un sistema que no cumpla esos tres requisitos se quedará corto en cuanto se apruebe, aunque sea gratuito. De hecho, puede costarte más que no tener nada: la infracción grave ya se sanciona con 751 a 7.500 euros y versiones del proyecto de reforma plantean [calcular las multas por trabajador afectado](/blog/multas-registro-horario-2026-costo-incumplimiento).
 
-<Notice type="info" title="Actualizado en septiembre de 2026">
-Revisada el 23 de septiembre de 2026: el real decreto de registro horario digital sigue sin aprobarse ni publicarse en el BOE (el Gobierno retomó su tramitación en septiembre tras el dictamen del Consejo de Estado). Hemos añadido dos criterios de elección, vacaciones y ausencias incluidas o de pago y control de entrada y salida, con una tabla de precios con fuente y fecha.
-</Notice>
+> **Actualizado en septiembre de 2026**
+>
+> Revisada el 23 de septiembre de 2026: el real decreto de registro horario digital sigue sin aprobarse ni publicarse en el BOE (el Gobierno retomó su tramitación en septiembre tras el dictamen del Consejo de Estado). Hemos añadido dos criterios de elección, vacaciones y ausencias incluidas o de pago y control de entrada y salida, con una tabla de precios con fuente y fecha.
 
 Esta comparativa ordena por lo que le importa a una pyme española: cumplimiento real, integración con la operativa diaria y coste total sin sorpresas. La popularidad y el presupuesto de marketing se quedan fuera.
 
