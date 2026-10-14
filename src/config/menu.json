@@ -12,86 +12,114 @@
       "blank": false,
       "data-cc": "",
       "hasChildren": true,
-      "children": [
+      "groups": [
         {
-          "name": "Varios",
-          "url": "/funcionalidades"
+          "title": "Almacén y stock",
+          "hub": {
+            "name": "Ver todo sobre almacén",
+            "url": "/software-gestion-almacen"
+          },
+          "children": [
+            {
+              "name": "Gestión de almacén (SGA)",
+              "url": "/software-gestion-almacen"
+            },
+            {
+              "name": "Control de stock",
+              "url": "/software-control-stock"
+            },
+            {
+              "name": "Preparación de pedidos (picking)",
+              "url": "/software-preparacion-pedidos-picking"
+            },
+            {
+              "name": "Gestión de palets (SSCC)",
+              "url": "/software-gestion-palets"
+            },
+            {
+              "name": "Almacén frigorífico",
+              "url": "/software-almacen-frigorifico"
+            },
+            {
+              "name": "Alquiler de huecos de palet",
+              "url": "/software-alquiler-huecos-palet"
+            }
+          ]
         },
         {
-          "name": "Control Horario",
-          "url": "/control-horario"
+          "title": "Equipo y fichaje",
+          "hub": {
+            "name": "Ver todo sobre control horario",
+            "url": "/control-horario"
+          },
+          "children": [
+            {
+              "name": "Control horario",
+              "url": "/control-horario"
+            },
+            {
+              "name": "Dispositivo de fichaje",
+              "url": "/dispositivo-fichaje"
+            },
+            {
+              "name": "Vacaciones y ausencias",
+              "url": "/software-vacaciones-ausencias"
+            },
+            {
+              "name": "Control de entrada y salida",
+              "url": "/control-entrada-salida-empleados"
+            },
+            {
+              "name": "Turnos rotativos",
+              "url": "/software-turnos-rotativos"
+            }
+          ]
         },
         {
-          "name": "Dispositivo de Fichaje",
-          "url": "/dispositivo-fichaje"
+          "title": "Ventas y producción",
+          "hub": {
+            "name": "Ver todas las funcionalidades",
+            "url": "/funcionalidades"
+          },
+          "children": [
+            {
+              "name": "Tienda con almacén y TPV",
+              "url": "/software-almacen-tienda"
+            },
+            {
+              "name": "Tienda de recambios",
+              "url": "/software-tienda-recambios"
+            },
+            {
+              "name": "Bares y restaurantes",
+              "url": "/software-bares-restaurantes"
+            },
+            {
+              "name": "Producción y fabricación",
+              "url": "/software-produccion-fabricacion"
+            }
+          ]
         },
         {
-          "name": "Vacaciones y Ausencias",
-          "url": "/software-vacaciones-ausencias"
-        },
-        {
-          "name": "Control de Entrada y Salida",
-          "url": "/control-entrada-salida-empleados"
-        },
-        {
-          "name": "Turnos Rotativos",
-          "url": "/software-turnos-rotativos"
-        },
-        {
-          "name": "Bares y Restaurantes",
-          "url": "/software-bares-restaurantes"
-        },
-        {
-          "name": "Conector IA (MCP)",
-          "url": "/conector-mcp-ia"
-        },
-        {
-          "name": "Gestión de Almacén",
-          "url": "/software-gestion-almacen"
-        },
-        {
-          "name": "Control de Stock",
-          "url": "/software-control-stock"
-        },
-        {
-          "name": "Preparación de Pedidos",
-          "url": "/software-preparacion-pedidos-picking"
-        },
-        {
-          "name": "Almacén Frigorífico",
-          "url": "/software-almacen-frigorifico"
-        },
-        {
-          "name": "Gestión de Palets (SSCC)",
-          "url": "/software-gestion-palets"
-        },
-        {
-          "name": "Alquiler de Huecos de Palet",
-          "url": "/software-alquiler-huecos-palet"
-        },
-        {
-          "name": "Almacén y Tienda",
-          "url": "/software-almacen-tienda"
-        },
-        {
-          "name": "Tienda de Recambios",
-          "url": "/software-tienda-recambios"
-        },
-        {
-          "name": "Producción y Fabricación",
-          "url": "/software-produccion-fabricacion"
-        },
-        {
-          "name": "Facturación Verifactu",
-          "url": "/software-verifactu"
-        },
-        {
-          "name": "Documento de control (DeCA)",
-          "url": "/documento-control-transporte-deca"
-        },
-        {
-          "name": "Módulos",
-          "url": "/modulos"
+          "title": "Cumplimiento e integraciones",
+          "hub": {
+            "name": "Todos los módulos y precios",
+            "url": "/modulos"
+          },
+          "children": [
+            {
+              "name": "Facturación Verifactu",
+              "url": "/software-verifactu"
+            },
+            {
+              "name": "Documento de control del transporte (DeCA)",
+              "url": "/documento-control-transporte-deca"
+            },
+            {
+              "name": "Conector IA (MCP)",
+              "url": "/conector-mcp-ia"
+            }
+          ]
         }
       ]
     },

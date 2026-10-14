@@ -301,7 +301,7 @@ Drenpos cubre cuatro obligaciones legales en España. No son extras: son necesid
 
 **Ahorro frente a módulos sueltos:** Esencial ahorra ~55%, Pro ahorra ~35,90 €/mes, Full ahorra ~58,50 €/mes, Producción ahorra ~66,90 €/mes.
 
-**Módulos sueltos (€/mes, sin IVA):** Financiero 16,45 · Inventario 16,45 · Comerciales 16,45 · TPV 20,58 · Producción 22 · Informes 6 · Cloud Storage 4 · Envío por correo 4 · Envío por WhatsApp 4 · Fichaje 1 €/usuario (incluye vacaciones y permisos, control de entrada y salida, calendarios y geolocalización opcional) · Usuario adicional 5 €/usuario · Conector MCP 6 €/empresa · Conector Holded: precio a consultar.
+**Módulos sueltos (€/mes, sin IVA):** Financiero 16,45 · Inventario 16,45 · Comerciales 16,45 · TPV 20,58 · Producción 22 · Informes 6 · Cloud Storage 4 · Envío por correo 4 · Envío por WhatsApp 4 · Fichaje 1 €/usuario (incluye vacaciones y permisos, control de entrada y salida, calendarios y geolocalización opcional) · Usuario adicional 5 €/usuario · Conector MCP 6 €/empresa.
 
 **Condiciones:** sin permanencia ni coste de instalación, actualizaciones automáticas gratis, soporte incluido (premium opcional), demo guiada gratuita de 20 minutos.
 

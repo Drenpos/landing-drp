@@ -11,16 +11,37 @@ export interface ChildNavigationLink {
   url: string;
 }
 
+export interface NavigationGroup {
+  title: string;
+  hub?: ChildNavigationLink;
+  children: ChildNavigationLink[];
+}
+
 export interface NavigationLink {
   name: string;
   url: string;
   hasChildren?: boolean;
+  // Desplegable simple (lista plana)
   children?: ChildNavigationLink[];
+  // Mega menú agrupado por columnas; tiene prioridad sobre children
+  groups?: NavigationGroup[];
 }
 
 const { main }: { main: NavigationLink[] } = menu;
 const { navigation_button } = config;
 const { pathname } = Astro.url;
+
+// trailingSlash "never", pero se acepta también la variante con barra final
+const isActive = (url: string) => pathname === url || pathname === `${url}/`;
+
+// Todas las URLs de un desplegable (enlaces + hubs) para marcar activo el padre
+const dropdownUrls = (item: NavigationLink): string[] =>
+  item.groups
+    ? item.groups.flatMap((group) => [
+        ...group.children.map(({ url }) => url),
+        ...(group.hub ? [group.hub.url] : []),
+      ])
+    : (item.children?.map(({ url }) => url) ?? []);
 ---
 
 <div class="relative">
@@ -73,7 +94,80 @@ const { pathname } = Astro.url;
           {
             main.map((menu, index) => (
               <>
-                {menu.hasChildren ? (
+                {menu.groups ? (
+                  <li class="nav-item nav-dropdown group relative">
+                    <a
+                      href={menu.url}
+                      class={`nav-link inline-flex items-center ${
+                        dropdownUrls(menu).some(isActive) ? "active" : ""
+                      }`}
+                      data-dropdown-toggle={`dropdown-${index}`}
+                      aria-haspopup="true"
+                    >
+                      {menu.name}
+                      <svg
+                        class="h-4 w-4 fill-current transition-transform duration-200 ease-in-out group-hover:rotate-180"
+                        viewBox="0 0 20 20"
+                        aria-hidden="true"
+                      >
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                      </svg>
+                    </a>
+
+                    <div
+                      id={`dropdown-${index}`}
+                      class="nav-dropdown-content nav-dropdown-list nav-dropdown-mega hidden p-6 mb-2 lg:mb-0 lg:p-8 lg:transition-[opacity_transform] lg:duration-500 lg:fixed left-1/2 lg:-translate-x-1/2 lg:block lg:invisible lg:opacity-0 lg:scale-95 lg:group-hover:visible lg:group-hover:opacity-100 lg:group-hover:scale-100 lg:group-focus-within:visible lg:group-focus-within:opacity-100 lg:group-focus-within:scale-100 md:max-w-none md:w-[34rem] lg:w-[min(1100px,96vw)]"
+                    >
+                      <ul class="grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-10 md:text-left lg:grid-cols-4 lg:gap-x-10">
+                        {menu.groups.map((group, groupIndex) => (
+                          <li class="nav-dropdown-group">
+                            <p
+                              id={`dropdown-${index}-group-${groupIndex}`}
+                              class="nav-dropdown-group-title mb-3 text-xs font-semibold uppercase tracking-wide text-body opacity-70"
+                            >
+                              {group.title}
+                            </p>
+                            <ul aria-labelledby={`dropdown-${index}-group-${groupIndex}`}>
+                              {group.children.map((child) => (
+                                <li class="nav-dropdown-item px-0">
+                                  <a
+                                    href={child.url}
+                                    aria-label={child.name}
+                                    class={`nav-dropdown-link block ${
+                                      isActive(child.url) ? "active" : ""
+                                    }`}
+                                  >
+                                    {child.name}
+                                  </a>
+                                </li>
+                              ))}
+                              {group.hub && (
+                                <li class="nav-dropdown-item mt-3 px-0">
+                                  <a
+                                    href={group.hub.url}
+                                    aria-label={group.hub.name}
+                                    class={`nav-dropdown-link nav-dropdown-hub inline-flex items-center gap-1.5 font-medium text-secondary hover:text-body ${
+                                      isActive(group.hub.url) ? "active" : ""
+                                    }`}
+                                  >
+                                    {group.hub.name}
+                                    <svg
+                                      class="h-3 w-3 shrink-0 fill-current"
+                                      viewBox="0 0 20 20"
+                                      aria-hidden="true"
+                                    >
+                                      <path d="M11 4l-1.4 1.4L13.2 9H2v2h11.2l-3.6 3.6L11 16l6-6z" />
+                                    </svg>
+                                  </a>
+                                </li>
+                              )}
+                            </ul>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </li>
+                ) : menu.hasChildren ? (
                   <li class="nav-item nav-dropdown group relative">
                     <span
                       class={`nav-link inline-flex items-center cursor-pointer ${

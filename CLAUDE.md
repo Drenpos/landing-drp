@@ -75,6 +75,8 @@ Al tocar una, revisa: `src/config/menu.json` (submenú Funcionalidades), `src/pa
 
 **Caché**: no hay `public/_headers` (decisión del 07/10/2026: malas experiencias previas con cabeceras en Cloudflare). Tras cada despliegue que cambie páginas existentes, purgar la caché a mano en el panel de Cloudflare (Caching, Purge Everything) o con `npm run purge:cf`. El despliegue se hace con `git push` a `main`.
 
+**Menú Funcionalidades (mega menú, 14/10/2026)**: en `src/config/menu.json` la entrada "Funcionalidades" lleva `groups` (array de `{ title, hub?: {name,url}, children: [{name,url}] }`) en vez de `children`. `Header.astro` pinta 4 columnas si hay `groups` y el desplegable plano si hay `children`; todo se renderiza en servidor. Al crear una landing nueva, añádela al grupo que toque (Almacén y stock, Equipo y fichaje, Ventas y producción, Cumplimiento e integraciones). El conector Holded no aparece en la tabla de módulos ni en precios (decisión 14/10/2026).
+
 ### Auto-imported shortcodes
 Available in all `.md`/`.mdx` without import (`astro.config.mjs`): `Button`, `Accordion`, `Notice`, `Video`, `Youtube`, `Tab`, `Tabs`. Sources in `src/layouts/shortcodes/`.
 
