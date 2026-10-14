@@ -26,4 +26,10 @@ const wwwRedirect = defineMiddleware((context, next) => {
   return next();
 });
 
+/*
+ * Negociación de Markdown y cabeceras Link para agentes: NO van aquí sino en
+ * src/worker.ts + src/lib/agent-readiness.ts. Las páginas públicas son
+ * prerenderizadas y el handler de @astrojs/cloudflare las sirve desde ASSETS
+ * sin ejecutar este middleware, así que aquí no se verían.
+ */
 export const onRequest = sequence(wwwRedirect, clerkMiddleware());

@@ -201,6 +201,7 @@ export default defineConfig({
         skip: (href) =>
           href.startsWith("/api/") ||
           href.startsWith("/schema/") ||
+          href.startsWith("/.well-known/") ||
           href.startsWith("https://"),
       },
       // llmsTxt desactivado a propósito: el plugin escribía su propio
@@ -250,5 +251,12 @@ export default defineConfig({
   output: "server",
   adapter: cloudflare({
     imageService: "cloudflare",
+    // Entrada propia del worker: la del adaptador más la negociación de
+    // Markdown y las cabeceras Link para agentes (src/lib/agent-readiness.ts).
+    // Las páginas prerenderizadas no pasan por src/middleware.ts, por eso
+    // esto va aquí. Ver la sección "Agent readiness" de CLAUDE.md.
+    workerEntryPoint: {
+      path: "src/worker.ts",
+    },
   }),
 });

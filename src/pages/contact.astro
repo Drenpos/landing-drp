@@ -120,6 +120,8 @@ if (!SITE_KEY && import.meta.env.MODE === "production") {
             action={contact_form_action}
             method="POST"
             class="p-8"
+            toolname="contactar_drenpos"
+            tooldescription="Envía una consulta al equipo de Drenpos (ERP para pymes: almacén, TPV, facturación Verifactu, control horario y conector MCP). Requiere nombre, correo, teléfono y mensaje. El envío pasa por un reCAPTCHA invisible."
           >
                 <div class="mb-6">
                   <label for="name" class="form-label">
@@ -132,6 +134,7 @@ if (!SITE_KEY && import.meta.env.MODE === "production") {
                     placeholder="Juan Pérez"
                     type="text"
                     required
+                    toolparamdescription="Nombre completo de la persona de contacto"
                   />
                 </div>
                 <div class="mb-6">
@@ -145,6 +148,7 @@ if (!SITE_KEY && import.meta.env.MODE === "production") {
                     placeholder="juan.perez@email.com"
                     type="email"
                     required
+                    toolparamdescription="Correo electrónico de contacto"
                   />
                 </div>
                 <div class="mb-6">
@@ -160,6 +164,7 @@ if (!SITE_KEY && import.meta.env.MODE === "production") {
                     inputmode="tel"
                     autocomplete="tel"
                     required
+                    toolparamdescription="Teléfono de contacto en España, por ejemplo 600 000 000"
                   />
                 </div>
                 <div class="mb-6">
@@ -173,13 +178,19 @@ if (!SITE_KEY && import.meta.env.MODE === "production") {
                     placeholder="Nombre de tu empresa"
                     type="text"
                     autocomplete="organization"
+                    toolparamdescription="Nombre de la empresa (opcional)"
                   />
                 </div>
                 <div class="mb-6">
                   <label for="interest" class="form-label">
                     ¿Qué te interesa?
                   </label>
-                  <select id="interest" name="interest" class="form-input">
+                  <select
+                    id="interest"
+                    name="interest"
+                    class="form-input"
+                    toolparamdescription="Área de interés: almacen, fichaje, tpv, hosteleria, verifactu, mcp o todo"
+                  >
                     <option value="almacen">Almacén e inventario</option>
                     <option value="fichaje">Control horario y fichaje</option>
                     <option value="tpv">TPV de tienda</option>
@@ -208,6 +219,7 @@ if (!SITE_KEY && import.meta.env.MODE === "production") {
                     style={{ resize: "none" }}
                     required
                     rows="4"
+                    toolparamdescription="Consulta o mensaje para el equipo de Drenpos"
                   />
                 </div>
                 <button

@@ -592,6 +592,10 @@ const jsonLd = {
       href={`${siteUrl}/rss.xml`}
     />
 
+    <!-- Descubrimiento para agentes de IA: catálogo ARD y api-catalog (RFC 9727) -->
+    <link rel="ai-catalog" href="/.well-known/ai-catalog.json" />
+    <link rel="api-catalog" href="/.well-known/api-catalog" />
+
     <!-- Open Graph -->
     <meta property="og:title" content={resolvedTitle} />
     <meta property="og:description" content={resolvedDescription} />

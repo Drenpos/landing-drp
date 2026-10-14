@@ -5,7 +5,28 @@
 	"main": "./dist/_worker.js/index.js",
 	"assets": {
 		"directory": "./dist",
-		"binding": "ASSETS"
+		"binding": "ASSETS",
+		"run_worker_first": [
+			"/",
+			"/software-*",
+			"/control-horario",
+			"/dispositivo-fichaje",
+			"/control-entrada-salida-empleados",
+			"/documento-control-transporte-deca",
+			"/conector-mcp-ia",
+			"/funcionalidades",
+			"/modulos",
+			"/pricing",
+			"/about",
+			"/contact",
+			"/faq",
+			"/blog",
+			"/blog/*",
+			"/local",
+			"/local/*",
+			"/.well-known/api-catalog",
+			"/.well-known/ai-catalog.json"
+		]
 	},
 	"observability": {
 		"enabled": true

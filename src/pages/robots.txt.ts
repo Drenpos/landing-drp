@@ -76,6 +76,11 @@ Sitemap: ${new URL("sitemap-index.xml", base).href}
 # "Schemamap" no es una directiva estándar de robots.txt: ningún motor de
 # búsqueda ni asistente la reconoce a día de hoy. Se deja por si acaso.
 Schemamap: ${new URL("schemamap.xml", base).href}
+
+# Agentic Resource Discovery (ARD): catálogo de recursos para agentes de IA.
+# Tampoco es una directiva estándar de robots.txt; la leen los escáneres y
+# registros de agentes (isitagentready.com, entre otros).
+Agentmap: ${new URL(".well-known/ai-catalog.json", base).href}
 `.trim();
 
 export const GET: APIRoute = () => {

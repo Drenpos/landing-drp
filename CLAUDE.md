@@ -11,7 +11,8 @@ Marketing/landing site for **Drenpos** (ERP SaaS modular para pymes en España).
 | Command | Purpose |
 |---|---|
 | `npm run dev` | Local dev at `localhost:4321` |
-| `npm run build` | Build SSR bundle to `./dist/` (also runs as part of `preview` and `check`) |
+| `npm run build` | Build SSR bundle to `./dist/` + genera los `.md` alternativos (`scripts/markdown-alternates.mjs`). También corre en `preview`, `check` y `deploy:manual` |
+| `npm run markdown:check -- dist/pricing.html` | Imprime por stdout el Markdown que se generaría para esa página (tras un build) |
 | `npm run preview` | Build + run Wrangler dev server (uses Cloudflare runtime) |
 | `npm run check` | `astro build && tsc && wrangler deploy --dry-run` — full CI check |
 | `npm run deploy` | `wrangler deploy` (production) |
@@ -101,6 +102,38 @@ Available in all `.md`/`.mdx` without import (`astro.config.mjs`): `Button`, `Ac
 ### Two key components
 `MODULES_TABLE_README.md` documents `ModulesTableCollapsible.astro` + `PlansComparison.astro` (collapsible module catalog + plan comparison matrix). The collapsible variant supersedes the legacy `ModulesTable.astro`.
 
+## Agent readiness (isitagentready.com, 14/10/2026)
+
+Lo que tiene el sitio para que los agentes de IA lo descubran y lo lean:
+
+| Pieza | Dónde | Notas |
+|---|---|---|
+| Markdown por negociación | `src/worker.ts` + `src/lib/agent-readiness.ts` | GET/HEAD de una página con `Accept` que prefiere `text/markdown` devuelve el `.md` con `Content-Type: text/markdown; charset=utf-8`, `Vary: Accept`, `X-Markdown-Source: static` y `Link: <canonical>; rel="canonical"`. Si no hay `.md`, HTML normal. |
+| Ficheros `.md` | `scripts/markdown-alternates.mjs` (postbuild) | Genera `dist/foo.md` junto a cada `dist/foo.html` público. Excluye 404, `legal/`, `categories/`, paginaciones y noindex. Los posts del blog usan su `.md` original (`src/pages/blog/[...slug].md.ts`) y el script no los pisa (solo sobrescribe los que llevan `source: html`). Las exclusiones están duplicadas en `agent-readiness.ts` (`SIN_MARKDOWN`). |
+| Cabecera `Link` (RFC 8288) y `Vary: Accept` | worker, en toda página HTML 200 | `api-catalog`, `ai-catalog`, `llms.txt` y la alternativa `.md`. |
+| `/.well-known/api-catalog` | `src/pages/.well-known/api-catalog.ts` | Linkset RFC 9727/9264 escrito a mano (ya no usa `createApiCatalog`). Prerenderizado: el `Content-Type: application/linkset+json` lo pone el worker. |
+| `/.well-known/ai-catalog.json` (ARD) | `src/pages/.well-known/ai-catalog.json.ts` | El CORS lo pone el worker. Anunciado en `robots.txt` (`Agentmap:`), en `Base.astro` (`<link rel="ai-catalog">`) y en la cabecera `Link`. |
+| `/.well-known/mcp/server-card.json` | `src/pages/.well-known/mcp/server-card.json.ts` (SSR) | 404 mientras no exista `MCP_PUBLIC_URL` (variable del worker en Cloudflare o del build en Jenkins). Faltan transporte y autenticación del MCP: ver los TODO. |
+| WebMCP declarativo | `DemoForm.astro`, `contact.astro` | `toolname`, `tooldescription`, `toolparamdescription`. Atributos inertes en navegadores sin WebMCP. |
+
+**Por qué en el worker y no en `src/middleware.ts`**: las páginas públicas son prerenderizadas. El handler de `@astrojs/cloudflare` (v12) las devuelve desde `ASSETS` sin ejecutar el middleware de Astro, así que un middleware nunca vería esas peticiones. La entrada propia se declara en `astro.config.mjs` (`adapter: cloudflare({ workerEntryPoint: { path: "src/worker.ts" } })`). Al subir a `@astrojs/cloudflare` 13 hay que migrarla (allí desaparece `createExports`).
+
+**`run_worker_first` en `wrangler.json`**: con Workers Static Assets un fichero estático se sirve sin pasar por el worker. Para que las páginas pasen por él, `assets.run_worker_first` lista SOLO rutas de página (más los dos catálogos de `/.well-known`). Imágenes, `/_astro/*`, fuentes y ficheros de texto no pasan. **Al crear una landing nueva que no empiece por `/software-`, añádela a esa lista** (máximo 100 entradas) o no tendrá Markdown ni cabecera `Link`. Esto solo aplica a `wrangler deploy` (Workers); un `wrangler pages deploy` ignora `run_worker_first` y usa `_routes.json`.
+
+Cómo probarlo (tras desplegar):
+
+```bash
+curl -s -H "Accept: text/markdown" https://www.drenpos.com/ | head -20      # Markdown
+curl -sI -H "Accept: text/markdown" https://www.drenpos.com/pricing | grep -i "content-type\|vary"
+curl -sI https://www.drenpos.com/ | grep -i "link\|vary\|content-type"     # HTML + Link
+curl -sI https://www.drenpos.com/.well-known/api-catalog | grep -i "content-type"
+curl -sI https://www.drenpos.com/.well-known/ai-catalog.json | grep -i "content-type\|access-control"
+curl -s https://www.drenpos.com/robots.txt | grep -i agentmap
+curl -s -o /dev/null -w "%{http_code}\n" https://www.drenpos.com/.well-known/mcp/server-card.json   # 404 sin MCP_PUBLIC_URL
+```
+
+En local: `npm run preview` (build + `wrangler dev`) y las mismas peticiones contra `http://localhost:8787`.
+
 ## SEO blog generator (`agent/`)
 
 Standalone Node 18+ ESM pipeline that researches → analyzes → synthesizes → generates → commits a blog post (with Meta Ads companion + Pexels images). Independent `package.json`; **not** part of the Astro build.
@@ -131,6 +164,7 @@ node agent/index.mjs --idea "..." --keywords "k1,k2" \
 - `PUBLIC_CLERK_PUBLISHABLE_KEY` / `CLERK_SECRET_KEY`
 - `PUBLIC_RECAPTCHA_SITE_KEY` / `RECAPTCHA_SECRET_KEY`
 
+- `MCP_PUBLIC_URL`: opcional. URL pública del servidor MCP de Drenpos. Mientras no exista, `/.well-known/mcp/server-card.json` devuelve 404. En Cloudflare se lee en tiempo de ejecución; en Jenkins queda fijada en el build y además añade la entrada en `ai-catalog.json`.
 - `CF_ZONE_ID` / `CF_API_TOKEN` — opcionales, solo para la purga manual de caché de Cloudflare con `npm run purge:cf` (`scripts/purge-cloudflare.mjs`). El deploy no purga automáticamente: la purga se hace a mano en el panel o con ese script. Token limitado a "Zone > Cache Purge > Purge".
 
 `PUBLIC_*` vars are exposed to the client by Astro — keep secrets server-only.

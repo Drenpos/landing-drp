@@ -38,6 +38,17 @@ const {
 
 const { contact_form_action }: { contact_form_action: string } = config.params;
 
+// WebMCP declarativo: atributos toolname / tooldescription /
+// toolparamdescription. Los navegadores sin WebMCP los ignoran; no cambian
+// el envío. Si una página lleva dos DemoForm (id distinto), el nombre de la
+// herramienta lleva el id como sufijo para que no se repita.
+const TOOL_NAME =
+  id === "demo-form"
+    ? "solicitar_demo_drenpos"
+    : `solicitar_demo_drenpos_${id.replace(/[^a-zA-Z0-9]+/g, "_").toLowerCase()}`;
+const TOOL_DESCRIPTION =
+  "Solicita una demo gratuita de 20 minutos de Drenpos (ERP para pymes: almacén, TPV, facturación Verifactu, control horario y conector MCP). Una persona del equipo responde en menos de 24 horas laborables. Requiere nombre, correo, teléfono y aceptar la política de privacidad.";
+
 const WHATSAPP_URL =
   "https://wa.me/34640315259?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Drenpos";
 
@@ -149,6 +160,8 @@ const VENTAJAS = [
             class="dp-demo-form"
             data-demo-form
             data-endpoint={contact_form_action}
+            toolname={TOOL_NAME}
+            tooldescription={TOOL_DESCRIPTION}
           >
             <div class="row g-4">
               <div class="md:col-6">
@@ -163,6 +176,7 @@ const VENTAJAS = [
                   autocomplete="name"
                   placeholder="Nombre y apellidos"
                   required
+                  toolparamdescription="Nombre y apellidos de la persona de contacto"
                 />
               </div>
 
@@ -177,6 +191,7 @@ const VENTAJAS = [
                   type="text"
                   autocomplete="organization"
                   placeholder="Nombre de tu empresa"
+                  toolparamdescription="Nombre de la empresa (opcional)"
                 />
               </div>
 
@@ -192,6 +207,7 @@ const VENTAJAS = [
                   autocomplete="email"
                   placeholder="nombre@empresa.com"
                   required
+                  toolparamdescription="Correo electrónico de contacto"
                 />
               </div>
 
@@ -208,6 +224,7 @@ const VENTAJAS = [
                   autocomplete="tel"
                   placeholder="600 000 000"
                   required
+                  toolparamdescription="Teléfono de contacto en España, por ejemplo 600 000 000"
                 />
               </div>
 
@@ -222,6 +239,7 @@ const VENTAJAS = [
                   class="form-input"
                   id={`${id}-employees`}
                   name="employees"
+                  toolparamdescription="Número de personas en la empresa: 1 a 5, 6 a 15, 16 a 30 o más de 30"
                 >
                   {EMPLEADOS.map((e) => <option value={e}>{e}</option>)}
                 </select>
@@ -234,7 +252,12 @@ const VENTAJAS = [
                 >
                   ¿Qué te interesa?
                 </label>
-                <select class="form-input" id={`${id}-interest`} name="interest">
+                <select
+                  class="form-input"
+                  id={`${id}-interest`}
+                  name="interest"
+                  toolparamdescription="Área de interés: almacen, fichaje, tpv, hosteleria, verifactu, mcp, deca o todo"
+                >
                   {
                     INTERESES.map((op) => (
                       <option value={op.value} selected={op.value === interes}>
@@ -255,6 +278,7 @@ const VENTAJAS = [
                   name="message"
                   rows="3"
                   placeholder="Cuántos almacenes, con qué trabajas ahora, qué te gustaría resolver..."
+                  toolparamdescription="Descripción breve del caso: almacenes, sistema actual y qué se quiere resolver (opcional)"
                   style="resize: none;"></textarea>
               </div>
 
@@ -270,6 +294,7 @@ const VENTAJAS = [
                     type="checkbox"
                     value="si"
                     required
+                    toolparamdescription="Aceptación de la política de privacidad (https://www.drenpos.com/legal/privacidad); obligatoria y debe confirmarla la persona usuaria"
                   />
                   <span>
                     He leído y acepto la <a

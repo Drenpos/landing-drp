@@ -69,14 +69,15 @@
 	"private": true,
 	"scripts": {
 		"astro": "astro",
-		"build": "astro build",
+		"build": "astro build && node scripts/markdown-alternates.mjs",
 		"cf-typegen": "wrangler types",
-		"check": "astro build && tsc",
+		"check": "astro build && node scripts/markdown-alternates.mjs && tsc",
 		"deploy": "wrangler deploy",
-		"deploy:manual": "astro build && wrangler deploy",
+		"deploy:manual": "astro build && node scripts/markdown-alternates.mjs && wrangler deploy",
 		"dev": "astro dev",
-		"preview": "astro build && wrangler dev",
-		"purge:cf": "node scripts/purge-cloudflare.mjs"
+		"preview": "astro build && node scripts/markdown-alternates.mjs && wrangler dev",
+		"purge:cf": "node scripts/purge-cloudflare.mjs",
+		"markdown:check": "node scripts/markdown-alternates.mjs --check"
 	},
 	"type": "module"
 }
