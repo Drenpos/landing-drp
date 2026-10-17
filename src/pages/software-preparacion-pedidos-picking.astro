@@ -25,7 +25,7 @@ const hasImg = (p: string) => existsSync(join(process.cwd(), "public", p));
 
 const CANONICAL = "https://www.drenpos.com/software-preparacion-pedidos-picking";
 
-// Síntomas (dolores de búsqueda — long-tail AEO)
+// Síntomas (dolores de búsqueda, long-tail AEO)
 const sintomas = [
   {
     icon: "🛑",
@@ -35,7 +35,7 @@ const sintomas = [
   {
     icon: "📄",
     title: "Listas en papel que alguien transcribe después",
-    body: "Se imprime la lista, se marca a boli y por la tarde alguien la pasa al ordenador. Cada transcripción es una oportunidad de equivocarse — y el stock va siempre con horas de retraso.",
+    body: "Se imprime la lista, se marca a boli y por la tarde alguien la pasa al ordenador. Cada transcripción es una oportunidad de equivocarse, y el stock va siempre con horas de retraso.",
   },
   {
     icon: "🔎",
@@ -63,7 +63,7 @@ const flujo = [
     icon: "🏷️",
     tag: "Arranque",
     title: "Etiqueta QR por pedido",
-    body: "Cada pedido lleva su etiqueta QR imprimible. Escanearla abre la sesión de picking — o la crea si aún no existe. Sin buscar el pedido en una lista ni teclear referencias en el móvil.",
+    body: "Cada pedido lleva su etiqueta QR imprimible. Escanearla abre la sesión de picking (o la crea si aún no existe). Sin buscar el pedido en una lista ni teclear referencias en el móvil.",
   },
   {
     n: "03",
@@ -113,7 +113,7 @@ const ruta = [
   },
 ];
 
-// Métodos de picking (conceptos logísticos estándar — tabla AEO)
+// Métodos de picking (conceptos logísticos estándar, tabla AEO)
 const metodos = [
   {
     metodo: "Por pedido (discreto)",
@@ -187,7 +187,7 @@ const capacidades = [
   },
 ];
 
-// Comparativa de soluciones (tabla de decisión — AEO)
+// Comparativa de soluciones (tabla de decisión, AEO)
 const comparativa = [
   {
     opcion: "Papel y hoja de cálculo",
@@ -203,7 +203,7 @@ const comparativa = [
     guiado: "No",
     oleadas: "No",
     expedicion: "Albarán manual desde el pedido",
-    precio: "10–30 €/mes",
+    precio: "De 10 a 30 €/mes",
   },
   {
     opcion: "WMS enterprise",
@@ -249,7 +249,7 @@ const casos = [
 const faqs = [
   {
     q: "¿Qué es la preparación de pedidos y en qué se diferencia del picking?",
-    a: "La preparación de pedidos es el proceso completo que va desde que un pedido se confirma hasta que la mercancía sale por el muelle: decidir qué pedidos son servibles, recogerlos, dejarlos identificados y expedirlos. El picking es solo una parte de ese proceso — el acto de recoger físicamente el producto de su ubicación. Y la expedición es la parte final: verificar lo preparado, cargarlo y generar el documento de salida. En Drenpos los tres pasos viven en el mismo flujo: semáforo de preparabilidad, asistente de picking móvil y expedición con escaneo que genera el albarán o la factura.",
+    a: "La preparación de pedidos es el proceso completo que va desde que un pedido se confirma hasta que la mercancía sale por el muelle: decidir qué pedidos son servibles, recogerlos, dejarlos identificados y expedirlos. El picking es solo una parte de ese proceso: el acto de recoger físicamente el producto de su ubicación. Y la expedición es la parte final: verificar lo preparado, cargarlo y generar el documento de salida. En Drenpos los tres pasos viven en el mismo flujo: semáforo de preparabilidad, asistente de picking móvil y expedición con escaneo que genera el albarán o la factura.",
   },
   {
     q: "¿Qué es el picking por oleadas y cuándo conviene?",
@@ -324,13 +324,14 @@ const hermanas = [
 ];
 
 const articulos = [
-  { t: "Preparación de pedidos y picking: guía práctica", s: "preparacion-de-pedidos-picking-almacen" },
-  { t: "Etiqueta SSCC: qué es y cómo se genera", s: "etiqueta-sscc-gs1-palets" },
-  { t: "WMS, SGA y ERP: en qué se diferencian y cuál necesitas", s: "wms-sga-erp-diferencias" },
-  { t: "Control de stock sin roturas: guía práctica", s: "control-de-stock-sin-roturas" },
+  { t: "Preparación de pedidos y picking: métodos y ruta en el almacén", s: "preparacion-de-pedidos-picking-almacen" },
+  { t: "Cómo codificar las ubicaciones de un almacén", s: "codificar-ubicaciones-almacen" },
+  { t: "Recepción de mercancía: qué comprobar y cómo registrarla", s: "recepcion-mercancia-almacen" },
+  { t: "FIFO, FEFO y LIFO en el almacén: cuál usar", s: "fifo-fefo-lifo-almacen" },
+  { t: "Etiqueta SSCC: qué es, cómo se genera y por qué la exigen", s: "etiqueta-sscc-gs1-palets" },
+  { t: "Kits y packs montables: montaje desde el pedido", s: "kits-packs-montables-stock-componentes" },
+  { t: "Cómo generar el DeCA desde el albarán", s: "como-generar-deca-desde-albaran" },
   { t: "Cómo organizar el almacén de una pyme", s: "como-organizar-almacen-pyme" },
-  { t: "¿SGA aparte o ERP con almacén? Qué necesita una pyme", s: "sga-o-erp-con-almacen-que-necesita-una-pyme" },
-  { t: "DeCA: el documento de control del transporte pasa a digital", s: "deca-documento-control-transporte-digital-5-octubre-2026" },
 ];
 
 // ── Datos estructurados (JSON-LD) ──────────────────────────────────────
@@ -795,7 +796,7 @@ const PAGE_UPDATED = "2026-09-28";
         <p class="text-lg max-w-3xl mx-auto" style="color: rgba(16,25,40,0.65);">
           Un asistente de picking solo sirve si el stock que lee es de fiar. Por
           eso la preparación de pedidos vive junto a las reservas, la recepción
-          de mercancía y los permisos de almacén — en el mismo sistema, no en
+          de mercancía y los permisos de almacén, en el mismo sistema y no en
           uno conectado por API.
         </p>
       </div>
@@ -818,7 +819,7 @@ const PAGE_UPDATED = "2026-09-28";
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════
-       COMPARATIVA DE SOLUCIONES (tabla de decisión — AEO)
+       COMPARATIVA DE SOLUCIONES (tabla de decisión, AEO)
   ═══════════════════════════════════════════════════════════════════ -->
   <section class="section pt-0 overflow-hidden">
     <div class="container">

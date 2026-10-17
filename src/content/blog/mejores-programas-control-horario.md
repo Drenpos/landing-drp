@@ -1,358 +1,297 @@
 ---
-title: "Los 10 mejores programas de control horario para pymes en 2026"
-meta_title: "Mejores programas de control horario 2026 para pymes"
-description: "Comparativa de programas de control horario en 2026: cuál cumple la ley, cuál se integra con tu operativa y qué incluye cada precio."
+title: "Los 10 mejores programas de control horario para pymes en 2026, con precios"
+meta_title: "Mejores programas de control horario 2026: precios reales"
+description: "Diez programas de control horario comparados con precios revisados en octubre de 2026: vacaciones, turnos rotativos, terminal propio y mínimos de cada uno."
 date: 2026-06-11
-updated: 2026-09-23
+updated: 2026-10-17
 image: "/images/blog/mejores-programas-control-horario/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
   designation: "CEO & Founder"
   avatar: "/images/alonso.jpg"
-categories: ["Gestión Operativa", "Cumplimiento Legal", "Tecnología para PYMES"]
+categories: ["Control Horario", "Cumplimiento Legal", "Tecnología para PYMES"]
 tags:
   [
     "mejores programas control horario",
     "software control horario",
-    "comparativa fichaje 2026",
+    "comparativa software control horario pymes",
     "programa control horario pymes",
     "app control horario",
+    "precio control horario por usuario",
   ]
 featured: false
 draft: false
 hero:
   title: "Los 10 mejores programas de control horario para pymes en 2026"
-  description: "No todos los programas de control horario cumplen la ley de 2026. Compara opciones, costes reales y descubre por qué las pymes con TPV necesitan algo distinto."
+  description: "Precios revisados en la web de cada proveedor el 17 de octubre de 2026, qué incluye cada plan y cuál encaja según cómo trabaja tu equipo."
 faq:
   - question: "¿Qué debe cumplir un programa de control horario en 2026?"
-    answer: "Hoy la ley (artículo 34.9 del Estatuto de los Trabajadores, desde 2019) exige registrar cada día la hora de inicio y fin de la jornada de cada persona y conservarlo cuatro años. El proyecto de real decreto, que a 23 de septiembre de 2026 no está aprobado, añade que sea digital, inalterable y accesible en remoto para la Inspección. Conviene elegir un sistema que ya cumpla las dos cosas."
-  - question: "¿Cuál es el mejor programa de control horario para una pyme con TPV?"
-    answer: "Para pymes con operativa presencial y TPV, la opción más eficiente es un sistema integrado en el propio ERP, como Drenpos: el fichaje convive con caja, almacén y facturación sin integraciones externas, con app móvil, QR, terminal de mostrador o llavero RFID."
+    answer: "Lo que exige la ley hoy (artículo 34.9 del Estatuto de los Trabajadores) es registrar cada día la hora de inicio y fin de la jornada de cada persona y conservarlo cuatro años a disposición de la plantilla y de la Inspección. El real decreto que lo haría obligatoriamente digital, inalterable y accesible en remoto no está aprobado a fecha de 17 de octubre de 2026. Conviene elegir un sistema que ya cumpla las dos cosas."
+  - question: "¿Cuál es el mejor programa de control horario para una pyme con TPV o almacén?"
+    answer: "Uno que viva en el mismo sistema que la caja, el stock y la facturación, para no cuadrar datos entre programas. Drenpos lleva el fichaje dentro del ERP, con vacaciones, control de entrada y salida y turnos rotativos incluidos, y un terminal propio que ficha sin internet. Si solo necesitas RRHH y tienes más de 15 personas, Sesame HR o Factorial son opciones sólidas."
   - question: "¿Cuánto cuesta un programa de control horario?"
-    answer: "Los precios de partida publicados van de 1,50 a unos 6 € por usuario y mes, pero vigila los mínimos de facturación: algunos planes parten de 80 a 100 € mensuales, desproporcionado para equipos pequeños. En Drenpos el fichaje cuesta 1 € por usuario y mes sin IVA, con vacaciones y permisos, control de entrada y salida y geolocalización incluidos sin coste extra."
+    answer: "A 17 de octubre de 2026, los precios de partida publicados van de 1 € a unos 6,65 € por usuario y mes. Fíjate en los mínimos: Sesame HR pide 15 empleados como mínimo y Track People, 5 licencias. En Drenpos el fichaje cuesta 1 € por usuario y mes sin IVA, con vacaciones, incidencias de entrada y salida, turnos rotativos y geolocalización opcional incluidos."
   - question: "¿Sirve un Excel o una app gratuita para fichar?"
-    answer: "No es buena idea. Las hojas de cálculo y la mayoría de apps gratuitas no garantizan la inalterabilidad del registro ni el acceso en tiempo real que pide el proyecto de reforma. La infracción grave se sanciona hoy con entre 751 y 7.500 euros, y versiones del proyecto de reforma plantean calcularla por trabajador afectado, algo que no está en vigor. Lo barato puede acabar siendo lo más caro."
-  - question: "¿Qué programa de control horario tiene terminal físico propio?"
-    answer: "Drenpos fabrica su propio terminal de fichaje: lee llaveros RFID y códigos QR, muestra el nombre y la foto del empleado en pantalla, funciona a 12 voltios y se imprime en 3D con el logo de la empresa cliente. Se vende desde 140 euros sin IVA, también sin contratar el resto del sistema."
+    answer: "Es arriesgado. Un Excel se puede rehacer sin dejar rastro y es difícil de defender ante la Inspección o en un juicio por horas extra. La infracción grave por no llevar bien el registro se sanciona hoy con 751 a 7.500 euros. Las apps gratuitas pensadas para medir proyectos no suelen sacar el informe diario por persona que se pide en España."
+  - question: "¿Qué programa de control horario tiene terminal de fichaje propio?"
+    answer: "Drenpos fabrica el suyo: ficha con llavero RFID, tarjeta o QR, muestra el nombre y la foto del empleado, funciona a 12 voltios y sigue fichando sin internet, guardando cada fichaje con su hora real. Cuesta desde 140 euros sin IVA. No usa huella ni cara, así que la empresa no trata datos biométricos."
+  - question: "¿Qué programa de control horario gestiona turnos rotativos 4x4?"
+    answer: "Drenpos incluye calendarios rotativos (4x4, 5/2, 6/3 o turnos de noche) en la licencia de fichaje de 1 € por usuario y mes: defines el ciclo y el primer día de cada persona, y el sistema calcula horas esperadas, extras y vacaciones. En Sesame HR los turnos van en todos los planes; en Woffu, solo en Enterprise y bajo demanda; en Track People, en el plan Premium."
 ---
 
-Buscar el **mejor programa de control horario** en 2026 es más difícil de lo que parece. No porque falten opciones, sino porque la mayoría están diseñadas para un problema distinto al tuyo. Una herramienta pensada para equipos de software remotos no tiene la misma lógica que una pyme con turno de tarde, TPV y cinco empleados rotando entre mostrador y almacén.
+> **Respuesta corta:** para una pyme con mostrador, almacén o turnos, el mejor programa de control horario es el que ficha donde está la gente y no obliga a cuadrar datos con otro sistema. Drenpos cuesta 1 € por usuario y mes sin IVA, con vacaciones, incidencias y turnos rotativos incluidos y un terminal propio desde 140 € que ficha sin internet. Si buscas una suite de RRHH para más de 15 personas, mira Sesame HR o Factorial. Abajo tienes los diez con precios revisados el 17 de octubre de 2026.
 
-El [registro de jornada es obligatorio en España desde 2019](/blog/registro-horario-digital) y el real decreto en tramitación (a 23 de septiembre de 2026, sin aprobar ni publicar en el BOE) quiere que sea **exclusivamente digital**, inalterable y accesible para la Inspección de Trabajo en remoto. Un sistema que no cumpla esos tres requisitos se quedará corto en cuanto se apruebe, aunque sea gratuito. De hecho, puede costarte más que no tener nada: la infracción grave ya se sanciona con 751 a 7.500 euros y versiones del proyecto de reforma plantean [calcular las multas por trabajador afectado](/blog/multas-registro-horario-2026-costo-incumplimiento).
-
-> **Actualizado en septiembre de 2026**
+> **Actualizado el 17 de octubre de 2026**
 >
-> Revisada el 23 de septiembre de 2026: el real decreto de registro horario digital sigue sin aprobarse ni publicarse en el BOE (el Gobierno retomó su tramitación en septiembre tras el dictamen del Consejo de Estado). Hemos añadido dos criterios de elección, vacaciones y ausencias incluidas o de pago y control de entrada y salida, con una tabla de precios con fuente y fecha.
+> Hemos revisado los precios en la web de cada proveedor y corregido los que habían cambiado. Esta guía integra la antigua comparativa de software de control horario para pymes, que ahora redirige aquí. Sobre la ley: el real decreto de registro horario digital sigue sin aprobarse ni publicarse en el BOE (detalle más abajo).
 
-Esta comparativa ordena por lo que le importa a una pyme española: cumplimiento real, integración con la operativa diaria y coste total sin sorpresas. La popularidad y el presupuesto de marketing se quedan fuera.
+## ¿Qué debe cumplir un programa de control horario en 2026?
 
-## Qué debe cumplir un programa de control horario en 2026
+Hoy la ley pide registrar cada día la hora de inicio y de fin de la jornada de cada persona, conservarlo cuatro años y tenerlo a disposición de la plantilla, sus representantes y la Inspección de Trabajo (artículo 34.9 del Estatuto de los Trabajadores, desde 2019). El real decreto en tramitación quiere que además sea digital, inalterable y consultable en remoto. A 17 de octubre de 2026 no está aprobado, pero tiene sentido elegir ya un sistema que lo cumpla.
 
-Antes de comparar opciones, define el filtro mínimo. Todo sistema válido en 2026 debe:
+En la práctica, el filtro mínimo es este:
 
-- **Registrar entrada, salida y pausas** con sellado temporal inalterable
-- **Permitir acceso del trabajador** a sus propios datos en cualquier momento
-- **Facilitar acceso remoto a la Inspección de Trabajo** sin necesidad de exportaciones manuales
-- **Conservar registros durante 4 años** sin pérdida de integridad
-- **Registrar modificaciones** con fecha, hora y persona que las autorizó
-- **Prohibir ediciones retroactivas** sin huella auditable
+- Registro de entrada, salida y pausas con hora que no se puede cambiar sin dejar rastro.
+- Acceso del trabajador a sus propios fichajes cuando quiera.
+- Conservación de cuatro años sin pérdida de datos.
+- Cada corrección guardada con quién la hizo, el valor de antes y el de después.
+- Horas extra calculadas día a día (el artículo 35.5 del Estatuto ya obliga a registrarlas).
+- Un informe por persona y periodo que puedas sacar en minutos si llega la Inspección.
 
-Ojo con un matiz: lo que exige hoy la ley es registrar cada día la hora de inicio y fin de cada persona (art. 34.9 del Estatuto de los Trabajadores). El acceso remoto de la Inspección y la obligación de que sea digital vienen del proyecto de real decreto, que a 23 de septiembre de 2026 no está aprobado. Aun así, elegir hoy un sistema que no los cumpla es comprar algo con fecha de caducidad. El resto son diferenciadores de valor.
+Lo explicamos con más detalle, plazos incluidos, en la guía de [registro horario digital](/blog/registro-horario-digital).
 
-## Comparativa rápida: los 10 mejores programas de control horario
+## ¿Cuáles son los 10 mejores programas de control horario?
 
-| Programa    | Tipo                        | Cumplimiento 2026 | Integración ERP/TPV      | Precio orientativo          |
-| ----------- | --------------------------- | ----------------- | ------------------------ | --------------------------- |
-| **Drenpos** | ERP + TPV + fichaje         | ✅ Nativo         | ✅ Total (mismo sistema) | Desde 1 €/usuario/mes       |
-| Factorial   | RRHH + fichaje              | ✅ Sí             | ⚠️ Vía integración       | Desde 5,50 €/usuario/mes    |
-| Sesame HR   | RRHH + fichaje              | ✅ Sí             | ⚠️ Vía integración       | Desde 5,50 €/usuario/mes    |
-| Bizneo HR   | Suite RRHH modular          | ✅ Sí             | ⚠️ Limitada              | Desde 6 €/usuario/mes       |
-| Kenjo       | RRHH + experiencia empleado | ✅ Sí             | ⚠️ Vía integración       | A consultar (calculadora)   |
-| Woffu       | Turnos + fichaje            | ✅ Sí             | ❌ No                    | Desde 1,50 €/usuario/mes    |
-| netTime one | Presencia + accesos         | ✅ Sí             | ❌ No                    | Bajo petición               |
-| Clockify    | Proyectos + tiempo          | ⚠️ Parcial        | ❌ No                    | Freemium / desde 7,99 $/mes |
-| Hubstaff    | Equipos remotos             | ⚠️ Parcial        | ❌ No                    | Desde 4,99 $/usuario/mes    |
-| TrackPeople | Turnos + presencia          | ✅ Sí             | ❌ No                    | Desde 2,50 €/usuario/mes    |
+Son Drenpos, Factorial, Sesame HR, Bizneo HR, Kenjo, Woffu, netTime one, Track People, Clockify y Hubstaff. Los seis primeros y Track People están hechos para el registro de jornada español; Clockify y Hubstaff miden tiempo por proyecto y se quedan cortos para la ley. La tabla resume lo que hemos podido comprobar en la web de cada uno el 17 de octubre de 2026.
 
-Precios orientativos recogidos al publicar esta comparativa. Los que hemos podido verificar con fuente y fecha están en la tabla de precios de más abajo, junto a qué incluye cada uno.
+| Programa | Pensado para | Vacaciones | Turnos rotativos | Terminal propio | Precio de partida publicado |
+| --- | --- | --- | --- | --- | --- |
+| **Drenpos** | Pyme con TPV, almacén o turnos | Incluidas | Incluidos (4x4, 5/2, 6/3) | Sí, desde 140 €, ficha sin internet | 1 €/usuario/mes sin IVA |
+| Factorial | RRHH completo | Sí (ausencias) | No lo detalla su web | No | Desde 5 €/persona/mes |
+| Sesame HR | RRHH, desde 15 personas | Sí | Sí, en todos los planes | No | 4,75 €/empleado/mes (anual), mínimo 15 |
+| Bizneo HR | RRHH modular | Módulo aparte | Módulo aparte | No | Pack de 5 empleados: 399 €/año |
+| Kenjo | RRHH y experiencia del empleado | Sí | Sí, en todos los planes | No | Desde 5,40 €/empleado/mes |
+| Woffu | Microempresas (plan Lite) | Sí | Solo Enterprise, bajo demanda | No | 1,50 €/usuario/mes (Lite) |
+| netTime one | Presencia y control de accesos | No verificado | No verificado | Terminales de terceros | Bajo petición |
+| Track People | Presencia y fichaje móvil | Sí | Solo plan Premium | No | 2,50 €/usuario/mes, mínimo 5 |
+| Clockify | Tiempo por proyecto | No es su enfoque | No | No | Gratis; Basic 3,99 $/usuario/mes |
+| Hubstaff | Equipos remotos | No es su enfoque | No | No | Su web cita el plan Team a 10 $/puesto/mes |
+
+"No verificado" quiere decir que la web pública del proveedor no lo deja claro. Antes de decidir, confirma cada dato en su página de precios: los enlaces están en cada ficha.
 
 ![Equipo de trabajo utilizando software integrado de gestión empresarial.](/images/blog/mejores-programas-control-horario/cover.jpg)
 
-## 1. Drenpos: el mejor para pymes con TPV y operativa presencial
+## 1. Drenpos: para pymes con mostrador, almacén o turnos
 
-Drenpos va más allá de un programa de control horario: es el **sistema que gestiona tu negocio completo**. Cuando el fichaje vive en el mismo sistema que el TPV, la facturación y el stock, el dato de jornada deja de ser un trámite para convertirse en inteligencia operativa.
+Drenpos es un ERP con TPV, almacén y facturación, y el fichaje vive dentro. Eso evita lo que más tiempo quita en una pyme: pasar horas de un programa a otro. El informe que va a la gestoría sale con los fichajes, las ausencias y las horas extra del mismo sitio donde se hace la caja.
 
-La diferencia fundamental respecto a cualquier otra opción de esta lista: **no necesitas integrar nada**. Los datos fluyen solos. Si un empleado hace horas extra en ese turno, aparecen calculadas día a día en el informe que va a la gestoría, sin que nadie exporte, copie ni concilie.
+Lo que incluye la licencia de fichaje (1 € por usuario y mes sin IVA):
 
-**Funcionalidades de control horario en Drenpos:**
+- **Formas de fichar:** app instalable en el móvil, web, código QR o llavero RFID en el [terminal de fichaje](/dispositivo-fichaje) propio.
+- **Terminal que ficha sin internet:** si se cae la WiFi o está en una obra sin cobertura, guarda cada fichaje con la hora de su reloj y lo sube solo al volver la red. Funciona a 12 V, así que va también en la furgoneta. Desde 140 € sin IVA con llaveros para la plantilla.
+- **[Vacaciones y ausencias](/software-vacaciones-ausencias):** saldo por persona (reinicio en enero o en el aniversario, consolidado mes a mes, días que pasan al año siguiente), solicitud desde el móvil, aprobación o contrapropuesta de fechas con motivo, ausencias por horas y bajas sin fecha de fin.
+- **Control de entrada y salida:** opcional. Compara cada fichaje con el horario de la persona y marca entrada tarde, salida anticipada, olvidos y exceso de horas, con tolerancias en minutos. El responsable justifica o descarta cada incidencia con una nota.
+- **[Turnos rotativos](/software-turnos-rotativos):** calendarios 4x4, 5/2, 6/3 o de noche con el primer día del ciclo de cada persona. Los días de descanso no suman horas ni gastan vacaciones.
+- **Festivos:** nacionales, autonómicos, locales o por trabajador, varios calendarios por persona, y copia de los festivos de un año al siguiente.
+- **Planificación anual del equipo:** quién trabaja, quién libra y quién está de vacaciones cada día, con un PDF del año por trabajador.
+- **Geolocalización opcional:** viene apagada y, si se activa, guarda la ubicación solo en el momento de fichar desde el móvil o la web. Nunca hay seguimiento continuo.
+- **Correcciones con rastro:** cada cambio guarda quién lo hizo y el valor anterior, y puedes exigir que las correcciones propias las apruebe un responsable.
 
-- [Fichaje desde app móvil](/blog/fichar-desde-el-movil-legal-2026), QR, portal web o [terminal físico propio con llavero RFID](/dispositivo-fichaje), fabricado por Drenpos y personalizado con el logo del cliente
-- Geolocalización opcional, solo en el momento de fichar (viene apagada y nunca hay seguimiento continuo)
-- Registro de pausas y horas extra calculadas día a día desde el calendario laboral de cada persona
-- [Vacaciones y permisos](/blog/gestion-vacaciones-permisos-pymes-sin-excel) con cupos, aprobación y contrapropuesta de fechas, incluidos sin coste extra
-- [Control de entrada y salida](/blog/control-entrada-salida-retrasos-empleados) opcional, con tolerancias e incidencias que se justifican con una nota
-- Calendarios laborales con vigencias y festivos por región o por persona
-- Acceso inmediato del trabajador a sus registros
-- Exportación lista para Inspección de Trabajo en un clic
-- Conservación automática de datos durante el período legal
-- Trazabilidad completa de modificaciones con auditoría
-- Reportes listos para la gestoría, en el mismo sistema que el TPV y la facturación
+**Lo que no hace:** nóminas (las sigue haciendo tu gestoría con el informe), evaluación del desempeño ni selección de personal. Si eso es lo que buscas, una suite de RRHH encaja mejor.
 
-**Por qué Drenpos gana para pymes con operativa física:**
+**Sobre la huella:** el terminal identifica con llavero, tarjeta o QR, no con huella ni cara. Es una decisión a favor de la empresa: los datos biométricos son categoría especial para el RGPD (artículo 9) y exigen una evaluación de impacto previa (artículo 35). Lo contamos en [fichar con huella: qué dice la AEPD y qué alternativas son legales](/blog/fichar-con-huella-aepd-alternativas).
 
-La mayoría de los programas de control horario están diseñados para empresas de servicios que trabajan desde un ordenador. El patrón es: empleado → app → RRHH → nómina. Cuando hay TPV, turnos rotativos, entregas, almacén o venta presencial, ese modelo genera silos. Drenpos nace de la operativa de la pyme española y no del modelo SaaS de oficina. El fichaje está integrado en el mismo flujo que el turno de caja, el cierre de día y la gestión de pedidos.
-
-> "La pregunta correcta no es cuánto cuesta el módulo de fichaje. Es cuánto cuesta operar con cinco sistemas distintos que no hablan entre sí."
-
-**El caso de la hostelería:** un bar o un restaurante es el escenario más difícil para cualquier programa de fichaje. Hay turnos partidos (mañana de barra, descanso, servicio de noche), personal que entra a reforzar solo el fin de semana y gente que llega con las manos ocupadas y sin tiempo de abrir una app. Cuando el fichaje vive en un sistema distinto al TPV, el encargado acaba cuadrando a mano dos calendarios que nunca coinciden.
-
-Por eso en hostelería el método importa tanto como el software: el fichaje junto a la caja, con un llavero RFID o un QR en el mostrador, se hace en un segundo al empezar el turno y no depende del móvil de nadie. Los calendarios laborales y los turnos se configuran una vez y los partidos dejan de ser un problema de cálculo. Cómo encaja esto con la operativa de sala, cocina y cierre de caja lo contamos en el [software para bares y restaurantes](/software-bares-restaurantes).
-
-**Ideal para:** hostelería, retail, distribución, talleres, clínicas, cualquier pyme con empleados presenciales y TPV.
+**Ideal para:** hostelería, comercio, distribución, almacenes y talleres; cualquier pyme donde la gente ficha de pie, con las manos ocupadas o a turnos. Para naves y almacenes, mira [control horario en almacenes y naves con turnos](/blog/control-horario-almacenes-naves-turnos).
 
 ---
 
-## 2. Factorial: el más completo para gestión de personas
+## 2. Factorial: RRHH completo para equipos de oficina
 
-Factorial es una plataforma de recursos humanos construida para digitalizar todos los procesos del departamento de personas. El control horario es uno de sus módulos, bien ejecutado y con cumplimiento legal actualizado.
+Factorial es una plataforma de recursos humanos con control horario, ausencias, desempeño, organigrama y onboarding. Está bien resuelta y es de las más conocidas en España.
 
-**Puntos fuertes:** fichaje web y app, gestión de vacaciones y ausencias, evaluación de desempeño, organigrama, onboarding digital. Todo en una interfaz cuidada y adoptable.
+**Limitación real:** no está conectada con un TPV ni con la facturación de una pyme. Si quieres cruzar horas con ventas, hace falta integración.
 
-**Limitación real:** Factorial es excelente en RRHH pero no habla con tu TPV ni con tu facturación. Si necesitas cruzar datos de jornada con actividad comercial o ventas, necesitas una integración adicional que tiene coste y mantenimiento.
+**Precio:** su [página de precios](https://factorial.es/plan-de-precios) anuncia planes desde 5 € por persona y mes; el importe exacto se calcula según módulos y plantilla (consultada el 17/10/2026).
 
-**Precio:** desde 5,50 €/usuario/mes. Prueba gratuita disponible.
-
-**Ideal para:** empresas de 15-100 empleados centradas en digitalizar RRHH, sin necesidad de integración con operativa de venta.
+**Ideal para:** empresas con oficina y departamento de personas que quieren digitalizar RRHH.
 
 ---
 
-## 3. Sesame HR: buena usabilidad, rápida adopción
+## 3. Sesame HR: fácil de adoptar, con mínimo de 15 empleados
 
-Sesame HR destaca por la facilidad de adopción. Su interfaz es de las más intuitivas del mercado, lo que reduce el tiempo de formación y la resistencia del equipo al cambio.
+Sesame HR destaca por lo sencilla que resulta para la plantilla. Todos sus planes incluyen control horario, vacaciones y ausencias y turnos.
 
-**Puntos fuertes:** registro de jornada, gestión de turnos y ausencias, cuadrantes, firma digital de documentos, portal del empleado.
+**Limitación real:** el mínimo. Su [página de precios](https://www.sesamehr.es/precio/) indica que se contratan 15 empleados como mínimo, así que una pyme de 6 personas paga como si fueran 15.
 
-**Limitación real:** el precio mínimo de 82,50 €/mes puede ser desproporcionado para equipos pequeños. La integración con sistemas de facturación o TPV requiere desarrollo adicional.
+**Precio:** Essential, 4,75 €/empleado/mes en anual (5,25 € en mensual), con cuota mínima de 71,25 €/mes. Connect, 5,50 €; Growth, 6,25 €; Scale, 8 € (anual). Consultado el 17/10/2026.
 
-**Precio:** desde 5,50 €/usuario/mes, mínimo 82,50 €/mes.
-
-**Ideal para:** pymes de mediano tamaño con departamento de RRHH que busca herramienta todo-en-uno de personas.
+**Ideal para:** empresas medianas con departamento de RRHH.
 
 ---
 
-## 4. Bizneo HR: modular, paga solo lo que usas
+## 4. Bizneo HR: modular, con packs para equipos pequeños
 
-Bizneo propone un modelo modular: contratas solo el control horario, o lo combinas con reclutamiento, evaluación y formación según necesites. Buena opción si no quieres pagar por funcionalidades que no vas a usar.
+Bizneo deja contratar el control horario solo o junto a vacaciones, turnos y control de presencia.
 
-**Puntos fuertes:** geolocalización en el fichaje, app móvil sólida, módulos independientes, buena relación funcionalidad/precio.
+**Limitación real:** vacaciones y turnos son módulos aparte del control horario, así que el precio sube si los necesitas.
 
-**Limitación real:** la integración entre módulos no es tan fluida como en plataformas monolíticas. Cada módulo tiene su lógica y conectarlos requiere configuración.
+**Precio:** según su [página de control horario](https://www.bizneo.com/control-horario/), packs cerrados de hasta 20 empleados desde 399 € al año para 5 empleados, que equivalen a 6,65 € por empleado y mes (consultada el 17/10/2026).
 
-**Precio:** desde 6 €/usuario/mes.
-
-**Ideal para:** empresas que necesitan control horario y algún módulo adicional de RRHH, sin querer un ERP completo.
+**Ideal para:** empresas que quieren RRHH por piezas.
 
 ---
 
-## 5. Kenjo: para empresas que priorizan la experiencia del empleado
+## 5. Kenjo: experiencia del empleado y turnos
 
-Kenjo pone el foco en el bienestar y el engagement del equipo, combinando herramientas de fichaje con encuestas de pulso, seguimiento del sentimiento y análisis de absentismo.
+Kenjo combina fichaje, vacaciones, turnos rotativos y herramientas de clima laboral en todos sus planes.
 
-**Puntos fuertes:** interfaz moderna, análisis de patrones de ausencia, cuadrantes horarios, comunicación interna.
+**Limitación real:** el foco en experiencia del empleado sobra si lo que necesitas es cumplir la ley y controlar el coste de personal.
 
-**Limitación real:** el enfoque en experiencia del empleado puede ser secundario para pymes que necesitan, antes que nada, cumplir la ley y controlar costes de personal.
-
-**Precio:** a consultar; su [página de tarifas](https://www.kenjo.io/es/tarifas) calcula el importe por empleado.
-
-**Ideal para:** empresas con alta rotación que quieren reducir absentismo y mejorar retención.
+**Precio:** su [página de tarifas](https://www.kenjo.io/es/tarifas) anuncia desde 5,40 € por empleado y mes y tiene una calculadora por plantilla (consultada el 17/10/2026).
 
 ---
 
 ![Empleado utilizando smartphone para fichar en punto de venta.](/images/blog/mejores-programas-control-horario/section-1.jpg)
 
-## 6. Woffu: especialista en turnos complejos
+## 6. Woffu: barato para microempresas
 
-Si tu empresa gestiona turnos rotativos, nocturnos, partidos o con múltiples convenios, Woffu es la referencia del mercado español. Su cuadrante visual es de los mejores disponibles.
+Woffu tiene un plan Lite para autónomos y microempresas de hasta 10 empleados, con fichaje y vacaciones con varios niveles de aprobación.
 
-**Puntos fuertes:** planificación de turnos visual e intuitiva, autogestión de cambios de turno entre empleados, cumplimiento de convenios colectivos, precio muy accesible.
+**Limitación real:** la gestión de turnos no está en Lite ni en Pro. Según su [página de precios](https://www.woffu.com/es/precios/), el calendario de turnos y la rotación automática van en Enterprise como módulo bajo demanda. Las reglas de coincidencia de vacaciones por departamento también quedan para Pro y Enterprise.
 
-**Limitación real:** fuera de la gestión de turnos, las funcionalidades son limitadas. No tiene integración con facturación ni TPV.
-
-**Precio:** desde 1,50 €/usuario/mes (plan Lite).
-
-**Ideal para:** hostelería, salud, seguridad privada, logística, cualquier sector con turnos complejos y muchos empleados.
+**Precio:** Lite desde 1,50 € por usuario y mes; Pro y Enterprise, a medida y en anual (consultada el 17/10/2026).
 
 ---
 
-## 7. netTime one: control de presencia y acceso físico
+## 7. netTime one: presencia unida al control de accesos
 
-netTime one es la opción cuando el control de jornada va ligado al control de acceso físico al local: tornos, puertas, zonas restringidas. Se puede implantar en la nube o en servidor propio.
+netTime one es la opción cuando el fichaje va ligado a tornos, puertas o zonas restringidas, con instalación en la nube o en servidor propio.
 
-**Puntos fuertes:** fichaje con múltiples métodos (web, app, huella, tarjeta), control de accesos integrado, instalación local posible, informes personalizables.
-
-**Limitación real:** la biometría tiene restricciones por protección de datos: la huella es un dato de categoría especial y la AEPD solo la ve justificada si no hay alternativa viable. Si lo usas con huella, revisa el cumplimiento RGPD antes de implantar.
+**Limitación real:** si lo montas con huella, la empresa trata datos biométricos y tiene que justificarlo con una excepción del artículo 9 del RGPD y una evaluación de impacto. Revisa ese punto antes de implantar.
 
 **Precio:** bajo petición.
 
-**Ideal para:** fábricas, almacenes, instalaciones con control de acceso físico necesario.
+---
+
+## 8. Track People: fichaje móvil con planes escalonados
+
+Track People combina fichaje desde el móvil con geolocalización, ausencias y, en el plan más alto, gestor de turnos.
+
+**Limitación real:** la solicitud y validación de vacaciones empieza en Advanced y los turnos solo están en Premium.
+
+**Precio:** según su [página de precios](https://trackpeople.es/precio), Standard 2,50 €, Advanced 3,50 € y Premium 4,50 € por usuario y mes sin IVA, con un mínimo de 5 licencias (consultada el 17/10/2026).
 
 ---
 
-## 8. Clockify: gratuito, pero con limitaciones legales
+## 9. Clockify: gratis, pero no es registro de jornada
 
-Clockify es la opción gratuita más conocida del mercado. Funciona bien para rastrear tiempo por proyectos, pero no nació para cumplir la normativa laboral española.
+Clockify sirve para medir tiempo por proyecto y tiene plan gratuito con usuarios ilimitados.
 
-**Puntos fuertes:** plan gratuito con usuarios ilimitados, buenas integraciones con herramientas de productividad, fácil de usar.
+**Limitación real:** no está pensado para el registro diario por persona que pide la ley española, y el informe no está hecho para la Inspección.
 
-**Limitación real:** está orientado al seguimiento de proyectos, no al cumplimiento legal del registro de jornada. Los informes no están adaptados al formato que exige la Inspección de Trabajo española. La inalterabilidad de los datos tampoco está garantizada en el plan gratuito.
-
-**Precio:** gratuito para funciones básicas, desde 7,99 $/mes los planes avanzados.
-
-**Ideal para:** freelances y equipos de proyecto que quieren medir tiempo, no cumplir la normativa laboral.
+**Precio:** gratis para lo básico; Basic, 3,99 $ por usuario y mes en anual, según su [página de planes](https://clockify.me/help/es/administration/subscription-plans) (consultada el 17/10/2026).
 
 ---
 
-## 9. Hubstaff: para equipos remotos con necesidad de visibilidad
+## 10. Hubstaff: equipos remotos que facturan por horas
 
-Hubstaff incluye capturas de pantalla y monitorización de actividad además del control de tiempo. Es la herramienta de mayor vigilancia del mercado, pensada para gestores de equipos distribuidos.
+Hubstaff añade capturas de pantalla y medición de actividad al control de tiempo.
 
-**Puntos fuertes:** geofencing, capturas de pantalla, monitorización de actividad, cálculo automático de nóminas por horas.
+**Limitación real:** las capturas y la monitorización son datos personales delicados. Antes de usarlo en España hace falta una evaluación de impacto e informar a la plantilla, y no está adaptado al registro de jornada.
 
-**Limitación real:** las capturas de pantalla y la monitorización de actividad son datos sensibles bajo RGPD. Antes de implantar Hubstaff, necesitas una evaluación de impacto de privacidad y comunicación explícita a los empleados. No está adaptado a la normativa laboral española.
-
-**Precio:** desde 4,99 $/usuario/mes.
-
-**Ideal para:** agencias digitales o empresas con equipos remotos internacionales que facturan por horas a clientes.
+**Precio:** cobra por puesto; su [página de precios](https://hubstaff.com/pricing) pone como ejemplo el plan Team a 10 $ por puesto y mes (consultada el 17/10/2026).
 
 ---
 
-## 10. TrackPeople: planificación y presencia para equipos grandes
+## ¿Cómo elijo programa de control horario para mi pyme?
 
-TrackPeople combina planificación de turnos con control de presencia y comunicación interna. Buena opción para empresas con muchos empleados que necesitan optimizar la asignación de personal.
+Empieza por cómo trabaja tu gente, no por la lista de funciones. Si fichan de pie, con guantes o en una nave sin cobertura, necesitas terminal o QR. Si hay turnos que no caben en una semana, calendarios rotativos. Si tienes TPV o almacén, que el fichaje esté en el mismo sistema. Después, mira el precio con mínimos incluidos y qué va en cada plan.
 
-**Puntos fuertes:** planificador visual para grandes plantillas, notificaciones directas a empleados, optimización de recursos, app móvil.
+Seis preguntas antes de firmar:
 
-**Limitación real:** funcionalidades de RRHH más básicas que Factorial o Sesame. Sin integración con facturación o gestión operativa.
+**1. ¿Solo fichar o también gestionar el negocio?** Con TPV, facturación o stock, un programa de RRHH aislado te obliga a cuadrar datos a mano.
 
-**Precio:** desde 2,50 €/usuario/mes (plan Standard).
+**2. ¿Dónde fichan?** Varios centros o equipos en ruta piden fichaje móvil y, si hace falta, ubicación al fichar. Una nave o una obra sin cobertura piden un terminal que guarde los fichajes sin internet.
 
-**Ideal para:** grandes equipos en retail, seguridad, limpieza o cualquier sector con muchos empleados y turnos variables.
+**3. ¿Hay turnos rotativos?** Un 4x4 o un 6/3 no cabe en un horario semanal. Comprueba que el programa entiende ciclos y que las vacaciones no descuentan días de descanso. Si no tienes claro cómo montarlo, empieza por un cuadrante en papel con el ciclo de cada persona y compáralo con lo que propone el programa.
 
----
+**4. ¿Las vacaciones van incluidas?** Pregunta si el saldo se consolida mes a mes, si el responsable puede proponer otras fechas y si las ausencias salen en el mismo informe que los fichajes.
 
-## Cómo elegir tu programa de control horario: 6 preguntas antes de decidir
+**5. ¿Te avisa de retrasos y olvidos?** Registrar es la obligación; enterarte a tiempo de que alguien no ha fichado es gestión. Busca incidencias que se puedan justificar con una nota y que no penalicen los fichajes hechos sin conexión.
 
-Antes de firmar ninguna licencia, hazte estas seis preguntas:
+**6. ¿Cuánto tardarías en sacar el informe de un año si llega la Inspección mañana?** Si la respuesta pasa de diez minutos, tu sistema actual no te protege.
 
-**1. ¿Necesitas solo fichar o también gestionar tu operativa completa?**
-Si tu negocio tiene TPV, facturas a clientes, gestiona stock o tiene caja diaria, un software de RRHH aislado te creará silos de datos. Necesitas un sistema integrado. Drenpos resuelve esto de raíz. Lee también cómo gestionar el [control horario en teletrabajo](/blog/control-horario-teletrabajo-cumplir-ley-2026) y los [requisitos del registro horario 2026](/blog/registro-horario-2026-nuevos-requisitos-adaptacion).
+Y tres perfiles que ayudan a decidir rápido:
 
-**2. ¿Tu equipo trabaja en un solo lugar o en múltiples ubicaciones?**
-Si tienes varios centros o empleados en campo, la geolocalización y el fichaje móvil son imprescindibles. Verifica que el sistema los ofrezca de forma nativa, no como add-on de pago.
+| Si tu empresa... | Prioriza | Encajan |
+| --- | --- | --- |
+| Tiene comerciales o técnicos en ruta | Fichaje móvil, ubicación solo al fichar | Drenpos, Track People, Woffu |
+| Trabaja a turnos o en varias naves | Calendarios rotativos, terminal sin internet, planificación anual | Drenpos, Sesame HR, Kenjo |
+| Quiere un solo sistema para caja, stock y personal | Fichaje dentro del ERP | Drenpos |
 
-**3. ¿Cuánto tiempo tardarías en preparar los datos para una inspección ahora mismo?**
-Si la respuesta es "más de 10 minutos", tu sistema actual no cumple el estándar de 2026. El acceso inmediato a registros en tiempo real no es opcional.
+## ¿Cuánto cuesta de verdad para una pyme de 8 personas?
 
-**4. ¿El coste mensual incluye actualizaciones normativas automáticas?**
-La legislación laboral española cambia. Un software que no se actualiza solo ante cambios en el RD-ley 8/2019 te dejará desprotegido sin avisarte.
+El precio por usuario engaña cuando hay mínimos. Con 8 personas y los precios publicados a 17 de octubre de 2026, el fichaje sale por unos 8 € al mes en Drenpos, 12 € en Woffu Lite y 20 € en Track People Standard, mientras que en Sesame HR pagas el mínimo de 15 empleados: 71,25 € al mes en anual. La diferencia anual supera los 750 €.
 
-**5. ¿Las vacaciones y ausencias van incluidas o se pagan aparte?**
-Casi todas las herramientas gestionan vacaciones, pero no todas igual ni en el mismo plan. En Woffu, por ejemplo, las vacaciones van en todos los planes, pero las reglas de coincidencia por departamento y las varias políticas de vacaciones quedan para Pro y Enterprise, a presupuesto ([precios de Woffu](https://www.woffu.com/es/precios/)). Pregunta tres cosas: si el cupo se puede consolidar mes a mes o reiniciar en el aniversario de contratación, si el responsable puede proponer otras fechas y si las ausencias aprobadas salen en el mismo informe que los fichajes. En Drenpos van incluidas en el módulo de fichajes sin coste extra; lo contamos en [gestión de vacaciones y ausencias sin Excel](/blog/gestion-vacaciones-permisos-pymes-sin-excel).
-
-**6. ¿Te avisa de retrasos, olvidos y exceso de horas?**
-Registrar la jornada es la obligación; enterarte a tiempo de que alguien llega tarde o no ha fichado es gestión. Busca un control de entrada y salida que puedas activar o no, con tolerancias en minutos, incidencias que se justifican o descartan con una nota y que no penalice los fichajes hechos sin conexión. Cómo usarlo sin convertirlo en una herramienta de castigo, en [control de entrada y salida y retrasos](/blog/control-entrada-salida-retrasos-empleados).
-
-## ¿Cuánto cuesta y qué incluye el precio?
-
-Precios de partida que hemos podido comprobar con fuente, consultados el 23 de septiembre de 2026, tal como los publica cada fuente. Confírmalos en la web de cada proveedor antes de decidir.
-
-| Solución | Precio de partida publicado | Vacaciones y ausencias | Fuente |
+| Programa | Cálculo con 8 personas | Coste mensual aproximado | Qué incluye a ese precio |
 | --- | --- | --- | --- |
-| **Drenpos** | 1 €/usuario/mes sin IVA | Incluidas, con control de entrada y salida y geolocalización | [Precios de Drenpos](/pricing) |
-| Woffu (plan Lite) | Desde 1,50 €/usuario activo/mes | Incluidas; reglas de coincidencia por departamento solo en Pro y Enterprise | [Web oficial de Woffu](https://www.woffu.com/es/precios/) |
-| Holded | RR. HH. desde 1,50 €/empleado/mes (ERP desde 14,50 €/mes) | Incluidas en RR. HH. | [Blog de Holded, actualizado el 24/07/2026](https://www.holded.com/es/blog/mejores-softwares-gestion-vacaciones) |
-| Bixpe (Premium) | Desde 2 €/usuario/mes, mínimo de 20 a 30 € | No lo detalla la fuente | [IAT, actualizado el 11/02/2026](https://iat.es/blog/precios-apps-control-horario/) |
-| Kronjop | Desde 2,40 €/usuario/mes, sin mínimos | Jornada, vacaciones y ausencias | [IAT, actualizado el 11/02/2026](https://iat.es/blog/precios-apps-control-horario/) |
-| Sesame HR | Desde 3,75 €/usuario/mes, mínimo de 80 a 100 €/mes | Control horario, vacaciones y ausencias | [IAT, actualizado el 11/02/2026](https://iat.es/blog/precios-apps-control-horario/) |
-| Factorial | Desde 5,50 €/usuario/mes, mínimo de unos 99 €/mes | No lo detalla la fuente | [IAT, actualizado el 11/02/2026](https://iat.es/blog/precios-apps-control-horario/) |
+| **Drenpos** | 8 × 1 € | 8 € sin IVA | Fichaje, vacaciones, incidencias, turnos rotativos, planificación anual |
+| Woffu Lite | 8 × 1,50 € | 12 € | Fichaje y vacaciones; sin turnos |
+| Track People Standard | 8 × 2,50 € | 20 € | Fichaje y gestión de ausencias; sin turnos |
+| Kenjo | 8 × 5,40 € (precio "desde") | 43,20 € | Según plan en su calculadora |
+| Sesame HR Essential | Mínimo 15 × 4,75 € | 71,25 € (anual) | Fichaje, vacaciones y turnos |
 
-Las comparativas de terceros no siempre coinciden entre sí (para Sesame HR, por ejemplo, [controlhorario.com](https://controlhorario.com/software/precio/) da en septiembre de 2026 una cuota base de 82,50 € más 5,50 € por usuario). Por eso la columna de fuente importa tanto como la de precio. Y si quieres que los festivos de cada persona cuadren con sus horas esperadas el año que viene, mira el [calendario laboral 2027](/blog/calendario-laboral-2027-festivos-horas-extra).
+El terminal de Drenpos es opcional y se paga una vez (desde 140 € sin IVA). Los precios de terceros son los publicados en sus webs en esa fecha; pueden llevar IVA o no según el proveedor.
 
 ![Propietario de pequeño negocio revisando gestión de horarios en portátil.](/images/blog/mejores-programas-control-horario/section-2.jpg)
 
-## La trampa del software barato: coste total vs coste visible
+## ¿Por qué el programa más barato puede salir caro?
 
-El precio por usuario al mes es la cifra más visible de cualquier comparativa. También es la más engañosa. El coste real de un programa de control horario incluye:
+Porque la cuota es solo una parte. Cuenta también las horas de cuadrar fichajes con nóminas y caja, las integraciones que hay que pagar y mantener, los módulos que se cobran aparte (vacaciones, turnos) y el riesgo de una sanción si el registro no aguanta una inspección.
 
-| Componente de coste          | Software aislado             | Drenpos integrado    |
-| ---------------------------- | ---------------------------- | -------------------- |
-| Licencia mensual             | 5-12 €/usuario               | En el plan general   |
-| Integración con nóminas      | Coste adicional o manual     | Incluida             |
-| Integración con TPV          | No disponible                | Nativa               |
-| Tiempo de conciliación RRHH  | 3-5h/semana                  | < 30 min/semana      |
-| Preparación para inspección  | 2-3 días                     | Acceso inmediato     |
-| Actualización normativa      | Depende del proveedor        | Automática           |
-| Coste de migración si creces | Alto (cambio de herramienta) | Escalable sin migrar |
+| Coste | Programa de fichaje aislado | Fichaje dentro del ERP |
+| --- | --- | --- |
+| Cuota | Por usuario, a veces con mínimo | Por usuario |
+| Vacaciones y turnos | A menudo en planes superiores | Incluidos en Drenpos |
+| Cruce con caja y ventas | Exportar y cuadrar | En el mismo sistema |
+| Informe para la gestoría | Exportación y retoques | Sale con fichajes, ausencias y extras |
+| Si mañana abres otro local | Otro módulo u otra herramienta | Mismo sistema |
 
-Una pyme con 8 empleados que usa tres herramientas desconectadas (fichaje + nóminas + TPV) está pagando el triple del coste visible en tiempo administrativo perdido. Ese tiempo tiene un coste real aunque no aparezca en ninguna factura.
+## ¿Es obligatorio tener un programa de control horario?
 
-## ¿Es obligatorio por ley tener un programa de control horario?
+Es obligatorio llevar el registro de jornada, no un programa concreto. Desde el Real Decreto-ley 8/2019, toda empresa con personas por cuenta ajena registra cada día el inicio y el fin de la jornada y lo conserva cuatro años. Hoy el papel sigue siendo legal; dejaría de serlo con el real decreto de registro digital, que a 17 de octubre de 2026 no está aprobado.
 
-Sí. El Real Decreto-ley 8/2019 obliga a todas las empresas españolas, sin excepción de tamaño ni sector, a registrar diariamente la jornada laboral de cada trabajador. Este registro debe conservarse durante cuatro años y estar disponible para la Inspección de Trabajo.
+Estado a 17 de octubre de 2026: el Consejo de Estado emitió dictamen desfavorable en marzo y Trabajo dio por cerrada la revisión del texto el 2 de octubre, con intención de llevarlo al Consejo de Ministros este mes. La [referencia del Consejo de Ministros del 13 de octubre](https://www.lamoncloa.gob.es/consejodeministros/referencias/Paginas/2026/20261013-referencia-rueda-de-prensa-ministros.aspx) no lo incluye. Con las elecciones generales del 29 de noviembre convocadas, puede aprobarse igual porque es un real decreto y no necesita convalidación del Congreso ([Infobae, con Europa Press, 5/10/2026](https://www.infobae.com/america/agencias/2026/10/05/la-reforma-del-registro-horario-todavia-podria-ver-la-luz-antes-de-las-elecciones-del-29n/)).
 
-El proyecto de real decreto quiere añadir la obligación de que el sistema sea exclusivamente digital y garantice la inalterabilidad de los datos, lo que dejaría fuera el papel, el Excel y cualquier sistema modificable sin rastro. A 23 de septiembre de 2026 no está aprobado ni publicado en el BOE, así que todavía no es obligatorio.
+Las sanciones vigentes son las de la LISOS:
 
-Las sanciones vigentes son las de la LISOS (artículo 7.5), por infracción:
+- **Grave** (no llevar registro o llevarlo de forma que no refleja la jornada real): de 751 a 7.500 € por infracción.
+- **Muy grave** (falsear datos, entre otros supuestos): de 7.501 a 225.018 €.
 
-- **Infracción grave** (sin sistema, registros incompletos o sistema no fiable): de 751 a 7.500 €
-- **Infracción muy grave** (manipulación de datos): de 7.501 a 225.018 €
-
-Versiones del proyecto de reforma que se han conocido elevan el tope de la grave a 10.000 € y lo aplican **por trabajador afectado**; nada de eso está en vigor. Si se aprobara así, una empresa con 10 empleados sin sistema válido pasaría de una sanción de hasta 7.500 € a una de hasta 100.000 € en una única inspección.
-
-## Preguntas frecuentes
-
-### ¿Puede Drenpos sustituir completamente a un software de RRHH independiente?
-
-Para muchas pymes con operativa presencial, sí. Drenpos cubre control horario, vacaciones y permisos, facturación, TPV y stock en un único sistema. Las nóminas las sigue haciendo tu gestoría con el informe que le mandas. Si necesitas funcionalidades avanzadas de evaluación de desempeño o reclutamiento, puedes complementarlo, pero el núcleo operativo y de cumplimiento legal está cubierto de forma nativa.
-
-### ¿Los empleados necesitan instalar una app para fichar?
-
-Depende del método que elijas. Con Drenpos puedes configurar varios métodos: app móvil, QR en el local, terminal de escritorio o portal web. Para empleados sin smartphone, el QR o el terminal de mostrador son la opción más práctica.
-
-### ¿Qué pasa con los empleados a tiempo parcial o con contratos temporales?
-
-La obligación de registro aplica a todos los contratos, incluyendo parciales y temporales. El sistema debe reflejar las horas reales trabajadas frente a las contratadas, lo que permite detectar automáticamente desviaciones y horas extra no previstas.
-
-### ¿Un programa de control horario gratuito es suficiente para cumplir la ley?
-
-Solo si garantiza inalterabilidad de datos, acceso del trabajador, conservación durante cuatro años y acceso remoto para la Inspección. Ninguna solución completamente gratuita del mercado cubre todos estos requisitos de forma oficial. Las versiones freemium suelen tener limitaciones críticas en cumplimiento legal.
-
-### ¿Cuánto tarda la implementación en una pyme?
-
-Con Drenpos, la configuración del módulo de control horario para una pyme de hasta 20 empleados se completa en una jornada de trabajo. Al estar integrado con el resto del sistema, no hay migraciones de datos ni integraciones que configurar. El equipo puede empezar a fichar el mismo día.
-
----
-
-Elegir el programa de control horario correcto es, ante todo, una **decisión operativa**. Si tu negocio vive en el mostrador, en la sala, en la furgoneta o en el almacén, necesitas un sistema que entienda esa realidad. No uno diseñado para equipos de producto en remoto. Drenpos es el único sistema de esta comparativa que integra el fichaje con el TPV, la caja diaria y la facturación desde el primer día, sin integraciones adicionales ni costes ocultos.
+Las versiones conocidas del proyecto plantean multas de hasta 10.000 € por trabajador afectado. No está en vigor. El desglose está en [multas del registro horario](/blog/multas-registro-horario-2026-costo-incumplimiento).
 
 ## Preguntas frecuentes sobre programas de control horario
 
 ### ¿Qué debe cumplir un programa de control horario en 2026?
 
-Hoy la ley (artículo 34.9 del Estatuto de los Trabajadores, desde 2019) exige registrar cada día la hora de inicio y fin de la jornada de cada persona y conservarlo cuatro años. El proyecto de real decreto, que a 23 de septiembre de 2026 no está aprobado, añade que sea digital, inalterable y accesible en remoto para la Inspección. Conviene elegir un sistema que ya cumpla las dos cosas.
+Lo que exige la ley hoy (artículo 34.9 del Estatuto de los Trabajadores) es registrar cada día la hora de inicio y fin de la jornada de cada persona y conservarlo cuatro años a disposición de la plantilla y de la Inspección. El real decreto que lo haría obligatoriamente digital, inalterable y accesible en remoto no está aprobado a fecha de 17 de octubre de 2026. Conviene elegir un sistema que ya cumpla las dos cosas.
 
-### ¿Cuál es el mejor programa de control horario para una pyme con TPV?
+### ¿Cuál es el mejor programa de control horario para una pyme con TPV o almacén?
 
-Para pymes con operativa presencial y TPV, la opción más eficiente es un sistema integrado en el propio ERP, como Drenpos: el fichaje convive con caja, almacén y facturación sin integraciones externas, con app móvil, QR, terminal de mostrador o llavero RFID.
+Uno que viva en el mismo sistema que la caja, el stock y la facturación, para no cuadrar datos entre programas. Drenpos lleva el fichaje dentro del ERP, con vacaciones, control de entrada y salida y turnos rotativos incluidos, y un terminal propio que ficha sin internet. Si solo necesitas RRHH y tienes más de 15 personas, Sesame HR o Factorial son opciones sólidas.
 
 ### ¿Cuánto cuesta un programa de control horario?
 
-Los precios de partida publicados van de 1,50 a unos 6 € por usuario y mes, pero vigila los mínimos de facturación: algunos planes parten de 80 a 100 € mensuales, desproporcionado para equipos pequeños. En Drenpos el fichaje cuesta 1 € por usuario y mes sin IVA, con vacaciones y permisos, control de entrada y salida y geolocalización incluidos sin coste extra.
+A 17 de octubre de 2026, los precios de partida publicados van de 1 € a unos 6,65 € por usuario y mes. Fíjate en los mínimos: Sesame HR pide 15 empleados como mínimo y Track People, 5 licencias. En Drenpos el fichaje cuesta 1 € por usuario y mes sin IVA, con vacaciones, incidencias de entrada y salida, turnos rotativos y geolocalización opcional incluidos.
 
 ### ¿Sirve un Excel o una app gratuita para fichar?
 
-No es buena idea. Las hojas de cálculo y la mayoría de apps gratuitas no garantizan la inalterabilidad del registro ni el acceso en tiempo real que pide el proyecto de reforma. La infracción grave se sanciona hoy con entre 751 y 7.500 euros, y versiones del proyecto de reforma plantean calcularla por trabajador afectado, algo que no está en vigor. Lo barato puede acabar siendo lo más caro.
+Es arriesgado. Un Excel se puede rehacer sin dejar rastro y es difícil de defender ante la Inspección o en un juicio por horas extra. La infracción grave por no llevar bien el registro se sanciona hoy con 751 a 7.500 euros. Las apps gratuitas pensadas para medir proyectos no suelen sacar el informe diario por persona que se pide en España.
 
-### ¿Qué programa de control horario tiene terminal físico propio?
+### ¿Qué programa de control horario tiene terminal de fichaje propio?
 
-Drenpos fabrica su propio [terminal de fichaje](/dispositivo-fichaje): lee llaveros RFID y códigos QR, muestra el nombre y la foto del empleado en pantalla, funciona a 12 voltios y se imprime en 3D con el logo de la empresa cliente. Se vende desde 140 euros sin IVA, también sin contratar el resto del sistema.
+Drenpos fabrica el suyo: ficha con llavero RFID, tarjeta o QR, muestra el nombre y la foto del empleado, funciona a 12 voltios y sigue fichando sin internet, guardando cada fichaje con su hora real. Cuesta desde 140 euros sin IVA. No usa huella ni cara, así que la empresa no trata datos biométricos.
+
+### ¿Qué programa de control horario gestiona turnos rotativos 4x4?
+
+Drenpos incluye calendarios rotativos (4x4, 5/2, 6/3 o turnos de noche) en la licencia de fichaje de 1 € por usuario y mes: defines el ciclo y el primer día de cada persona, y el sistema calcula horas esperadas, extras y vacaciones. En Sesame HR los turnos van en todos los planes; en Woffu, solo en Enterprise y bajo demanda; en Track People, en el plan Premium.

@@ -52,9 +52,24 @@ const capacidades = [
     title: "Trazabilidad materia prima → producto acabado",
     body: "Como Producción se apoya en el módulo de Inventario, el lote del producto acabado queda enlazado con los lotes de materia prima que lo formaron. Ante una incidencia, el rastreo va en las dos direcciones.",
   },
+  {
+    icon: "📒",
+    title: "Recetas y semielaborados",
+    body: "Cada trabajo tipo guarda sus materiales con cantidad y unidad, las horas previstas por fase y centro de trabajo y el orden de las fases. Si un material también se fabrica (una masa, un subconjunto), la orden propone su suborden y fabrica solo lo que falta en stock.",
+  },
+  {
+    icon: "🛒",
+    title: "Necesidades de material",
+    body: "Una pantalla suma lo que piden todas las órdenes abiertas frente a lo libre en almacén y lo que viene de compras, con semáforo verde, ámbar o rojo. Desde las filas con falta se genera el pedido al proveedor en un clic.",
+  },
+  {
+    icon: "🎁",
+    title: "Packs y kits montables",
+    body: "Un pack es un artículo con su propia lista de materiales. Un botón monta N packs de una vez: comprueba que hay de todo, descuenta los componentes con su lote y da entrada al pack con lote propio y el coste de sus componentes.",
+  },
 ];
 
-// Síntomas / dolores (long-tail AEO — cómo lo busca la gente de verdad)
+// Síntomas / dolores (long-tail AEO: cómo lo busca la gente de verdad)
 const sintomas = [
   {
     icon: "❓",
@@ -121,6 +136,55 @@ const casos = [
   },
 ];
 
+// Preguntas reales (AEO): H3 + respuesta de 50 a 80 palabras + guía enlazada
+const preguntas = [
+  {
+    id: "que-es-software-produccion-pyme",
+    q: "¿Qué es un software de producción para una pyme y cuándo compensa?",
+    a: "Es el programa que sustituye la libreta y el Excel del taller: cada fabricación es una orden con su receta, sus fases, el material que se consume y las horas que lleva. Compensa cuando ya no sabes por qué fase va cada trabajo, cuando el stock de materia prima no cuadra o cuando presupuestas con costes de hace dos años. Con tres o cuatro operarios ya se nota.",
+    link: { url: "/blog/ordenes-de-fabricacion-pyme-sin-excel", t: "Órdenes de fabricación sin Excel" },
+  },
+  {
+    id: "como-calcular-coste-fabricacion",
+    q: "¿Cómo se calcula el coste de fabricación de un producto?",
+    a: "Material consumido más horas de personas y de máquinas por su coste hora, dividido entre las unidades buenas. En Drenpos cada orden enseña el coste previsto frente al real, separado en material, personas y máquinas, y por fase. Si hay piezas defectuosas, el coste unitario se reparte solo entre las buenas, y el informe de costes compara el resultado con el precio de tarifa.",
+    link: { url: "/blog/escandallo-lista-materiales-coste-fabricacion", t: "Escandallo y coste de fabricación con mermas" },
+  },
+  {
+    id: "trazar-lotes-materia-prima-producto",
+    q: "¿Cómo se traza un lote de materia prima hasta el producto terminado?",
+    a: "Registrando en la orden qué lote de cada materia prima se consumió y dando al producto terminado un lote propio al cerrarla. En Drenpos el consumo se hace escaneando producto, lote o palet, y el lote de salida nace con el número de la orden y la fecha. La pantalla de trazabilidad enseña el árbol en los dos sentidos: de qué se hizo y a qué clientes se vendió.",
+    link: { url: "/blog/trazabilidad-lotes-produccion", t: "Trazabilidad de lotes en producción" },
+  },
+  {
+    id: "packs-kits-montables",
+    q: "¿Cómo se gestionan los packs y kits con stock de componentes?",
+    a: "El pack se da de alta como un artículo normal, con precio y stock, y lleva su lista de materiales en la ficha. Al montar N packs, Drenpos comprueba antes que hay todos los componentes, los descuenta con su lote y da entrada al pack con lote propio. También dice cuántos packs se pueden montar con el stock libre y permite montarlos desde la preparación del pedido.",
+    link: { url: "/blog/kits-packs-montables-stock-componentes", t: "Kits y packs montables" },
+  },
+  {
+    id: "produccion-obrador-alimentaria",
+    q: "¿Sirve para un obrador o una pequeña industria alimentaria?",
+    a: "Sí. La orden consume la materia prima por lote y nunca usa un lote caducado sin confirmación expresa. El producto terminado sale con lote automático y una caducidad calculada con los días de vida útil del artículo, y al cerrar se imprimen sus etiquetas. Ante una alerta de un proveedor, la trazabilidad dice en qué lotes de producto acabó la materia prima y a qué clientes se vendieron.",
+    link: { url: "/blog/produccion-obrador-industria-alimentaria", t: "Producción en obrador e industria alimentaria" },
+  },
+  {
+    id: "precio-software-produccion",
+    q: "¿Cuánto cuesta el software de producción de Drenpos?",
+    a: "El plan Producción cuesta 50 € al mes sin IVA e incluye los módulos de Producción, Inventario, Financiero, Informes y Fichajes, más el envío de documentos por correo y WhatsApp. Cada operario que ficha tiempo en las órdenes necesita su usuario y su licencia de fichaje; si la plantilla supera lo incluido, cada usuario adicional cuesta 5 € y cada fichaje 1 € al mes. Sin permanencia.",
+    link: { url: "/pricing", t: "Planes y precios" },
+  },
+];
+
+// Guías del blog del pilar Producción
+const guias = [
+  { url: "/blog/ordenes-de-fabricacion-pyme-sin-excel", t: "Órdenes de fabricación en una pyme: cómo llevarlas sin Excel", d: "Qué datos lleva una orden, cómo se mueve por la nave y qué cambia al dejar la hoja de cálculo." },
+  { url: "/blog/escandallo-lista-materiales-coste-fabricacion", t: "Escandallo y lista de materiales: cómo calcular el coste de fabricación", d: "Un ejemplo completo con mermas, horas y coste por unidad buena." },
+  { url: "/blog/trazabilidad-lotes-produccion", t: "Trazabilidad de lotes en producción", d: "Del lote de materia prima al lote de producto terminado, hacia atrás y hacia delante." },
+  { url: "/blog/kits-packs-montables-stock-componentes", t: "Kits y packs montables: stock de componentes", d: "Cuándo montar por adelantado, cuándo bajo pedido y cómo sale el coste del pack." },
+  { url: "/blog/produccion-obrador-industria-alimentaria", t: "Producción en obrador e industria alimentaria", d: "Lotes, caducidad, mermas y alertas de proveedor en un obrador de 8 personas." },
+];
+
 // Qué incluye el plan Producción (tabla → elegible para table snippet)
 const incluyePlan = [
   { m: "Módulo Producción", d: "Órdenes de trabajo, fases, consumo por lectura, tiempos y coste real", s: "22 €" },
@@ -132,7 +196,7 @@ const incluyePlan = [
   { m: "Envío por correo y WhatsApp", d: "Manda documentos al cliente sin salir del sistema", s: "8 €" },
 ];
 
-// FAQ — preguntas tal y como se buscan (AEO), respuestas de 50-80 palabras
+// FAQ: preguntas tal y como se buscan (AEO), respuestas de 50 a 80 palabras
 const faqs = [
   {
     q: "¿Qué es un software de producción?",
@@ -152,15 +216,31 @@ const faqs = [
   },
   {
     q: "¿Hay trazabilidad entre la materia prima y el producto acabado?",
-    a: "Sí. El módulo de Producción trabaja sobre el módulo de Inventario, que gestiona lotes con fecha de fabricación y caducidad. El lote del producto acabado queda enlazado con los lotes de materia prima consumidos, de modo que puedes rastrear en ambos sentidos ante una incidencia o una inspección.",
+    a: "Sí. El módulo de Producción trabaja sobre el módulo de Inventario, que gestiona lotes con fecha de fabricación y caducidad. El lote del producto acabado queda enlazado con los lotes de materia prima consumidos, de modo que puedes rastrear en ambos sentidos ante una incidencia o una inspección, y sacar el informe en PDF para Sanidad o para el cliente.",
   },
   {
     q: "¿Sirve para un taller pequeño o solo para fábricas grandes?",
-    a: "Está pensado para talleres y fabricantes pequeños y medianos. El plan Producción incluye 8 usuarios, que cubre la plantilla habitual de un taller, y no requiere proyecto de implantación ni consultores. Drenpos está enfocado deliberadamente en pymes y autónomos, no en corporaciones que necesitan un ERP tipo SAP.",
+    a: "Está pensado para talleres y fabricantes pequeños y medianos. El plan Producción incluye 8 usuarios, que cubre la plantilla habitual de un taller, y no requiere proyecto de implantación ni consultores. Drenpos está enfocado deliberadamente en pymes y autónomos, no en corporaciones que necesitan un ERP tipo SAP. La implantación se mide en días o semanas, no en meses.",
   },
   {
     q: "¿Se integra con el control horario y la facturación?",
     a: "Sí, es el mismo sistema. El plan Producción incluye 8 usuarios de fichaje para el registro de jornada obligatorio y el módulo Financiero con facturación Verifactu. El tiempo que un operario imputa a una fase y la factura que sale de ese trabajo viven en la misma base de datos, sin exportaciones ni duplicar datos.",
+  },
+  {
+    q: "¿Tiene escandallo o lista de materiales?",
+    a: "Sí. Cada trabajo tipo funciona como receta: materiales con cantidad y unidad de medida, horas previstas por centro de trabajo y por fase, y el orden de las fases. Al crear una orden desde la receta se copia, así que cambiarla después no altera las órdenes ya lanzadas. Si un material también se fabrica, la orden lo marca como fabricable y propone su suborden, hasta tres niveles.",
+  },
+  {
+    q: "¿Se puede lanzar la orden desde un pedido de venta?",
+    a: "Sí. Desde el pedido se crea una orden por cada línea que se fabrica, con el cliente, la fecha del pedido y la cantidad que falta: lo pedido, menos lo servido, menos lo que ya está en órdenes y menos el stock libre. Si la orden va tarde, le falta material o está parada, el cuadro de producción marca ese pedido como en riesgo.",
+  },
+  {
+    q: "¿Cómo ficha el operario el tiempo de cada fase?",
+    a: "Desde su tablet, en la pantalla «Mi trabajo» o escaneando el QR de la hoja de la orden. Pulsa empezar en la fase y, al parar, las horas caen solas en la mano de obra de esa fase con su nombre. Este fichaje de tarea es independiente del registro de jornada: fichar en una orden no toca la entrada y la salida del día.",
+  },
+  {
+    q: "¿Qué no hace el módulo de producción?",
+    a: "No es un MRP completo: no planifica solo con capacidad finita ni dibuja un diagrama de Gantt, aunque enseña la carga de cada centro frente a su capacidad. No admite cierres parciales: el producto entra en stock al cerrar la orden entera. El puesto de trabajo necesita conexión, no lee sensores de máquina y no factura solo: deja el albarán relleno para que alguien lo revise.",
   },
 ];
 
@@ -254,6 +334,10 @@ const productSchema = {
     "Imputación de tiempos por operario y fase",
     "Coste real de fabricación",
     "Trazabilidad entre lote de materia prima y lote de producto acabado",
+    "Recetas con materiales, horas por fase y subórdenes de semielaborados",
+    "Necesidades de material con pedido de compra en un clic",
+    "Packs y kits con lista de materiales y montaje de N unidades",
+    "Coste previsto frente a real por material, personas y máquinas",
   ],
   provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
 };
@@ -271,7 +355,7 @@ const faqSchema = {
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
 const PAGE_PUBLISHED = "2026-08-16";
-const PAGE_UPDATED = "2026-09-23";
+const PAGE_UPDATED = "2026-10-17";
 ---
 
 <Base
@@ -394,11 +478,37 @@ const PAGE_UPDATED = "2026-09-23";
             en qué fase está cada trabajo, qué materiales consume y cuánto
             tiempo lleva. En Drenpos, cada fabricación es una
             <strong>orden de trabajo</strong> dividida en fases: el operario
-            escanea el material que consume —y el stock se descuenta al
-            instante, con su lote— e imputa el tiempo que dedica a cada fase.
+            escanea el material que consume (y el stock se descuenta al
+            instante, con su lote) e imputa el tiempo que dedica a cada fase.
             Al cerrar la orden tienes el <strong>coste real de fabricación</strong>,
             no una estimación.
           </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PREGUNTAS REALES (AEO) ═══════════════ -->
+  <section class="section pt-12 pb-0" id="preguntas-produccion">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <div class="text-center mb-10" data-aos="fade-up-sm">
+            <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Respuestas cortas</span>
+            <h2 class="h3 font-bold mb-3">Lo que pregunta un fabricante pequeño antes de dejar el Excel</h2>
+            <p class="text-lg mb-0" style="color: rgba(16,25,40,0.65);">Seis preguntas que nos hacen talleres, obradores y fábricas de 5 a 30 personas, con la guía completa de cada una.</p>
+          </div>
+          <div class="row g-4">
+            {preguntas.map((p) => (
+              <div class="col-12 md:col-6" id={p.id}>
+                <div class="border rounded-[20px] p-7 h-full bg-white" style="border-color: rgba(16,25,40,0.1);">
+                  <h3 class="h6 font-semibold mb-3">{p.q}</h3>
+                  <p class="text-base leading-relaxed mb-4" style="color: rgba(16,25,40,0.72);">{p.a}</p>
+                  <a href={p.link.url} class="text-primary font-semibold text-sm underline">{p.link.t}</a>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -435,7 +545,7 @@ const PAGE_UPDATED = "2026-09-23";
         <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Módulo de Producción</span>
         <h2 class="h3 font-bold mb-4">Qué hace exactamente el módulo</h2>
         <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
-          Seis capacidades, sin humo: lo que registra, lo que descuenta y lo que calcula.
+          Lo que registra, lo que descuenta y lo que calcula. Sin humo.
         </p>
       </div>
 
@@ -490,8 +600,8 @@ const PAGE_UPDATED = "2026-09-23";
               La mayoría de talleres presupuesta con un coste calculado una vez y
               actualizado pocas veces. Cuando el material sube o la pieza lleva
               más horas de las previstas, el margen desaparece sin dejar rastro
-              en ningún informe. Con el coste real por orden —materiales
-              consumidos y tiempos imputados— dejas de discutir con la
+              en ningún informe. Con el coste real por orden (materiales
+              consumidos y tiempos imputados) dejas de discutir con la
               intuición: sabes qué productos son rentables, cuáles hay que
               repreciar y qué fase se está comiendo las horas.
             </p>
@@ -618,6 +728,26 @@ const PAGE_UPDATED = "2026-09-23";
             ))}
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ GUÍAS DE PRODUCCIÓN (blog) ═══════════════ -->
+  <section class="section pt-0" id="guias-produccion">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h4 font-bold mb-2">Guías para fabricar con números</h2>
+        <p class="text-base mb-0" style="color: rgba(16,25,40,0.65);">Ejemplos con cifras de un obrador, un taller de muebles y un fabricante de cosmética.</p>
+      </div>
+      <div class="row g-4 justify-center">
+        {guias.map((g, i) => (
+          <div class="col-12 md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 80}>
+            <a href={g.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
+              <h3 class="h6 font-semibold mb-2">{g.t}</h3>
+              <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{g.d}</p>
+            </a>
+          </div>
+        ))}
       </div>
     </div>
   </section>

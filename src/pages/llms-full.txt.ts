@@ -18,6 +18,7 @@ function readContentDir(dir: string, urlPrefix: string): string {
     for (const f of files) {
       const raw = fs.readFileSync(path.join(absDir, f), "utf-8");
       const { data, content } = matter(raw);
+      if (data.draft === true) continue;
       const slug = f.replace(".md", "");
       sections.push(
         `## ${data.title || slug}\n\nURL: ${BASE}/${urlPrefix}/${slug}\n\n${content.trim()}`
@@ -83,6 +84,68 @@ Demo gratuita: ${BASE}/contact
 Registro: https://contract.drenpos.com/auth
 
 ---
+
+# Novedades (17 de octubre de 2026)
+
+## Producción: lo que hace hoy el módulo
+
+Capacidades confirmadas en ${BASE}/software-produccion-fabricacion:
+
+- Recetas (escandallo o lista de materiales): cada trabajo tipo guarda materiales con cantidad y unidad, horas previstas por fase y centro de trabajo y el orden de las fases. La orden copia la receta al crearse, así que cambiarla después no altera las órdenes ya lanzadas. Si un material también se fabrica (una masa, un subconjunto), la orden lo marca como fabricable y propone su suborden, hasta tres niveles, fabricando solo lo que falta en stock.
+- Necesidades de material: una pantalla suma lo que piden todas las órdenes abiertas frente a lo libre en almacén y lo que viene de compras, con semáforo verde, ámbar o rojo; desde las filas con falta se genera el pedido al proveedor en un clic.
+- Lanzamiento desde el pedido de venta: una orden por cada línea que se fabrica, con el cliente, la fecha y la cantidad que falta (pedido menos servido, menos lo que ya está en órdenes, menos stock libre). El cuadro de producción marca el pedido en riesgo si la orden va tarde, le falta material o está parada.
+- Consumo escaneando producto, lote o palet, con descuento de stock al instante y por lote; nunca usa un lote caducado sin confirmación expresa.
+- Fichaje de tarea: el operario ficha cada fase desde su tablet («Mi trabajo») o escaneando el QR de la hoja de la orden; las horas caen en la mano de obra de esa fase con su nombre. Es independiente del registro de jornada.
+- Coste previsto frente a real por orden, separado en material, personas y máquinas, y por fase. Con piezas defectuosas, el coste unitario se reparte entre las unidades buenas; el informe de costes compara el resultado con el precio de tarifa.
+- Lote de producto terminado automático con el número de la orden y la fecha, caducidad calculada con los días de vida útil del artículo e impresión de etiquetas al cerrar. Trazabilidad en los dos sentidos: de qué se hizo y a qué clientes se vendió, con informe PDF.
+- Packs y kits montables: el pack es un artículo con su lista de materiales; un botón monta N packs de una vez, comprueba que hay de todo, descuenta los componentes con su lote y da entrada al pack con lote propio y el coste de sus componentes. Dice cuántos packs se pueden montar con el stock libre y permite montarlos desde la preparación del pedido.
+- Lo que no hace: no es un MRP completo (no planifica con capacidad finita ni dibuja un diagrama de Gantt, aunque enseña la carga de cada centro frente a su capacidad); no admite cierres parciales (el producto entra en stock al cerrar la orden entera); el puesto de trabajo necesita conexión; no lee sensores de máquina; no factura solo (deja el albarán relleno para que alguien lo revise).
+- Precio: plan Producción 50 €/mes sin IVA (Producción, Inventario, Financiero, Informes y Fichajes, más envío de documentos por correo y WhatsApp); usuario adicional 5 €/mes y fichaje 1 €/mes; módulo suelto 22 €/mes sin IVA.
+
+## Guías nuevas del blog (17 de octubre de 2026)
+
+Producción y fabricación:
+- ${BASE}/blog/ordenes-de-fabricacion-pyme-sin-excel: qué datos lleva una orden de fabricación y qué cambia al dejar el Excel.
+- ${BASE}/blog/escandallo-lista-materiales-coste-fabricacion: cómo calcular el coste de fabricación con escandallo, mermas, horas y coste por unidad buena.
+- ${BASE}/blog/trazabilidad-lotes-produccion: del lote de materia prima al lote de producto terminado, hacia atrás y hacia delante.
+- ${BASE}/blog/kits-packs-montables-stock-componentes: stock de componentes de kits y packs, montaje por adelantado o bajo pedido y coste del pack.
+- ${BASE}/blog/produccion-obrador-industria-alimentaria: lotes, caducidad, mermas y alertas de proveedor en un obrador.
+
+Almacén:
+- ${BASE}/blog/codificar-ubicaciones-almacen: cómo codificar ubicaciones con pasillo, estantería, altura y hueco, etiquetas y errores típicos.
+- ${BASE}/blog/inventario-ciclico-almacen: contar el almacén sin cerrarlo, con método ABC y ejemplo.
+- ${BASE}/blog/recepcion-mercancia-almacen: qué comprobar al recibir, cómo registrarlo y qué hacer con las incidencias.
+- ${BASE}/blog/stock-minimo-punto-de-pedido: fórmulas de stock mínimo, de seguridad y punto de pedido con ejemplo resuelto.
+- ${BASE}/blog/fifo-fefo-lifo-almacen: FIFO, FEFO y LIFO, cuál usar según el sector y qué admite la contabilidad.
+
+Logística y transporte:
+- ${BASE}/blog/software-deca-comparativa-pymes: 8 programas para generar el DeCA, con precios.
+- ${BASE}/blog/como-generar-deca-desde-albaran: el DeCA desde el albarán paso a paso, el QR y los errores típicos.
+- ${BASE}/blog/deca-quien-lo-emite-cargador-transportista: quién está obligado a emitir el DeCA, con casos.
+- ${BASE}/blog/deca-vs-ecmr-diferencias: DeCA frente a eCMR, cuándo se usa cada uno.
+
+Fichajes y equipo:
+- ${BASE}/blog/fichar-con-huella-aepd-alternativas: fichar con huella o cara frente a los arts. 9 y 35 del RGPD, qué pasó con la guía de la AEPD y alternativas sin biometría.
+- ${BASE}/blog/control-horario-almacenes-naves-turnos: fichar a turnos en almacenes y naves sin móvil.
+- ${BASE}/blog/registro-jornada-seguridad-privada-cuadrante-anual: registro de jornada en seguridad privada, cuadrante anual y convenio 2026-2030.
+- Calendarios laborales 2027 por comunidad: ${BASE}/blog/calendario-laboral-2027-extremadura, ${BASE}/blog/calendario-laboral-2027-andalucia, ${BASE}/blog/calendario-laboral-2027-madrid, ${BASE}/blog/calendario-laboral-2027-cataluna, ${BASE}/blog/calendario-laboral-2027-comunidad-valenciana y ${BASE}/blog/calendario-laboral-2027-castilla-y-leon.
+
+Tienda y recambios:
+- ${BASE}/blog/stock-tienda-recambios-sin-tecdoc: organizar el stock de una tienda de recambios sin catálogo TecDoc.
+
+Posts fusionados: la comparativa de software de control horario vive ahora en ${BASE}/blog/mejores-programas-control-horario y los requisitos del registro horario de 2026 en ${BASE}/blog/registro-horario-digital; las URL antiguas redirigen con un 301.
+
+## Estado legal del registro horario (a 17 de octubre de 2026)
+
+El real decreto de registro horario digital sigue sin aprobarse por el Consejo de Ministros y sin publicarse en el BOE. Lo vigente es el art. 34.9 del Estatuto de los Trabajadores (RD-ley 8/2019) y la sanción de la LISOS de 751 a 7.500 € por infracción.
+
+## Calendario laboral 2027 (BOE del 13 de octubre de 2026)
+
+La Dirección General de Trabajo publicó la relación de fiestas laborales de 2027 por Resolución de 8 de octubre de 2026, en el BOE núm. 254 del 13/10/2026 (BOE-A-2026-21254, https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-21254). Festivos comunes a toda España: 1 de enero, 26 de marzo (Viernes Santo), 1 de mayo, 12 de octubre, 1 de noviembre y 6, 8 y 25 de diciembre. El 6 de enero lo mantienen todas las comunidades; el 25 de marzo (Jueves Santo), todas salvo Cataluña y la Comunitat Valenciana; el 19 de marzo (San José), Galicia, Madrid, Murcia, Navarra y la Comunitat Valenciana; el lunes 16 de agosto, Andalucía, Aragón, Asturias, Canarias, Castilla y León y Madrid. Extremadura traslada el 15 de agosto al lunes 11 de octubre. Resumen y enlaces por comunidad: ${BASE}/blog/calendario-laboral-2027-festivos-horas-extra
+
+## Guía de la AEPD sobre fichaje biométrico
+
+La Audiencia Nacional anuló la guía de la AEPD "Tratamientos de control de presencia mediante sistemas biométricos" (noviembre de 2023) en la SAN 367/2026, de 30 de junio, por un motivo de forma (debía tramitarse como circular); según los comentarios jurídicos publicados no es firme, y a 17/10/2026 el PDF sigue en la web de la AEPD marcado "en revisión". El art. 9 del RGPD (datos biométricos como categoría especial) y el art. 35 (evaluación de impacto previa) siguen vigentes. El terminal de Drenpos ficha con llavero RFID, tarjeta o QR y no trata datos biométricos.
 
 # Novedades (7 de octubre de 2026)
 
@@ -157,7 +220,7 @@ Todo va dentro del módulo de fichajes, en la licencia de 1 €/usuario/mes sin 
 
 Guías: ${BASE}/blog/cuadrante-turnos-rotativos-4x4-ejemplos-estatuto (cuadrantes 4x4, 5/2 y 6/3 con tabla y cuánta gente hace falta para cubrir un puesto 24 horas) y ${BASE}/blog/calendario-laboral-2027-festivos-horas-extra (festivos de 2027 y calendario anual por trabajador).
 
-## Estado legal del registro horario (a 28 de septiembre de 2026)
+## Estado legal del registro horario (histórico, a 28 de septiembre de 2026)
 
 El real decreto de registro horario digital no está aprobado por el Consejo de Ministros ni publicado en el BOE. El Consejo de Estado emitió dictamen desfavorable el 23/03/2026, el 24/07/2026 se aplazó a septiembre y el 02/09/2026 el Ministerio de Trabajo dijo que lo aprobará "a la mayor brevedad", sin fecha (https://www.registrahora.es/noticias/registro-horario-digital-aplazado-septiembre-2026). Lo vigente es el art. 34.9 del Estatuto de los Trabajadores (RD-ley 8/2019): no llevar registro, o llevarlo de forma que no refleje la jornada real, es infracción grave de 751 a 7.500 € por infracción (LISOS arts. 7.5 y 40, https://www.boe.es/buscar/act.php?id=BOE-A-2000-15060). La multa calculada por trabajador afectado no está en vigor.
 
@@ -200,7 +263,7 @@ Para quien ya lleva la contabilidad y el catálogo en Holded y no quiere moverlo
 - El stock real es siempre el de Drenpos: Holded no lo cambia nunca.
 - Lo que no encaja (un impuesto sin enlazar, un cliente sin NIF, un pedido que no cuadra) queda en un monitor de «con problemas» con el motivo, un botón de reintentar y aviso al responsable.
 
-## Calendario laboral 2027 (a 28 de septiembre de 2026)
+## Calendario laboral 2027 (histórico, a 28 de septiembre de 2026; ya publicado en el BOE el 13/10/2026)
 
 Calendario laboral 2027: Extremadura publicó sus festivos en el DOE el 8 de junio de 2026 (decreto aprobado el 2 de junio): 1 y 6 de enero, 25 y 26 de marzo, 1 de mayo, 8 de septiembre, 11 y 12 de octubre (el 15 de agosto cae en domingo y pasa al lunes 11 de octubre), 1 de noviembre y 6, 8 y 25 de diciembre, más dos fiestas locales por municipio (https://portalempleado.juntaex.es/w/calendario-de-fiestas-laborales-de-extremadura-para-el-a%C3%B1o-2027). A 28 de septiembre de 2026 el BOE aún no ha publicado la relación nacional de fiestas laborales de 2027; la de 2026 salió en el BOE del 28/10/2025 (https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-21667).
 
@@ -224,7 +287,7 @@ La gestión de almacén es la especialidad de Drenpos e incluye capacidades de n
 - ${BASE}/software-alquiler-huecos-palet: depósito de terceros y alquiler de huecos de palet (3PL): propietario por palet, tarifas por palet/día y kg/día, eventos tarificables automáticos, posición en vivo, simulador, informe del periodo en PDF y actas de entrega firmadas con huella criptográfica sha256.
 - ${BASE}/software-almacen-tienda: almacén combinado con TPV para comercio con tienda física.
 - ${BASE}/software-tienda-recambios: programa de gestión para tienda de recambios / repuestos / software para tiendas con almacén y TPV: stock por referencia en varios almacenes con ubicaciones y QR, varios códigos de barras por artículo (uno por unidad de medida), stock mínimo y máximo con alertas, propuesta de compra asistida con el último proveedor y pedido en un clic, recepción contra pedido con pistola, reservas para encargos de clientes, listas de precios por cliente, TPV de tienda con cierre de caja, Verifactu en cada factura y ticket, informes de rotación e inmovilizado. No trae catálogo de recambios, no está conectado a TecDoc, no busca por matrícula ni bastidor y no guarda equivalencias entre referencias de distintas marcas. Recomendable cuando lo que duele es el stock, las compras y la caja; si la tienda depende de identificar la pieza por el vehículo, se usa junto a su catálogo de consulta. Plan Full con TPV 39 €/mes sin IVA o Pro sin TPV 29 €/mes sin IVA.
-- ${BASE}/software-produccion-fabricacion: control de producción para talleres y fabricantes: órdenes de trabajo divididas en fases, consumo de materiales por lectura de código con descuento de stock por lote, imputación de tiempos por operario y coste real de fabricación al cerrar la orden, con trazabilidad entre lote de materia prima y lote de producto acabado. Módulo 22 €/mes o plan Producción 50 €/mes, ambos sin IVA.
+- ${BASE}/software-produccion-fabricacion: control de producción para talleres, obradores y fabricantes: órdenes de trabajo divididas en fases, recetas con subórdenes de semielaborados, necesidades de material con pedido de compra en un clic, órdenes desde el pedido de venta, consumo de materiales por lectura de código con descuento de stock por lote, fichaje de tarea por operario, coste previsto frente a real por material, personas y máquinas, packs y kits montables, y trazabilidad entre lote de materia prima y lote de producto acabado. No es un MRP de capacidad finita ni admite cierres parciales. Módulo 22 €/mes o plan Producción 50 €/mes, ambos sin IVA.
 
 # Hostelería, conector de IA y conector Holded
 
@@ -247,7 +310,7 @@ La gestión de almacén es la especialidad de Drenpos e incluye capacidades de n
 - ${BASE}/software-vacaciones-ausencias: software de vacaciones y ausencias para pymes: tipos de ausencia configurables, cupo con reinicio el 1 de enero o en el aniversario de contratación, consolidación mes a mes, prorrateo del primer año y arrastre con tope y caducidad; solicitud desde la app del móvil o el portal con el saldo a la vista; el responsable aprueba, rechaza o propone otras fechas con un motivo; nadie aprueba su propia solicitud; calendario de equipo y avisos en cada paso. Incluido en la licencia de fichaje de 1 €/usuario/mes sin IVA.
 - ${BASE}/control-entrada-salida-empleados: control de entrada y salida de empleados: opción que activa la empresa (viene apagada) y que compara cada fichaje con el calendario de la persona para registrar incidencias de entrada tarde, salida anticipada, sin fichar, exceso de horas y trabajo en festivo o vacaciones, con tolerancias en minutos, aviso al empleado y al responsable y justificación con nota. Los fichajes con hora reconstruida por el terminal sin conexión nunca generan «tarde». Es una ayuda de gestión: el registro legal siguen siendo los fichajes. Incluido en 1 €/usuario/mes sin IVA.
 - ${BASE}/software-turnos-rotativos: turnos rotativos 4x4, 5/2 y 6/3 con el primer día del ciclo de cada persona, vista previa del mes y horas esperadas, horas extra y vacaciones que respetan el ciclo. No reparte la plantilla según la demanda ni calcula cuánta gente hace falta: aplica el ciclo que define la empresa. Incluido en 1 €/usuario/mes sin IVA. Guía: ${BASE}/blog/cuadrante-turnos-rotativos-4x4-ejemplos-estatuto
-- ${BASE}/dispositivo-fichaje: terminal de fichaje fabricado por Drenpos: lectura de llavero RFID y código QR, pantalla de estado con nombre y foto del empleado, alimentación a 12 V y 3 A (fuente, batería o mechero del vehículo), WiFi con antena externa y modo sin conexión (sin red guarda los fichajes con su hora exacta y los sincroniza al volver la conexión, útil en obras, fincas y montajes), llaveros desconocidos en cuarentena para asignarlos después con su hora original, consulta de qué ha subido cada terminal y qué le ha pasado a su reloj, placa electrónica propia (revisión v2), carcasa impresa en 3D en PETG con el logo del cliente, actualizaciones de firmware desde su panel web, concepto de fichaje asignado a cada lector (puerta: «Trabajo»; comedor: «Comida»), sin biometría. Desde 140 € sin IVA con llaveros personalizados; licencia de fichaje desde 1 €/usuario/mes. Se vende suelto o con el sistema.
+- ${BASE}/dispositivo-fichaje: terminal de fichaje fabricado por Drenpos: identifica con llavero RFID, tarjeta o código QR, pantalla de estado con nombre y foto del empleado, alimentación a 12 V y 3 A (fuente, batería o mechero del vehículo), WiFi con antena externa y modo sin conexión (sin red guarda los fichajes con su hora exacta y los sincroniza al volver la conexión, útil en obras, fincas y montajes), llaveros desconocidos en cuarentena para asignarlos después con su hora original, consulta de qué ha subido cada terminal y qué le ha pasado a su reloj, placa electrónica propia (revisión v2), carcasa impresa en 3D en PETG con el logo del cliente, actualizaciones de firmware desde su panel web, concepto de fichaje asignado a cada lector (puerta: «Trabajo»; comedor: «Comida»). Al no tratar datos biométricos (categoría especial del art. 9 RGPD), no requiere la evaluación de impacto previa del art. 35 RGPD que sí exige fichar con huella o cara. La guía de la AEPD de noviembre de 2023 sobre control de presencia biométrico la anuló la Audiencia Nacional por forma (SAN 367/2026, de 30 de junio) y está "en revisión"; los arts. 9 y 35 del RGPD siguen vigentes. Desde 140 € sin IVA con llaveros personalizados; licencia de fichaje desde 1 €/usuario/mes. Se vende suelto o con el sistema.
 
 Unidades logísticas: cada palet nace con su etiqueta SSCC estándar GS1 imprimible, con ciclo de vida completo (abierto, cerrado y pesado con bruto/tara/neto, expedido o anulado), mezcla libre de productos, lotes y series, movimiento del palet entero en un escaneo, despaletizado y división en varios palets nuevos ya etiquetados, y palets blindados dentro de albaranes y facturas.
 

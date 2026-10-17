@@ -146,8 +146,10 @@ const ventajas = [
   },
   {
     icon: "🙅",
-    title: "Sin huella ni reconocimiento facial",
-    body: "Ficha con llavero o QR, sin tratar datos biométricos. Evitas el régimen reforzado que la AEPD aplica a la huella y a la cara, y el empleado no necesita móvil.",
+    title: "Llavero o QR: sin datos biométricos que proteger",
+    body: "La huella y la cara son datos de categoría especial: el artículo 9 del RGPD prohíbe tratarlos salvo excepción y el artículo 35 obliga a una evaluación de impacto previa. Con llavero o QR no tratas esos datos, te ahorras ese papeleo y el empleado tampoco necesita móvil.",
+    href: "/blog/fichar-con-huella-aepd-alternativas",
+    hrefText: "Fichar con huella: qué dice el RGPD y qué pasó con la guía de la AEPD",
   },
   {
     icon: "🔒",
@@ -300,12 +302,14 @@ const faqs = [
 ];
 
 const articulos = [
+  { t: "Fichar con huella o cara: qué dice el RGPD y alternativas legales", s: "fichar-con-huella-aepd-alternativas" },
+  { t: "Control horario en almacenes y naves: fichar a turnos sin móvil", s: "control-horario-almacenes-naves-turnos" },
   { t: "Fichaje portátil 12V: cumple la ley de jornada en cualquier lugar", s: "dispositivo-fichaje-portatil-12v-ley-control-jornada" },
-  { t: "Registro horario digital: obligación, requisitos y sanciones", s: "registro-horario-digital" },
-  { t: "Los mejores programas de control horario para pymes", s: "mejores-programas-control-horario" },
-  { t: "Multas del registro horario: lo que cuesta incumplir", s: "multas-registro-horario-2026-costo-incumplimiento" },
-  { t: "Fichar desde el móvil de forma legal", s: "fichar-desde-el-movil-legal-2026" },
-  { t: "Por qué Excel ya no sirve para el control horario", s: "por-que-excel-ya-no-sirve-control-horario-2026" },
+  { t: "Registro horario digital: requisitos y estado del real decreto", s: "registro-horario-digital" },
+  { t: "Los 10 mejores programas de control horario, con precios", s: "mejores-programas-control-horario" },
+  { t: "Multas del registro horario en 2026: cuánto son de verdad", s: "multas-registro-horario-2026-costo-incumplimiento" },
+  { t: "¿Es legal fichar desde el móvil en 2026?", s: "fichar-desde-el-movil-legal-2026" },
+  { t: "Registro de jornada en seguridad privada: cuadrante anual", s: "registro-jornada-seguridad-privada-cuadrante-anual" },
 ];
 
 // ── Datos estructurados (JSON-LD) ──────────────────────────────────────
@@ -335,12 +339,12 @@ const productSchema = {
   name: "Terminal de fichaje Drenpos (RFID y QR)",
   url: CANONICAL,
   image: [
-    `https://www.drenpos.com${IMG}/v2-terminal-marca-cliente.webp`,
-    `https://www.drenpos.com${IMG}/v2-terminal-en-mano.webp`,
-    `https://www.drenpos.com${IMG}/01-dispositivo-lector-rfid.png`,
+    `https://www.drenpos.com${IMG}/terminal-drenpos.jpg`,
+    `https://www.drenpos.com${IMG}/terminal-drenpos-og.jpg`,
+    `https://www.drenpos.com${IMG}/terminal-drenpos.webp`,
   ],
   description:
-    "Dispositivo de fichaje para empresas con lectura de llavero RFID y código QR, pantalla de estado con nombre y foto del empleado, alimentación a 12 V, placa electrónica propia y carcasa impresa en 3D con el logo del cliente. Sin biometría. Sincroniza cada fichaje con el software de control horario de Drenpos con sellado inalterable y sigue fichando sin internet: guarda los fichajes con su reloj propio y los envía al recuperar la red.",
+    "Dispositivo de fichaje para empresas con lectura de llavero RFID y código QR, pantalla de estado con nombre y foto del empleado, alimentación a 12 V, placa electrónica propia y carcasa impresa en 3D con el logo del cliente. Identifica al empleado con llavero RFID, tarjeta o QR, sin datos biométricos. Sincroniza cada fichaje con el software de control horario de Drenpos con sellado inalterable y sigue fichando sin internet: guarda los fichajes con su reloj propio y los envía al recuperar la red.",
   brand: { "@type": "Brand", name: "Drenpos" },
   manufacturer: { "@type": "Organization", name: "Drenpos Tech SL", url: "https://www.drenpos.com" },
   category: "Terminal de control de presencia",
@@ -352,7 +356,7 @@ const productSchema = {
     { "@type": "PropertyValue", name: "Llaveros o tarjetas desconocidos", value: "El fichaje queda en cuarentena y se asigna después a su dueño con su hora original" },
     { "@type": "PropertyValue", name: "Trazabilidad del terminal", value: "Se consulta qué ha subido cada terminal y qué le ha pasado a su reloj" },
     { "@type": "PropertyValue", name: "Concepto por terminal", value: "Cada terminal ficha con el concepto que tiene asignado, por ejemplo Trabajo en la puerta y Comida en el comedor" },
-    { "@type": "PropertyValue", name: "Biometría", value: "No" },
+    { "@type": "PropertyValue", name: "Identificación", value: "Llavero RFID, tarjeta o QR" },
     { "@type": "PropertyValue", name: "Personalización", value: "Logo del cliente en carcasa y llaveros" },
   ],
   offers: {
@@ -373,11 +377,11 @@ const productSchema = {
 <Base
   title="Dispositivo de Fichaje con Llavero RFID y QR · Drenpos"
   meta_title="Dispositivo de Fichaje RFID y QR para Empresas | Drenpos"
-  description="Terminal de fichaje Drenpos con llavero RFID o QR, sin huella, a 12 V y con tu logo. Ficha sin internet, con vacaciones y turnos incluidos. Desde 140 €."
+  description="Terminal de fichaje con llavero RFID, tarjeta o QR y tu logo en la carcasa. Ficha sin internet y trae vacaciones y turnos incluidos. Desde 140 €."
   canonical={CANONICAL}
-  image={`${IMG}/v2-terminal-cover.jpg`}
+  image={`${IMG}/terminal-drenpos-og.jpg`}
   published_date="2026-09-03"
-  modified_date="2026-10-07"
+  modified_date="2026-10-17"
   author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
 >
   <!-- Datos estructurados -->
@@ -413,8 +417,8 @@ const productSchema = {
             <span class="text-primary">Dispositivo de fichaje</span> con llavero RFID y QR, con tu logo en la carcasa
           </h1>
           <p class="text-lg mb-4 max-w-xl" style="color: rgba(16,25,40,0.72);">
-            Un terminal de fichaje que tu equipo usa sin móvil y sin huella:
-            acerca el llavero, la pantalla enseña su nombre y su foto, y la
+            Un terminal de fichaje que tu equipo usa sin móvil: acerca el
+            llavero RFID, la tarjeta o el QR, la pantalla enseña su nombre y su foto, y la
             jornada queda registrada en Drenpos con sellado inalterable.
             <strong>Placa electrónica y carcasa propias</strong>, alimentación
             a <strong>12 V</strong> y personalización con la
@@ -422,7 +426,7 @@ const productSchema = {
             sistema completo.
           </p>
           <div class="mb-8">
-            <LandingMeta updated="2026-10-07" published="2026-09-03" />
+            <LandingMeta updated="2026-10-17" published="2026-09-03" />
           </div>
 
           <ul class="flex flex-wrap gap-4 mb-10">
@@ -451,7 +455,7 @@ const productSchema = {
           <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
             <div class="flex items-center gap-2">
               <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
-              Sin biometría
+              Llavero, tarjeta o QR
             </div>
             <div class="flex items-center gap-2">
               <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
@@ -475,9 +479,9 @@ const productSchema = {
 
             <div class="rounded-2xl overflow-hidden relative z-10 mx-auto max-w-md" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
               <img
-                src={`${IMG}/v2-terminal-marca-cliente.webp`}
-                alt="Terminal de fichaje de Drenpos con pantalla de estado, lector RFID y QR y el logo de un cliente en la carcasa"
-                width="900"
+                src={`${IMG}/terminal-drenpos.webp`}
+                alt="Terminal de fichaje Drenpos con pantalla de estado, lector RFID y QR, logo Drenpos en el frontal y dos llaveros RFID"
+                width="1200"
                 height="1200"
                 class="w-full h-auto block"
                 fetchpriority="high"
@@ -495,7 +499,7 @@ const productSchema = {
             <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
               <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #fef3c7;">🏷️</div>
               <div>
-                <p class="text-xs font-bold text-dark">Con la marca del cliente</p>
+                <p class="text-xs font-bold text-dark">Con la marca de tu empresa</p>
                 <p class="text-xs" style="color: #9ca3af;">Carcasa impresa en 3D</p>
               </div>
             </div>
@@ -524,8 +528,8 @@ const productSchema = {
             pantalla el nombre y la foto del empleado, y envía cada fichaje al
             software de control horario con <strong>sellado temporal
             inalterable</strong>, que es lo que la Inspección de Trabajo pide
-            ver. No usa huella ni reconocimiento facial, así que no trata
-            datos biométricos.
+            ver. Como identifica con llavero o QR, no trata datos
+            biométricos.
           </p>
         </div>
       </div>
@@ -642,10 +646,10 @@ const productSchema = {
           <div class="row g-5 mb-12">
             <div class="lg:col-5" data-aos="fade-up-sm">
               <div class="rounded-2xl overflow-hidden h-full relative" style="border: 1px solid rgba(255,255,255,0.10);">
-                <img src={`${IMG}/v2-terminal-en-mano.webp`} alt="Terminal de fichaje Drenpos v2 sostenido en la mano, con antena WiFi y ventana de lectura RFID y QR" width="600" height="800" class="w-full h-full object-cover block" loading="lazy" />
+                <img src={`${IMG}/02-llaveros-personalizados.webp`} alt="Llaveros RFID personalizados impresos en 3D por Drenpos delante del terminal de fichaje" width="600" height="757" class="w-full h-full object-cover block" loading="lazy" />
                 <div class="absolute bottom-0 inset-x-0 p-6" style="background: linear-gradient(to top, rgba(16,25,40,0.85), transparent);">
-                  <p class="text-white font-bold text-lg mb-1">Cabe en una mano</p>
-                  <p class="text-sm" style="color: rgba(255,255,255,0.75);">Se lleva a la obra por la mañana y vuelve a la nave por la tarde.</p>
+                  <p class="text-white font-bold text-lg mb-1">Llaveros con tu marca</p>
+                  <p class="text-sm" style="color: rgba(255,255,255,0.75);">Uno por empleado, impresos en 3D. Se acercan al lector y el fichaje queda hecho.</p>
                 </div>
               </div>
             </div>
@@ -659,10 +663,10 @@ const productSchema = {
                   </div>
                 </div>
                 <div class="rounded-2xl overflow-hidden relative flex-1" style="border: 1px solid rgba(255,255,255,0.10);" data-aos="fade-up-sm" data-aos-delay="200">
-                  <img src={`${IMG}/02-llaveros-personalizados.png`} alt="Llaveros RFID personalizados impresos en 3D por Drenpos" width="600" height="300" class="w-full h-full object-cover block" loading="lazy" style="max-height: 260px;" />
+                  <img src={`${IMG}/03-tarjetas-qr.png`} alt="Tarjeta de fichaje con foto del empleado y código QR personal, impresa desde Drenpos" width="789" height="610" class="w-full h-full object-cover block" loading="lazy" style="max-height: 260px;" />
                   <div class="absolute bottom-0 inset-x-0 p-5" style="background: linear-gradient(to top, rgba(16,25,40,0.85), transparent);">
-                    <p class="text-white font-bold mb-0.5">Llaveros con tu marca</p>
-                    <p class="text-xs" style="color: rgba(255,255,255,0.75);">Uno por empleado, impresos en 3D. Tarjetas QR como alternativa imprimible.</p>
+                    <p class="text-white font-bold mb-0.5">Tarjeta con QR</p>
+                    <p class="text-xs" style="color: rgba(255,255,255,0.75);">Se imprime desde la ficha del empleado. Sirve como alternativa al llavero.</p>
                   </div>
                 </div>
               </div>
@@ -677,6 +681,9 @@ const productSchema = {
                     <div class="text-2xl mb-3">{v.icon}</div>
                     <p class="text-white font-semibold mb-1.5">{v.title}</p>
                     <p class="text-sm" style="color: rgba(255,255,255,0.72);">{v.body}</p>
+                    {v.href && (
+                      <a href={v.href} target="_blank" rel="noopener" class="text-xs underline mt-2 inline-block" style="color: #f9b27c;">{v.hrefText}</a>
+                    )}
                   </div>
                 </div>
               ))

@@ -1,9 +1,9 @@
 ---
 title: "Calendario laboral 2027: festivos, horas esperadas y horas extra"
 meta_title: "Calendario laboral 2027: festivos y cálculo de horas extra"
-description: "Qué se sabe del calendario laboral 2027 a 28/09/2026, festivos de Extremadura ya publicados en el DOE y cómo pasar de festivos a horas y horas extra."
+description: "Festivos nacionales de 2027 según el BOE del 13 de octubre de 2026, enlaces al calendario de cada comunidad y cómo pasar de festivos a horas y horas extra."
 date: 2026-09-23
-updated: 2026-09-28
+updated: 2026-10-17
 image: "/images/blog/control-horario-teletrabajo-cumplir-ley-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -22,11 +22,13 @@ tags:
 featured: false
 draft: false
 hero:
-  title: "Calendario laboral 2027: lo que ya se sabe y cómo prepararlo"
-  description: "El BOE aún no ha publicado los festivos nacionales de 2027. Te contamos qué es fijo, qué ha publicado ya Extremadura y cómo se convierten los festivos en horas."
+  title: "Calendario laboral 2027: festivos del BOE y cómo prepararlo"
+  description: "El BOE ya publicó los festivos de 2027. Te contamos cuáles son nacionales, dónde ver los de tu comunidad y cómo se convierten los festivos en horas."
 faq:
   - question: "¿Está publicado el calendario laboral 2027 en el BOE?"
-    answer: "A 28 de septiembre de 2026, no. La relación de fiestas laborales de cada año la publica la Dirección General de Trabajo cuando las comunidades autónomas han aprobado las suyas. La de 2026 salió en el BOE del 28 de octubre de 2025, así que la de 2027 se espera en otoño de 2026."
+    answer: "Sí. La Dirección General de Trabajo publicó la relación de fiestas laborales de 2027 en el BOE núm. 254, del 13 de octubre de 2026 (Resolución de 8 de octubre de 2026, BOE-A-2026-21254). Recoge los festivos nacionales y los de cada comunidad autónoma, Ceuta y Melilla. Las dos fiestas locales de cada municipio se publican aparte, en el boletín de cada provincia o comunidad."
+  - question: "¿Qué festivos nacionales hay en 2027?"
+    answer: "Ocho son comunes a toda España: 1 de enero, Viernes Santo (26 de marzo), 1 de mayo, 12 de octubre, 1 de noviembre y 6, 8 y 25 de diciembre. Además, todas las comunidades mantienen el 6 de enero y casi todas el Jueves Santo (25 de marzo), salvo Cataluña y la Comunitat Valenciana. El 1 de mayo y el 25 de diciembre caen en sábado."
   - question: "¿Cuántos festivos hay al año en España?"
     answer: "Como máximo 14 fiestas laborales retribuidas y no recuperables, dos de ellas locales, según el artículo 37.2 del Estatuto de los Trabajadores. Cada comunidad completa su lista dentro de ese máximo y cada ayuntamiento propone sus dos fiestas locales."
   - question: "¿Qué festivos tiene Extremadura en 2027?"
@@ -39,11 +41,11 @@ faq:
     answer: "El artículo 34.6 del Estatuto obliga a elaborar el calendario laboral cada año y a exponerlo en cada centro de trabajo. En Drenpos no hay que rehacerlo ni reasignarlo en enero: los calendarios son permanentes, los festivos fijos son recurrentes y el botón «Copiar festivos de 2026 a 2027» trae los del año anterior para que solo retoques los que cambian de fecha, como el Jueves Santo. Después, la planificación anual descarga el PDF del año con una página por trabajador."
 ---
 
-> El calendario laboral 2027 todavía no está completo: a 28 de septiembre de 2026 el BOE no ha publicado la lista nacional de festivos, que el año pasado salió a finales de octubre. Lo que sí es fijo es el marco: como máximo 14 fiestas al año, dos de ellas locales. Extremadura ya publicó sus festivos de 2027 en el DOE. Con eso puedes calcular las horas que debe hacer cada persona y, a partir de ahí, sus horas extra.
+> El calendario laboral 2027 ya es oficial: el BOE del 13 de octubre de 2026 publicó la relación de fiestas laborales de todo el país. Hay ocho festivos comunes a toda España, el 6 de enero en todas las comunidades y el Jueves Santo en casi todas. Cada comunidad completa hasta 12 y cada municipio añade dos locales. Con eso ya puedes calcular las horas que debe hacer cada persona y sus horas extra.
 
-> **Estado a 28 de septiembre de 2026**
+> **Estado a 17 de octubre de 2026**
 >
-> El BOE todavía no ha publicado la relación de fiestas laborales de 2027. Este artículo recoge lo que ya es oficial (el calendario de Extremadura, publicado en el DOE) y lo que marca la ley. En cuanto salga la resolución del BOE, lo actualizamos con los festivos de todas las comunidades.
+> La [Resolución de 8 de octubre de 2026 de la Dirección General de Trabajo](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-21254) (BOE núm. 254, del 13 de octubre de 2026, BOE-A-2026-21254) recoge los festivos de 2027 de todas las comunidades, Ceuta y Melilla. Faltan solo las fiestas locales de cada municipio, que se publican en los boletines autonómicos o provinciales.
 
 <div class="my-8 flex justify-center">
   <a href="/control-horario#calendarios" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
@@ -51,11 +53,37 @@ faq:
   </a>
 </div>
 
-## ¿Cuándo se publica el calendario laboral 2027 en el BOE?
+## ¿Qué festivos de 2027 ha publicado el BOE?
 
-Cada comunidad autónoma aprueba sus festivos y los publica en su boletín. Después, la Dirección General de Trabajo del Ministerio reúne todas las listas y publica en el BOE la relación de fiestas laborales del año.
+Todos los autonómicos y nacionales. Cada comunidad aprueba sus festivos y los publica en su boletín; después la Dirección General de Trabajo reúne las listas en una sola resolución. La de 2027 es la [Resolución de 8 de octubre de 2026](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-21254), publicada en el BOE núm. 254 del 13 de octubre de 2026. La de 2026 había salido el 28 de octubre de 2025.
 
-Para 2026 fue la [Resolución de 17 de octubre de 2025, publicada en el BOE del 28 de octubre de 2025](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-21667) (BOE-A-2025-21667). Si el calendario se repite, la de 2027 llegará entre octubre y noviembre de 2026. Hasta entonces, los calendarios nacionales de 2027 que circulan son estimaciones, y alguno, como [calendarioslaborales.com](https://calendarioslaborales.com/calendario-laboral-espana-2027.htm), lo avisa.
+Estos son los festivos de ámbito nacional en 2027 y dónde se aplican:
+
+| Fecha | Día | Festivo | Dónde |
+| --- | --- | --- | --- |
+| 1 de enero | Viernes | Año Nuevo | Toda España |
+| 6 de enero | Miércoles | Epifanía del Señor | Todas las comunidades, Ceuta y Melilla |
+| 19 de marzo | Viernes | San José | Galicia, Madrid, Murcia, Navarra y Comunitat Valenciana |
+| 25 de marzo | Jueves | Jueves Santo | Todas salvo Cataluña y Comunitat Valenciana |
+| 26 de marzo | Viernes | Viernes Santo | Toda España |
+| 1 de mayo | Sábado | Fiesta del Trabajo | Toda España |
+| 16 de agosto | Lunes | Traslado de la Asunción | Andalucía, Aragón, Asturias, Canarias, Castilla y León y Madrid |
+| 12 de octubre | Martes | Fiesta Nacional de España | Toda España |
+| 1 de noviembre | Lunes | Todos los Santos | Toda España |
+| 6 de diciembre | Lunes | Día de la Constitución | Toda España |
+| 8 de diciembre | Miércoles | Inmaculada Concepción | Toda España |
+| 25 de diciembre | Sábado | Natividad del Señor | Toda España |
+
+Cada comunidad añade sus fiestas propias hasta llegar a 12 (Canarias tiene 11 más la de cada isla). El Lunes de Pascua, 29 de marzo, es festivo en Baleares, Cataluña, Navarra, País Vasco, La Rioja y la Comunitat Valenciana.
+
+Tienes el calendario completo, con puentes y días laborables, de estas comunidades:
+
+- [Calendario laboral 2027 en Extremadura](/blog/calendario-laboral-2027-extremadura)
+- [Calendario laboral 2027 en Andalucía](/blog/calendario-laboral-2027-andalucia)
+- [Calendario laboral 2027 en la Comunidad de Madrid](/blog/calendario-laboral-2027-madrid)
+- [Calendario laboral 2027 en Cataluña](/blog/calendario-laboral-2027-cataluna)
+- [Calendario laboral 2027 en la Comunitat Valenciana](/blog/calendario-laboral-2027-comunidad-valenciana)
+- [Calendario laboral 2027 en Castilla y León](/blog/calendario-laboral-2027-castilla-y-leon)
 
 ## ¿Cuántos festivos hay al año y cuáles son fijos?
 
@@ -86,7 +114,7 @@ Extremadura ya tiene su calendario cerrado. El decreto se aprobó el 2 de junio 
 
 El traslado del 15 de agosto al lunes 11 de octubre deja un puente de cuatro días, del sábado 9 al martes 12. A estos doce días se suman las dos fiestas locales de cada municipio, que los ayuntamientos tenían que proponer antes del 15 de septiembre de 2026.
 
-Si tienes gente en otras comunidades, espera a su boletín o a la resolución del BOE antes de cargarlos. Castilla y León, por ejemplo, [traslada el 15 de agosto al lunes 16](https://comunicacion.jcyl.es/web/jcyl/Comunicacion/es/Plantilla100Detalle/1284877984309/ConsejoGobierno/1285623376084/Comunicacion), no a octubre.
+Si tienes gente en otras comunidades, cada una resuelve distinto el 15 de agosto: Castilla y León, Madrid o Andalucía lo [trasladan al lunes 16](/blog/calendario-laboral-2027-castilla-y-leon), mientras que Cataluña y la Comunitat Valenciana no lo trasladan. Míralo en la tabla de arriba o en el post de cada comunidad.
 
 ## ¿Cómo se pasa de los festivos a las horas que debe hacer cada persona?
 
@@ -143,9 +171,9 @@ Con la planificación anual del equipo. En Drenpos es un calendario de administr
 
 Cada página lleva la rejilla de los doce meses, la lista de festivos de esa persona y el resumen de días laborables, festivos y ausencias. Es lo que te piden en cuanto alguien quiere saber qué días libra en agosto, y va más allá de lo que pide el artículo 34.6, que solo obliga a exponer un ejemplar del calendario en cada centro. Más detalle en [planificación anual del equipo](/control-horario#planificacion-anual).
 
-## ¿Qué conviene hacer ya, antes de que salga el BOE?
+## ¿Qué conviene hacer ya con el calendario de 2027?
 
-- Cargar los festivos de Extremadura de 2027 si tienes gente allí, y marcar como recurrentes los fijos (1 de enero, 1 de mayo, 12 de octubre, 25 de diciembre). En Drenpos, copia los de 2026 a 2027 con un botón y cambia solo los que se mueven.
+- Cargar los festivos de 2027 de cada comunidad donde tengas gente (ya están todos en el BOE) y marcar como recurrentes los fijos (1 de enero, 1 de mayo, 12 de octubre, 25 de diciembre). En Drenpos, copia los de 2026 a 2027 con un botón y cambia solo los que se mueven.
 - Pedir a cada centro las dos fiestas locales de su ayuntamiento.
 - Crear el calendario de verano con sus fechas de vigencia, si cambias de horario.
 - Dejar hecho el calendario de vacaciones: la ley pide que cada persona conozca sus fechas con dos meses de antelación. Tienes cómo llevarlo en [gestión de vacaciones y ausencias sin Excel](/blog/gestion-vacaciones-permisos-pymes-sin-excel).
@@ -154,7 +182,11 @@ Cada página lleva la rejilla de los doce meses, la lista de festivos de esa per
 
 ### ¿Está publicado el calendario laboral 2027 en el BOE?
 
-A 28 de septiembre de 2026, no. La relación de fiestas laborales de cada año la publica la Dirección General de Trabajo cuando las comunidades autónomas han aprobado las suyas. La de 2026 salió en el BOE del 28 de octubre de 2025, así que la de 2027 se espera en otoño de 2026.
+Sí. La Dirección General de Trabajo publicó la relación de fiestas laborales de 2027 en el BOE núm. 254, del 13 de octubre de 2026 (Resolución de 8 de octubre de 2026, BOE-A-2026-21254). Recoge los festivos nacionales y los de cada comunidad autónoma, Ceuta y Melilla. Las dos fiestas locales de cada municipio se publican aparte, en el boletín de cada provincia o comunidad.
+
+### ¿Qué festivos nacionales hay en 2027?
+
+Ocho son comunes a toda España: 1 de enero, Viernes Santo (26 de marzo), 1 de mayo, 12 de octubre, 1 de noviembre y 6, 8 y 25 de diciembre. Además, todas las comunidades mantienen el 6 de enero y casi todas el Jueves Santo (25 de marzo), salvo Cataluña y la Comunitat Valenciana. El 1 de mayo y el 25 de diciembre caen en sábado.
 
 ### ¿Cuántos festivos hay al año en España?
 
@@ -178,4 +210,4 @@ El artículo 34.6 del Estatuto obliga a elaborar el calendario laboral cada año
 
 ## Siguiente paso
 
-Los calendarios laborales, los festivos y el cálculo de horas extra van incluidos en el módulo de fichajes de Drenpos, a 1 € por usuario y mes sin IVA. Tienes el detalle en [calendarios y festivos del control horario](/control-horario#calendarios). Si quieres que las desviaciones del horario te avisen solas, mira el [control de entrada y salida](/blog/control-entrada-salida-retrasos-empleados). Actualizaremos este artículo en cuanto el BOE publique la relación de fiestas de 2027.
+Los calendarios laborales, los festivos y el cálculo de horas extra van incluidos en el módulo de fichajes de Drenpos, a 1 € por usuario y mes sin IVA. Tienes el detalle en [calendarios y festivos del control horario](/control-horario#calendarios). Si quieres que las desviaciones del horario te avisen solas, mira el [control de entrada y salida](/blog/control-entrada-salida-retrasos-empleados).

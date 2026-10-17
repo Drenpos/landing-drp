@@ -107,7 +107,7 @@ Con el fichaje en el mismo sistema que la caja y un aparato al lado del TPV:
 - **Vacaciones desde el móvil.** El camarero pide los días viendo su saldo, el encargado aprueba, rechaza o propone otras fechas, y el calendario del equipo enseña que ese sábado ya faltan dos. El informe de fin de mes lo recoge.
 - **Geolocalización opcional, para el reparto.** Puedes activar que se guarde la ubicación al fichar desde el móvil: solo en ese momento, nunca durante la jornada, y el terminal de la barra no la usa. Antes hay que informar a la plantilla, como pide el [artículo 90 de la LOPDGDD](https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673). Más en [control horario con geolocalización](/control-horario#geolocalizacion).
 
-![Llaveros RFID personalizados de Drenpos para fichar en el terminal](/images/funcionalidades/control-horario/hardware/02-llaveros-personalizados.png)
+![Llaveros RFID personalizados de Drenpos para fichar en el terminal](/images/funcionalidades/control-horario/hardware/02-llaveros-personalizados.webp)
 
 ## ¿Cuánto cuesta?
 

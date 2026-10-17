@@ -1,97 +1,123 @@
 ---
 title: "Por qué Excel ya no sirve para controlar horarios laborales en 2026"
-meta_title: "Excel control horario en 2026: riesgos legales y coste real"
-description: "Por qué el Excel se queda corto para el registro de jornada en 2026: coste oculto, qué exige la ley hoy y cómo recuperar el control sin sanciones."
+meta_title: "Excel para control horario en 2026: riesgos y alternativa"
+description: "Por qué el Excel se queda corto para fichajes, vacaciones y turnos: qué exige la ley en octubre de 2026, el coste oculto y cómo pasar a un registro digital."
 date: 2026-05-27
-updated: 2026-09-23
+updated: 2026-10-17
 image: "/images/blog/por-que-excel-ya-no-sirve-control-horario-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
   designation: "CEO & Founder"
   avatar: "/images/alonso.jpg"
-categories: ["Cumplimiento Legal", "Gestión de RRHH", "Digitalización Pymes"]
-tags: ["excel control horario", "registro jornada digital", "control presencia cloud", "software fichajes"]
+categories: ["Cumplimiento Legal", "Control Horario", "Digitalización Pymes"]
+tags:
+  [
+    "excel control horario",
+    "plantilla excel registro jornada",
+    "alternativa excel fichajes",
+    "excel vacaciones empleados",
+    "excel cuadrante turnos",
+  ]
 featured: false
 draft: false
 hero:
-  title: "El Excel ya no es tu aliado: es un riesgo legal acumulable"
-  description: "Cada celda editable es una vulnerabilidad ante la Inspección de Trabajo. Conoce el coste real y la alternativa inalterable."
+  title: "El Excel de fichajes: barato hasta el día que llega la Inspección"
+  description: "Qué permite hoy la ley, por qué una hoja editable es difícil de defender y qué pasa con los otros dos Excel que casi toda pyme tiene: el de vacaciones y el de turnos."
+faq:
+  - question: "¿Es legal llevar el registro de jornada en Excel?"
+    answer: "A 17 de octubre de 2026, sí, si refleja la jornada real de cada persona y se conserva cuatro años: la ley vigente (artículo 34.9 del Estatuto) no impone un método. El problema es que un Excel se puede rehacer sin rastro y eso lo hace débil ante la Inspección o un juicio por horas extra. El real decreto en tramitación lo dejaría fuera al exigir un registro digital e inalterable."
+  - question: "¿Qué multa hay si el registro en Excel no refleja la jornada real?"
+    answer: "Es infracción grave de la LISOS, con multa de 751 a 7.500 euros por infracción. Si hay falsedad en los registros, puede llegar a muy grave, de 7.501 a 225.018 euros. Además, el trabajador puede reclamar horas extra que la empresa no podrá desmentir."
+  - question: "¿Qué alternativa hay al Excel de fichajes?"
+    answer: "Un sistema que guarde cada fichaje con su hora y deje rastro de cualquier corrección, con las horas extra calculadas desde el horario de cada persona. En Drenpos cuesta 1 € por usuario y mes sin IVA e incluye vacaciones con saldo y aprobación, incidencias de entrada y salida, turnos rotativos y planificación anual."
+  - question: "¿Y el Excel de vacaciones?"
+    answer: "Es el siguiente en romperse: saldos, prorrateo del primer año, días que pasan al año siguiente y solapes entre compañeros. El artículo 38 del Estatuto fija 30 días naturales como mínimo y que cada persona conozca sus fechas con dos meses de antelación. Un sistema con saldo por persona y aprobación evita discusiones y sale en el mismo informe que los fichajes."
 ---
 
-Cada celda que editas a mano en un Excel es una [multa potencial](/blog/multas-registro-horario-2026-costo-incumplimiento) que tu empresa está acumulando sin saberlo. Un registro que se puede rehacer sin dejar rastro es muy difícil de defender ante la Inspección de Trabajo, y el real decreto en tramitación quiere dejar fuera las hojas de cálculo.
+> **Respuesta corta:** hoy la ley no prohíbe el Excel, pero un registro que se puede rehacer sin dejar rastro es difícil de defender ante la Inspección. El real decreto en tramitación, sin aprobar a 17 de octubre de 2026, lo dejaría fuera. Además del de fichajes, casi toda pyme arrastra otros dos Excel que fallan antes: el de vacaciones y el de turnos. Un registro digital por 1 € por usuario y mes resuelve los tres.
 
-> **Actualizado el 23 de septiembre de 2026**
+> **Actualizado el 17 de octubre de 2026**
 >
-> A esta fecha, el real decreto que obligaría a llevar el registro de jornada por medios digitales no está aprobado ni publicado en el BOE. Lo vigente es el artículo 34.9 del Estatuto de los Trabajadores, con sanción grave de 751 a 7.500 euros por infracción. Hemos añadido una sección sobre el otro Excel que casi todas las pymes tienen: el de vacaciones.
+> Estado legal revisado a esta fecha y nueva sección sobre el Excel de turnos rotativos. Hemos quitado afirmaciones que la ley no exige, como la firma digital.
 
-## ¿Tu Excel de control horario es un activo o un riesgo legal?
+## ¿Es legal llevar el control horario en Excel?
 
-Muchos gerentes siguen confiando en **la hoja de cálculo por costumbre**, no por estrategia. El problema no es la herramienta, sino la ilusión de control que genera. Cuando un empleado modifica una hora de entrada, **no queda rastro de quién, cuándo ni por qué**. Eso es un riesgo legal acumulable, por mucho que parezca gestión. La normativa exige un sistema que garantice la inalterabilidad, la firma digital y el acceso remoto para el trabajador. Un archivo compartido por correo o en un disco local simplemente no cumple esos requisitos básicos.
+A fecha de 17 de octubre de 2026, sí, siempre que refleje la jornada real de cada persona día a día y se conserve cuatro años. El artículo 34.9 del Estatuto de los Trabajadores no impone un método. Lo que cambiaría con el real decreto de registro digital es eso: exigiría un sistema digital e inalterable, y el Excel no lo es.
 
-## El coste real de gestionar fichajes manuales en 2026
+Que hoy sea legal no lo hace seguro. Si la Inspección pide el registro y entregas una hoja que cualquiera puede editar, te costará demostrar que no se rellenó a final de mes. Y si un trabajador reclama horas extra, el Excel no tiene historial que te respalde.
 
-Detrás de la aparente economía del método manual se esconde un **coste oculto que erosiona tu margen operativo**. Cada semana que dedicas a consolidar versiones, corregir errores de transcripción o recuperar archivos perdidos es tiempo que no inviertes en hacer crecer tu negocio. Además, la rotación de personal multiplica este caos: el nuevo contratado hereda una base de datos desactualizada y sin auditoría.
+## ¿Por qué un Excel es tan débil ante la Inspección?
+
+Porque no guarda quién cambió una celda, cuándo ni qué ponía antes. Un inspector o un juez busca un registro fiable, hecho en el momento y que no se haya retocado. Un archivo que se rehace con un clic no ofrece esa garantía, por mucho cuidado que pongas.
+
+| Lo que se pide | Excel | Registro digital con historial |
+| --- | --- | --- |
+| Hora real de cada fichaje | Se teclea después, a menudo de memoria | Se guarda al fichar |
+| Rastro de correcciones | Ninguno | Quién, cuándo, antes y después |
+| Acceso del trabajador | Hay que enviarle el archivo | Lo ve en su móvil |
+| Horas extra día a día | Sumadas a mano a fin de mes | Calculadas desde su horario |
+| Cuatro años de conservación | Depende de no perder el archivo | Guardado en el sistema |
+| Informe para la Inspección | Horas de preparación | Minutos |
+
+## ¿Cuánto cuesta de verdad el Excel?
+
+Más de lo que parece. Piensa en una distribuidora de 12 personas: el encargado dedica cada semana un par de horas a pasar fichajes en papel a la hoja, cuadrar versiones y preparar lo que va a la gestoría. Son unas 100 horas al año, más los errores en nóminas y las discusiones por horas extra que nadie puede probar.
 
 ![A diverse group of colleagues using mobile devices in an office setting.](/images/blog/por-que-excel-ya-no-sirve-control-horario-2026/section-1.jpg)
 
-> "Tener datos desactualizados es peor que no tenerlos: te venden una tranquilidad que no existe."
+A eso súmale el riesgo: la infracción grave por no llevar bien el registro se sanciona hoy con 751 a 7.500 euros por infracción. Las versiones conocidas del real decreto plantean hasta 10.000 euros por trabajador afectado, aunque no está en vigor. El detalle está en [multas del registro horario](/blog/multas-registro-horario-2026-costo-incumplimiento).
 
-Piensa en una distribuidora de 12 empleados donde el gerente dedica cada semana varias horas a reconciliar tres versiones distintas del mismo `excel control horario`. El resultado habitual: errores en lo que se pasa a la gestoría, reclamaciones de horas extra y un desgaste administrativo que ya no tiene sentido.
-
-### La trampa de la duplicidad
-- Archivos locales que se copian en USBs o correos
-- Historial de ediciones invisible para la dirección
-- Imposibilidad de auditar quién modificó un registro
-
-## ¿Por qué el Excel es tan débil ante la Inspección de Trabajo?
-
-**La Inspección de Trabajo busca trazabilidad real**, no solo un listado de horas. El Real Decreto-ley 8/2019 obliga a registrar cada día la hora de inicio y fin de la jornada de cada persona y a conservarlo cuatro años; el proyecto de real decreto, pendiente de aprobación a 23 de septiembre de 2026, añade que sea digital e inalterable. Un Excel permite sobrescribir celdas sin dejar rastro, y eso lo hace muy débil ante una auditoría. Al final esto va de **seguridad jurídica** para tu empresa más que de burocracia.
-
-Si un inspector solicita el registro y solo puedes entregar un archivo que se puede editar con un clic, te va a costar demostrar que refleja la jornada real. Lo que pide la norma es un sistema que garantice que los datos registrados no pueden ser modificados a posteriori sin dejar una huella de auditoría. Nada más.
-
-### Requisitos que el Excel no cumple
-- Inalterabilidad garantizada por diseño del sistema
-- Firma digital o equivalente que acredite la validación
-- Conservación y acceso remoto durante el plazo legal
-
-## De la hoja de cálculo al registro jornada digital inmutable
-
-La evolución natural es pasar a un [registro jornada digital](/blog/registro-horario-digital) que funcione como una **base de datos única** y protegida. Aquí es donde el `control presencia cloud` deja de ser un lujo para convertirse en el estándar operativo. Un sistema adecuado registra la entrada y salida en tiempo real, bloquea modificaciones posteriores y genera un historial inmutable que cumple con la normativa vigente.
-
-![Two businessmen analyze financial documents during a meeting, focusing on data trends and performance.](/images/blog/por-que-excel-ya-no-sirve-control-horario-2026/section-2.jpg)
-
-> "La verdadera libertad no es hacer todo manualmente, es delegar el cumplimiento en un sistema que no falle."
-
-Esta transición elimina la fricción administrativa. Los empleados [fichan desde un dispositivo móvil](/blog/fichar-desde-el-movil-legal-2026) o el TPV de la tienda. La dirección consulta los datos desde cualquier lugar sin descargar archivos. La información deja de estar **secuestrada** en el ordenador del gerente y se convierte en un activo de la empresa.
-
-### Beneficios operativos del cambio
-- Automatización del cálculo de horas trabajadas y extras
-- Informes preconfigurados para la Inspección de Trabajo
-- Escalabilidad sin multiplicar la carga administrativa
-
-## Cómo una alternativa excel fichajes a medida recupera tu control
-
-Buscar una **[alternativa excel fichajes](/blog/mejores-programas-control-horario)** va más allá de comprar un software genérico que se adapte mal a tu realidad: significa implementar un módulo que se integre nativamente con tu ERP y tu facturación. Cuando el informe de jornada sale del mismo sistema, con las horas extra calculadas, **desaparecen las transferencias manuales y los errores de cálculo** antes de llegar a la gestoría.
-
-En el sector tradicional, la personalización marca la diferencia. Una solución a medida permite adaptar los turnos, las pausas y los permisos a la operativa real de tu negocio, sin forzar procesos artificiales. Además, las metodologías ágiles de implementación reducen la resistencia al cambio: los empleados ven el beneficio desde el primer día y la dirección recupera la visibilidad sin formación técnica compleja. Drenpos integra este flujo en el mismo sistema que la facturación y el almacén, **eliminando la duplicidad de datos que frena tu crecimiento**.
-
-### Integración vs. fragmentación
-| Concepto | Método manual (Excel) | Sistema integrado (Drenpos) |
-|---|---|---|
-| Trazabilidad | Nula | Inalterable y auditada |
-| Horas extra | Sumadas a mano a fin de mes | Calculadas día a día desde el calendario |
-| Vacaciones | Otra hoja aparte | Saldo, aprobación e informe en el mismo sistema |
-| Acceso Inspección | Archivos locales / correos | Portal cloud con historial completo |
-| Escalabilidad | Colapsa con +5 empleados | Crece con tu plantilla |
+Frente a eso, un registro digital para esas 12 personas cuesta 12 € al mes en Drenpos (1 € por usuario sin IVA).
 
 ## ¿Y el Excel de vacaciones?
 
-Casi todas las pymes que llevan el fichaje en una hoja tienen otra al lado: la de vacaciones. Nombres en filas, días del año en columnas y colores para cada tipo de ausencia. Funciona hasta que dos personas del mismo turno piden la misma quincena, hasta que alguien entra en julio y hay que prorratear sus días, o hasta que en enero toca decidir cuántos pasan al año siguiente.
+Casi todas las pymes que fichan en una hoja tienen otra al lado: nombres en filas, días en columnas y un color por tipo de ausencia. Funciona hasta que dos personas del mismo turno piden la misma quincena, hasta que alguien entra en julio y hay que prorratear sus días, o hasta que en enero toca decidir cuántos pasan al año siguiente.
 
-El artículo 38 del Estatuto de los Trabajadores fija un mínimo de 30 días naturales y obliga a que cada persona conozca sus fechas con dos meses de antelación. Cumplirlo con una hoja es posible; llevar bien los saldos de 15 personas con ella, bastante menos. En Drenpos las vacaciones y los permisos van dentro del módulo de fichajes sin coste extra: el empleado pide desde el móvil viendo su saldo, el responsable aprueba o propone otras fechas y la ausencia sale en el mismo informe que los fichajes. Lo contamos con detalle en [gestión de vacaciones y ausencias sin Excel](/blog/gestion-vacaciones-permisos-pymes-sin-excel).
+El artículo 38 del Estatuto fija un mínimo de 30 días naturales y obliga a que cada persona conozca sus fechas con dos meses de antelación. Cumplirlo con una hoja es posible; llevar bien los saldos de 15 personas, bastante menos.
 
-## Audita tu cumplimiento de jornada antes de la próxima inspección
+En Drenpos las [vacaciones y ausencias](/software-vacaciones-ausencias) van dentro del fichaje sin coste extra:
 
-La Inspección acabará viniendo; la única duda es cuándo. Cada día que pospones el cambio es un día que operas con una vulnerabilidad legal activa. En lugar de esperar a que un error manual se convierta en un expediente sancionador, evalúa si tu actual sistema de fichajes cumple con los estándares de 2026.
+- Saldo por persona con reinicio en enero o en el aniversario de la contratación, consolidado mes a mes si quieres, y días que pasan al año siguiente con tope y caducidad.
+- El empleado pide desde el móvil viendo cuántos días le quedarán; el responsable aprueba, rechaza o propone otras fechas con un motivo.
+- Ausencias por horas (una visita médica de 8:00 a 10:00) y bajas sin fecha de fin.
+- Todo sale en el mismo informe que los fichajes.
 
-Cambiar de herramienta por moda no tiene sentido; hazlo para proteger el margen de tu empresa y la tranquilidad de tu equipo. Si sientes que el tiempo que dedicas a gestionar horarios ya no retribuye tu esfuerzo, es momento de auditar tu proceso. Un **diagnóstico gratuito** de tu cumplimiento de jornada te mostrará exactamente dónde estás expuesto y cómo recuperar el control sin paralizar tu operativa.
+## ¿Y el Excel de turnos?
+
+Es el tercero y el más traicionero cuando hay turnos rotativos. Un 4x4 o un 6/3 no cabe en una semana, así que la hoja se rehace cada mes, los festivos se cruzan a ojo y nadie sabe cuántas horas esperadas tiene cada persona. Con dos personas que se turnan sobre el mismo puesto, el error está garantizado.
+
+![Two businessmen analyze financial documents during a meeting, focusing on data trends and performance.](/images/blog/por-que-excel-ya-no-sirve-control-horario-2026/section-2.jpg)
+
+Con [calendarios rotativos](/software-turnos-rotativos) defines una vez el ciclo (días de trabajo, días de descanso, horario) y el primer día de cada persona, y el sistema lo aplica solo: horas esperadas, horas extra y vacaciones que no gastan días de descanso. Los festivos nacionales, autonómicos y locales se descuentan solos. La planificación anual del equipo enseña quién trabaja cada día y descarga un PDF del año por trabajador, el documento que antes salía de tres hojas distintas. Si trabajas en una nave o un almacén, mira también [control horario en almacenes y naves con turnos](/blog/control-horario-almacenes-naves-turnos).
+
+## ¿Cómo dejo el Excel sin parar el negocio?
+
+En una semana, si tienes claros los horarios. Primero das de alta a la plantilla con su calendario y sus festivos; luego eliges cómo ficha cada puesto (móvil, QR o un terminal con llavero); después pasas los saldos de vacaciones pendientes y pruebas una semana con todos antes de cerrar el primer mes con la gestoría.
+
+| Paso | Qué haces |
+| --- | --- |
+| 1 | Alta de personas con horario, turno y festivos de su comunidad |
+| 2 | Elegir cómo ficha cada puesto: móvil, QR o terminal |
+| 3 | Pasar los saldos de vacaciones que quedan este año |
+| 4 | Una semana de prueba con todos y revisión de incidencias |
+| 5 | Primer informe a la gestoría con fichajes, ausencias y horas extra |
+
+Si en la nave o la tienda la gente ficha con las manos ocupadas, el [terminal de Drenpos](/dispositivo-fichaje) lee llavero, tarjeta o QR y sigue fichando aunque se caiga internet. Cuesta desde 140 € sin IVA. Qué exige hoy la ley y qué cambiará con el real decreto lo tienes en la guía de [registro horario digital](/blog/registro-horario-digital).
+
+## Preguntas frecuentes sobre el Excel y el control horario
+
+### ¿Es legal llevar el registro de jornada en Excel?
+
+A 17 de octubre de 2026, sí, si refleja la jornada real de cada persona y se conserva cuatro años: la ley vigente (artículo 34.9 del Estatuto) no impone un método. El problema es que un Excel se puede rehacer sin rastro y eso lo hace débil ante la Inspección o un juicio por horas extra. El real decreto en tramitación lo dejaría fuera al exigir un registro digital e inalterable.
+
+### ¿Qué multa hay si el registro en Excel no refleja la jornada real?
+
+Es infracción grave de la LISOS, con multa de 751 a 7.500 euros por infracción. Si hay falsedad en los registros, puede llegar a muy grave, de 7.501 a 225.018 euros. Además, el trabajador puede reclamar horas extra que la empresa no podrá desmentir.
+
+### ¿Qué alternativa hay al Excel de fichajes?
+
+Un sistema que guarde cada fichaje con su hora y deje rastro de cualquier corrección, con las horas extra calculadas desde el horario de cada persona. En Drenpos cuesta 1 € por usuario y mes sin IVA e incluye vacaciones con saldo y aprobación, incidencias de entrada y salida, turnos rotativos y planificación anual.
+
+### ¿Y el Excel de vacaciones?
+
+Es el siguiente en romperse: saldos, prorrateo del primer año, días que pasan al año siguiente y solapes entre compañeros. El artículo 38 del Estatuto fija 30 días naturales como mínimo y que cada persona conozca sus fechas con dos meses de antelación. Un sistema con saldo por persona y aprobación evita discusiones y sale en el mismo informe que los fichajes.

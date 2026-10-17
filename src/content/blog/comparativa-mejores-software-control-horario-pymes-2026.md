@@ -19,7 +19,8 @@ tags:
     "Drenpos",
   ]
 featured: false
-draft: false
+# Fusionado el 17/10/2026: la URL redirige con 301 (src/lib/redirecciones.ts).
+draft: true
 hero:
   title: "Comparativa: mejores software de control horario para pymes en 2026"
   description: "Deja de elegir por precio. Analiza costes ocultos, cumplimiento 2026 y escalabilidad real antes de firmar cualquier licencia."

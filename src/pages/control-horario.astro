@@ -21,7 +21,7 @@ import { join } from "node:path";
 //    #planificacion-anual: vista Equipo con personas en filas y días del mes)
 //  Imágenes HARDWARE (reemplazar placeholders por fotos reales):
 //    hardware/01-dispositivo-lector-rfid.png
-//    hardware/02-llaveros-personalizados.png
+//    hardware/02-llaveros-personalizados.webp
 //    hardware/03-tarjetas-qr.png
 //    hardware/04-hardware-conjunto.png
 // ════════════════════════════════════════════════════════════════════════
@@ -302,7 +302,7 @@ const casos = [
 const faqs = [
   {
     q: "¿El registro horario es realmente obligatorio en 2026?",
-    a: "Sí. Desde 2019, el artículo 34.9 del Estatuto de los Trabajadores obliga a todas las empresas con personas por cuenta ajena a llevar un registro diario de jornada con la hora de inicio y de fin de cada trabajador, y a conservarlo cuatro años. La Inspección de Trabajo puede pedirlo en cualquier momento y no llevarlo es infracción grave, con sanciones de 751 € a 7.500 € según la LISOS. A fecha de 28 de septiembre de 2026, el real decreto que haría obligatorio el registro digital y endurecería las multas no está aprobado ni publicado en el BOE.",
+    a: "Sí. Desde 2019, el artículo 34.9 del Estatuto de los Trabajadores obliga a todas las empresas con personas por cuenta ajena a llevar un registro diario de jornada con la hora de inicio y de fin de cada trabajador, y a conservarlo cuatro años. La Inspección de Trabajo puede pedirlo en cualquier momento y no llevarlo es infracción grave, con sanciones de 751 € a 7.500 € según la LISOS. A fecha de 17 de octubre de 2026, el real decreto que haría obligatorio el registro digital y endurecería las multas no está aprobado ni publicado en el BOE.",
   },
   {
     q: "¿Qué es exactamente el control horario digital?",
@@ -415,17 +415,16 @@ const ciudades = [
 
 // Artículos relacionados (clúster temático)
 const articulos = [
+  { t: "Fichar con huella o cara: qué dice el RGPD y alternativas legales", s: "fichar-con-huella-aepd-alternativas" },
+  { t: "Control horario en almacenes y naves: fichar a turnos sin móvil", s: "control-horario-almacenes-naves-turnos" },
+  { t: "Registro de jornada en seguridad privada: cuadrante anual", s: "registro-jornada-seguridad-privada-cuadrante-anual" },
   { t: "Cuadrante de turnos rotativos: ejemplos 4x4, 5/2 y 6/3", s: "cuadrante-turnos-rotativos-4x4-ejemplos-estatuto" },
-  { t: "Vacaciones y permisos en la pyme, sin Excel", s: "gestion-vacaciones-permisos-pymes-sin-excel" },
-  { t: "Control de entrada y salida: retrasos y cómo documentarlos", s: "control-entrada-salida-retrasos-empleados" },
-  { t: "Calendario laboral 2027: festivos y horas extra", s: "calendario-laboral-2027-festivos-horas-extra" },
-  { t: "Fichaje portátil 12V: cumple la ley de jornada en cualquier lugar", s: "dispositivo-fichaje-portatil-12v-ley-control-jornada" },
-  { t: "Registro horario 2026: nuevos requisitos y cómo adaptarte", s: "registro-horario-2026-nuevos-requisitos-adaptacion" },
-  { t: "Multas del registro horario 2026: lo que cuesta incumplir", s: "multas-registro-horario-2026-costo-incumplimiento" },
-  { t: "Por qué Excel ya no sirve para el control horario", s: "por-que-excel-ya-no-sirve-control-horario-2026" },
-  { t: "Fichar desde el móvil: ¿es legal en 2026?", s: "fichar-desde-el-movil-legal-2026" },
-  { t: "Control horario en teletrabajo: cómo cumplir la ley", s: "control-horario-teletrabajo-cumplir-ley-2026" },
-  { t: "Comparativa: mejor software de control horario para pymes", s: "comparativa-mejores-software-control-horario-pymes-2026" },
+  { t: "Vacaciones y ausencias en la pyme, sin Excel", s: "gestion-vacaciones-permisos-pymes-sin-excel" },
+  { t: "Control de entrada y salida: qué hacer con los retrasos", s: "control-entrada-salida-retrasos-empleados" },
+  { t: "Calendario laboral 2027: festivos del BOE y horas extra", s: "calendario-laboral-2027-festivos-horas-extra" },
+  { t: "Registro horario digital: requisitos y estado del real decreto", s: "registro-horario-digital" },
+  { t: "Multas del registro horario en 2026: cuánto son de verdad", s: "multas-registro-horario-2026-costo-incumplimiento" },
+  { t: "Los 10 mejores programas de control horario, con precios", s: "mejores-programas-control-horario" },
 ];
 
 // ── Datos estructurados (JSON-LD) ──────────────────────────────────────
@@ -504,7 +503,7 @@ const productSchema = {
   canonical={CANONICAL}
   image="/images/funcionalidades/control-horario/01-gestion-personal.png"
   published_date="2026-05-27"
-  modified_date="2026-10-07"
+  modified_date="2026-10-17"
   author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
 >
   <!-- Datos estructurados -->
@@ -560,7 +559,7 @@ const productSchema = {
             comunidad y el <a href="#planificacion-anual" class="text-primary underline">calendario del año de cada trabajador en PDF</a>.
           </p>
           <div class="mb-8">
-            <LandingMeta updated="2026-10-07" published="2026-05-27" />
+            <LandingMeta updated="2026-10-17" published="2026-05-27" />
           </div>
 
           <ul class="flex flex-wrap gap-4 mb-10">
@@ -727,7 +726,7 @@ const productSchema = {
               diario, inalterable y conservado durante 4 años.
             </p>
             <p class="text-sm mt-4 mb-0 leading-relaxed" style="color: rgba(16,25,40,0.62);">
-              <strong>Estado a fecha de 28 de septiembre de 2026:</strong> lo
+              <strong>Estado a fecha de 17 de octubre de 2026:</strong> lo
               vigente es el <a href={`${ET_URL}#a34`} rel="noopener" target="_blank" class="text-primary underline">artículo 34.9 del Estatuto de los Trabajadores</a>
               (Real Decreto-ley 8/2019), y no llevar el registro es infracción
               grave de 751 a 7.500 € según la <a href={LISOS_URL} rel="noopener" target="_blank" class="text-primary underline">LISOS</a>.
@@ -966,9 +965,9 @@ const productSchema = {
             <!-- Dispositivo grande -->
             <div class="lg:col-7" data-aos="fade-up-sm">
               <div class="rounded-2xl overflow-hidden h-full relative" style="border: 1px solid rgba(255,255,255,0.10);">
-                <img src="/images/funcionalidades/control-horario/hardware/v2-terminal-cover.webp" alt="Terminal de fichaje Drenpos v2 con pantalla de estado, lector RFID y QR y el logo del cliente en la carcasa" width="1200" height="675" class="w-full h-full object-cover block" loading="lazy" />
+                <img src="/images/funcionalidades/control-horario/hardware/terminal-drenpos.webp" alt="Terminal de fichaje Drenpos con pantalla de estado, lector RFID y QR y dos llaveros RFID delante" width="1200" height="1200" class="w-full h-full object-cover block" loading="lazy" />
                 <div class="absolute bottom-0 inset-x-0 p-6" style="background: linear-gradient(to top, rgba(16,25,40,0.85), transparent);">
-                  <p class="text-white font-bold text-lg mb-1">Terminal de fichaje v2, con tu marca</p>
+                  <p class="text-white font-bold text-lg mb-1">Terminal de fichaje con tu marca en la carcasa</p>
                   <p class="text-sm" style="color: rgba(255,255,255,0.75);">Sin móvil ni pantalla individual. Se instala en la entrada y el operario ficha en un gesto. <a href="/dispositivo-fichaje" class="underline text-white">Ficha técnica del dispositivo</a>.</p>
                 </div>
               </div>
@@ -978,7 +977,7 @@ const productSchema = {
             <div class="lg:col-5">
               <div class="flex flex-col gap-5 h-full">
                 <div class="rounded-2xl overflow-hidden relative flex-1" style="border: 1px solid rgba(255,255,255,0.10);" data-aos="fade-up-sm" data-aos-delay="100">
-                  <img src="/images/funcionalidades/control-horario/hardware/02-llaveros-personalizados.png" alt="Llaveros RFID personalizados impresos en 3D por Drenpos" width="600" height="300" class="w-full h-full object-cover block" loading="lazy" />
+                  <img src="/images/funcionalidades/control-horario/hardware/02-llaveros-personalizados.webp" alt="Llaveros RFID personalizados impresos en 3D por Drenpos" width="600" height="300" class="w-full h-full object-cover block" loading="lazy" />
                   <div class="absolute bottom-0 inset-x-0 p-5" style="background: linear-gradient(to top, rgba(16,25,40,0.85), transparent);">
                     <p class="text-white font-bold mb-0.5">Llaveros personalizados</p>
                     <p class="text-xs" style="color: rgba(255,255,255,0.75);">Impresos en 3D, uno por empleado.</p>
@@ -1437,13 +1436,14 @@ const productSchema = {
         <div class="rounded-2xl p-6 lg:p-8 h-full" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm" data-aos-delay="100">
           <p class="font-semibold text-text-dark mb-2">Festivos de 2027: qué hay publicado</p>
           <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.72);">
-            Extremadura ya tiene su calendario de 2027 en el DOE, publicado el
-            8 de junio de 2026: como el 15 de agosto cae en domingo, se pasa al
-            lunes 11 de octubre, que junto al 12 deja un puente de cuatro días
-            (<a href="https://portalempleado.juntaex.es/w/calendario-de-fiestas-laborales-de-extremadura-para-el-a%C3%B1o-2027" rel="noopener" target="_blank" class="text-primary underline">Junta de Extremadura</a>).
-            El calendario nacional con todas las comunidades lo publica el BOE
-            en otoño; el de 2026 salió el
-            <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-21667" rel="noopener" target="_blank" class="text-primary underline">28 de octubre de 2025</a>.
+            El BOE publicó el 13 de octubre de 2026 la
+            <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-21254" rel="noopener" target="_blank" class="text-primary underline">relación de fiestas laborales de 2027</a>
+            (Resolución de 8 de octubre de 2026, BOE núm. 254), con los
+            festivos nacionales y los de cada comunidad. Ocho son comunes a
+            toda España; el 1 de mayo y el 25 de diciembre caen en sábado. En
+            Extremadura, el 15 de agosto cae en domingo y pasa al lunes 11 de
+            octubre, que junto al 12 deja un puente de cuatro días. Faltan solo
+            las dos fiestas locales de cada municipio.
           </p>
           <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.72);">
             No tendrás que empezar de cero: los festivos fijos ya valen para
@@ -1451,8 +1451,15 @@ const productSchema = {
             los del año anterior para que solo cambies los que se muevan.
           </p>
           <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
-            Lo contamos, con lo que ya es oficial, en
-            <a href="/blog/calendario-laboral-2027-festivos-horas-extra" class="text-primary underline">calendario laboral 2027: festivos y horas extra</a>.
+            Lo contamos en
+            <a href="/blog/calendario-laboral-2027-festivos-horas-extra" class="text-primary underline">calendario laboral 2027: festivos y horas extra</a>,
+            con el detalle de
+            <a href="/blog/calendario-laboral-2027-extremadura" class="text-primary underline">Extremadura</a>,
+            <a href="/blog/calendario-laboral-2027-andalucia" class="text-primary underline">Andalucía</a>,
+            <a href="/blog/calendario-laboral-2027-madrid" class="text-primary underline">Madrid</a>,
+            <a href="/blog/calendario-laboral-2027-cataluna" class="text-primary underline">Cataluña</a>,
+            <a href="/blog/calendario-laboral-2027-comunidad-valenciana" class="text-primary underline">Comunitat Valenciana</a> y
+            <a href="/blog/calendario-laboral-2027-castilla-y-leon" class="text-primary underline">Castilla y León</a>.
           </p>
         </div>
       </div>
@@ -1705,7 +1712,7 @@ const productSchema = {
               tienes que configurar nada para estar al día.
             </p>
             <p class="text-sm leading-relaxed mb-0" style="color: rgba(255,255,255,0.62);" data-aos="fade-up-sm">
-              A fecha de 28 de septiembre de 2026, el real decreto que haría
+              A fecha de 17 de octubre de 2026, el real decreto que haría
               obligatorio el registro digital sigue sin aprobarse ni publicarse
               en el BOE. Cuando salga, revisaremos esta página con lo que diga
               el texto final.

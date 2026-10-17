@@ -254,12 +254,32 @@ const faqs = [
     a: "Desde el 5 de octubre de 2026. La disposición transitoria octava de la Ley 9/2025 de Movilidad Sostenible dice que el documento de control será necesariamente digital a los diez meses de su entrada en vigor, que fue el 5 de diciembre de 2025. El Ministerio de Transportes confirma en su página de preguntas frecuentes que no hay un periodo transitorio adicional sin sanciones.",
   },
   {
+    q: "¿Quién emite el DeCA, el cargador o el transportista?",
+    a: "La Orden FOM/2861/2012 obliga a los dos: al cargador contractual, que es quien contrata el porte, y al transportista efectivo, que lo realiza. Cualquiera de los dos puede generarlo, pero ambos responden si el envío viaja sin documento. Lo práctico es acordar con cada transportista quién lo hace. Si contratas tú el porte y el albarán sale de Drenpos, lo normal es generarlo tú, porque ya tienes cliente, direcciones, mercancía y peso.",
+  },
+  {
     q: "¿Me afecta si reparto con mis propias furgonetas?",
     a: "No, si es transporte privado complementario: repartes tu propia mercancía con vehículos de tu empresa y tu actividad principal no es el transporte. El DeCA se exige en el transporte público, cuando contratas a un transportista con autorización. Eso sí, en el privado complementario hay que llevar la documentación que acredita que la mercancía es tuya y que el vehículo y el conductor están vinculados a la empresa.",
   },
   {
     q: "¿Vale mi albarán como documento de control?",
     a: "Sí, si lleva los ocho datos del artículo 6 de la Orden FOM/2861/2012, identifica de forma expresa y diferenciada al cargador contractual y al transportista efectivo, y desde el 5 de octubre de 2026 se genera como PDF desde los datos con un QR de descarga directa. Un albarán en papel o un PDF escaneado ya no sirve. En Drenpos, el albarán con el DeCA activado sale con la página de control y el QR.",
+  },
+  {
+    q: "¿Desde qué documento se genera el DeCA en Drenpos?",
+    a: "Desde el albarán de venta. No hay pantalla aparte ni otra aplicación: abres el albarán, pulsas «Activar DeCA» y el sistema revisa los datos que pide la norma. El origen sale de la dirección de la empresa marcada por defecto, el destino y la mercancía salen del propio albarán y el peso se calcula con el de cada artículo. Si el cliente tiene transportista por defecto, con compañía, conductor y vehículo, entra solo.",
+  },
+  {
+    q: "¿Qué comprueba Drenpos antes de generar el DeCA?",
+    a: "Que estén todos los datos del artículo 6 de la Orden: cargador con NIF y domicilio, transportista con NIF, origen, destino, mercancía y peso, fecha, matrícula y remolque, y la autorización especial si la hay. Si falta alguno, te avisa y lo completas en el mismo albarán, sin cambiar de pantalla. Así el documento no sale cojo en los apartados de los que responde el cargador.",
+  },
+  {
+    q: "¿Cómo lleva el conductor el DeCA: el PDF o el QR?",
+    a: "El PDF oficial tiene una página de control con los ocho apartados rotulados y, detrás, el albarán con su formato de siempre. Su QR apunta a una dirección web única que descarga el PDF sin usuario ni contraseña. Ese QR sale también en todos los formatos de albarán y en la carta de porte, así que el albarán impreso que ya entregas al conductor vale. Desde el albarán puedes además copiar la dirección o descargar el QR suelto.",
+  },
+  {
+    q: "¿Se puede quitar el DeCA de un albarán o borrarlo?",
+    a: "No. Activarlo pide un permiso específico y no tiene vuelta atrás, para que nadie quite un documento que ya ha viajado. Si después cambia la matrícula o el peso, se genera una versión nueva con la misma dirección web y el motivo del cambio, y el QR que lleva el conductor sigue valiendo. Si anulas el albarán, el documento lo indica. Todo se conserva, como mínimo, el año que exige la Orden.",
   },
   {
     q: "¿Qué pasa si cambia la matrícula en ruta?",
@@ -348,7 +368,7 @@ const softwareSchema = {
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
 const PAGE_PUBLISHED = "2026-09-28";
-const PAGE_UPDATED = "2026-10-07";
+const PAGE_UPDATED = "2026-10-17";
 ---
 
 <Base
@@ -702,7 +722,7 @@ const PAGE_UPDATED = "2026-10-07";
           <p class="text-xs mt-4" style="color: rgba(16,25,40,0.55);" data-aos="fade-up-sm">
             Precios sin IVA. La guía completa, con ejemplos y qué hacer si algo
             cambia en ruta, está en
-            <a href="/blog/deca-documento-control-transporte-digital-5-octubre-2026" class="text-primary underline">DeCA: el documento de control del transporte pasa a digital el 5 de octubre</a>.
+            <a href="/blog/deca-documento-control-transporte-digital-5-octubre-2026" class="text-primary underline">DeCA digital obligatorio: qué es y cómo generarlo desde el albarán</a>. Si estás comparando programas, mira la <a href="/blog/software-deca-comparativa-pymes" class="text-primary underline">comparativa de software para el DeCA</a>.
           </p>
         </div>
       </div>
@@ -1041,7 +1061,19 @@ const PAGE_UPDATED = "2026-10-07";
           <h2 class="h5 font-bold mb-3">Sigue por aquí</h2>
           <ul class="row g-2 text-sm mb-8">
             <li class="md:col-6">
-              <a href="/blog/deca-documento-control-transporte-digital-5-octubre-2026" class="text-primary hover:underline">Guía del DeCA para cargadores y pequeños transportistas</a>
+              <a href="/blog/deca-documento-control-transporte-digital-5-octubre-2026" class="text-primary hover:underline">DeCA digital obligatorio: qué es y cómo generarlo</a>
+            </li>
+            <li class="md:col-6">
+              <a href="/blog/como-generar-deca-desde-albaran" class="text-primary hover:underline">Cómo generar el DeCA desde el albarán, paso a paso</a>
+            </li>
+            <li class="md:col-6">
+              <a href="/blog/deca-quien-lo-emite-cargador-transportista" class="text-primary hover:underline">DeCA: ¿lo emite el cargador o el transportista?</a>
+            </li>
+            <li class="md:col-6">
+              <a href="/blog/deca-vs-ecmr-diferencias" class="text-primary hover:underline">DeCA y eCMR: diferencias y cuándo se usa cada uno</a>
+            </li>
+            <li class="md:col-6">
+              <a href="/blog/software-deca-comparativa-pymes" class="text-primary hover:underline">Software para el DeCA: comparativa de 8 opciones con precios</a>
             </li>
             <li class="md:col-6">
               <a href="/software-gestion-almacen" class="text-primary hover:underline">Software de gestión de almacén</a>

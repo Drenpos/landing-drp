@@ -146,6 +146,17 @@ const casos: Tarjeta[] = [
 ];
 
 // Landings hermanas (soluciones específicas por tipo de negocio)
+const articulos = [
+  { t: "Cómo organizar el stock de una tienda de recambios sin TecDoc", s: "stock-tienda-recambios-sin-tecdoc" },
+  { t: "Control de stock: qué es, métodos y cómo evitar roturas", s: "control-de-stock-sin-roturas" },
+  { t: "Stock mínimo, stock de seguridad y punto de pedido", s: "stock-minimo-punto-de-pedido" },
+  { t: "Recepción de mercancía: qué comprobar y cómo registrarla", s: "recepcion-mercancia-almacen" },
+  { t: "Inventario cíclico: contar el almacén sin cerrarlo", s: "inventario-ciclico-almacen" },
+  { t: "Cómo codificar las ubicaciones de un almacén", s: "codificar-ubicaciones-almacen" },
+  { t: "Cómo organizar el almacén de una pyme", s: "como-organizar-almacen-pyme" },
+  { t: "VERI*FACTU: qué es y cómo adaptarte antes de octubre de 2028", s: "verifactu-pymes-guia-2026" },
+];
+
 const hermanas = [
   {
     url: "/software-bares-restaurantes",
@@ -279,8 +290,8 @@ const PAGE_UPDATED = "2026-10-07";
 
 <Base
   title="Software de Almacén y Tienda · Drenpos"
-  meta_title="Programa de Gestión para Tiendas: Almacén y TPV | Drenpos"
-  description="Programa de gestión para tiendas con almacén y TPV: stock por ubicaciones, lotes y caducidad, pistola lectora y Verifactu en caja. Desde 29 €/mes sin IVA."
+  meta_title="Programa para Tiendas con Almacén y TPV: 39 €/mes | Drenpos"
+  description="Programa para tiendas con almacén y TPV en uno: stock por ubicación con QR, lotes y caducidad, pistola lectora y Verifactu en caja. 39 €/mes, sin permanencia."
   canonical={CANONICAL}
   image="/images/power/stock.png"
   published_date={PAGE_PUBLISHED}
@@ -652,6 +663,19 @@ const PAGE_UPDATED = "2026-10-07";
             </a>
           </div>
         ))}
+      </div>
+
+      <div class="row justify-center mb-16">
+        <div class="lg:col-10">
+          <h2 class="h5 font-bold mb-3">Guías de stock y almacén para tiendas</h2>
+          <ul class="row g-2 text-sm mb-0">
+            {articulos.map((a) => (
+              <li class="md:col-6">
+                <a href={`/blog/${a.s}`} class="text-primary hover:underline">{a.t}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       <div class="row gx-0 gy-12 lg:gy-0">

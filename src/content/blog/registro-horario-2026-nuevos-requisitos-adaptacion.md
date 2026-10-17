@@ -11,7 +11,8 @@ author:
 categories: ["Cumplimiento Legal", "Gestión Operativa"]
 tags: ["registro horario 2026", "control horario obligatorio", "nueva ley fichajes", "software control horario"]
 featured: false
-draft: false
+# Fusionado el 17/10/2026: la URL redirige con 301 (src/lib/redirecciones.ts).
+draft: true
 hero:
   title: "Registro horario 2026: de la obligación legal a tu ventaja operativa"
   description: "Deja de gestionar fichajes en papel o Excel. Conoce los requisitos reales de la Inspección y cómo migrar sin perder rentabilidad."

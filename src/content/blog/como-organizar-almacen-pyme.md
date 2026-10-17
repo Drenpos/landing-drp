@@ -1,170 +1,178 @@
 ---
 title: "Cómo organizar el almacén de una pyme: guía práctica 2026"
 meta_title: "Cómo organizar un almacén pequeño: guía para pymes 2026"
-description: "Guía práctica para organizar el almacén de tu pyme: zonas, ubicaciones con QR, método ABC, FIFO/FEFO e inventarios cíclicos sin cerrar la tienda."
+description: "Cómo organizar el almacén de una pyme paso a paso: zonas, ubicaciones con QR, plano y ruta, método ABC, FIFO o FEFO e inventario cíclico sin cerrar."
 date: 2026-08-11
+updated: 2026-10-17
 image: "/images/blog/como-organizar-almacen-pyme/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
   designation: "CEO & Founder"
   avatar: "/images/alonso.jpg"
-categories: ["Gestión de retail", "Automatización pymes"]
+categories: ["Gestión de Almacén", "Gestión de retail", "Automatización pymes"]
 tags:
   [
     "organización de almacén",
-    "gestión de almacén",
-    "inventario",
+    "cómo organizar un almacén",
+    "ubicaciones de almacén",
+    "plano de almacén",
+    "método ABC",
+    "inventario cíclico",
     "sga para pymes",
     "palets",
-    "etiqueta sscc",
   ]
 featured: false
 draft: false
 hero:
   title: "Organiza tu almacén de una vez (y para siempre)"
-  description: "Zonas, ubicaciones, ABC y ciclos de conteo: el método completo."
+  description: "Zonas, ubicaciones, plano, ABC y ciclos de conteo: el método completo para un almacén de pyme."
 faq:
   - question: "¿Cómo se organiza un almacén pequeño paso a paso?"
-    answer: "Primero divide el espacio en cinco zonas (recepción, almacenaje, picking, expedición y devoluciones). Después codifica cada hueco con un sistema pasillo-estantería-altura, clasifica tus referencias con el método ABC para colocar lo que más rota cerca de la salida, y define una regla de salida (FIFO o FEFO). Por último, sustituye el inventario anual por conteos cíclicos semanales."
+    answer: "Primero divide el espacio en cinco zonas (recepción, almacenaje, preparación, expedición y devoluciones). Después codifica cada hueco con un sistema pasillo, estantería y altura, coloca lo que más rota cerca de la salida con el método ABC y define una regla de salida (FIFO o FEFO). Por último, sustituye el inventario anual por conteos cíclicos semanales."
+  - question: "¿Cómo se codifican las ubicaciones de un almacén?"
+    answer: "Con un código de tres o cuatro niveles que cualquiera pueda leer: pasillo, estantería (o módulo), altura y, si hace falta, hueco. Por ejemplo, B-03-2 es pasillo B, estantería 03, balda 2. Cada hueco lleva su etiqueta con el código en texto y en QR o código de barras para escanearlo al mover mercancía."
   - question: "¿Qué es el método ABC en un almacén?"
-    answer: "Es una clasificación basada en el principio de Pareto: una minoría de referencias (las A) concentra la mayor parte de los movimientos y del valor, mientras que la mayoría (las C) apenas rota. Las referencias A se colocan en las ubicaciones más accesibles y se cuentan con más frecuencia; las C pueden ocupar zonas altas o alejadas."
+    answer: "Es una clasificación basada en el principio de Pareto: una minoría de referencias (las A) concentra la mayor parte de los movimientos, mientras que la mayoría (las C) apenas rota. Las referencias A se colocan en las ubicaciones más accesibles y se cuentan más a menudo; las C pueden ir a zonas altas o alejadas."
   - question: "¿Cuál es la diferencia entre FIFO y FEFO?"
-    answer: "FIFO (First In, First Out) da salida primero a lo que entró primero y es la regla general para productos sin caducidad. FEFO (First Expired, First Out) da salida primero al lote que antes caduca, y es obligado en alimentación, farmacia, cosmética o cualquier producto con fecha de vencimiento."
+    answer: "FIFO (First In, First Out) da salida primero a lo que entró primero y es la regla general para productos sin caducidad. FEFO (First Expired, First Out) da salida primero al lote que antes caduca, y es la que toca en alimentación, farmacia, cosmética o cualquier producto con fecha de vencimiento."
+  - question: "¿Cada cuánto hay que hacer inventario en un almacén?"
+    answer: "Con inventario cíclico no hace falta cerrar para contar todo de golpe. Se cuenta cada semana un grupo pequeño de ubicaciones: las referencias A, una vez al mes; las B, cada trimestre; las C, cada semestre. Así el stock del sistema y el real se mantienen cerca durante todo el año."
   - question: "¿Cuándo necesita una pyme un software de gestión de almacén (SGA)?"
-    answer: "Cuando las ubicaciones ya no caben en la cabeza de una persona: más de unas pocas centenas de referencias, más de una persona moviendo stock, varios canales de venta o productos con lote y caducidad. Un SGA registra cada movimiento con lector de códigos, mantiene el stock por ubicación en tiempo real y elimina la dependencia de la memoria del equipo."
+    answer: "Cuando las ubicaciones ya no caben en la cabeza de una persona: unos cientos de referencias, más de una persona moviendo stock, venta en tienda y en almacén o productos con lote y caducidad. Un SGA registra cada movimiento con lector de códigos, mantiene el stock por ubicación al momento y quita la dependencia de la memoria del equipo."
   - question: "¿Qué es un hueco de palet y en qué se diferencia de una ubicación de estantería?"
-    answer: "Una ubicación de estantería identifica una balda concreta donde conviven varias referencias sueltas. Un hueco de palet es el espacio que ocupa una unidad logística completa, con su etiqueta y, si guardas mercancía de terceros, con su propietario asociado. El cambio importa porque el hueco de palet se puede tarifar por días, por entradas o por salidas, y la estantería normalmente no."
+    answer: "Una ubicación de estantería identifica una balda donde conviven varias referencias sueltas. Un hueco de palet es el espacio que ocupa una unidad logística completa, con su etiqueta y, si guardas mercancía de terceros, con su propietario. Importa porque el hueco de palet se puede tarifar por días, entradas o salidas, y la estantería normalmente no."
   - question: "¿Cómo se identifica un palet dentro del almacén?"
     answer: "Con una etiqueta SSCC estándar GS1, imprimible en rollo o en A4, que da al palet un identificador único. A partir de ahí el palet se monta con pistola, se cierra y se pesa (bruto, tara y neto), se mueve entero de ubicación en un escaneo y se puede partir o vaciar sin perder la trazabilidad de lo que lleva dentro."
 ---
 
-## ¿Cómo se organiza bien un almacén?
+> **Respuesta corta:** organizar el almacén de una pyme se resume en cuatro decisiones: dividir el espacio en zonas con una sola función, dar a cada hueco un código de ubicación, colocar el producto según su rotación (método ABC) y fijar una regla de salida (FIFO o FEFO). Con esas cuatro piezas, cualquiera del equipo encuentra cualquier referencia sin preguntar, y el inventario se puede hacer por partes sin cerrar.
 
-Organizar el almacén de una pyme se resume en cuatro decisiones: **dividir el espacio en zonas con función única**, **dar a cada hueco un código de ubicación**, **colocar el producto según su rotación (método ABC)** y **definir una regla de salida (FIFO o FEFO)**. Con esas cuatro piezas, cualquier persona del equipo encuentra cualquier referencia sin preguntar a nadie, y el inventario deja de ser un acto de fe.
+La mayoría de los almacenes de pymes no están desordenados por falta de espacio, sino por falta de criterio: el producto se deja "donde cabe" y la información vive en la cabeza del encargado. El día que esa persona falta, el almacén se para. Esta guía da el método completo, en el orden en que conviene hacerlo.
 
-La mayoría de los almacenes de pymes no están desordenados por falta de espacio, sino por falta de criterio: el producto se deja "donde cabe" y la información vive en la cabeza del encargado. El día que esa persona falta, el almacén se para. Esta guía te da el método completo para que eso no vuelva a pasar.
+## ¿Qué zonas necesita un almacén?
 
-> **Actualizado en agosto de 2026:** hemos añadido una sección sobre cómo organizar el almacén cuando la unidad de trabajo es el palet (etiqueta SSCC, huecos de palet y zona de preparados con QR), una tabla comparativa cajas vs palets y dos preguntas frecuentes nuevas.
+Todo almacén, tenga 40 m² o 4.000 m², necesita cinco zonas separadas y señalizadas: recepción, almacenaje, preparación de pedidos, expedición y devoluciones. Cada una tiene una sola función. El error clásico es mezclar recepción y expedición en el mismo sitio: acaba saliendo mercancía sin registrar y entrando mercancía sin verificar. Sepáralas aunque sea con cinta en el suelo.
 
-## Empieza por el plano: las 5 zonas de todo almacén
-
-Antes de comprar estanterías o software, dibuja el flujo de la mercancía. Todo almacén, tenga 40 m² o 4.000 m², necesita **cinco zonas separadas y señalizadas**:
-
-1. **Recepción**: donde se descarga y verifica lo que llega. Nada entra al stock sin pasar por aquí.
+1. **Recepción**: donde se descarga y se comprueba lo que llega. Nada entra al stock sin pasar por aquí. Qué revisar y cómo registrarlo está en la guía de [recepción de mercancía](/blog/recepcion-mercancia-almacen).
 2. **Almacenaje**: las estanterías donde vive el producto, con ubicaciones codificadas.
-3. **Picking / preparación**: donde se montan los pedidos. Si preparas pedidos sobre la marcha entre pasillos, los errores están garantizados.
+3. **Preparación**: donde se montan los pedidos. Si se preparan sobre la marcha entre pasillos, los errores están garantizados.
 4. **Expedición**: lo que está listo para salir, separado de lo que acaba de llegar.
-5. **Devoluciones y cuarentena**: producto pendiente de revisar, romper stock o reintegrar. Es la zona que más caos genera cuando no existe.
+5. **Devoluciones y cuarentena**: producto pendiente de revisar, dar de baja o devolver al stock. Es la zona que más caos genera cuando no existe.
 
-![Trabajador de almacén organizando estanterías con inventario etiquetado.](/images/blog/como-organizar-almacen-pyme/section-1.jpg)
+![Trabajador de almacén organizando estanterías con inventario etiquetado](/images/blog/como-organizar-almacen-pyme/section-1.jpg)
 
-El error clásico es mezclar recepción y expedición en el mismo mostrador: acaba saliendo mercancía sin registrar y entrando mercancía sin verificar. Separa las zonas físicamente, aunque sea con cinta en el suelo.
+## ¿Cómo se codifican las ubicaciones del almacén?
 
-## Ubicaciones con nombre y apellido
+Con un código de tres niveles que se lea sin explicación: pasillo, estantería y altura. Un almacén está organizado cuando puedes decirle a alguien que no ha entrado nunca "tráeme lo que hay en B-03-2" y vuelve con el producto correcto. Cada hueco lleva su etiqueta con el código en texto y en QR o código de barras, para que mover mercancía sea escanear.
 
-Un almacén está organizado cuando puedes decirle a alguien que no ha entrado nunca "tráeme lo que hay en **B-03-2**" y vuelve con el producto correcto. Ese código se construye con tres niveles:
+| Nivel | Ejemplo | Qué indica |
+| --- | --- | --- |
+| Pasillo | B | La calle del almacén |
+| Estantería | 03 | El módulo dentro del pasillo |
+| Altura | 2 | La balda, contando desde el suelo |
 
-| Nivel      | Ejemplo | Qué indica                          |
-| ---------- | ------- | ----------------------------------- |
-| Pasillo    | B       | La calle del almacén                |
-| Estantería | 03      | El módulo dentro del pasillo        |
-| Altura     | 2       | La balda, contando desde el suelo   |
+La regla de oro: el stock no se mueve sin registrar el movimiento. Da igual que el registro sea una pistola lectora o una tablet en la pared; lo que no se registra, no existe. El paso a paso para montar el código y etiquetar los huecos lo tienes en [cómo codificar ubicaciones de almacén](/blog/codificar-ubicaciones-almacen).
 
-Etiqueta cada hueco con su código y, si usas un sistema digital, con un **QR o código de barras escaneable**. La regla de oro: el stock no se mueve sin registrar el movimiento. Da igual que el registro sea una pistola lectora o una tablet en la pared; lo que no se registra, no existe.
+## ¿Cómo se dibuja el plano del almacén y se ordena el recorrido?
 
-Con ubicaciones codificadas desaparece la pregunta que más tiempo quema en una pyme: *"¿dónde está esto?"*. Y desaparece también la dependencia de la memoria: el conocimiento pasa de las personas al sistema.
+El plano sirve para que el recorrido tenga un orden fijo: de dónde se sale, por qué pasillo se sigue y dónde se deja la carga. En papel basta un croquis con las estanterías numeradas en el orden en que se recorren. Con software, el plano además ordena las líneas de cada pedido según ese recorrido, para que nadie vuelva sobre sus pasos.
 
-## Método ABC: coloca según rotación, no según llegada
+En Drenpos el plano se dibuja dentro del módulo de Inventario con un editor visual: estanterías, paredes y puntos clave (inicio de ruta, punto donde se deja la carga, escaleras), con varias plantas si la nave tiene entreplanta. Los huecos se crean y consultan desde el propio plano, y a partir de él el sistema calcula un orden de recorrido fijo que siguen el asistente de picking y las oleadas. Cómo se aplica a la preparación lo contamos en la guía de [preparación de pedidos y picking](/blog/preparacion-de-pedidos-picking-almacen).
 
-El principio de Pareto se cumple en casi todos los almacenes: una **minoría de referencias** concentra la gran mayoría de los movimientos. El método ABC lo convierte en criterio de colocación:
+## ¿Qué es el método ABC y cómo se aplica al colocar el producto?
 
-| Clase | Qué es                                  | Dónde va                                | Frecuencia de conteo |
-| ----- | --------------------------------------- | --------------------------------------- | -------------------- |
-| A     | Alta rotación, alto valor de movimiento | A la altura de la mano, cerca de salida | Mensual              |
-| B     | Rotación media                          | Alturas intermedias                     | Trimestral           |
-| C     | Baja rotación                           | Zonas altas o alejadas                  | Semestral            |
+El método ABC clasifica las referencias por lo que se mueven: unas pocas (las A) concentran la mayoría de las salidas, y la mayoría (las C) apenas rota. Las A van a la altura de la mano y cerca de expedición; las C, a zonas altas o alejadas. No hace falta consultoría: con las ventas de los últimos 12 meses ordenadas por unidades se corta la lista.
 
-No necesitas un estudio de consultoría para clasificar: saca las ventas por referencia de los últimos 12 meses, ordénalas por unidades movidas y corta la lista. Lo que descubras en la cola de la lista suele ser la sorpresa: stock muerto ocupando las mejores ubicaciones del almacén.
+| Clase | Qué es | Dónde va | Frecuencia de conteo |
+| --- | --- | --- | --- |
+| A | Alta rotación | A la altura de la mano, cerca de la salida | Mensual |
+| B | Rotación media | Alturas intermedias | Trimestral |
+| C | Baja rotación | Zonas altas o alejadas | Semestral |
 
-> "El almacén no se ordena por estética: se ordena para que las piernas del equipo recorran menos metros por pedido."
+Lo que aparece en la cola de la lista suele ser la sorpresa: stock que no se mueve ocupando las mejores ubicaciones. Revisa la clasificación cada seis meses, y antes si cambia la temporada.
 
-## FIFO, FEFO y lotes: la regla de salida
+## ¿Qué regla de salida usar: FIFO o FEFO?
 
-Toda referencia necesita una regla de salida definida, que no dependa de la costumbre de cada uno:
+FIFO (First In, First Out) da salida primero a lo que entró primero y vale para todo lo que no caduca. FEFO (First Expired, First Out) da salida primero al lote que antes caduca, y es la regla en alimentación, farmacia, cosmética y parafarmacia. Aplicar FIFO donde toca FEFO acaba en mermas y en producto caducado en el lineal.
 
-- **FIFO (First In, First Out)**: sale primero lo que entró primero. Es la regla general para evitar que el producto antiguo se quede eternamente al fondo de la balda.
-- **FEFO (First Expired, First Out)**: sale primero el lote que antes caduca. Es **innegociable** en alimentación, farmacia, cosmética y parafarmacia. Aplicar FIFO donde toca FEFO acaba en mermas y en producto caducado en el lineal.
+![Gestión de lotes y caducidades con lector de códigos en un almacén](/images/blog/como-organizar-almacen-pyme/section-2.jpg)
 
-![Gestión de lotes y caducidades con lector de códigos en un almacén.](/images/blog/como-organizar-almacen-pyme/section-2.jpg)
-
-Para que FEFO funcione, necesitas **trazabilidad por lote**: saber qué lote entró, en qué ubicación está y a qué cliente salió. Hacerlo en papel es posible hasta que deja de serlo; en cuanto manejas decenas de lotes vivos, el control manual se rompe. Aquí es donde un sistema con [control de stock en tiempo real](/blog/control-de-stock-sin-roturas) marca la diferencia entre detectar una caducidad a tiempo o tirarla a la basura. Y si trabajas con alimentación, esa misma trazabilidad es la que te salva el día de una alerta sanitaria, como explicamos en [trazabilidad alimentaria por lotes y recall](/blog/trazabilidad-alimentaria-lotes-recall).
+Para que FEFO funcione hace falta trazabilidad por lote: saber qué lote entró, en qué ubicación está y a qué cliente salió. En papel es posible hasta que dejas de poder; con decenas de lotes vivos, el control manual se rompe. Tienes las tres reglas comparadas, con LIFO incluido, en [FIFO, FEFO y LIFO: cuál usar](/blog/fifo-fefo-lifo-almacen), y la parte sanitaria en [trazabilidad alimentaria por lotes y recall](/blog/trazabilidad-alimentaria-lotes-recall).
 
 ## ¿Cómo se organiza un almacén que trabaja con palets?
 
-Un almacén de palets se organiza tomando el palet como unidad de trabajo, no la caja. Cada palet se identifica con una etiqueta SSCC estándar GS1, se mueve entero en un solo escaneo y arrastra consigo el stock que lleva dentro. Las zonas se dibujan por huecos de palet, la zona de preparados se señaliza con baldas identificadas por QR y el inventario se hace contando palets, no unidades sueltas.
+Tomando el palet como unidad de trabajo, no la caja. Cada palet se identifica con una etiqueta SSCC estándar GS1, se mueve entero en un solo escaneo y arrastra el stock que lleva dentro. Las zonas se dibujan por huecos de palet, la zona de preparados se señaliza con baldas identificadas por QR y el inventario se hace contando palets y su contenido, no unidades sueltas.
 
-La zonificación cambia cuando la unidad de trabajo es el palet. Ya no reservas baldas por referencia, sino huecos capaces de alojar una unidad logística completa, con mezcla de productos, lotes y series dentro. El pasillo deja de recorrerse a pie con una caja en la mano y pasa a recorrerse con transpaleta.
+Ya no reservas baldas por referencia, sino huecos capaces de alojar una unidad logística completa, con mezcla de productos, lotes y series. Identificar cada palet con una etiqueta SSCC, la misma que piden las grandes plataformas logísticas, cambia la operativa: mover un palet de ubicación es un escaneo y el stock de dentro viaja solo. Cómo se construye ese código lo explicamos en la [guía de la etiqueta SSCC](/blog/etiqueta-sscc-gs1-palets).
 
-Identificar cada palet con una etiqueta SSCC estándar GS1 —la misma que exigen las grandes plataformas logísticas— cambia la operativa entera. Mover el palet de ubicación o de almacén se convierte en un escaneo: el stock de dentro viaja solo, sin reescribir línea a línea lo que lleva encima. Cómo se construye ese código y qué lleva dentro lo desglosamos en la [guía de la etiqueta SSCC GS1 para palets](/blog/etiqueta-sscc-gs1-palets).
+Si además guardas mercancía de terceros, el hueco de palet pasa a tener propietario y cada entrada, salida o manipulación se puede tarifar. Si es tu caso, mira cómo funciona el [alquiler de huecos de palet](/software-alquiler-huecos-palet).
 
-La zona de preparación también gana con el cambio. Los pedidos listos se aparcan en baldas identificadas por QR y basta escanear la balda para saber dónde está cada uno, y un pedido se puede preparar directamente sobre un palet que después sale expedido con su trazabilidad completa. Es el flujo que detallamos en [preparación de pedidos y picking en almacén](/blog/preparacion-de-pedidos-picking-almacen).
+| Criterio | Almacén de cajas | Almacén de palets |
+| --- | --- | --- |
+| Unidad de trabajo | La caja o la unidad suelta | El palet completo, con mezcla de productos y lotes |
+| Identificación | Código de barras del artículo y QR de ubicación | Etiqueta SSCC estándar GS1 propia de cada palet |
+| Cómo se mueve | Unidad a unidad, línea a línea | El palet entero en un escaneo |
+| Cómo se inventaría | Conteo de unidades hueco a hueco | Recuento de palets y contenido agrupado de cada uno |
 
-El último salto llega cuando el almacén empieza a guardar mercancía de terceros. El "hueco de estantería" pasa a ser "hueco de palet" con propietario, y cada entrada, salida o manipulación se convierte en un concepto que se puede tarifar. Si te suena a tu caso, mira cómo funciona el [alquiler de huecos de palet](/software-alquiler-huecos-palet).
+## ¿Cómo hacer inventario sin cerrar el almacén?
 
-| Criterio           | Almacén de cajas                                | Almacén de palets                                             |
-| ------------------ | ----------------------------------------------- | ------------------------------------------------------------- |
-| Unidad de trabajo  | La caja o la unidad suelta                      | El palet completo, con mezcla de productos y lotes            |
-| Identificación     | Código de barras del artículo y QR de ubicación | Etiqueta SSCC estándar GS1 propia de cada palet               |
-| Cómo se mueve      | Unidad a unidad, línea a línea                  | El palet entero en un escaneo: el stock de dentro viaja solo  |
-| Cómo se inventaría | Conteo de unidades hueco a hueco                | Recuento de palets y contenido agrupado dentro de cada palet  |
-
-## Inventario cíclico: cuenta poco, cuenta siempre
-
-El inventario anual "a puerta cerrada" es el peor sistema posible: paraliza la venta, agota al equipo y te da una foto que caduca en una semana. La alternativa es el **conteo cíclico**:
+Con inventario cíclico: en lugar de contar todo una vez al año a puerta cerrada, cuentas cada semana un grupo pequeño de ubicaciones, más a menudo las referencias A y menos las C. Las diferencias se registran en el momento, con su motivo, y se investigan las que se repiten. El stock del sistema y el real se mantienen cerca todo el año.
 
 1. Divide el catálogo por clases ABC.
-2. Cuenta cada semana un grupo pequeño de ubicaciones (referencias A más a menudo, C menos).
-3. Registra la diferencia entre stock teórico y real **en el momento**, con su motivo.
+2. Cuenta cada semana un grupo pequeño de ubicaciones (A más a menudo, C menos).
+3. Registra la diferencia entre stock teórico y real en el momento, con su motivo.
 4. Investiga los descuadres repetidos: casi siempre apuntan a un proceso roto (una devolución sin registrar, una merma sin anotar), no a un robo.
 
-Con este sistema, el stock teórico y el real **convergen de forma continua** y nunca necesitas cerrar para contar. Además, los descuadres se detectan a los días, no a los once meses.
+Los descuadres se detectan a los días, no a los once meses. El método completo está en [inventario cíclico: cómo contar sin cerrar](/blog/inventario-ciclico-almacen).
+
+## ¿Cómo se repone sin quedarse sin género?
+
+Fijando un stock mínimo o punto de pedido por referencia y reponiendo desde una lista de lo que ha bajado de ese mínimo, no de memoria. El punto de pedido se calcula con el consumo diario, el plazo del proveedor y un colchón de seguridad. Con el almacén ya ordenado, esa lista sale sola si cada movimiento se registra.
+
+Tienes la fórmula con ejemplos en [stock mínimo y punto de pedido](/blog/stock-minimo-punto-de-pedido) y los métodos de control completos en [control de stock sin roturas](/blog/control-de-stock-sin-roturas).
 
 ## ¿Cuándo dar el salto a un SGA?
 
-El papel y el Excel aguantan hasta cierto punto. Las señales de que tu almacén ya necesita un **software de gestión de almacén (SGA)** son claras:
+Cuando el papel y el Excel ya no aguantan: más de una persona mueve stock y nadie tiene la foto completa, vendes en tienda y preparas pedidos sobre el mismo género, controlas lotes con caducidad de memoria o el inventario real y el teórico se parecen cada vez menos. Cualquiera de esas cuatro señales es suficiente.
 
 - Más de una persona mueve stock y nadie tiene la foto completa.
-- Vendes en tienda y online, y el stock de cada canal va por su cuenta.
-- Manejas lotes con caducidad y los controlas "de memoria".
-- El inventario real y el teórico se parecen cada vez menos, como explicamos en [ERP para pymes: cuándo dejar Excel](/blog/erp-para-pymes-vs-excel).
+- Vendes en mostrador y preparas pedidos, y cada uno descuenta por su lado.
+- Manejas lotes con caducidad y los controlas de memoria.
+- El inventario real y el teórico se separan cada mes, como contamos en [ERP para pymes: cuándo dejar Excel](/blog/erp-para-pymes-vs-excel).
 
-Si dudas entre montar un WMS aparte, un SGA o apoyarte en el módulo de almacén de tu ERP, lo comparamos en [WMS, SGA y ERP: diferencias](/blog/wms-sga-erp-diferencias).
+Qué es cada tipo de programa lo explicamos en [WMS, SGA y ERP: qué es cada uno](/blog/wms-sga-erp-diferencias), y si dudas entre un SGA aparte o el almacén de tu ERP, en [¿SGA aparte o ERP con almacén?](/blog/sga-o-erp-con-almacen-que-necesita-una-pyme). La organización física que has montado con esta guía es justo lo que el software necesita para funcionar: zonas, ubicaciones y reglas.
 
-Olvídate del software pesado de una gran logística: un SGA moderno es una capa ligera que registra cada movimiento con pistola o móvil, mantiene el stock por ubicación en tiempo real y avisa antes de la rotura o la caducidad. La organización física que has montado con esta guía es exactamente lo que el software necesita para funcionar: zonas, ubicaciones y reglas.
-
-Si quieres ver cómo se aplica todo esto con multialmacén, ubicaciones con QR, lotes con caducidad y lectora de códigos, echa un vistazo a nuestro [software de gestión de almacén](/software-gestion-almacen): está pensado para pymes que quieren orden sin burocracia.
+Si quieres ver cómo se aplica todo esto con multialmacén, ubicaciones con QR, plano del almacén, lotes con caducidad y pistola lectora, mira el [software de gestión de almacén](/software-gestion-almacen) de Drenpos.
 
 ## Preguntas frecuentes sobre organización de almacén
 
 ### ¿Cómo se organiza un almacén pequeño paso a paso?
 
-Primero divide el espacio en cinco zonas (recepción, almacenaje, picking, expedición y devoluciones). Después codifica cada hueco con un sistema pasillo-estantería-altura, clasifica tus referencias con el método ABC para colocar lo que más rota cerca de la salida, y define una regla de salida (FIFO o FEFO). Por último, sustituye el inventario anual por conteos cíclicos semanales.
+Primero divide el espacio en cinco zonas (recepción, almacenaje, preparación, expedición y devoluciones). Después codifica cada hueco con un sistema pasillo, estantería y altura, coloca lo que más rota cerca de la salida con el método ABC y define una regla de salida (FIFO o FEFO). Por último, sustituye el inventario anual por conteos cíclicos semanales.
+
+### ¿Cómo se codifican las ubicaciones de un almacén?
+
+Con un código de tres o cuatro niveles que cualquiera pueda leer: pasillo, estantería (o módulo), altura y, si hace falta, hueco. Por ejemplo, B-03-2 es pasillo B, estantería 03, balda 2. Cada hueco lleva su etiqueta con el código en texto y en QR o código de barras para escanearlo al mover mercancía.
 
 ### ¿Qué es el método ABC en un almacén?
 
-Es una clasificación basada en el principio de Pareto: una minoría de referencias (las A) concentra la mayor parte de los movimientos y del valor, mientras que la mayoría (las C) apenas rota. Las referencias A se colocan en las ubicaciones más accesibles y se cuentan con más frecuencia; las C pueden ocupar zonas altas o alejadas.
+Es una clasificación basada en el principio de Pareto: una minoría de referencias (las A) concentra la mayor parte de los movimientos, mientras que la mayoría (las C) apenas rota. Las referencias A se colocan en las ubicaciones más accesibles y se cuentan más a menudo; las C pueden ir a zonas altas o alejadas.
 
 ### ¿Cuál es la diferencia entre FIFO y FEFO?
 
-FIFO (First In, First Out) da salida primero a lo que entró primero y es la regla general para productos sin caducidad. FEFO (First Expired, First Out) da salida primero al lote que antes caduca, y es obligado en alimentación, farmacia, cosmética o cualquier producto con fecha de vencimiento.
+FIFO (First In, First Out) da salida primero a lo que entró primero y es la regla general para productos sin caducidad. FEFO (First Expired, First Out) da salida primero al lote que antes caduca, y es la que toca en alimentación, farmacia, cosmética o cualquier producto con fecha de vencimiento.
+
+### ¿Cada cuánto hay que hacer inventario en un almacén?
+
+Con inventario cíclico no hace falta cerrar para contar todo de golpe. Se cuenta cada semana un grupo pequeño de ubicaciones: las referencias A, una vez al mes; las B, cada trimestre; las C, cada semestre. Así el stock del sistema y el real se mantienen cerca durante todo el año.
 
 ### ¿Cuándo necesita una pyme un software de gestión de almacén (SGA)?
 
-Cuando las ubicaciones ya no caben en la cabeza de una persona: más de unas pocas centenas de referencias, más de una persona moviendo stock, varios canales de venta o productos con lote y caducidad. Un SGA registra cada movimiento con lector de códigos, mantiene el stock por ubicación en tiempo real y elimina la dependencia de la memoria del equipo.
+Cuando las ubicaciones ya no caben en la cabeza de una persona: unos cientos de referencias, más de una persona moviendo stock, venta en tienda y en almacén o productos con lote y caducidad. Un SGA registra cada movimiento con lector de códigos, mantiene el stock por ubicación al momento y quita la dependencia de la memoria del equipo.
 
 ### ¿Qué es un hueco de palet y en qué se diferencia de una ubicación de estantería?
 
-Una ubicación de estantería identifica una balda concreta donde conviven varias referencias sueltas. Un hueco de palet es el espacio que ocupa una unidad logística completa, con su etiqueta y, si guardas mercancía de terceros, con su propietario asociado. El cambio importa porque el hueco de palet se puede tarifar por días, por entradas o por salidas, y la estantería normalmente no.
+Una ubicación de estantería identifica una balda donde conviven varias referencias sueltas. Un hueco de palet es el espacio que ocupa una unidad logística completa, con su etiqueta y, si guardas mercancía de terceros, con su propietario. Importa porque el hueco de palet se puede tarifar por días, entradas o salidas, y la estantería normalmente no.
 
 ### ¿Cómo se identifica un palet dentro del almacén?
 

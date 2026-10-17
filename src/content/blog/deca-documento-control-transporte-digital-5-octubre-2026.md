@@ -1,8 +1,9 @@
 ---
-title: "DeCA: el documento de control del transporte pasa a digital el 5 de octubre de 2026"
-meta_title: "DeCA: guía del documento de control digital del transporte"
-description: "Qué es el DeCA, quién lo emite, qué datos lleva, cómo deben ser el PDF y el QR, multas y cómo generarlo desde tu albarán antes del 5 de octubre de 2026."
+title: "DeCA digital obligatorio: qué es y cómo generarlo desde el albarán"
+meta_title: "DeCA obligatorio: qué es y cómo generarlo desde el albarán"
+description: "El DeCA es obligatorio desde el 5 de octubre de 2026. Quién lo emite, qué datos lleva, cómo deben ser el PDF y el QR, multas y cómo sacarlo del albarán."
 date: 2026-09-28
+updated: 2026-10-17
 image: "/images/blog/etiqueta-sscc-gs1-palets/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -21,8 +22,8 @@ tags:
 featured: true
 draft: false
 hero:
-  title: "El documento de control se vuelve digital: lo que tiene que hacer quien contrata el porte"
-  description: "Desde el 5 de octubre de 2026 cada envío con transportista lleva un PDF con QR. Guía para cargadores que ya hacen albaranes y para pequeños transportistas."
+  title: "El documento de control ya es digital: lo que tiene que hacer quien contrata el porte"
+  description: "Desde el 5 de octubre de 2026 cada envío con transportista tiene que llevar un PDF con QR. Guía para cargadores que ya hacen albaranes y para pequeños transportistas."
 faq:
   - question: "¿Qué es el DeCA?"
     answer: "Es el documento electrónico de control administrativo: el documento de control de la Orden FOM/2861/2012 que acompaña cada envío de transporte público de mercancías por carretera en España, ahora en PDF generado desde los datos y con un código QR que lo descarga desde una dirección web única. Es obligatorio desde el 5 de octubre de 2026."
@@ -40,11 +41,11 @@ faq:
     answer: "Al menos un año. Lo conservan el cargador contractual y el transportista efectivo, aunque si uno lo generó basta con que el otro pueda descargarlo durante ese año."
 ---
 
-> El **DeCA** (documento electrónico de control administrativo) es el documento de control del transporte de mercancías por carretera en **PDF con un código QR** que lo descarga desde una dirección web única. Es obligatorio desde el **5 de octubre de 2026** en el transporte público dentro de España, sin periodo de adaptación. Lo formalizan el **transportista** y el **cargador contractual** (quien contrata el porte). Si ya haces albaranes en tu programa de gestión, tu albarán puede ser el DeCA.
+> El **DeCA** (documento electrónico de control administrativo) es el documento de control del transporte de mercancías por carretera en **PDF con un código QR** que lo descarga desde una dirección web única. Está **en vigor desde el 5 de octubre de 2026** en el transporte público dentro de España, sin periodo de adaptación. Lo formalizan el **transportista** y el **cargador contractual** (quien contrata el porte). Si ya haces albaranes en tu programa de gestión, tu albarán puede ser el DeCA.
 
-> **Estado a 28 de septiembre de 2026**
+> **Estado a 17 de octubre de 2026: ya es obligatorio**
 >
-> Esta guía recoge la Orden FOM/2861/2012, la Ley 9/2025 y la Resolución de 5 de junio de 2026 tal y como están publicadas en el BOE a 28 de septiembre de 2026, y las preguntas frecuentes del Ministerio de Transportes de esa fecha. Si el Ministerio publica criterios nuevos o la Inspección aclara cómo va a revisar el documento en carretera, la actualizaremos.
+> El DeCA es exigible desde el 5 de octubre de 2026, diez meses después de la entrada en vigor de la [Ley 9/2025](https://www.boe.es/buscar/act.php?id=BOE-A-2025-24545) (5 de diciembre de 2025). A esta fecha no conocemos ninguna norma que lo aplace ni que abra un periodo sin multas. Las asociaciones de transportistas sí han pedido a la Administración margen para adaptarse ([trans.info, 6/10/2026](https://trans.info/es/astic-pide-un-periodo-de-adaptacion-para-el-deca-tras-su-entrada-en-vigor-507373)). Esta guía recoge la Orden FOM/2861/2012, la Ley 9/2025 y la Resolución de 5 de junio de 2026 tal y como están en el BOE, y la actualizaremos si el Ministerio publica criterios nuevos.
 
 <div class="my-8 flex justify-center">
   <a href="/documento-control-transporte-deca" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
@@ -54,9 +55,9 @@ faq:
 
 Casi todo lo que se ha escrito sobre el DeCA está pensado para el transportista. Pero la ley pone en el mismo sitio a quien le contrata el viaje: el distribuidor que manda sus palets con una agencia, la cooperativa que carga aceituna en camiones de terceros, el almacén que vende y paga el porte. Esta guía está escrita sobre todo para ellos, y también para el pequeño transportista que quiere entender qué le van a pedir.
 
-## ¿Qué cambia el 5 de octubre de 2026?
+## ¿Qué cambió el 5 de octubre de 2026?
 
-Cambia el formato, no la obligación. El documento de control existe desde la [Orden FOM/2861/2012](https://www.boe.es/buscar/act.php?id=BOE-A-2013-154), en vigor desde julio de 2013. Hasta ahora se podía llevar en papel. La [Ley 9/2025 de Movilidad Sostenible](https://www.boe.es/buscar/act.php?id=BOE-A-2025-24545&tn=1&p=20251204#dt-8), en su disposición transitoria octava, dice que tendrá que ser "necesariamente digital a los diez meses" de su entrada en vigor, que fue el 5 de diciembre de 2025. Eso da el 5 de octubre de 2026.
+Cambió el formato, no la obligación. El documento de control existe desde la [Orden FOM/2861/2012](https://www.boe.es/buscar/act.php?id=BOE-A-2013-154), en vigor desde julio de 2013. Hasta el 4 de octubre de 2026 se podía llevar en papel. La [Ley 9/2025 de Movilidad Sostenible](https://www.boe.es/buscar/act.php?id=BOE-A-2025-24545&tn=1&p=20251204#dt-8), en su disposición transitoria octava, dice que tiene que ser "necesariamente digital a los diez meses" de su entrada en vigor, que fue el 5 de diciembre de 2025. Eso da el 5 de octubre de 2026, y desde ese día el papel ya no vale.
 
 Los requisitos técnicos los fija la [Resolución de 5 de junio de 2026](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-12784) de la Dirección General de Transporte por Carretera y Ferrocarril, publicada en el BOE el 12 de junio. Y el [Ministerio de Transportes](https://www.transportes.gob.es/transporte-terrestre/profesionales-transporte/servicios-transportista/documento-electronico-control-administrativo-deca/preguntas-frecuentes-faq-deca) ya ha dicho en sus preguntas frecuentes que no habrá un periodo transitorio sin multas.
 
@@ -169,9 +170,9 @@ En Drenpos el DeCA sale del [albarán de venta](/documento-control-transporte-de
 
 Va incluido en el módulo Financiero, que está en todos los [planes](/pricing), desde 19 €/mes sin IVA. Si trabajas con palets y expediciones, encaja con la [preparación de pedidos y la expedición con escaneo](/software-preparacion-pedidos-picking): escaneas el pedido preparado, sale el albarán y desde ahí el DeCA.
 
-## ¿Qué conviene hacer antes del 5 de octubre?
+## ¿Qué hacer si todavía no emites el DeCA?
 
-- Haz una lista de qué envíos salen con transportista y cuáles con vehículo propio. Solo los primeros llevan DeCA.
+- Cada camión que sale sin DeCA es una infracción distinta, así que empieza por los envíos de esta semana. Haz una lista de qué envíos salen con transportista y cuáles con vehículo propio. Solo los primeros llevan DeCA.
 - Revisa la ficha de cada transportista: razón social y NIF. Y la tuya: NIF y domicilio completos.
 - Comprueba que tus artículos tienen peso. Sin peso, el apartado d) queda cojo.
 - Decide con cada transportista quién genera el documento y cómo le llega al conductor.
@@ -206,6 +207,13 @@ No. El Ministerio de Transportes responde en su página de preguntas frecuentes 
 ### ¿Cuánto tiempo hay que conservar el DeCA?
 
 Al menos un año. Lo conservan el cargador contractual y el transportista efectivo, aunque si uno lo generó basta con que el otro pueda descargarlo durante ese año.
+
+## Más sobre el DeCA
+
+- [Cómo generar el DeCA desde el albarán, paso a paso](/blog/como-generar-deca-desde-albaran)
+- [¿Lo emite el cargador o el transportista?](/blog/deca-quien-lo-emite-cargador-transportista)
+- [Software para el DeCA: comparativa de opciones para pymes](/blog/software-deca-comparativa-pymes)
+- [DeCA y eCMR: en qué se diferencian](/blog/deca-vs-ecmr-diferencias)
 
 ## Siguiente paso
 

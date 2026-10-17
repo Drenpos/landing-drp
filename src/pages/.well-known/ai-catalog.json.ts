@@ -124,9 +124,9 @@ const entries: Entrada[] = [
     type: "text/html",
     url: url("/dispositivo-fichaje"),
     description:
-      "Terminal de fichaje propio con llavero RFID o QR, sin huella ni datos biométricos, con modo sin conexión. Desde 140 € sin IVA más la licencia de fichaje desde 1 € por usuario y mes sin IVA.",
+      "Terminal de fichaje propio que identifica con llavero RFID, tarjeta o QR, con el logo de la empresa en la carcasa y modo sin conexión. Vacaciones y turnos incluidos en la licencia. Desde 140 € sin IVA más la licencia de fichaje desde 1 € por usuario y mes sin IVA.",
     representativeQueries: [
-      "¿Cuánto cuesta un terminal de fichaje sin huella?",
+      "¿Cuánto cuesta un terminal de fichaje con llavero RFID?",
       "¿Qué reloj de fichaje funciona sin conexión a internet?",
       "¿Qué control horario sirve para cumplir el registro de jornada?",
     ],

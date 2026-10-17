@@ -35,6 +35,17 @@ const SITE_URL = config.site.base_url || "https://www.drenpos.com";
 // Bulk commits that don't represent content updates — exclude from lastmod.
 const BULK_COMMITS = [];
 
+// Post con `draft: true` en el frontmatter: no se publica ni va al sitemap.
+// Así se retiran también los posts fusionados, cuya URL redirige con 301
+// desde src/lib/redirecciones.ts (ver "Redirecciones 301" en CLAUDE.md).
+function isDraft(filePath) {
+  try {
+    return matter(fs.readFileSync(filePath, "utf-8")).data?.draft === true;
+  } catch {
+    return false;
+  }
+}
+
 // Enumerate posts in a content collection, returning URL + source-file
 // path so the sitemap can derive an accurate lastmod.
 function enumerateCollection(dirName, urlPrefix) {
@@ -43,6 +54,7 @@ function enumerateCollection(dirName, urlPrefix) {
     const files = fs.readdirSync(dir);
     return files
       .filter((file) => /\.(md|mdx)$/.test(file) && file !== "-index.md")
+      .filter((file) => !isDraft(path.join(dir, file)))
       .map((file) => {
         const slug = file.replace(/\.(md|mdx)$/, "");
         return {

@@ -84,3 +84,21 @@ Lo que no ha cambiado todavía y no tenía que cambiar: ChatGPT y Perplexity (se
 | Claude | Fase 2: producción (landing ampliada, 2 verticales, 6 posts) y 6 calendarios laborales 2027 por comunidad. |
 | Claude | Limpieza del sitemap (tildes duplicadas) y de las 3 landings con rayas. |
 | 21 de octubre | Segunda lectura completa y ronda de consultas a ChatGPT, Perplexity, Claude y Gemini. |
+
+## 5. Añadido el 14 de octubre: agent readiness
+
+Escáner isitagentready.com sobre drenpos.com, antes y después del deploy del commit 5b82947:
+
+| | Antes | Después |
+| --- | --- | --- |
+| Puntuación | 33 | 54 |
+| Nivel | 2 | 4 |
+
+Lo que ha entrado: Markdown por negociación de contenido (`Accept: text/markdown`), cabeceras `Link` (api-catalog, ai-catalog, llms.txt, alternate .md), `/.well-known/api-catalog` (RFC 9727), `/.well-known/ai-catalog.json` (ARD), robots.txt con `Agentmap`, atributos WebMCP en los formularios.
+
+Nota del deploy: el build automático de Workers del commit 5b82947 falló en Cloudflare con `Build failed to initialize and was timed out` (fallo de su infraestructura). Se relanzó desde el panel y desplegó en 1m21s. Si el escáner o la web no reflejan un cambio tras un push, mirar primero el historial de compilaciones del Worker.
+
+Pendiente:
+- WebMCP: el escáner sigue sin darlo por bueno. Se prepara más adelante.
+- `/x.md` abierto directo en el navegador se sirve sin `charset` (tildes mal). Por negociación `Accept` sí lleva `charset=utf-8`. Corregir añadiendo `/*.md` a `run_worker_first` y fijando el content-type en el worker.
+- MCP público, DNS-AID y OAuth: no aplican. El MCP de Drenpos es solo para clientes y no se publica.

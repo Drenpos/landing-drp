@@ -1,8 +1,9 @@
 ---
 title: "Etiqueta SSCC: qué es, cómo se genera y por qué la exigen"
-meta_title: "Etiqueta SSCC GS1: guía práctica para palets"
-description: "Qué es la etiqueta SSCC, cómo se componen sus 18 dígitos, qué identificadores GS1 lleva y cómo generar etiquetas de palet estándar sin errores."
+meta_title: "Etiqueta SSCC: qué es, sus 18 dígitos y cómo generarla"
+description: "Qué es la etiqueta SSCC, cómo se componen sus 18 dígitos y el dígito de control, qué identificadores GS1 lleva el palet y cómo se genera en un SGA."
 date: 2026-08-12
+updated: 2026-10-17
 image: "/images/blog/etiqueta-sscc-gs1-palets/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -12,7 +13,9 @@ categories: ["Gestión de Almacén", "Logística y 3PL", "Trazabilidad"]
 tags:
   [
     "etiqueta SSCC",
+    "código SSCC",
     "GS1-128",
+    "etiqueta logística GS1",
     "palets",
     "unidad logística",
     "trazabilidad de palets",
@@ -24,23 +27,29 @@ hero:
   description: "18 dígitos, un código de barras y todo el palet identificado en un escaneo."
 faq:
   - question: "¿Qué es el código SSCC?"
-    answer: "El SSCC (Serial Shipping Container Code) es el código GS1 de 18 dígitos que identifica de forma única e irrepetible una unidad logística concreta: un palet, una caja agrupada o un contenedor. No describe qué producto hay dentro, sino qué bulto es. Se imprime en la etiqueta logística codificado en GS1-128 con el identificador de aplicación 00 y acompaña al palet durante todo su recorrido."
+    answer: "El SSCC (Serial Shipping Container Code) es el código GS1 de 18 dígitos que identifica de forma única una unidad logística concreta: un palet, una caja agrupada o un contenedor. No describe qué producto hay dentro, sino qué bulto es. Se imprime en la etiqueta logística codificado en GS1-128 con el identificador de aplicación 00 y acompaña al palet durante todo su recorrido."
   - question: "¿Cuántos dígitos tiene un SSCC y cómo se estructura?"
-    answer: "Un SSCC tiene siempre 18 dígitos. El primero es el dígito de extensión, que elige libremente la empresa emisora para ampliar su capacidad de numeración. Después va el prefijo de compañía GS1, asignado al asociarse a GS1 España, seguido del número de serie que genera el emisor. El último dígito es el de control, calculado con el algoritmo módulo 10 sobre los diecisiete anteriores."
+    answer: "Un SSCC tiene siempre 18 dígitos. El primero es el dígito de extensión, que elige la empresa emisora para ampliar su capacidad de numeración. Después va el prefijo de compañía GS1, asignado al asociarse a GS1 España, seguido del número de serie que genera el emisor. El último es el dígito de control, calculado con el algoritmo módulo 10 sobre los diecisiete anteriores."
   - question: "¿Cuál es la diferencia entre GTIN y SSCC?"
-    answer: "El GTIN identifica un producto: todas las botellas iguales comparten el mismo GTIN. El SSCC identifica un bulto físico concreto e irrepetible: dos palets con contenido idéntico llevan SSCC distintos. En la etiqueta logística conviven los dos, porque el AI 01 dice qué producto contiene el palet y el AI 00 dice cuál es ese palet exactamente. Uno responde qué, el otro responde cuál."
+    answer: "El GTIN identifica un producto: todas las botellas iguales comparten el mismo GTIN. El SSCC identifica un bulto físico concreto: dos palets con contenido idéntico llevan SSCC distintos. En la etiqueta logística conviven los dos, porque el AI 01 dice qué producto contiene el palet y el AI 00 dice cuál es ese palet exactamente."
   - question: "¿Se puede reutilizar un número SSCC?"
-    answer: "No conviene y la norma GS1 no lo permite durante un periodo prolongado, precisamente para que la trazabilidad nunca sea ambigua. Si un SSCC se repite, un mismo escaneo puede apuntar a dos expediciones distintas y el aviso de expedición del cliente deja de cuadrar. La solución práctica es generar la serie automáticamente desde el sistema, nunca a mano en una hoja de cálculo."
+    answer: "No conviene y GS1 no lo permite durante un periodo prolongado, precisamente para que la trazabilidad nunca sea ambigua. Si un SSCC se repite, un mismo escaneo puede apuntar a dos expediciones distintas y el aviso de expedición del cliente deja de cuadrar. La solución práctica es que el sistema genere la serie, nunca a mano en una hoja de cálculo."
   - question: "¿Cómo se generan las etiquetas SSCC de un palet?"
-    answer: "Se generan desde el software que gestiona el almacén, no a mano. Al crear el palet, el sistema toma el siguiente número de serie libre, calcula el dígito de control, compone el código de barras GS1-128 con el AI 00 y añade el resto de identificadores: GTIN, lote, caducidad, peso y unidades. La etiqueta se imprime en rollo o en A4 y se pega en dos caras adyacentes."
+    answer: "Desde el software que gestiona el almacén, no a mano. Al crear el palet, el sistema toma el siguiente número de serie libre, calcula el dígito de control, compone el código de barras GS1-128 con el AI 00 y añade los identificadores que correspondan: GTIN, lote, caducidad, peso o unidades. La etiqueta se imprime en rollo o en A4 y se pega en dos caras adyacentes del palet."
+  - question: "¿Drenpos genera la etiqueta SSCC automáticamente?"
+    answer: "Sí. Al crear un palet, Drenpos calcula el SSCC de 18 dígitos con su dígito de control y prepara la etiqueta GS1-128 para imprimir en rollo o en A4. Si el palet es homogéneo, la etiqueta puede llevar además lote, cantidad y fechas con sus identificadores de aplicación. Al cerrar el palet se registran bruto, tara y neto, y el peso pasa a la ficha y a la etiqueta."
+  - question: "¿Qué hago si la etiqueta SSCC se rompe o se pierde?"
+    answer: "Se reimprime la misma etiqueta, con el mismo SSCC. Nunca se genera un número nuevo para un palet que ya existe, porque el cliente puede tenerlo en su aviso de expedición. En Drenpos la etiqueta se reimprime desde la ficha del palet sin recalcular nada."
+  - question: "¿Dónde se pega la etiqueta SSCC en el palet?"
+    answer: "En dos caras adyacentes, una en un lado corto y otra en uno largo, con dos etiquetas idénticas. GS1 recomienda colocarlas a una altura de entre 400 y 800 milímetros desde la base del palet, para que el lector las alcance se acerque la carretilla por donde se acerque."
   - question: "¿Es obligatoria la etiqueta SSCC para vender a la distribución?"
-    answer: "Ninguna norma española obliga con carácter general a usar SSCC, pero en la práctica lo exigen los pliegos logísticos de la gran distribución, los operadores 3PL y cualquier cadena que trabaje con aviso de expedición electrónico. Sin SSCC, el palet no puede recepcionarse por escaneo y todo el proceso pasa a ser manual, con las incidencias y los retrasos que eso genera."
+    answer: "Ninguna norma española obliga con carácter general a usar SSCC, pero en la práctica lo piden los pliegos logísticos de la gran distribución, los operadores logísticos y cualquier cadena que trabaje con aviso de expedición electrónico. Sin SSCC el palet no puede recepcionarse por escaneo y todo el proceso pasa a ser manual."
 ---
 
 > El SSCC (Serial Shipping Container Code) es un código GS1 de 18 dígitos que identifica de manera única e irrepetible una unidad logística concreta, normalmente un palet. Se imprime en la etiqueta logística mediante un código de barras GS1-128 precedido del identificador de aplicación 00. Funciona como la matrícula del bulto: escaneando ese número, cualquier eslabón de la cadena sabe qué contiene, de quién viene y hacia dónde va.
 
 <div class="my-8 flex justify-center">
-  <a href="/contact" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
+  <a href="/software-gestion-palets" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
     Ver la gestión de palets de Drenpos
   </a>
 </div>
@@ -72,10 +81,10 @@ El dígito 18 se obtiene aplicando el algoritmo módulo 10 de GS1 sobre los 17 d
 
 Con un ejemplo puramente ilustrativo, partiendo de los 17 dígitos `34012345000000011`:
 
-1. **Asigna pesos alternos**: 3, 1, 3, 1… empezando por la izquierda con peso 3.
-2. **Multiplica y suma**: (3×3)+(4×1)+(0×3)+(1×1)+(2×3)+(3×1)+(4×3)+… La suma es 44.
+1. **Asigna pesos alternos**: 3, 1, 3, 1... empezando por la izquierda con peso 3.
+2. **Multiplica y suma**: (3×3)+(4×1)+(0×3)+(1×1)+(2×3)+(3×1)+(4×3)+... La suma es 44.
 3. **Sube al múltiplo de 10**: el siguiente múltiplo por encima de 44 es 50.
-4. **Resta**: 50 − 44 = 6. El SSCC completo queda `340123450000000116`.
+4. **Resta**: 50 menos 44 son 6. El SSCC completo queda `340123450000000116`.
 
 Si la suma ya fuera múltiplo de 10, el dígito de control sería 0. En producción esta cuenta la hace el sistema al generar la etiqueta, nunca una persona.
 
@@ -87,7 +96,7 @@ Si un cliente reclama, no buscas "yogur de fresa": buscas el palet exacto que sa
 
 ## ¿Qué lleva una etiqueta logística GS1 estándar?
 
-La etiqueta logística GS1 se estructura en tres secciones apiladas: transporte arriba, cliente en medio y proveedor abajo. Cada bloque agrupa la información según quién la necesita y en qué momento del recorrido. El formato habitual es A5 y la recomendación práctica es colocarla en dos caras adyacentes del palet, para que sea legible se aproxime la carretilla por donde se aproxime.
+La etiqueta logística GS1 se estructura en tres secciones apiladas: transporte arriba, cliente en medio y proveedor abajo. Cada bloque agrupa la información según quién la necesita y en qué momento del recorrido. El formato habitual es A5 y GS1 recomienda dos etiquetas idénticas en dos caras adyacentes del palet (un lado corto y uno largo), a una altura de entre 400 y 800 mm desde la base, según su [guía de colocación](https://gs1uk.org/knowledge-hub/barcodes/where-should-pallet-labels-be-placed).
 
 ![Las tres secciones de una etiqueta logística GS1 de palet: transporte, cliente y proveedor, con los identificadores de aplicación de GTIN, lote, caducidad y unidades](/images/blog/etiqueta-sscc-gs1-palets/figura-2.png)
 
@@ -154,46 +163,73 @@ Empezar con SSCC no exige obra ni maquinaria nueva: hacen falta un prefijo de co
 4. **Diseña la etiqueta en tres secciones** (transporte, cliente, proveedor) en formato A5.
 5. **Decide los AIs a imprimir**: lote y caducidad en alimentación, peso neto si vendes a granel.
 6. **Prueba con un lector real** antes de imprimir mil etiquetas y valida el resultado con tu cliente.
-7. **Forma al equipo**: dos caras adyacentes, nunca reimprimir etiquetas viejas y cerrar el palet en el sistema.
+7. **Forma al equipo**: dos caras adyacentes, no inventar números para un palet que ya tiene SSCC y cerrar el palet en el sistema.
 
-## ¿Cómo gestiona Drenpos los palets y sus SSCC?
+## ¿Cómo se genera la etiqueta SSCC en Drenpos?
 
-En Drenpos cada palet nace con su etiqueta SSCC estándar GS1 imprimible en rollo o en A4, la misma que exigen las grandes plataformas logísticas. El palet tiene ciclo de vida propio: abierto, cerrado y pesado con bruto, tara y neto, expedido o anulado, cada paso con su permiso separado. La etiqueta y el contenido nunca se separan.
+En Drenpos la etiqueta SSCC nace con el palet. Al crearlo, el sistema calcula el código de 18 dígitos con su dígito de control y prepara la etiqueta GS1-128 para imprimir en rollo o en A4. Si el palet es homogéneo, la etiqueta puede llevar además lote, cantidad y fechas con sus identificadores de aplicación. Nadie compone el código en Excel ni pasa por un segundo programa.
 
-Dentro cabe cualquier mezcla de productos, lotes y series, con una pestaña de trazabilidad que cuenta todo lo que ha entrado y salido del palet. El montaje se hace con pistola o a mano, y mover el palet entero de ubicación o de almacén es un solo escaneo: el stock viaja con él.
+El recorrido completo, momento a momento:
 
-La vista global de contenido responde a la pregunta de siempre: "¿dónde tengo este lote?". Y el despaletizado se resuelve en tres gestos: vaciar a una ubicación, pasar mercancía a otro palet o partir uno en varios nuevos que nacen cargados y etiquetados.
+| Momento | Qué hace Drenpos con el SSCC |
+| --- | --- |
+| Crear el palet | Calcula el SSCC de 18 dígitos con dígito de control y deja lista la etiqueta GS1-128 (rollo o A4) |
+| Montar el palet | Se cargan productos, lotes y series con pistola o a mano; la etiqueta de un palet homogéneo puede llevar lote, cantidad y fechas |
+| Cerrar y pesar | Se registran bruto, tara y neto; el peso queda en la ficha y en la etiqueta. El pesado tiene permiso propio |
+| Preparar un pedido | El pedido se puede preparar directamente sobre un palet que ya lleva su SSCC |
+| Mover el palet | Se escanea el SSCC y el destino: el palet viaja entero y el stock de dentro con él |
+| Expedir | Escanear el SSCC en un albarán o una factura arrastra el palet con sus líneas agrupadas y bloqueadas; la impresión muestra la relación producto y palet y un resumen de palets con sus SSCC |
+| Despaletizar | Al partir un palet en varios, cada palet nuevo nace con su propio SSCC y su etiqueta en el mismo paso |
+| Etiqueta dañada | Se reimprime desde la ficha del palet con el mismo número, sin recalcular |
 
-Todas las pantallas funcionan en móvil y tablet, para trabajar a pie de cámara y no en la oficina, algo clave en un [almacén frigorífico](/software-almacen-frigorifico). En albaranes y facturas los palets van blindados: escanear un SSCC arrastra el palet entero, las líneas quedan bloqueadas y la impresión muestra la relación producto-palet.
+Lo que Drenpos no te da es el prefijo de compañía: ese número lo asigna GS1 España al asociarte, y es el que hace que tu SSCC sea único en el mundo. Si vas a servir a una plataforma que lee SSCC, tenlo resuelto antes de imprimir la primera etiqueta y prueba una con el cliente.
 
-El módulo de Inventario, donde vive esta gestión de palets, cuesta 16,45 €/mes sin IVA sobre un plan base de 19, 29 o 39 €/mes sin IVA. Tienes el detalle en [precios](/pricing).
+## ¿Qué más hace Drenpos con los palets?
+
+El palet tiene ciclo de vida propio en Drenpos: abierto, cerrado y pesado, expedido o anulado, cada paso con su permiso. Dentro cabe cualquier mezcla de productos, lotes y series, con una pestaña de trazabilidad que cuenta todo lo que ha entrado y salido del palet. En los palets propios queda además qué proveedor entregó la mercancía.
+
+La vista global de contenido responde a la pregunta de siempre: "¿dónde tengo este lote?". El despaletizado se resuelve en tres gestos: vaciar a una ubicación, pasar mercancía a otro palet o partir uno en varios nuevos que nacen cargados y etiquetados. Todas las pantallas funcionan en móvil y tablet, para trabajar a pie de cámara en un [almacén frigorífico](/software-almacen-frigorifico) y no en la oficina.
+
+Tienes el detalle en el [software de gestión de palets](/software-gestion-palets). La gestión de palets va dentro del módulo de Inventario, incluido en los planes Pro (29 €/mes), Full (39 €/mes) y Producción (50 €/mes), o como módulo suelto por 16,45 €/mes sobre el plan Esencial, todo sin IVA a fecha de 17 de octubre de 2026. Más en [precios](/pricing).
 
 ## Preguntas frecuentes sobre la etiqueta SSCC
 
 ### ¿Qué es el código SSCC?
 
-El SSCC (Serial Shipping Container Code) es el código GS1 de 18 dígitos que identifica de forma única e irrepetible una unidad logística concreta: un palet, una caja agrupada o un contenedor. No describe qué producto hay dentro, sino qué bulto es. Se imprime en la etiqueta logística codificado en GS1-128 con el identificador de aplicación 00 y acompaña al palet durante todo su recorrido.
+El SSCC (Serial Shipping Container Code) es el código GS1 de 18 dígitos que identifica de forma única una unidad logística concreta: un palet, una caja agrupada o un contenedor. No describe qué producto hay dentro, sino qué bulto es. Se imprime en la etiqueta logística codificado en GS1-128 con el identificador de aplicación 00 y acompaña al palet durante todo su recorrido.
 
 ### ¿Cuántos dígitos tiene un SSCC y cómo se estructura?
 
-Un SSCC tiene siempre 18 dígitos. El primero es el dígito de extensión, que elige libremente la empresa emisora para ampliar su capacidad de numeración. Después va el prefijo de compañía GS1, asignado al asociarse a GS1 España, seguido del número de serie que genera el emisor. El último dígito es el de control, calculado con el algoritmo módulo 10 sobre los diecisiete anteriores.
+Un SSCC tiene siempre 18 dígitos. El primero es el dígito de extensión, que elige la empresa emisora para ampliar su capacidad de numeración. Después va el prefijo de compañía GS1, asignado al asociarse a GS1 España, seguido del número de serie que genera el emisor. El último es el dígito de control, calculado con el algoritmo módulo 10 sobre los diecisiete anteriores.
 
 ### ¿Cuál es la diferencia entre GTIN y SSCC?
 
-El GTIN identifica un producto: todas las botellas iguales comparten el mismo GTIN. El SSCC identifica un bulto físico concreto e irrepetible: dos palets con contenido idéntico llevan SSCC distintos. En la etiqueta logística conviven los dos, porque el AI 01 dice qué producto contiene el palet y el AI 00 dice cuál es ese palet exactamente. Uno responde qué, el otro responde cuál.
+El GTIN identifica un producto: todas las botellas iguales comparten el mismo GTIN. El SSCC identifica un bulto físico concreto: dos palets con contenido idéntico llevan SSCC distintos. En la etiqueta logística conviven los dos, porque el AI 01 dice qué producto contiene el palet y el AI 00 dice cuál es ese palet exactamente.
 
 ### ¿Se puede reutilizar un número SSCC?
 
-No conviene y la norma GS1 no lo permite durante un periodo prolongado, precisamente para que la trazabilidad nunca sea ambigua. Si un SSCC se repite, un mismo escaneo puede apuntar a dos expediciones distintas y el aviso de expedición del cliente deja de cuadrar. La solución práctica es generar la serie automáticamente desde el sistema, nunca a mano en una hoja de cálculo.
+No conviene y GS1 no lo permite durante un periodo prolongado, precisamente para que la trazabilidad nunca sea ambigua. Si un SSCC se repite, un mismo escaneo puede apuntar a dos expediciones distintas y el aviso de expedición del cliente deja de cuadrar. La solución práctica es que el sistema genere la serie, nunca a mano en una hoja de cálculo.
 
 ### ¿Cómo se generan las etiquetas SSCC de un palet?
 
-Se generan desde el software que gestiona el almacén, no a mano. Al crear el palet, el sistema toma el siguiente número de serie libre, calcula el dígito de control, compone el código de barras GS1-128 con el AI 00 y añade el resto de identificadores: GTIN, lote, caducidad, peso y unidades. La etiqueta se imprime en rollo o en A4 y se pega en dos caras adyacentes.
+Desde el software que gestiona el almacén, no a mano. Al crear el palet, el sistema toma el siguiente número de serie libre, calcula el dígito de control, compone el código de barras GS1-128 con el AI 00 y añade los identificadores que correspondan: GTIN, lote, caducidad, peso o unidades. La etiqueta se imprime en rollo o en A4 y se pega en dos caras adyacentes del palet.
+
+### ¿Drenpos genera la etiqueta SSCC automáticamente?
+
+Sí. Al crear un palet, Drenpos calcula el SSCC de 18 dígitos con su dígito de control y prepara la etiqueta GS1-128 para imprimir en rollo o en A4. Si el palet es homogéneo, la etiqueta puede llevar además lote, cantidad y fechas con sus identificadores de aplicación. Al cerrar el palet se registran bruto, tara y neto, y el peso pasa a la ficha y a la etiqueta.
+
+### ¿Qué hago si la etiqueta SSCC se rompe o se pierde?
+
+Se reimprime la misma etiqueta, con el mismo SSCC. Nunca se genera un número nuevo para un palet que ya existe, porque el cliente puede tenerlo en su aviso de expedición. En Drenpos la etiqueta se reimprime desde la ficha del palet sin recalcular nada.
+
+### ¿Dónde se pega la etiqueta SSCC en el palet?
+
+En dos caras adyacentes, una en un lado corto y otra en uno largo, con dos etiquetas idénticas. GS1 recomienda colocarlas a una altura de entre 400 y 800 milímetros desde la base del palet, para que el lector las alcance se acerque la carretilla por donde se acerque.
 
 ### ¿Es obligatoria la etiqueta SSCC para vender a la distribución?
 
-Ninguna norma española obliga con carácter general a usar SSCC, pero en la práctica lo exigen los pliegos logísticos de la gran distribución, los operadores 3PL y cualquier cadena que trabaje con aviso de expedición electrónico. Sin SSCC, el palet no puede recepcionarse por escaneo y todo el proceso pasa a ser manual, con las incidencias y los retrasos que eso genera.
+Ninguna norma española obliga con carácter general a usar SSCC, pero en la práctica lo piden los pliegos logísticos de la gran distribución, los operadores logísticos y cualquier cadena que trabaje con aviso de expedición electrónico. Sin SSCC el palet no puede recepcionarse por escaneo y todo el proceso pasa a ser manual.
 
----
+## ¿Por dónde empezar?
 
-La etiqueta SSCC no es burocracia: convierte un palet en un dato consultable. Si quieres que cada palet nazca etiquetado y con su trazabilidad completa, descubre el [software de gestión de almacén](/software-gestion-almacen) de Drenpos.
+La etiqueta SSCC convierte un palet en un dato que cualquiera puede consultar con un escaneo. Si quieres que cada palet nazca etiquetado y con su trazabilidad completa, mira cómo lo resuelve el [software de gestión de almacén](/software-gestion-almacen) de Drenpos o el flujo de [preparación de pedidos sobre palet](/software-preparacion-pedidos-picking).

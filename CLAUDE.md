@@ -134,6 +134,24 @@ curl -s -o /dev/null -w "%{http_code}\n" https://www.drenpos.com/.well-known/mcp
 
 En local: `npm run preview` (build + `wrangler dev`) y las mismas peticiones contra `http://localhost:8787`.
 
+## Redirecciones 301 (posts fusionados o retirados, 17/10/2026)
+
+Las redirecciones van en el worker, no en `redirects` de `astro.config.mjs` ni en `src/middleware.ts`:
+
+- `src/lib/redirecciones.ts`: mapa `REDIRECCIONES_301` (origen → destino, rutas sin barra final ni `.html`) y `respuestaRedireccion(request)`. Cubre `/x`, `/x/`, `/x.html` (Search Console las muestra) y `/x.md` (va a `destino.md`), conserva la query y manda el apex directo a `https://www.drenpos.com` en un solo salto.
+- `src/worker.ts` la llama **antes de todo** (antes de la negociación de Markdown y de Astro).
+- Por qué ahí: los posts son prerenderizados y el middleware de Astro no los ve; `redirects` de Astro acaba en un HTML con meta refresh (200) o en un `_redirects` que no se consulta para rutas que van por `run_worker_first`. El worker sí ve todo lo que lista `assets.run_worker_first` en `wrangler.json` (incluye `/blog/*` y `/local/*`).
+
+Para retirar un post:
+1. `draft: true` en su frontmatter. Así sale de las rutas (`[single].astro`), del `.md` alternativo, del RSS, de `schema/post.json`, del listado del blog y del sitemap (`enumerateCollection` en `astro.config.mjs` salta los borradores). No se borra el fichero.
+2. Añadir la pareja a `REDIRECCIONES_301`.
+3. Cambiar los enlaces internos al origen (en posts, landings y el array `articulos` de `control-horario.astro`): seoGraph rompe el build con un enlace interno a una página que ya no existe.
+4. Si el origen no empieza por una ruta de `run_worker_first`, añadirla allí.
+
+Retiradas hasta hoy: `/blog/comparativa-mejores-software-control-horario-pymes-2026` → `/blog/mejores-programas-control-horario` y `/blog/registro-horario-2026-nuevos-requisitos-adaptacion` → `/blog/registro-horario-digital`.
+
+Comprobar tras desplegar: `curl -sI https://www.drenpos.com/blog/comparativa-mejores-software-control-horario-pymes-2026.html | grep -i "^HTTP\|^location"` (debe dar 301 y el destino).
+
 ## SEO blog generator (`agent/`)
 
 Standalone Node 18+ ESM pipeline that researches → analyzes → synthesizes → generates → commits a blog post (with Meta Ads companion + Pexels images). Independent `package.json`; **not** part of the Astro build.

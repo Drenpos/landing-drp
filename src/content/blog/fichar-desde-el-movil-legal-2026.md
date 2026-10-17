@@ -1,112 +1,135 @@
 ---
-title: "Cómo fichar desde el móvil de forma legal en 2026: guía operativa"
-meta_title: "Fichar desde el móvil legal en 2026: guía para pymes"
-description: "Cómo fichar desde el móvil de forma legal en 2026: deja atrás el Excel, evita sanciones y pide las vacaciones desde la misma app de fichajes."
+title: "¿Es legal fichar desde el móvil en 2026? Requisitos y cómo hacerlo bien"
+meta_title: "Fichar desde el móvil es legal en 2026: requisitos y app"
+description: "Fichar desde el móvil es legal en 2026 si guarda la hora real y deja rastro de cada cambio. Ubicación, móvil personal, vacaciones e incidencias desde la app."
 date: 2026-07-27
-updated: 2026-09-28
+updated: 2026-10-17
 image: "/images/blog/fichar-desde-el-movil-legal-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
   designation: "CEO & Founder"
   avatar: "/images/alonso.jpg"
 categories: ["Control Horario", "Cumplimiento Legal", "Gestión de Pymes"]
-tags: ["fichar desde movil", "control horario movil", "app fichajes empleados", "registro jornada app", "geolocalizacion fichajes"]
+tags:
+  [
+    "fichar desde el móvil",
+    "app fichaje empleados",
+    "fichaje móvil legal",
+    "geolocalización fichajes",
+    "app control horario",
+  ]
 featured: false
 draft: false
 hero:
-  title: "Cómo fichar desde el móvil de forma legal en 2026"
-  description: "La inspección no espera. Convierte el fichaje móvil en blindaje operativo y financiero sin frenar a tu equipo."
+  title: "Fichar desde el móvil es legal. Hacerlo mal, no sale gratis"
+  description: "Qué tiene que cumplir el fichaje desde el móvil, qué pasa con la ubicación y el móvil personal, y qué más puede hacer la plantilla desde la misma app: vacaciones, incidencias y correcciones."
+faq:
+  - question: "¿Es legal fichar desde el móvil?"
+    answer: "Sí. El artículo 34.9 del Estatuto de los Trabajadores obliga a registrar el inicio y el fin de la jornada, pero no impone un método. Una app es válida si identifica a la persona, guarda la hora real, deja rastro de cualquier corrección, permite al trabajador ver sus datos y conserva el registro cuatro años. Es además el formato que encaja con el real decreto de registro digital, sin aprobar a 17 de octubre de 2026."
+  - question: "¿Puede la empresa obligarme a fichar con mi móvil personal?"
+    answer: "Es un punto delicado: el móvil es tuyo y la ley no obliga a usarlo para el trabajo. Lo sensato es pactarlo y ofrecer una alternativa a quien no quiera o no pueda, como un QR en el centro, la web o un terminal con llavero. En Drenpos conviven todas las formas en el mismo registro."
+  - question: "¿La app de fichaje puede saber dónde estoy?"
+    answer: "Solo si la empresa activa la geolocalización y te informa antes por escrito (artículo 90 de la LOPDGDD). En Drenpos viene desactivada; si se activa, guarda la ubicación solo en el instante de fichar, con su radio de precisión. No hay seguimiento durante la jornada ni puede haberlo."
+  - question: "¿Qué pasa si fichando desde el móvil no hay cobertura?"
+    answer: "En Drenpos la app avisa con un banner, no muestra un estado falso y no cierra la sesión, pero necesita red para registrar el fichaje. Si el equipo trabaja donde nunca hay cobertura (una obra, una cámara frigorífica, una finca), lo que ficha y guarda sin internet es el terminal de fichaje, que sube los fichajes con su hora real al volver la red."
+  - question: "¿Se pueden pedir las vacaciones desde la app de fichaje?"
+    answer: "En Drenpos, sí. La misma app enseña el saldo de vacaciones con su desglose, las solicitudes y los festivos, y al pedir días dice cuántos quedarán después. El responsable aprueba, rechaza o propone otras fechas con un motivo, y la respuesta llega al móvil."
 ---
 
-Si sigues fichando desde el móvil como si fuera 2019, estás perdiendo horas y, de paso, construyendo una [multa de inspección](/blog/multas-registro-horario-2026-costo-incumplimiento) y un colapso operativo a tu medida.
+> **Respuesta corta:** fichar desde el móvil es legal en 2026. La ley pide registrar cada día el inicio y el fin de la jornada, no un aparato concreto. Para que valga, la app tiene que guardar la hora real, dejar rastro de cada corrección, enseñar al trabajador sus datos y conservarlos cuatro años. La ubicación es opcional y solo al fichar. Para quien no tiene móvil o trabaja sin cobertura, un terminal con llavero.
 
-## ¿Fichar desde el móvil sigue siendo legal en 2026? La respuesta no es lo que crees
+> **Actualizado el 17 de octubre de 2026**
+>
+> Estado legal revisado a esta fecha. Hemos añadido lo que la plantilla puede hacer hoy desde la app de Drenpos además de fichar: vacaciones con saldo, incidencias de entrada y salida y correcciones con aprobación.
 
-La normativa de registro de jornada es clara: el [control horario es obligatorio](/blog/registro-horario-digital) y debe garantizar la **seguridad jurídica** tanto para la empresa como para el trabajador. Pero la realidad operativa ha cambiado radicalmente. Tus comerciales están en ruta, tus técnicos en obra y tus teletrabajadores gestionando proyectos desde casa. El fichaje se ha convertido en el primer eslabón de tu control financiero.
+## ¿Es legal fichar desde el móvil en 2026?
 
-Muchos directores creen que basta con descargar una aplicación y dejar que el equipo pulse un botón. La inspección no ve apps. Ve trazabilidad. Ve si los datos son inalterables, accesibles y cumplen el plazo de conservación exigido. Si tu sistema actual no garantiza eso, estás improvisando en vez de cumplir la ley.
+Sí. El [artículo 34.9 del Estatuto de los Trabajadores](https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430#a34) obliga a registrar cada día la hora de inicio y fin de la jornada de cada persona, pero deja libre el método. Una app vale si identifica a quien ficha, guarda la hora real, deja rastro de cualquier cambio y conserva el registro cuatro años a disposición del trabajador y de la Inspección.
 
-> "La legalidad no depende de la herramienta que uses, sino de la integridad de los datos que generas y de tu capacidad para demostrarla en 10 minutos."
+El real decreto que haría obligatorio el registro digital no está aprobado ni publicado en el BOE a 17 de octubre de 2026. Trabajo dio por cerrada la revisión del texto el 2 de octubre y quiere aprobarlo antes de las elecciones del 29 de noviembre. Cuando salga, una app bien hecha ya cumple lo que pide: registro digital, inalterable y consultable en remoto. El calendario completo está en la guía de [registro horario digital](/blog/registro-horario-digital).
 
-El salto a 2026 exige dejar de ver el control horario como un gasto administrativo. Se convierte en un activo de prevención de riesgos. Cuando tu equipo se mueve, el registro debe moverse con él, pero con las mismas garantías que un libro contable sellado. La tecnología móvil es legal, pero solo si está configurada para proteger tus derechos y los de tu plantilla.
+## ¿Qué tiene que cumplir una app de fichaje para ser legal?
 
-## El coste oculto de ignorar la normativa (y por qué tu Excel ya no sirve)
+Lo mismo que cualquier registro, pero con una ventaja: puede hacerlo sin esfuerzo. La hora la pone el sistema y no la persona, cada corrección queda guardada con su autor y el trabajador ve sus fichajes cuando quiere. Lo que no vale es una app que deja editar horas sin historial o que solo guarda la entrada.
 
-El [Excel fue útil cuando eras cinco personas](/blog/por-que-excel-ya-no-sirve-control-horario-2026). Hoy es una trampa de relojería. Cada celda rota, cada fórmula que se desajusta y cada captura de WhatsApp que guardas en una carpeta compartida suma un riesgo silencioso. La burocracia manual es el mayor generador de **horas no facturadas** y cargas imprevistas.
+| Requisito | Qué comprobar en la app |
+| --- | --- |
+| Identificación | Cada persona entra con su usuario; nadie ficha por otro |
+| Hora real | La pone el sistema al fichar, no el empleado |
+| Entrada, salida y pausas | Conceptos separados (trabajo, comida, reunión) |
+| Correcciones | Quién corrigió, cuándo, valor de antes y de después |
+| Acceso del trabajador | Ve sus fichajes y sus horas en el móvil |
+| Cuatro años | Conservación en el sistema, no en el teléfono |
+| Protección de datos | Información previa a la plantilla, sobre todo si hay ubicación |
+
+## ¿Puede la empresa obligarte a usar tu móvil personal?
+
+Es la duda más habitual y no tiene una respuesta cerrada en la ley. El móvil es del trabajador, así que lo razonable es pactarlo y ofrecer otra forma de fichar a quien no quiera o no pueda: la web, un QR en el centro o un terminal. Lo que no puede faltar es el registro, sea cual sea el canal.
+
+En Drenpos todas las formas conviven en el mismo registro: quien quiere ficha con su móvil, quien no, con el QR o con un llavero en el [terminal de fichaje](/dispositivo-fichaje). El terminal identifica con llavero, tarjeta o QR, sin huella ni cara, así que la empresa no trata datos biométricos, que el RGPD considera categoría especial. Lo explicamos en [fichar con huella: qué dice la AEPD y qué alternativas son legales](/blog/fichar-con-huella-aepd-alternativas).
+
+## ¿Puede la app saber dónde estás?
+
+Solo si la empresa lo activa, lo justifica y lo avisa antes por escrito, como pide el artículo 90 de la LOPDGDD. Lo proporcionado es guardar la ubicación en el momento de fichar, para comprobar que alguien ficha al llegar al cliente o a la obra. Seguir a una persona durante toda la jornada no lo es.
+
+En Drenpos la [geolocalización del fichaje](/control-horario#geolocalizacion) viene apagada. Si se enciende, se captura solo en el instante de fichar la entrada y la salida desde el móvil o la web, se ve en un mapa con su radio de precisión y aparece en el informe. No hay seguimiento continuo ni puede haberlo. Dos avisos prácticos: el portal tiene que ir por HTTPS, y en naves, sótanos o cámaras la señal puede fallar; con la opción activa, fallar significa no poder fichar.
 
 ![Two workers in a warehouse discussing logistics near a forklift captured from above.](/images/blog/fichar-desde-el-movil-legal-2026/section-1.jpg)
 
-Piensa en una empresa de mantenimiento con fichajes por WhatsApp y un Excel maestro. Si llega una inspección, alguien tiene que reconstruir cronologías y explicar por qué tres técnicos tienen el mismo horario de entrada en ciudades distintas. Esa preparación paraliza la oficina durante días, y la pérdida de margen por horas mal registradas suele pesar más que la multa potencial.
-
-Las soluciones manuales o genéricas generan tres fugas de dinero que nadie cuantifica:
-- Horas no facturadas por duplicidad o errores de cálculo manual
-- Tiempo de RRHH dedicado a limpiar datos antes de cada revisión
-- Riesgo de sanciones por tratamiento inadecuado de datos personales
-
-Una app de fichajes empleados que no se integra con tu operativa diaria es solo un parche visual. Si no conecta con tu facturación, tu nómina y tu gestión de incidencias, estás pagando por una herramienta que te da más trabajo, no menos. La inspección no espera a que tu Excel colapse.
-
-## Geolocalización, biometría y consentimiento: los 3 pilares que salvan tu empresa de una inspección
-
-La normativa de registro horario no prohíbe el móvil. Lo que exige es proporcionalidad y seguridad. Tres elementos definen si tu sistema aguanta una visita sorpresa o se desmorona en un requerimiento administrativo.
-
-### Geolocalización: precisión sin espionaje
-El control horario móvil puede incluir ubicación, pero debe ser contextual. El objetivo es validar que el fichaje coincide con el punto de trabajo asignado en ese momento, sin rastrear al empleado cada minuto. Un sistema bien configurado registra coordenadas solo al pulsar entrada y salida, nunca un historial de movimiento continuo. Esto cumple con el principio de minimización de datos y elimina el riesgo de denuncias por vigilancia excesiva. La geolocalización fichajes es legal cuando es puntual y justificada, y no invade la privacidad del trabajador fuera de su horario.
-
-### Biometría: la barrera alta que pocos cruzan bien
-Huella dactilar o reconocimiento facial son herramientas potentes, pero la LOPDGDD y el RGPD las tratan como datos de categoría especial. Su uso exige una evaluación de impacto previa, consentimiento explícito y una justificación operativa irrefutable. Si tu app genérica activa la cámara o el sensor biométrico sin un protocolo claro, estás ante un incumplimiento grave. La biometría solo es legal si es la **única vía** para garantizar la identidad y está respaldada por un protocolo interno firmado.
-
-### Consentimiento y trazabilidad: el escudo ante la inspección
-El registro tiene que reflejar la jornada real y estar a disposición del trabajador. A fecha de 28 de septiembre de 2026 la ley no obliga todavía a que sea digital, pero si lo llevas en una app, que no se pueda cambiar un dato sin dejar rastro. El consentimiento no se agota en un checkbox al contratar: hablamos de un registro de auditoría que demuestra que cada dato fue introducido con conocimiento de causa. La ley exige conservar estos registros durante cuatro años. Si tu plataforma borra logs, permite ediciones sin firma digital o no exporta en formatos válidos para la administración, estás construyendo sobre arena.
-
-> "Un sistema de registro jornada app que no guarda trazabilidad de quién, cuándo y cómo se modificó un dato, no es una herramienta de cumplimiento: es una prueba en contra."
-
 ## ¿Cómo es la app de fichajes de Drenpos?
 
-Es una app web instalable (PWA): no pasa por App Store ni Google Play y funciona en cualquier móvil. La hemos pensado para quien ficha con una mano mientras con la otra sujeta una caja, las llaves de la furgoneta o una bandeja.
+Es una app web instalable: no pasa por App Store ni Google Play y funciona en cualquier móvil. Está pensada para fichar con una mano mientras con la otra sujetas una caja, las llaves de la furgoneta o una bandeja.
 
-- **Se instala sola, con guía.** La primera vez enseña cómo hacer «Añadir a pantalla de inicio» en iPhone y en Android, y tres pantallas de introducción. Cuando hay versión nueva, avisa.
-- **Estado claro y un botón grande.** Arriba pone en qué estás («Fichado · Trabajo · desde las 08:02») y abajo hay un botón grande para entrar o salir. Antes de cerrar la jornada pide confirmación, y si se te olvidó cerrarla, te lo recuerda.
-- **Conceptos en chips.** Trabajo, comida, reunión o los que tenga tu empresa aparecen como botones pequeños para pasar de uno a otro y volver. Al iniciar uno, el anterior se cierra solo. Si pulsas entrar sin elegir, ficha con el concepto por defecto, normalmente «Trabajo».
-- **Sin cobertura, sin engaños.** Si el móvil se queda sin señal en una nave o en un sótano, la app lo dice con un aviso en pantalla, no muestra un estado que no es real y no te cierra la sesión. Si en tu obra no hay cobertura nunca, lo que ficha y guarda sin red es el [terminal de fichaje](/dispositivo-fichaje#sin-conexion).
-- **Ayuda a mano.** Un botón «¿Cómo funciona?» explica cada pantalla sin tener que llamar a nadie.
+- **Se instala con guía.** La primera vez enseña cómo añadirla a la pantalla de inicio en iPhone y en Android. Se actualiza sola cuando sale una versión nueva.
+- **Estado claro y un botón grande.** Arriba pone en qué estás ("Fichado · Trabajo · desde las 08:02") y abajo hay un botón para entrar o salir. Pide confirmación antes de cerrar la jornada y avisa si se te olvidó cerrarla.
+- **Conceptos en chips.** Trabajo, comida, reunión o los que tenga tu empresa, para pasar de uno a otro y volver.
+- **Sin cobertura, sin engaños.** Si el móvil se queda sin señal, lo dice con un aviso, no muestra un estado falso y no cierra la sesión. Donde nunca hay cobertura, lo que ficha sin red es el terminal.
+- **Tarjeta "Hoy".** La jornada que toca, tus incidencias y la petición de corrección de un fichaje.
 
-Con la geolocalización activada por la empresa, la app guarda la ubicación solo al fichar la entrada y la salida, como explicamos arriba. Todo lo demás del módulo lo tienes en [control horario](/control-horario#conceptos).
+## ¿Qué más se puede hacer desde la app, además de fichar?
 
-## ¿Y las vacaciones? También desde el móvil
+Pedir vacaciones, ver tus incidencias y corregir un fichaje olvidado, todo con rastro. Para quien pasa la semana en ruta o casi no pisa la oficina, es la diferencia entre resolverlo por mensajes sueltos que se pierden y dejarlo hecho en el mismo sistema donde está su jornada.
 
-La app de fichajes no sirve solo para fichar. En Drenpos, la misma app instalable tiene una pantalla de vacaciones: cada persona ve su saldo con un desglose que cuadra (generados hasta hoy, del año pasado, disfrutados y por aprobar), sus solicitudes y los festivos, y al pedir días ve cuántos le quedarán después. Si su responsable le propone otras fechas con un motivo, lo acepta o lo rechaza desde el mismo móvil.
+| Desde la app | Qué ve el empleado | Qué hace el responsable |
+| --- | --- | --- |
+| Vacaciones | Saldo (generados, del año pasado, disfrutados, por aprobar) y cuántos días le quedarán | Aprueba, rechaza o propone otras fechas con un motivo |
+| Incidencias | Entrada tarde, salida anticipada, no ha fichado | Justifica o descarta con una nota |
+| Corrección de un fichaje | Pide añadir o cambiar una hora | La aprueba o la rechaza, si la empresa lo exige |
+| Calendario | Sus ausencias, festivos y días que no trabaja | Ve el calendario de todo el equipo |
 
-Para un técnico que pasa la semana en ruta o un comercial que casi no pisa la oficina, es la diferencia entre pedir las vacaciones por WhatsApp y que se pierdan, o dejarlas pedidas y aprobadas con su rastro. Las ausencias aprobadas salen en el mismo informe que los fichajes. Cómo se configuran los cupos y las aprobaciones lo contamos en [gestión de vacaciones y ausencias sin Excel](/blog/gestion-vacaciones-permisos-pymes-sin-excel).
-
-## Implementación real: de la app al ERP sin romper la operativa diaria
-
-Cambiar de Excel a un sistema profesional va bastante más allá de instalar un software: hay que rediseñar el flujo de trabajo. La mayoría de las pymes móviles fracasan en la adopción porque la tecnología se impone al proceso, no al revés. La clave está en la integración y en la gestión del cambio.
+Las [vacaciones y ausencias](/software-vacaciones-ausencias) y el [control de entrada y salida](/control-entrada-salida-empleados) van incluidos en la licencia de fichaje de 1 € por usuario y mes sin IVA, igual que los turnos rotativos, los festivos por comunidad y la planificación anual del equipo con un PDF del año por trabajador.
 
 ![Smiling cashier handles a purchase with a contactless mobile payment in a modern shop.](/images/blog/fichar-desde-el-movil-legal-2026/section-2.jpg)
 
-### Gestión del cambio: por qué tus empleados adoptan (o rechazan) el nuevo sistema
-La tecnología falla cuando se percibe como vigilancia. La estrategia correcta es transparente: comunicar que el fichaje móvil protege al empleado de horas extras no pagadas y al director de cargas imprevistas. Ofrece un periodo de coexistencia, forma a los supervisores para revisar incidencias en tiempo real y establece un canal directo para dudas. Cuando el equipo entiende que el registro es su seguro de vida laboral, la resistencia desaparece. Adoptar el **control horario movil** requiere más empatía que imposición.
+## ¿Cómo implantar el fichaje móvil sin que se vea como vigilancia?
 
-### Retención de datos y cumplimiento técnico
-Desde el lado técnico, un sistema escalable debe garantizar:
-- Almacenamiento encriptado con logs de auditoría inalterables
-- Exportación automática a XML/PDF firmado para la inspección
-- Configuración granular de permisos según rol (técnico, comercial, director)
-- Cumplimiento estricto de los plazos de conservación y derecho al olvido
+Explicándolo antes y dejando claro qué se registra y qué no. El fichaje protege también al trabajador: sus horas extra quedan anotadas y no dependen de la memoria de nadie. Si hay ubicación, que sea solo al fichar y que esté por escrito. Y ofrece otra forma de fichar a quien no quiera usar su móvil.
 
-Apps genéricas suelen ofrecer todo esto en teoría, pero en la práctica limitan la personalización. Una solución a medida, como la que se integra en un entorno ERP como Drenpos, adapta los flujos a tu realidad operativa. Compara opciones en nuestra guía de [mejores programas de control horario](/blog/mejores-programas-control-horario). No obligas a tu equipo a aprender un software nuevo; adaptas el software a cómo ya trabajan. El ROI real está en las horas de gestión ahorradas y en las horas facturadas que recuperas, no en lo que cueste la licencia.
+1. **Informa por escrito** de qué datos se recogen, para qué y cuánto tiempo se guardan.
+2. **Decide si hace falta la ubicación.** Para comerciales y técnicos puede tener sentido; para quien está siempre en la tienda, no.
+3. **Ofrece alternativa:** QR en el centro, web o terminal con llavero.
+4. **Prueba una semana** y revisa las incidencias con el equipo antes de dar el sistema por bueno.
 
-| Criterio | App genérica 'talla única' | Solución integrada en ERP | Impacto operativo real |
-|---|---|---|---|
-| Integración con facturación/nómina | Manual o inexistente | API directa y automática | Cero duplicidad, cobro en tiempo real |
-| Configuración de permisos | Estándar, rígida | Granular, adaptable a roles | RRHH libera tiempo de gestión |
-| Conservación y trazabilidad | Logs básicos, editable | Inalterable, auditoría completa | Inspección atendida en minutos |
-| Coste oculto | Soporte externo, migraciones | Mantenimiento incluido en licencias | Previsibilidad financiera total |
+Si estás comparando apps, tienes diez con precios en los [mejores programas de control horario](/blog/mejores-programas-control-horario).
 
-## El salto a 2026: de la burocracia al control estratégico
+## Preguntas frecuentes sobre fichar desde el móvil
 
-La inspección no va a esperar a que tu Excel colapse, ni a que un empleado denuncie un horario mal registrado. El cumplimiento funciona hoy como una capa de seguridad operativa. Dejar de ver el fichaje como un trámite burocrático es el primer paso para convertirlo en un **activo de control financiero**.
+### ¿Es legal fichar desde el móvil?
 
-Revisa tu sistema actual con frialdad. ¿Puedes generar un informe completo en menos de 10 minutos? ¿Los datos son inalterables desde el primer segundo? ¿Tu equipo confía en que el registro protege sus derechos o lo ve como una carga? Si alguna respuesta es dudosa, el riesgo está latente. No necesitas cambiar todo de golpe. Empieza por auditar la trazabilidad de tus últimos seis meses de fichajes. Valida si la geolocalización y los accesos cumplen el principio de proporcionalidad. Un diagnóstico técnico de 30 minutos te dirá si estás blindado o si estás esperando un requerimiento.
+Sí. El artículo 34.9 del Estatuto de los Trabajadores obliga a registrar el inicio y el fin de la jornada, pero no impone un método. Una app es válida si identifica a la persona, guarda la hora real, deja rastro de cualquier corrección, permite al trabajador ver sus datos y conserva el registro cuatro años. Es además el formato que encaja con el real decreto de registro digital, sin aprobar a 17 de octubre de 2026.
 
-Agenda una revisión de tu estado actual. Sin compromisos de compra. Solo datos, claridad y el camino para escalar tu control sin frenar la agilidad de tu equipo. La tecnología tiene que adaptarse a tu flujo de trabajo. Cuando el registro horario deja de ser un lastre y se convierte en el motor de tu eficiencia, el cumplimiento se vuelve invisible, pero su impacto en tu rentabilidad se nota cada día.
+### ¿Puede la empresa obligarme a fichar con mi móvil personal?
+
+Es un punto delicado: el móvil es tuyo y la ley no obliga a usarlo para el trabajo. Lo sensato es pactarlo y ofrecer una alternativa a quien no quiera o no pueda, como un QR en el centro, la web o un terminal con llavero. En Drenpos conviven todas las formas en el mismo registro.
+
+### ¿La app de fichaje puede saber dónde estoy?
+
+Solo si la empresa activa la geolocalización y te informa antes por escrito (artículo 90 de la LOPDGDD). En Drenpos viene desactivada; si se activa, guarda la ubicación solo en el instante de fichar, con su radio de precisión. No hay seguimiento durante la jornada ni puede haberlo.
+
+### ¿Qué pasa si fichando desde el móvil no hay cobertura?
+
+En Drenpos la app avisa con un banner, no muestra un estado falso y no cierra la sesión, pero necesita red para registrar el fichaje. Si el equipo trabaja donde nunca hay cobertura (una obra, una cámara frigorífica, una finca), lo que ficha y guarda sin internet es el terminal de fichaje, que sube los fichajes con su hora real al volver la red.
+
+### ¿Se pueden pedir las vacaciones desde la app de fichaje?
+
+En Drenpos, sí. La misma app enseña el saldo de vacaciones con su desglose, las solicitudes y los festivos, y al pedir días dice cuántos quedarán después. El responsable aprueba, rechaza o propone otras fechas con un motivo, y la respuesta llega al móvil.

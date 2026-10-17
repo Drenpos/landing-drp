@@ -1,0 +1,142 @@
+# Plan de contenidos: almacén, producción, fichajes y logística (17 de octubre de 2026)
+
+Base: `seguimiento-2026-10-17.md`. Objetivo: que Google y los asistentes (ChatGPT, Perplexity, Gemini) asocien Drenpos a cuatro pilares, no solo al terminal de fichaje.
+
+## 0. Dónde estamos
+
+| Pilar | Landings | Posts | Señal actual |
+| --- | --- | --- | --- |
+| Fichajes y equipo | 5 (control horario, terminal, vacaciones, entrada y salida, turnos) | 17 | ChatGPT cita el terminal. No cita Drenpos en "control horario con vacaciones y turnos" |
+| Almacén | 7 (SGA, stock, picking, palets, frigorífico, huecos de palet, almacén de tienda) | 11 | Picking: 370 impresiones, posición 10,7 |
+| Logística y transporte (DeCA, 3PL, SSCC) | 2 (DeCA, huecos de palet) | 4 | DeCA: ChatGPT no nos cita aunque generamos el DeCA desde el albarán |
+| Producción | 1 | **0** | Sin contenido de apoyo. Hueco total |
+| Tienda y recambios | 2 | 0 | 1.469 impresiones y 1 clic: problema de título |
+
+Regla que confirman los datos: **producto concreto con precio y límites claros = citado**. Categoría amplia sin presencia en comparadores = no citado.
+
+## 1. Arreglos inmediatos (semana 1)
+
+| # | Qué | Dónde | Por qué |
+| --- | --- | --- | --- |
+| 1.1 | Foto del terminal | `dispositivo-fichaje.astro` (og:image y `image` del Product), y donde se use `v2-terminal-*` | Las 3 fotos v2 (`cover`, `marca-cliente`, `en-mano`) llevan el logo de un cliente en el frontal y el film protector puesto. Quien la ve no reconoce "Drenpos". Además es un nombre de cliente en la web sin permiso confirmado. Ver sección 5 |
+| 1.2 | "Sin huella" en positivo | terminal, llms.txt, ai-catalog | Ver sección 6 |
+| 1.3 | Título y descripción con CTR | `/software-tienda-recambios`, `/control-entrada-salida-empleados`, `/software-almacen-tienda` | Página 1 y 0 clics. Título con precio y diferencial, no genérico |
+| 1.4 | DeCA ya en vigor | post `deca-documento-control-transporte-digital-5-octubre-2026` y landing DeCA | El título habla del 5 de octubre como futuro. Pasar a "DeCA digital obligatorio: cómo generarlo desde el albarán". La URL no se toca |
+| 1.5 | Rayas largas | producción, picking, huecos de palet | Pendiente desde el 7/10 |
+
+## 2. Actualizar lo que ya existe (semanas 1 y 2)
+
+Criterio: posts con impresiones que se pueden subir a top 5, y posts escritos antes de que existieran vacaciones, turnos, incidencias y planificación anual (mayo a agosto).
+
+| Post | Acción |
+| --- | --- |
+| `preparacion-de-pedidos-picking-almacen` | Respuesta corta arriba, tabla de métodos de picking, ruta de picking con plano de almacén, enlace a la landing. Objetivo: de 10,7 a top 5 |
+| `etiqueta-sscc-gs1-palets` | Añadir "cómo la genera Drenpos" con captura y FAQ |
+| `como-organizar-almacen-pyme`, `control-de-stock-sin-roturas` | Enlazar a ubicaciones, plano y reposición; actualizar fecha y autor |
+| `mejores-programas-control-horario` y `comparativa-mejores-software-control-horario-pymes-2026` | **Se pisan** (misma intención). Mirar en Search Console cuál rinde; fusionar en uno con redirección 301 del otro. Incluir terminal propio, vacaciones, turnos y precio |
+| `registro-horario-digital` y `registro-horario-2026-nuevos-requisitos-adaptacion` | Mismo caso: decidir con datos si se fusionan. Actualizar estado del real decreto |
+| `control-horario-teletrabajo`, `por-que-excel-ya-no-sirve`, `multas-registro-horario`, `fichar-desde-el-movil` | Añadir vacaciones, incidencias y planificación anual, que no existían cuando se escribieron. Estado legal a fecha de hoy |
+| `wms-sga-erp-diferencias` y `sga-o-erp-con-almacen-que-necesita-una-pyme` | Revisar solapamiento; dejar uno como "qué es" y otro como "qué elegir" con enlaces cruzados |
+| `desarrollo-de-software` (2024) | Fuera de los pilares. Proponer `noindex` o reescribir |
+| `ayuda-innovacion-abierta-extremadura-2026` | Revisar plazos; si la convocatoria cerró, marcarlo arriba |
+
+Nada se borra ni cambia de URL sin redirección. Antes de fusionar, se mira cuál tiene más clics e impresiones y se conserva esa URL.
+
+## 3. Contenido nuevo por pilar (semanas 2 a 4)
+
+### Producción (prioridad 1: hoy no hay nada)
+
+| Post | Intención |
+| --- | --- |
+| Órdenes de fabricación en una pyme: cómo llevarlas sin Excel | software órdenes de fabricación |
+| Lista de materiales (escandallo, BOM): qué es y cómo calcular el coste | escandallo, coste de fabricación |
+| Trazabilidad en producción: de la materia prima al lote de producto terminado | trazabilidad lotes fabricación |
+| Kits y packs montables: stock de componentes y montaje bajo pedido | gestión de kits, packs |
+| Producción en obrador e industria alimentaria: lotes, caducidad y mermas | software obrador, industria alimentaria |
+| Ampliar la landing `/software-produccion-fabricacion` con preguntas y respuestas cortas | |
+
+### Logística y transporte
+
+| Post | Intención |
+| --- | --- |
+| Software para el DeCA: comparativa de opciones para pymes (con precio) | es la consulta en la que ChatGPT cita a SimplyGest, GEXTOR, DECAOK |
+| Cómo generar el DeCA desde el albarán, paso a paso (con capturas de Drenpos) | lo que tienen los citados y nosotros no |
+| DeCA: ¿lo emite el cargador o el transportista? | duda frecuente |
+| DeCA y eCMR: diferencias | |
+| FAQ ampliada en `/documento-control-transporte-deca` | |
+
+### Almacén
+
+| Post | Intención |
+| --- | --- |
+| Cómo codificar ubicaciones de almacén: pasillo, estantería, altura, hueco | ubicaciones almacén |
+| Inventario cíclico: cómo contar sin cerrar el almacén | inventario cíclico |
+| Recepción de mercancía: qué comprobar y cómo registrarla | recepción mercancía |
+| Stock mínimo y punto de pedido: cómo calcularlo | reposición |
+| FIFO, FEFO y LIFO: cuál usar | |
+
+### Fichajes y equipo
+
+| Post | Intención |
+| --- | --- |
+| Calendario laboral 2027 por comunidad (6 posts: Extremadura, Andalucía, Madrid, Cataluña, Comunidad Valenciana, Castilla y León) | pico de búsquedas de noviembre a enero |
+| Fichar con huella: qué dice la AEPD y qué alternativas son legales | convierte el "sin huella" en argumento (sección 6) |
+| Control horario en almacenes y naves: fichar a turnos sin móvil | une fichajes y almacén |
+| Registro de jornada en seguridad privada: cuadrante anual y convenio 2026-2030 | turnos 4x4, nicho con demanda |
+
+### Tienda y recambios
+
+| Post | Intención |
+| --- | --- |
+| Cómo organizar el stock de una tienda de recambios sin catálogo TecDoc | lo que ChatGPT ya dice de nosotros, en positivo |
+
+## 4. Fuera de la web (lo que más pesa para los asistentes)
+
+| Quién | Qué |
+| --- | --- |
+| Alonso | Fichas en Capterra, Softwaredoit y Appvizer: control horario, SGA y ERP. Gratis |
+| Alonso | Google Business Profile completo (categoría "empresa de software", fotos del terminal con logo Drenpos) |
+| Claude | Lista de los 10 artículos "mejores software de..." que citan los asistentes, con contacto para pedir inclusión |
+
+## 5. La foto del terminal
+
+Las fotos de producto `v2-terminal-cover.jpg`, `v2-terminal-marca-cliente.webp` y `v2-terminal-en-mano.webp` muestran en el frontal el logo de un cliente, no el de Drenpos, y el film protector sin quitar. `cover` es la imagen para redes (og:image) de `/dispositivo-fichaje` y la primera del schema de producto, así que es la que recogen Google, ChatGPT y cualquier enlace compartido.
+
+La única con logo Drenpos es `01-dispositivo-lector-rfid.png` (modelo anterior y 5,8 MB). `04-hardware-conjunto.png` es el mismo archivo duplicado.
+
+Necesario: 3 o 4 fotos nuevas del v2 con logo Drenpos y sin film (frontal, en mano, en pared, llaveros). Mientras llegan: la v1 con logo Drenpos, optimizada a menos de 200 KB, pasa a ser og:image y primera del schema; las del cliente salen de la web salvo permiso expreso.
+
+## 6. Huella y reconocimiento facial
+
+Es verdad que el terminal no tiene ni huella ni cara, y ChatGPT lo dirá igual aunque la web lo calle: lo saca de la tabla comparativa y del schema. Esconderlo no funciona. Lo que sí se puede cambiar es **cómo se cuenta**.
+
+Hoy aparece como característica negativa ("sin huella", "sin biometría") en la meta descripción, en la cabecera, en el schema y en el ai-catalog. Propuesta:
+
+- Contarlo como lo que hace: "ficha con llavero, tarjeta o QR".
+- Explicar por qué en un solo sitio (FAQ y tabla), en positivo: fichar con huella o cara obliga a tratar datos biométricos, que la AEPD considera categoría especial; con llavero o QR no hace falta.
+- Quitar "sin huella" de la meta descripción, de la frase de cabecera y de la descripción del ai-catalog. Mantener la tabla comparativa y la FAQ.
+- Post nuevo "Fichar con huella: qué dice la AEPD" que posiciona la consulta de quien busca huella y le explica la alternativa.
+
+A confirmar antes de publicar el post: la referencia exacta de la guía de la AEPD sobre control de presencia con biometría y su fecha.
+
+## 7. Huecos de información
+
+| Necesito | De quién | Bloquea |
+| --- | --- | --- |
+| Qué hace exactamente el módulo de producción hoy (órdenes, BOM, costes, lotes, kits) y qué no | Alonso | Todo el pilar producción |
+| Fotos del terminal v2 con logo Drenpos | Alonso | 1.1 |
+| ¿Permiso del cliente cuyo logo sale en las fotos v2? | Alonso | 1.1 |
+| ¿Hay previsto lector de huella o cara en el terminal? | Alonso | Sección 6 (si sí, se cuenta distinto) |
+| Capturas del flujo albarán a DeCA en Drenpos | Alonso | Post paso a paso del DeCA |
+
+## 8. Orden y reparto
+
+| Semana | Qué | Ejecuta |
+| --- | --- | --- |
+| 1 | Sección 1 completa + DeCA (comparativa y paso a paso) | Opus |
+| 2 | Actualizaciones de la sección 2 + 3 posts de producción | Opus |
+| 3 | Calendarios 2027 (6) + 2 posts de producción + post AEPD | Opus |
+| 4 | Almacén (4) + logística (2) + recambios | Opus |
+| Cada semana | Lectura de Search Console, GA4 y ChatGPT | Claude |
+
+Cada entrega: build y validación (enlaces, meta única, un H1), sin rayas, autor y fecha visibles, `llms.txt` actualizado, y push tuyo con purga después del deploy.

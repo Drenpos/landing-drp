@@ -1,8 +1,9 @@
 ---
 title: "Ayudas de innovación abierta en Extremadura: hasta 25.000 € al 100% para digitalizar tu pyme"
-meta_title: "Ayudas innovación abierta Extremadura 2026: 25.000 € por pyme"
-description: "Convocatoria 2026 abierta del 18 de julio al 18 de agosto: subvención del 100% hasta 25.000 € para pymes de Extremadura que resuelvan un reto con una startup. Requisitos, baremo y cómo ganar puntos."
+meta_title: "Ayudas innovación abierta Extremadura 2026: 25.000 €"
+description: "La convocatoria 2026 cerró el 17 de agosto. Ayuda del 100 % hasta 25.000 € para pymes extremeñas con una startup: requisitos, baremo y cómo preparar la próxima."
 date: 2026-07-17
+updated: 2026-10-17
 image: "/images/blog/ayudas-innovacion-abierta-extremadura/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -24,34 +25,36 @@ featured: false
 draft: false
 hero:
   title: "Ayudas de innovación abierta en Extremadura: hasta 25.000 € al 100% para tu pyme"
-  description: "Convocatoria 2026 abierta del 18 de julio al 18 de agosto. La Junta financia la solución tecnológica que tu negocio necesita y que no existe en el mercado."
+  description: "La convocatoria 2026 cerró el 17 de agosto de 2026. Qué financia la Junta, quién puede pedirla y cómo dejar el reto preparado para la próxima."
 faq:
   - question: "¿Cuánto dinero da la ayuda de innovación abierta de Extremadura?"
     answer: "La subvención cubre el 100% del coste del proyecto hasta un máximo de 25.000 € por proyecto (IVA excluido), a fondo perdido. Se cobra en dos pagos: el 50% se anticipa al recibir la resolución de concesión y el 50% restante al justificar la ejecución de al menos el 40% del proyecto."
   - question: "¿Quién puede solicitar las ayudas de innovación abierta?"
     answer: "Pymes con forma societaria (S.L., S.A., cooperativa) y centro de trabajo en Extremadura que tengan un reto sin solución en el mercado y hayan firmado un acuerdo de colaboración previo con una startup o Empresa de Base Tecnológica. Los autónomos no pueden ser pyme tractora, pero sí actuar como startup que desarrolla la solución."
   - question: "¿Cuál es el plazo de la convocatoria 2026?"
-    answer: "La convocatoria 2026 está abierta del 18 de julio al 18 de agosto de 2026, un mes desde su publicación en el DOE n.º 137 de 17 de julio. La dotación es de 500.000 €, el doble que en 2025, y las solicitudes se presentan electrónicamente en la sede de la Junta de Extremadura."
+    answer: "La convocatoria 2026 ya está cerrada: el plazo fue del 18 de julio al 17 de agosto de 2026, según la ficha oficial del trámite de la Junta de Extremadura. A 17 de octubre de 2026 no hay convocatoria nueva publicada. La de 2026 tuvo una dotación de 500.000 €, el doble que en 2025."
   - question: "¿Qué gastos cubre la subvención?"
     answer: "Cubre los servicios de consultoría externa especializada en innovación que presta la startup o EBT para desarrollar la solución al reto, hasta 25.000 € (IVA excluido). No cubre hardware, licencias de software estándar ni personalizaciones de productos comerciales ya existentes: se financia lo que se crea, no lo que se configura."
   - question: "¿Es compatible con otras subvenciones?"
     answer: "No. Es incompatible con otras subvenciones a fondo perdido para la misma actuación. Además tiene consideración de ayuda de minimis: el total de ayudas de minimis recibidas por una empresa no puede superar los 300.000 € en cualquier período de tres años, según el Reglamento (UE) 2023/2831."
 ---
 
-La convocatoria 2026 de las ayudas de innovación abierta de la Junta de Extremadura está abierta del 18 de julio al 18 de agosto de 2026, con una dotación de 500.000 € (el doble que la primera edición) y subvenciones a fondo perdido del 100% hasta **25.000 € por proyecto** (IVA excluido). Financian el desarrollo de una solución a medida para un reto que ningún producto comercial cubre: tu empresa aporta el problema y una **startup o Empresa de Base Tecnológica (EBT)** lo resuelve. Reguladas por el [Decreto 36/2025](https://doe.juntaex.es/pdfs/doe/2025/940o/25040064.pdf) y cofinanciadas al 85% por el Programa Extremadura FEDER 2021-2027.
+> **Aviso: convocatoria 2026 cerrada.** El plazo para pedir esta ayuda fue del 18 de julio al 17 de agosto de 2026. La [ficha oficial del trámite](https://www.juntaex.es/w/0717325) aparece como "Fuera de plazo" (consultada el 17 de octubre de 2026) y a esa fecha no hay una convocatoria nueva publicada en el DOE. Si te interesa la próxima, el contenido de abajo sigue sirviendo para preparar el reto: las bases (Decreto 36/2025) no han cambiado. Actualizaremos este aviso cuando salga.
 
-Hay pymes que llevan años arrastrando el mismo problema operativo porque "no hay software que lo resuelva". Y tienen razón: el mercado está lleno de herramientas genéricas que obligan a tu negocio a adaptarse a ellas, y no al revés. Si tu operativa te roba horas cada semana y ya has comprobado que ninguna herramienta estándar lo arregla, esta convocatoria es **tu palanca**. Y el reloj ya corre.
+La convocatoria 2026 de las ayudas de innovación abierta de la Junta de Extremadura estuvo abierta del 18 de julio al 17 de agosto de 2026, con una dotación de 500.000 € (el doble que la primera edición) y subvenciones a fondo perdido del 100% hasta **25.000 € por proyecto** (IVA excluido). Financian el desarrollo de una solución a medida para un reto que ningún producto comercial cubre: tu empresa aporta el problema y una **startup o Empresa de Base Tecnológica (EBT)** lo resuelve. Reguladas por el [Decreto 36/2025](https://doe.juntaex.es/pdfs/doe/2025/940o/25040064.pdf) y cofinanciadas al 85% por el Programa Extremadura FEDER 2021-2027.
+
+Hay pymes que llevan años arrastrando el mismo problema operativo porque "no hay software que lo resuelva". Y tienen razón: el mercado está lleno de herramientas genéricas que obligan a tu negocio a adaptarse a ellas, y no al revés. Si tu operativa te roba horas cada semana y ya has comprobado que ninguna herramienta estándar lo arregla, esta ayuda te interesa, y conviene preparar el reto antes de que salga la próxima convocatoria.
 
 <div class="not-prose my-8 text-center">
   <a class="btn btn-dark" style="padding: 0.65rem 2rem;" href="https://outlook.office.com/bookwithme/user/230ec478daa44cc79be4e804e7312d31@drenpos.com/meetingtype/iFTzo_D-Zk-PUrXAQtzL2Q2?anonymous&amp;ep=mcard" target="_blank" rel="noopener">📅 Reserva tu diagnóstico gratuito de 30 min</a>
-  <p class="mt-3 text-sm opacity-70">Te decimos si tu caso encaja antes de que pierdas un mes de plazo</p>
+  <p class="mt-3 text-sm opacity-70">Te decimos si tu reto encaja y lo dejamos listo para la próxima convocatoria</p>
 </div>
 
 ## ¿Qué son las ayudas de innovación abierta y por qué te interesan?
 
 La innovación abierta es un modelo de co-creación en el que tu pyme plantea un reto sin solución en el mercado y una startup tecnológica lo desarrolla. La Junta de Extremadura subvenciona el 100% de esos servicios de innovación, hasta 25.000 € por proyecto a fondo perdido, con un 50% anticipado tras la concesión. La beneficiaria es tu empresa, la pyme tractora: tú solicitas, tú cobras, y el acuerdo de colaboración canaliza los fondos al desarrollo.
 
-Hay un matiz clave que descoloca a muchas empresas: quien recibe la ayuda es la **pyme tractora**. Tu empresa solicita, tu empresa cobra, y el acuerdo de colaboración garantiza que los anticipos se destinan directamente al proyecto. En la práctica, obtienes un desarrollo tecnológico a medida **sin adelantar la inversión** subvencionada.
+Hay un matiz que descoloca a muchas empresas: quien recibe la ayuda es la **pyme tractora**. Tu empresa solicita, tu empresa cobra, y el acuerdo de colaboración garantiza que los anticipos se destinan directamente al proyecto. En la práctica, obtienes un desarrollo tecnológico a medida **sin adelantar la inversión** subvencionada.
 
 > "El mercado no tiene solución para tu problema. Esa frase, que llevas años repitiendo, es exactamente el requisito de acceso a esta ayuda."
 
@@ -95,7 +98,7 @@ Drenpos es una startup extremeña certificada como empresa emergente por ENISA, 
 
 - **10 puntos automáticos** en la valoración por nuestro sello ENISA, comprobados de oficio por la administración, sin papeleo adicional.
 - **Expediente llave en mano:** identificamos contigo el reto, redactamos la memoria técnica (máximo 15 páginas, y cada una cuenta), preparamos el acuerdo de colaboración con el contenido mínimo que exige el artículo 7 del decreto, y emitimos la factura proforma desglosada a valores de mercado.
-- **Experiencia real en el terreno:** trabajamos a diario la gestión de almacén, el TPV, la trazabilidad de stock y el [control horario integrado](/blog/comparativa-mejores-software-control-horario-pymes-2026) de pymes de comercio y distribución. Conocemos los retos porque operamos donde surgen.
+- **Experiencia real en el terreno:** trabajamos a diario la gestión de almacén, el TPV, la trazabilidad de stock y el [control horario integrado](/blog/mejores-programas-control-horario) de pymes de comercio y distribución. Conocemos los retos porque operamos donde surgen.
 
 <div class="not-prose my-8 text-center">
   <a class="btn btn-light" style="padding: 0.65rem 2rem;" href="https://outlook.office.com/bookwithme/user/230ec478daa44cc79be4e804e7312d31@drenpos.com/meetingtype/iFTzo_D-Zk-PUrXAQtzL2Q2?anonymous&amp;ep=mcard" target="_blank" rel="noopener">Reserva tu cita: analizamos tu reto en 30 minutos</a>
@@ -105,13 +108,13 @@ Drenpos es una startup extremeña certificada como empresa emergente por ENISA, 
 
 Un reto subvencionable va mucho más allá de "quiero digitalizarme": hablamos de un problema específico sin respuesta comercial. Algunos ejemplos del tipo de desafío que trabajamos con pymes de comercio y distribución: identificación automática de miles de referencias de pequeño formato que hacen inviable el inventariado convencional, trazabilidad de producto cortado o fraccionado a medida con recálculo dinámico de stock, o motores de búsqueda técnica de producto por compatibilidad integrados en el punto de venta. Si al leer esto has pensado en un problema concreto de tu negocio, ese es tu reto.
 
-## ¿Cuándo y cómo se solicita la ayuda en 2026?
+## ¿Cuándo y cómo se solicitaba la ayuda en 2026?
 
-El plazo de la convocatoria 2026 va del 18 de julio al 18 de agosto de 2026: un mes desde la publicación de la resolución en el DOE. La dotación asciende a 500.000 €, suficiente para una veintena de proyectos. La solicitud se presenta electrónicamente con certificado digital, acompañada de la memoria del reto (máximo 15 páginas), el acuerdo de colaboración firmado, la factura proforma de la startup y la declaración de ausencia de conflicto de interés.
+El plazo de la convocatoria 2026 fue del 18 de julio al 17 de agosto de 2026: un mes desde el día siguiente a la publicación del extracto en el DOE. La dotación fue de 500.000 €, suficiente para una veintena de proyectos. La solicitud se presentaba electrónicamente con certificado digital, acompañada de la memoria del reto (máximo 15 páginas), el acuerdo de colaboración firmado, la factura proforma de la startup y la declaración de ausencia de conflicto de interés.
 
-La convocatoria fue aprobada por [Resolución de 30 de junio de 2026](https://doe.juntaex.es/pdfs/doe/2026/1370o/26061877.pdf) (DOE n.º 137, de 17 de julio de 2026) y duplica el presupuesto de la primera edición de 2025, que contó con 250.000 €. La tramitación se realiza en la [ficha oficial del trámite de la Junta de Extremadura](https://www.juntaex.es/w/0717325), y toda la información del programa está en la [web de Extremadura Empresarial](https://ayudasinnovacionabierta.extremaduraempresarial.es/). Tras la concesión, el proyecto debe ejecutarse en un máximo de 9 meses.
+La convocatoria fue aprobada por [Resolución de 30 de junio de 2026](https://doe.juntaex.es/pdfs/doe/2026/1370o/26061760.pdf) (DOE n.º 137, de 17 de julio de 2026, con su [extracto](https://doe.juntaex.es/pdfs/doe/2026/1370o/26061877.pdf)) y duplica el presupuesto de la primera edición de 2025, que contó con 250.000 €. La tramitación se realiza en la [ficha oficial del trámite de la Junta de Extremadura](https://www.juntaex.es/w/0717325), y toda la información del programa está en la [web de Extremadura Empresarial](https://ayudasinnovacionabierta.extremaduraempresarial.es/). Tras la concesión, el proyecto debe ejecutarse en un máximo de 9 meses.
 
-**Un mes de plazo no da para improvisar.** Los proyectos ganadores se dejan preparados antes de que se abra la convocatoria. Hazte estas tres preguntas:
+**Un mes de plazo no da para improvisar.** Si la próxima convocatoria repite el formato de 2026, habrá un mes para presentarlo todo, y los proyectos que ganan se dejan preparados antes de que se abra. Hazte estas tres preguntas:
 
 - ¿Tienes identificado un problema operativo concreto que ningún software del mercado resuelve?
 - ¿Podrías firmar mañana un acuerdo de colaboración con una startup, con reto, presupuesto y resultados definidos?
@@ -121,7 +124,7 @@ Si has respondido "no" a cualquiera de las tres, lo que te falta es **preparaci�
 
 > "La subvención no es para quien la busca cuando se publica. Es para quien la tiene preparada cuando se publica."
 
-**Reserva tu sesión de diagnóstico gratuita** y convierte ese problema que llevas años arrastrando en un proyecto financiado al 100% por la Junta de Extremadura. Tu reto ya existe y la ayuda también. El plazo cierra el 18 de agosto.
+**Reserva tu sesión de diagnóstico gratuita** y convierte ese problema que llevas años arrastrando en un proyecto financiado al 100% por la Junta de Extremadura. Tu reto ya existe; prepáralo ahora y lo presentarás el primer día de la próxima convocatoria.
 
 <div class="not-prose my-8 text-center">
   <a class="btn btn-dark" style="padding: 0.65rem 2rem;" href="https://outlook.office.com/bookwithme/user/230ec478daa44cc79be4e804e7312d31@drenpos.com/meetingtype/iFTzo_D-Zk-PUrXAQtzL2Q2?anonymous&amp;ep=mcard" target="_blank" rel="noopener">📅 Reservar sesión de diagnóstico gratuita</a>
@@ -140,7 +143,7 @@ Pymes con forma societaria (S.L., S.A., cooperativa) y centro de trabajo en Extr
 
 ### ¿Cuál es el plazo de la convocatoria 2026?
 
-La convocatoria 2026 está abierta del 18 de julio al 18 de agosto de 2026, un mes desde su publicación en el DOE n.º 137 de 17 de julio. La dotación es de 500.000 €, el doble que en 2025, y las solicitudes se presentan electrónicamente en la sede de la Junta de Extremadura.
+La convocatoria 2026 ya está cerrada: el plazo fue del 18 de julio al 17 de agosto de 2026, según la ficha oficial del trámite de la Junta de Extremadura. A 17 de octubre de 2026 no hay convocatoria nueva publicada. La de 2026 tuvo una dotación de 500.000 €, el doble que en 2025.
 
 ### ¿Qué gastos cubre la subvención?
 

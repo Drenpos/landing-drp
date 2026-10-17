@@ -7,6 +7,11 @@
 //  los agentes que lo piden con Accept: text/markdown y añade las cabeceras
 //  Link y Vary a las páginas HTML.
 //
+//  Antes de todo, respuestaRedireccion (src/lib/redirecciones.ts) devuelve
+//  un 301 real para las URLs retiradas (posts fusionados). Tiene que ir
+//  aquí: las páginas del blog son prerenderizadas y el middleware de Astro
+//  no las ve.
+//
 //  El middleware de Astro (wwwRedirect + Clerk) sigue igual: corre dentro
 //  de handle() para las rutas SSR, como antes.
 //
@@ -18,6 +23,7 @@ import type { SSRManifest } from "astro";
 import { App } from "astro/app";
 import { handle } from "@astrojs/cloudflare/handler";
 import { conAgentReadiness, type EnvConAssets } from "./lib/agent-readiness";
+import { respuestaRedireccion } from "./lib/redirecciones";
 
 interface ContextoEjecucion {
   waitUntil(promesa: Promise<unknown>): void;
@@ -34,6 +40,10 @@ export function createExports(manifest: SSRManifest) {
         env: EnvConAssets,
         ctx: ContextoEjecucion,
       ): Promise<Response> {
+        // URLs retiradas: 301 antes de servir nada.
+        const redireccion = respuestaRedireccion(request);
+        if (redireccion) return redireccion;
+
         // Los tipos de Request/Env/ExecutionContext del adaptador son los de
         // @cloudflare/workers-types; en tiempo de ejecución son los mismos
         // objetos, de ahí los "as never".
