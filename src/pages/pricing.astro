@@ -86,7 +86,7 @@ const faqs = [
   },
   {
     q: "¿Hay descuento si mi empresa es nueva?",
-    a: "Sí. Si tu empresa o tu alta de autónomo tiene menos de dos años y facturas menos de [[p:nuevas_facturacion_max]] al año, tienes la mitad de la cuota durante tres meses. Si en ese tiempo usas el programa ([[n:nuevas_documentos]] documentos de venta o [[n:nuevas_dias_fichaje]] días de fichajes) y sigues por debajo de [[p:nuevas_facturacion_prorroga_max]], se alarga otros tres. Lo comprobamos con tus propios datos.",
+    a: "Sí. Si eres una startup de menos de [[n:nuevas_antiguedad_startup]] años, o tu empresa o tu alta de autónomo tiene menos de [[n:nuevas_antiguedad]] años, y facturas menos de [[p:nuevas_facturacion_max]] al año, tienes la mitad de la cuota durante tres meses. Si en ese tiempo usas el programa ([[n:nuevas_documentos]] documentos de venta o [[n:nuevas_dias_fichaje]] días de fichajes) y sigues por debajo de [[p:nuevas_facturacion_prorroga_max]], se alarga otros tres. Lo comprobamos con tus propios datos.",
   },
   {
     q: "¿Hay permanencia?",
@@ -167,6 +167,22 @@ const faqSchema = faqPage(faqs);
   <section class="section-up pb-0">
     <div class="container">
       <div class="row justify-center">
+        <div class="lg:col-9 mb-8" data-aos="fade-up-sm">
+          <a
+            href="/empresas-nuevas"
+            class="group flex flex-col items-center gap-3 rounded-2xl px-6 py-5 text-center no-underline sm:flex-row sm:justify-center sm:gap-4 sm:text-left"
+            style="background: rgba(121,27,70,0.08); border: 1px solid rgba(121,27,70,0.18);"
+          >
+            <span class="flex-shrink-0 rounded-full px-3 py-1 text-sm font-semibold uppercase text-white" style="background: #791b46;">
+              Empresas nuevas
+            </span>
+            <span class="text-base lg:text-lg" style="color: #101928;">
+              <strong>[[n:nuevas_descuento]] % de descuento durante [[n:nuevas_meses]] meses</strong>
+              para startups de menos de [[n:nuevas_antiguedad_startup]] años y empresas o autónomos de menos de [[n:nuevas_antiguedad]] años.
+              <span class="font-semibold underline underline-offset-4 whitespace-nowrap" style="color: #791b46;">Ver condiciones</span>
+            </span>
+          </a>
+        </div>
         <div class="lg:col-9 text-center" data-aos="fade-up-sm">
           <p class="text-lg leading-relaxed mb-10" style="color: rgba(16,25,40,0.72);">
             Hay un plan para cada tipo de negocio: <strong>Facturación</strong>,

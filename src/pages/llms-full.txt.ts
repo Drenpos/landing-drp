@@ -22,7 +22,7 @@ function readContentDir(dir: string, urlPrefix: string): string {
       if (data.draft === true) continue;
       const slug = f.replace(".md", "");
       sections.push(
-        `## ${data.title || slug}\n\nURL: ${BASE}/${urlPrefix}/${slug}\n\n${content.trim()}`
+        `## ${data.title || slug}\n\nURL: ${BASE}/${urlPrefix}/${slug}\n\n${content.trim()}`,
       );
     }
   } catch {

@@ -22,7 +22,7 @@ const PAGE_PUBLISHED = "2026-10-20";
 const PAGE_UPDATED = "2026-10-22";
 
 const condiciones = [
-  { k: "Quién puede pedirlo", v: "Empresas y autónomos dados de alta hace menos de dos años que hayan facturado menos de [[p:nuevas_facturacion_max]] en los últimos doce meses." },
+  { k: "Quién puede pedirlo", v: "Startups de menos de [[n:nuevas_antiguedad_startup]] años, y empresas y autónomos dados de alta hace menos de [[n:nuevas_antiguedad]] años, que hayan facturado menos de [[p:nuevas_facturacion_max]] en los últimos doce meses." },
   { k: "Qué descuento es", v: "La mitad de la cuota del plan y de los módulos que añadas, durante tres meses. Vale para cualquier plan y para Drenpos Equipo." },
   { k: "Cuándo se alarga", v: "Si en esos tres meses has hecho al menos [[n:nuevas_documentos]] documentos de venta, o [[n:nuevas_dias_fichaje]] días de fichajes si solo usas el control horario, y sigues por debajo de [[p:nuevas_facturacion_prorroga_max]] al año, tienes otros tres meses a mitad. Lo miramos en tus propios datos, no tienes que mandarnos nada." },
   { k: "Qué hay que enseñar", v: "La fecha de alta en Hacienda o de la escritura, y marcar una casilla en el alta diciendo que cumples las condiciones." },
@@ -40,7 +40,7 @@ const planes = [
 const faqs = [
   {
     q: "¿Qué descuento tiene Drenpos para empresas nuevas?",
-    a: "La mitad de la cuota durante tres meses en cualquier plan, y otros tres si en ese tiempo usas el programa y sigues facturando menos de [[p:nuevas_facturacion_prorroga_max]] al año. Pueden pedirlo empresas y autónomos con menos de dos años de alta y menos de [[p:nuevas_facturacion_max]] facturados en los últimos doce meses, una vez por NIF.",
+    a: "La mitad de la cuota durante tres meses en cualquier plan, y otros tres si en ese tiempo usas el programa y sigues facturando menos de [[p:nuevas_facturacion_prorroga_max]] al año. Pueden pedirlo las startups de menos de [[n:nuevas_antiguedad_startup]] años y las empresas y autónomos con menos de [[n:nuevas_antiguedad]] años de alta, con menos de [[p:nuevas_facturacion_max]] facturados en los últimos doce meses, una vez por NIF.",
   },
   {
     q: "¿Cómo demuestro que mi empresa es nueva?",
@@ -68,7 +68,7 @@ const offerSchema = {
   url: CANONICAL,
   priceCurrency: "EUR",
   price: decimal(valor("desde*nuevas_descuento/100")),
-  description: "La mitad de la cuota durante tres meses, que se puede alargar a seis, en cualquier plan de Drenpos para empresas y autónomos con menos de dos años y menos de [[p:nuevas_facturacion_max]] de facturación.",
+  description: "La mitad de la cuota durante tres meses, que se puede alargar a seis, en cualquier plan de Drenpos para startups de menos de [[n:nuevas_antiguedad_startup]] años y empresas y autónomos de menos de [[n:nuevas_antiguedad]] años, con menos de [[p:nuevas_facturacion_max]] de facturación.",
   eligibleCustomerType: "https://schema.org/Business",
   availability: "https://schema.org/InStock",
   validFrom: "2026-11-01",
@@ -79,7 +79,7 @@ const offerSchema = {
 <Base
   title="Drenpos para empresas nuevas"
   meta_title="Programa de gestión para empresas nuevas | Drenpos"
-  description="Si tu empresa tiene menos de dos años y factura menos de [[p:nuevas_facturacion_max]], tienes la mitad de la cuota de Drenpos durante tres meses, y otros tres si lo usas."
+  description="Si tu startup tiene menos de [[n:nuevas_antiguedad_startup]] años o tu empresa menos de [[n:nuevas_antiguedad]] años, y facturas menos de [[p:nuevas_facturacion_max]], tienes la mitad de la cuota de Drenpos tres meses, y otros tres si lo usas."
   canonical={CANONICAL}
   published_date={PAGE_PUBLISHED}
   modified_date={PAGE_UPDATED}
@@ -107,7 +107,7 @@ const offerSchema = {
           </h1>
           <p class="text-lg mb-6 max-w-2xl mx-auto text-dark/72">
             Los primeros meses de una empresa son los peores para cambiar de programa, y los mejores para empezar bien.
-            Por eso, si llevas menos de dos años y facturas menos de [[p:nuevas_facturacion_max]], te dejamos Drenpos a mitad de cuota
+            Por eso, si eres una startup de menos de [[n:nuevas_antiguedad_startup]] años o una empresa de menos de [[n:nuevas_antiguedad]] años, y facturas menos de [[p:nuevas_facturacion_max]], te dejamos Drenpos a mitad de cuota
             mientras arrancas.
           </p>
           <LandingMeta updated={PAGE_UPDATED} published={PAGE_PUBLISHED} class="mb-8 justify-center" />

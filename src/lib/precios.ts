@@ -48,6 +48,7 @@ valores.nuevas_facturacion_max = datos.empresas_nuevas.facturacion_max;
 valores.nuevas_facturacion_prorroga_max =
   datos.empresas_nuevas.facturacion_prorroga_max;
 valores.nuevas_antiguedad = datos.empresas_nuevas.antiguedad_max_anos;
+valores.nuevas_antiguedad_startup = datos.empresas_nuevas.antiguedad_startup_anos;
 valores.nuevas_documentos = datos.empresas_nuevas.uso_documentos;
 valores.nuevas_dias_fichaje = datos.empresas_nuevas.uso_dias_fichaje;
 

@@ -36,7 +36,9 @@ function getContentLinks(dir: string, urlPrefix: string): string[] {
 export const GET: APIRoute = () => {
   const blogLinks = getContentLinks("blog", "blog");
   const localLinks = getContentLinks("local", "local");
-  const paginasLinks = PAGINAS.map((p) => `- [${p.titulo}](${BASE}${p.ruta}): ${p.llms}`);
+  const paginasLinks = PAGINAS.map(
+    (p) => `- [${p.titulo}](${BASE}${p.ruta}): ${p.llms}`,
+  );
 
   const content = `# Drenpos
 
@@ -360,7 +362,7 @@ Cualquier plan se puede instalar en el servidor de la empresa (funciona sin inte
 
 **Drenpos Equipo (solo control horario, sin el resto del programa):** [[p:equipo10]]/mes hasta 10 personas, [[p:equipo25]] hasta 25, [[p:equipo50]] hasta 50 y [[p:equipo_persona_extra]] por cada persona más. Lleva fichaje por web, app, QR y llavero, vacaciones y permisos, avisos de retrasos y olvidos, turnos rotativos, calendarios con festivos, planificación anual y geolocalización. Terminal de fichaje opcional desde [[p:terminal]]. Página: ${BASE}/control-horario#equipo
 
-**Empresas nuevas:** empresas y autónomos con menos de dos años y menos de [[p:nuevas_facturacion_max]] facturados en el último año tienen la mitad de la cuota tres meses, y otros tres si usan el programa ([[n:nuevas_documentos]] documentos de venta o [[n:nuevas_dias_fichaje]] días de fichajes) y siguen por debajo de [[p:nuevas_facturacion_prorroga_max]] al año. Una vez por NIF. Detalle en ${BASE}/empresas-nuevas.
+**Empresas nuevas y startups:** startups de menos de [[n:nuevas_antiguedad_startup]] años y empresas y autónomos de menos de [[n:nuevas_antiguedad]] años, con menos de [[p:nuevas_facturacion_max]] facturados en el último año tienen la mitad de la cuota tres meses, y otros tres si usan el programa ([[n:nuevas_documentos]] documentos de venta o [[n:nuevas_dias_fichaje]] días de fichajes) y siguen por debajo de [[p:nuevas_facturacion_prorroga_max]] al año. Una vez por NIF. Detalle en ${BASE}/empresas-nuevas.
 
 **Partners:** gestorías (25 % de la cuota mientras el cliente siga), informáticos e instaladores que implantan (30 % y su instalación) y tiendas de hardware. Detalle en ${BASE}/partners.
 

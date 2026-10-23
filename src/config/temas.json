@@ -4,8 +4,8 @@
     {
       "id": "halloween",
       "nombre": "Halloween",
-      "activo": false,
-      "desde": "10-27",
+      "activo": true,
+      "desde": "10-01",
       "hasta": "10-31",
       "colores": {
         "primary": "#b23a0e",
