@@ -99,6 +99,7 @@ Available in all `.md`/`.mdx` without import (`astro.config.mjs`): `Button`, `Ac
 - Un script inline en el `<head>` de `Base.astro` pone `data-tema` en `<html>` según la fecha del navegador. El tema entra y sale solo, sin redesplegar ni purgar la caché, y se reaplica al navegar con `ClientRouter` (`astro:before-swap`).
 - Previsualizar: `?tema=halloween` (se guarda en la pestaña) y `?tema=ninguno` para quitarlo. Funciona aunque el tema tenga `activo: false`.
 - Adornos: `src/layouts/temas/<id>.astro` (opcional). `TemaAdornos.astro` los pinta todos ocultos y el CSS solo muestra el del tema activo. Deben ser `aria-hidden`, `pointer-events-none` y respetar `prefers-reduced-motion`.
+- Vista previa al compartir: `og_image` (opcional) en el tema, p. ej. `/images/og-image-halloween.png` (1200×630, se valida que exista). Los bots de WhatsApp/LinkedIn no ejecutan JS, así que la cambia el worker (`src/lib/temas.ts`, `HTMLRewriter`, fecha en hora de Madrid) en las rutas de `run_worker_first`, solo donde la página usa la imagen por defecto. `?tema=` no la previsualiza. Las redes cachean la vista previa por URL: para refrescarla, Facebook Sharing Debugger / LinkedIn Post Inspector.
 - Para un tema nuevo: entrada en `temas.json` → probar con `?tema=<id>` → poner `activo: true` → `git push`. Funciona porque todos los colores pasan por variables (ver la regla de colores).
 
 ### Cookies / Consent Mode v2

@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import plugin from "tailwindcss/plugin";
 import themeConfig from "../config/theme.json";
 import temasConfig from "../config/temas.json";
@@ -61,6 +62,8 @@ temasConfig.temas.forEach((t) => {
     if (!(k in themeConfig.colors.default.theme_color))
       throw new Error(`${donde}: el color "${k}" no existe en theme.json`);
   });
+  if (t.og_image && !fs.existsSync(`${process.cwd()}/public${t.og_image}`))
+    throw new Error(`${donde}: og_image ${t.og_image} no existe en public/`);
   temaVars[`html[data-tema="${t.id}"]`] = getVars([{ colors: t.colores, prefix: "" }]);
   temaVars[`html[data-tema="${t.id}"] [data-tema-adorno="${t.id}"]`] = { display: "revert" };
 });

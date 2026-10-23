@@ -1,5 +1,5 @@
 {
-  "_comentario": "Temas de temporada. Cada tema redefine colores de theme.json (claves de theme_color) entre dos fechas MM-DD, ambas incluidas; si 'desde' es mayor que 'hasta', el rango cruza el año. Con 'activo': false no se aplica solo, pero se puede previsualizar con ?tema=<id>. Los adornos van en src/layouts/temas/<id>.astro (opcional). Ver CLAUDE.md, 'Temas de temporada'.",
+  "_comentario": "Temas de temporada. Cada tema redefine colores de theme.json (claves de theme_color) entre dos fechas MM-DD, ambas incluidas; si 'desde' es mayor que 'hasta', el rango cruza el año. Con 'activo': false no se aplica solo, pero se puede previsualizar con ?tema=<id>. Los adornos van en src/layouts/temas/<id>.astro (opcional). 'og_image' (opcional) es la vista previa al compartir mientras dura el tema; la cambia el worker. Ver CLAUDE.md, 'Temas de temporada'.",
   "temas": [
     {
       "id": "halloween",
@@ -7,6 +7,7 @@
       "activo": true,
       "desde": "10-01",
       "hasta": "10-31",
+      "og_image": "/images/og-image-halloween.png",
       "colores": {
         "primary": "#b23a0e",
         "secondary": "#6b2a8c",

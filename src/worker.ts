@@ -15,6 +15,9 @@
 //  El middleware de Astro (wwwRedirect + Clerk) sigue igual: corre dentro
 //  de handle() para las rutas SSR, como antes.
 //
+//  Al final, conImagenDeTema (src/lib/temas.ts) pone la og:image del tema
+//  de temporada activo en las páginas HTML.
+//
 //  OJO al actualizar a @astrojs/cloudflare 13: workerEntryPoint y
 //  createExports desaparecen; allí se exporta directamente un objeto
 //  { fetch } que llama a handle(request, env, ctx).
@@ -24,6 +27,7 @@ import { App } from "astro/app";
 import { handle } from "@astrojs/cloudflare/handler";
 import { conAgentReadiness, type EnvConAssets } from "./lib/agent-readiness";
 import { respuestaRedireccion } from "./lib/redirecciones";
+import { conImagenDeTema } from "./lib/temas";
 
 interface ContextoEjecucion {
   waitUntil(promesa: Promise<unknown>): void;
@@ -55,7 +59,12 @@ export function createExports(manifest: SSRManifest) {
             env as never,
             ctx as never,
           ) as unknown as Promise<Response>;
-        return conAgentReadiness(request, env, astro);
+        const res = await conAgentReadiness(request, env, astro);
+        // Tema de temporada: og:image del tema en la vista previa al compartir.
+        const esHtml = (res.headers.get("Content-Type") || "").startsWith(
+          "text/html",
+        );
+        return res.status === 200 && esHtml ? conImagenDeTema(res) : res;
       },
     },
   };
