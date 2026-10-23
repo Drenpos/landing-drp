@@ -8,11 +8,13 @@
       "desde": "10-27",
       "hasta": "10-31",
       "colores": {
-        "primary": "#c2410c",
-        "secondary": "#7e22ce",
-        "light": "#fb923c",
-        "accent": "#f59e0b",
-        "accent_light": "#fde68a"
+        "primary": "#b23a0e",
+        "secondary": "#6b2a8c",
+        "light": "#d9692b",
+        "accent": "#d48a1a",
+        "accent_light": "#e9c46a",
+        "body": "#f7f2ea",
+        "border": "#ede4d6"
       }
     },
     {

@@ -1,38 +1,320 @@
 ---
 // Adornos del tema "halloween" (src/config/temas.json). Solo se ven con
 // html[data-tema="halloween"]; prueba con ?tema=halloween.
+// Fijos: telarañas, araña colgando, murciélagos colgados, calabazas y niebla.
+// Aleatorios (script de abajo): murciélagos que cruzan, fantasmas que suben,
+// ojos que parpadean en los bordes y alguna bruja en escoba.
+// Clic en una calabaza: salen murciélagos.
+// Con prefers-reduced-motion no hay animaciones ni apariciones.
+
+// Telaraña de esquina: radios desde (0,0) y anillos que cuelgan hacia el centro
+const radios = [0, 18, 36, 54, 72, 90].map((g) => (g * Math.PI) / 180);
+const anillos = [22, 44, 70, 100, 135];
+const punto = (r: number, a: number) => [r * Math.cos(a), r * Math.sin(a)];
+const telarana = [
+  ...radios.map((a) => `M0 0L${punto(150, a).join(" ")}`),
+  ...anillos.map((r) =>
+    radios
+      .map((a, i) => {
+        const [x, y] = punto(r, a);
+        if (i === 0) return `M${x} ${y}`;
+        const [cx, cy] = punto(r * 0.82, (a + radios[i - 1]) / 2);
+        return `Q${cx} ${cy} ${x} ${y}`;
+      })
+      .join(""),
+  ),
+].join("");
+
 const murcielagos = [
-  { right: "6%", top: "86px", size: 34, delay: "0s" },
-  { right: "13%", top: "118px", size: 24, delay: "-1.2s" },
-  { right: "20%", top: "92px", size: 18, delay: "-2.1s" },
+  { right: "7%", top: "92px", size: 58, delay: "0s" },
+  { right: "15%", top: "126px", size: 40, delay: "-1.2s" },
+  { left: "22%", top: "104px", size: 32, delay: "-2.1s" },
+];
+
+const calabazas = [
+  { size: 60, bottom: 14, left: 14, delay: "0s" },
+  { size: 42, bottom: 12, left: 68, delay: "-0.7s" },
+  { size: 32, bottom: 10, left: 106, delay: "-1.3s" },
 ];
 ---
 
-<div class="tema-halloween pointer-events-none absolute inset-x-0 top-0 z-30 h-0 overflow-visible">
+<div class="hw pointer-events-none absolute inset-x-0 top-0 h-0 overflow-visible">
+  <!-- Telarañas en las esquinas superiores -->
+  <svg class="absolute left-0 top-0 h-28 w-28 text-dark/30 lg:h-40 lg:w-40" viewBox="0 0 150 150" fill="none" stroke="currentColor" stroke-width="1">
+    <path d={telarana} />
+  </svg>
+  <svg class="absolute right-0 top-0 h-32 w-32 -scale-x-100 text-dark/30 lg:h-48 lg:w-48" viewBox="0 0 150 150" fill="none" stroke="currentColor" stroke-width="1">
+    <path d={telarana} />
+  </svg>
+
+  <!-- Araña que baja y sube de la telaraña derecha -->
+  <div class="hw-arana absolute right-[9%] top-0 z-30 hidden sm:block">
+    <span class="hw-hilo block w-px bg-dark/40"></span>
+    <svg class="-ml-[11px] -mt-1 h-6 w-6 text-dark" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+      <path fill="none" d="M9 11 4 7M9 13 3 13M9 15 4 19M15 11l5-4M15 13h6M15 15l5 4" />
+      <ellipse cx="12" cy="13" rx="4" ry="5" />
+      <circle cx="12" cy="7.5" r="2.6" />
+      <circle class="hw-ojo-arana" cx="11" cy="7.2" r=".6" />
+      <circle class="hw-ojo-arana" cx="13" cy="7.2" r=".6" />
+    </svg>
+  </div>
+
+  <!-- Murciélagos colgados -->
   {
     murcielagos.map((m) => (
       <svg
-        class="murcielago absolute hidden text-dark/80 sm:block"
-        style={`right:${m.right};top:${m.top};width:${m.size}px;animation-delay:${m.delay}`}
+        class="hw-colgado absolute z-30 hidden text-dark/85 sm:block"
+        style={`${m.right ? `right:${m.right}` : `left:${m.left}`};top:${m.top};width:${m.size}px;animation-delay:${m.delay}`}
         viewBox="0 0 64 32"
         fill="currentColor"
       >
-        <path d="M32 9c1.5-3 3-4 3-4s.5 3 0 5c4-3 10-4 14-2-3 1-4 3-4 5 3-1 7 0 10 2-4 0-7 2-9 5-2-2-5-3-8-2-2 1-4 4-6 7-2-3-4-6-6-7-3-1-6 0-8 2-2-3-5-5-9-5 3-2 7-3 10-2 0-2-1-4-4-5 4-2 10-1 14 2-.5-2 0-5 0-5s1.5 1 3 4z" />
+        <use href="#hw-murcielago" />
       </svg>
     ))
   }
+
+  <!-- Niebla en la parte baja de la pantalla -->
+  <div class="hw-niebla">
+    <span class="hw-niebla-capa"></span>
+    <span class="hw-niebla-capa hw-niebla-lenta"></span>
+  </div>
+
+  <!-- Calabazas (clic: salen murciélagos) -->
+  <div class="fixed bottom-0 left-0 z-40">
+    {
+      calabazas.map((c) => (
+        <svg
+          class="hw-calabaza pointer-events-auto absolute cursor-pointer"
+          style={`width:${c.size}px;bottom:${c.bottom}px;left:${c.left}px;animation-delay:${c.delay}`}
+          viewBox="0 0 64 60"
+        >
+          <path d="M31 12c0-5 2-9 6-11l2 3c-3 2-4 4-4 8z" class="fill-success" />
+          <ellipse cx="32" cy="36" rx="30" ry="22" class="fill-light" />
+          <ellipse cx="19" cy="36" rx="12" ry="21" class="fill-primary/45" />
+          <ellipse cx="45" cy="36" rx="12" ry="21" class="fill-primary/45" />
+          <ellipse cx="32" cy="36" rx="9" ry="22" class="fill-light" />
+          <g class="hw-cara fill-accent-light stroke-dark/70" stroke-width="1.2" stroke-linejoin="round">
+            <path d="M15 31l8-7 4 9zM49 31l-8-7-4 9z" />
+            <path d="M28 37l4-5 4 5z" />
+            <path d="M13 42c6 9 32 9 38 0l-5 1-3 4-3-4-4 1-3 4-3-4-4-1-3 4-3-4z" />
+          </g>
+        </svg>
+      ))
+    }
+  </div>
+
+  <!-- Símbolos reutilizables (también los usa el script) -->
+  <svg width="0" height="0" class="absolute">
+    <symbol id="hw-murcielago" viewBox="0 0 64 32">
+      <path d="M32 9c1.5-3 3-4 3-4s.5 3 0 5c4-3 10-4 14-2-3 1-4 3-4 5 3-1 7 0 10 2-4 0-7 2-9 5-2-2-5-3-8-2-2 1-4 4-6 7-2-3-4-6-6-7-3-1-6 0-8 2-2-3-5-5-9-5 3-2 7-3 10-2 0-2-1-4-4-5 4-2 10-1 14 2-.5-2 0-5 0-5s1.5 1 3 4z" />
+    </symbol>
+    <symbol id="hw-fantasma" viewBox="0 0 48 56">
+      <path d="M24 2C12 2 4 11 4 23v29l6-5 6 6 8-6 8 6 6-6 6 5V23C44 11 36 2 24 2z" fill="#fff" stroke="currentColor" stroke-opacity=".15" />
+      <ellipse cx="17" cy="22" rx="3.5" ry="5" fill="currentColor" />
+      <ellipse cx="31" cy="22" rx="3.5" ry="5" fill="currentColor" />
+      <ellipse cx="24" cy="34" rx="4" ry="5" fill="currentColor" opacity=".8" />
+    </symbol>
+    <symbol id="hw-bruja" viewBox="0 0 96 48">
+      <path d="M4 34l58-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none" />
+      <path d="M58 22l22 4-6 6 10 2-12 4 4 6-18-10z" />
+      <path d="M30 32c0-9 4-15 10-17l6 2c4 4 4 10 2 16z" />
+      <circle cx="44" cy="12" r="5" />
+      <path d="M34 9l14-1-8-8z" />
+      <path d="M31 9h22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+      <path d="M37 32l-6 9M44 33l3 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+    </symbol>
+  </svg>
 </div>
 
-<style>
-  .murcielago {
-    animation: aleteo 3.2s ease-in-out infinite;
-    transform-origin: 50% 0;
-  }
-  @keyframes aleteo {
+<style is:global>
+  /* Fijos */
+  .hw-colgado { animation: hw-aleteo 3.2s ease-in-out infinite; transform-origin: 50% 0; }
+  @keyframes hw-aleteo {
     0%, 100% { transform: translateY(0) rotate(-4deg); }
     50% { transform: translateY(8px) rotate(4deg); }
   }
+  .hw-hilo { height: 70px; animation: hw-descuelgue 9s ease-in-out infinite; }
+  @keyframes hw-descuelgue {
+    0%, 100% { height: 70px; }
+    40%, 55% { height: 260px; }
+    47% { height: 250px; }
+  }
+  .hw-arana svg { animation: hw-patalea 0.6s steps(2) infinite; }
+  @keyframes hw-patalea { to { transform: rotate(6deg); } }
+  .hw-ojo-arana { fill: var(--color-danger); }
+
+  .hw-calabaza { animation: hw-bote 4s ease-in-out infinite; transition: transform 0.2s; }
+  .hw-calabaza:hover { transform: scale(1.12) rotate(-6deg); }
+  @keyframes hw-bote { 0%, 100% { translate: 0 0; } 50% { translate: 0 -3px; } }
+  .hw-cara { animation: hw-vela 2.2s infinite; filter: drop-shadow(0 0 3px var(--color-accent)); }
+  @keyframes hw-vela {
+    0%, 100% { opacity: 1; } 20% { opacity: 0.75; } 22% { opacity: 1; }
+    55% { opacity: 0.85; } 57% { opacity: 0.6; } 60% { opacity: 1; }
+  }
+
+  /* Niebla: dos capas anchas que se desplazan a distinta velocidad */
+  .hw-niebla {
+    position: fixed; inset: auto 0 0 0; height: 34vh; z-index: 35; pointer-events: none; overflow: hidden;
+    mask-image: linear-gradient(to top, #000 35%, transparent);
+  }
+  .hw-niebla-capa {
+    position: absolute; inset: 0 auto 0 0; width: 200%; opacity: 0.9; filter: blur(16px);
+    background:
+      radial-gradient(ellipse 18% 55% at 10% 85%, color-mix(in oklab, var(--color-dark) 22%, transparent), transparent 70%),
+      radial-gradient(ellipse 22% 45% at 32% 95%, color-mix(in oklab, var(--color-dark) 18%, transparent), transparent 70%),
+      radial-gradient(ellipse 16% 60% at 55% 80%, color-mix(in oklab, var(--color-secondary) 18%, transparent), transparent 70%),
+      radial-gradient(ellipse 24% 50% at 78% 92%, color-mix(in oklab, var(--color-dark) 20%, transparent), transparent 70%);
+    animation: hw-deriva 46s linear infinite;
+  }
+  .hw-niebla-lenta { animation-duration: 80s; animation-direction: reverse; opacity: 0.4; translate: 0 6%; }
+  @keyframes hw-deriva { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* Aleatorios: los crea el script en <body> */
+  .hw-vuelo {
+    position: fixed; left: 0; z-index: 45; pointer-events: none;
+    animation: hw-cruza var(--dur) linear forwards;
+  }
+  .hw-vuelo svg { display: block; color: var(--color-dark); animation: hw-onda calc(var(--dur) / 4) ease-in-out infinite alternate; }
+  @keyframes hw-cruza { from { transform: translateX(-120px); } to { transform: translateX(calc(100vw + 120px)); } }
+  @keyframes hw-onda { from { transform: translateY(calc(var(--amp) * -1)) scaleY(1); } to { transform: translateY(var(--amp)) scaleY(0.7); } }
+  .hw-vuelo.hw-reves { animation-direction: reverse; }
+  .hw-vuelo.hw-reves svg { scale: -1 1; }
+  .hw-vuelo.hw-bruja svg { animation-name: hw-planea; }
+  @keyframes hw-planea { from { transform: translateY(calc(var(--amp) * -1)) rotate(-3deg); } to { transform: translateY(var(--amp)) rotate(3deg); } }
+
+  .hw-fantasma {
+    position: fixed; bottom: -70px; z-index: 45; pointer-events: none; color: var(--color-dark);
+    animation: hw-sube var(--dur) ease-in forwards;
+  }
+  @keyframes hw-sube {
+    0% { transform: translate(0, 0); opacity: 0; }
+    15% { opacity: 0.85; }
+    50% { transform: translate(var(--dx), -45vh) rotate(6deg); }
+    100% { transform: translate(calc(var(--dx) * -1), -90vh) rotate(-6deg); opacity: 0; }
+  }
+
+  .hw-ojos {
+    position: fixed; z-index: 45; pointer-events: none; display: flex; gap: 10px;
+    animation: hw-mira 4.5s ease-in-out forwards;
+  }
+  .hw-ojos i {
+    width: 12px; height: 8px; border-radius: 50% 50% 45% 45%; background: var(--color-accent);
+    box-shadow: 0 0 8px var(--color-accent); animation: hw-parpadeo 4.5s steps(1) forwards;
+  }
+  @keyframes hw-mira { 0%, 100% { opacity: 0; } 15%, 80% { opacity: 1; } }
+  @keyframes hw-parpadeo { 0%, 38%, 44%, 70%, 74% { transform: scaleY(1); } 40%, 72% { transform: scaleY(0.1); } }
+
+  .hw-escapa {
+    position: fixed; z-index: 45; pointer-events: none; color: var(--color-dark);
+    animation: hw-escapa 1.4s cubic-bezier(.2,.7,.4,1) forwards;
+  }
+  @keyframes hw-escapa {
+    from { transform: translate(0, 0) scale(0.4); opacity: 1; }
+    to { transform: translate(var(--dx), var(--dy)) scale(1); opacity: 0; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .murcielago { animation: none; }
+    .hw *, .hw-vuelo, .hw-fantasma, .hw-ojos, .hw-escapa { animation: none !important; }
+    .hw-hilo { height: 120px; }
   }
 </style>
+
+<script>
+  // Apariciones aleatorias mientras el tema activo sea "halloween"
+  const activo = () => document.documentElement.dataset.tema === "halloween";
+  const quieto = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const azar = (a: number, b: number) => a + Math.random() * (b - a);
+  const SVG = "http://www.w3.org/2000/svg";
+
+  function figura(simbolo: string, ancho: number, vb: string) {
+    const svg = document.createElementNS(SVG, "svg");
+    svg.setAttribute("viewBox", vb);
+    svg.setAttribute("width", String(ancho));
+    svg.setAttribute("fill", "currentColor");
+    svg.setAttribute("aria-hidden", "true");
+    const use = document.createElementNS(SVG, "use");
+    use.setAttribute("href", `#${simbolo}`);
+    svg.appendChild(use);
+    return svg;
+  }
+
+  function soltar(el: HTMLElement) {
+    el.setAttribute("aria-hidden", "true");
+    el.addEventListener("animationend", (e) => e.target === el && el.remove());
+    document.body.appendChild(el);
+  }
+
+  function volador(simbolo: string, vb: string, ancho: [number, number], dur: [number, number], clase = "") {
+    const el = document.createElement("span");
+    el.className = `hw-vuelo ${clase}` + (Math.random() < 0.5 ? " hw-reves" : "");
+    el.style.top = `${azar(8, 65)}vh`;
+    el.style.setProperty("--dur", `${azar(...dur)}s`);
+    el.style.setProperty("--amp", `${azar(10, 40)}px`);
+    el.appendChild(figura(simbolo, azar(...ancho), vb));
+    soltar(el);
+  }
+
+  const murcielago = () => volador("hw-murcielago", "0 0 64 32", [22, 44], [5, 10]);
+  const bruja = () => volador("hw-bruja", "0 0 96 48", [70, 110], [9, 14], "hw-bruja");
+
+  function fantasma() {
+    const el = document.createElement("span");
+    el.className = "hw-fantasma";
+    el.style.left = `${azar(10, 85)}vw`;
+    el.style.setProperty("--dur", `${azar(7, 11)}s`);
+    el.style.setProperty("--dx", `${azar(-60, 60)}px`);
+    el.appendChild(figura("hw-fantasma", azar(36, 56), "0 0 48 56"));
+    soltar(el);
+  }
+
+  function ojos() {
+    const el = document.createElement("span");
+    el.className = "hw-ojos";
+    const izquierda = Math.random() < 0.5;
+    el.style.left = izquierda ? `${azar(1, 6)}vw` : `${azar(90, 95)}vw`;
+    el.style.top = `${azar(30, 75)}vh`;
+    el.append(document.createElement("i"), document.createElement("i"));
+    soltar(el);
+  }
+
+  function bandada(x: number, y: number) {
+    for (let i = 0; i < 7; i++) {
+      const el = document.createElement("span");
+      el.className = "hw-escapa";
+      el.style.left = `${x}px`;
+      el.style.top = `${y}px`;
+      el.style.animationDelay = `${i * 60}ms`;
+      el.style.setProperty("--dx", `${azar(40, 320)}px`);
+      el.style.setProperty("--dy", `${azar(-420, -120)}px`);
+      el.appendChild(figura("hw-murcielago", azar(18, 32), "0 0 64 32"));
+      soltar(el);
+    }
+  }
+
+  // Probabilidades de cada aparición
+  const reparto: [number, () => void][] = [
+    [0.5, murcielago],
+    [0.2, fantasma],
+    [0.2, ojos],
+    [0.1, bruja],
+  ];
+
+  function siguiente() {
+    setTimeout(() => {
+      if (activo() && !quieto.matches && !document.hidden) {
+        let r = Math.random();
+        const [, aparicion] = reparto.find(([p]) => (r -= p) < 0) ?? reparto[0];
+        aparicion();
+      }
+      siguiente();
+    }, azar(5000, 15000));
+  }
+  siguiente();
+
+  document.addEventListener("click", (e) => {
+    const calabaza = (e.target as Element).closest?.(".hw-calabaza");
+    if (!calabaza || !activo() || quieto.matches) return;
+    const r = calabaza.getBoundingClientRect();
+    bandada(r.left + r.width / 2, r.top);
+  });
+</script>
