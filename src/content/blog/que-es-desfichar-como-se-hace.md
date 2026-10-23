@@ -3,6 +3,7 @@ title: "Qué es desfichar, si existe la palabra y cómo se hace bien"
 meta_title: "Desfichar: qué significa, si existe y cómo se hace bien"
 description: "Desfichar es fichar la salida al acabar la jornada. Qué significa, si la palabra está en el diccionario, cómo se hace bien y qué pasa si se te olvida."
 date: 2026-10-07
+updated: 2026-10-07
 image: "/images/blog/registro-horario-digital/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"

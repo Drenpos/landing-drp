@@ -3,7 +3,7 @@ title: "Control horario en almacenes y naves: cómo fichar a turnos sin móvil"
 meta_title: "Control horario en almacenes y naves con turnos sin móvil"
 description: "Cómo fichar en un almacén o una nave con turnos de mañana, tarde y noche sin usar el móvil: terminal en la entrada, rotativos, horas extra e incidencias."
 date: 2026-10-17
-updated: 2026-10-22
+updated: 2026-10-23
 image: "/images/blog/preparacion-de-pedidos-picking-almacen/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -41,7 +41,7 @@ faq:
     answer: "La licencia de fichaje va incluida en todos los planes ([[n:fichaje]] euros por persona adicional) y, solo el control horario, Drenpos Equipo cuesta desde [[n:equipo10]] euros al mes para 10 personas, sin IVA, con calendarios, vacaciones y control de entrada y salida incluidos. El terminal parte de [[n:terminal]] euros sin IVA con los llaveros de la plantilla inicial. Si además quieres llevar el almacén, el plan Almacén cuesta [[n:almacen]] euros al mes y con TPV, [[n:almacen_tpv]] euros, sin IVA."
 ---
 
-> En un almacén o una nave con turnos lo más práctico es un terminal en la entrada de personal: cada persona pasa su llavero, tarjeta o QR, sin móvil y sin papel. Cada turno (mañana, tarde, noche o rotativo) se monta como un calendario, y con eso el sistema sabe las horas esperadas de cada uno, calcula las extra día a día y avisa de quien entra tarde o no ficha. Si se cae internet, el terminal sigue fichando.
+> En un almacén o una nave con turnos lo más práctico es fichar en un terminal en la entrada de personal con llavero, tarjeta o QR, sin móvil ni papel. Cada turno se monta como un calendario, y con eso el sistema calcula las horas extra día a día y avisa de quien entra tarde o no ficha.
 
 <div class="my-8 flex justify-center">
   <a href="/dispositivo-fichaje" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
@@ -49,7 +49,7 @@ faq:
   </a>
 </div>
 
-Un almacén no es una oficina. Hay gente que entra a las seis, otra que sale a las diez de la noche, una cámara donde el móvil no tiene cobertura, temporales que llegan un lunes y se van en tres semanas y un encargado que no tiene tiempo de perseguir a nadie para que fiche. Aquí va cómo se monta el control horario en ese contexto, con lo que exige la ley y con ejemplos de números reales.
+Si se cae internet, el terminal sigue fichando. Un almacén no es una oficina: hay gente que entra a las seis, otra que sale a las diez de la noche, una cámara donde el móvil no tiene cobertura, temporales que llegan un lunes y se van en tres semanas y un encargado que no tiene tiempo de perseguir a nadie para que fiche. Aquí va cómo se monta el control horario en ese contexto, con lo que exige la ley y con ejemplos numéricos.
 
 ## ¿Por qué en un almacén no conviene fichar con el móvil?
 
@@ -100,7 +100,7 @@ Todas están en el [Estatuto de los Trabajadores](https://www.boe.es/buscar/act.
 
 Entonces se usa un calendario rotativo. Indicas los días de trabajo, los de descanso, el horario de cada día del ciclo y el primer día del ciclo, y el sistema va alternando solo. Sirve para un 5/2 que pasa por mañana, tarde y noche, para un 4x4 o para un 6/3. Si dos personas se turnan sobre el mismo ciclo, no duplicas el calendario: cada una tiene su propio primer día.
 
-Un ejemplo con números. Un operador logístico con 18 personas en tres turnos que rotan cada semana monta un solo ciclo de 21 días: cinco de mañana y dos de descanso, cinco de tarde y dos de descanso, cinco de noche y dos de descanso. Divide la plantilla en tres grupos de seis y a cada grupo le pone un primer día separado siete días del anterior. Con eso siempre hay un grupo en cada turno.
+Un ejemplo con números. Pongamos un operador logístico con 18 personas en tres turnos que rotan cada semana monta un solo ciclo de 21 días: cinco de mañana y dos de descanso, cinco de tarde y dos de descanso, cinco de noche y dos de descanso. Divide la plantilla en tres grupos de seis y a cada grupo le pone un primer día separado siete días del anterior. Con eso siempre hay un grupo en cada turno.
 
 La vista previa del mes enseña cómo caen los turnos antes de guardar, y cualquier día suelto se puede ajustar a mano. Los días de descanso no suman horas esperadas ni gastan vacaciones. Lo tienes en detalle en la página de [software de turnos rotativos](/software-turnos-rotativos), y con cuadrantes copiables en [ejemplos de turnos 4x4, 5/2 y 6/3](/blog/cuadrante-turnos-rotativos-4x4-ejemplos-estatuto).
 
@@ -122,7 +122,7 @@ Un detalle pensado para naves: los fichajes guardados por el terminal sin conexi
 
 ## ¿Se pueden llevar fichajes y almacén en el mismo programa?
 
-Sí, y tiene sentido. Las mismas personas que fichan en la puerta son las que reciben mercancía, preparan pedidos y hacen traslados con la pistola. En Drenpos el fichaje y el almacén son módulos del mismo sistema: cada sesión de picking o de recepción registra quién la hizo, y el informe de jornada sale de los fichajes de esas mismas personas, sin cruzar dos programas.
+Sí. Las mismas personas que fichan en la puerta son las que reciben mercancía, preparan pedidos y hacen traslados con la pistola. En Drenpos el fichaje y el almacén son módulos del mismo sistema: cada sesión de picking o de recepción registra quién la hizo, y el informe de jornada sale de los fichajes de esas mismas personas, sin cruzar dos programas.
 
 Lo que eso te da en el día a día:
 

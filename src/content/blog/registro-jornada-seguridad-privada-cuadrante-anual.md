@@ -3,7 +3,7 @@ title: "Registro de jornada en seguridad privada: cuadrante anual y convenio 202
 meta_title: "Registro de jornada en seguridad privada y cuadrante anual"
 description: "Qué pide el convenio estatal de seguridad 2026-2030 sobre cuadrante anual, 1.782 horas y registro de jornada, y cómo llevar turnos 4x4 y un PDF por vigilante."
 date: 2026-10-17
-updated: 2026-10-22
+updated: 2026-10-23
 image: "/images/blog/multas-registro-horario-2026-costo-incumplimiento/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -41,7 +41,7 @@ faq:
     answer: "No reparte la plantilla por ti. Tú defines el ciclo, el horario y el primer día de cada vigilante, y Drenpos lo aplica día a día: horas esperadas, horas extra, vacaciones que solo descuentan días de servicio y una planificación anual con un PDF por trabajador. Comprobar que cada mes cae dentro de la horquilla del convenio sigue siendo cosa tuya."
 ---
 
-> En seguridad privada el registro de jornada del artículo 34.9 del Estatuto se completa con el convenio estatal 2026-2030 (BOE de 18 de abril de 2026). Su artículo 52 fija 1.782 horas anuales de trabajo efectivo y exige, en servicios fijos o estables, un cuadrante anual con días de servicio, descansos y vacaciones, entregado un mes antes. Con turnos 4x4, lo difícil es que las horas del año cuadren.
+> En seguridad privada, además del registro diario del artículo 34.9 del Estatuto, rige el convenio estatal 2026-2030 (BOE de 18 de abril de 2026). Su artículo 52 fija 1.782 horas anuales de trabajo efectivo y exige, en servicios fijos o estables, un cuadrante anual con días de servicio, descansos y vacaciones, entregado un mes antes.
 
 <div class="my-8 flex justify-center">
   <a href="/control-horario#planificacion-anual" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
@@ -49,7 +49,7 @@ faq:
   </a>
 </div>
 
-Las empresas de seguridad tienen un problema de cuadrante que pocas pymes sufren igual: puestos que no cierran nunca, vigilantes que se turnan en ciclos que no caben en la semana, servicios que cambian con cada contrato y un convenio que pide más papel que el Estatuto. Aquí va lo que dice el convenio vigente, con números, y cómo llevarlo sin rehacer un Excel cada mes.
+Con turnos 4x4, lo difícil es que las horas del año cuadren. Las empresas de seguridad tienen un problema de cuadrante que pocas pymes sufren igual: puestos que no cierran nunca, vigilantes que se turnan en ciclos que no caben en la semana, servicios que cambian con cada contrato y un convenio que pide más papel que el Estatuto. Aquí va lo que dice el convenio vigente, con números, y cómo llevarlo sin rehacer un Excel cada mes.
 
 ## ¿Qué convenio regula la jornada de los vigilantes en 2026?
 

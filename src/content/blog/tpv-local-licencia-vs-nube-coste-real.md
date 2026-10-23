@@ -1,9 +1,9 @@
 ---
 title: "TPV con licencia en tu PC o en la nube: qué incluye cada uno"
 meta_title: "TPV local o en la nube: qué incluye cada uno (2026)"
-description: "Licencia de TPV en tu PC frente a TPV en la nube: actualizaciones, Verifactu, copias, soporte, multisede y fichajes. Qué trae cada modelo y cómo lo resuelve Drenpos, también en local."
+description: "TPV con licencia en tu PC o en la nube: qué incluye cada uno en actualizaciones, Verifactu, copias, soporte y fichajes, y cómo lo resuelve Drenpos en local."
 date: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-23
 image: "/images/blog/tpv-bares-restaurantes-como-elegir-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -39,9 +39,9 @@ faq:
     answer: "En la nube, el plan Tienda y Hostelería cuesta [[n:tienda]] euros al mes con caja, comanderos, pantallas de cocina, QR en las mesas, facturación con Verifactu y 8 personas fichando, sin IVA y sin permanencia. En el servidor del cliente, a presupuesto según usuarios, hardware e integraciones, con actualizaciones automáticas, copias y supervisión incluidas."
 ---
 
-Cada semana nos pregunta alguien si le conviene un TPV instalado en el ordenador de la barra o uno en la nube. Llevo años vendiendo TPV a bares y tiendas, y casi nunca se decide por el precio de entrada. Lo que acaba pesando es lo que queda incluido: las actualizaciones (Verifactu, cambios de IVA), las copias de seguridad fuera del local, el soporte, los varios locales y el control horario del equipo.
+Un TPV con licencia instalada en tu PC incluye el programa y poco más: soporte, actualizaciones (también la de Verifactu), instalación y copias de seguridad se pagan aparte o quedan a tu cargo. Uno en la nube suele llevar todo eso en la cuota mensual, así que se comparan por lo que incluyen y no por el precio de entrada.
 
-Con una licencia instalada en tu PC (Doscar, Glop, SimplyGest Desktop), cada una de esas piezas se contrata aparte o queda a tu cargo. En la nube suelen venir en la cuota. Y hay un tercer camino que se conoce menos, el local bien hecho, con actualizaciones automáticas, copias en la nube y supervisión. En Drenpos lo hacemos así y lo presupuestamos en cada caso.
+Llevo años vendiendo TPV a bares y tiendas, y casi nunca se decide por el precio de entrada. Lo que acaba pesando es lo que queda incluido: las actualizaciones (Verifactu, cambios de IVA), las copias de seguridad fuera del local, el soporte, los varios locales y el control horario del equipo. Con una licencia (Doscar, Glop, SimplyGest Desktop), cada una de esas piezas va aparte. Y hay un tercer camino que se conoce menos, el local bien hecho, con actualizaciones automáticas, copias en la nube y supervisión. En Drenpos lo hacemos así y lo presupuestamos en cada caso.
 
 Los precios que verás aquí están sacados de las webs de [Doscar](https://www.doscar.com/producto/doscar-bar-restaurante/), [Glop](https://www.glop.es/versiones-tpv-glop/), [SimplyGest](https://simplygest.es/desktop.html), [Square](https://squareup.com/es/es/point-of-sale/restaurants/pricing), [Ágora](https://www.agorapos.com/pricing/) y [Last.app](https://www.last.app/precios) el 20 de octubre de 2026, sin IVA. Si una web no publica algo, lo indico como "no consta". Los de Drenpos son los que aplicamos desde noviembre de 2026. Y que conste que esto lo escribimos en Drenpos, que vendemos las dos cosas, nube y local.
 
@@ -49,7 +49,7 @@ Los precios que verás aquí están sacados de las webs de [Doscar](https://www.
 
 Básicamente, un instalador para Windows. Lo descargas, lo instalas en el ordenador de la barra y a funcionar. Al fabricante tenerte de cliente apenas le cuesta nada: no paga servidor, no guarda tus copias y nadie vigila si tu equipo va bien. Por eso Doscar, por ejemplo, puede vender la licencia a 164,95 €.
 
-Esa licencia incluye el programa. El soporte, las actualizaciones (también la de Verifactu), la instalación y las copias de seguridad se contratan aparte o te tocan a ti. En el caso de Doscar, el soporte va de 99 a 360 € al año una vez pasados los 30 días incluidos. Un TPV en la nube, en cambio, suele llevar las actualizaciones, las copias y el soporte dentro de la cuota mensual. Por eso conviene comparar qué necesita tu negocio dentro y no quedarse en el precio de entrada.
+Esa licencia incluye el programa. En el caso de Doscar, el soporte va de 99 a 360 € al año una vez pasados los 30 días incluidos.
 
 Esto es lo que necesita un TPV para funcionar tres años y no entra en la licencia:
 

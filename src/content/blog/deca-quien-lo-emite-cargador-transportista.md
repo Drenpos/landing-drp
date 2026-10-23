@@ -3,6 +3,7 @@ title: "DeCA: ¿lo emite el cargador o el transportista? Quién está obligado, 
 meta_title: "DeCA: ¿lo emite el cargador o el transportista?"
 description: "Quién tiene que emitir el DeCA según la Orden FOM/2861/2012: cargador contractual y transportista efectivo, subcontratación, operador logístico y flota propia."
 date: 2026-10-17
+updated: 2026-10-23
 image: "/images/blog/gestion-palets-almacen-frigorifico-fefo-sscc/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -39,7 +40,7 @@ faq:
     answer: "Es una infracción grave del artículo 141.17 de la Ley de Ordenación de los Transportes Terrestres, con multa de 401 a 600 euros según el artículo 143.1.d. Responden el cargador contractual y el transportista efectivo, salvo que el cargador pruebe que el documento se emitió. Cada expedición cuenta como una infracción distinta."
 ---
 
-> El **DeCA** lo tienen que formalizar **los dos**: el **cargador contractual** (quien contrata directamente el porte) y el **transportista efectivo** (quien hace el viaje con su autorización), según el artículo 4 de la Orden FOM/2861/2012. La norma no dice quién lo genera materialmente, así que se reparte por acuerdo. Lo habitual es que lo haga quien tiene los datos de la mercancía, casi siempre el cargador desde su albarán. Si falta, responden ambos.
+> El **DeCA** lo tienen que formalizar **los dos**: el **cargador contractual** (quien contrata directamente el porte) y el **transportista efectivo** (quien hace el viaje con su autorización), según el artículo 4 de la Orden FOM/2861/2012. Puede generarlo cualquiera de los dos, casi siempre el cargador desde su albarán, y si falta responden ambos.
 
 <div class="my-8 flex justify-center">
   <a href="/documento-control-transporte-deca" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
@@ -47,7 +48,7 @@ faq:
   </a>
 </div>
 
-Desde que el documento de control es digital, la pregunta que más llega es esta: "¿esto me toca a mí o al transportista?". La gente que vende y contrata portes suele pensar que es cosa del camionero. El camionero suele pensar que el cliente le tiene que dar los datos. Los dos tienen parte de razón, y la ley les hace responder a los dos. Vamos por partes, con la [Orden FOM/2861/2012](https://www.boe.es/buscar/act.php?id=BOE-A-2013-154) y las [preguntas frecuentes del Ministerio de Transportes](https://www.transportes.gob.es/transporte-terrestre/profesionales-transporte/servicios-transportista/documento-electronico-control-administrativo-deca/preguntas-frecuentes-faq-deca) delante.
+La norma no dice quién lo genera materialmente, así que se reparte por acuerdo: lo habitual es que lo haga quien tiene los datos de la mercancía. Desde que el documento de control es digital, la pregunta que más llega es esta: "¿esto me toca a mí o al transportista?". La gente que vende y contrata portes suele pensar que es cosa del camionero. El camionero suele pensar que el cliente le tiene que dar los datos. Los dos tienen parte de razón, y la ley les hace responder a los dos. Vamos por partes, con la [Orden FOM/2861/2012](https://www.boe.es/buscar/act.php?id=BOE-A-2013-154) y las [preguntas frecuentes del Ministerio de Transportes](https://www.transportes.gob.es/transporte-terrestre/profesionales-transporte/servicios-transportista/documento-electronico-control-administrativo-deca/preguntas-frecuentes-faq-deca) delante.
 
 ## ¿Quién está obligado a emitir el DeCA según la Orden?
 

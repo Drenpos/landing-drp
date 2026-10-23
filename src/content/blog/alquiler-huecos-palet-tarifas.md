@@ -3,7 +3,7 @@ title: "Alquiler de huecos de palet: tarifas, contrato y cómo gestionarlo"
 meta_title: "Alquiler de huecos de palet: tarifas y contrato"
 description: "Cómo se construye una tarifa de alquiler de huecos de palet: conceptos que se cobran, modos de cómputo, contrato de depósito y cómo montar el servicio."
 date: 2026-08-12
-updated: 2026-10-22
+updated: 2026-10-23
 image: "/images/blog/alquiler-huecos-palet-tarifas/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -31,7 +31,7 @@ faq:
   - question: "¿Cómo se cuentan los días de almacenaje de un palet?"
     answer: "Hay cuatro formas habituales y cambian mucho la liquidación: día a día, sumando cada jornada de estancia; foto a fin de mes, cobrando lo que hay el último día; pico máximo, tomando la ocupación más alta; y aniversario de entrada, con ciclos desde que entró cada palet."
   - question: "¿Cuánto se cobra por almacenar un palet al mes?"
-    answer: "No existe un precio único: cada almacén fija su tarifa según ubicación, temperatura, rotación, seguro y servicios incluidos. Lo sensato es pedir una simulación con tu volumen real de un mes tipo —palets, kilos, entradas, salidas y manipulaciones— en lugar de comparar un único importe por palet."
+    answer: "No existe un precio único: cada almacén fija su tarifa según ubicación, temperatura, rotación, seguro y servicios incluidos. Lo sensato es pedir una simulación con tu volumen real de un mes tipo (palets, kilos, entradas, salidas y manipulaciones) en lugar de comparar un único importe por palet."
   - question: "¿Qué normativa regula el depósito de mercancías?"
     answer: "El contrato de depósito está regulado en el Código Civil, artículos 1758 y siguientes. Si hay transporte asociado entra en juego la Ley 15/2009 del contrato de transporte terrestre de mercancías. Con alimentación se añaden la trazabilidad del Reglamento (CE) 178/2002 y el estándar GS1 SSCC. Confírmalo con la norma vigente y con un asesor."
   - question: "¿Sirve un Excel para gestionar el depósito de palets?"
@@ -41,7 +41,7 @@ faq:
 > **El alquiler de huecos de palet es un contrato de depósito: un almacén cede posiciones paletizadas y custodia mercancía ajena a cambio de una tarifa.** Esa tarifa casi nunca es un precio único: combina almacenaje por palet o por kilo y día con cargos por entrada, salida y manipulación, más franquicias, mínimos y vigencias. Quien deja mercancía necesita saber qué le van a contar; quien cede espacio necesita registrarlo todo sin que se le escape nada.
 
 <div class="my-8 flex justify-center">
-  <a href="/contact" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
+  <a href="/software-alquiler-huecos-palet" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
     Ver el módulo de depósito de terceros
   </a>
 </div>
@@ -128,7 +128,7 @@ Este resumen es orientativo y no sustituye a un asesor: confirma el detalle con 
 
 ## ¿Cómo montar un servicio de depósito de palets?
 
-Monetizar huecos vacíos no es abrir la puerta y cobrar. Es definir un servicio: qué mercancía aceptas, cómo la identificas, qué operaciones incluyes en el precio, cómo las registras y cómo las liquidas. El orden importa, porque cada paso condiciona al siguiente. Estos son los ocho pasos que separan un ingreso extra rentable de un dolor de cabeza mensual.
+Para sacar dinero de los huecos vacíos hay que definir un servicio: qué mercancía aceptas, cómo la identificas, qué operaciones incluyes en el precio, cómo las registras y cómo las liquidas. El orden importa, porque cada paso condiciona al siguiente. Estos son los ocho pasos que separan un ingreso extra rentable de una discusión con el cliente cada fin de mes.
 
 1. **Delimita la oferta**: cuántas posiciones cedes, a qué temperatura y con qué tipos de soporte admitidos.
 2. **Define el catálogo de conceptos**: almacenaje, entrada, salida, manipulación y bulto preparado, con su unidad de cobro.
@@ -156,7 +156,7 @@ Porque el Excel guarda saldos, no eventos. Funciona mientras hay un cliente y en
 
 ## ¿Cómo se controla el depósito de terceros en Drenpos?
 
-El módulo de depósito de terceros de Drenpos parte de una regla dura: cada palet lleva su propietario y el sistema impide de raíz mezclar o vender mercancía de otro dueño. Sobre esa base se monta el tarifario —palet/día, kg/día, entrada, salida, manipulación y bulto preparado, con franquicias, mínimos, precios por soporte, vigencias y los cuatro modos de cómputo— y los eventos tarificables se registran solos.
+El módulo de depósito de terceros de Drenpos parte de una regla dura: cada palet lleva su propietario y el sistema impide de raíz mezclar o vender mercancía de otro dueño. Sobre esa base se monta el tarifario (palet/día, kg/día, entrada, salida, manipulación y bulto preparado, con franquicias, mínimos, precios por soporte, vigencias y los cuatro modos de cómputo) y los eventos tarificables se registran solos.
 
 Cuando entra un palet, sale o se despieza, el apunte nace en esa misma operación: ahí está el dinero que la hoja de cálculo pierde cada mes.
 
@@ -182,7 +182,7 @@ Hay cuatro formas habituales y cambian mucho la liquidación: día a día, suman
 
 ### ¿Cuánto se cobra por almacenar un palet al mes?
 
-No existe un precio único: cada almacén fija su tarifa según ubicación, temperatura, rotación, seguro y servicios incluidos. Lo sensato es pedir una simulación con tu volumen real de un mes tipo —palets, kilos, entradas, salidas y manipulaciones— en lugar de comparar un único importe por palet.
+No existe un precio único: cada almacén fija su tarifa según ubicación, temperatura, rotación, seguro y servicios incluidos. Lo sensato es pedir una simulación con tu volumen real de un mes tipo (palets, kilos, entradas, salidas y manipulaciones) en lugar de comparar un único importe por palet.
 
 ### ¿Qué normativa regula el depósito de mercancías?
 

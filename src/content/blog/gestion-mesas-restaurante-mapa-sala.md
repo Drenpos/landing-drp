@@ -1,9 +1,9 @@
 ---
 title: "Gestión de mesas en un restaurante: mapa de sala, mesas abiertas y tiempos"
 meta_title: "Gestión de mesas: mapa de sala y tiempos en el TPV"
-description: "Cómo gestionar las mesas de un restaurante desde el TPV: mapa de sala editable, mesas virtuales para terrazas, cuándo cuenta una mesa como ocupada y cobro mixto al cerrar."
+description: "Cómo gestionar las mesas de un restaurante desde el TPV: mapa de sala editable, mesas virtuales para terrazas, tiempos de ocupación y cobro mixto al cerrar."
 date: 2026-09-10
-updated: 2026-10-22
+updated: 2026-10-23
 image: "/images/blog/gestion-mesas-restaurante-mapa-sala/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -86,7 +86,7 @@ Con esa base, los tiempos de mesa se pueden mirar sin desconfiar. Y una rotació
 
 Como funciona un servicio: todo a la vez. Hay tantas mesas abiertas simultáneamente como haga falta, y el estado está sincronizado entre dispositivos. Un camarero toma la ronda en la terraza desde el móvil, otro añade los postres desde la tablet del pase y quien cobra en la barra ve la cuenta completa en el ordenador.
 
-Que funcione en móvil, tablet y ordenador no es un capricho de flexibilidad. En un servicio con prisa, el móvil en el bolsillo del camarero es el terminal más rápido que existe, y la tablet fija de la barra sigue siendo la mejor para cobrar con calma.
+Que funcione en móvil, tablet y ordenador tiene una razón práctica: en un servicio con prisa, el móvil en el bolsillo del camarero es el terminal más rápido que existe, y la tablet fija de la barra sigue siendo la mejor para cobrar con calma.
 
 Lo importante es que el estado sea uno. Si cada dispositivo tuviera su copia, la mesa de ocho acabaría con dos versiones de la cuenta y una discusión al pagar.
 
@@ -130,7 +130,7 @@ Una lista corta para preguntar sin rodeos:
 - ¿El cobro admite mezclar métodos de pago en una misma cuenta?
 - ¿La mesa llega a la pantalla de cocina y al QR con el mismo código?
 
-Todo lo anterior está dentro del TPV de Drenpos, que es un módulo del mismo sistema donde viven la facturación, el inventario y los [fichajes del equipo](/control-horario). El precio está en [planes y precios](/pricing): el plan Tienda y Hostelería incluye el TPV por [[n:tienda]] euros al mes sin IVA con [[n:tienda_usuarios]] usuarios y fichaje para 8; con control de stock o varios locales, el plan Almacén con TPV son [[n:almacen_tpv]] euros al mes. Los criterios completos para comparar los recogemos en [cómo elegir un TPV para bares y restaurantes en 2026](/blog/tpv-bares-restaurantes-como-elegir-2026).
+Todo lo anterior está dentro del TPV de Drenpos, que es un módulo del mismo sistema donde viven la facturación, el inventario y los [fichajes del equipo](/control-horario). El precio está en [planes y precios](/pricing): el plan Tienda y Hostelería incluye el TPV por [[n:tienda]] euros al mes sin IVA con [[n:tienda_usuarios]] usuarios y fichaje para [[n:tienda_fichajes]]; con control de stock o varios locales, el plan Almacén con TPV son [[n:almacen_tpv]] euros al mes. Los criterios completos para comparar los recogemos en [cómo elegir un TPV para bares y restaurantes en 2026](/blog/tpv-bares-restaurantes-como-elegir-2026).
 
 ## Preguntas frecuentes sobre gestión de mesas
 

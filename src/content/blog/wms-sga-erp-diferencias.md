@@ -3,7 +3,7 @@ title: "WMS, SGA y ERP: qué es cada uno y en qué se diferencian"
 meta_title: "WMS, SGA y ERP: qué es cada uno y sus diferencias"
 description: "Qué es un WMS, qué es un SGA y qué es un ERP, en qué se diferencian, qué capacidades definen a un WMS de verdad y una tabla comparativa sin humo."
 date: 2026-08-12
-updated: 2026-10-22
+updated: 2026-10-23
 image: "/images/blog/wms-sga-erp-diferencias/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -42,7 +42,7 @@ faq:
     answer: "No gobierna automatismos en tiempo real (transelevadores, clasificadores, robots o AGV) ni sustituye a un ERP de gran corporación con un equipo de consultoría detrás. Para un almacén robotizado hace falta un WMS especializado. Para pymes con operativa manual o semiautomática, un ERP con almacén real cubre el trabajo."
 ---
 
-> **Respuesta corta:** SGA y WMS son lo mismo en dos idiomas (Sistema de Gestión de Almacenes y Warehouse Management System): el software que sabe dónde está cada mercancía, en qué lote y en qué palet, y guía recepción, preparación y expedición. Un ERP es el sistema que gestiona todo el negocio: compras, ventas, stock, facturación y cobros. La diferencia está en el alcance. Un ERP con almacén profundo puede hacer de WMS; un WMS nunca factura.
+> **Respuesta corta:** SGA y WMS son el mismo software con nombre en español y en inglés: sabe dónde está cada mercancía, en qué lote y en qué palet, y guía recepción, preparación y expedición. Un ERP gestiona todo el negocio: compras, ventas, stock, facturación y cobros. La diferencia está en el alcance: un ERP con almacén profundo puede hacer de WMS; un WMS nunca factura.
 
 <div class="my-8 flex justify-center">
   <a href="/software-gestion-almacen" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">

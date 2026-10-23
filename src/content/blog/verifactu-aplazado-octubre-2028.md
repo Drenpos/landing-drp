@@ -3,7 +3,7 @@ title: "Verifactu se aplaza a octubre de 2028: nuevas fechas, por qué y qué ha
 meta_title: "Verifactu aplazado a 2028: nueva fecha y qué hacer ahora"
 description: "Hacienda aplaza Verifactu a octubre de 2028 para todos. Qué está en el BOE y qué no, por qué se alinea con la factura electrónica y qué hacer si ya lo usas."
 date: 2026-10-07
-updated: 2026-10-22
+updated: 2026-10-23
 image: "/images/blog/verifactu/verifactu-cover.webp"
 author:
   name: "Alonso Bermejo Pérez"
@@ -48,7 +48,7 @@ faq:
     answer: "Puede pasar. Es el tercer aplazamiento y Hacienda prevé otra modificación para acercar Verifactu, la factura electrónica y el reporte digital europeo ViDA. Los requisitos de integridad, trazabilidad e inalterabilidad se mantienen, así que adaptarse ahora no es trabajo perdido."
 ---
 
-> El **5 de octubre de 2026** Hacienda anunció que **Verifactu se aplaza a octubre de 2028**, con la misma fecha para sociedades, autónomos y resto de obligados. Es el tercer aplazamiento y busca encajarlo con la **factura electrónica entre empresas**. El real decreto que lo hace oficial **todavía no está en el BOE**, así que sobre el papel siguen valiendo las fechas del RDL 15/2025. Si ya facturas con Verifactu, no desactives nada.
+> **Verifactu se aplaza a octubre de 2028**, con la misma fecha para sociedades, autónomos y resto de obligados, según anunció Hacienda el **5 de octubre de 2026**. El real decreto **todavía no está en el BOE**, así que sobre el papel siguen valiendo las fechas del RDL 15/2025. Si ya facturas con Verifactu, no desactives nada.
 
 > **Estado a 7 de octubre de 2026**
 >
@@ -80,14 +80,14 @@ faq:
 
 <h2 id="nueva-fecha">¿Cuál es la nueva fecha de Verifactu?</h2>
 
-Octubre de 2028, sin día concreto y la misma fecha para todos. Lo dice la nota de Hacienda del 5 de octubre, "Previsión de ampliación del plazo de adaptación de los sistemas informáticos de facturación (SIF)", sobre el reglamento del [Real Decreto 1007/2023](https://www.boe.es/buscar/act.php?id=BOE-A-2023-24840).
+Octubre de 2028, sin día concreto y la misma fecha para todos. Es el tercer aplazamiento y busca encajarlo con la **factura electrónica entre empresas**. Lo dice la nota de Hacienda del 5 de octubre, "Previsión de ampliación del plazo de adaptación de los sistemas informáticos de facturación (SIF)", sobre el reglamento del [Real Decreto 1007/2023](https://www.boe.es/buscar/act.php?id=BOE-A-2023-24840).
 
 | Obligado | Fecha del RDL 15/2025 (vigente en el BOE) | Fecha anunciada el 5/10/2026 |
 | --- | --- | --- |
 | Contribuyentes del Impuesto sobre Sociedades | [1 de enero de 2027](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-24446) | Octubre de 2028 |
 | Autónomos, profesionales y resto de obligados | [1 de julio de 2027](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-24446) | Octubre de 2028 |
 
-Es el tercer aplazamiento. La fecha inicial era el 1 de julio de 2025, el Real Decreto 254/2025 la llevó a 2026 y el [Real Decreto-ley 15/2025](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-24446) (BOE del 3 de diciembre de 2025), a 2027 ([calendario en la AEAT](https://sede.agenciatributaria.gob.es/Sede/iva/sistemas-informaticos-facturacion-verifactu.html)).
+La fecha inicial era el 1 de julio de 2025, el Real Decreto 254/2025 la llevó a 2026 y el [Real Decreto-ley 15/2025](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-24446) (BOE del 3 de diciembre de 2025), a 2027 ([calendario en la AEAT](https://sede.agenciatributaria.gob.es/Sede/iva/sistemas-informaticos-facturacion-verifactu.html)).
 
 <h2 id="por-que">¿Por qué Hacienda aplaza Verifactu otra vez?</h2>
 

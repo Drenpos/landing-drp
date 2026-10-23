@@ -74,7 +74,7 @@ Solo si la empresa lo activa, lo justifica y lo avisa antes por escrito, como pi
 
 En Drenpos la [geolocalización del fichaje](/control-horario#geolocalizacion) viene apagada. Si se enciende, se captura solo en el instante de fichar la entrada y la salida desde el móvil o la web, se ve en un mapa con su radio de precisión y aparece en el informe. No hay seguimiento continuo ni puede haberlo. Dos avisos prácticos: el portal tiene que ir por HTTPS, y en naves, sótanos o cámaras la señal puede fallar; con la opción activa, fallar significa no poder fichar.
 
-![Two workers in a warehouse discussing logistics near a forklift captured from above.](/images/blog/fichar-desde-el-movil-legal-2026/section-1.jpg)
+![Dos operarios hablando junto a una carretilla en un almacén, vistos desde arriba](/images/blog/fichar-desde-el-movil-legal-2026/section-1.jpg)
 
 ## ¿Cómo es la app de fichajes de Drenpos?
 
@@ -82,7 +82,7 @@ Es una app web instalable: no pasa por App Store ni Google Play y funciona en cu
 
 - **Se instala con guía.** La primera vez enseña cómo añadirla a la pantalla de inicio en iPhone y en Android. Se actualiza sola cuando sale una versión nueva.
 - **Estado claro y un botón grande.** Arriba pone en qué estás ("Fichado · Trabajo · desde las 08:02") y abajo hay un botón para entrar o salir. Pide confirmación antes de cerrar la jornada y avisa si se te olvidó cerrarla.
-- **Conceptos en chips.** Trabajo, comida, reunión o los que tenga tu empresa, para pasar de uno a otro y volver.
+- **Conceptos en chips.** Trabajo, comida, reunión o los que tenga tu empresa, para pasar de uno a otro y volver. Para ir a comer no hace falta [desfichar](/blog/que-es-desfichar-como-se-hace) y volver a fichar.
 - **Sin cobertura, sin engaños.** Si el móvil se queda sin señal, lo dice con un aviso, no muestra un estado falso y no cierra la sesión. Donde nunca hay cobertura, lo que ficha sin red es el terminal.
 - **Tarjeta "Hoy".** La jornada que toca, tus incidencias y la petición de corrección de un fichaje.
 
@@ -97,9 +97,9 @@ Pedir vacaciones, ver tus incidencias y corregir un fichaje olvidado, todo con r
 | Corrección de un fichaje | Pide añadir o cambiar una hora | La aprueba o la rechaza, si la empresa lo exige |
 | Calendario | Sus ausencias, festivos y días que no trabaja | Ve el calendario de todo el equipo |
 
-Las [vacaciones y ausencias](/software-vacaciones-ausencias) y el [control de entrada y salida](/control-entrada-salida-empleados) van incluidos en la licencia de fichaje incluida en el plan ([[p:fichaje]] por persona adicional) sin IVA, igual que los turnos rotativos, los festivos por comunidad y la planificación anual del equipo con un PDF del año por trabajador.
+Las [vacaciones y ausencias](/software-vacaciones-ausencias) y el [control de entrada y salida](/control-entrada-salida-empleados) van incluidos en la licencia de fichaje del plan (cada persona adicional, [[p:fichaje]] al mes sin IVA), igual que los turnos rotativos, los festivos por comunidad y la planificación anual del equipo con un PDF del año por trabajador.
 
-![Smiling cashier handles a purchase with a contactless mobile payment in a modern shop.](/images/blog/fichar-desde-el-movil-legal-2026/section-2.jpg)
+![Cajera cobrando a un cliente que paga con el móvil en una tienda](/images/blog/fichar-desde-el-movil-legal-2026/section-2.jpg)
 
 ## ¿Cómo implantar el fichaje móvil sin que se vea como vigilancia?
 

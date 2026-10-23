@@ -3,6 +3,7 @@ title: "DeCA y eCMR: diferencias, cuándo se usa cada uno y si uno sustituye al 
 meta_title: "DeCA vs eCMR: diferencias y cuándo usar cada uno"
 description: "DeCA y eCMR no son lo mismo: uno es control administrativo interior y el otro carta de porte internacional. Norma, firma, cuándo se usa cada uno y el eFTI."
 date: 2026-10-17
+updated: 2026-10-23
 image: "/images/blog/preparacion-de-pedidos-picking-almacen/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -39,7 +40,7 @@ faq:
     answer: "El Reglamento (UE) 2020/1056, conocido como eFTI, obliga a las autoridades a aceptar la información de transporte en formato electrónico a través de plataformas certificadas a partir de julio de 2027. La Resolución de 5 de junio de 2026 dice que si los datos del DeCA se presentan con el esquema eFTI, no hace falta presentar el DeCA en el formato que ella describe."
 ---
 
-> **DeCA** y **eCMR** no son lo mismo. El DeCA es un documento **administrativo** para el transporte público de mercancías **dentro de España**, obligatorio en digital desde el **5 de octubre de 2026**. El eCMR es la **carta de porte electrónica** del Convenio CMR, el documento del **contrato** de transporte **internacional**, y en España es **voluntario**. Uno no sustituye al otro, aunque en un envío nacional el formato CMR puede servir como DeCA si lleva todos los datos.
+> **DeCA** y **eCMR** no son lo mismo. El DeCA es un documento **administrativo** para el transporte público de mercancías **dentro de España**, obligatorio en digital desde el **5 de octubre de 2026**. El eCMR es la **carta de porte electrónica** del Convenio CMR para el transporte **internacional**, y en España es **voluntario**. Uno no sustituye al otro.
 
 <div class="my-8 flex justify-center">
   <a href="/documento-control-transporte-deca" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
@@ -47,7 +48,7 @@ faq:
   </a>
 </div>
 
-Con el DeCA en vigor, muchos proveedores venden "DeCA y eCMR" en el mismo paquete y es fácil acabar pensando que son dos nombres de lo mismo. No lo son. Responden a normas distintas, sirven a personas distintas (la inspección en un caso, las partes del contrato en el otro) y se aplican a transportes distintos. Si mueves mercancía solo por España, lo que te piden es el DeCA. Si cruzas fronteras, otra cosa. Vamos con el detalle.
+Con el DeCA en vigor, muchos proveedores venden "DeCA y eCMR" en el mismo paquete y es fácil acabar pensando que son dos nombres de lo mismo. No lo son. Responden a normas distintas, sirven a personas distintas (la inspección en un caso, las partes del contrato en el otro) y se aplican a transportes distintos. Si mueves mercancía solo por España, lo que te piden es el DeCA; en un envío nacional, el formato CMR puede servir como DeCA si lleva todos los datos. Si cruzas fronteras, se usa el CMR.
 
 ## ¿Qué es el DeCA?
 

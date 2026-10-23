@@ -1,8 +1,9 @@
 ---
 title: "Sobre Drenpos: la startup extremeña detrás del ERP que habla en idioma pyme"
 meta_title: "Sobre Drenpos | Startup ENISA de software para pymes"
-description: "Drenpos es una startup extremeña certificada por ENISA que desarrolla un ERP modular en la nube para pymes y autónomos: almacén, TPV, facturación Verifactu y control horario con soporte humano."
+description: "Drenpos es una startup extremeña certificada por ENISA que hace un ERP modular en la nube para pymes: almacén, TPV, facturación Verifactu y control horario."
 date: 2026-07-17
+updated: 2026-07-17
 image: "/images/blog/about/DRP-WEB.webp"
 categories: ["Empresa", "Tecnología", "Servicios"]
 

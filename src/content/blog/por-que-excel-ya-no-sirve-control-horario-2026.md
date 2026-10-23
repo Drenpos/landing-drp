@@ -61,9 +61,9 @@ Porque no guarda quién cambió una celda, cuándo ni qué ponía antes. Un insp
 
 ## ¿Cuánto cuesta de verdad el Excel?
 
-Más de lo que parece. Piensa en una distribuidora de 12 personas: el encargado dedica cada semana un par de horas a pasar fichajes en papel a la hoja, cuadrar versiones y preparar lo que va a la gestoría. Son unas 100 horas al año, más los errores en nóminas y las discusiones por horas extra que nadie puede probar.
+Más de lo que parece. Pongamos una distribuidora de 12 personas: el encargado dedica cada semana un par de horas a pasar fichajes en papel a la hoja, cuadrar versiones y preparar lo que va a la gestoría. Son unas 100 horas al año, más los errores en nóminas y las discusiones por horas extra que nadie puede probar.
 
-![A diverse group of colleagues using mobile devices in an office setting.](/images/blog/por-que-excel-ya-no-sirve-control-horario-2026/section-1.jpg)
+![Compañeros de trabajo consultando el móvil en una oficina](/images/blog/por-que-excel-ya-no-sirve-control-horario-2026/section-1.jpg)
 
 A eso súmale el riesgo: la infracción grave por no llevar bien el registro se sanciona hoy con 751 a 7.500 euros por infracción. Las versiones conocidas del real decreto plantean hasta 10.000 euros por trabajador afectado, aunque no está en vigor. El detalle está en [multas del registro horario](/blog/multas-registro-horario-2026-costo-incumplimiento).
 
@@ -86,7 +86,7 @@ En Drenpos las [vacaciones y ausencias](/software-vacaciones-ausencias) van dent
 
 Es el tercero y el más traicionero cuando hay turnos rotativos. Un 4x4 o un 6/3 no cabe en una semana, así que la hoja se rehace cada mes, los festivos se cruzan a ojo y nadie sabe cuántas horas esperadas tiene cada persona. Con dos personas que se turnan sobre el mismo puesto, el error está garantizado.
 
-![Two businessmen analyze financial documents during a meeting, focusing on data trends and performance.](/images/blog/por-que-excel-ya-no-sirve-control-horario-2026/section-2.jpg)
+![Dos hombres revisando documentos con gráficos en una reunión](/images/blog/por-que-excel-ya-no-sirve-control-horario-2026/section-2.jpg)
 
 Con [calendarios rotativos](/software-turnos-rotativos) defines una vez el ciclo (días de trabajo, días de descanso, horario) y el primer día de cada persona, y el sistema lo aplica solo: horas esperadas, horas extra y vacaciones que no gastan días de descanso. Los festivos nacionales, autonómicos y locales se descuentan solos. La planificación anual del equipo enseña quién trabaja cada día y descarga un PDF del año por trabajador, el documento que antes salía de tres hojas distintas. Si trabajas en una nave o un almacén, mira también [control horario en almacenes y naves con turnos](/blog/control-horario-almacenes-naves-turnos).
 

@@ -1,9 +1,9 @@
 ---
 title: "Cuánto cuesta un SGA para una pyme en 2026: licencia, implantación y hardware"
 meta_title: "Cuánto cuesta un SGA o WMS para pymes en 2026"
-description: "Precio real de un software de gestión de almacén para pymes: licencias, implantación, pistolas e impresoras, mantenimiento y coste oculto de no tenerlo. Con rangos de mercado y el desglose de Drenpos."
+description: "Precio real de un SGA o software de gestión de almacén para pymes: licencia, implantación, pistolas e impresoras, mantenimiento y el coste de no tenerlo."
 date: 2026-09-03
-updated: 2026-10-22
+updated: 2026-10-23
 image: "/images/blog/cuanto-cuesta-sga-wms-pyme-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -38,7 +38,7 @@ faq:
     answer: "Para una pyme con almacén no robotizado, casi siempre. Un WMS separado exige licencia propia, proyecto de integración con el ERP y mantenimiento de dos sistemas. Un ERP con almacén real evita la integración porque el stock, el lote y el palet viven junto a las compras, las ventas y las facturas."
 ---
 
-> Un SGA para una pyme cuesta lo que suman cuatro partidas: la licencia mensual, la implantación, el hardware de la nave y el mantenimiento. En el mercado español, casi la mitad de los proyectos de SGA tradicional se implantan por entre 10.000 y 30.000 euros, mientras que las pequeñas empresas que eligen software en la nube gastan menos de 1.000 euros en la puesta en marcha. En Drenpos el almacén va dentro del plan Almacén, [[n:almacen]] euros al mes sin IVA, con soporte y actualizaciones incluidos, y el hardware puede ser tu propio móvil el primer día.
+> Un SGA en la nube para una pyme arranca con menos de 1.000 euros de puesta en marcha más una cuota mensual; un SGA tradicional se implanta por entre 10.000 y 30.000 euros en casi la mitad de los proyectos. A eso se suman el hardware de la nave y el mantenimiento. En Drenpos el almacén va dentro del plan Almacén, [[n:almacen]] euros al mes sin IVA, con soporte y actualizaciones incluidos, y el hardware puede ser tu propio móvil el primer día.
 
 <div class="my-8 flex justify-center">
   <a href="/pricing" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
@@ -48,11 +48,11 @@ faq:
 
 ## ¿Cuánto cuesta un SGA en el mercado español?
 
-Los datos públicos dibujan dos mundos. En el SGA tradicional, con proyecto de consultoría y despliegue en servidor, la implantación se lleva la mayor parte del presupuesto. Según el informe de Softdoit sobre 36 proveedores que recoge [AcaciaTec](https://acaciatec.com/como-elegir-un-software-sga-y-cuanto-cuesta/), el 47,2% de los proyectos cuesta entre 10.000 y 30.000 euros, el 22,2% entre 50.000 y 100.000 euros y el 13,9% supera los 100.000 euros, incluyendo consultoría y formación.
+Los datos públicos separan dos tipos de proyecto. En el SGA tradicional, con proyecto de consultoría y despliegue en servidor, la implantación se lleva la mayor parte del presupuesto. Según el informe de Softdoit sobre 36 proveedores que recoge [AcaciaTec](https://acaciatec.com/como-elegir-un-software-sga-y-cuanto-cuesta/), el 47,2% de los proyectos cuesta entre 10.000 y 30.000 euros, el 22,2% entre 50.000 y 100.000 euros y el 13,9% supera los 100.000 euros, incluyendo consultoría y formación.
 
 En el otro extremo está el software en la nube. La comparativa de precios de [Cleverals](https://www.cleverals.com/es/precios/software-gestion/almacenes/) sitúa el rango general de implantación entre 375 y 74.050 euros, con un valor más habitual de 3.750 euros, y detalla que el 53% de las microempresas invierte menos de 500 euros en la puesta en marcha y el 67% arranca en menos de un mes. En pequeñas empresas de 4 a 19 trabajadores, el tramo más frecuente de inversión inicial es de 500 a 1.000 euros.
 
-La lección es sencilla: el precio no lo marca el software, lo marca el tipo de proyecto. Un almacén no robotizado de una pyme no necesita el primer mundo. Si aún dudas entre siglas, en [diferencia entre WMS y ERP](/blog/wms-sga-erp-diferencias) explicamos qué resuelve cada sistema.
+La lección es sencilla: el precio no lo marca el software, lo marca el tipo de proyecto. Un almacén no robotizado de una pyme no necesita un proyecto de consultoría. Si aún dudas entre siglas, en [diferencia entre WMS y ERP](/blog/wms-sga-erp-diferencias) explicamos qué resuelve cada sistema.
 
 ## ¿Qué incluye la licencia y qué letra pequeña hay que mirar?
 
@@ -64,7 +64,7 @@ La licencia es la parte visible. En un SaaS debería incluir el uso del sistema,
 - ¿Hay límite de transacciones, almacenes o referencias? Un límite bajo se convierte en un cambio de plan forzoso.
 - ¿Las mejoras se cobran aparte? Algunos proveedores venden cada módulo nuevo como una ampliación.
 
-En Drenpos el módulo de Inventario cuesta incluido en el plan Almacén ([[n:almacen]] euros al mes, [[n:almacen_usuarios]] usuarios) y con TPV ([[n:almacen_tpv]] euros al mes, 3 usuarios). El usuario adicional cuesta [[n:usuario]] euros al mes. No hay coste por volumen de datos ni por movimientos, y las actualizaciones llegan gratis a todos los planes. El detalle está en [precios](/pricing).
+En Drenpos el módulo de Inventario va incluido en el plan Almacén ([[n:almacen]] euros al mes, [[n:almacen_usuarios]] usuarios) y con TPV ([[n:almacen_tpv]] euros al mes, 3 usuarios). El usuario adicional cuesta [[n:usuario]] euros al mes. No hay coste por volumen de datos ni por movimientos, y las actualizaciones llegan gratis a todos los planes. El detalle está en [precios](/pricing).
 
 ## ¿Cuánto cuesta la implantación de un SGA?
 

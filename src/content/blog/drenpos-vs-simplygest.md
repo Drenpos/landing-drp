@@ -1,9 +1,9 @@
 ---
 title: "Drenpos o SimplyGest: comparativa para pymes con almacén (2026)"
 meta_title: "Drenpos vs SimplyGest: comparativa para pymes (2026)"
-description: "SimplyGest Desktop y Cloud frente a Drenpos según sus webs a 20 de octubre de 2026: lotes, TPV, control horario, Verifactu, pago único o cuota y para quién encaja cada uno."
+description: "Drenpos o SimplyGest Desktop y Cloud según sus webs a 20/10/2026: lotes, TPV, control horario, Verifactu, pago único o cuota y para quién encaja cada uno."
 date: 2026-10-20
-updated: 2026-10-22
+updated: 2026-10-23
 image: "/images/blog/erp-para-pymes-vs-excel/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -35,9 +35,9 @@ faq:
     answer: "En SimplyGest Verifactu es un complemento que, según su blog técnico, una vez activado no se puede desactivar; en Desktop Premium con pago anual figura incluido. En Drenpos Verifactu va en todos los planes desde el primero, el de Facturación, sin activarlo ni pagarlo aparte."
 ---
 
-SimplyGest lleva muchos años en tiendas y pequeños negocios de España, y es raro el comercio que no lo ha tenido instalado alguna vez. Lo que mucha gente no sabe es que hoy son dos productos del mismo fabricante: Desktop, un programa de gestión y TPV para Windows que se puede pagar una vez o por cuota, y Cloud, la versión web por suscripción. No hacen lo mismo, y eso conviene tenerlo presente al leer cualquier comparativa.
+Si quieres un programa en tu PC, pagado una vez y con un stock sencillo, SimplyGest Desktop te va a encajar; si tu almacén tiene lotes, ubicaciones o caducidades, o trabajáis desde varios sitios, mira Drenpos. SimplyGest son hoy dos productos del mismo fabricante que no hacen lo mismo: Desktop, un programa de gestión y TPV para Windows que se puede pagar una vez o por cuota, y Cloud, la versión web por suscripción.
 
-Drenpos es el ERP web que hacemos nosotros. Lo construimos alrededor del almacén (lotes, ubicaciones, pistola, FEFO) y encima pusimos el TPV de tienda y hostelería, los fichajes con terminal propio y la producción, todo por planes cerrados. Si quieres un programa en tu PC, pagado una vez y con un stock sencillo, SimplyGest Desktop te va a encajar. Si tu almacén tiene lotes, ubicaciones o caducidades, o trabajáis desde varios sitios, mira Drenpos.
+SimplyGest lleva muchos años en tiendas y pequeños negocios de España, y es raro el comercio que no lo ha tenido instalado alguna vez. Drenpos es el ERP web que hacemos nosotros. Lo construimos alrededor del almacén (lotes, ubicaciones, pistola, FEFO) y encima pusimos el TPV de tienda y hostelería, los fichajes con terminal propio y la producción, todo por planes cerrados.
 
 Los datos de SimplyGest están sacados el 20 de octubre de 2026 de sus páginas de [precios](https://simplygest.es/precios.html), [Desktop](https://simplygest.es/desktop.html), [Cloud](https://simplygest.es/cloud.html), [características de Cloud](https://simplygest.es/caracteristicas-cloud.html), [módulos](https://simplygest.es/sgmodu.html) y [configuración de Verifactu](https://simplygest.es/blogtecnico/requisitos-y-configuracion-de-verifactu-en-simplygest/). Cuando pongo "no consta" quiere decir que no lo anuncian ahí. Los precios de Drenpos son los que aplicamos desde noviembre de 2026. Esto lo escribimos en Drenpos, así que tenlo en cuenta, aunque más abajo verás que SimplyGest tiene cosas que nosotros no ofrecemos, empezando por el pago único con el programa en tu ordenador.
 
@@ -142,7 +142,7 @@ No vendemos licencias de pago único ni un programa instalado en Windows. Tampoc
 - Bar o restaurante que además lleva almacén: Drenpos, por el TPV de hostelería.
 - Obrador o taller que trabaja desde varios sitios: Drenpos, por la [producción](/software-produccion-fabricacion) en web.
 
-Si quieres ver también Holded, Odoo, Sage 50 y STEL Order en la misma tabla, está todo en la comparativa de [software de gestión para pymes con almacén](/blog/comparativa-software-gestion-pymes-almacen-2026).
+Si quieres ver también Holded, Odoo, Sage 50 y STEL Order en la misma tabla, está todo en la comparativa de [software de gestión para pymes con almacén](/blog/comparativa-software-gestion-pymes-almacen-2026). Otras comparativas: [Drenpos o Holded](/blog/drenpos-vs-holded), [Drenpos o Sage 50](/blog/drenpos-vs-sage-50), [Drenpos o STEL Order](/blog/drenpos-vs-stel-order) y [Drenpos u Odoo](/blog/drenpos-vs-odoo).
 
 <div class="my-8 flex justify-center">
   <a href="/software-almacen-tienda" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">

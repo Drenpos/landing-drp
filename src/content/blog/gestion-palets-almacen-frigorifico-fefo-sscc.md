@@ -1,8 +1,9 @@
 ---
 title: "Cómo gestionar palets en un almacén frigorífico: FEFO, lotes y SSCC"
 meta_title: "Gestión de palets en almacén frigorífico: FEFO, lotes y SSCC"
-description: "Cómo montar, etiquetar, mover y deshacer palets en un almacén de congelados sin perder el lote ni la caducidad: SSCC, FEFO, pesado, palets mixtos y mercancía de terceros."
+description: "Cómo montar, etiquetar, mover y deshacer palets en un almacén frigorífico sin perder lote ni caducidad: SSCC, FEFO, pesado, palets mixtos y depósito ajeno."
 date: 2026-09-03
+updated: 2026-10-23
 image: "/images/blog/gestion-palets-almacen-frigorifico-fefo-sscc/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -38,7 +39,7 @@ faq:
     answer: "Una etiqueta logística GS1-128 con el código SSCC de 18 dígitos y, si el palet es homogéneo, el GTIN del producto, el lote, la fecha de caducidad y las unidades con sus identificadores de aplicación. La etiqueta se imprime en rollo o A4 y se coloca en dos caras adyacentes del palet."
 ---
 
-> En un almacén frigorífico el palet no es un montón de cajas: es la unidad de trabajo. Gestionarlo bien significa darle una matrícula SSCC al montarlo, registrar su contenido con lote y caducidad, cerrarlo y pesarlo con bruto, tara y neto, moverlo entero con un escaneo y deshacerlo sin perder la traza. Con FEFO, las salidas se ordenan por fecha de caducidad y no por fecha de entrada. Y si el palet es de un cliente, el propietario viaja con él desde el primer minuto.
+> Para gestionar palets en un almacén frigorífico hay que darle a cada uno una matrícula SSCC al montarlo, registrar su contenido con lote y caducidad, cerrarlo y pesarlo con bruto, tara y neto, moverlo entero con un escaneo y deshacerlo sin perder la traza. Con FEFO, las salidas se ordenan por fecha de caducidad y no por fecha de entrada. Y si el palet es de un cliente, el propietario viaja con él desde el primer minuto.
 
 <div class="my-8 flex justify-center">
   <a href="/software-gestion-palets" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">

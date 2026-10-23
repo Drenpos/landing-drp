@@ -3,7 +3,7 @@ title: "Software de almacén frigorífico y congelados: guía completa"
 meta_title: "Software almacén frigorífico y congelados"
 description: "Cómo elegir un software de almacén frigorífico: FEFO, lotes, palets con etiqueta SSCC, depósito de terceros y operativa a pie de cámara desde móvil."
 date: 2026-08-12
-updated: 2026-10-22
+updated: 2026-10-23
 image: "/images/blog/software-almacen-frigorifico-congelados/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -41,14 +41,14 @@ faq:
 > Un software de almacén frigorífico es un sistema que gestiona stock perecedero por lotes y fechas de caducidad, con salidas FEFO, palets identificados con etiqueta SSCC y trazabilidad completa para un recall. A diferencia de un almacén seco, aquí el hueco cuesta energía, la mercancía tiene fecha de muerte y el operario trabaja con guantes a temperatura negativa. Por eso la operativa debe hacerse escaneando desde móvil o tablet dentro de la cámara, no apuntando en papel para pasarlo luego.
 
 <div class="my-8 flex justify-center">
-  <a href="/contact" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
+  <a href="/software-almacen-frigorifico" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
     Ver Drenpos para almacén frigorífico
   </a>
 </div>
 
 ## ¿Qué diferencia un almacén frigorífico de uno seco?
 
-La diferencia no es solo la temperatura. En un almacén frigorífico el hueco tiene un coste energético continuo, la mercancía lleva una fecha de caducidad que la convierte en pérdida si se pasa, y el operario trabaja con guantes, con las manos ocupadas y con prisa por no romper la cadena de frío. Todo eso obliga a que el sistema sea rápido, escaneable y tolerante al entorno.
+Además de la temperatura, en un almacén frigorífico el hueco tiene un coste energético continuo, la mercancía lleva una fecha de caducidad que la convierte en pérdida si se pasa, y el operario trabaja con guantes, con las manos ocupadas y con prisa por no romper la cadena de frío. Todo eso obliga a que el sistema sea rápido, escaneable y tolerante al entorno.
 
 ![Diagrama del recorrido de la mercancía en un almacén frigorífico: recepción, paletizado con etiqueta SSCC, ubicación en cámara, picking FEFO y expedición](/images/blog/software-almacen-frigorifico-congelados/figura-1.png)
 
@@ -88,7 +88,7 @@ El marco europeo de referencia es el Reglamento (CE) 178/2002 de trazabilidad al
 
 Aporta que la unidad de trabajo deje de ser la caja y pase a ser el palet. Con una etiqueta SSCC del estándar GS1, cada palet tiene un identificador único y se mueve entero con un solo escaneo, aunque dentro lleve varios productos y varios lotes mezclados. En un frigorífico eso significa menos tiempo con la puerta abierta y menos manipulación de mercancía congelada.
 
-En Drenpos cada palet nace con su etiqueta SSCC imprimible, con ciclo de vida definido —abierto, cerrado y pesado con bruto, tara y neto, expedido o anulado— y permisos por paso. Una vista global responde a la pregunta de siempre: dónde está este lote. El formato, en [la etiqueta SSCC GS1 para palets](/blog/etiqueta-sscc-gs1-palets).
+En Drenpos cada palet nace con su etiqueta SSCC imprimible, con ciclo de vida definido (abierto, cerrado y pesado con bruto, tara y neto, expedido o anulado) y permisos por paso. Una vista global responde a la pregunta de siempre: dónde está este lote. El formato, en [la etiqueta SSCC GS1 para palets](/blog/etiqueta-sscc-gs1-palets).
 
 El despaletizado se resuelve en tres gestos: vaciar a una ubicación, pasar mercancía a otro palet o partir un palet en varios nuevos que nacen cargados y con sus etiquetas impresas. Desde septiembre de 2026, además, cada palet propio guarda el origen de cada línea y el sistema avisa si alguien intenta modificar un palet ya cerrado. La operativa completa del palet, del montaje a la expedición, la explicamos en [software de gestión de palets](/software-gestion-palets) y, aplicada al frío, en [cómo gestionar palets en un almacén frigorífico](/blog/gestion-palets-almacen-frigorifico-fefo-sscc).
 

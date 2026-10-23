@@ -1,9 +1,9 @@
 ---
 title: "VERI*FACTU: qué es, a quién afecta y cómo adaptarte antes de octubre de 2028"
-meta_title: "VERI*FACTU: guía para pymes y autónomos con las fechas de 2028"
-description: "VERI*FACTU se aplaza a octubre de 2028 (anunciado, pendiente del BOE). Qué es, diferencias con el modo no verificable, QR y leyenda, sanciones y plan de adaptación en 10 pasos."
+meta_title: "VERI*FACTU para pymes y autónomos: guía y fechas de 2028"
+description: "VERI*FACTU se aplaza a octubre de 2028, pendiente del BOE. Qué es, diferencias con el modo no verificable, QR y leyenda, sanciones y adaptación en 10 pasos."
 date: 2026-05-04
-updated: 2026-10-07
+updated: 2026-10-23
 image: "/images/blog/verifactu/verifactu-cover.webp"
 author:
   name: "Alonso Bermejo Pérez"
@@ -14,7 +14,7 @@ featured: false
 draft: false
 hero:
   title: "VERI*FACTU: guía completa de adaptación antes de octubre de 2028"
-  description: "Todo lo que necesitas saber para cumplir con VERI*FACTU sin sanciones"
+  description: "Qué es, a quién afecta, qué lleva la factura y cómo adaptarte paso a paso"
 faq:
   - question: "¿Qué es VERI*FACTU y desde cuándo es obligatorio?"
     answer: "VERI*FACTU es la modalidad del Real Decreto 1007/2023 en la que tu software de facturación remite en línea a la AEAT todos los registros de facturación. Hacienda anunció el 5 de octubre de 2026 que la obligación pasa a octubre de 2028 para todos los obligados, pendiente de publicación en el BOE. Hasta entonces, el Real Decreto-ley 15/2025 marcaba el 1 de enero de 2027 para las empresas sujetas al Impuesto sobre Sociedades y el 1 de julio de 2027 para autónomos y resto de obligados. Las facturas llevan QR y la leyenda VERI*FACTU si se remiten todos los registros."
@@ -28,7 +28,7 @@ faq:
     answer: "Sí. Drenpos opera exclusivamente en modalidad VERI*FACTU: genera el QR y la leyenda correctos, remite los registros a la AEAT y ofrece un panel de control de remisiones. La declaración responsable del software está publicada y accesible desde la propia web."
 ---
 
-> **VERI\*FACTU** es el sistema de facturación que **remite en línea a la AEAT** todos tus registros de facturación. Hacienda anunció el 5 de octubre de 2026 que la obligación se aplaza a **octubre de 2028** para todos, aunque el real decreto **aún no está en el BOE**: hasta entonces, el **Real Decreto-ley 15/2025** marcaba el **1 de enero de 2027** para las sociedades y el **1 de julio de 2027** para autónomos y resto de obligados. Las facturas deben llevar **QR** y la leyenda **"VERI\*FACTU"** solo si remites todos los registros. Las sanciones por software no conforme pueden llegar a **150.000 €** por ejercicio para quien lo fabrica y a **50.000 €** para quien lo usa. Te mostramos por qué te conviene operar en **modo VERI\*FACTU** y cómo adaptarte en 10 pasos.
+> **VERI\*FACTU** es la modalidad en la que tu programa de facturación **remite en línea a la AEAT** todos los registros de facturación. Hacienda anunció el 5 de octubre de 2026 que será obligatorio en **octubre de 2028** para todos, pero mientras el real decreto no salga en el BOE rigen las fechas del **Real Decreto-ley 15/2025**: **1 de enero de 2027** para sociedades y **1 de julio de 2027** para el resto.
 
 > **Aviso:** Verifactu se aplaza a octubre de 2028. Te contamos las nuevas fechas, el motivo y qué hacer en [Verifactu se aplaza a octubre de 2028](/blog/verifactu-aplazado-octubre-2028).
 
@@ -42,20 +42,22 @@ faq:
   </a>
 </div>
 
+Las facturas llevan **QR** y la leyenda **"VERI\*FACTU"** solo si remites todos los registros. Las sanciones por software no conforme llegan a **150.000 €** por ejercicio para quien lo fabrica y a **50.000 €** para quien lo usa. Abajo tienes las diferencias con el modo no verificable y cómo adaptarte en 10 pasos.
+
 Si lo que buscas es la ficha del producto y no la normativa, la tienes en la página de [software de facturación Verifactu](/software-verifactu), con lo que incluye, el precio y las preguntas más habituales.
 
 ## Índice
 
-- [Qué es VERI\*FACTU (versión clara y sin tecnicismos)](#que-es)
+- [Qué es VERI\*FACTU](#que-es)
 - [¿A quién afecta y desde cuándo?](#a-quien-afecta)
 - [VERI\*FACTU vs "no verificable": pros y contras](#comparativa)
 - [Requisitos clave: QR y leyenda «VERI\*FACTU»](#qr)
 - [Sanciones y riesgos de incumplir](#sanciones)
 - [Cómo adaptarte con seguridad (checklist en 10 pasos)](#checklist)
 - [Preguntas frecuentes](#faqs)
-- [Conclusión y siguiente paso](#conclusion)
+- [Siguiente paso](#conclusion)
 
-<h2 id="que-es">Qué es VERI*FACTU (versión clara y sin tecnicismos)</h2>
+<h2 id="que-es">Qué es VERI*FACTU</h2>
 
 **VERI\*FACTU** es una de las dos modalidades admitidas por el reglamento de sistemas informáticos de facturación (SIF):
 
@@ -64,7 +66,7 @@ Si lo que buscas es la ficha del producto y no la normativa, la tienes en la pá
 
 > La AEAT ofrecerá además un **aplicativo web de último recurso** (también VERI\*FACTU) para quienes no dispongan de SIF propio.
 
-En Drenpos operamos con un enfoque de **cumplimiento por diseño** y priorizamos la emisión verificable (VERI\*FACTU) por su simplicidad operativa y por reducir riesgos de custodia y trazabilidad frente a la alternativa "no verificable".
+En Drenpos facturamos en modalidad VERI\*FACTU porque es más sencilla de operar y deja menos custodia y trazabilidad a cargo de la empresa que la alternativa "no verificable".
 
 <h2 id="a-quien-afecta">¿A quién afecta y desde cuándo?</h2>
 
@@ -88,10 +90,10 @@ En Drenpos operamos con un enfoque de **cumplimiento por diseño** y priorizamos
 
 | Modalidad          | ¿Qué hace el sistema?                                                                                            | Pros claros                                                                                                                                                               | Contras / Riesgos                                                                                                                                                                                        |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **VERI\*FACTU**    | **Remite** los registros de facturación a la AEAT de forma **continua, segura, automática e instantánea**.       | Menos requisitos técnicos (no exige firma de registros), menos carga de custodia, menos requerimientos posteriores, más tranquilidad y menor coste total de cumplimiento. | Dependes de conexión y de reenviar si hay incidencias (se contempla envío diferido sin parar la facturación).                                                                                            |
+| **VERI\*FACTU**    | **Remite** los registros de facturación a la AEAT de forma **automática**, factura a factura.                    | Menos requisitos técnicos (no exige firma de registros), menos carga de custodia y menos requerimientos posteriores. | Dependes de conexión y de reenviar si hay incidencias (se contempla envío diferido sin parar la facturación).                                                                                            |
 | **No verificable** | **No remite** registros; **conserva** todo localmente cumpliendo integridad, inalterabilidad, trazabilidad, etc. | Evita envío en tiempo real (para casos muy específicos).                                                                                                                  | **Más requisitos técnicos** (registro de eventos, firmas, encadenamiento, exportaciones, verificaciones), **más responsabilidad de custodia** y **más exposición a requerimientos** y a errores humanos. |
 
-> En Drenpos apostamos por **VERI\*FACTU** por coherencia con la guía de la AEAT y para reducir fricción operativa y riesgos de auditoría. (Nuestros entornos están configurados **solo en modo VERI\*FACTU** para garantizar uniformidad de cumplimiento.)
+> En Drenpos todos los entornos están configurados **solo en modo VERI\*FACTU**.
 
 <div class="my-8 flex justify-center">
   <a href="/contact" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
@@ -152,9 +154,9 @@ Sí. En VERI\*FACTU, las **comunicas a la AEAT** igualmente.
 **¿Quién tiene que estar adaptado y cuándo?**  
 Hacienda anunció el 5 de octubre de 2026 que **todos** (sociedades, autónomos y resto de obligados) tendrán hasta **octubre de 2028**, pendiente de publicación en el BOE. Hasta entonces, el Real Decreto-ley 15/2025 marcaba el 1 de enero de 2027 para las **sociedades** y el 1 de julio de 2027 para **autónomos y resto**. Lo explicamos en [Verifactu se aplaza a octubre de 2028](/blog/verifactu-aplazado-octubre-2028). Los fabricantes y comercializadores de software ya deben ofrecer sistemas conformes con su declaración responsable.
 
-<h2 id="conclusion">Conclusión y siguiente paso</h2>
+<h2 id="conclusion">Siguiente paso</h2>
 
-Si quieres minimizar riesgos de sanción, evitar requerimientos y simplificar la operativa, VERI*FACTU es la **vía más directa**: menos fricción técnica que el "no verificable" y menos carga de custodia, con una relación más fluida con la AEAT. En Drenpos te acompañamos con un entorno configurado solo en modalidad VERI*FACTU, QR y leyenda correctos, y panel de control de remisiones.
+Para una pyme, VERI*FACTU es la **vía más directa**: menos requisitos técnicos que el "no verificable" y menos carga de custodia. Drenpos factura solo en modalidad VERI*FACTU, con QR y leyenda correctos y un panel de control de remisiones.
 
 Siguiente paso: revisa la página del [software de facturación Verifactu](/software-verifactu) para ver qué incluye y cuánto cuesta, y pide una demo desde allí.
 
@@ -163,14 +165,6 @@ Siguiente paso: revisa la página del [software de facturación Verifactu](/soft
     Activar VERI*FACTU en Drenpos
   </a>
 </div>
-
----
-
-### Enlaces internos recomendados
-
-- [Software de facturación Verifactu de Drenpos](/software-verifactu)
-- [Solicita tu demo de VERI\*FACTU](/contact)
-- [¿Tienes dudas? Contacta con nuestro equipo VERI\*FACTU](/contact) <!-- - [Obligaciones fiscales para autónomos en 2025](/blog/obligaciones-fiscales-autonomos) -->
 
 ## Preguntas frecuentes sobre VERI*FACTU
 

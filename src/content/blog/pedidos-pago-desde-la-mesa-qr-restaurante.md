@@ -1,9 +1,9 @@
 ---
 title: "Pedidos y pago desde la mesa con QR: cómo funciona y qué cambia en sala"
 meta_title: "Pedidos y pago desde la mesa con QR en restaurantes"
-description: "Cómo funciona pedir y pagar desde la mesa con un QR, qué cambia para camareros y cocina, cuándo compensa y qué requisitos técnicos hacen falta para que no se convierta en un lío."
+description: "Cómo funciona pedir y pagar desde la mesa con QR, qué cambia para camareros y cocina, cuándo compensa y qué requisitos técnicos hacen falta en un restaurante."
 date: 2026-09-10
-updated: 2026-10-22
+updated: 2026-10-23
 image: "/images/blog/pedidos-pago-desde-la-mesa-qr-restaurante/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -82,7 +82,7 @@ También aparece una tarea nueva: vigilar la pantalla de pedidos entrantes. Algu
 
 ## ¿Qué cambia para la cocina?
 
-Menos de lo que parece, si está bien montado. Las comandas llegan a la misma pantalla, con el mismo formato y el mismo código de mesa. Para el cocinero no debería haber diferencia entre una comanda tecleada por un camarero y otra pedida por el cliente.
+Poco, si está bien montado. Las comandas llegan a la misma pantalla, con el mismo formato y el mismo código de mesa. Para el cocinero no debería haber diferencia entre una comanda tecleada por un camarero y otra pedida por el cliente.
 
 Lo que sí cambia es el ritmo de entrada. Con camareros, los pedidos llegan en oleadas: alguien recorre cuatro mesas y las manda juntas. Con pedido desde la mesa, entran de forma más continua y a veces en el peor momento. Eso se gestiona con horarios de cocina en la carta y con la posibilidad de pausar los pedidos entrantes cuando el pase está saturado.
 
@@ -120,7 +120,7 @@ Cuatro piezas, y las cuatro tienen que estar antes de encender nada.
 
 ## ¿Qué está disponible hoy en Drenpos?
 
-Aquí toca ser claro, porque es fácil vender humo con esto. El estado real, a septiembre de 2026:
+El estado real, a septiembre de 2026:
 
 **Ya funciona.** El QR de mesa, único por local o por mesa, imprimible desde el sistema, con panel de analítica de escaneos (totales y únicos por día, hora, día de la semana, mesa, dispositivo, país y carta servida). El TPV de restaurante con [mapa de sala, mesas virtuales y cobro mixto](/blog/gestion-mesas-restaurante-mapa-sala). Las pantallas de cocina y barra con reparto por familias y código de mesa. El stock descontado en cada venta, el cierre de caja con desglose por método de pago y Verifactu en cada ticket.
 

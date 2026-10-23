@@ -1,8 +1,9 @@
 ---
 title: "Desarrollo de software en drenpos"
-meta_title: "Desarrollo de software en drenpos | Soluciones a medida"
-description: "Ofrecemos desarrollo de software personalizado para empresas en España. Nuestras soluciones innovadoras impulsan el crecimiento y la eficiencia de su negocio."
+meta_title: "Desarrollo de software a medida para pymes | drenpos"
+description: "Cómo trabajamos el desarrollo de software a medida en drenpos: análisis de requisitos, ciclos cortos, pruebas, mantenimiento y tecnologías que usamos."
 date: 2024-08-27
+updated: 2026-10-23
 image: "/images/blog/desarrollo-de-software/desarrollo-de-software.webp"
 author:
   name: "Alonso Bermejo Pérez"
@@ -13,92 +14,60 @@ featured: false
 draft: false
 hero:
   title: "Desarrollo de software en drenpos"
-  description: "Soluciones innovadoras para impulsar el crecimiento de tu empresa"
+  description: "Qué hacemos, cómo lo hacemos y con qué tecnologías"
+faq:
+  - question: "¿Qué tipo de desarrollo de software hace drenpos?"
+    answer: "Desarrollo de software a medida para empresas: aplicaciones web y aplicaciones móviles para iOS y Android, pensadas para un proceso concreto del cliente. Si el problema ya lo resuelve un módulo del ERP de drenpos, lo normal es empezar por el módulo y desarrollar solo lo que falte."
+  - question: "¿Cómo es el proceso de un desarrollo a medida?"
+    answer: "Empieza por un análisis de requisitos: qué hay que resolver, con qué datos y con qué restricciones. Después se diseña la arquitectura y se desarrolla en ciclos cortos con Scrum o Kanban, revisando con el cliente en cada entrega. Cada versión pasa pruebas unitarias y de integración antes de publicarse."
+  - question: "¿Qué tecnologías usa drenpos?"
+    answer: "Lenguajes como Java, Python, Rust y Kotlin, y frameworks y librerías como React, Angular, Vue.js, .NET Core y Spring Boot. La elección depende del proyecto y de lo que el cliente ya tenga funcionando."
+  - question: "¿Hay ayudas para pagar un desarrollo de software a medida?"
+    answer: "Si la pyme tiene centro de trabajo en Extremadura y un reto que el mercado no resuelve, las ayudas de innovación abierta de la Junta de Extremadura financian al 100%, hasta 25.000 €, el desarrollo de la solución junto a una startup certificada por ENISA como drenpos."
 ---
 
-En drenpos, nos enorgullecemos de ofrecer soluciones de **desarrollo de software a medida**. Estas soluciones impulsan el crecimiento y la eficiencia de las empresas en España. Nuestro enfoque personalizado y nuestras metodologías ágiles innovadoras nos permiten crear aplicaciones web y móviles.
-
-Estas aplicaciones se adaptan perfectamente a las necesidades específicas de cada cliente.
+En drenpos hacemos **desarrollo de software a medida** para empresas en España: aplicaciones web y móviles que resuelven un proceso concreto que un programa estándar no cubre. Trabajamos en ciclos cortos, con pruebas antes de cada entrega y mantenimiento posterior. Si el problema ya lo cubre un [módulo del ERP de drenpos](/modulos), empezamos por ahí.
 
 ![Desarrollo de software](/images/blog/desarrollo-de-software/desarrollo-de-software-1.webp)
 
 ### Puntos clave
 
-- Soluciones de **desarrollo de software a medida** para empresas en España
-- Enfoque personalizado y metodologías ágiles innovadoras
-- **Desarrollo de aplicaciones** web y móviles adaptadas a las necesidades de cada cliente
-- Impulso del crecimiento y la eficiencia de las empresas
-- Compromiso con la calidad y la innovación tecnológica
+- **Desarrollo de software a medida** para empresas en España
+- **Desarrollo de aplicaciones** web y móviles (iOS y Android)
+- Ciclos cortos con Scrum o Kanban y revisión con el cliente en cada entrega
+- Pruebas unitarias y de integración, mantenimiento y soporte después de publicar
 
-## Introducción al desarrollo de software
+## Qué es el desarrollo de software
 
-El **desarrollo de software** se ha vuelto esencial para las empresas. Incluye diseñar, crear y mantener aplicaciones que automatizan procesos y mejoran la eficiencia.
+El **desarrollo de software** es el trabajo de diseñar, programar, probar y mantener una aplicación. Va desde la planificación hasta la entrega, pasando por análisis, diseño, codificación, pruebas e implantación, y no termina ahí: un programa que se usa a diario necesita correcciones y cambios mientras la empresa siga usándolo.
 
-### ¿Qué es el desarrollo de software?
+### Cuándo tiene sentido un desarrollo a medida
 
-Se trata de todas las actividades y procesos para crear y mantener sistemas de software. Abarca desde la planificación hasta la entrega final, pasando por análisis, diseño, codificación, pruebas e implementación.
+Tiene sentido cuando el proceso es propio de la empresa y ningún programa del mercado lo resuelve sin forzarlo. Si lo que necesitas es gestionar stock, vender en tienda, facturar o registrar la jornada, un programa existente suele ser más barato y más rápido de poner en marcha. Puedes revisar qué cubre ya drenpos en [funcionalidades](/funcionalidades).
 
-### Importancia del desarrollo de software en el mundo actual
+¿Ese desarrollo puede salirte gratis? Si tu pyme tiene centro de trabajo en Extremadura y un reto sin solución en el mercado, las [ayudas de innovación abierta de la Junta de Extremadura](/blog/ayuda-innovacion-abierta-extremadura-2026) financian al 100% (hasta 25.000 €) el desarrollo de la solución junto a una startup certificada por ENISA como drenpos.
 
-Las empresas dependen del **desarrollo de software** para automatizar, mejorar y satisfacer a sus clientes. Algunos motivos de su importancia:
+## Cómo trabajamos un desarrollo a medida
 
-- Aumento de la productividad y eficiencia
-- Mejora de la experiencia del usuario
-- Innovación y ventaja competitiva
-- Optimización de procesos y toma de decisiones
-
-Todo esto ayuda a las empresas a mejorar, satisfacer a sus clientes y mantenerse competitivas en un mundo digital.
-
-> "El software es el motor de la innovación en la economía."
-
-## Nuestro enfoque en drenpos
-
-En drenpos, creemos que cada empresa es única y merece soluciones de **desarrollo de software a medida**. Nos comprometemos a trabajar en estrecha colaboración con nuestros clientes para entender sus desafíos y objetivos empresariales, y así desarrollar soluciones que se ajusten perfectamente a sus necesidades.
-
-Nuestro enfoque se basa en varios principios clave:
-
-- _Comprensión profunda de las necesidades del cliente_: Nos sumergimos en el negocio de nuestros clientes para entender a fondo sus procesos, desafíos y objetivos.
-- _Soluciones a medida_: Diseñamos y desarrollamos software que se ajusta a los requisitos únicos de cada cliente.
-- _Colaboración estrecha_: Trabajamos en asociación con nuestros clientes durante todo el proceso de desarrollo, manteniendo una comunicación constante y transparente.
-- _Calidad y eficiencia_: Usamos metodologías ágiles y prácticas de **desarrollo de software** de vanguardia para garantizar la entrega de soluciones de alta calidad de manera eficiente.
-
-Nuestro enfoque personalizado y orientado al cliente nos permite **desarrollar software a medida** que impulsa el éxito de nuestros clientes.
-
-¿Sabías que ese desarrollo puede salirte gratis? Si tu pyme tiene centro de trabajo en Extremadura y un reto sin solución en el mercado, las [ayudas de innovación abierta de la Junta de Extremadura](/blog/ayuda-innovacion-abierta-extremadura-2026) financian al 100% (hasta 25.000 €) el desarrollo de la solución junto a una startup certificada por ENISA como drenpos.
-
-## Desarrollo de software a medida
-
-Nuestro proceso de **desarrollo de software a medida** comienza con un análisis exhaustivo de los requisitos del cliente. El equipo entiende bien las necesidades de tu negocio y diseña una **arquitectura de software** sólida y eficiente que se ajusta a lo que necesitas.
+Trabajamos con el cliente durante todo el proyecto: primero entendemos el proceso tal como se hace hoy, después lo diseñamos y lo construimos por partes, enseñando cada entrega antes de seguir.
 
 ### Análisis de requisitos
 
-El primer paso es analizar con detalle los requisitos del cliente. Esto nos ayuda a identificar lo que necesitas, como objetivos y restricciones. Recopilamos toda la información para crear una aplicación que se ajuste a tus necesidades.
+El primer paso es fijar qué hay que resolver: objetivos, datos de partida, quién va a usar la aplicación y qué restricciones hay. Con eso se decide el alcance de la primera versión.
 
 ### Diseño y arquitectura
 
-Después de entender tus necesidades, diseñamos una **arquitectura de software** sólida y escalable, enfocándonos en crear soluciones seguras y fáciles de mantener para ofrecer una experiencia de usuario excepcional.
+Con los requisitos claros, diseñamos la **arquitectura de software**: cómo se guardan los datos, cómo se conecta con lo que ya usa la empresa y cómo se va a mantener. El objetivo es que sea segura y que un cambio futuro no obligue a rehacerla.
 
-| Característica                        | Beneficio                                                          |
-| ------------------------------------- | ------------------------------------------------------------------ |
-| **Análisis de requisitos** exhaustivo | Soluciones a medida que se ajustan perfectamente a tus necesidades |
-| **Diseño y arquitectura** sólidos     | Aplicaciones seguras, escalables y fáciles de mantener             |
-| Enfoque en la experiencia de usuario  | Soluciones innovadoras y de alta calidad                           |
-
-> "Nuestro objetivo es convertir tus ideas en realidad, desarrollando software a medida que se adapte perfectamente a tu negocio."
+| Fase                       | Qué sale de ella                                           |
+| -------------------------- | ---------------------------------------------------------- |
+| **Análisis de requisitos** | Alcance de la primera versión, datos y usuarios            |
+| **Diseño y arquitectura**  | Modelo de datos, integraciones y plan de mantenimiento     |
+| Desarrollo por ciclos      | Entregas que el cliente revisa antes de pasar a la siguiente |
 
 ## Desarrollo de aplicaciones web y móviles
 
-Nos especializamos en **desarrollo de aplicaciones web** y **desarrollo de aplicaciones móviles**. El equipo crea soluciones interactivas y atractivas, mejorando la experiencia del usuario y aumentando la visibilidad de tu marca.
-
-### Características de nuestras aplicaciones web y móviles
-
-- Diseño responsive y adaptado a diferentes dispositivos
-- Interfaz de usuario intuitiva y fluida
-- Integración de funcionalidades avanzadas según las necesidades de tu negocio
-- Optimización para una rápida carga y navegación
-- Compatibilidad con los principales navegadores y sistemas operativos
-
-Nuestro objetivo es impulsar el crecimiento de tu empresa y mejorar la interacción con tus clientes.
+Hacemos **desarrollo de aplicaciones web** y **desarrollo de aplicaciones móviles**. La diferencia práctica está en dónde se usan y qué parte del dispositivo necesitan:
 
 | Características | Desarrollo de aplicaciones web                             | Desarrollo de aplicaciones móviles                                 |
 | --------------- | ---------------------------------------------------------- | ------------------------------------------------------------------ |
@@ -107,55 +76,46 @@ Nuestro objetivo es impulsar el crecimiento de tu empresa y mejorar la interacci
 | Funcionalidad   | Orientadas a tareas y procesos web                         | Aprovechan las capacidades específicas de los dispositivos móviles |
 | Desarrollo      | Basado en tecnologías web (HTML, CSS, JavaScript)          | Requiere conocimientos específicos de desarrollo móvil             |
 
+En los dos casos la aplicación tiene que adaptarse a distintos tamaños de pantalla, cargar rápido y funcionar en los navegadores y sistemas operativos habituales.
+
 ![Desarrollo de aplicaciones web y móviles](/images/blog/desarrollo-de-software/desarrollo-de-software-2.webp)
 
-## Desarrollo de software
-
-En drenpos, tenemos un equipo de ingenieros de software altamente cualificados que usan las últimas tecnologías y metodologías para asegurar la calidad y eficiencia de nuestros proyectos. Nuestro objetivo es ofrecer soluciones a medida que se ajusten perfectamente a las necesidades de nuestros clientes.
+## Metodología, pruebas y mantenimiento
 
 ### Metodologías ágiles de desarrollo
 
-Usamos enfoques ágiles como **Scrum** y **Kanban** para desarrollar software. Estas **metodologías ágiles de desarrollo** nos ayudan a entregar valor de forma iterativa, adaptándonos rápidamente a los cambios en los requisitos.
+Usamos **Scrum** y **Kanban**. En la práctica, el proyecto se divide en entregas pequeñas: el cliente prueba cada una y, si un requisito cambia, se ajusta en la siguiente en lugar de esperar al final del proyecto.
 
 ![Desarrollo de software](/images/blog/desarrollo-de-software/desarrollo-de-software-3.webp)
 
-> "La agilidad es la capacidad de crear y responder al cambio. Es una forma de pensar, ser y actuar en un mundo complejo y en constante evolución."
-
 ### Control de calidad y pruebas
 
-La calidad de nuestro trabajo es muy importante para nosotros. Por eso, usamos un proceso riguroso de **control de calidad** que incluye **pruebas unitarias** y **pruebas de integración**. Estas pruebas aseguran que nuestras soluciones de software sean de alta calidad.
+Cada versión pasa **pruebas unitarias**, que comprueban cada pieza por separado, y **pruebas de integración**, que comprueban que las piezas funcionan juntas, antes de publicarse.
 
-## Mantenimiento y soporte
+### Mantenimiento y soporte
 
-En drenpos, ofrecemos servicios de **mantenimiento de software** y **soporte de software**. Esto garantiza que tus soluciones funcionen bien a largo plazo. Nuestro equipo de expertos está listo para ayudarte con cualquier problema, asegurando que tus sistemas informáticos estén actualizados y libres de errores.
-
-| Servicio                      | Descripción                                                                |
-| ----------------------------- | -------------------------------------------------------------------------- |
-| **Mantenimiento de software** | Nuestros expertos mantienen tu software actualizado y sin errores.         |
-| **Soporte de software**       | Nuestro equipo de soporte está listo para ayudarte con cualquier problema. |
+Después de la entrega ofrecemos **mantenimiento de software** (correcciones y actualizaciones) y **soporte de software** para las incidencias del día a día. En nuestro propio producto aplicamos la misma regla: si un desarrollo sirve a todos los clientes, se incorpora al ERP.
 
 ## Tecnologías y herramientas utilizadas
 
-Trabajamos con las últimas tecnologías y herramientas para garantizar la calidad y eficiencia de nuestros proyectos. Nuestro equipo domina varios **lenguajes de programación**, incluyendo Java, Python, Rust, y Kotlin, así como **frameworks y librerías** como React, Angular, Vue.js, .NET Core, y Spring Boot.
+Trabajamos con varios **lenguajes de programación**, entre ellos Java, Python, Rust y Kotlin, y con **frameworks y librerías** como React, Angular, Vue.js, .NET Core y Spring Boot. La elección depende del proyecto y de lo que la empresa ya tenga funcionando.
 
-## FAQ
+Si tienes un proceso que ningún programa resuelve, [cuéntanoslo](/contact) y vemos si encaja un desarrollo a medida o basta con un módulo.
 
-### ¿Qué tipo de desarrollo de software ofrecen en drenpos?
+## Preguntas frecuentes
 
-En drenpos, ofrecemos soluciones de **desarrollo de software a medida** que se adaptan perfectamente a las necesidades de nuestros clientes. También trabajamos en **desarrollo de aplicaciones** web y móviles.
+### ¿Qué tipo de desarrollo de software hace drenpos?
 
-### ¿Cómo es el proceso de desarrollo de software a medida en drenpos?
+Desarrollo de software a medida para empresas: aplicaciones web y aplicaciones móviles para iOS y Android, pensadas para un proceso concreto del cliente. Si el problema ya lo resuelve un módulo del ERP de drenpos, lo normal es empezar por el módulo y desarrollar solo lo que falte.
 
-Nuestro proceso empieza con un análisis detallado de lo que necesitas. Luego, diseñamos una arquitectura de software que se ajusta a tus necesidades, esforzándonos por que cada solución sea escalable, segura y fácil de mantener.
+### ¿Cómo es el proceso de un desarrollo a medida?
 
-### ¿Qué metodologías ágiles utilizan en drenpos?
+Empieza por un análisis de requisitos: qué hay que resolver, con qué datos y con qué restricciones. Después se diseña la arquitectura y se desarrolla en ciclos cortos con Scrum o Kanban, revisando con el cliente en cada entrega. Cada versión pasa pruebas unitarias y de integración antes de publicarse.
 
-Utilizamos enfoques ágiles como **Scrum** y **Kanban**. Estos métodos nos ayudan a entregar valor de manera iterativa y a adaptarnos rápido a los cambios en los requisitos.
+### ¿Qué tecnologías usa drenpos?
 
-### ¿Cómo garantizan la calidad de sus soluciones de software?
+Lenguajes como Java, Python, Rust y Kotlin, y frameworks y librerías como React, Angular, Vue.js, .NET Core y Spring Boot. La elección depende del proyecto y de lo que el cliente ya tenga funcionando.
 
-La calidad es fundamental para nosotros. Implementamos un riguroso proceso de **control de calidad** que incluye **pruebas unitarias** y de integración para asegurar la calidad de nuestras soluciones.
+### ¿Hay ayudas para pagar un desarrollo de software a medida?
 
-### ¿Qué tipo de tecnologías y herramientas utilizan en drenpos?
-
-Utilizamos las últimas tecnologías y herramientas para asegurar la calidad y eficiencia de nuestros proyectos. Nuestros expertos dominan varios **lenguajes de programación**, **frameworks y librerías**, lo que nos permite ofrecer soluciones avanzadas.
+Si la pyme tiene centro de trabajo en Extremadura y un reto que el mercado no resuelve, las ayudas de innovación abierta de la Junta de Extremadura financian al 100%, hasta 25.000 €, el desarrollo de la solución junto a una startup certificada por ENISA como drenpos.

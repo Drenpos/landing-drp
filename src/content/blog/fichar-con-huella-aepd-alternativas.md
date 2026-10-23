@@ -49,7 +49,7 @@ faq:
   </a>
 </div>
 
-Llevo años viendo lectores de huella en la entrada de naves y oficinas. Tienen su lógica: nadie se olvida el dedo en casa y nadie ficha por otro. El problema no es técnico, es legal, y desde 2023 la conversación ha cambiado bastante. Aquí va lo que dice la norma, lo que dijo la AEPD, lo que pasó con su guía en 2026 y qué opciones tienes si quieres cumplir sin complicarte.
+Llevo años viendo lectores de huella en la entrada de naves y oficinas. Tienen su lógica: nadie se olvida el dedo en casa y nadie ficha por otro. Técnicamente funcionan; la pega es legal, y desde 2023 el criterio ha cambiado bastante. Aquí va lo que dice la norma, lo que dijo la AEPD, lo que pasó con su guía en 2026 y qué opciones tienes para cumplir.
 
 ## ¿Por qué la huella y la cara son datos especiales?
 

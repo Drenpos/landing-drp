@@ -1,9 +1,9 @@
 ---
 title: "Carta digital con QR para restaurantes: qué debe tener y cómo montarla"
 meta_title: "Carta digital con QR para restaurantes: guía 2026"
-description: "Qué necesita una carta digital con QR en un bar o restaurante: alérgenos, grupos con fotos, varias cartas por horario, un QR que no cambia nunca y analítica de escaneos."
+description: "Qué necesita una carta digital con QR en un bar o restaurante: alérgenos, grupos con fotos, varias cartas por horario, un QR fijo y analítica de escaneos."
 date: 2026-09-10
-updated: 2026-10-22
+updated: 2026-10-23
 image: "/images/blog/carta-digital-qr-restaurante-guia/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -93,7 +93,7 @@ En Drenpos el QR ya funciona así. Se genera un QR estándar por local o uno por
 
 ## ¿Qué te dice la analítica de un QR de mesa?
 
-Más de lo que parece. Un QR con analítica registra cada escaneo y convierte la carta en una fuente de datos de sala: cuánta gente la mira, cuándo, desde dónde y con qué dispositivo. Es la única parte de la experiencia del cliente en un bar que se puede medir sin encuestas ni preguntas incómodas.
+Un QR con analítica registra cada escaneo y convierte la carta en una fuente de datos de sala: cuánta gente la mira, cuándo, desde dónde y con qué dispositivo. Es la única parte de la experiencia del cliente en un bar que se puede medir sin encuestas ni preguntas incómodas.
 
 ![Cliente escaneando el QR de la mesa con el móvil para ver la carta](/images/blog/carta-digital-qr-restaurante-guia/section-2.jpg)
 
@@ -135,7 +135,7 @@ Con las cartas pasa lo mismo que con el resto del sistema: preferimos contar el 
 
 **Próximamente.** Pedidos desde la mesa y pago desde el móvil del cliente. Están en desarrollo y no damos fecha, porque preferimos no darla a darla mal. Cómo encajará ese flujo en la sala lo contamos en [pedidos y pago desde la mesa con QR](/blog/pedidos-pago-desde-la-mesa-qr-restaurante).
 
-Todo esto vive dentro del mismo sistema que lleva la facturación, el inventario y el [control horario del equipo](/control-horario), así que la carta no es una herramienta más que mantener aparte. El detalle de precios está en [planes y precios](/pricing): el plan Tienda y Hostelería incluye el TPV por [[n:tienda]] euros al mes sin IVA con [[n:tienda_usuarios]] usuarios y fichaje para 8; con control de stock o varios locales, el plan Almacén con TPV son [[n:almacen_tpv]] euros al mes.
+Todo esto vive dentro del mismo sistema que lleva la facturación, el inventario y el [control horario del equipo](/control-horario), así que la carta no es una herramienta más que mantener aparte. El detalle de precios está en [planes y precios](/pricing): el plan Tienda y Hostelería incluye el TPV por [[n:tienda]] euros al mes sin IVA con [[n:tienda_usuarios]] usuarios y fichaje para [[n:tienda_fichajes]]; con control de stock o varios locales, el plan Almacén con TPV son [[n:almacen_tpv]] euros al mes.
 
 ## ¿Cuánto tiempo lleva ponerla en marcha?
 

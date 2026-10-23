@@ -67,7 +67,7 @@ Hoy, por infracción, no por trabajador. Lo de "hasta 10.000 euros por trabajado
 
 Estado del proyecto: el Consejo de Estado emitió dictamen desfavorable en marzo de 2026; Trabajo dio por cerrada la revisión el 2 de octubre y quiere aprobarlo en octubre. La [referencia del Consejo de Ministros del 13 de octubre](https://www.lamoncloa.gob.es/consejodeministros/referencias/Paginas/2026/20261013-referencia-rueda-de-prensa-ministros.aspx) no lo incluye, y las elecciones del 29 de noviembre no lo bloquean porque no necesita pasar por el Congreso. El calendario completo está en la guía de [registro horario digital](/blog/registro-horario-digital).
 
-![Smiling woman uses a card reader for secure office access in Munich.](/images/blog/multas-registro-horario-2026-costo-incumplimiento/section-1.jpg)
+![Mujer pasando una tarjeta por un lector de acceso en una oficina](/images/blog/multas-registro-horario-2026-costo-incumplimiento/section-1.jpg)
 
 ## ¿Qué mira la Inspección cuando pide el registro?
 
@@ -96,7 +96,7 @@ La multa suele ser lo de menos. Si no hay registro fiable, un trabajador puede r
 
 Registrando cada día el inicio y el fin de la jornada de cada persona en un sistema que guarde la hora real y deje rastro de cualquier cambio, con las horas extra calculadas desde su horario. Y revisando las incidencias cada semana, no cuando llega la carta de la Inspección.
 
-![A woman reviewing documents and using a calculator on a wooden table.](/images/blog/multas-registro-horario-2026-costo-incumplimiento/section-2.jpg)
+![Mujer revisando documentos con una calculadora sobre una mesa de madera](/images/blog/multas-registro-horario-2026-costo-incumplimiento/section-2.jpg)
 
 Con Drenpos, incluido en cualquier plan o solo el control horario desde [[p:equipo10]] al mes para 10 personas, sin IVA:
 

@@ -3,6 +3,7 @@ title: "Cómo generar el DeCA desde el albarán: paso a paso, QR y errores típi
 meta_title: "Cómo generar el DeCA desde el albarán, paso a paso"
 description: "Paso a paso para convertir tu albarán en DeCA: datos de la Orden FOM/2861/2012, PDF nativo, QR y URL única, cambios en ruta, conservación y errores típicos."
 date: 2026-10-17
+updated: 2026-10-23
 image: "/images/blog/etiqueta-sscc-gs1-palets/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -55,7 +56,7 @@ Sí. La Orden FOM/2861/2012 dice en su artículo 5 que el documento de control e
 
 Lo dice el apartado octavo de la [Resolución de 5 de junio de 2026](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-12784). Y el artículo 2 de la [Orden FOM/2861/2012](https://www.boe.es/buscar/act.php?id=BOE-A-2013-154) ya decía que una carta de porte u otro documento equivalente sirve como documento de control si contiene todos los datos.
 
-Lo que cambió el 5 de octubre de 2026 no es el contenido, sino el soporte: ya no vale el albarán en papel ni su foto. Tiene que ser un fichero generado por el programa.
+El 5 de octubre de 2026 cambió el soporte y no el contenido: ya no vale el albarán en papel ni su foto. Tiene que ser un fichero generado por el programa.
 
 Antes de seguir, asegúrate de que el envío lleva DeCA. Solo el transporte público de mercancías por carretera dentro de España (incluido el cabotaje). El reparto con tus propias furgonetas, la paquetería de pocos bultos y las mudanzas quedan fuera. Si dudas de a quién le toca emitirlo, lo tienes en [¿lo emite el cargador o el transportista?](/blog/deca-quien-lo-emite-cargador-transportista).
 
@@ -80,7 +81,7 @@ El reparto de responsabilidad está en el artículo 7, cuyos apartados 2 y 3 se 
 
 Las fichas. Revisa que tu empresa tiene NIF y domicilio completos, que cada dirección de carga (nave, almacén, muelle) está dada de alta, que cada transportista tiene razón social y NIF, que sus vehículos tienen matrícula y que tus artículos tienen peso. Si eso está bien, cada DeCA sale en segundos. Si no, cada envío se convierte en una búsqueda de datos con el camión esperando.
 
-Truco rápido: saca los albaranes del último mes que salieron con transportista y revisa solo esos transportistas y esos artículos. En un distribuidor de 300 referencias que mueve 40 habituales, es una mañana de trabajo.
+Truco rápido: saca los albaranes del último mes que salieron con transportista y revisa solo esos transportistas y esos artículos. Pongamos un distribuidor de 300 referencias que mueve 40 habituales: es una mañana de trabajo.
 
 Con el peso hay que tener cuidado. Si el programa suma el peso bruto de cada línea, el apartado d) sale solo y cuadra con la báscula. Si falta el peso de un artículo y el programa pone cero, el DeCA dirá que el camión lleva menos de lo que lleva.
 
@@ -145,7 +146,7 @@ Va incluido en el módulo Financiero, en todos los planes desde [[p:desde]]/mes 
 
 ## ¿Cuáles son los errores más típicos al generar el DeCA?
 
-Los que vemos una y otra vez: el NIF del transportista vacío, el peso a cero porque faltan pesos de artículos, la matrícula del tractor sin la del semirremolque, el PDF generado cuando el camión ya ha salido, un QR que lleva a una página con login, y cambios en ruta hechos a mano sobre el papel. Todos tienen arreglo fácil si se detectan antes de la salida.
+Los más habituales: el NIF del transportista vacío, el peso a cero porque faltan pesos de artículos, la matrícula del tractor sin la del semirremolque, el PDF generado cuando el camión ya ha salido, un QR que lleva a una página con login, y cambios en ruta hechos a mano sobre el papel. Todos tienen arreglo fácil si se detectan antes de la salida.
 
 | Error | Qué pasa | Cómo evitarlo |
 | --- | --- | --- |

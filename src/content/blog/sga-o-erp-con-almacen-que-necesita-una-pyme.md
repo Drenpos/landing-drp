@@ -3,7 +3,7 @@ title: "¿SGA aparte o ERP con almacén? Cómo elegir según tu caso y lo que cu
 meta_title: "SGA aparte o ERP con almacén: cómo elegir en 2026"
 description: "Cuándo basta el almacén del ERP y cuándo compensa un SGA aparte: preguntas para decidir, lo que cuesta cada camino y ejemplos según el tipo de empresa."
 date: 2026-09-23
-updated: 2026-10-22
+updated: 2026-10-23
 image: "/images/blog/cuanto-cuesta-sga-wms-pyme-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -39,7 +39,7 @@ faq:
     answer: "Sí. El conector Holded es un módulo aparte que deja la contabilidad y el catálogo en Holded y lleva el almacén a Drenpos: artículos, contactos y pedidos de venta entran solos, y al cerrar el albarán en Drenpos sale hacia Holded para facturar allí. El stock real es siempre el de Drenpos. Las condiciones del conector se consultan con el equipo."
 ---
 
-> **Respuesta corta:** una pyme necesita un SGA aparte cuando su almacén tiene automatismos que gobernar en tiempo real o cuando ya trabaja con un ERP grande que no quiere tocar. Si el almacén se mueve con personas, carretillas y pistolas, basta un ERP cuyo módulo de almacén sepa de ubicaciones, lotes, reservas, picking y palets. Te ahorras un segundo maestro de artículos, una integración que vigilar y los descuadres entre almacén y oficina.
+> **Respuesta corta:** una pyme necesita un SGA aparte solo cuando su almacén tiene automatismos que gobernar en tiempo real o cuando ya trabaja con un ERP grande que no quiere tocar. Si el almacén se mueve con personas, carretillas y pistolas, basta un ERP cuyo módulo de almacén sepa de ubicaciones, lotes, reservas, picking y palets. Te ahorras un segundo maestro de artículos, una integración que vigilar y los descuadres entre almacén y oficina.
 
 <div class="my-8 flex justify-center">
   <a href="/software-gestion-almacen#sga-o-erp" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
@@ -150,7 +150,7 @@ Todo pasa en el mismo sistema que factura: no hay un «pedido del SGA» y un «p
 
 ## ¿Y si ya uso Holded o no quiero cambiar de programa?
 
-Entonces la pregunta cambia: no es ERP o SGA, es qué parte lleva cada sistema. Drenpos puede hacer de almacén al lado de Holded con el conector, que es un módulo aparte. La contabilidad y el catálogo se quedan en Holded; los artículos, los contactos y los pedidos de venta entran en Drenpos solos, y al cerrar el albarán sale hacia Holded para facturar allí como siempre.
+Entonces la pregunta pasa a ser qué parte lleva cada sistema. Drenpos puede hacer de almacén al lado de Holded con el conector, que es un módulo aparte. La contabilidad y el catálogo se quedan en Holded; los artículos, los contactos y los pedidos de venta entran en Drenpos solos, y al cerrar el albarán sale hacia Holded para facturar allí como siempre.
 
 El stock de verdad es siempre el de Drenpos. Y si trabajas con un ERP grande que funciona, no te vamos a proponer cambiarlo.
 

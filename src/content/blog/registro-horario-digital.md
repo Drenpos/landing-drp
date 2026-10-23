@@ -3,7 +3,7 @@ title: "Registro horario digital en 2026: qué exige la ley, requisitos y estado
 meta_title: "Registro horario digital 2026: requisitos y estado legal"
 description: "Qué exige hoy el registro de jornada, qué cambia con el real decreto (sin aprobar a 17 de octubre de 2026), requisitos del sistema, multas y cómo adaptarte."
 date: 2026-08-03
-updated: 2026-10-22
+updated: 2026-10-23
 image: "/images/blog/registro-horario-digital/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -94,7 +94,7 @@ Un sistema vale si guarda la hora real de cada fichaje y cualquier cambio deja r
 | Requisito | Qué significa en la práctica |
 | --- | --- |
 | **Hora inalterable** | El fichaje se guarda con fecha y hora; si se corrige, queda el valor de antes y el de después |
-| **Jornada completa** | Entrada, salida, pausas y horas extra separadas |
+| **Jornada completa** | Entrada, salida (lo que mucha gente llama [desfichar](/blog/que-es-desfichar-como-se-hace)), pausas y horas extra separadas |
 | **Acceso del trabajador** | Cada persona consulta sus fichajes sin pedírselo a nadie |
 | **Informe para la Inspección** | Por persona y periodo, listo en minutos (y en remoto, si se aprueba el real decreto) |
 | **Cuatro años** | Conservación completa durante el plazo legal |
@@ -123,7 +123,7 @@ Las sanciones salen de la [LISOS](https://www.boe.es/buscar/act.php?id=BOE-A-200
 - **Graves:** de 751 a 7.500 euros por infracción (artículo 7.5). Aquí entra el registro de jornada.
 - **Muy graves:** de 7.501 a 225.018 euros.
 
-**Ejemplo:** un restaurante de 15 personas que sigue con papel se arriesga hoy a una multa grave de hasta 7.500 euros. Si el real decreto saliera con multas de hasta 10.000 euros por trabajador afectado, la misma inspección podría llegar a 150.000 euros. Repetimos: eso no está en vigor. El desglose completo está en [multas del registro horario](/blog/multas-registro-horario-2026-costo-incumplimiento).
+**Ejemplo:** pongamos un restaurante de 15 personas que sigue con papel se arriesga hoy a una multa grave de hasta 7.500 euros. Si el real decreto saliera con multas de hasta 10.000 euros por trabajador afectado, la misma inspección podría llegar a 150.000 euros. Repetimos: eso no está en vigor. El desglose completo está en [multas del registro horario](/blog/multas-registro-horario-2026-costo-incumplimiento).
 
 ## ¿Cómo paso del papel o el Excel a un registro digital sin parar el negocio?
 
@@ -136,11 +136,11 @@ En cuatro pasos y, en una pyme de hasta 20 personas, en días. Lo que más tiemp
 | 3. Elegir cómo fichan | Móvil, QR o terminal según el puesto; reparto de llaveros si hay terminal | Un día |
 | 4. Probar y cerrar el mes | Una semana con todos, revisión de incidencias y primer informe a la gestoría | Una semana |
 
-Dos consejos de quien lo ha visto muchas veces. Primero, no copies el Excel tal cual en el programa: deja que el sistema calcule las horas esperadas y las extras desde el calendario. Segundo, explica a la plantilla qué se registra y para qué antes del primer día; el fichaje protege también al trabajador frente a horas extra que nadie le paga.
+Dos consejos. Primero, no copies el Excel tal cual en el programa: deja que el sistema calcule las horas esperadas y las extras desde el calendario. Segundo, explica a la plantilla qué se registra y para qué antes del primer día; el fichaje protege también al trabajador frente a horas extra que nadie le paga.
 
 ## ¿Qué aporta un registro digital además de cumplir?
 
-Que el fichaje deje de ser un papel y se convierta en información para organizar el equipo: quién está, quién falta, quién acumula horas extra y quién tiene vacaciones pendientes. Si además está en el mismo sistema que la caja y el almacén, el informe para la gestoría sale sin exportar nada.
+Convierte el fichaje en información para organizar el equipo: quién está, quién falta, quién acumula horas extra y quién tiene vacaciones pendientes. Si además está en el mismo sistema que la caja y el almacén, el informe para la gestoría sale sin exportar nada.
 
 En Drenpos, con la licencia de fichaje incluida en el plan ([[p:fichaje]] por persona adicional y mes sin IVA), eso incluye:
 

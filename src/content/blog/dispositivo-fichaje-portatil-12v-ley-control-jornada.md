@@ -1,9 +1,9 @@
 ---
 title: "Fichaje portátil 12V: cumple la ley de jornada en cualquier lugar"
 meta_title: "Dispositivo de fichaje portátil 12V para obras y furgonetas"
-description: "Terminal de fichaje portátil a 12 V: se enchufa al mechero, ficha con llavero RFID, tarjeta o QR y guarda los fichajes sin internet. Desde [[p:terminal]] sin IVA."
+description: "Terminal de fichaje portátil a 12 V: se enchufa al mechero, ficha con llavero RFID, tarjeta o QR y funciona sin internet. Desde [[p:terminal]] sin IVA."
 date: 2026-08-05
-updated: 2026-10-22
+updated: 2026-10-23
 image: "/images/funcionalidades/control-horario/hardware/terminal-drenpos-og.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -45,9 +45,11 @@ faq:
     answer: "Sí. Si no hay red, el terminal guarda cada fichaje en su memoria local con la hora exacta de su reloj integrado y el empleado ficha igual con su llavero o su QR. Al recuperar la conexión, vuelca solo todos los fichajes pendientes a Drenpos con su hora original. Conviene conectarlo con regularidad, lo normal es a diario, para tener el registro al día si llega una inspección."
 ---
 
-¿Se puede cumplir la ley de control de jornada sin oficina y sin un enchufe cerca? Sí: con un **dispositivo de fichaje portátil** que funciona a 12V y 3A (36 W de consumo máximo) y se alimenta desde el mechero del coche, una batería auxiliar o cualquier adaptador de red. El terminal de Drenpos lee llaveros RFID personalizados y códigos QR de empleado, registra la hora exacta de entrada y salida como exige el [art. 34.9 del Estatuto de los Trabajadores](https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430) y sincroniza cada fichaje con la plataforma con trazabilidad completa. Da igual que tu equipo trabaje en una obra, un mercadillo, una feria o repartido en tres furgonetas: donde haya una toma de 12V, hay registro horario legal.
+Sí, se puede cumplir la ley de control de jornada sin oficina ni enchufe cerca: un **dispositivo de fichaje portátil** a 12V y 3A (36 W de consumo máximo) se alimenta desde el mechero del coche, una batería auxiliar o un adaptador de red, y registra la entrada y la salida de cada persona con llavero RFID o QR.
 
-Y el momento de resolverlo es ahora. La Inspección de Trabajo levantó **1.869 actas de infracción por registro de jornada en 2024 (un 90% más que en 2019) con 20,2 millones de euros en sanciones**, según los datos recopilados por [Mi Fichaje Legal](https://mifichajelegal.com/blog/real-decreto-registro-horario-digital-mayo-2026-estado-tramitacion-pymes/). El real decreto que endurece los requisitos no está aprobado a 17 de octubre de 2026, pero Trabajo dio por cerrada la revisión del texto el 2 de octubre y quiere aprobarlo antes de las elecciones del 29 de noviembre.
+El terminal de Drenpos registra la hora exacta de entrada y salida como exige el [art. 34.9 del Estatuto de los Trabajadores](https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430) y sincroniza cada fichaje con la plataforma, con rastro de cualquier corrección. Sirve igual en una obra, un mercadillo, una feria o repartido en tres furgonetas: donde haya una toma de 12V, hay registro horario.
+
+La Inspección de Trabajo levantó **1.869 actas de infracción por registro de jornada en 2024 (un 90% más que en 2019) con 20,2 millones de euros en sanciones**, según los datos recopilados por [Mi Fichaje Legal](https://mifichajelegal.com/blog/real-decreto-registro-horario-digital-mayo-2026-estado-tramitacion-pymes/). El real decreto que endurece los requisitos no está aprobado a 17 de octubre de 2026, pero Trabajo dio por cerrada la revisión del texto el 2 de octubre y quiere aprobarlo antes de las elecciones del 29 de noviembre.
 
 > **Actualizado el 17 de octubre de 2026**
 >
@@ -70,11 +72,11 @@ El siguiente paso normativo, el real decreto de registro horario digital, sigue 
 
 **Lo que plantea el borrador:** registro exclusivamente digital (adiós al papel y al Excel), datos inalterables con trazabilidad de cada corrección, desglose de horas ordinarias, extraordinarias y pausas, y acceso remoto de la Inspección. Las sanciones proyectadas escalan **hasta 10.000 € por trabajador afectado**; mientras la reforma no se publique, la infracción grave vigente va de 751 a 7.500 € por infracción. Tienes el análisis completo en nuestra guía de [registro horario digital](/blog/registro-horario-digital) y el detalle económico en [multas de registro horario 2026](/blog/multas-registro-horario-2026-costo-incumplimiento).
 
-> "El error que más veo en pymes con equipos de campo es pensar que la movilidad les exime del registro. Es al revés: son el primer sitio donde la Inspección pregunta cómo fichan."
+Trabajar fuera de la oficina no exime del registro: la obligación es la misma para la cuadrilla desplazada que para quien está en la nave.
 
 ## El problema real: tu equipo no trabaja donde hay enchufes
 
-Los sistemas de fichaje tradicionales asumen una oficina: un terminal fijo atornillado a la pared, red eléctrica estable y conexión permanente. Pero una parte enorme del empleo en España no funciona así:
+Los sistemas de fichaje tradicionales asumen una oficina: un terminal fijo atornillado a la pared, red eléctrica estable y conexión permanente. Pero muchos puestos no funcionan así:
 
 - **Construcción y reformas**: cuadrillas que cambian de obra cada semana, casetas sin acometida eléctrica el primer mes
 - **Eventos, ferias y mercadillos**: puestos que se montan y desmontan cada día
@@ -152,7 +154,7 @@ El terminal es la parte física del módulo de fichajes de Drenpos, así que cad
 | **Festivos** | Nacionales, autonómicos, locales o por trabajador, descontados de las horas esperadas |
 | **Planificación anual** | Quién trabaja, libra o está de vacaciones cada día, con un PDF del año por trabajador |
 
-Todo eso va incluido en la licencia de fichaje incluida en el plan ([[p:fichaje]] por persona adicional) sin IVA. Si tu caso es una nave con turnos o un almacén con varias puertas, lo contamos en [control horario en almacenes y naves con turnos](/blog/control-horario-almacenes-naves-turnos).
+Todo eso va incluido en la licencia de fichaje del plan (cada persona adicional, [[p:fichaje]] al mes sin IVA). Si tu caso es una nave con turnos o un almacén con varias puertas, lo contamos en [control horario en almacenes y naves con turnos](/blog/control-horario-almacenes-naves-turnos).
 
 ## Cómo ponerlo en marcha en tu empresa
 
@@ -175,9 +177,9 @@ Todo eso va incluido en la licencia de fichaje incluida en el plan ([[p:fichaje]
 | Desglose de jornada, pausas y horas extra        | El sistema clasifica horas ordinarias, extra y pausas por calendario laboral   |
 | Registro sin depender de biometría               | Llavero RFID, tarjeta y QR: métodos válidos sin tratar datos biométricos       |
 
-Sobre la biometría: no fichar con huella ni cara es una ventaja legal, no una carencia. Los datos biométricos son categoría especial para el RGPD (artículo 9) y usarlos en el control de presencia exige una excepción legal y una evaluación de impacto (artículo 35); lo explicamos en [fichar con huella: qué dice la AEPD y qué alternativas son legales](/blog/fichar-con-huella-aepd-alternativas).
+Sobre la biometría: no fichar con huella ni cara ahorra obligaciones legales. Los datos biométricos son categoría especial para el RGPD (artículo 9) y usarlos en el control de presencia exige una excepción legal y una evaluación de impacto (artículo 35); lo explicamos en [fichar con huella: qué dice la AEPD y qué alternativas son legales](/blog/fichar-con-huella-aepd-alternativas).
 
-Más que un gadget suelto, el dispositivo es la **puerta de entrada física** a un registro horario completo. Quien lo compra suelto tiene un control de presencia sólido; quien lo integra con Drenpos conecta fichajes con calendarios laborales, ausencias, informes y nóminas en el mismo sistema que gestiona su TPV y su facturación.
+El dispositivo es la **parte física** de un registro horario completo. Quien lo compra suelto tiene un control de presencia; quien lo integra con Drenpos conecta fichajes con calendarios laborales, ausencias, informes y nóminas en el mismo sistema que gestiona su TPV y su facturación.
 
 ## Preguntas frecuentes sobre el dispositivo de fichaje portátil
 
@@ -219,4 +221,4 @@ Sí. Si no hay red, el terminal guarda cada fichaje en su memoria local con la h
 
 ---
 
-La Inspección no va a preguntarte si tu equipo trabaja lejos de la oficina; va a preguntarte dónde están sus fichajes. Si la respuesta hoy es "en ningún sitio" o "en un Excel", un terminal que se enchufa al mechero del coche es la forma más rápida de convertir ese riesgo en un registro que aguanta cualquier auditoría. [Escríbenos](/contact) y te preparamos una propuesta con el dispositivo, los llaveros de tu equipo y la puesta en marcha.
+La Inspección no va a preguntarte si tu equipo trabaja lejos de la oficina; va a preguntarte dónde están sus fichajes. Si la respuesta hoy es "en ningún sitio" o "en un Excel", un terminal que se enchufa al mechero del coche es una forma rápida de tener un registro diario que puedes enseñar a la Inspección. [Escríbenos](/contact) y te preparamos una propuesta con el dispositivo, los llaveros de tu equipo y la puesta en marcha.

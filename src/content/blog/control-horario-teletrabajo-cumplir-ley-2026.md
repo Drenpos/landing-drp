@@ -72,7 +72,7 @@ En Drenpos la plantilla en remoto ficha desde la [app de fichajes en el móvil](
 - **Aviso** si se olvidó cerrar la jornada, y **corrección con rastro**: si alguien añade un fichaje olvidado, queda quién lo hizo y, si la empresa lo activa, pendiente de que lo apruebe un responsable.
 - **Vacaciones desde la misma app**, con el saldo a la vista y la respuesta del responsable sin correos ni mensajes sueltos. Lo contamos en [software de vacaciones y ausencias](/software-vacaciones-ausencias).
 
-![Man giving a business presentation with financial graphs on a whiteboard using a tablet for explanation.](/images/blog/control-horario-teletrabajo-cumplir-ley-2026/section-1.jpg)
+![Hombre explicando gráficos en una pizarra con una tableta en la mano](/images/blog/control-horario-teletrabajo-cumplir-ley-2026/section-1.jpg)
 
 ## ¿Puede la empresa geolocalizar a quien teletrabaja?
 
@@ -93,13 +93,13 @@ Con el [control de entrada y salida](/control-entrada-salida-empleados) activado
 | Alguien trabaja en un festivo de su comunidad | Horas extra y aviso de trabajo en festivo | Pagar o compensar según convenio |
 | Vacaciones aprobadas | Día de vacaciones, sin horas esperadas | Nada: sale así en el informe |
 
-![A young woman working from home using a laptop in a relaxed living room setting.](/images/blog/control-horario-teletrabajo-cumplir-ley-2026/section-2.jpg)
+![Mujer teletrabajando con un portátil en el salón de su casa](/images/blog/control-horario-teletrabajo-cumplir-ley-2026/section-2.jpg)
 
 ## ¿Cómo se lleva un equipo híbrido?
 
 Con un solo registro para todos. Quien va a la oficina ficha en el terminal o con el QR y quien está en casa, con la app; todo cae en el mismo sistema, con el mismo calendario y los mismos festivos. Si cada modalidad va por un canal distinto, el informe de fin de mes se convierte en un rompecabezas.
 
-En Drenpos cada persona tiene su calendario laboral y sus festivos (nacionales, autonómicos y locales, que importan cuando hay gente teletrabajando desde otra comunidad). La planificación anual del equipo enseña de un vistazo quién trabaja, quién libra y quién está de vacaciones cada día, y descarga un PDF del año por trabajador. El fichaje va incluido en todos los planes ([[p:fichaje]] por persona adicional y mes sin IVA), con todo esto incluido.
+En Drenpos cada persona tiene su calendario laboral y sus festivos (nacionales, autonómicos y locales, que importan cuando hay gente teletrabajando desde otra comunidad). La planificación anual del equipo enseña de un vistazo quién trabaja, quién libra y quién está de vacaciones cada día, y descarga un PDF del año por trabajador. El fichaje va incluido en todos los planes ([[p:fichaje]] por persona adicional y mes sin IVA), con todo lo anterior.
 
 ## ¿Qué dice hoy la ley y qué puede cambiar?
 

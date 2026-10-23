@@ -3,7 +3,7 @@ title: "Cómo organizar el stock de una tienda de recambios sin catálogo TecDoc
 meta_title: "Stock de una tienda de recambios sin catálogo TecDoc"
 description: "Cómo organizar el stock de una tienda de recambios o repuestos sin TecDoc: referencias propias y de proveedor, equivalencias, ubicaciones, mínimos y mostrador."
 date: 2026-10-17
-updated: 2026-10-22
+updated: 2026-10-23
 image: "/images/blog/control-de-stock-sin-roturas/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -49,7 +49,7 @@ faq:
   </a>
 </div>
 
-Hay muchas tiendas de recambios que no venden pastillas de freno para un modelo concreto de coche. Venden rodamientos, correas, retenes, juntas, resistencias de horno, bombas de lavadora, cuchillas de desbrozadora, tornillería de acero inoxidable o piezas de una marca de maquinaria. Su problema no es identificar la pieza por el vehículo: es saber si la tienen, dónde está y cuándo pedirla. Va por partes.
+Hay muchas tiendas de recambios que no venden pastillas de freno para un modelo concreto de coche. Venden rodamientos, correas, retenes, juntas, resistencias de horno, bombas de lavadora, cuchillas de desbrozadora, tornillería de acero inoxidable o piezas de una marca de maquinaria. Lo que necesitan es saber si tienen la pieza, dónde está y cuándo pedirla, no identificarla por el vehículo.
 
 ## ¿Qué tiendas de recambios no necesitan TecDoc?
 
@@ -96,7 +96,7 @@ Hay dos formas de llevarlo y conviene elegir una:
 - **Una sola pieza para todas las marcas equivalentes.** Das de alta un artículo genérico y pones en el nombre las referencias más pedidas. Simple, pero pierdes el detalle de qué marca vendiste.
 - **Un artículo por marca y la tabla de equivalencias aparte.** Más control de márgenes y de proveedores, a cambio de mantener la tabla al día.
 
-Hay que ser claros: Drenpos no guarda equivalencias entre referencias de distintas marcas. Esa tabla vive fuera, en una hoja de cálculo compartida, o se resuelve con la primera opción. Si tu negocio depende de cruzar miles de equivalencias al día, un programa especializado con base de datos de referencias te encajará mejor.
+Drenpos no guarda equivalencias entre referencias de distintas marcas. Esa tabla vive fuera, en una hoja de cálculo compartida, o se resuelve con la primera opción. Si tu negocio depende de cruzar miles de equivalencias al día, un programa especializado con base de datos de referencias te encajará mejor.
 
 ## ¿Cómo se ubica cada pieza para encontrarla a la primera?
 

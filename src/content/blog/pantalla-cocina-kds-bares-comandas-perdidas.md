@@ -1,8 +1,9 @@
 ---
 title: "Pantalla de cocina para bares: por qué se pierden comandas y cómo evitarlo"
 meta_title: "Pantalla de cocina KDS: evitar comandas perdidas"
-description: "Qué es un KDS, por qué se pierden o se mezclan las comandas entre pantallas, cómo se evita consultando al servidor cada pocos segundos y qué hardware necesita un bar."
+description: "Qué es una pantalla de cocina KDS, por qué se pierden o mezclan las comandas, cómo evitarlo consultando al servidor cada pocos segundos y qué hardware usar."
 date: 2026-09-10
+updated: 2026-10-23
 image: "/images/blog/pantalla-cocina-kds-bares-comandas-perdidas/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -51,7 +52,7 @@ Un KDS (Kitchen Display System) es una pantalla colocada en cocina o en barra qu
 
 ![Pase de cocina con comandas a la espera de salir](/images/blog/pantalla-cocina-kds-bares-comandas-perdidas/section-1.jpg)
 
-Lo que resuelve no es solo el papel. Resuelve el orden. En una barra con cinco camareros metiendo pedidos a la vez, el papel llega en el orden en que se imprime y ahí muere: nadie sabe qué comanda lleva ocho minutos esperando y cuál acaba de entrar.
+Además del papel, resuelve el orden. En una barra con cinco camareros metiendo pedidos a la vez, el papel llega en el orden en que se imprime y ahí muere: nadie sabe qué comanda lleva ocho minutos esperando y cuál acaba de entrar.
 
 También resuelve el reparto. Los platos van a cocina, las bebidas a barra y los postres a su sitio, sin que nadie tenga que gritar por encima de la campana extractora.
 
@@ -71,7 +72,7 @@ En un bar, cualquiera de las tres cosas se traduce en lo mismo: un cliente esper
 
 Cambiando quién pregunta. Si la pantalla es un receptor pasivo que espera a que le empujen los datos, cualquier corte deja un agujero. Si la pantalla pregunta activamente al servidor cada pocos segundos, un corte de red solo retrasa la información: en cuanto la conexión vuelve, la siguiente consulta trae todo lo pendiente.
 
-Desde septiembre de 2026, las pantallas de órdenes de Drenpos funcionan así: cada pantalla consulta al servidor cada 3 segundos y recibe exactamente el mismo estado que todas las demás. No hay conexión permanente que se caiga en silencio, no hay comandas que se pierdan en un parpadeo de WiFi y no hay dos pantallas contando historias distintas.
+Desde septiembre de 2026, las pantallas de órdenes de Drenpos funcionan así: cada pantalla consulta al servidor cada 3 segundos y recibe exactamente el mismo estado que todas las demás. Sin una conexión permanente que se caiga en silencio, un parpadeo de WiFi ya no se lleva comandas ni deja dos pantallas con estados distintos.
 
 La diferencia práctica en un local con WiFi imperfecta (o sea, casi cualquier local con paredes gruesas y una cámara frigorífica en medio) es enorme. Tres segundos de retraso no los nota nadie en cocina. Una comanda perdida la nota todo el mundo.
 

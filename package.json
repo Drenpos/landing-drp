@@ -65,7 +65,7 @@
 	"private": true,
 	"scripts": {
 		"astro": "astro",
-		"build": "astro build && node scripts/markdown-alternates.mjs && node scripts/check-precios.mjs",
+		"build": "astro build && node scripts/markdown-alternates.mjs && node scripts/check-precios.mjs && node scripts/check-contenido.mjs",
 		"cf-typegen": "wrangler types",
 		"check": "astro build && node scripts/markdown-alternates.mjs && node scripts/check-precios.mjs && tsc",
 		"deploy": "wrangler deploy",

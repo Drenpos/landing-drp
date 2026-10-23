@@ -3,6 +3,7 @@ title: "Escandallo y lista de materiales: cómo calcular el coste de fabricació
 meta_title: "Escandallo y lista de materiales: coste de fabricación"
 description: "Qué es un escandallo o BOM, qué partidas entran en el coste de fabricación y cómo meter las mermas, con el cálculo completo de una crema de 50 ml."
 date: 2026-10-17
+updated: 2026-10-23
 image: "/images/blog/cuanto-cuesta-sga-wms-pyme-2026/section-1.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -47,7 +48,7 @@ faq:
 
 La lista de materiales dice qué componentes y en qué cantidad hacen falta para fabricar una unidad o un lote de producto. El escandallo toma esa lista, le añade las horas de mano de obra y de máquina y le pone precio a todo para obtener el coste por unidad. En cocina y alimentación se habla más de escandallo; en industria, de BOM o lista de materiales. En la práctica, una pyme necesita las dos cosas juntas.
 
-La receta que usa el ejemplo es la de un pequeño fabricante de cosmética natural con 6 personas. Fabrica cremas, sérums y jabones en lotes cortos y vende a tiendas y farmacias. El producto es una crema facial hidratante en tarro de 50 ml, y cada orden fabrica 200 tarros.
+Para el ejemplo, pongamos un pequeño fabricante de cosmética natural con 6 personas que fabrica cremas, sérums y jabones en lotes cortos y vende a tiendas y farmacias. El producto es una crema facial hidratante en tarro de 50 ml, y cada orden fabrica 200 tarros.
 
 ## ¿Qué partidas entran en el coste de fabricación?
 

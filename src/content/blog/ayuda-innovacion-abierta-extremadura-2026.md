@@ -3,7 +3,7 @@ title: "Ayudas de innovación abierta en Extremadura: hasta 25.000 € al 100% p
 meta_title: "Ayudas innovación abierta Extremadura 2026: 25.000 €"
 description: "La convocatoria 2026 cerró el 17 de agosto. Ayuda del 100 % hasta 25.000 € para pymes extremeñas con una startup: requisitos, baremo y cómo preparar la próxima."
 date: 2026-07-17
-updated: 2026-10-17
+updated: 2026-10-23
 image: "/images/blog/ayudas-innovacion-abierta-extremadura/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -43,7 +43,7 @@ faq:
 
 La convocatoria 2026 de las ayudas de innovación abierta de la Junta de Extremadura estuvo abierta del 18 de julio al 17 de agosto de 2026, con una dotación de 500.000 € (el doble que la primera edición) y subvenciones a fondo perdido del 100% hasta **25.000 € por proyecto** (IVA excluido). Financian el desarrollo de una solución a medida para un reto que ningún producto comercial cubre: tu empresa aporta el problema y una **startup o Empresa de Base Tecnológica (EBT)** lo resuelve. Reguladas por el [Decreto 36/2025](https://doe.juntaex.es/pdfs/doe/2025/940o/25040064.pdf) y cofinanciadas al 85% por el Programa Extremadura FEDER 2021-2027.
 
-Hay pymes que llevan años arrastrando el mismo problema operativo porque "no hay software que lo resuelva". Y tienen razón: el mercado está lleno de herramientas genéricas que obligan a tu negocio a adaptarse a ellas, y no al revés. Si tu operativa te roba horas cada semana y ya has comprobado que ninguna herramienta estándar lo arregla, esta ayuda te interesa, y conviene preparar el reto antes de que salga la próxima convocatoria.
+Está pensada para el problema operativo que una pyme arrastra porque "no hay software que lo resuelva": un proceso propio que ninguna herramienta estándar cubre sin forzarlo. Si ese es tu caso, conviene preparar el reto antes de que salga la próxima convocatoria.
 
 <div class="not-prose my-8 text-center">
   <a class="btn btn-dark" style="padding: 0.65rem 2rem;" href="https://outlook.office.com/bookwithme/user/230ec478daa44cc79be4e804e7312d31@drenpos.com/meetingtype/iFTzo_D-Zk-PUrXAQtzL2Q2?anonymous&amp;ep=mcard" target="_blank" rel="noopener">📅 Reserva tu diagnóstico gratuito de 30 min</a>
@@ -55,8 +55,6 @@ Hay pymes que llevan años arrastrando el mismo problema operativo porque "no ha
 La innovación abierta es un modelo de co-creación en el que tu pyme plantea un reto sin solución en el mercado y una startup tecnológica lo desarrolla. La Junta de Extremadura subvenciona el 100% de esos servicios de innovación, hasta 25.000 € por proyecto a fondo perdido, con un 50% anticipado tras la concesión. La beneficiaria es tu empresa, la pyme tractora: tú solicitas, tú cobras, y el acuerdo de colaboración canaliza los fondos al desarrollo.
 
 Hay un matiz que descoloca a muchas empresas: quien recibe la ayuda es la **pyme tractora**. Tu empresa solicita, tu empresa cobra, y el acuerdo de colaboración garantiza que los anticipos se destinan directamente al proyecto. En la práctica, obtienes un desarrollo tecnológico a medida **sin adelantar la inversión** subvencionada.
-
-> "El mercado no tiene solución para tu problema. Esa frase, que llevas años repitiendo, es exactamente el requisito de acceso a esta ayuda."
 
 ## ¿Qué requisitos debe cumplir tu pyme para acceder a la subvención?
 
@@ -71,7 +69,7 @@ Para acceder a la ayuda tu empresa debe cumplir cuatro condiciones: tener forma 
 
 ### El requisito que tumba más solicitudes
 
-Ojo con esto, porque es donde caen la mayoría de proyectos mal planteados: no se subvencionan implantaciones de **software estándar** ni personalizaciones de productos ya existentes. La solución debe basarse en un desarrollo innovador. Comprar licencias, instalar un ERP genérico o adaptar una herramienta comercial a tu empresa no puntúa: **se financia lo que se crea, no lo que se configura.** Tampoco son subvencionables el hardware ni los dispositivos: la ayuda cubre los servicios de innovación de la startup.
+Aquí caen muchos proyectos mal planteados: no se subvencionan implantaciones de **software estándar** ni personalizaciones de productos ya existentes. La solución debe basarse en un desarrollo innovador. Comprar licencias, instalar un ERP genérico o adaptar una herramienta comercial a tu empresa no puntúa: **se financia lo que se crea, no lo que se configura.** Tampoco son subvencionables el hardware ni los dispositivos: la ayuda cubre los servicios de innovación de la startup.
 
 ## ¿Cómo se valora tu proyecto y quién consigue la ayuda?
 
@@ -86,9 +84,7 @@ Las ayudas se conceden por concurrencia competitiva: los proyectos se puntúan s
 | Impacto socioeconómico y medioambiental                    | 5              | Medidas de igualdad, inclusión y sostenibilidad                            |
 | **Startup certificada como empresa emergente por ENISA**   | **10**         | **Automáticos y verificados de oficio si tu startup tiene el sello**       |
 
-¿Ves la última fila? Ahí está la ventaja competitiva más barata de toda la convocatoria: **elegir bien a tu startup**. Presentarte con una startup certificada por ENISA te da 10 puntos directos sin escribir una sola línea más en la memoria. Y si el reto ha madurado en un programa de innovación abierta, sumas otros 10. Hasta **20 puntos de ventaja** antes de que el evaluador lea tu proyecto.
-
-> "En concurrencia competitiva no gana el que más necesita la ayuda. Gana el que mejor prepara el expediente."
+La última fila es la ventaja más barata de la convocatoria: **elegir bien a tu startup**. Presentarte con una startup certificada por ENISA te da 10 puntos directos sin escribir una sola línea más en la memoria. Y si el reto ha madurado en un programa de innovación abierta, sumas otros 10. Hasta **20 puntos de ventaja** antes de que el evaluador lea tu proyecto.
 
 ## ¿Por qué presentarte con Drenpos multiplica tus opciones?
 
@@ -122,9 +118,7 @@ La convocatoria fue aprobada por [Resolución de 30 de junio de 2026](https://do
 
 Si has respondido "no" a cualquiera de las tres, lo que te falta es **preparación**. Y la preparación es gratis: en Drenpos ofrecemos una **sesión de diagnóstico sin coste** en la que analizamos tu operativa, validamos si tu reto encaja en las bases y, si encaja, dejamos el expediente listo dentro de plazo. Si no encaja, te lo decimos con la misma claridad y no te hacemos perder el tiempo.
 
-> "La subvención no es para quien la busca cuando se publica. Es para quien la tiene preparada cuando se publica."
-
-**Reserva tu sesión de diagnóstico gratuita** y convierte ese problema que llevas años arrastrando en un proyecto financiado al 100% por la Junta de Extremadura. Tu reto ya existe; prepáralo ahora y lo presentarás el primer día de la próxima convocatoria.
+**Reserva tu sesión de diagnóstico gratuita** si tienes un reto en mente: si lo preparas ahora, podrás presentarlo el primer día de la próxima convocatoria.
 
 <div class="not-prose my-8 text-center">
   <a class="btn btn-dark" style="padding: 0.65rem 2rem;" href="https://outlook.office.com/bookwithme/user/230ec478daa44cc79be4e804e7312d31@drenpos.com/meetingtype/iFTzo_D-Zk-PUrXAQtzL2Q2?anonymous&amp;ep=mcard" target="_blank" rel="noopener">📅 Reservar sesión de diagnóstico gratuita</a>

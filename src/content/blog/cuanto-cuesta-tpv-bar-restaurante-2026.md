@@ -3,7 +3,7 @@ title: "¿Cuánto cuesta un TPV para un bar o restaurante en 2026?"
 meta_title: "Cuánto cuesta un TPV para un bar o restaurante en 2026"
 description: "Precio real de un TPV para bar o restaurante en 2026: hardware, software, comisiones, pantalla de cocina, fichaje y Verifactu, con tres ejemplos de coste."
 date: 2026-09-23
-updated: 2026-10-22
+updated: 2026-10-23
 image: "/images/blog/tpv-bares-restaurantes-como-elegir-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -25,7 +25,7 @@ hero:
   description: "Precios publicados por los fabricantes a 23 de septiembre de 2026, las partidas que no salen en la tarifa y tres locales tipo con las cuentas hechas."
 faq:
   - question: "¿Cuánto cuesta un TPV para un bar?"
-    answer: "Según las tarifas publicadas el 23 de septiembre de 2026, el software de un TPV de hostelería va de 0 a 175 € al mes en suscripción, o ronda los 499 a 550 € en licencia sin cuota con los módulos aparte. A eso hay que sumar el hardware, las comisiones por pago con tarjeta y, según el proveedor, la pantalla de cocina o el fichaje. En Drenpos el plan Tienda y Hostelería cuesta [[p:tienda]]/mes sin IVA con TPV, caja y dos comanderos, Verifactu y fichaje para ocho personas."
+    answer: "Según las tarifas publicadas el 23 de septiembre de 2026, el software de un TPV de hostelería va de 0 a 175 € al mes en suscripción, o ronda los 499 a 550 € en licencia sin cuota con los módulos aparte. A eso hay que sumar el hardware, las comisiones por pago con tarjeta y, según el proveedor, la pantalla de cocina o el fichaje. En Drenpos el plan Tienda y Hostelería cuesta [[p:tienda]]/mes sin IVA con TPV, caja y dos comanderos, Verifactu y fichaje para [[n:tienda_fichajes]] personas."
   - question: "¿Qué es mejor, un TPV sin cuotas o uno por suscripción?"
     answer: "Depende de a cuántos años hagas la cuenta y de qué incluye cada uno. Una licencia sin cuota se paga una vez, pero los módulos como la cocina o el inventario suelen ir aparte, y conviene preguntar qué pasa con las actualizaciones y con Verifactu. Una suscripción reparte el coste y debería incluir las mejoras. Drenpos a tres años son [[p:tienda×36]] sin IVA en el plan Tienda y Hostelería, con facturación y fichaje incluidos."
   - question: "¿Cuánto se paga de comisión por cobrar con tarjeta en un TPV?"
@@ -34,7 +34,7 @@ faq:
     answer: "En algunos proveedores sí: Last.app publica su pantalla de cocina a 35 € al mes por local además del plan. En Drenpos las pantallas de cocina y barra van incluidas en el TPV y sirven cualquier monitor o tablet con navegador, sin coste por pantalla."
 ---
 
-> El software de un TPV para un bar o un restaurante cuesta hoy **entre 0 y 175 € al mes** en suscripción, según las tarifas que publican los fabricantes, o **unos 499 a 550 €** en licencia sin cuota. Encima van el hardware, las comisiones por cobrar con tarjeta y, según el proveedor, la pantalla de cocina o el fichaje. En Drenpos el **plan Tienda y Hostelería cuesta [[p:tienda]]/mes sin IVA** con TPV, caja y dos comanderos, Verifactu y fichaje para ocho personas.
+> El software de un TPV para un bar o un restaurante cuesta hoy **entre 0 y 175 € al mes** en suscripción, según las tarifas que publican los fabricantes, o **unos 499 a 550 €** en licencia sin cuota. Encima van el hardware, las comisiones por cobrar con tarjeta y, según el proveedor, la pantalla de cocina o el fichaje. En Drenpos el **plan Tienda y Hostelería cuesta [[p:tienda]]/mes sin IVA** con TPV, caja y dos comanderos, Verifactu y fichaje para [[n:tienda_fichajes]] personas.
 
 <div class="my-8 flex justify-center">
   <a href="/software-bares-restaurantes#cuanto-cuesta" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
@@ -63,15 +63,15 @@ Precios que publican en su web los fabricantes que dan tarifa, consultados el 23
 | [SumUp TPV](https://www.sumup.com/es-es/sumup-tpv/) | 0 €/mes (Free) o 49 €/mes (Plus) | 1,49 % por transacción en el plan gratuito; terminal aparte |
 | [Holded, gema TPV](https://www.holded.com/es/gemas/tpv) | 25 €/mes por tienda | Módulo de TPV de un ERP generalista |
 | [Numier](https://ventatpv.com/blog/software-numier-guia-caracteristicas-tipos-y-precios-guia-2021-n12) (vía distribuidor) | 499 a 550 € de licencia básica | Pago único; cocina, carta digital, comandero e inventario aparte |
-| [Drenpos, plan Tienda y Hostelería](/pricing) | [[p:tienda]]/mes sin IVA | TPV con mesas, 2 comanderos y pantallas, facturación con Verifactu, 3 usuarios y fichaje para 8 personas |
+| [Drenpos, plan Tienda y Hostelería](/pricing) | [[p:tienda]]/mes sin IVA | TPV con mesas, 2 comanderos y pantallas, facturación con Verifactu, [[n:tienda_usuarios]] usuarios y fichaje para [[n:tienda_fichajes]] personas |
 
 Ojo a la unidad: por local, por punto de venta o por tienda no es lo mismo cuando abres un segundo local.
 
 ## ¿TPV sin cuotas o por suscripción?
 
-Tiene truco: se compara un pago único con una cuota sin mirar el plazo. [VentaTPV calcula](https://ventatpv.com/blog/cuanto-cuesta-un-tpv-completo-para-hosteleria-precios-y-que-incluyen-en-2026-n33) que un software por suscripción de 40 a 80 € al mes supone entre 1.440 y 2.880 € a tres años. Con la misma cuenta, el plan Tienda y Hostelería de Drenpos son [[n:tienda]] × 36 = **[[p:tienda×36]] sin IVA a tres años**, y dentro van el TPV, la facturación, el fichaje y las actualizaciones.
+El error habitual es comparar un pago único con una cuota sin mirar el plazo. [VentaTPV calcula](https://ventatpv.com/blog/cuanto-cuesta-un-tpv-completo-para-hosteleria-precios-y-que-incluyen-en-2026-n33) que un software por suscripción de 40 a 80 € al mes supone entre 1.440 y 2.880 € a tres años. Con la misma cuenta, el plan Tienda y Hostelería de Drenpos son [[n:tienda]] × 36 = **[[p:tienda×36]] sin IVA a tres años**, y dentro van el TPV, la facturación, el fichaje y las actualizaciones.
 
-Con una licencia sin cuota, las preguntas útiles son otras: qué módulos van aparte (en Numier, la cocina, la carta digital y el inventario), quién te actualiza el programa cuando cambia la normativa y qué cuesta ese cambio. Con Verifactu en el horizonte (octubre de 2028, según el último anuncio de Hacienda), esa última no es teórica.
+Con una licencia sin cuota, las preguntas útiles son otras: qué módulos van aparte (en Numier, la cocina, la carta digital y el inventario), quién te actualiza el programa cuando cambia la normativa y qué cuesta ese cambio. Con Verifactu en el horizonte (octubre de 2028, según el último anuncio de Hacienda), esa última no es teórica. Qué incluye cada modelo, de las actualizaciones a las copias de seguridad y el soporte, lo comparamos en [TPV con licencia en tu PC o en la nube](/blog/tpv-local-licencia-vs-nube-coste-real).
 
 ## ¿Qué comisiones se pagan por cobrar con tarjeta?
 
@@ -87,7 +87,7 @@ Depende del proveedor. Last.app, por ejemplo, publica la pantalla de cocina a 35
 
 En Drenpos las **pantallas de cocina y barra van incluidas** en el TPV, sin coste por pantalla, cada una con sus familias de productos. Por qué importa que no se pierdan comandas lo contamos en [pantalla de cocina y comandas perdidas](/blog/pantalla-cocina-kds-bares-comandas-perdidas).
 
-El **fichaje** va en el mismo sistema: el plan Tienda y Hostelería trae ocho personas y cada una más cuesta [[p:fichaje]] al mes sin IVA. Vacaciones, control de entrada y salida y geolocalización opcional van incluidos sin coste extra. Si quieres un terminal en la barra para fichar con llavero, parte de [[p:terminal]] sin IVA en un único pago. Cómo se lleva con turnos partidos lo explicamos en [control horario en hostelería](/blog/control-horario-hosteleria-turnos-partidos).
+El **fichaje** va en el mismo sistema: el plan Tienda y Hostelería trae [[n:tienda_fichajes]] personas y cada una más cuesta [[p:fichaje]] al mes sin IVA. Vacaciones, control de entrada y salida y geolocalización opcional van incluidos sin coste extra. Si quieres un terminal en la barra para fichar con llavero, parte de [[p:terminal]] sin IVA en un único pago. Cómo se lleva con turnos partidos lo explicamos en [control horario en hostelería](/blog/control-horario-hosteleria-turnos-partidos).
 
 ## ¿Y Verifactu, cuesta algo?
 
@@ -107,9 +107,9 @@ Precios públicos sin IVA: plan Tienda y Hostelería [[p:tienda]]/mes con [[n:ti
 
 | Local | Personas que fichan | Usuarios del sistema | Cuota mensual | Primer año con terminal |
 | --- | --- | --- | --- | --- |
-| Bar de barrio | 4 | 3 (incluidos) | [[p:tienda]] | [[p:tienda×12+terminal]] |
+| Bar de barrio | 4 | [[n:tienda_usuarios]] (incluidos) | [[p:tienda]] | [[p:tienda×12+terminal]] |
 | Restaurante con terraza | 12 | 7 | [[p:tienda+4×fichaje+4×usuario]] | [[p:(tienda+4×fichaje+4×usuario)×12+terminal]] |
-| Cafetería con dos turnos | 8 | 3 (incluidos) | [[p:tienda]] | [[p:tienda×12+terminal]] |
+| Cafetería con dos turnos | 8 | [[n:tienda_usuarios]] (incluidos) | [[p:tienda]] | [[p:tienda×12+terminal]] |
 
 Súmale el hardware que no tengas y la comisión de tu datáfono. Para tener una referencia pública al lado: el plan de entrada de [Last.app](https://www.last.app/precios) con pantalla de cocina son 85 € al mes más IVA por local, más 500 € de instalación, e incluye cosas que Drenpos no tiene, como la integración con delivery.
 
@@ -121,7 +121,7 @@ Hoy Drenpos no se integra con plataformas de delivery como Glovo, Uber Eats o Ju
 
 ### ¿Cuánto cuesta un TPV para un bar?
 
-Según las tarifas publicadas el 23 de septiembre de 2026, el software de un TPV de hostelería va de 0 a 175 € al mes en suscripción, o ronda los 499 a 550 € en licencia sin cuota con los módulos aparte. A eso hay que sumar el hardware, las comisiones por pago con tarjeta y, según el proveedor, la pantalla de cocina o el fichaje. En Drenpos el plan Tienda y Hostelería cuesta [[p:tienda]]/mes sin IVA con TPV, caja y dos comanderos, Verifactu y fichaje para ocho personas.
+Según las tarifas publicadas el 23 de septiembre de 2026, el software de un TPV de hostelería va de 0 a 175 € al mes en suscripción, o ronda los 499 a 550 € en licencia sin cuota con los módulos aparte. A eso hay que sumar el hardware, las comisiones por pago con tarjeta y, según el proveedor, la pantalla de cocina o el fichaje. En Drenpos el plan Tienda y Hostelería cuesta [[p:tienda]]/mes sin IVA con TPV, caja y dos comanderos, Verifactu y fichaje para [[n:tienda_fichajes]] personas.
 
 ### ¿Qué es mejor, un TPV sin cuotas o uno por suscripción?
 
