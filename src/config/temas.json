@@ -10,11 +10,11 @@
       "colores": {
         "primary": "#b23a0e",
         "secondary": "#6b2a8c",
-        "light": "#d9692b",
+        "light": "#c95f24",
         "accent": "#d48a1a",
         "accent_light": "#e9c46a",
-        "body": "#f7f2ea",
-        "border": "#ede4d6"
+        "body": "#ece3d4",
+        "border": "#ddd0bc"
       }
     },
     {

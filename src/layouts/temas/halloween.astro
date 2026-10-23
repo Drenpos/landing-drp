@@ -1,9 +1,11 @@
 ---
 // Adornos del tema "halloween" (src/config/temas.json). Solo se ven con
 // html[data-tema="halloween"]; prueba con ?tema=halloween.
-// Fijos: telarañas, araña colgando, murciélagos colgados, calabazas y niebla.
+// Fijos: telarañas, araña colgando, murciélagos colgados, calabazas, niebla,
+// luna con nubes, viñeta y cementerio sobre el pie de página.
 // Aleatorios (script de abajo): murciélagos que cruzan, fantasmas que suben,
-// ojos que parpadean en los bordes y alguna bruja en escoba.
+// ojos que parpadean en los bordes, hojas que caen, alguna bruja en escoba
+// y algún relámpago suave. En escritorio, estela de brasas tras el cursor.
 // Clic en una calabaza: salen murciélagos.
 // Con prefers-reduced-motion no hay animaciones ni apariciones.
 
@@ -103,6 +105,16 @@ const calabazas = [
     }
   </div>
 
+  <!-- Luna con nubes que pasan por delante -->
+  <div class="hw-luna absolute z-20 hidden md:block">
+    <span class="hw-luna-disco"></span>
+    <span class="hw-nube"></span>
+    <span class="hw-nube hw-nube-2"></span>
+  </div>
+
+  <!-- Viñeta: oscurece los bordes de la pantalla -->
+  <div class="hw-vineta"></div>
+
   <!-- Símbolos reutilizables (también los usa el script) -->
   <svg width="0" height="0" class="absolute">
     <symbol id="hw-murcielago" viewBox="0 0 64 32">
@@ -113,6 +125,9 @@ const calabazas = [
       <ellipse cx="17" cy="22" rx="3.5" ry="5" fill="currentColor" />
       <ellipse cx="31" cy="22" rx="3.5" ry="5" fill="currentColor" />
       <ellipse cx="24" cy="34" rx="4" ry="5" fill="currentColor" opacity=".8" />
+    </symbol>
+    <symbol id="hw-hoja" viewBox="0 0 32 32">
+      <path d="M16 2c2 4 6 5 9 4-1 3 0 6 3 8-3 1-4 3-3 6-3-1-6 0-7 3-1-2-2-3-4-3l-1 9h-2l1-9c-2 0-3 1-4 3-1-3-4-4-7-3 1-3 0-5-3-6 3-2 4-5 3-8 3 1 7 0 9-4 1 2 3 3 5 3s4-1 5-3z" />
     </symbol>
     <symbol id="hw-bruja" viewBox="0 0 96 48">
       <path d="M4 34l58-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none" />
@@ -169,6 +184,37 @@ const calabazas = [
   .hw-niebla-lenta { animation-duration: 80s; animation-direction: reverse; opacity: 0.4; translate: 0 6%; }
   @keyframes hw-deriva { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
+  /* Luna */
+  .hw-luna { left: 36%; top: 112px; width: 60px; height: 60px; }
+  .hw-luna-disco {
+    position: absolute; inset: 0; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, var(--color-accent-light), color-mix(in oklab, var(--color-accent) 70%, var(--color-accent-light)));
+    box-shadow: 0 0 30px 8px color-mix(in oklab, var(--color-accent-light) 55%, transparent),
+      inset -8px -6px 0 color-mix(in oklab, var(--color-dark) 12%, transparent);
+  }
+  .hw-nube {
+    position: absolute; top: 30px; left: -60px; width: 90px; height: 22px; border-radius: 999px;
+    background: color-mix(in oklab, var(--color-dark) 30%, transparent); filter: blur(6px);
+    animation: hw-nube 24s linear infinite;
+  }
+  .hw-nube-2 { top: 8px; width: 70px; height: 16px; animation-duration: 37s; animation-delay: -15s; }
+  @keyframes hw-nube { from { transform: translateX(0); } to { transform: translateX(200px); } }
+
+  /* Viñeta */
+  .hw-vineta {
+    position: fixed; inset: 0; z-index: 34; pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 55%, color-mix(in oklab, var(--color-dark) 26%, transparent));
+  }
+
+  /* Cementerio sobre el pie de página */
+  html[data-tema="halloween"] footer { position: relative; }
+  html[data-tema="halloween"] footer::before {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 100%; height: 80px; pointer-events: none;
+    background: var(--color-dark);
+    mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 80"%3E%3Cpath d="M0 72h420v8H0zM30 74V44a17 17 0 0 1 34 0v30zM118 74V34h-11v-8h11V14h8v12h11v8h-11v40zM182 74V54a12 12 0 0 1 24 0v20zM226 74V40l14-8 14 8v34zM276 74V46l2-6 2 6v28zM290 74V46l2-6 2 6v28zM304 74V46l2-6 2 6v28zM318 74V46l2-6 2 6v28zM332 74V46l2-6 2 6v28zM346 74V46l2-6 2 6v28zM360 74V46l2-6 2 6v28zM374 74V46l2-6 2 6v28zM388 74V46l2-6 2 6v28zM402 74V46l2-6 2 6v28zM272 50h140v3H272zM272 64h140v3H272zM4 73l2-9 2 9zM13 73l2-6 2 6zM22 73l2-9 2 9zM31 73l2-6 2 6zM40 73l2-9 2 9zM49 73l2-6 2 6zM58 73l2-9 2 9zM67 73l2-6 2 6zM76 73l2-9 2 9zM85 73l2-6 2 6zM94 73l2-9 2 9zM103 73l2-6 2 6zM112 73l2-9 2 9zM121 73l2-6 2 6zM130 73l2-9 2 9zM139 73l2-6 2 6zM148 73l2-9 2 9zM157 73l2-6 2 6zM166 73l2-9 2 9zM175 73l2-6 2 6zM184 73l2-9 2 9zM193 73l2-6 2 6zM202 73l2-9 2 9zM211 73l2-6 2 6zM220 73l2-9 2 9zM229 73l2-6 2 6zM238 73l2-9 2 9zM247 73l2-6 2 6zM256 73l2-9 2 9zM265 73l2-6 2 6zM274 73l2-9 2 9zM283 73l2-6 2 6zM292 73l2-9 2 9zM301 73l2-6 2 6zM310 73l2-9 2 9zM319 73l2-6 2 6zM328 73l2-9 2 9zM337 73l2-6 2 6zM346 73l2-9 2 9zM355 73l2-6 2 6zM364 73l2-9 2 9zM373 73l2-6 2 6zM382 73l2-9 2 9zM391 73l2-6 2 6zM400 73l2-9 2 9zM409 73l2-6 2 6zM418 73l2-9 2 9z"/%3E%3C/svg%3E') repeat-x bottom / 420px 80px;
+    -webkit-mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 80"%3E%3Cpath d="M0 72h420v8H0zM30 74V44a17 17 0 0 1 34 0v30zM118 74V34h-11v-8h11V14h8v12h11v8h-11v40zM182 74V54a12 12 0 0 1 24 0v20zM226 74V40l14-8 14 8v34zM276 74V46l2-6 2 6v28zM290 74V46l2-6 2 6v28zM304 74V46l2-6 2 6v28zM318 74V46l2-6 2 6v28zM332 74V46l2-6 2 6v28zM346 74V46l2-6 2 6v28zM360 74V46l2-6 2 6v28zM374 74V46l2-6 2 6v28zM388 74V46l2-6 2 6v28zM402 74V46l2-6 2 6v28zM272 50h140v3H272zM272 64h140v3H272zM4 73l2-9 2 9zM13 73l2-6 2 6zM22 73l2-9 2 9zM31 73l2-6 2 6zM40 73l2-9 2 9zM49 73l2-6 2 6zM58 73l2-9 2 9zM67 73l2-6 2 6zM76 73l2-9 2 9zM85 73l2-6 2 6zM94 73l2-9 2 9zM103 73l2-6 2 6zM112 73l2-9 2 9zM121 73l2-6 2 6zM130 73l2-9 2 9zM139 73l2-6 2 6zM148 73l2-9 2 9zM157 73l2-6 2 6zM166 73l2-9 2 9zM175 73l2-6 2 6zM184 73l2-9 2 9zM193 73l2-6 2 6zM202 73l2-9 2 9zM211 73l2-6 2 6zM220 73l2-9 2 9zM229 73l2-6 2 6zM238 73l2-9 2 9zM247 73l2-6 2 6zM256 73l2-9 2 9zM265 73l2-6 2 6zM274 73l2-9 2 9zM283 73l2-6 2 6zM292 73l2-9 2 9zM301 73l2-6 2 6zM310 73l2-9 2 9zM319 73l2-6 2 6zM328 73l2-9 2 9zM337 73l2-6 2 6zM346 73l2-9 2 9zM355 73l2-6 2 6zM364 73l2-9 2 9zM373 73l2-6 2 6zM382 73l2-9 2 9zM391 73l2-6 2 6zM400 73l2-9 2 9zM409 73l2-6 2 6zM418 73l2-9 2 9z"/%3E%3C/svg%3E') repeat-x bottom / 420px 80px;
+  }
+
   /* Aleatorios: los crea el script en <body> */
   .hw-vuelo {
     position: fixed; left: 0; z-index: 45; pointer-events: none;
@@ -213,8 +259,30 @@ const calabazas = [
     to { transform: translate(var(--dx), var(--dy)) scale(1); opacity: 0; }
   }
 
+  .hw-hoja {
+    position: fixed; top: -40px; z-index: 45; pointer-events: none;
+    animation: hw-cae var(--dur) linear forwards;
+  }
+  .hw-hoja svg { display: block; animation: hw-gira calc(var(--dur) / 3) ease-in-out infinite alternate; }
+  @keyframes hw-cae { to { transform: translate(var(--dx), 110vh); } }
+  @keyframes hw-gira { from { transform: rotate(-35deg) translateX(-14px); } to { transform: rotate(35deg) translateX(14px); } }
+
+  .hw-relampago {
+    position: fixed; inset: 0; z-index: 44; pointer-events: none;
+    background: color-mix(in oklab, var(--color-accent-light) 35%, transparent);
+    animation: hw-relampago 0.9s ease-out forwards;
+  }
+  @keyframes hw-relampago { 0% { opacity: 0; } 8% { opacity: 0.8; } 18% { opacity: 0; } 30% { opacity: 0.5; } 100% { opacity: 0; } }
+
+  .hw-brasa {
+    position: fixed; z-index: 46; pointer-events: none; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--color-accent); box-shadow: 0 0 6px var(--color-accent);
+    animation: hw-brasa 0.9s ease-out forwards;
+  }
+  @keyframes hw-brasa { to { transform: translate(var(--dx), -38px) scale(0.2); opacity: 0; } }
+
   @media (prefers-reduced-motion: reduce) {
-    .hw *, .hw-vuelo, .hw-fantasma, .hw-ojos, .hw-escapa { animation: none !important; }
+    .hw *, .hw-vuelo, .hw-fantasma, .hw-ojos, .hw-escapa, .hw-hoja { animation: none !important; }
     .hw-hilo { height: 120px; }
   }
 </style>
@@ -291,12 +359,53 @@ const calabazas = [
     }
   }
 
+  const COLORES_HOJA = ["var(--color-light)", "var(--color-primary)", "var(--color-accent)", "var(--color-secondary)"];
+  function hojas() {
+    const n = Math.round(azar(3, 7));
+    for (let i = 0; i < n; i++) {
+      const el = document.createElement("span");
+      el.className = "hw-hoja";
+      el.style.left = `${azar(0, 95)}vw`;
+      el.style.animationDelay = `${azar(0, 2.5)}s`;
+      el.style.color = COLORES_HOJA[Math.floor(Math.random() * COLORES_HOJA.length)];
+      el.style.setProperty("--dur", `${azar(7, 12)}s`);
+      el.style.setProperty("--dx", `${azar(-120, 120)}px`);
+      el.appendChild(figura("hw-hoja", azar(16, 28), "0 0 32 32"));
+      soltar(el);
+    }
+  }
+
+  function relampago() {
+    const el = document.createElement("span");
+    el.className = "hw-relampago";
+    soltar(el);
+  }
+
+  // Estela de brasas detrás del cursor (solo ratón)
+  let ultima = 0;
+  if (window.matchMedia("(pointer: fine)").matches) {
+    document.addEventListener("pointermove", (e) => {
+      const ahora = performance.now();
+      if (ahora - ultima < 45 || !activo() || quieto.matches) return;
+      if (document.querySelectorAll(".hw-brasa").length > 24) return;
+      ultima = ahora;
+      const el = document.createElement("span");
+      el.className = "hw-brasa";
+      el.style.left = `${e.clientX + azar(-4, 4)}px`;
+      el.style.top = `${e.clientY + azar(-4, 4)}px`;
+      el.style.setProperty("--dx", `${azar(-16, 16)}px`);
+      soltar(el);
+    });
+  }
+
   // Probabilidades de cada aparición
   const reparto: [number, () => void][] = [
-    [0.5, murcielago],
-    [0.2, fantasma],
-    [0.2, ojos],
-    [0.1, bruja],
+    [0.36, murcielago],
+    [0.17, fantasma],
+    [0.16, ojos],
+    [0.16, hojas],
+    [0.09, bruja],
+    [0.06, relampago],
   ];
 
   function siguiente() {
