@@ -6,6 +6,9 @@ import CallToAction from "@/partials/CallToAction.astro";
 import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
 import DemoForm from "@/partials/DemoForm.astro";
 import LandingMeta from "@/partials/LandingMeta.astro";
+import JsonLd from "@/components/JsonLd.astro";
+import { abs, AUTOR, ORG_ID } from "@/lib/site";
+import { breadcrumb, faqPage, softwareApp } from "@/lib/schema";
 
 // ════════════════════════════════════════════════════════════════════════
 //  Conector MCP · landing de módulo
@@ -18,7 +21,8 @@ import LandingMeta from "@/partials/LandingMeta.astro";
 //  Capturas: /public/images/funcionalidades/mcp/
 // ════════════════════════════════════════════════════════════════════════
 
-const CANONICAL = "https://www.drenpos.com/conector-mcp-ia";
+const PATH = "/conector-mcp-ia";
+const CANONICAL = abs(PATH);
 const IMG = "/images/funcionalidades/mcp";
 
 const pasos = [
@@ -165,62 +169,47 @@ const faqs = [
 ];
 
 // ── Datos estructurados (JSON-LD) ──────────────────────────────────────
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
-
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
-    { "@type": "ListItem", position: 2, name: "Módulos", item: "https://www.drenpos.com/modulos" },
-    { "@type": "ListItem", position: 3, name: "Conector MCP", item: CANONICAL },
-  ],
-};
-
-const softwareSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "Drenpos · Conector MCP",
-  url: CANONICAL,
-  applicationCategory: "BusinessApplication",
-  operatingSystem: "Web",
-  image: [
-    `https://www.drenpos.com${IMG}/01-chat-ventas-semana.png`,
-    `https://www.drenpos.com${IMG}/02-ficha-cliente-chat.png`,
-  ],
-  description:
-    "Conector MCP (Model Context Protocol) que enlaza el software de gestión Drenpos con ChatGPT, Claude o cualquier asistente compatible. Permite consultar en lenguaje natural la analítica de ventas, las compras y ventas netas, las fichas de clientes y proveedores y la ficha y el stock de los productos. Solo lectura, con los mismos permisos que cada usuario tiene dentro de Drenpos.",
-  brand: { "@type": "Brand", name: "Drenpos" },
-  provider: { "@type": "Organization", name: "Drenpos Tech SL", url: "https://www.drenpos.com" },
-  featureList: [
-    "Conexión con ChatGPT, Claude y clientes compatibles con MCP",
-    "Analítica de ventas por rango de fechas",
-    "Compras y ventas netas por periodo",
-    "Búsqueda y ficha de clientes y proveedores",
-    "Búsqueda, ficha y stock de productos",
-    "Permisos y roles idénticos a los del usuario en Drenpos",
-    "Acceso de solo lectura",
-  ],
-  offers: {
-    "@type": "Offer",
-    price: decimal(valor("mcp")),
-    priceCurrency: "EUR",
-    priceValidUntil: "2027-12-31",
-    availability: "https://schema.org/InStock",
-    url: CANONICAL,
-    valueAddedTaxIncluded: false,
-    description: "[[p:mcp]] al mes por empresa sin IVA, con todos los usuarios incluidos y sin permanencia.",
-    seller: { "@type": "Organization", name: "Drenpos Tech SL" },
+const jsonLd = [
+  breadcrumb([
+    { name: "Módulos", path: "/modulos" },
+    { name: "Conector MCP", path: PATH },
+  ]),
+  {
+    ...softwareApp({
+      name: "Drenpos · Conector MCP",
+      path: PATH,
+      description:
+        "Conector MCP (Model Context Protocol) que enlaza el software de gestión Drenpos con ChatGPT, Claude o cualquier asistente compatible. Permite consultar en lenguaje natural la analítica de ventas, las compras y ventas netas, las fichas de clientes y proveedores y la ficha y el stock de los productos. Solo lectura, con los mismos permisos que cada usuario tiene dentro de Drenpos.",
+      featureList: [
+        "Conexión con ChatGPT, Claude y clientes compatibles con MCP",
+        "Analítica de ventas por rango de fechas",
+        "Compras y ventas netas por periodo",
+        "Búsqueda y ficha de clientes y proveedores",
+        "Búsqueda, ficha y stock de productos",
+        "Permisos y roles idénticos a los del usuario en Drenpos",
+        "Acceso de solo lectura",
+      ],
+    }),
+    operatingSystem: "Web",
+    image: [
+      abs(`${IMG}/01-chat-ventas-semana.png`),
+      abs(`${IMG}/02-ficha-cliente-chat.png`),
+    ],
+    brand: { "@type": "Brand", name: "Drenpos" },
+    offers: {
+      "@type": "Offer",
+      price: decimal(valor("mcp")),
+      priceCurrency: "EUR",
+      priceValidUntil: "2027-12-31",
+      availability: "https://schema.org/InStock",
+      url: CANONICAL,
+      valueAddedTaxIncluded: false,
+      description: "[[p:mcp]] al mes por empresa sin IVA, con todos los usuarios incluidos y sin permanencia.",
+      seller: { "@id": ORG_ID },
+    },
   },
-};
+  faqPage(faqs),
+];
 
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
@@ -231,17 +220,15 @@ const PAGE_UPDATED = "2026-10-22";
 <Base
   title="Conector MCP: Drenpos en ChatGPT o Claude"
   meta_title="Conector MCP: conecta Drenpos con ChatGPT o Claude"
-  description="Conecta Drenpos con ChatGPT o Claude y pregunta por tus ventas, clientes y stock en lenguaje natural. Solo lectura y con los mismos permisos que tienes en Drenpos."
+  description="Conecta Drenpos con ChatGPT o Claude y pregunta por tus ventas, clientes y stock en lenguaje natural. Solo lectura, con los mismos permisos que en Drenpos."
   canonical={CANONICAL}
   image={`${IMG}/01-chat-ventas-semana.png`}
   published_date={PAGE_PUBLISHED}
   modified_date={PAGE_UPDATED}
-  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
+  author={AUTOR}
 >
   <!-- Datos estructurados -->
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <JsonLd data={jsonLd} />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        HERO

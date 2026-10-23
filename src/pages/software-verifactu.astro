@@ -1,11 +1,13 @@
 ---
-import { decimal, valor } from "@/lib/precios";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
 import DemoForm from "@/partials/DemoForm.astro";
 import LandingMeta from "@/partials/LandingMeta.astro";
+import JsonLd from "@/components/JsonLd.astro";
+import { abs, AUTOR, ORG_ID } from "@/lib/site";
+import { breadcrumb, faqPage, oferta, softwareApp } from "@/lib/schema";
 
 // ════════════════════════════════════════════════════════════════════════
 //  Software de facturación Verifactu · landing comercial
@@ -26,7 +28,8 @@ import LandingMeta from "@/partials/LandingMeta.astro";
 //  Imágenes: /public/images/blog/verifactu/
 // ════════════════════════════════════════════════════════════════════════
 
-const CANONICAL = "https://www.drenpos.com/software-verifactu";
+const PATH = "/software-verifactu";
+const CANONICAL = abs(PATH);
 const IMG = "/images/blog/verifactu";
 
 const pasos = [
@@ -222,63 +225,44 @@ const otrasObligaciones = [
 ];
 
 // ── Datos estructurados (JSON-LD) ──────────────────────────────────────
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
-
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
-    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
-    { "@type": "ListItem", position: 3, name: "Software de facturación Verifactu", item: CANONICAL },
-  ],
-};
-
-const softwareSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "Drenpos · Facturación Verifactu",
-  url: CANONICAL,
-  applicationCategory: "BusinessApplication",
-  applicationSubCategory: "Software de facturación",
-  operatingSystem: "Web (navegador)",
-  image: [
-    `https://www.drenpos.com${IMG}/verifactu-qr.webp`,
-    `https://www.drenpos.com${IMG}/verifactu-drenpos-traza.webp`,
-  ],
-  description:
-    "Software de facturación en modalidad Verifactu para pymes y autónomos: registro de facturación con huella encadenada, código QR con la leyenda VERI*FACTU, remisión a la AEAT y panel de envíos, sin configuración por parte del cliente. Incluye facturas completas, simplificadas y rectificativas, series y numeración propias y envío al cliente por correo y WhatsApp.",
-  publisher: { "@type": "Organization", name: "Drenpos Tech SL", url: "https://www.drenpos.com" },
-  inLanguage: "es-ES",
-  featureList: [
-    "Registro de facturación con huella (hash) encadenada",
-    "Código QR y leyenda VERI*FACTU en la factura",
-    "Remisión de los registros a la AEAT",
-    "Panel de envíos",
-    "Facturas completas, simplificadas y rectificativas",
-    "Series y numeración configurables",
-    "Envío de facturas por correo y WhatsApp",
-  ],
-  offers: {
-    "@type": "Offer",
-    price: decimal(valor("facturacion")),
-    priceCurrency: "EUR",
-    priceValidUntil: "2027-12-31",
-    availability: "https://schema.org/InStock",
-    url: "https://www.drenpos.com/pricing",
-    valueAddedTaxIncluded: false,
-    description: "Facturación Verifactu incluida en todos los planes. Plan Facturación, [[p:facturacion]]/mes sin IVA, sin permanencia.",
-    seller: { "@type": "Organization", name: "Drenpos Tech SL" },
+const jsonLd = [
+  breadcrumb([
+    { name: "Funcionalidades", path: "/funcionalidades" },
+    { name: "Software de facturación Verifactu", path: PATH },
+  ]),
+  {
+    ...softwareApp({
+      name: "Drenpos · Facturación Verifactu",
+      path: PATH,
+      description:
+        "Software de facturación en modalidad Verifactu para pymes y autónomos: registro de facturación con huella encadenada, código QR con la leyenda VERI*FACTU, remisión a la AEAT y panel de envíos, sin configuración por parte del cliente. Incluye facturas completas, simplificadas y rectificativas, series y numeración propias y envío al cliente por correo y WhatsApp.",
+      featureList: [
+        "Registro de facturación con huella (hash) encadenada",
+        "Código QR y leyenda VERI*FACTU en la factura",
+        "Remisión de los registros a la AEAT",
+        "Panel de envíos",
+        "Facturas completas, simplificadas y rectificativas",
+        "Series y numeración configurables",
+        "Envío de facturas por correo y WhatsApp",
+      ],
+    }),
+    applicationSubCategory: "Software de facturación",
+    operatingSystem: "Web (navegador)",
+    image: [abs(`${IMG}/verifactu-qr.webp`), abs(`${IMG}/verifactu-drenpos-traza.webp`)],
+    publisher: { "@id": ORG_ID },
+    inLanguage: "es-ES",
+    offers: {
+      ...oferta(
+        "facturacion",
+        "Facturación Verifactu incluida en todos los planes. Plan Facturación, [[p:facturacion]]/mes sin IVA, sin permanencia.",
+      ),
+      priceValidUntil: "2027-12-31",
+      availability: "https://schema.org/InStock",
+      seller: { "@id": ORG_ID },
+    },
   },
-};
+  faqPage(faqs),
+];
 
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
@@ -294,12 +278,10 @@ const PAGE_UPDATED = "2026-10-22";
   image={`${IMG}/verifactu-cover.webp`}
   published_date={PAGE_PUBLISHED}
   modified_date={PAGE_UPDATED}
-  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
+  author={AUTOR}
 >
   <!-- Datos estructurados -->
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <JsonLd data={jsonLd} />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        HERO

@@ -1,5 +1,8 @@
 ---
+import { abs, AUTOR } from "@/lib/site";
 import { decimal, valor } from "@/lib/precios";
+import { breadcrumb, faqPage, softwareApp } from "@/lib/schema";
+import JsonLd from "@/components/JsonLd.astro";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -18,7 +21,8 @@ import LandingMeta from "@/partials/LandingMeta.astro";
 //  Reutiliza también: /images/power/stock.png, /images/ventas.png
 // ════════════════════════════════════════════════════════════════════════
 
-const CANONICAL = "https://www.drenpos.com/software-almacen-tienda";
+const PATH = "/software-almacen-tienda";
+const CANONICAL = abs(PATH);
 
 // Capacidades de ALMACÉN (el punto fuerte)
 const almacen = [
@@ -237,51 +241,38 @@ const supermercados = [
 ];
 
 // ── Datos estructurados ──────────────────────────────────────────────────
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
-    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
-    { "@type": "ListItem", position: 3, name: "Software de almacén y tienda", item: CANONICAL },
-  ],
-};
+const breadcrumbSchema = breadcrumb([
+  { name: "Funcionalidades", path: "/funcionalidades" },
+  { name: "Software de almacén y tienda", path: PATH },
+]);
 const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "Drenpos · Almacén y TPV de tienda",
-  applicationCategory: "BusinessApplication",
+  ...softwareApp({
+    name: "Drenpos · Almacén y TPV de tienda",
+    path: PATH,
+    description:
+      "Software de gestión de almacén y TPV de tienda para pymes: multialmacén con ubicaciones, lotes y trazabilidad, FIFO/LIFO/FEFO, alertas de caducidad, traslados con pistola, TPV de tienda y restaurante, y facturación Verifactu.",
+    featureList: [
+      "Gestión multialmacén con ubicaciones y QR",
+      "Lotes, caducidad y trazabilidad total",
+      "FIFO / LIFO / FEFO automático",
+      "Traslados con pistola lectora",
+      "Unidades de medida múltiples",
+      "TPV de tienda y restaurante",
+      "Cierre de caja y facturación Verifactu",
+    ],
+  }),
+  // Almacén + TPV no es un plan de precios.json: oferta montada a mano.
   operatingSystem: "Web, iOS, Android (PWA)",
-  url: CANONICAL,
-  description:
-    "Software de gestión de almacén y TPV de tienda para pymes: multialmacén con ubicaciones, lotes y trazabilidad, FIFO/LIFO/FEFO, alertas de caducidad, traslados con pistola, TPV de tienda y restaurante, y facturación Verifactu.",
   offers: {
     "@type": "Offer",
     price: decimal(valor("almacen_tpv")),
     priceCurrency: "EUR",
+    valueAddedTaxIncluded: false,
     description: "Plan Almacén con TPV, [[p:almacen_tpv]]/mes (sin IVA).",
-    url: "https://www.drenpos.com/pricing",
+    url: abs("/pricing"),
   },
-  featureList: [
-    "Gestión multialmacén con ubicaciones y QR",
-    "Lotes, caducidad y trazabilidad total",
-    "FIFO / LIFO / FEFO automático",
-    "Traslados con pistola lectora",
-    "Unidades de medida múltiples",
-    "TPV de tienda y restaurante",
-    "Cierre de caja y facturación Verifactu",
-  ],
-  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
 };
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
+const faqSchema = faqPage(faqs);
 
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
@@ -297,11 +288,9 @@ const PAGE_UPDATED = "2026-10-22";
   image="/images/power/stock.png"
   published_date={PAGE_PUBLISHED}
   modified_date={PAGE_UPDATED}
-  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
+  author={AUTOR}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <JsonLd data={[breadcrumbSchema, productSchema, faqSchema]} />
 
   <!-- ═══════════════ HERO ═══════════════ -->
   <section class="section-sm pb-0 relative z-10 overflow-hidden">

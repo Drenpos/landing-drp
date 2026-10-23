@@ -1,5 +1,8 @@
 ---
 import { decimal, valor } from "@/lib/precios";
+import { abs } from "@/lib/site";
+import { breadcrumb, faqPage, softwareApp } from "@/lib/schema";
+import JsonLd from "@/components/JsonLd.astro";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import PageHeader from "@/partials/PageHeader.astro";
@@ -8,7 +11,8 @@ import { getEntry, type CollectionEntry } from "astro:content";
 import PlansComparison from "@/partials/PlansComparison.astro";
 import ModulesTableCollapsible from "@/partials/ModulesTableCollapsible.astro";
 
-const CANONICAL = "https://www.drenpos.com/pricing";
+const PATH = "/pricing";
+const CANONICAL = abs(PATH);
 
 const pricingIndex = (await getEntry(
   "pricing",
@@ -103,25 +107,17 @@ const faqs = [
 ];
 
 // ── Datos estructurados ──────────────────────────────────────────────────
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
-    { "@type": "ListItem", position: 2, name: "Precios", item: CANONICAL },
-  ],
-};
+const breadcrumbSchema = breadcrumb([{ name: "Precios", path: PATH }]);
 
 const offersSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "Drenpos ERP",
-  applicationCategory: "BusinessApplication",
+  ...softwareApp({
+    name: "Drenpos ERP",
+    path: PATH,
+    description:
+      "Programa de gestión para pymes y autónomos en España: facturación con Verifactu y DeCA, TPV para tienda y hostelería, almacén con lotes y ubicaciones, producción y control horario. Cuatro planes y módulos opcionales, sin permanencia.",
+  }),
   operatingSystem: "Web, iOS, Android (PWA)",
-  url: CANONICAL,
   inLanguage: "es-ES",
-  description:
-    "Programa de gestión para pymes y autónomos en España: facturación con Verifactu y DeCA, TPV para tienda y hostelería, almacén con lotes y ubicaciones, producción y control horario. Cuatro planes y módulos opcionales, sin permanencia.",
   offers: {
     "@type": "AggregateOffer",
     priceCurrency: "EUR",
@@ -151,18 +147,9 @@ const offersSchema = {
       },
     })),
   },
-  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
+const faqSchema = faqPage(faqs);
 ---
 
 <Base
@@ -172,9 +159,7 @@ const faqSchema = {
   description={description}
   canonical={CANONICAL}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(offersSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <JsonLd data={[breadcrumbSchema, offersSchema, faqSchema]} />
 
   <PageHeader title={hero.title} description={hero.description} />
 
@@ -200,7 +185,10 @@ const faqSchema = {
     </div>
   </section>
 
-  <div class="pb-0">
+  <!-- relative z-20: la cabecera (PageHeader, z-10 y alto fijo) se solapa
+       con esta zona según el ancho de pantalla y tapaba el selector
+       mensual/anual. -->
+  <div class="relative z-20 pb-0">
     <PricingSection isSection={true} />
     <PlansComparison isSection={true} />
     <ModulesTableCollapsible isSection={true} />

@@ -62,7 +62,8 @@ export function oferta(plan: ClavePlan, description?: string): Nodo {
     priceCurrency: "EUR",
     valueAddedTaxIncluded: false,
     description:
-      description ?? `Plan ${P.planes[plan].nombre}, [[p:${plan}]] al mes sin IVA.`,
+      description ??
+      `Plan ${P.planes[plan].nombre}, [[p:${plan}]] al mes sin IVA.`,
     url: abs("/pricing"),
   };
 }

@@ -66,7 +66,7 @@ Key collections:
 
 **Landings de cumplimiento legal** (`prerender = true`, mismo patrón de JSON-LD Breadcrumb + SoftwareApplication + FAQPage, enlazadas en el submenú Funcionalidades y en el bloque "Facturación y cumplimiento" de `funcionalidades.astro`):
 - `software-verifactu.astro`: facturación en modalidad Verifactu (sección `#otras-obligaciones` con enlaces a las demás obligaciones)
-- `documento-control-transporte-deca.astro`: documento de control del transporte (DeCA) desde el albarán, obligatorio desde el 5/10/2026. Usa `<DemoForm interes="deca" />`: `DemoForm` admite `interes="deca"` (valor añadido al tipo y a las opciones del select en `src/layouts/partials/DemoForm.astro`)
+- `documento-control-transporte-deca.astro`: documento de control del transporte (DeCA) desde el albarán, obligatorio desde el 5/10/2026. Usa `<DemoForm interes="deca" />`: los valores de `interes` salen de `src/config/intereses.ts`
 
 Al tocar una, revisa: `src/config/menu.json` (submenú Funcionalidades), `src/pages/llms.txt.ts` y `src/pages/llms-full.txt.ts` (bloque "Páginas de solución"), y los enlaces cruzados del array `hermanas` en `software-gestion-almacen.astro`. `seoGraph` valida en build enlaces internos, unicidad de metadatos y H1 único: un enlace roto o un `meta_title` duplicado rompe el build.
 
@@ -97,7 +97,7 @@ Available in all `.md`/`.mdx` without import (`astro.config.mjs`): `Button`, `Ac
 ### SEO / structured data
 `Base.astro` emits JSON-LD for `Organization`, `SoftwareApplication`, `WebSite`. Update product features there when adding modules (el `SoftwareApplication` global lleva un `AggregateOffer` con `lowPrice`/`highPrice`/`offerCount` — actualízalo si cambian los planes).
 
-`pricing.astro` emite además su propio `BreadcrumbList` + `SoftwareApplication` con `AggregateOffer` (un `Offer` por plan, `valueAddedTaxIncluded: false`) + `FAQPage`. Los precios viven duplicados en el array `planes` de `pricing.astro` porque el JSON-LD necesita valores numéricos limpios: **si cambias `src/content/sections/pricing.md`, cambia también ese array**.
+`pricing.astro` emite además su propio `BreadcrumbList` + `SoftwareApplication` con `AggregateOffer` (un `Offer` por plan, `valueAddedTaxIncluded: false`) + `FAQPage`. Los precios salen de `src/config/precios.json` (ver "Precios").
 
 ### Two key components
 `MODULES_TABLE_README.md` documents `ModulesTableCollapsible.astro` + `PlansComparison.astro` (collapsible module catalog + plan comparison matrix).
@@ -182,6 +182,46 @@ Todos los precios de Drenpos salen de `src/config/precios.json`. No se escribe u
 - Si un texto recorta contenido antes de llegar al HTML (`.slice()`, imagen OG), pasa antes por `resolverPrecios()` para no cortar un token.
 - Los precios de la competencia, multas y subvenciones se quedan como texto fijo.
 - El contexto del CRM (`context/pricing.md`) no lee este archivo: si cambia un precio, actualízalo a mano.
+
+## Reglas de mantenimiento (23/10/2026)
+
+Obligatorias para cualquier cambio. `npm run build` comprueba las que se pueden comprobar (`check-precios.mjs`, `check-contenido.mjs`, seoGraph).
+
+### Un dato, un sitio
+
+| Dato | Fuente única | Cómo se usa |
+|---|---|---|
+| Precios, usuarios y fichajes por plan, extras, programa Arranca | `src/config/precios.json` | `[[p:clave]]` / `[[n:clave]]` en textos; `valor()`, `eur()`, `decimal()`, `P`, `fichajesPorPlan()` en código |
+| URL del sitio | `src/config/config.json` → `site.base_url` | `abs("/ruta")`, `SITE_URL` de `@/lib/site` |
+| Empresa: marca, razón social, email, teléfono, sede, perfiles, fundador | `src/config/empresa.json` | `EMPRESA`, `AUTOR`, `waUrl()` de `@/lib/site` |
+| JSON-LD de una landing | `src/lib/schema.ts` | `breadcrumb()`, `softwareApp()`, `faqPage()`, `oferta()` + `<JsonLd data={[...]} />` |
+| Ids del grafo (Organization, WebSite, fundador) | `src/lib/site.ts` | `ORG_ID`, `WEBSITE_ID`, `FOUNDER_ID`. Un JSON-LD de página referencia `{ "@id": ORG_ID }`, no repite nombre ni URL |
+
+- Nunca escribas a mano `https://www.drenpos.com`, el teléfono, el correo, el nombre del fundador ni un precio nuestro en `.astro`, `.ts` o Markdown. Si el dato no existe en una fuente, añádelo a la fuente primero.
+- Ojo con los precios en prosa: "16,50 €" escrito a mano para "Equipo 10 + 1 persona" se queda viejo en cuanto cambia una tarifa. Escribe la cuenta: `[[p:equipo10+persona_extra]]`.
+- Precios de competencia, multas y subvenciones sí van como texto fijo, siempre con la fecha de consulta y la fuente enlazada.
+- Si un valor se repite con el mismo significado en dos sitios, pasa a ser una constante (`as const`) o un JSON en `src/config/`. Para conjuntos cerrados (planes, `interes` de `DemoForm`, categorías) usa un array `as const` y deriva el tipo de él.
+- Colores: usa clases del tema (`text-primary`, `bg-dark`, `text-dark/70`) en vez de `style="color: #791b46"` o `rgba(16,25,40,…)`. Los colores viven en `src/config/theme.json`.
+
+### Código
+
+- KISS: una landing es datos (constantes arriba) + plantilla. La lógica que se repite en dos landings sube a `src/lib/` o a un partial.
+- Una responsabilidad por módulo: `precios.ts` calcula precios, `site.ts` da datos del sitio, `schema.ts` construye JSON-LD. No mezcles.
+- Nada de código muerto: si un componente deja de usarse, se borra (git lo guarda). Sin ficheros `.bak`.
+- `npm run check` en verde antes de hacer commit.
+
+### Redacción
+
+Todo el texto público (landings, blog, FAQ, metadatos, llms.txt) tiene que sonar escrito por una persona que conoce el oficio. Concretamente:
+
+- Empieza por la respuesta. La primera frase bajo cada H2 contesta la pregunta del título en 40-60 palabras. Nada de "Imagina…", "Seguramente te ha pasado…", "En el mundo actual…" ni preguntas retóricas de arranque.
+- Prohibidas las muletillas de IA: "no es solo X, es Y", "sin duda", "cabe destacar", "es importante destacar", "juega un papel clave", "en definitiva", "en resumen", "en conclusión", "descubre cómo", "llevar tu negocio al siguiente nivel", "solución integral", "aliado perfecto", "sin fisuras", "robusto", "dolor de cabeza", "di adiós a", "rompe el molde", "potencia tu…". La lista que se comprueba está en `scripts/check-contenido.mjs`.
+- Nada de citas inventadas en bloque (`> "La tecnología debe trabajar para ti"`), ni de clientes o casos inventados con nombre ("Distribuciones López SL"). Si es un ejemplo, dilo: "Pongamos un almacén con seis personas…".
+- Datos con fuente y fecha ("según la tarifa publicada el 20/10/2026"). Si no hay fuente, no hay dato.
+- Frases cortas, verbos concretos, vocabulario del sector (albarán, ubicación, lote, cuadrante). Sin raya larga (—) como muletilla: usa punto, coma o dos puntos.
+- `alt` de imágenes en español y descriptivo.
+- Metadatos: `meta_title` ≤ 60 caracteres, `description` entre 110 y 160.
+- Cada post publicado lleva `updated`, `faq` en el frontmatter y al menos dos enlaces internos a páginas relacionadas (landing del producto y post pilar del clúster).
 
 ## Deploy
 

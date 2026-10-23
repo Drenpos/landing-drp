@@ -1,5 +1,7 @@
 ---
-import { decimal, valor } from "@/lib/precios";
+import { abs, AUTOR } from "@/lib/site";
+import { breadcrumb, faqPage, softwareApp } from "@/lib/schema";
+import JsonLd from "@/components/JsonLd.astro";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -23,7 +25,8 @@ import LandingMeta from "@/partials/LandingMeta.astro";
 //  Imágenes UI: /public/images/funcionalidades/almacen-tienda/
 // ════════════════════════════════════════════════════════════════════════
 
-const CANONICAL = "https://www.drenpos.com/software-gestion-palets";
+const PATH = "/software-gestion-palets";
+const CANONICAL = abs(PATH);
 
 // Síntomas (dolores reales de quien mueve palets sin sistema)
 const sintomas = [
@@ -284,42 +287,18 @@ const articulos = [
 ];
 
 // ── Datos estructurados (JSON-LD) ──────────────────────────────────────
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
+const breadcrumbSchema = breadcrumb([
+  { name: "Funcionalidades", path: "/funcionalidades" },
+  { name: "Gestión de palets", path: PATH },
+]);
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
-    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
-    { "@type": "ListItem", position: 3, name: "Gestión de palets", item: CANONICAL },
-  ],
-};
-
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
+const productSchema = softwareApp({
   name: "Drenpos · Gestión de Palets y Etiqueta SSCC",
-  applicationCategory: "BusinessApplication",
-  operatingSystem: "Web",
-  url: CANONICAL,
+  path: PATH,
   description:
     "Software de gestión de palets para pymes: etiqueta SSCC estándar GS1 generada desde el propio palet, ciclo de vida abierto, cerrado y pesado con bruto, tara y neto, expedido o anulado, mezcla libre de productos, lotes y series con traza, movimiento del palet entero en un escaneo desde móvil o tablet, despaletizado en tres gestos, palets blindados dentro de albaranes y facturas y depósito de palets de terceros con propietario y tarifario. Incluido en el módulo de Almacén.",
-  offers: {
-    "@type": "Offer",
-    price: decimal(valor("almacen")),
-    priceCurrency: "EUR",
-    description: "Plan Almacén, [[p:almacen]]/mes (sin IVA). Sin coste por uso ni permanencia.",
-    url: "https://www.drenpos.com/pricing",
-  },
+  plan: "almacen",
+  offerDescription: "Plan Almacén, [[p:almacen]]/mes (sin IVA). Sin coste por uso ni permanencia.",
   featureList: [
     "Etiqueta SSCC de 18 dígitos con dígito de control e impresión GS1-128",
     "Ciclo de vida del palet: abierto, cerrado y pesado, expedido o anulado",
@@ -334,8 +313,9 @@ const productSchema = {
     "Depósito de terceros con propietario por palet y tarifario",
     "Historial completo de cada palet",
   ],
-  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
-};
+});
+
+const faqSchema = faqPage(faqs);
 
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
@@ -346,17 +326,15 @@ const PAGE_UPDATED = "2026-10-22";
 <Base
   title="Software de Gestión de Palets con Etiqueta SSCC · Drenpos"
   meta_title="Software de Gestión de Palets y Etiqueta SSCC | Drenpos"
-  description="Software de gestión de palets para pymes: etiqueta SSCC GS1 desde el propio palet, cierre y pesado, movimiento en un escaneo, despaletizado y palets de terceros."
+  description="Software de gestión de palets para pymes: etiqueta SSCC GS1 desde el palet, cierre y pesado, movimiento en un escaneo, despaletizado y palets de terceros."
   canonical={CANONICAL}
   image="/images/funcionalidades/almacen-tienda/02-lotes-caducidad.png"
   published_date={PAGE_PUBLISHED}
   modified_date={PAGE_UPDATED}
-  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
+  author={AUTOR}
 >
   <!-- Datos estructurados -->
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <JsonLd data={[breadcrumbSchema, productSchema, faqSchema]} />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        HERO

@@ -6,6 +6,9 @@ import CallToAction from "@/partials/CallToAction.astro";
 import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
 import DemoForm from "@/partials/DemoForm.astro";
 import LandingMeta from "@/partials/LandingMeta.astro";
+import JsonLd from "@/components/JsonLd.astro";
+import { abs, AUTOR, ORG_ID } from "@/lib/site";
+import { breadcrumb, faqPage } from "@/lib/schema";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 
@@ -25,7 +28,8 @@ import { join } from "node:path";
 //  Fotos: /public/images/funcionalidades/control-horario/hardware/
 // ════════════════════════════════════════════════════════════════════════
 
-const CANONICAL = "https://www.drenpos.com/dispositivo-fichaje";
+const PATH = "/dispositivo-fichaje";
+const CANONICAL = abs(PATH);
 const IMG = "/images/funcionalidades/control-horario/hardware";
 
 // Imágenes opcionales: solo se renderizan si el fichero existe en /public
@@ -314,40 +318,20 @@ const articulos = [
 ];
 
 // ── Datos estructurados (JSON-LD) ──────────────────────────────────────
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
-
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
-    { "@type": "ListItem", position: 2, name: "Control horario", item: "https://www.drenpos.com/control-horario" },
-    { "@type": "ListItem", position: 3, name: "Dispositivo de fichaje", item: CANONICAL },
-  ],
-};
-
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
   name: "Terminal de fichaje Drenpos (RFID y QR)",
   url: CANONICAL,
   image: [
-    `https://www.drenpos.com${IMG}/terminal-drenpos.jpg`,
-    `https://www.drenpos.com${IMG}/terminal-drenpos-og.jpg`,
-    `https://www.drenpos.com${IMG}/terminal-drenpos.webp`,
+    abs(`${IMG}/terminal-drenpos.jpg`),
+    abs(`${IMG}/terminal-drenpos-og.jpg`),
+    abs(`${IMG}/terminal-drenpos.webp`),
   ],
   description:
     "Dispositivo de fichaje para empresas con lectura de llavero RFID y código QR, pantalla de estado con nombre y foto del empleado, alimentación a 12 V, placa electrónica propia y carcasa impresa en 3D con el logo del cliente. Identifica al empleado con llavero RFID, tarjeta o QR, sin datos biométricos. Sincroniza cada fichaje con el software de control horario de Drenpos con sellado inalterable y sigue fichando sin internet: guarda los fichajes con su reloj propio y los envía al recuperar la red.",
   brand: { "@type": "Brand", name: "Drenpos" },
-  manufacturer: { "@type": "Organization", name: "Drenpos Tech SL", url: "https://www.drenpos.com" },
+  manufacturer: { "@id": ORG_ID },
   category: "Terminal de control de presencia",
   additionalProperty: [
     { "@type": "PropertyValue", name: "Lectura", value: "RFID y QR" },
@@ -370,9 +354,18 @@ const productSchema = {
     url: CANONICAL,
     valueAddedTaxIncluded: false,
     description: "Terminal desde [[p:terminal]] sin IVA con llaveros personalizados. Fichajes incluidos en el plan; [[p:fichaje]]/usuario/mes cada persona adicional.",
-    seller: { "@type": "Organization", name: "Drenpos Tech SL" },
+    seller: { "@id": ORG_ID },
   },
 };
+
+const jsonLd = [
+  breadcrumb([
+    { name: "Control horario", path: "/control-horario" },
+    { name: "Dispositivo de fichaje", path: PATH },
+  ]),
+  productSchema,
+  faqPage(faqs),
+];
 ---
 
 <Base
@@ -383,12 +376,10 @@ const productSchema = {
   image={`${IMG}/terminal-drenpos-og.jpg`}
   published_date="2026-09-03"
   modified_date="2026-10-22"
-  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
+  author={AUTOR}
 >
   <!-- Datos estructurados -->
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <JsonLd data={jsonLd} />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        HERO

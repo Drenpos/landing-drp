@@ -1,5 +1,7 @@
 ---
-import { decimal, valor } from "@/lib/precios";
+import { abs, AUTOR } from "@/lib/site";
+import { breadcrumb, faqPage, softwareApp } from "@/lib/schema";
+import JsonLd from "@/components/JsonLd.astro";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -21,7 +23,8 @@ import LandingMeta from "@/partials/LandingMeta.astro";
 //  Capturas UI: /public/images/funcionalidades/hosteleria/
 // ════════════════════════════════════════════════════════════════════════
 
-const CANONICAL = "https://www.drenpos.com/software-bares-restaurantes";
+const PATH = "/software-bares-restaurantes";
+const CANONICAL = abs(PATH);
 const IMG = "/images/funcionalidades/hosteleria";
 
 // Síntomas (dolores reales de un bar o un restaurante)
@@ -439,71 +442,51 @@ const articulos = [
 ];
 
 // ── Datos estructurados (JSON-LD) ──────────────────────────────────────
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
-    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
-    { "@type": "ListItem", position: 3, name: "Software para bares y restaurantes", item: CANONICAL },
-  ],
-};
+const breadcrumbSchema = breadcrumb([
+  { name: "Funcionalidades", path: "/funcionalidades" },
+  { name: "Software para bares y restaurantes", path: PATH },
+]);
 
 const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "Drenpos · Software para bares y restaurantes",
-  applicationCategory: "BusinessApplication",
+  ...softwareApp({
+    name: "Drenpos · Software para bares y restaurantes",
+    path: PATH,
+    description:
+      "Software para bares y restaurantes con TPV de hostelería: mapa de sala editable, combinados y extras guiados con precio por opción, pantallas de cocina y barra por familias, QR de mesa con analítica de escaneos y cierre de caja (y stock descontado en el plan Almacén con TPV). Cada ticket simplificado genera su registro Verifactu y su QR (obligatorio en octubre de 2028 para todos, según anunció Hacienda el 5 de octubre de 2026, pendiente de publicación en el BOE). Incluye fichaje del personal con terminal RFID en la barra que funciona sin conexión, app móvil, calendarios por turno, horas extra día a día y vacaciones. Plan Tienda y Hostelería [[p:tienda]]/mes sin IVA con [[n:tienda_usuarios]] usuarios y fichaje para [[n:tienda_fichajes]] personas.",
+    plan: "tienda",
+    offerDescription: "Plan Tienda y Hostelería con TPV, caja y 2 comanderos, cocina, facturación con Verifactu, [[n:tienda_usuarios]] usuarios y fichaje para [[n:tienda_fichajes]] personas, [[p:tienda]]/mes sin IVA. Fichaje adicional [[p:fichaje]]/persona/mes.",
+    featureList: [
+      "Salas y mesas persistentes con editor de mapa de sala",
+      "Mesas virtuales para abrir mesas sobre la marcha",
+      "Varias mesas abiertas a la vez sincronizadas entre dispositivos",
+      "Tiempo de ocupación desde la primera línea de consumo",
+      "Flujo guiado de combinados y extras con precio por opción",
+      "Pasos de selección configurables por producto",
+      "Pantallas de órdenes de cocina y barra filtradas por familias",
+      "Consulta al servidor cada 3 segundos en las pantallas de órdenes",
+      "Código de mesa visible en cada comanda y marcado de completada",
+      "QR de mesa estándar imprimible por local o por mesa",
+      "Analítica de escaneos por día, hora, día de la semana, mesa y dispositivo",
+      "Cierre de caja con desglose por método de pago y cobro mixto",
+      "Reimpresión de tickets e historial",
+      "Stock descontado automáticamente del inventario",
+      "Verifactu en cada ticket simplificado y factura, con registro y código QR",
+      "Factura completa emitida desde el ticket cuando el cliente la pide",
+      "Envío de facturas por WhatsApp",
+      "Fichaje del personal con llavero RFID, QR o app",
+      "Terminal de fichaje en la barra que guarda los fichajes sin conexión",
+      "Calendarios laborales por turno con fechas de vigencia por temporada",
+      "Festivos nacionales y autonómicos por persona",
+      "Horas extra calculadas día a día según el calendario",
+      "Vacaciones y permisos pedidos desde el móvil, sin coste extra",
+      "Control de entrada y salida opcional con incidencias, sin coste extra",
+      "Sin coste por pantalla de cocina ni por número de tickets",
+    ],
+  }),
   operatingSystem: "Web, iOS, Android (PWA)",
-  url: CANONICAL,
-  description:
-    "Software para bares y restaurantes con TPV de hostelería: mapa de sala editable, combinados y extras guiados con precio por opción, pantallas de cocina y barra por familias, QR de mesa con analítica de escaneos y cierre de caja (y stock descontado en el plan Almacén con TPV). Cada ticket simplificado genera su registro Verifactu y su QR (obligatorio en octubre de 2028 para todos, según anunció Hacienda el 5 de octubre de 2026, pendiente de publicación en el BOE). Incluye fichaje del personal con terminal RFID en la barra que funciona sin conexión, app móvil, calendarios por turno, horas extra día a día y vacaciones. Plan Tienda y Hostelería [[p:tienda]]/mes sin IVA con [[n:tienda_usuarios]] usuarios y fichaje para [[n:tienda_fichajes]] personas.",
-  offers: {
-    "@type": "Offer",
-    price: decimal(valor("tienda")),
-    priceCurrency: "EUR",
-    description: "Plan Tienda y Hostelería con TPV, caja y 2 comanderos, cocina, facturación con Verifactu, 3 usuarios y fichaje para 8 personas, [[p:tienda]]/mes sin IVA. Fichaje adicional [[p:fichaje]]/persona/mes.",
-    url: "https://www.drenpos.com/pricing",
-  },
-  featureList: [
-    "Salas y mesas persistentes con editor de mapa de sala",
-    "Mesas virtuales para abrir mesas sobre la marcha",
-    "Varias mesas abiertas a la vez sincronizadas entre dispositivos",
-    "Tiempo de ocupación desde la primera línea de consumo",
-    "Flujo guiado de combinados y extras con precio por opción",
-    "Pasos de selección configurables por producto",
-    "Pantallas de órdenes de cocina y barra filtradas por familias",
-    "Consulta al servidor cada 3 segundos en las pantallas de órdenes",
-    "Código de mesa visible en cada comanda y marcado de completada",
-    "QR de mesa estándar imprimible por local o por mesa",
-    "Analítica de escaneos por día, hora, día de la semana, mesa y dispositivo",
-    "Cierre de caja con desglose por método de pago y cobro mixto",
-    "Reimpresión de tickets e historial",
-    "Stock descontado automáticamente del inventario",
-    "Verifactu en cada ticket simplificado y factura, con registro y código QR",
-    "Factura completa emitida desde el ticket cuando el cliente la pide",
-    "Envío de facturas por WhatsApp",
-    "Fichaje del personal con llavero RFID, QR o app",
-    "Terminal de fichaje en la barra que guarda los fichajes sin conexión",
-    "Calendarios laborales por turno con fechas de vigencia por temporada",
-    "Festivos nacionales y autonómicos por persona",
-    "Horas extra calculadas día a día según el calendario",
-    "Vacaciones y permisos pedidos desde el móvil, sin coste extra",
-    "Control de entrada y salida opcional con incidencias, sin coste extra",
-    "Sin coste por pantalla de cocina ni por número de tickets",
-  ],
-  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
+const faqSchema = faqPage(faqs);
 
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
@@ -514,17 +497,15 @@ const PAGE_UPDATED = "2026-10-22";
 <Base
   title="Software para Bares y Restaurantes · Drenpos"
   meta_title="Software para Bares y Restaurantes: TPV y Fichaje | Drenpos"
-  description="Software para bares y restaurantes: TPV con mapa de sala, pantallas de cocina, Verifactu en cada ticket y fichaje del equipo por turnos, todo en el mismo sistema."
+  description="Software para bares y restaurantes: TPV con mapa de sala, pantallas de cocina, Verifactu en cada ticket y fichaje del equipo por turnos en el mismo sistema."
   canonical={CANONICAL}
   image={`${IMG}/01-mapa-sala-mesas.png`}
   published_date={PAGE_PUBLISHED}
   modified_date={PAGE_UPDATED}
-  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
+  author={AUTOR}
 >
   <!-- Datos estructurados -->
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <JsonLd data={[breadcrumbSchema, productSchema, faqSchema]} />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        HERO

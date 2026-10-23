@@ -1,5 +1,7 @@
 ---
-import { decimal, valor } from "@/lib/precios";
+import { abs, AUTOR } from "@/lib/site";
+import { breadcrumb, faqPage, softwareApp } from "@/lib/schema";
+import JsonLd from "@/components/JsonLd.astro";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -24,7 +26,8 @@ const hasImg = (p: string) => existsSync(join(process.cwd(), "public", p));
 //  Imágenes UI: /public/images/funcionalidades/almacen-tienda/
 // ════════════════════════════════════════════════════════════════════════
 
-const CANONICAL = "https://www.drenpos.com/software-preparacion-pedidos-picking";
+const PATH = "/software-preparacion-pedidos-picking";
+const CANONICAL = abs(PATH);
 
 // Síntomas (dolores de búsqueda, long-tail AEO)
 const sintomas = [
@@ -336,42 +339,18 @@ const articulos = [
 ];
 
 // ── Datos estructurados (JSON-LD) ──────────────────────────────────────
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
+const breadcrumbSchema = breadcrumb([
+  { name: "Funcionalidades", path: "/funcionalidades" },
+  { name: "Preparación de pedidos", path: PATH },
+]);
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
-    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
-    { "@type": "ListItem", position: 3, name: "Preparación de pedidos", item: CANONICAL },
-  ],
-};
-
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
+const productSchema = softwareApp({
   name: "Drenpos · Preparación de pedidos y picking",
-  applicationCategory: "BusinessApplication",
-  operatingSystem: "Web",
-  url: CANONICAL,
+  path: PATH,
   description:
     "Software de preparación de pedidos (picking) para almacén: semáforo de preparabilidad, etiqueta QR por pedido, asistente de picking móvil con lote sugerido por FIFO/LIFO/FEFO, oleadas pick-to-box, orden de ruta calculado desde el plano del almacén, zona de preparados en baldas con QR, preparación sobre palet con etiqueta SSCC, verificación configurable y expedición con escaneo que genera el albarán o la factura. Integrado con reservas de stock, recepción de mercancía, compras, ventas y facturación.",
-  offers: {
-    "@type": "Offer",
-    price: decimal(valor("almacen")),
-    priceCurrency: "EUR",
-    description: "Plan Almacén, [[p:almacen]]/mes (sin IVA). Sin coste por uso ni permanencia.",
-    url: "https://www.drenpos.com/pricing",
-  },
+  plan: "almacen",
+  offerDescription: "Plan Almacén, [[p:almacen]]/mes (sin IVA). Sin coste por uso ni permanencia.",
   featureList: [
     "Semáforo de preparabilidad: pedidos completos, con faltas y de camino",
     "Etiqueta QR por pedido que abre o crea la sesión de picking",
@@ -390,8 +369,9 @@ const productSchema = {
     "Recepción contra pedido de compra con ruta guiada y cross-docking",
     "Permisos por rol de almacén con plantillas listas",
   ],
-  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
-};
+});
+
+const faqSchema = faqPage(faqs);
 
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
@@ -407,12 +387,10 @@ const PAGE_UPDATED = "2026-10-22";
   image="/images/funcionalidades/almacen-tienda/04-pistola-traslados.png"
   published_date={PAGE_PUBLISHED}
   modified_date={PAGE_UPDATED}
-  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
+  author={AUTOR}
 >
   <!-- Datos estructurados -->
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <JsonLd data={[breadcrumbSchema, productSchema, faqSchema]} />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        HERO

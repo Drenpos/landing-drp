@@ -1,5 +1,7 @@
 ---
-import { decimal, valor } from "@/lib/precios";
+import { abs, AUTOR } from "@/lib/site";
+import { breadcrumb, faqPage, softwareApp } from "@/lib/schema";
+import JsonLd from "@/components/JsonLd.astro";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -20,7 +22,8 @@ import LandingMeta from "@/partials/LandingMeta.astro";
 //  Imágenes UI: /public/images/funcionalidades/almacen-tienda/
 // ════════════════════════════════════════════════════════════════════════
 
-const CANONICAL = "https://www.drenpos.com/software-alquiler-huecos-palet";
+const PATH = "/software-alquiler-huecos-palet";
+const CANONICAL = abs(PATH);
 
 // Síntomas (dolores del depositario, long-tail AEO)
 const sintomas = [
@@ -260,42 +263,18 @@ const articulos = [
 ];
 
 // ── Datos estructurados (JSON-LD) ──────────────────────────────────────
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
+const breadcrumbSchema = breadcrumb([
+  { name: "Funcionalidades", path: "/funcionalidades" },
+  { name: "Depósito y alquiler de huecos de palet", path: PATH },
+]);
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
-    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
-    { "@type": "ListItem", position: 3, name: "Depósito y alquiler de huecos de palet", item: CANONICAL },
-  ],
-};
-
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
+const productSchema = softwareApp({
   name: "Drenpos · Depósito de terceros y alquiler de huecos de palet",
-  applicationCategory: "BusinessApplication",
-  operatingSystem: "Web",
-  url: CANONICAL,
+  path: PATH,
   description:
     "Software de depósito de mercancías para almacenes y operadores logísticos 3PL que alquilan huecos de palet: propietario por palet con bloqueo de raíz, tarifario por palet/día, kg/día, entrada, salida, manipulación y bulto preparado, con franquicias, mínimos, vigencias y cómputo día a día, foto a fin de mes, pico o aniversario. Eventos tarificables automáticos, posición del cliente en vivo, simulador de coste, informe del periodo en PDF sin necesidad de facturar y actas de entrega firmadas con huella criptográfica sha256.",
-  offers: {
-    "@type": "Offer",
-    price: decimal(valor("almacen")),
-    priceCurrency: "EUR",
-    description: "Plan Almacén, con almacén y depósito de terceros incluidos, [[p:almacen]]/mes (sin IVA). Sin coste por uso ni permanencia.",
-    url: "https://www.drenpos.com/pricing",
-  },
+  plan: "almacen",
+  offerDescription: "Plan Almacén, con almacén y depósito de terceros incluidos, [[p:almacen]]/mes (sin IVA). Sin coste por uso ni permanencia.",
   featureList: [
     "Propietario por palet con bloqueo de mezcla y de venta de mercancía ajena",
     "Tarifario por palet/día, kg/día, entrada, salida, manipulación y bulto preparado",
@@ -310,8 +289,8 @@ const productSchema = {
     "Etiqueta SSCC estándar GS1 y ciclo de vida completo del palet",
     "Despiece y manipulación con facturación automática al depositante",
   ],
-  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
-};
+});
+const faqSchema = faqPage(faqs);
 
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
@@ -327,12 +306,10 @@ const PAGE_UPDATED = "2026-10-22";
   image="/images/funcionalidades/almacen-tienda/01-almacen-ubicaciones.png"
   published_date={PAGE_PUBLISHED}
   modified_date={PAGE_UPDATED}
-  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
+  author={AUTOR}
 >
   <!-- Datos estructurados -->
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <JsonLd data={[breadcrumbSchema, productSchema, faqSchema]} />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        HERO

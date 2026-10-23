@@ -1,5 +1,7 @@
 ---
-import { decimal, valor } from "@/lib/precios";
+import { abs, AUTOR } from "@/lib/site";
+import { breadcrumb, faqPage, softwareApp } from "@/lib/schema";
+import JsonLd from "@/components/JsonLd.astro";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -19,7 +21,8 @@ import LandingMeta from "@/partials/LandingMeta.astro";
 //  Imágenes UI: /public/images/funcionalidades/almacen-tienda/
 // ════════════════════════════════════════════════════════════════════════
 
-const CANONICAL = "https://www.drenpos.com/software-almacen-frigorifico";
+const PATH = "/software-almacen-frigorifico";
+const CANONICAL = abs(PATH);
 
 // Síntomas (dolores reales de un almacén de frío)
 const sintomas = [
@@ -285,42 +288,18 @@ const articulos = [
 ];
 
 // ── Datos estructurados (JSON-LD) ──────────────────────────────────────
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
+const breadcrumbSchema = breadcrumb([
+  { name: "Funcionalidades", path: "/funcionalidades" },
+  { name: "Almacén frigorífico", path: PATH },
+]);
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
-    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
-    { "@type": "ListItem", position: 3, name: "Almacén frigorífico", item: CANONICAL },
-  ],
-};
-
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
+const productSchema = softwareApp({
   name: "Drenpos · Almacén Frigorífico y Congelados",
-  applicationCategory: "BusinessApplication",
-  operatingSystem: "Web",
-  url: CANONICAL,
+  path: PATH,
   description:
     "Software de almacén frigorífico para congelado y refrigerado: lotes con caducidad y FEFO automático con alertas configurables, palets con etiqueta SSCC estándar GS1 con pesado bruto-tara-neto, operativa en móvil y tablet a pie de cámara, trazabilidad total con informe de recall en PDF, despiece con lote nuevo y merma explícita y depósito de terceros con tarifario por palet/día y kg/día. Integrado con compras, ventas y facturación.",
-  offers: {
-    "@type": "Offer",
-    price: decimal(valor("almacen")),
-    priceCurrency: "EUR",
-    description: "Plan Almacén, [[p:almacen]]/mes (sin IVA). Sin coste por uso ni permanencia.",
-    url: "https://www.drenpos.com/pricing",
-  },
+  plan: "almacen",
+  offerDescription: "Plan Almacén, [[p:almacen]]/mes (sin IVA). Sin coste por uso ni permanencia.",
   featureList: [
     "Multialmacén por cámara, túnel o zona con ubicaciones QR",
     "Lotes con fecha de fabricación y caducidad",
@@ -340,8 +319,8 @@ const productSchema = {
     "Plano de almacén por plantas con orden de ruta para el picking",
     "Informes de rotación e inmovilizado del stock en frío",
   ],
-  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
-};
+});
+const faqSchema = faqPage(faqs);
 
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
@@ -352,17 +331,15 @@ const PAGE_UPDATED = "2026-10-22";
 <Base
   title="Software de Almacén Frigorífico · Drenpos"
   meta_title="Software Almacén Frigorífico y Congelados | Drenpos"
-  description="Software de almacén frigorífico para congelados y refrigerados: lotes con FEFO, palets con etiqueta SSCC, trazabilidad y depósito de terceros en el mismo sistema que la facturación."
+  description="Software de almacén frigorífico para congelados y refrigerados: lotes con FEFO, palets SSCC, trazabilidad y depósito de terceros junto a la facturación."
   canonical={CANONICAL}
   image="/images/funcionalidades/almacen-tienda/02-lotes-caducidad.png"
   published_date={PAGE_PUBLISHED}
   modified_date={PAGE_UPDATED}
-  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
+  author={AUTOR}
 >
   <!-- Datos estructurados -->
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <JsonLd data={[breadcrumbSchema, productSchema, faqSchema]} />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        HERO

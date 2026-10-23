@@ -1,5 +1,7 @@
 ---
-import { decimal, valor } from "@/lib/precios";
+import { abs, AUTOR } from "@/lib/site";
+import { breadcrumb, faqPage, oferta, softwareApp } from "@/lib/schema";
+import JsonLd from "@/components/JsonLd.astro";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -19,7 +21,8 @@ import LandingMeta from "@/partials/LandingMeta.astro";
 //    funcionalidades/produccion/02-coste-real.png
 // ════════════════════════════════════════════════════════════════════════
 
-const CANONICAL = "https://www.drenpos.com/software-produccion-fabricacion";
+const PATH = "/software-produccion-fabricacion";
+const CANONICAL = abs(PATH);
 
 // Capacidades del módulo de Producción (features reales del módulo)
 const capacidades = [
@@ -285,63 +288,46 @@ const ciudades = [
 ];
 
 // ── Datos estructurados ──────────────────────────────────────────────────
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
-    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
-    { "@type": "ListItem", position: 3, name: "Software de producción y fabricación", item: CANONICAL },
-  ],
-};
+const breadcrumbSchema = breadcrumb([
+  { name: "Funcionalidades", path: "/funcionalidades" },
+  { name: "Software de producción y fabricación", path: PATH },
+]);
 
 const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "Drenpos · Módulo de Producción",
-  applicationCategory: "BusinessApplication",
-  applicationSubCategory: "Manufacturing Execution Software",
+  ...softwareApp({
+    name: "Drenpos · Módulo de Producción",
+    path: PATH,
+    description:
+      "Software de producción para talleres y fabricantes: órdenes de trabajo divididas en fases, consumo de materiales por lectura de código con descuento de stock, imputación de tiempos por operario y coste real de fabricación.",
+    featureList: [
+      "Órdenes de trabajo con fases de fabricación",
+      "Consumo de materiales por lectura de código de barras",
+      "Descuento automático de stock por lote",
+      "Imputación de tiempos por operario y fase",
+      "Coste real de fabricación",
+      "Trazabilidad entre lote de materia prima y lote de producto acabado",
+      "Recetas con materiales, horas por fase y subórdenes de semielaborados",
+      "Necesidades de material con pedido de compra en un clic",
+      "Packs y kits con lista de materiales y montaje de N unidades",
+      "Coste previsto frente a real por material, personas y máquinas",
+    ],
+  }),
   operatingSystem: "Web, iOS, Android (PWA)",
-  url: CANONICAL,
+  applicationSubCategory: "Manufacturing Execution Software",
   inLanguage: "es-ES",
-  description:
-    "Software de producción para talleres y fabricantes: órdenes de trabajo divididas en fases, consumo de materiales por lectura de código con descuento de stock, imputación de tiempos por operario y coste real de fabricación.",
   offers: [
     {
-      "@type": "Offer",
-      name: "Plan Producción",
-      price: decimal(valor("produccion")),
-      priceCurrency: "EUR",
-      description:
+      ...oferta(
+        "produccion",
         "Plan Producción: módulos de Producción, Inventario, Financiero e Informes, [[n:produccion_usuarios]] usuarios del sistema, [[n:produccion_fichajes]] usuarios de fichaje y envío por correo y WhatsApp. Precio mensual sin IVA.",
-      url: "https://www.drenpos.com/pricing",
+      ),
+      name: "Plan Producción",
       availability: "https://schema.org/InStock",
     },
   ],
-  featureList: [
-    "Órdenes de trabajo con fases de fabricación",
-    "Consumo de materiales por lectura de código de barras",
-    "Descuento automático de stock por lote",
-    "Imputación de tiempos por operario y fase",
-    "Coste real de fabricación",
-    "Trazabilidad entre lote de materia prima y lote de producto acabado",
-    "Recetas con materiales, horas por fase y subórdenes de semielaborados",
-    "Necesidades de material con pedido de compra en un clic",
-    "Packs y kits con lista de materiales y montaje de N unidades",
-    "Coste previsto frente a real por material, personas y máquinas",
-  ],
-  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
+const faqSchema = faqPage(faqs);
 
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
@@ -352,16 +338,14 @@ const PAGE_UPDATED = "2026-10-22";
 <Base
   title="Software de Producción y Fabricación · Drenpos"
   meta_title="Software de Producción para Pymes | Coste Real de Fabricación"
-  description="Software de producción para talleres y fabricantes: órdenes de trabajo por fases, consumo de materiales por escaneo, imputación de tiempos y coste real de fabricación."
+  description="Software de producción para talleres y fabricantes: órdenes de trabajo por fases, materiales por escaneo, tiempos por operario y coste real de fabricación."
   canonical={CANONICAL}
   image="/images/power/stock.png"
   published_date={PAGE_PUBLISHED}
   modified_date={PAGE_UPDATED}
-  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
+  author={AUTOR}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <JsonLd data={[breadcrumbSchema, productSchema, faqSchema]} />
 
   <!-- ═══════════════ HERO ═══════════════ -->
   <section class="section-sm pb-0 relative z-10 overflow-hidden">

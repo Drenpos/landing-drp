@@ -6,6 +6,9 @@ import CallToAction from "@/partials/CallToAction.astro";
 import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
 import DemoForm from "@/partials/DemoForm.astro";
 import LandingMeta from "@/partials/LandingMeta.astro";
+import JsonLd from "@/components/JsonLd.astro";
+import { abs, AUTOR } from "@/lib/site";
+import { breadcrumb, faqPage, softwareApp } from "@/lib/schema";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 
@@ -27,7 +30,8 @@ const hasImg = (p: string) => existsSync(join(process.cwd(), "public", p));
 //  (1280×800). Se muestra solo si existe (existsSync).
 // ════════════════════════════════════════════════════════════════════════
 
-const CANONICAL = "https://www.drenpos.com/control-entrada-salida-empleados";
+const PATH = "/control-entrada-salida-empleados";
+const CANONICAL = abs(PATH);
 
 const HERO_IMG = "/images/funcionalidades/control-horario/02-gestion-manager.png";
 const INC_IMG = "/images/funcionalidades/control-horario/11-incidencias-entrada-salida.png";
@@ -295,87 +299,70 @@ const articulos = [
 ];
 
 // ── Datos estructurados (JSON-LD) ──────────────────────────────────────
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
-
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
-    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://www.drenpos.com/funcionalidades" },
-    { "@type": "ListItem", position: 3, name: "Control horario", item: "https://www.drenpos.com/control-horario" },
-    { "@type": "ListItem", position: 4, name: "Control de entrada y salida de empleados", item: CANONICAL },
-  ],
-};
-
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "Drenpos · Control de entrada y salida de empleados",
-  applicationCategory: "BusinessApplication",
-  operatingSystem: "Web, iOS, Android (PWA)",
-  url: CANONICAL,
-  description:
-    "Control de entrada y salida de empleados dentro del módulo de fichajes de Drenpos. Compara cada fichaje con el calendario laboral de la persona, sus festivos y sus ausencias y crea incidencias por entrada tarde, salida anticipada, fichaje olvidado, exceso de horas al día o a la semana y trabajo en festivo o en vacaciones. Tolerancias en minutos y límites configurables, revisión automática diaria y semanal, aviso al empleado y a sus responsables y justificación o descarte con nota. Viene apagado hasta que la empresa lo activa. Los fichajes con hora reconstruida del terminal sin conexión nunca generan retraso ni salida anticipada. Es una ayuda de gestión: el registro legal siguen siendo los fichajes.",
-  offers: {
-    "@type": "Offer",
-    price: decimal(valor("fichaje")),
-    priceCurrency: "EUR",
-    valueAddedTaxIncluded: false,
-    priceSpecification: {
-      "@type": "UnitPriceSpecification",
+const jsonLd = [
+  breadcrumb([
+    { name: "Funcionalidades", path: "/funcionalidades" },
+    { name: "Control horario", path: "/control-horario" },
+    { name: "Control de entrada y salida de empleados", path: PATH },
+  ]),
+  {
+    ...softwareApp({
+      name: "Drenpos · Control de entrada y salida de empleados",
+      path: PATH,
+      description:
+        "Control de entrada y salida de empleados dentro del módulo de fichajes de Drenpos. Compara cada fichaje con el calendario laboral de la persona, sus festivos y sus ausencias y crea incidencias por entrada tarde, salida anticipada, fichaje olvidado, exceso de horas al día o a la semana y trabajo en festivo o en vacaciones. Tolerancias en minutos y límites configurables, revisión automática diaria y semanal, aviso al empleado y a sus responsables y justificación o descarte con nota. Viene apagado hasta que la empresa lo activa. Los fichajes con hora reconstruida del terminal sin conexión nunca generan retraso ni salida anticipada. Es una ayuda de gestión: el registro legal siguen siendo los fichajes.",
+      featureList: [
+        "Opción apagada por defecto que activa la empresa",
+        "Comparación de cada fichaje con el calendario laboral, los festivos y las ausencias de la persona",
+        "Incidencias por entrada tarde y salida anticipada",
+        "Incidencias por no fichar la entrada o la salida",
+        "Incidencias por exceso de horas al día o a la semana",
+        "Incidencias por trabajo en festivo o en vacaciones",
+        "Tolerancias en minutos y límites de horas configurables",
+        "Detección al fichar y revisión automática diaria y semanal",
+        "Aviso al empleado y a sus responsables",
+        "Justificación o descarte de cada incidencia con nota del responsable",
+        "Etiquetas en cada fichaje («Tarde +12 min», «Salió 20 min antes», «Festivo», «En vacaciones»)",
+        "Pantalla de Incidencias con filtros, resumen por persona y botón «Revisar hoy»",
+        "Widgets «Hoy en el trabajo» e «Incidencias abiertas»",
+        "Fichajes con hora reconstruida del terminal sin conexión excluidos de retrasos y salidas anticipadas",
+        "Estado de cada día e incidencias con su nota en el informe PDF",
+      ],
+    }),
+    operatingSystem: "Web, iOS, Android (PWA)",
+    offers: {
+      "@type": "Offer",
       price: decimal(valor("fichaje")),
       priceCurrency: "EUR",
       valueAddedTaxIncluded: false,
-      unitText: "usuario y mes",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: decimal(valor("fichaje")),
+        priceCurrency: "EUR",
+        valueAddedTaxIncluded: false,
+        unitText: "usuario y mes",
+      },
+      description:
+        "Incluido en la licencia de fichaje de todos los planes, sin coste extra ([[p:fichaje]] por persona adicional y mes, sin IVA). Terminal de fichaje opcional desde [[p:terminal]] sin IVA.",
+      url: abs("/pricing"),
     },
-    description:
-      "Incluido en la licencia de fichaje de todos los planes, sin coste extra ([[p:fichaje]] por persona adicional y mes, sin IVA). Terminal de fichaje opcional desde [[p:terminal]] sin IVA.",
-    url: "https://www.drenpos.com/pricing",
   },
-  featureList: [
-    "Opción apagada por defecto que activa la empresa",
-    "Comparación de cada fichaje con el calendario laboral, los festivos y las ausencias de la persona",
-    "Incidencias por entrada tarde y salida anticipada",
-    "Incidencias por no fichar la entrada o la salida",
-    "Incidencias por exceso de horas al día o a la semana",
-    "Incidencias por trabajo en festivo o en vacaciones",
-    "Tolerancias en minutos y límites de horas configurables",
-    "Detección al fichar y revisión automática diaria y semanal",
-    "Aviso al empleado y a sus responsables",
-    "Justificación o descarte de cada incidencia con nota del responsable",
-    "Etiquetas en cada fichaje («Tarde +12 min», «Salió 20 min antes», «Festivo», «En vacaciones»)",
-    "Pantalla de Incidencias con filtros, resumen por persona y botón «Revisar hoy»",
-    "Widgets «Hoy en el trabajo» e «Incidencias abiertas»",
-    "Fichajes con hora reconstruida del terminal sin conexión excluidos de retrasos y salidas anticipadas",
-    "Estado de cada día e incidencias con su nota en el informe PDF",
-  ],
-  provider: { "@type": "Organization", name: "Drenpos", url: "https://www.drenpos.com" },
-};
+  faqPage(faqs),
+];
 ---
 
 <Base
   title="Control de Entrada y Salida de Empleados · Drenpos"
   meta_title="Control de Entrada y Salida de Empleados, incluido en el plan"
-  description="Avisa de retrasos, salidas antes de hora, olvidos de fichaje y exceso de horas con la tolerancia que tú fijes. Incluido en el fichaje de todos los planes, con informe para la Inspección."
+  description="Control de entrada y salida de empleados: avisos de retrasos, salidas antes de hora, olvidos de fichaje y exceso de horas, con informe para la Inspección."
   canonical={CANONICAL}
   image={HERO_IMG}
   published_date="2026-10-07"
   modified_date="2026-10-22"
-  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
+  author={AUTOR}
 >
   <!-- Datos estructurados -->
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <JsonLd data={jsonLd} />
 
   <!-- ═══════════════════════════════════════════════════════════════════
        HERO

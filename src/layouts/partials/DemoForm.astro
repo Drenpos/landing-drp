@@ -14,17 +14,10 @@
 // ════════════════════════════════════════════════════════════════════════
 import config from "@/config/config.json";
 import { waUrl } from "@/lib/site";
+import { INTERESES, type Interes } from "@/config/intereses";
 
 export interface Props {
-  interes?:
-    | "almacen"
-    | "fichaje"
-    | "tpv"
-    | "hosteleria"
-    | "verifactu"
-    | "mcp"
-    | "deca"
-    | "todo";
+  interes?: Interes;
   titulo?: string;
   subtitulo?: string;
   id?: string;
@@ -51,17 +44,6 @@ const TOOL_DESCRIPTION =
   "Solicita una demo gratuita de 20 minutos de Drenpos (ERP para pymes: almacén, TPV, facturación Verifactu, control horario y conector MCP). Una persona del equipo responde en menos de 24 horas laborables. Requiere nombre, correo, teléfono y aceptar la política de privacidad.";
 
 const WHATSAPP_URL = waUrl();
-
-const INTERESES = [
-  { value: "almacen", label: "Almacén e inventario" },
-  { value: "fichaje", label: "Control horario y fichaje" },
-  { value: "tpv", label: "TPV de tienda" },
-  { value: "hosteleria", label: "TPV de bar o restaurante" },
-  { value: "verifactu", label: "Facturación Verifactu" },
-  { value: "mcp", label: "Conector MCP para ChatGPT o Claude" },
-  { value: "deca", label: "Documento de control del transporte (DeCA)" },
-  { value: "todo", label: "Todo el sistema" },
-];
 
 const EMPLEADOS = ["1 a 5", "6 a 15", "16 a 30", "más de 30"];
 
