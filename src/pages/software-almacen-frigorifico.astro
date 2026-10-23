@@ -1,4 +1,5 @@
 ---
+import { decimal, valor } from "@/lib/precios";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -146,7 +147,7 @@ const comparativa = [
     palets: "Sí, SSCC GS1, pesado y despaletizado",
     camara: "Sí, todas las pantallas de palets en móvil y tablet",
     deposito: "Sí, con tarifario, posición en vivo e informe PDF",
-    precio: "Desde 29 €/mes",
+    precio: "Desde [[p:almacen]]/mes",
     destacado: true,
   },
 ];
@@ -234,7 +235,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta y cuánto se tarda en implantarlo?",
-    a: "El almacén va incluido en el plan Pro, desde 29 €/mes sin IVA, con actualizaciones y soporte humano incluidos, sin coste por uso ni permanencia. La implantación estándar se hace en días: importamos los artículos desde Excel o desde el sistema anterior, definimos cámaras, almacenes y ubicaciones, cargamos el stock inicial y formamos al equipo. Para quien necesita que los datos no salgan de la empresa, existe despliegue on-premise en el servidor del cliente, a presupuesto.",
+    a: "El almacén va incluido en el plan Almacén, [[p:almacen]]/mes sin IVA, con actualizaciones y soporte humano incluidos, sin coste por uso ni permanencia. La implantación estándar se hace en días: importamos los artículos desde Excel o desde el sistema anterior, definimos cámaras, almacenes y ubicaciones, cargamos el stock inicial y formamos al equipo. Para quien necesita que los datos no salgan de la empresa, existe despliegue on-premise en el servidor del cliente, a presupuesto.",
   },
 ];
 
@@ -315,9 +316,9 @@ const productSchema = {
     "Software de almacén frigorífico para congelado y refrigerado: lotes con caducidad y FEFO automático con alertas configurables, palets con etiqueta SSCC estándar GS1 con pesado bruto-tara-neto, operativa en móvil y tablet a pie de cámara, trazabilidad total con informe de recall en PDF, despiece con lote nuevo y merma explícita y depósito de terceros con tarifario por palet/día y kg/día. Integrado con compras, ventas y facturación.",
   offers: {
     "@type": "Offer",
-    price: "29.00",
+    price: decimal(valor("almacen")),
     priceCurrency: "EUR",
-    description: "Plan Pro con almacén incluido desde 29 €/mes (sin IVA). Sin coste por uso ni permanencia.",
+    description: "Plan Almacén, [[p:almacen]]/mes (sin IVA). Sin coste por uso ni permanencia.",
     url: "https://www.drenpos.com/pricing",
   },
   featureList: [
@@ -345,13 +346,13 @@ const productSchema = {
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
 const PAGE_PUBLISHED = "2026-08-12";
-const PAGE_UPDATED = "2026-09-28";
+const PAGE_UPDATED = "2026-10-22";
 ---
 
 <Base
   title="Software de Almacén Frigorífico · Drenpos"
   meta_title="Software Almacén Frigorífico y Congelados | Drenpos"
-  description="Software de almacén frigorífico para congelados y refrigerados: lotes con FEFO, palets con etiqueta SSCC, trazabilidad y depósito. Desde 29 €/mes sin IVA."
+  description="Software de almacén frigorífico para congelados y refrigerados: lotes con FEFO, palets con etiqueta SSCC, trazabilidad y depósito de terceros en el mismo sistema que la facturación."
   canonical={CANONICAL}
   image="/images/funcionalidades/almacen-tienda/02-lotes-caducidad.png"
   published_date={PAGE_PUBLISHED}
@@ -808,7 +809,7 @@ const PAGE_UPDATED = "2026-09-28";
       <div class="row justify-center">
         <div class="lg:col-8">
           <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
-            <h2 class="h3 font-bold mb-3 text-white">Todo el almacén frigorífico, desde 29 €/mes sin IVA</h2>
+            <h2 class="h3 font-bold mb-3 text-white">¿Te enseñamos cómo quedaría tu cámara?</h2>
             <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
               El módulo Almacén incluye multialmacén por cámara con ubicaciones
               QR, lotes con caducidad y FEFO, alertas configurables,

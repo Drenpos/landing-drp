@@ -1,9 +1,9 @@
 ---
 title: "Fichaje portátil 12V: cumple la ley de jornada en cualquier lugar"
 meta_title: "Dispositivo de fichaje portátil 12V para obras y furgonetas"
-description: "Terminal de fichaje portátil a 12 V: se enchufa al mechero, ficha con llavero RFID, tarjeta o QR y guarda los fichajes sin internet. Desde 140 € sin IVA."
+description: "Terminal de fichaje portátil a 12 V: se enchufa al mechero, ficha con llavero RFID, tarjeta o QR y guarda los fichajes sin internet. Desde [[p:terminal]] sin IVA."
 date: 2026-08-05
-updated: 2026-10-17
+updated: 2026-10-22
 image: "/images/funcionalidades/control-horario/hardware/terminal-drenpos-og.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -102,7 +102,7 @@ Sus características:
 | **Carcasa**            | Impresa en 3D en PETG, con el logo de tu empresa en el frontal                                |
 | **Sin móvil ni app**   | El empleado no necesita smartphone: acerca el llavero y la jornada se inicia o se detiene      |
 | **Sincronización**     | Con WiFi, al momento. Sin red, guarda cada fichaje con su hora y lo vuelca a Drenpos al reconectar |
-| **Modalidad de compra**| Desde 140 € sin IVA, como solución independiente o integrado en el ecosistema Drenpos          |
+| **Modalidad de compra**| Desde [[p:terminal]] sin IVA, como solución independiente o integrado en el ecosistema Drenpos          |
 
 ### Novedades de la revisión v2: placa propia y tu marca en la carcasa
 
@@ -152,7 +152,7 @@ El terminal es la parte física del módulo de fichajes de Drenpos, así que cad
 | **Festivos** | Nacionales, autonómicos, locales o por trabajador, descontados de las horas esperadas |
 | **Planificación anual** | Quién trabaja, libra o está de vacaciones cada día, con un PDF del año por trabajador |
 
-Todo eso va incluido en la licencia de fichaje de 1 € por usuario y mes sin IVA. Si tu caso es una nave con turnos o un almacén con varias puertas, lo contamos en [control horario en almacenes y naves con turnos](/blog/control-horario-almacenes-naves-turnos).
+Todo eso va incluido en la licencia de fichaje incluida en el plan ([[p:fichaje]] por persona adicional) sin IVA. Si tu caso es una nave con turnos o un almacén con varias puertas, lo contamos en [control horario en almacenes y naves con turnos](/blog/control-horario-almacenes-naves-turnos).
 
 ## Cómo ponerlo en marcha en tu empresa
 

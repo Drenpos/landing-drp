@@ -3,7 +3,7 @@ title: "Registro horario digital en 2026: qué exige la ley, requisitos y estado
 meta_title: "Registro horario digital 2026: requisitos y estado legal"
 description: "Qué exige hoy el registro de jornada, qué cambia con el real decreto (sin aprobar a 17 de octubre de 2026), requisitos del sistema, multas y cómo adaptarte."
 date: 2026-08-03
-updated: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/registro-horario-digital/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -142,13 +142,13 @@ Dos consejos de quien lo ha visto muchas veces. Primero, no copies el Excel tal 
 
 Que el fichaje deje de ser un papel y se convierta en información para organizar el equipo: quién está, quién falta, quién acumula horas extra y quién tiene vacaciones pendientes. Si además está en el mismo sistema que la caja y el almacén, el informe para la gestoría sale sin exportar nada.
 
-En Drenpos, con la licencia de fichaje de 1 € por usuario y mes sin IVA, eso incluye:
+En Drenpos, con la licencia de fichaje incluida en el plan ([[p:fichaje]] por persona adicional y mes sin IVA), eso incluye:
 
 - **Vacaciones y ausencias con saldo y aprobación:** el empleado pide desde el móvil viendo cuántos días le quedan y el responsable aprueba, rechaza o propone otras fechas.
 - **Control de entrada y salida:** opcional, con incidencias de retraso, salida anticipada u olvido que se justifican con una nota.
 - **Calendarios rotativos 4x4, 5/2 y 6/3** y festivos nacionales, autonómicos o por trabajador.
 - **Planificación anual del equipo** con un PDF del año por persona.
-- **Geolocalización opcional** solo al fichar y un terminal propio desde 140 € que ficha sin internet.
+- **Geolocalización opcional** solo al fichar y un terminal propio desde [[p:terminal]] que ficha sin internet.
 
 El informe por persona sale con cada día y su estado (normal, vacaciones, festivo, extra, sin fichar), las ausencias aprobadas y las horas extra calculadas día a día. Todo el detalle está en [control horario](/control-horario), y si quieres comparar opciones, en los [mejores programas de control horario con precios](/blog/mejores-programas-control-horario).
 

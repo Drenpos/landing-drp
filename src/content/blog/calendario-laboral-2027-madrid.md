@@ -3,6 +3,7 @@ title: "Calendario laboral 2027 en la Comunidad de Madrid: festivos y puentes"
 meta_title: "Calendario laboral 2027 Madrid: festivos y puentes"
 description: "Festivos de la Comunidad de Madrid en 2027 según el BOCM nº 234: San José, el 16 de agosto, el 2 de mayo en domingo, puentes y días laborables del año."
 date: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/control-horario-teletrabajo-cumplir-ley-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -180,4 +181,4 @@ Pulsas «Copiar festivos de 2026 a 2027» en el calendario autonómico de Madrid
 - [Calendario laboral 2027 en la Comunitat Valenciana](/blog/calendario-laboral-2027-comunidad-valenciana)
 - [Calendario laboral 2027 en Castilla y León](/blog/calendario-laboral-2027-castilla-y-leon)
 
-Los calendarios laborales, los festivos por comunidad y por trabajador y el cálculo de horas extra van incluidos en el [control horario de Drenpos](/control-horario), a 1 € por usuario y mes sin IVA.
+Los calendarios laborales, los festivos por comunidad y por trabajador y el cálculo de horas extra van incluidos en el [control horario de Drenpos](/control-horario), incluido en todos los planes ([[p:fichaje]] por persona adicional y mes sin IVA).

@@ -1,4 +1,5 @@
 ---
+import { resolverPrecios } from "@/lib/precios";
 import config from "@/config/config.json";
 import dateFormat from "@/lib/utils/dateFormat";
 import { humanize, plainify } from "@/lib/utils/textConverter";
@@ -71,7 +72,7 @@ const { title, image, date, categories } = data.data;
       </h4>
 
       <p class="text-text-dark/70 line-clamp-3 mb-4">
-        {plainify(data.body?.slice(0, Number(summary_length)))}
+        {plainify(resolverPrecios(data.body ?? "").slice(0, Number(summary_length)))}
       </p>
 
       <div

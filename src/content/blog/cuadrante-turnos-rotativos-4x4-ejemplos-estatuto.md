@@ -3,6 +3,7 @@ title: "Cuadrante de turnos rotativos: ejemplos 4x4, 5/2 y 6/3 que cumplen el Es
 meta_title: "Cuadrante de turnos rotativos: ejemplos 4x4, 5/2 y 6/3"
 description: "Cómo montar un cuadrante de turnos rotativos 4x4, 5/2 o 6/3 que cumpla el Estatuto: 12 horas entre jornadas, descanso semanal, noches y plantilla."
 date: 2026-09-28
+updated: 2026-10-22
 image: "/images/blog/mejores-programas-control-horario/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -174,4 +175,4 @@ No reparte la plantilla por ti según la demanda. Tú defines el ciclo (días de
 
 ## Siguiente paso
 
-Coge tu cuadrante actual y apunta tres cosas: cuántos días dura el ciclo, cuántos son de trabajo y qué día empieza cada persona. Con eso tienes el calendario rotativo montado. Mira cómo queda en [calendarios y turnos rotativos del control horario](/control-horario#calendarios), y cómo se ve el año de todo el equipo en la [planificación anual con PDF por trabajador](/control-horario#planificacion-anual). El fichaje cuesta 1 € por usuario y mes sin IVA, con calendarios, vacaciones y control de entrada y salida incluidos.
+Coge tu cuadrante actual y apunta tres cosas: cuántos días dura el ciclo, cuántos son de trabajo y qué día empieza cada persona. Con eso tienes el calendario rotativo montado. Mira cómo queda en [calendarios y turnos rotativos del control horario](/control-horario#calendarios), y cómo se ve el año de todo el equipo en la [planificación anual con PDF por trabajador](/control-horario#planificacion-anual). El fichaje va incluido en todos los planes ([[p:fichaje]] por persona adicional y mes sin IVA), con calendarios, vacaciones y control de entrada y salida incluidos.

@@ -168,7 +168,7 @@ En Drenpos el DeCA sale del [albarán de venta](/documento-control-transporte-de
 5. **El conductor se lleva la copia.** El QR sale también en todos los formatos de albarán y en el modelo de carta de porte, así que el papel que ya imprimes vale. Desde el albarán puedes ver el PDF, copiar la dirección, descargar el QR suelto o imprimirlo.
 6. **Si algo cambia, versión nueva.** Con la misma dirección web y el historial de cambios con su motivo. Un albarán anulado queda indicado en el documento. Nada se borra.
 
-Va incluido en el módulo Financiero, que está en todos los [planes](/pricing), desde 19 €/mes sin IVA. Si trabajas con palets y expediciones, encaja con la [preparación de pedidos y la expedición con escaneo](/software-preparacion-pedidos-picking): escaneas el pedido preparado, sale el albarán y desde ahí el DeCA.
+Va incluido en el módulo Financiero, que está en todos los [planes](/pricing), desde [[p:desde]]/mes sin IVA. Si trabajas con palets y expediciones, encaja con la [preparación de pedidos y la expedición con escaneo](/software-preparacion-pedidos-picking): escaneas el pedido preparado, sale el albarán y desde ahí el DeCA.
 
 ## ¿Qué hacer si todavía no emites el DeCA?
 

@@ -1,115 +1,100 @@
 ---
-title: "Comparativa de Planes"
-description: "Compara qué incluye cada plan y elige el que mejor se adapte a tu negocio"
+title: "Qué trae cada plan"
+description: "La misma tabla para todos. Lo que no viene en tu plan se puede añadir cuando lo necesites."
 badge: "Comparativa"
 
 plans:
-  - id: "essential"
-    name: "Essential"
-  - id: "pro"
-    name: "Pro"
-  - id: "full"
-    name: "Full"
+  - id: "facturacion"
+    name: "Facturación"
+  - id: "tpv"
+    name: "Tienda y Hostelería"
+  - id: "almacen"
+    name: "Almacén"
   - id: "produccion"
     name: "Producción"
 
-# Características generales (no son módulos)
 features:
-  - category: "Características generales"
+  - category: "Lo básico"
     items:
-      - name: "Sistema en la nube 100% accesible"
-        essential: true
-        pro: true
-        full: true
+      - name: "Precio al mes, sin IVA"
+        facturacion: "[[p:facturacion]]"
+        tpv: "[[p:tienda]]"
+        almacen: "[[p:almacen]]"
+        produccion: "[[p:produccion]]"
+      - name: "Usuarios"
+        facturacion: "[[n:facturacion_usuarios]]"
+        tpv: "[[n:tienda_usuarios]]"
+        almacen: "[[n:almacen_usuarios]]"
+        produccion: "[[n:produccion_usuarios]]"
+      - name: "Personas que fichan"
+        facturacion: "[[n:facturacion_fichajes]]"
+        tpv: "[[n:tienda_fichajes]]"
+        almacen: "[[n:almacen_fichajes]]"
+        produccion: "[[n:produccion_fichajes]]"
+      - name: "Cajas de TPV"
+        facturacion: false
+        tpv: 1
+        almacen: "+[[p:tpv]]/mes"
+        produccion: "+[[p:tpv]]/mes"
+      - name: "En la nube, desde cualquier dispositivo"
+        facturacion: true
+        tpv: true
+        almacen: true
         produccion: true
-      - name: "Copias de seguridad diarias"
-        essential: true
-        pro: true
-        full: true
+      - name: "Copia de seguridad diaria"
+        facturacion: true
+        tpv: true
+        almacen: true
         produccion: true
-      - name: "Multidispositivo y multiusuario"
-        essential: true
-        pro: true
-        full: true
+      - name: "Soporte por email"
+        facturacion: true
+        tpv: true
+        almacen: true
         produccion: true
-      - name: "Soporte básico por email"
-        essential: true
-        pro: true
-        full: true
+      - name: "Soporte por teléfono y WhatsApp"
+        facturacion: false
+        tpv: true
+        almacen: true
         produccion: true
-      - name: "Usuarios incluidos"
-        essential: 2
-        pro: 3
-        full: 5
-        produccion: 8
-      - name: "Usuarios de fichaje incluidos"
-        essential: 2
-        pro: 3
-        full: 5
-        produccion: 8
 
-# Módulos incluidos
 modules:
-  - category: "Módulos incluidos"
+  - category: "Módulos"
     items:
-      - name: "Módulo Financiero"
-        essential: true
-        pro: true
-        full: true
+      - name: "Facturación con Verifactu y DeCA"
+        facturacion: true
+        tpv: true
+        almacen: true
         produccion: true
-      - name: "Módulo Informes"
-        essential: true
-        pro: true
-        full: true
+      - name: "Fichajes, vacaciones, turnos y calendarios"
+        facturacion: true
+        tpv: true
+        almacen: true
         produccion: true
-      - name: "Envío por correo"
-        essential: true
-        pro: true
-        full: true
+      - name: "Informes y envío por email y WhatsApp"
+        facturacion: true
+        tpv: true
+        almacen: true
         produccion: true
-      - name: "Envío por WhatsApp"
-        essential: true
-        pro: true
-        full: true
+      - name: "TPV de tienda y de hostelería"
+        facturacion: false
+        tpv: true
+        almacen: "+[[p:tpv]]/mes"
+        produccion: "+[[p:tpv]]/mes"
+      - name: "Inventario: stock, lotes, caducidades, ubicaciones, picking"
+        facturacion: false
+        tpv: false
+        almacen: true
         produccion: true
-      - name: "Módulo Fichajes"
-        essential: true
-        pro: true
-        full: true
+      - name: "Producción: órdenes, escandallos, tiempos y coste real"
+        facturacion: false
+        tpv: false
+        almacen: false
         produccion: true
-      - name: "Módulo Inventario"
-        essential: false
-        pro: true
-        full: true
-        produccion: true
-      - name: "Módulo TPV"
-        essential: false
-        pro: false
-        full: true
-        produccion: false
-      - name: "Módulo Producción"
-        essential: false
-        pro: false
-        full: false
-        produccion: true
-      - name: "Módulo Comercial"
-        essential: false
-        pro: false
-        full: false
-        produccion: false
-      - name: "Módulo Usuarios adicional"
-        essential: false
-        pro: false
-        full: false
-        produccion: false
-      - name: "Módulo Cloud Storage"
-        essential: false
-        pro: false
-        full: false
-        produccion: false
 
 notes:
-  - "Los módulos no incluidos se pueden añadir como módulos adicionales"
-  - "Todos los planes incluyen actualizaciones automáticas"
-  - "Sin permanencia ni costes de instalación"
+  - "Opcional en cualquier plan: comerciales y comisiones, agencias de transporte, conectores con Holded, WooCommerce y Faire, y el conector con ChatGPT o Claude"
+  - "Usuario de más: [[p:usuario]]/mes. Persona de más que ficha: [[p:fichaje]]/mes. Caja o comandero de más: [[p:caja]]/mes"
+  - "Si solo quieres el control horario, mira Drenpos Equipo en la página de control horario"
+  - "Cualquier plan se puede instalar en el servidor de tu empresa; lo estudiamos y te pasamos una propuesta"
+  - "Pagando el año, dos meses gratis. Sin permanencia"
 ---

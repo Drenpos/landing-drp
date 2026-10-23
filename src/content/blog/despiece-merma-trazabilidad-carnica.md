@@ -3,6 +3,7 @@ title: "Despiece, merma y trazabilidad cárnica: cómo cuadrar el stock"
 meta_title: "Software para sala de despiece y control de merma"
 description: "Cómo registrar el despiece sin descuadres: qué pasa con el stock, el lote y el coste, tipos de merma y el vínculo entre lote de origen y lotes de salida."
 date: 2026-08-12
+updated: 2026-10-22
 image: "/images/blog/despiece-merma-trazabilidad-carnica/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -34,7 +35,7 @@ faq:
   - question: "¿Sirve el despiece para una cocina central o un obrador?"
     answer: "Sí. El mecanismo es el mismo siempre que de un formato de entrada salgan varios de salida: cocina central, obrador, envasado, pescadería o cualquier taller de manipulado. Cambian los productos y los rendimientos, no el problema de fondo: descontar la materia prima, dar de alta los productos nuevos con lote propio y apuntar la merma."
   - question: "¿Cuánto cuesta un software para industria cárnica?"
-    answer: "En Drenpos los planes son Esencial 19 €/mes, Pro 29 €/mes y Full 39 €/mes, siempre sin IVA, y el módulo de Inventario se puede contratar suelto por 16,45 €/mes sin IVA. El despiece, los palets con SSCC y la trazabilidad forman parte de ese módulo, con soporte y actualizaciones incluidos. El despliegue en el servidor del cliente se estudia a presupuesto."
+    answer: "En Drenpos el almacén completo va en el plan Almacén, [[p:almacen]]/mes sin IVA con [[n:almacen_usuarios]] usuarios; con TPV, [[p:almacen_tpv]]/mes. Nada se contrata suelto. El despiece, los palets con SSCC y la trazabilidad forman parte de ese módulo, con soporte y actualizaciones incluidos. El despliegue en el servidor del cliente se estudia a presupuesto."
 ---
 
 > Un despiece es, en términos de stock, una salida de producto y una entrada de varios productos nuevos con lote propio, más una merma. Eso rompe cualquier inventario normal, porque un inventario corriente solo sabe sumar y restar unidades de un mismo artículo, no convertir uno en otros. Si se registra como una salida suelta y unas entradas sueltas, se pierde el vínculo entre el lote de origen y los lotes resultantes, y con él la trazabilidad y el coste real.
@@ -154,7 +155,7 @@ Antes de montar el circuito conviene tener el almacén ordenado, como explicamos
 
 En Drenpos el despiece no es un desarrollo a medida: forma parte del módulo de Inventario, junto con lotes, palets con SSCC, trazabilidad y el informe de recall. Eso cambia el orden de magnitud frente a un proyecto de WMS clásico, donde la transformación suele ser una personalización facturada aparte. Las actualizaciones y el soporte van incluidos.
 
-Los planes son Esencial 19 €/mes, Pro 29 €/mes y Full 39 €/mes, siempre sin IVA. El módulo de Inventario se puede contratar suelto por 16,45 €/mes sin IVA.
+El módulo de Inventario completo va en el plan Almacén, [[p:almacen]]/mes sin IVA con [[n:almacen_usuarios]] usuarios ([[p:almacen_tpv]] con TPV), y en Producción, [[p:produccion]]/mes. No se contrata suelto.
 
 El despliegue en el servidor del cliente se estudia a presupuesto. Tienes el detalle en [precios](/pricing) y puedes plantear tu caso desde [contacto](/contact).
 
@@ -184,7 +185,7 @@ Sí. El mecanismo es el mismo siempre que de un formato de entrada salgan varios
 
 ### ¿Cuánto cuesta un software para industria cárnica?
 
-En Drenpos los planes son Esencial 19 €/mes, Pro 29 €/mes y Full 39 €/mes, siempre sin IVA, y el módulo de Inventario se puede contratar suelto por 16,45 €/mes sin IVA. El despiece, los palets con SSCC y la trazabilidad forman parte de ese módulo, con soporte y actualizaciones incluidos. El despliegue en el servidor del cliente se estudia a presupuesto.
+En Drenpos el almacén completo va en el plan Almacén, [[p:almacen]]/mes sin IVA con [[n:almacen_usuarios]] usuarios; con TPV, [[p:almacen_tpv]]/mes. Nada se contrata suelto. El despiece, los palets con SSCC y la trazabilidad forman parte de ese módulo, con soporte y actualizaciones incluidos. El despliegue en el servidor del cliente se estudia a presupuesto.
 
 ---
 

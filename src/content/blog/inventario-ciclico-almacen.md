@@ -3,6 +3,7 @@ title: "Inventario cíclico: cómo contar el almacén sin cerrarlo, con método 
 meta_title: "Inventario cíclico: cómo contar sin cerrar el almacén"
 description: "Inventario cíclico frente al anual: clasificación ABC, cada cuánto contar, cómo hacerlo sin parar el almacén y cómo se cuadran las diferencias, con números."
 date: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/cuanto-cuesta-sga-wms-pyme-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -153,7 +154,7 @@ Con recuentos por zona o por ubicación desde la pistola o el móvil. El sistema
 
 Para montar el calendario ABC tienes el informe de rotación, que ordena lo que más sale por unidades y por valor, con la cobertura en días. Con esa lista cortas A, B y C y decides qué se cuenta cada semana; el reparto lo decides tú, Drenpos no programa los recuentos por su cuenta. La foto del stock por almacén y ubicación se exporta a Excel, y la merma valorada recoge los faltantes de inventario con su motivo, por mes, producto y almacén.
 
-Si además quieres que lo que cuentas sirva para comprar mejor, lee [stock mínimo y punto de pedido](/blog/stock-minimo-punto-de-pedido): un mínimo calculado sobre un stock que no cuadra no sirve de mucho. Todo va en el módulo de Inventario, incluido en el plan Pro por 29 €/mes sin IVA.
+Si además quieres que lo que cuentas sirva para comprar mejor, lee [stock mínimo y punto de pedido](/blog/stock-minimo-punto-de-pedido): un mínimo calculado sobre un stock que no cuadra no sirve de mucho. Todo va en el módulo de Inventario, incluido en el plan Almacén por [[p:almacen]]/mes sin IVA.
 
 ## Preguntas frecuentes sobre el inventario cíclico
 

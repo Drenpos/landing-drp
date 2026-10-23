@@ -3,6 +3,7 @@ title: "Verifactu se aplaza a octubre de 2028: nuevas fechas, por qué y qué ha
 meta_title: "Verifactu aplazado a 2028: nueva fecha y qué hacer ahora"
 description: "Hacienda aplaza Verifactu a octubre de 2028 para todos. Qué está en el BOE y qué no, por qué se alinea con la factura electrónica y qué hacer si ya lo usas."
 date: 2026-10-07
+updated: 2026-10-22
 image: "/images/blog/verifactu/verifactu-cover.webp"
 author:
   name: "Alonso Bermejo Pérez"
@@ -40,7 +41,7 @@ faq:
   - question: "¿Hay sanciones por no usar Verifactu hasta 2028?"
     answer: "La multa por usar software no conforme (50.000 euros por ejercicio, artículo 201 bis de la Ley General Tributaria; 150.000 para quien lo fabrica o vende) va ligada a que la obligación sea exigible. Si el real decreto sale como se ha anunciado, será en octubre de 2028; mientras no se publique, la fecha legal sigue siendo 2027."
   - question: "¿Drenpos cumple Verifactu?"
-    answer: "Sí. Factura en modalidad VERI*FACTU, con huella encadenada, QR, remisión a la AEAT y panel de envíos. Ya tiene las nuevas fechas y no tienes que hacer nada. Va incluido desde el plan Essential, por 19 euros al mes sin IVA."
+    answer: "Sí. Factura en modalidad VERI*FACTU, con huella encadenada, QR, remisión a la AEAT y panel de envíos. Ya tiene las nuevas fechas y no tienes que hacer nada. Va incluido desde el plan Facturación, de [[n:facturacion]] euros al mes sin IVA."
   - question: "¿Qué pasa con TicketBAI y con el SII?"
     answer: "Quienes llevan los libros por el SII quedan fuera de Verifactu, y los territorios forales tienen su propio sistema, como TicketBAI en el País Vasco. El aplazamiento se refiere al reglamento estatal, el RD 1007/2023."
   - question: "¿Pueden volver a cambiar las fechas?"
@@ -132,7 +133,7 @@ Drenpos factura en modalidad Verifactu (huella encadenada, QR, leyenda VERI\*FAC
 - **Las fechas nuevas, a la vista.** En *Configuración global › Financiero*, el apartado Verifactu muestra el nuevo calendario.
 - **Si ya lo tenías activado, sigue igual.** El envío de registros sigue siendo voluntario hasta esa fecha.
 
-**No tienes que hacer nada.** Si todavía no lo has activado, te recomendamos hacerlo ya: cuesta un par de minutos y, si te atascas, el equipo de soporte te ayuda. Va incluido desde el plan Essential, por 19 €/mes sin IVA ([ver planes](/pricing)), también en el ticket de la barra si usas el [TPV para bares y restaurantes](/software-bares-restaurantes).
+**No tienes que hacer nada.** Si todavía no lo has activado, te recomendamos hacerlo ya: cuesta un par de minutos y, si te atascas, el equipo de soporte te ayuda. Va incluido desde el plan Facturación, de [[p:facturacion]]/mes sin IVA ([ver planes](/pricing)), también en el ticket de la barra si usas el [TPV para bares y restaurantes](/software-bares-restaurantes).
 
 <div class="my-8 flex justify-center">
   <a href="/contact" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
@@ -190,7 +191,7 @@ La multa por usar software no conforme (50.000 euros por ejercicio, artículo 20
 
 ### ¿Drenpos cumple Verifactu?
 
-Sí. Factura en modalidad VERI\*FACTU, con huella encadenada, QR, remisión a la AEAT y panel de envíos. Ya tiene las nuevas fechas y no tienes que hacer nada. Va incluido desde el plan Essential, por 19 euros al mes sin IVA.
+Sí. Factura en modalidad VERI\*FACTU, con huella encadenada, QR, remisión a la AEAT y panel de envíos. Ya tiene las nuevas fechas y no tienes que hacer nada. Va incluido desde el plan Facturación, de [[n:facturacion]] euros al mes sin IVA.
 
 ### ¿Qué pasa con TicketBAI y con el SII?
 

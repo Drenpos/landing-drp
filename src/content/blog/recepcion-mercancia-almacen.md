@@ -3,6 +3,7 @@ title: "Recepción de mercancía en el almacén: qué comprobar, cómo registrar
 meta_title: "Recepción de mercancía: qué comprobar y cómo registrarla"
 description: "Qué comprobar al recibir mercancía: albarán frente a pedido, lotes y caducidades, reservas al transportista, incidencias y cómo ubicarla después, con ejemplo."
 date: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/etiqueta-sscc-gs1-palets/section-1.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -145,7 +146,7 @@ Además:
 - **Pedidos ya facturados:** si un pedido se facturó directamente sin albarán, la recepción lo detecta y no pide recibir de más.
 - **Palets:** se montan con pistola y nacen con su SSCC. Lo vemos en el [software de gestión de palets](/software-gestion-palets).
 
-La diferencia con un SGA aparte es que todo esto ocurre en el mismo sistema donde está el pedido de compra y la factura del proveedor, sin sincronizar dos programas. Si dudas entre una cosa y otra, lee [diferencias entre WMS, SGA y ERP](/blog/wms-sga-erp-diferencias). Va en el módulo de Inventario, incluido en el plan Pro por 29 €/mes sin IVA.
+La diferencia con un SGA aparte es que todo esto ocurre en el mismo sistema donde está el pedido de compra y la factura del proveedor, sin sincronizar dos programas. Si dudas entre una cosa y otra, lee [diferencias entre WMS, SGA y ERP](/blog/wms-sga-erp-diferencias). Va en el módulo de Inventario, incluido en el plan Almacén por [[p:almacen]]/mes sin IVA.
 
 ## Preguntas frecuentes sobre la recepción de mercancía
 

@@ -1,5 +1,6 @@
 import { clerkMiddleware } from "@clerk/astro/server";
 import { defineMiddleware, sequence } from "astro:middleware";
+import { resolverPrecios, tieneTokens } from "@/lib/precios";
 
 /**
  * Canonicalización de dominio: todo lo que llegue al worker con el host
@@ -32,4 +33,33 @@ const wwwRedirect = defineMiddleware((context, next) => {
  * prerenderizadas y el handler de @astrojs/cloudflare las sirve desde ASSETS
  * sin ejecutar este middleware, así que aquí no se verían.
  */
-export const onRequest = sequence(wwwRedirect, clerkMiddleware());
+/**
+ * Precios: sustituye los [[p:clave]] y [[n:clave]] por los valores de
+ * src/config/precios.json en cualquier respuesta de texto (HTML, Markdown,
+ * llms.txt, JSON, XML). Corre al prerenderizar en el build y en dev, así que
+ * lo que llega a dist ya lleva los precios. Ver src/lib/precios.ts.
+ */
+const precios = defineMiddleware(async (_context, next) => {
+  const response = await next();
+  const tipo = response.headers.get("content-type") ?? "";
+  const esTexto =
+    tipo === "" ||
+    tipo.startsWith("text/") ||
+    tipo.includes("json") ||
+    tipo.includes("xml") ||
+    tipo.includes("markdown");
+  if (!esTexto || !response.body) return response;
+  const cuerpo = await response.text();
+  if (!tieneTokens(cuerpo)) {
+    return new Response(cuerpo, response);
+  }
+  const headers = new Headers(response.headers);
+  headers.delete("content-length");
+  return new Response(resolverPrecios(cuerpo), {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+});
+
+export const onRequest = sequence(wwwRedirect, precios, clerkMiddleware());

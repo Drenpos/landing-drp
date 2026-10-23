@@ -3,6 +3,7 @@ title: "FIFO, FEFO y LIFO en el almacén: diferencias, cuál usar en tu sector y
 meta_title: "FIFO, FEFO y LIFO: diferencias y cuál usar en tu almacén"
 description: "Diferencias entre FIFO, FEFO y LIFO, cuál usar en alimentación, farmacia o recambios, su relación con lotes y caducidad y por qué el PGC no admite LIFO."
 date: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/trazabilidad-alimentaria-lotes-recall/section-1.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -147,7 +148,7 @@ Lo que lo completa:
 - **Packs montables**: el pack nace con la caducidad del componente que antes caduca.
 - **Valoración** a precio medio ponderado o a precio manual por artículo, compatible con el método general del PGC. El LIFO de Drenpos es un orden físico de salida, no un método de valoración.
 
-Para almacenes de frío, donde FEFO pesa más que en ningún otro sitio, mira el [software para almacén frigorífico](/software-almacen-frigorifico). Lotes y métodos de salida van en el módulo de Inventario, incluido en el plan Pro por 29 €/mes sin IVA.
+Para almacenes de frío, donde FEFO pesa más que en ningún otro sitio, mira el [software para almacén frigorífico](/software-almacen-frigorifico). Lotes y métodos de salida van en el módulo de Inventario, incluido en el plan Almacén por [[p:almacen]]/mes sin IVA.
 
 ## Preguntas frecuentes sobre FIFO, FEFO y LIFO
 

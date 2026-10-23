@@ -1,4 +1,5 @@
 ---
+import { decimal, valor } from "@/lib/precios";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -24,7 +25,7 @@ const pasos = [
   {
     n: "1",
     title: "Activas el módulo en tu cuenta",
-    body: "El conector se contrata como módulo suelto, con cualquier plan, por 6 € al mes y empresa sin IVA. No hay que instalar nada en tus ordenadores ni tocar tu red.",
+    body: "El conector se contrata como extra, con cualquier plan, por [[p:mcp]] al mes y empresa sin IVA. No hay que instalar nada en tus ordenadores ni tocar tu red.",
   },
   {
     n: "2",
@@ -66,7 +67,7 @@ const ventajas = [
   },
   {
     icon: "💶",
-    title: "6 € al mes por empresa",
+    title: "Para todos tus usuarios",
     body: "Sin IVA, con todos los usuarios de la empresa incluidos y sin permanencia. Se activa y se desactiva cuando quieras desde tu cuenta.",
   },
 ];
@@ -147,7 +148,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta el conector MCP?",
-    a: "6 € al mes por empresa sin IVA, con todos los usuarios incluidos. Se contrata como módulo suelto junto a cualquier plan (Esencial 19 €, Pro 29 €, Full 39 € o Producción 50 €, siempre sin IVA) y no tiene permanencia: se activa y se desactiva desde tu cuenta.",
+    a: "[[p:mcp]] al mes por empresa sin IVA, con todos los usuarios incluidos. Se contrata como extra junto a cualquier plan (Facturación [[p:facturacion]], Tienda y Hostelería [[p:tienda]], Almacén [[p:almacen]] o Producción [[p:produccion]], sin IVA) y no tiene permanencia: se activa y se desactiva desde tu cuenta.",
   },
   {
     q: "¿Necesito un plan concreto para usarlo?",
@@ -210,13 +211,13 @@ const softwareSchema = {
   ],
   offers: {
     "@type": "Offer",
-    price: "6",
+    price: decimal(valor("mcp")),
     priceCurrency: "EUR",
     priceValidUntil: "2027-12-31",
     availability: "https://schema.org/InStock",
     url: CANONICAL,
     valueAddedTaxIncluded: false,
-    description: "6 € al mes por empresa sin IVA, con todos los usuarios incluidos y sin permanencia.",
+    description: "[[p:mcp]] al mes por empresa sin IVA, con todos los usuarios incluidos y sin permanencia.",
     seller: { "@type": "Organization", name: "Drenpos Tech SL" },
   },
 };
@@ -224,13 +225,13 @@ const softwareSchema = {
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
 const PAGE_PUBLISHED = "2026-09-10";
-const PAGE_UPDATED = "2026-09-14";
+const PAGE_UPDATED = "2026-10-22";
 ---
 
 <Base
   title="Conector MCP: Drenpos en ChatGPT o Claude"
   meta_title="Conector MCP: conecta Drenpos con ChatGPT o Claude"
-  description="Conecta Drenpos con ChatGPT o Claude y pregunta por tus ventas, clientes y stock en lenguaje natural. Solo lectura, con tus permisos, por 6 € al mes."
+  description="Conecta Drenpos con ChatGPT o Claude y pregunta por tus ventas, clientes y stock en lenguaje natural. Solo lectura y con los mismos permisos que tienes en Drenpos."
   canonical={CANONICAL}
   image={`${IMG}/01-chat-ventas-semana.png`}
   published_date={PAGE_PUBLISHED}
@@ -263,7 +264,7 @@ const PAGE_UPDATED = "2026-09-14";
         <div class="lg:col-6" data-aos="fade-up-sm">
           <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
             <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
-            Módulo operativo · 6 € al mes por empresa
+            Módulo operativo · ChatGPT, Claude y clientes MCP
           </span>
 
           <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
@@ -394,7 +395,7 @@ const PAGE_UPDATED = "2026-09-14";
             ventas netas de un periodo, la ficha de clientes y proveedores y la
             ficha y el stock de los productos. Es de <strong>solo lectura</strong>
             y aplica los mismos permisos que cada usuario tiene dentro de
-            Drenpos. Cuesta 6 € al mes por empresa sin IVA.
+            Drenpos. Cuesta [[p:mcp]] al mes por empresa sin IVA.
           </p>
         </div>
       </div>
@@ -630,9 +631,9 @@ const PAGE_UPDATED = "2026-09-14";
       <div class="row justify-center">
         <div class="lg:col-8">
           <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
-            <h2 class="h3 font-bold mb-3 text-white">6 € al mes por empresa, con todos tus usuarios</h2>
+            <h2 class="h3 font-bold mb-3 text-white">Pregúntale a ChatGPT cómo van tus ventas</h2>
             <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
-              Sin IVA y sin permanencia. Se contrata como módulo suelto encima de
+              Sin IVA y sin permanencia. Se contrata como extra encima de
               cualquier plan y no hay coste por usuario: si sois quince en la
               empresa, los quince pueden enlazar su cuenta, cada uno con sus
               permisos. Las consultas que vayamos añadiendo entran incluidas.
@@ -646,7 +647,7 @@ const PAGE_UPDATED = "2026-09-14";
               </li>
             </ul>
             <p class="text-sm max-w-xl mx-auto mb-0" style="color: rgba(255,255,255,0.55);">
-              Precios sin IVA. Los planes parten de 19 € al mes y el conector se
+              Precios sin IVA. Los planes empiezan en [[p:desde]] al mes y el conector se
               suma a cualquiera de ellos.
             </p>
           </div>

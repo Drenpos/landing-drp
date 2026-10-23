@@ -3,6 +3,7 @@ title: "Trazabilidad alimentaria: gestión de lotes y retirada de producto"
 meta_title: "Trazabilidad alimentaria por lotes y recall"
 description: "Qué exige la trazabilidad alimentaria, qué datos guardar en cada lote y cómo ejecutar una retirada de producto sin revisar albaranes a mano durante horas."
 date: 2026-08-12
+updated: 2026-10-22
 image: "/images/blog/trazabilidad-alimentaria-lotes-recall/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -34,7 +35,7 @@ faq:
   - question: "¿Sirve Excel para la trazabilidad alimentaria?"
     answer: "Para un registro básico puede valer, pero se rompe en la crisis. Excel no cruza entradas y salidas en segundos, no sabe cuántas unidades de un lote quedan vivas ni en qué ubicación están, y depende de que alguien lo haya rellenado bien cada día. Cuando hay que responder a Sanidad con prisa, esa dependencia manual es justo el punto débil."
   - question: "¿Cuánto cuesta un software de trazabilidad alimentaria?"
-    answer: "En Drenpos los planes son Esencial 19 €/mes, Pro 29 €/mes y Full 39 €/mes, siempre sin IVA. La gestión por lotes vive en el módulo de Inventario, incluido en Pro y en Full y contratable suelto por 16,45 €/mes sin IVA. Las actualizaciones y el soporte están incluidos, sin costes de partner ni proyectos de cambio de versión."
+    answer: "En Drenpos la gestión por lotes va en el plan Almacén, [[p:almacen]]/mes sin IVA con [[n:almacen_usuarios]] usuarios, y en Almacén con TPV ([[p:almacen_tpv]]/mes) y Producción ([[p:produccion]]/mes). No se contrata suelta. Las actualizaciones y el soporte están incluidos, sin costes de partner ni proyectos de cambio de versión."
 ---
 
 > La trazabilidad alimentaria es la capacidad de reconstruir el recorrido de un alimento a lo largo de toda la cadena, y el Reglamento (CE) 178/2002 obliga a cada operador a documentar «un paso adelante, un paso atrás»: de quién recibió cada lote y a quién se lo entregó. En la práctica eso significa registrar lote, fechas, unidades, proveedor de origen, clientes de destino y stock vivo. Cuando llega una alerta sanitaria, esa información decide si la retirada se resuelve en minutos o en días.
@@ -149,7 +150,7 @@ Por eso conviene que los registros del APPCC y los movimientos de almacén hable
 
 La gestión por lotes de Drenpos forma parte del módulo de Inventario, el mismo que gestiona almacenes, ubicaciones, palets, recepción y preparación de pedidos. No es un extra que se cobra aparte el día que llega la inspección, ni un proyecto de implantación con partner: se activa en la ficha del artículo y empieza a registrar desde el primer albarán.
 
-Los planes son Esencial 19 €/mes, Pro 29 €/mes y Full 39 €/mes, siempre sin IVA. El módulo de Inventario está incluido en Pro y en Full, y se contrata suelto por 16,45 €/mes sin IVA; el detalle está en la página de [precios](/pricing).
+El inventario completo va en los planes Almacén ([[p:almacen]]/mes), Almacén con TPV ([[p:almacen_tpv]]/mes) y Producción ([[p:produccion]]/mes), sin IVA; el detalle está en la página de [precios](/pricing).
 
 Antes de decidir, merece la pena ordenar el almacén físico: la trazabilidad digital funciona mejor cuando las ubicaciones existen de verdad. En [cómo organizar un almacén de pyme](/blog/como-organizar-almacen-pyme) explicamos por dónde empezar.
 
@@ -179,7 +180,7 @@ Para un registro básico puede valer, pero se rompe en la crisis. Excel no cruza
 
 ### ¿Cuánto cuesta un software de trazabilidad alimentaria?
 
-En Drenpos los planes son Esencial 19 €/mes, Pro 29 €/mes y Full 39 €/mes, siempre sin IVA. La gestión por lotes vive en el módulo de Inventario, incluido en Pro y en Full y contratable suelto por 16,45 €/mes sin IVA. Las actualizaciones y el soporte están incluidos, sin costes de partner ni proyectos de cambio de versión.
+En Drenpos la gestión por lotes va en el plan Almacén, [[p:almacen]]/mes sin IVA con [[n:almacen_usuarios]] usuarios, y en Almacén con TPV ([[p:almacen_tpv]]/mes) y Producción ([[p:produccion]]/mes). No se contrata suelta. Las actualizaciones y el soporte están incluidos, sin costes de partner ni proyectos de cambio de versión.
 
 ---
 

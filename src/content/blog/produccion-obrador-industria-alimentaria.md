@@ -3,6 +3,7 @@ title: "Producción en obrador e industria alimentaria: lotes, caducidad y merma
 meta_title: "Software para obrador: lotes, caducidad y mermas"
 description: "Cómo organizar la producción de un obrador de 8 personas: órdenes por hornada, caducidad automática, mermas con motivo y coste real por bolsa de magdalenas."
 date: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/pantalla-cocina-kds-bares-comandas-perdidas/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -121,7 +122,7 @@ Si el proveedor de huevo líquido avisa del lote HL-1007, la pantalla de trazabi
 
 Uno que lleve las recetas, lance órdenes por hornada, registre el consumo por lote sin teclear, calcule la caducidad del producto terminado, separe las defectuosas y dé el coste por unidad buena. Y que todo eso esté conectado con el almacén, las ventas y la facturación, porque la trazabilidad hacia delante sale de los albaranes. Si cada cosa vive en un programa distinto, la cadena se rompe en las uniones.
 
-En Drenpos todo eso va en el plan Producción: 50 € al mes sin IVA, con los módulos de Producción, Inventario, Financiero, Informes y Fichajes. Cada persona que ficha tiempo en las órdenes necesita su usuario y su licencia de fichaje. Conviene saber también lo que no hace: no es un MRP con planificación de capacidad finita, el puesto de trabajo necesita conexión y no lee sensores de los hornos ni de las cámaras.
+En Drenpos todo eso va en el plan Producción: [[p:produccion]] al mes sin IVA, con los módulos de Producción, Inventario, Financiero, Informes y Fichajes. Cada persona que ficha tiempo en las órdenes necesita su usuario y su licencia de fichaje. Conviene saber también lo que no hace: no es un MRP con planificación de capacidad finita, el puesto de trabajo necesita conexión y no lee sensores de los hornos ni de las cámaras.
 
 ## Preguntas frecuentes sobre producción en obradores
 

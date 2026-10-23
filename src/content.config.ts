@@ -248,6 +248,7 @@ const pricingPlanCollection = defineCollection({
         title: z.string(),
         description: z.string(),
         price_prefix: z.string(),
+        price_suffix: z.string().optional(),
         price_monthly: z.string(),
         price_yearly: z.string(),
         price_description_monthly: z.string(),

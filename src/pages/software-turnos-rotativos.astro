@@ -1,4 +1,5 @@
 ---
+import { decimal, valor } from "@/lib/precios";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -44,7 +45,7 @@ const capsulas = {
   ley:
     "El Estatuto de los Trabajadores no fija el 4x4 ni ningún otro ciclo: lo deciden el convenio y la empresa. Lo que sí marca son mínimos que cualquier cuadrante tiene que respetar, como doce horas entre el final de una jornada y el comienzo de la siguiente, día y medio de descanso a la semana y 40 horas semanales de promedio en cómputo anual. Que tu ciclo encaje, confírmalo con tu asesoría.",
   precio:
-    "Nada aparte. Los calendarios rotativos van incluidos en la licencia de fichaje de Drenpos, que cuesta 1 € por usuario y mes sin IVA, con vacaciones y permisos, control de entrada y salida y planificación anual del equipo. El terminal de fichaje es opcional y parte de 140 € sin IVA; la plantilla también puede fichar desde el móvil o el ordenador.",
+    "Nada aparte. Los calendarios rotativos van incluidos en la licencia de fichaje de Drenpos, incluida en todos los planes ([[p:fichaje]] por persona adicional y mes, sin IVA), con vacaciones y permisos, control de entrada y salida y planificación anual del equipo. El terminal de fichaje es opcional y parte de [[p:terminal]] sin IVA; la plantilla también puede fichar desde el móvil o el ordenador.",
 };
 
 // Ejemplos de ciclo
@@ -126,7 +127,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta el software de turnos rotativos?",
-    a: "Va incluido sin coste extra en la licencia de fichaje de Drenpos, que cuesta 1 € por usuario y mes sin IVA, con vacaciones y permisos, control de entrada y salida y planificación anual. El terminal de fichaje es opcional y parte de 140 € sin IVA.",
+    a: "Va incluido sin coste extra en la licencia de fichaje de Drenpos, incluida en todos los planes ([[p:fichaje]] por persona adicional y mes, sin IVA), con vacaciones y permisos, control de entrada y salida y planificación anual. El terminal de fichaje es opcional y parte de [[p:terminal]] sin IVA.",
   },
 ];
 
@@ -195,18 +196,18 @@ const productSchema = {
     "Calendarios laborales rotativos dentro del módulo de fichajes de Drenpos para ciclos que no encajan en la semana (4x4, 5/2 rotando, 6/3, mañanas y noches). Días de trabajo, días de descanso, horario y primer día del ciclo por persona; dos personas que se turnan comparten calendario. Vista previa del mes, ajuste manual de cada día y validación del horario al guardar. Los días de descanso no suman horas ni gastan vacaciones, y las horas esperadas, las horas extra y el cupo de vacaciones respetan el ciclo. Planificación anual del equipo con PDF por trabajador. Aplica el ciclo que define la empresa: no reparte la plantilla según la demanda.",
   offers: {
     "@type": "Offer",
-    price: "1",
+    price: decimal(valor("fichaje")),
     priceCurrency: "EUR",
     valueAddedTaxIncluded: false,
     priceSpecification: {
       "@type": "UnitPriceSpecification",
-      price: "1",
+      price: decimal(valor("fichaje")),
       priceCurrency: "EUR",
       valueAddedTaxIncluded: false,
       unitText: "usuario y mes",
     },
     description:
-      "Incluido en la licencia de fichaje de 1 € por usuario y mes, sin IVA, sin coste extra. Terminal de fichaje opcional desde 140 € sin IVA.",
+      "Incluido en la licencia de fichaje de todos los planes, sin coste extra ([[p:fichaje]] por persona adicional y mes, sin IVA). Terminal de fichaje opcional desde [[p:terminal]] sin IVA.",
     url: "https://www.drenpos.com/pricing",
   },
   featureList: [
@@ -229,11 +230,11 @@ const productSchema = {
 <Base
   title="Software de Turnos Rotativos · Drenpos"
   meta_title="Software de Turnos Rotativos 4x4, 5/2 y 6/3 | Drenpos"
-  description="Turnos rotativos 4x4, 5/2 y 6/3 con primer día del ciclo por persona, vista previa del mes y PDF anual. Incluido en el fichaje de 1 €/usuario/mes sin IVA."
+  description="Turnos rotativos 4x4, 5/2 y 6/3 con primer día del ciclo por persona, vista previa del mes y PDF anual. Incluido en el fichaje de todos los planes; [[p:fichaje]] por persona adicional, sin IVA."
   canonical={CANONICAL}
   image={HERO_IMG}
   published_date="2026-10-07"
-  modified_date="2026-10-07"
+  modified_date="2026-10-22"
   author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
 >
   <!-- Datos estructurados -->
@@ -274,10 +275,10 @@ const productSchema = {
             Defines el ciclo una vez: días de trabajo, días de descanso,
             horario y el primer día de cada persona. Drenpos lo alterna solo
             y lo cruza con los festivos, las vacaciones y los fichajes. Va
-            <strong>incluido en el fichaje de 1 €/usuario/mes sin IVA</strong>.
+            <strong>incluido en el fichaje (incluido en el plan; [[p:fichaje]]/usuario/mes cada persona adicional, sin IVA)</strong>.
           </p>
 
-          <LandingMeta updated="2026-10-07" published="2026-10-07" />
+          <LandingMeta updated="2026-10-22" published="2026-10-07" />
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">

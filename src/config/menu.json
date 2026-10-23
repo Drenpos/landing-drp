@@ -118,6 +118,10 @@
             {
               "name": "Conector IA (MCP)",
               "url": "/conector-mcp-ia"
+            },
+            {
+              "name": "Programa de partners",
+              "url": "/partners"
             }
           ]
         }
@@ -139,6 +143,18 @@
   "footer": [],
   "footer_menu_links": [],
   "footer_info_links": [
+    {
+      "name": "Empresas nuevas: 50 % de descuento",
+      "url": "/empresas-nuevas",
+      "blank": false,
+      "data-cc": ""
+    },
+    {
+      "name": "Programa de partners",
+      "url": "/partners",
+      "blank": false,
+      "data-cc": ""
+    },
     {
       "name": "Guía VERI*FACTU 2026",
       "url": "/blog/verifactu-pymes-guia-2026",

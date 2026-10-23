@@ -1,4 +1,5 @@
 ---
+import { decimal, valor } from "@/lib/precios";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -394,7 +395,7 @@ const faqs = [
   },
   {
     q: "¿Las vacaciones y el control de entrada y salida tienen coste extra?",
-    a: "No. Vacaciones y permisos, control de entrada y salida, calendarios laborales (también los rotativos), planificación anual y geolocalización van incluidos en el módulo de fichajes, que cuesta 1 € por usuario y mes sin IVA. Son opciones que activas cuando las necesitas. Un matiz: quien aprueba vacaciones o revisa incidencias necesita licencia de fichaje aunque no fiche.",
+    a: "No. Vacaciones y permisos, control de entrada y salida, calendarios laborales (también los rotativos), planificación anual y geolocalización van incluidos en el módulo de fichajes, incluido en todos los planes ([[p:fichaje]] por persona adicional y mes, sin IVA). Son opciones que activas cuando las necesitas. Un matiz: quien aprueba vacaciones o revisa incidencias necesita licencia de fichaje aunque no fiche.",
   },
 ];
 
@@ -459,10 +460,10 @@ const productSchema = {
     "Software de control horario y registro de jornada para pymes. Fichaje por web, móvil (PWA), widget rápido, llavero RFID y código QR. Vacaciones y permisos con cupo por política, solicitud desde el móvil y aprobación con contrapropuesta de fechas. Control opcional de entrada y salida con incidencias y tolerancias. Calendarios laborales semanales y rotativos (4/4, 5/2, 6/3, turnos de noche) con primer día del ciclo por persona, calendarios permanentes con copia de festivos de un año al siguiente, festivos por comunidad autónoma y por persona, y horas extra calculadas día a día. Planificación anual del equipo con PDF de una página por trabajador. Geolocalización opcional solo al fichar. Terminal de fichaje propio que sigue fichando sin internet. Informes inalterables para la Inspección de Trabajo.",
   offers: {
     "@type": "Offer",
-    price: "1",
+    price: decimal(valor("fichaje")),
     priceCurrency: "EUR",
     valueAddedTaxIncluded: false,
-    description: "Licencia de fichaje desde 1 € por usuario y mes, sin IVA. Vacaciones y permisos, control de entrada y salida y geolocalización incluidos sin coste extra.",
+    description: "Fichajes incluidos en todos los planes; [[p:fichaje]] por persona adicional y mes, sin IVA. Vacaciones y permisos, control de entrada y salida y geolocalización incluidos sin coste extra.",
     url: "https://www.drenpos.com/pricing",
   },
   featureList: [
@@ -499,11 +500,11 @@ const productSchema = {
 <Base
   title="Control Horario, Vacaciones y Registro de Jornada · Drenpos"
   meta_title="Control horario, vacaciones y turnos: gestión de equipo | Drenpos"
-  description="Control horario y gestión de equipo: fichaje por web, móvil o llavero, vacaciones, retrasos, turnos rotativos y calendario anual. Desde 1 €/usuario sin IVA."
+  description="Control horario y gestión de equipo: fichaje por web, móvil o llavero, vacaciones, retrasos, turnos rotativos y calendario anual. Terminal propio que ficha sin internet."
   canonical={CANONICAL}
   image="/images/funcionalidades/control-horario/01-gestion-personal.png"
   published_date="2026-05-27"
-  modified_date="2026-10-17"
+  modified_date="2026-10-22"
   author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
 >
   <!-- Datos estructurados -->
@@ -559,7 +560,7 @@ const productSchema = {
             comunidad y el <a href="#planificacion-anual" class="text-primary underline">calendario del año de cada trabajador en PDF</a>.
           </p>
           <div class="mb-8">
-            <LandingMeta updated="2026-10-17" published="2026-05-27" />
+            <LandingMeta updated="2026-10-22" published="2026-05-27" />
           </div>
 
           <ul class="flex flex-wrap gap-4 mb-10">
@@ -586,7 +587,7 @@ const productSchema = {
           </ul>
 
           <p class="text-sm font-medium mb-6" style="color: rgba(16,25,40,0.72);">
-            Desde 1 €/usuario/mes · terminal propio desde 140 € · sin
+            Fichajes incluidos en el plan, [[p:fichaje]]/usuario adicional · terminal propio desde [[p:terminal]] · sin
             permanencia. Precios sin IVA.
           </p>
 
@@ -1528,6 +1529,60 @@ const productSchema = {
           trabajador te da esa hoja sin montarla a mano; lo que tenga que
           llevar en tu caso lo marca tu convenio.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       DRENPOS EQUIPO · solo control horario, sin el ERP (precios 21/10/2026)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="equipo" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10 text-center mb-10" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Drenpos Equipo</span>
+          <h2 class="h3 font-bold mb-3">Si solo necesitas el control horario</h2>
+          <p class="text-lg mb-0" style="color: rgba(16,25,40,0.65);">
+            Hay empresas que ya facturan con otro programa y solo quieren fichar bien. Para ellas está Drenpos Equipo: es el mismo control
+            horario que llevan nuestros clientes, con todo lo que has visto en esta página. Si más adelante quieres facturar o llevar el almacén,
+            se pasa a un plan y no se pierde nada.
+          </p>
+        </div>
+        <div class="lg:col-10">
+          <div class="grid gap-5 md:grid-cols-3">
+            {[
+              { n: "Hasta 10 personas", p: "[[p:equipo10]]", d: "Equipo 10", s: "" },
+              { n: "Hasta 25 personas", p: "[[p:equipo25]]", d: "Equipo 25", s: "" },
+              { n: "Hasta 50 personas", p: "[[p:equipo50]]", d: "Equipo 50", s: "" },
+            ].map((e) => (
+              <div class="rounded-2xl border bg-white p-6 text-center" style="border-color: rgba(16,25,40,0.1);">
+                <p class="text-sm uppercase font-medium mb-2" style="color: rgba(16,25,40,0.55);">{e.n}</p>
+                <p class="text-3xl font-bold text-primary mb-1">{e.p}<span class="text-base font-medium" style="color: rgba(16,25,40,0.55);">/mes</span></p>
+                <p class="font-semibold mb-1">{e.d}</p>
+              </div>
+            ))}
+          </div>
+          <p class="text-center mt-6 mb-2" style="color: rgba(16,25,40,0.72);">
+            Al mes y sin IVA. Por encima de 50 personas, [[p:equipo_persona_extra]] cada una. El <a href="/dispositivo-fichaje" class="text-primary underline">terminal de fichaje</a> es opcional.
+          </p>
+          <div class="grid gap-3 md:grid-cols-2 mt-8">
+            {[
+              "Fichaje desde el móvil, el ordenador, con QR o con llavero",
+              "Terminal con el logo de tu empresa que sigue fichando sin internet",
+              "Vacaciones y permisos: se piden desde el móvil y el saldo se calcula solo",
+              "Avisos de retrasos, salidas antes de hora y olvidos",
+              "Turnos rotativos 4x4, 5/2 o 6/3",
+              "Calendarios con los festivos de tu comunidad y tu localidad",
+              "El año de cada trabajador en un PDF",
+              "Ubicación al fichar, si la activas",
+            ].map((t) => (
+              <div class="flex gap-3 items-start rounded-2xl border bg-white px-5 py-4" style="border-color: rgba(16,25,40,0.1);">
+                <span class="w-5 h-5 mt-0.5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+                <span style="color: rgba(16,25,40,0.78);">{t}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </section>

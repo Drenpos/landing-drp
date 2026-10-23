@@ -3,6 +3,7 @@ title: "Cuánto cuesta un SGA para una pyme en 2026: licencia, implantación y h
 meta_title: "Cuánto cuesta un SGA o WMS para pymes en 2026"
 description: "Precio real de un software de gestión de almacén para pymes: licencias, implantación, pistolas e impresoras, mantenimiento y coste oculto de no tenerlo. Con rangos de mercado y el desglose de Drenpos."
 date: 2026-09-03
+updated: 2026-10-22
 image: "/images/blog/cuanto-cuesta-sga-wms-pyme-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -24,7 +25,7 @@ hero:
   description: "Licencia, implantación, hardware y mantenimiento. Y el coste de seguir sin sistema, que nadie factura."
 faq:
   - question: "¿Cuánto cuesta un SGA para una pyme?"
-    answer: "Depende de cuatro partidas: licencia, implantación, hardware y mantenimiento. En el mercado español la implantación de un SGA tradicional se sitúa entre 10.000 y 30.000 euros en casi la mitad de los proyectos, mientras que las pequeñas empresas que optan por SaaS suelen invertir menos de 1.000 euros en la puesta en marcha. En Drenpos el almacén va incluido en el plan Pro desde 29 euros al mes sin IVA y la implantación asistida se presupuesta según el volumen."
+    answer: "Depende de cuatro partidas: licencia, implantación, hardware y mantenimiento. En el mercado español la implantación de un SGA tradicional se sitúa entre 10.000 y 30.000 euros en casi la mitad de los proyectos, mientras que las pequeñas empresas que optan por SaaS suelen invertir menos de 1.000 euros en la puesta en marcha. En Drenpos el almacén va incluido en el plan Almacén, [[n:almacen]] euros al mes sin IVA y la implantación asistida se presupuesta según el volumen."
   - question: "¿Qué incluye la licencia de un software de almacén?"
     answer: "En un SaaS moderno, la licencia debería incluir el uso del sistema, las actualizaciones y el soporte. Conviene revisar tres letras pequeñas: si hay coste por usuario adicional, si hay límite de transacciones o de almacenes y si las mejoras se cobran aparte. Drenpos incluye actualizaciones y soporte en todos los planes y no cobra por volumen de datos ni por movimientos."
   - question: "¿Cuánto cuesta implantar un SGA?"
@@ -37,7 +38,7 @@ faq:
     answer: "Para una pyme con almacén no robotizado, casi siempre. Un WMS separado exige licencia propia, proyecto de integración con el ERP y mantenimiento de dos sistemas. Un ERP con almacén real evita la integración porque el stock, el lote y el palet viven junto a las compras, las ventas y las facturas."
 ---
 
-> Un SGA para una pyme cuesta lo que suman cuatro partidas: la licencia mensual, la implantación, el hardware de la nave y el mantenimiento. En el mercado español, casi la mitad de los proyectos de SGA tradicional se implantan por entre 10.000 y 30.000 euros, mientras que las pequeñas empresas que eligen software en la nube gastan menos de 1.000 euros en la puesta en marcha. En Drenpos el almacén va dentro del plan Pro desde 29 euros al mes sin IVA, con soporte y actualizaciones incluidos, y el hardware puede ser tu propio móvil el primer día.
+> Un SGA para una pyme cuesta lo que suman cuatro partidas: la licencia mensual, la implantación, el hardware de la nave y el mantenimiento. En el mercado español, casi la mitad de los proyectos de SGA tradicional se implantan por entre 10.000 y 30.000 euros, mientras que las pequeñas empresas que eligen software en la nube gastan menos de 1.000 euros en la puesta en marcha. En Drenpos el almacén va dentro del plan Almacén, [[n:almacen]] euros al mes sin IVA, con soporte y actualizaciones incluidos, y el hardware puede ser tu propio móvil el primer día.
 
 <div class="my-8 flex justify-center">
   <a href="/pricing" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
@@ -63,7 +64,7 @@ La licencia es la parte visible. En un SaaS debería incluir el uso del sistema,
 - ¿Hay límite de transacciones, almacenes o referencias? Un límite bajo se convierte en un cambio de plan forzoso.
 - ¿Las mejoras se cobran aparte? Algunos proveedores venden cada módulo nuevo como una ampliación.
 
-En Drenpos el módulo de Inventario cuesta 16,45 euros al mes sin IVA si se contrata suelto, y va incluido en el plan Pro (29 euros al mes, 3 usuarios) y en el plan Full (39 euros al mes, 5 usuarios, con TPV). El usuario adicional cuesta 5 euros al mes. No hay coste por volumen de datos ni por movimientos, y las actualizaciones llegan gratis a todos los planes. El detalle está en [precios](/pricing).
+En Drenpos el módulo de Inventario cuesta incluido en el plan Almacén ([[n:almacen]] euros al mes, [[n:almacen_usuarios]] usuarios) y con TPV ([[n:almacen_tpv]] euros al mes, 3 usuarios). El usuario adicional cuesta [[n:usuario]] euros al mes. No hay coste por volumen de datos ni por movimientos, y las actualizaciones llegan gratis a todos los planes. El detalle está en [precios](/pricing).
 
 ## ¿Cuánto cuesta la implantación de un SGA?
 
@@ -111,9 +112,9 @@ Un ERP con almacén de verdad evita la integración porque el stock, el lote, la
 
 Tres escenarios orientativos, sin IVA, para aterrizar cifras:
 
-- **Tienda con almacén, 3 personas, 1.500 referencias.** Plan Full a 39 euros al mes con TPV y almacén, móvil como lector, impresora de escritorio de unos 200 euros para etiquetas de ubicación. Arranque con importación desde Excel en una semana.
-- **Distribuidor, 6 personas en almacén y 2 en administración, 9.000 referencias.** Plan Pro con usuarios adicionales, dos pistolas lectoras, impresora industrial para etiquetas SSCC y una implantación asistida con carga de datos, formación y seguimiento durante los primeros meses. La implantación se presupuesta por volumen y se puede prorratear en doce meses.
-- **Frigorífico de servicio con depósito de terceros.** Plan Pro con almacén, tarifario de depósito configurado, impresora industrial para palets y tablets para operar dentro de la cámara. La parte que más pesa es la definición de tarifas y la carga de la posición inicial de cada cliente, no el software.
+- **Tienda con almacén, 3 personas, 1.500 referencias.** Plan Almacén con TPV a [[n:almacen_tpv]] euros al mes, móvil como lector, impresora de escritorio de unos 200 euros para etiquetas de ubicación. Arranque con importación desde Excel en una semana.
+- **Distribuidor, 6 personas en almacén y 2 en administración, 9.000 referencias.** Plan Almacén con usuarios adicionales, dos pistolas lectoras, impresora industrial para etiquetas SSCC y una implantación asistida con carga de datos, formación y seguimiento durante los primeros meses. La implantación se presupuesta por volumen y se puede prorratear en doce meses.
+- **Frigorífico de servicio con depósito de terceros.** Plan Almacén, tarifario de depósito configurado, impresora industrial para palets y tablets para operar dentro de la cámara. La parte que más pesa es la definición de tarifas y la carga de la posición inicial de cada cliente, no el software.
 
 En los tres casos el software es la partida menor. El tiempo del equipo durante el arranque y el hardware de la nave son las que hay que planificar. Si quieres cifras sobre tu caso, [cuéntanos tu operativa](/contact) y te preparamos una propuesta con las cuatro partidas separadas.
 
@@ -121,7 +122,7 @@ En los tres casos el software es la partida menor. El tiempo del equipo durante 
 
 ### ¿Cuánto cuesta un SGA para una pyme?
 
-Depende de cuatro partidas: licencia, implantación, hardware y mantenimiento. En el mercado español la implantación de un SGA tradicional se sitúa entre 10.000 y 30.000 euros en casi la mitad de los proyectos, mientras que las pequeñas empresas que optan por SaaS suelen invertir menos de 1.000 euros en la puesta en marcha. En Drenpos el almacén va incluido en el plan Pro desde 29 euros al mes sin IVA y la implantación asistida se presupuesta según el volumen.
+Depende de cuatro partidas: licencia, implantación, hardware y mantenimiento. En el mercado español la implantación de un SGA tradicional se sitúa entre 10.000 y 30.000 euros en casi la mitad de los proyectos, mientras que las pequeñas empresas que optan por SaaS suelen invertir menos de 1.000 euros en la puesta en marcha. En Drenpos el almacén va incluido en el plan Almacén, [[n:almacen]] euros al mes sin IVA y la implantación asistida se presupuesta según el volumen.
 
 ### ¿Qué incluye la licencia de un software de almacén?
 

@@ -3,7 +3,7 @@ title: "Gestión de vacaciones y ausencias en la pyme: cómo dejar el Excel"
 meta_title: "Gestión de vacaciones y ausencias para pymes, sin Excel"
 description: "Qué dice la ley sobre vacaciones y permisos, por qué el Excel falla con solapes y prorrateos, y cómo llevar cupos, aprobaciones y saldos desde el móvil."
 date: 2026-09-23
-updated: 2026-09-28
+updated: 2026-10-22
 image: "/images/blog/comparativa-mejores-software-control-horario-pymes-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -36,7 +36,7 @@ faq:
   - question: "¿Cómo se calculan las vacaciones de alguien que entra a mitad de año?"
     answer: "Se prorratean por el tiempo trabajado. Con 30 días naturales salen 2,5 por mes; con 22 laborables, quien entra el 1 de julio genera 11 días ese año. En Drenpos el prorrateo sale solo de la fecha de contratación."
   - question: "¿Cuánto cuesta un software de gestión de vacaciones para una pyme?"
-    answer: "Los precios de partida publicados van de 1,50 € a más de 5 € por usuario y mes, y algunos llevan mínimo mensual. En Drenpos las vacaciones van incluidas en el módulo de fichajes, a 1 € por usuario y mes sin IVA."
+    answer: "Los precios de partida publicados van de 1,50 € a más de 5 € por usuario y mes, y algunos llevan mínimo mensual. En Drenpos las vacaciones van incluidas en el módulo de fichajes, incluido en todos los planes ([[p:fichaje]] por persona adicional y mes sin IVA)."
   - question: "¿Puede un encargado aprobarse sus propias vacaciones?"
     answer: "No debería, y en Drenpos no puede: nadie aprueba su propia solicitud. Quién aprueba se decide en la configuración. Si hay una lista de responsables (usuarios o grupos), solo ellos deciden; si no se define ninguna, aprueban los administradores. La solicitud del encargado la revisa otra persona y el informe recoge quién la aprobó."
   - question: "¿Se puede sacar un calendario anual con las vacaciones de todo el equipo?"
@@ -128,10 +128,10 @@ Precios de partida que hemos podido comprobar con fuente, consultados el 23 de s
 
 | Solución | Precio de partida publicado | Vacaciones y ausencias | Fuente |
 | --- | --- | --- | --- |
-| **Drenpos** | 1 €/usuario/mes sin IVA | Incluidas en el módulo de fichajes | [Precios de Drenpos](/pricing) |
+| **Drenpos** | Incluido en todos los planes; [[p:fichaje]]/persona adicional sin IVA (solo fichajes: desde [[p:equipo10]]/mes para 10 personas) | Incluidas en el módulo de fichajes | [Precios de Drenpos](/pricing) |
 | Woffu (plan Lite) | Desde 1,50 €/usuario activo/mes | Incluidas; reglas de coincidencia por departamento solo en Pro y Enterprise, a presupuesto | [Web oficial de Woffu](https://www.woffu.com/es/precios/) |
 | Holded | RR. HH. desde 1,50 €/empleado/mes (ERP desde 14,50 €/mes) | Incluidas en RR. HH. | [Blog de Holded, actualizado el 24/07/2026](https://www.holded.com/es/blog/mejores-softwares-gestion-vacaciones) |
-| Bixpe (Premium) | Desde 2 €/usuario/mes, mínimo de 20 a 30 € | No lo detalla la fuente | [IAT, actualizado el 11/02/2026](https://iat.es/blog/precios-apps-control-horario/) |
+| Bixpe (Premium) | Desde 1,50 €/usuario/mes, mínimo de 20 a 30 € | No lo detalla la fuente | [IAT, actualizado el 11/02/2026](https://iat.es/blog/precios-apps-control-horario/) |
 | Kronjop | Desde 2,40 €/usuario/mes, sin mínimos | Jornada, vacaciones y ausencias | [IAT, actualizado el 11/02/2026](https://iat.es/blog/precios-apps-control-horario/) |
 | Sesame HR | Desde 3,75 €/usuario/mes, mínimo de 80 a 100 €/mes | Control horario, vacaciones y ausencias | [IAT, actualizado el 11/02/2026](https://iat.es/blog/precios-apps-control-horario/) |
 | Factorial | Desde 5,50 €/usuario/mes, mínimo de unos 99 €/mes | No lo detalla la fuente | [IAT, actualizado el 11/02/2026](https://iat.es/blog/precios-apps-control-horario/) |
@@ -162,7 +162,7 @@ Se prorratean por el tiempo trabajado. Con 30 días naturales salen 2,5 por mes;
 
 ### ¿Cuánto cuesta un software de gestión de vacaciones para una pyme?
 
-Los precios de partida publicados van de 1,50 € a más de 5 € por usuario y mes, y algunos llevan mínimo mensual. En Drenpos las vacaciones van incluidas en el módulo de fichajes, a 1 € por usuario y mes sin IVA.
+Los precios de partida publicados van de 1,50 € a más de 5 € por usuario y mes, y algunos llevan mínimo mensual. En Drenpos las vacaciones van incluidas en el módulo de fichajes, incluido en todos los planes ([[p:fichaje]] por persona adicional y mes sin IVA).
 
 ### ¿Puede un encargado aprobarse sus propias vacaciones?
 

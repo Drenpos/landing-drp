@@ -1,4 +1,5 @@
 ---
+import { decimal, valor } from "@/lib/precios";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -159,7 +160,7 @@ const comparativa = [
     tarifario: "Palet/día, kg/día, entrada, salida, manipulación y bulto",
     liquidacion: "Eventos automáticos, posición en vivo e informe PDF",
     acta: "Firma en pantalla o papel con huella sha256",
-    precio: "Desde 29 €/mes",
+    precio: "Desde [[p:almacen]]/mes",
     destacado: true,
   },
 ];
@@ -217,7 +218,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta y cuánto se tarda en implantarlo?",
-    a: "El plan Pro, con almacén y depósito de terceros incluidos, cuesta desde 29 €/mes sin IVA, sin coste por uso ni permanencia y con soporte humano incluido. También existe despliegue on-premise, en el servidor del cliente, a presupuesto. La implantación estándar se hace en días: importamos artículos, definimos almacenes y ubicaciones, damos de alta a los depositantes con su tarifario, cargamos la posición inicial y formamos al equipo.",
+    a: "El plan Almacén, con almacén y depósito de terceros incluidos, cuesta [[p:almacen]]/mes sin IVA, sin coste por uso ni permanencia y con soporte humano incluido. También existe despliegue on-premise, en el servidor del cliente, a presupuesto. La implantación estándar se hace en días: importamos artículos, definimos almacenes y ubicaciones, damos de alta a los depositantes con su tarifario, cargamos la posición inicial y formamos al equipo.",
   },
 ];
 
@@ -290,9 +291,9 @@ const productSchema = {
     "Software de depósito de mercancías para almacenes y operadores logísticos 3PL que alquilan huecos de palet: propietario por palet con bloqueo de raíz, tarifario por palet/día, kg/día, entrada, salida, manipulación y bulto preparado, con franquicias, mínimos, vigencias y cómputo día a día, foto a fin de mes, pico o aniversario. Eventos tarificables automáticos, posición del cliente en vivo, simulador de coste, informe del periodo en PDF sin necesidad de facturar y actas de entrega firmadas con huella criptográfica sha256.",
   offers: {
     "@type": "Offer",
-    price: "29.00",
+    price: decimal(valor("almacen")),
     priceCurrency: "EUR",
-    description: "Plan Pro, con almacén y depósito de terceros incluidos, desde 29 €/mes (sin IVA). Sin coste por uso ni permanencia.",
+    description: "Plan Almacén, con almacén y depósito de terceros incluidos, [[p:almacen]]/mes (sin IVA). Sin coste por uso ni permanencia.",
     url: "https://www.drenpos.com/pricing",
   },
   featureList: [
@@ -315,13 +316,13 @@ const productSchema = {
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
 const PAGE_PUBLISHED = "2026-08-12";
-const PAGE_UPDATED = "2026-09-23";
+const PAGE_UPDATED = "2026-10-22";
 ---
 
 <Base
   title="Alquiler de Huecos de Palet · Drenpos"
   meta_title="Software de Alquiler de Huecos de Palet y Depósito | Drenpos"
-  description="Software de depósito de mercancías para alquilar huecos de palet: propietario por palet, tarifas por palet/día y kg/día y liquidación automática. Desde 29 €/mes sin IVA."
+  description="Software de depósito de mercancías para alquilar huecos de palet: propietario por palet, tarifas por palet/día y kg/día y liquidación automática por cliente."
   canonical={CANONICAL}
   image="/images/funcionalidades/almacen-tienda/01-almacen-ubicaciones.png"
   published_date={PAGE_PUBLISHED}
@@ -740,7 +741,7 @@ const PAGE_UPDATED = "2026-09-23";
       <div class="row justify-center">
         <div class="lg:col-8">
           <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
-            <h2 class="h3 font-bold mb-3 text-white">Depósito de terceros incluido, desde 29 €/mes sin IVA</h2>
+            <h2 class="h3 font-bold mb-3 text-white">Deja de calcular a mano lo que te debe cada cliente</h2>
             <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
               El módulo Almacén incluye el depósito de terceros completo:
               propietario por palet con bloqueo de raíz, tarifario por

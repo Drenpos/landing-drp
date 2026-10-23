@@ -3,6 +3,7 @@ title: "Alquiler de huecos de palet: tarifas, contrato y cómo gestionarlo"
 meta_title: "Alquiler de huecos de palet: tarifas y contrato"
 description: "Cómo se construye una tarifa de alquiler de huecos de palet: conceptos que se cobran, modos de cómputo, contrato de depósito y cómo montar el servicio."
 date: 2026-08-12
+updated: 2026-10-22
 image: "/images/blog/alquiler-huecos-palet-tarifas/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -163,7 +164,7 @@ Tres pantallas resuelven casi todas las llamadas: la **posición del cliente en 
 
 El cierre lo ponen las actas: cada entrega se firma en pantalla o en papel, el servidor congela el contenido con una huella criptográfica sha256 y queda el histórico por palet. Una firma no se edita ni se borra; toda corrección es un acta adicional.
 
-Todo esto vive en el módulo de Inventario: planes Esencial (19 €/mes), Pro (29 €/mes) y Full (39 €/mes) sin IVA, o el módulo suelto por 16,45 €/mes, con on-premise a presupuesto en la [página de precios](/pricing).
+Todo esto vive en el módulo de Inventario: planes Almacén ([[p:almacen]]/mes), Almacén con TPV ([[p:almacen_tpv]]/mes) y Producción ([[p:produccion]]/mes) sin IVA, con on-premise a presupuesto en la [página de precios](/pricing).
 
 ## Preguntas frecuentes sobre el alquiler de huecos de palet
 

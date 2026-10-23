@@ -3,6 +3,7 @@ title: "Calendario laboral 2027 en Castilla y León: festivos, puentes y horas"
 meta_title: "Calendario laboral 2027 Castilla y León: festivos y puentes"
 description: "Festivos de Castilla y León en 2027 según el BOCYL nº 61: Villalar en viernes, el 16 de agosto por traslado, puentes, días laborables y cómo cargarlos."
 date: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/control-horario-teletrabajo-cumplir-ley-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -174,4 +175,4 @@ Pulsas «Copiar festivos de 2026 a 2027» en el calendario autonómico de Castil
 - [Calendario laboral 2027 en Cataluña](/blog/calendario-laboral-2027-cataluna)
 - [Calendario laboral 2027 en la Comunitat Valenciana](/blog/calendario-laboral-2027-comunidad-valenciana)
 
-Los calendarios laborales, los festivos por comunidad y por trabajador y el cálculo de horas extra van incluidos en el [control horario de Drenpos](/control-horario), a 1 € por usuario y mes sin IVA.
+Los calendarios laborales, los festivos por comunidad y por trabajador y el cálculo de horas extra van incluidos en el [control horario de Drenpos](/control-horario), incluido en todos los planes ([[p:fichaje]] por persona adicional y mes sin IVA).

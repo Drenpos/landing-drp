@@ -3,7 +3,7 @@ title: "WMS, SGA y ERP: qué es cada uno y en qué se diferencian"
 meta_title: "WMS, SGA y ERP: qué es cada uno y sus diferencias"
 description: "Qué es un WMS, qué es un SGA y qué es un ERP, en qué se diferencian, qué capacidades definen a un WMS de verdad y una tabla comparativa sin humo."
 date: 2026-08-12
-updated: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/wms-sga-erp-diferencias/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -141,7 +141,7 @@ Cuándo compensa cada una, qué cuesta y qué preguntas hacerte antes de pedir p
 
 Drenpos es un ERP modular cuyo módulo de Inventario hace de SGA dentro del mismo sistema que compra, vende y factura: ubicaciones con QR, plano del almacén con orden de ruta, lotes y series con FEFO, reservas, recepción guiada, picking por oleadas, palets con SSCC, despiece con merma, depósito de terceros e informes de rotación e inmovilizado. No gobierna almacenes robotizados ni sustituye a un ERP de gran corporación.
 
-Puedes verlo aplicado en [preparación de pedidos y picking](/software-preparacion-pedidos-picking), en [gestión de palets con etiqueta SSCC](/software-gestion-palets) o en [almacén frigorífico](/software-almacen-frigorifico). El almacén va incluido en los planes Pro (29 €/mes), Full (39 €/mes) y Producción (50 €/mes), o como módulo de Inventario suelto por 16,45 €/mes, sin IVA a fecha de 17 de octubre de 2026. Detalles en [precios](/pricing).
+Puedes verlo aplicado en [preparación de pedidos y picking](/software-preparacion-pedidos-picking), en [gestión de palets con etiqueta SSCC](/software-gestion-palets) o en [almacén frigorífico](/software-almacen-frigorifico). El almacén va incluido en los planes Almacén ([[p:almacen]]/mes; [[p:almacen_tpv]] con TPV) y Producción ([[p:produccion]]/mes), sin IVA a fecha de 17 de octubre de 2026. Detalles en [precios](/pricing).
 
 ## Preguntas frecuentes sobre WMS, SGA y ERP
 

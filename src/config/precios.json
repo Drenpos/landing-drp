@@ -1,0 +1,27 @@
+{
+  "_nota": "Fuente única de precios de Drenpos (sin IVA, al mes). Si cambias un precio, cámbialo solo aquí. Los textos usan [[p:clave]] (precio con €) y [[n:clave]] (solo el número); ver src/lib/precios.ts.",
+  "planes": {
+    "facturacion": { "nombre": "Facturación", "mensual": 19, "usuarios": 2, "fichajes": 3 },
+    "tienda": { "nombre": "Tienda y Hostelería", "mensual": 39, "usuarios": 3, "fichajes": 8 },
+    "almacen": { "nombre": "Almacén", "mensual": 59, "usuarios": 3, "fichajes": 5 },
+    "produccion": { "nombre": "Producción", "mensual": 79, "usuarios": 6, "fichajes": 10 }
+  },
+  "extras": {
+    "usuario": 7,
+    "fichaje": 1.5,
+    "caja": 15,
+    "tpv": 20,
+    "comerciales": 9,
+    "mcp": 12,
+    "soporte": 49
+  },
+  "equipo": {
+    "equipo10": { "personas": 10, "mensual": 15 },
+    "equipo25": { "personas": 25, "mensual": 35 },
+    "equipo50": { "personas": 50, "mensual": 65 },
+    "persona_extra": 1.5
+  },
+  "terminal": 149,
+  "anual": { "meses_pagados": 10 },
+  "empresas_nuevas": { "descuento": 50, "meses": 3, "prorroga_meses": 3, "facturacion_max": 100000, "facturacion_prorroga_max": 150000 }
+}

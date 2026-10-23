@@ -1,4 +1,5 @@
 ---
+import { decimal, valor } from "@/lib/precios";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -53,7 +54,7 @@ const capsulas = {
   comparativa:
     "Hay cuatro formas de saber quién llega tarde, y las cuatro funcionan con dos personas. La diferencia aparece con quince: revisar a mano deja de hacerse, el Excel depende de quien mantiene las fórmulas y una app de recursos humanos lo resuelve según el plan que contrates. Esta tabla compara lo que de verdad importa en el día a día de un encargado, con el coste de cada opción.",
   precio:
-    "Nada aparte. Va incluido en la licencia de fichaje de Drenpos, que cuesta 1 € por usuario y mes sin IVA, junto con las vacaciones y permisos, los calendarios rotativos y la planificación anual del equipo. Un matiz: quien revisa incidencias necesita licencia de fichaje aunque no fiche. El terminal es opcional y parte de 140 € sin IVA; también se ficha desde el móvil o el ordenador.",
+    "Nada aparte. Va incluido en la licencia de fichaje de Drenpos, incluida en todos los planes ([[p:fichaje]] por persona adicional y mes, sin IVA), junto con las vacaciones y permisos, los calendarios rotativos y la planificación anual del equipo. Un matiz: quien revisa incidencias necesita licencia de fichaje aunque no fiche. El terminal es opcional y parte de [[p:terminal]] sin IVA; también se ficha desde el móvil o el ordenador.",
 };
 
 // Síntomas (cómo se busca "control de entrada y salida" en la práctica)
@@ -156,7 +157,7 @@ const bloques = [
       "El terminal sigue fichando con llavero RFID o QR aunque no haya red",
       "Cada fichaje sube con su hora real, no con la hora de la reconexión",
       "Desde el sistema ves qué ha subido cada terminal y qué le ha pasado a su reloj",
-      "Terminal opcional desde 140 € sin IVA, con tu logo en la carcasa",
+      "Terminal opcional desde [[p:terminal]] sin IVA, con tu logo en la carcasa",
     ],
     nota: true,
   },
@@ -198,7 +199,7 @@ const comparativa = [
     exceso: "Límites al día y a la semana, avisados",
     justificacion: "Nota del responsable, que sale en el informe",
     sinRed: "Hora real; nunca genera «tarde»",
-    precio: "Incluido en el fichaje de 1 €/usuario/mes sin IVA",
+    precio: "Incluido en el fichaje (incluido en el plan; [[p:fichaje]]/usuario/mes cada persona adicional, sin IVA)",
     destacado: true,
   },
 ];
@@ -256,7 +257,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta el control de entrada y salida?",
-    a: "Va incluido sin coste extra en la licencia de fichaje, que cuesta 1 € por usuario y mes sin IVA, con vacaciones y permisos, calendarios rotativos y planificación anual. Quien revisa incidencias necesita licencia de fichaje aunque no fiche. El terminal de fichaje es opcional y parte de 140 € sin IVA.",
+    a: "Va incluido sin coste extra en la licencia de fichaje, incluida en todos los planes ([[p:fichaje]] por persona adicional y mes, sin IVA), con vacaciones y permisos, calendarios rotativos y planificación anual. Quien revisa incidencias necesita licencia de fichaje aunque no fiche. El terminal de fichaje es opcional y parte de [[p:terminal]] sin IVA.",
   },
 ];
 
@@ -326,18 +327,18 @@ const productSchema = {
     "Control de entrada y salida de empleados dentro del módulo de fichajes de Drenpos. Compara cada fichaje con el calendario laboral de la persona, sus festivos y sus ausencias y crea incidencias por entrada tarde, salida anticipada, fichaje olvidado, exceso de horas al día o a la semana y trabajo en festivo o en vacaciones. Tolerancias en minutos y límites configurables, revisión automática diaria y semanal, aviso al empleado y a sus responsables y justificación o descarte con nota. Viene apagado hasta que la empresa lo activa. Los fichajes con hora reconstruida del terminal sin conexión nunca generan retraso ni salida anticipada. Es una ayuda de gestión: el registro legal siguen siendo los fichajes.",
   offers: {
     "@type": "Offer",
-    price: "1",
+    price: decimal(valor("fichaje")),
     priceCurrency: "EUR",
     valueAddedTaxIncluded: false,
     priceSpecification: {
       "@type": "UnitPriceSpecification",
-      price: "1",
+      price: decimal(valor("fichaje")),
       priceCurrency: "EUR",
       valueAddedTaxIncluded: false,
       unitText: "usuario y mes",
     },
     description:
-      "Incluido en la licencia de fichaje de 1 € por usuario y mes, sin IVA, sin coste extra. Terminal de fichaje opcional desde 140 € sin IVA.",
+      "Incluido en la licencia de fichaje de todos los planes, sin coste extra ([[p:fichaje]] por persona adicional y mes, sin IVA). Terminal de fichaje opcional desde [[p:terminal]] sin IVA.",
     url: "https://www.drenpos.com/pricing",
   },
   featureList: [
@@ -363,12 +364,12 @@ const productSchema = {
 
 <Base
   title="Control de Entrada y Salida de Empleados · Drenpos"
-  meta_title="Control de Entrada y Salida de Empleados, 1 €/usuario/mes"
-  description="Avisa de retrasos, salidas antes de hora, olvidos de fichaje y exceso de horas con la tolerancia que tú fijes. Incluido en el fichaje: 1 €/usuario/mes sin IVA."
+  meta_title="Control de Entrada y Salida de Empleados, incluido en el plan"
+  description="Avisa de retrasos, salidas antes de hora, olvidos de fichaje y exceso de horas con la tolerancia que tú fijes. Incluido en el fichaje de todos los planes, con informe para la Inspección."
   canonical={CANONICAL}
   image={HERO_IMG}
   published_date="2026-10-07"
-  modified_date="2026-10-07"
+  modified_date="2026-10-22"
   author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
 >
   <!-- Datos estructurados -->
@@ -410,11 +411,11 @@ const productSchema = {
             avisa cuando alguien llega tarde, se va antes, no ficha o se pasa
             de horas. El responsable lo justifica o lo descarta con una nota y
             todo queda en el informe. Va <strong>incluido en el fichaje de
-            1 €/usuario/mes sin IVA</strong> y viene apagado hasta que lo
+            [[p:fichaje]]/usuario/mes por persona adicional, sin IVA</strong> y viene apagado hasta que lo
             activas.
           </p>
 
-          <LandingMeta updated="2026-10-07" published="2026-10-07" />
+          <LandingMeta updated="2026-10-22" published="2026-10-07" />
 
           <ul class="flex flex-wrap gap-4 mb-10">
             <li data-aos="fade-up-sm" data-aos-delay="100">
@@ -834,7 +835,7 @@ const productSchema = {
       <div class="text-center mb-10" data-aos="fade-up-sm">
         <h2 class="h3 font-bold mb-3">El resto del equipo, en el mismo módulo</h2>
         <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
-          Fichaje, turnos, vacaciones y terminal: todo con la misma licencia de 1 € por usuario y mes.
+          Fichaje, turnos, vacaciones y terminal: todo con la misma licencia de fichaje incluida en el plan.
         </p>
       </div>
 

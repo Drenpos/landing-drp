@@ -3,7 +3,7 @@ title: "Software de almacén frigorífico y congelados: guía completa"
 meta_title: "Software almacén frigorífico y congelados"
 description: "Cómo elegir un software de almacén frigorífico: FEFO, lotes, palets con etiqueta SSCC, depósito de terceros y operativa a pie de cámara desde móvil."
 date: 2026-08-12
-updated: 2026-09-03
+updated: 2026-10-22
 image: "/images/blog/software-almacen-frigorifico-congelados/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -35,7 +35,7 @@ faq:
   - question: "¿Puede un frigorífico facturar el almacenaje de mercancía ajena?"
     answer: "Sí, y es un negocio habitual en el sector. Hace falta que cada palet lleve su propietario y que el sistema registre solo los eventos tarificables: entradas, salidas, manipulaciones y días de estancia. Drenpos permite tarifas por palet/día, kg/día, entrada, salida o manipulación, con franquicias y mínimos, más un informe del periodo en PDF sin necesidad de facturar."
   - question: "¿Cuánto cuesta un software para almacén de congelados?"
-    answer: "En Drenpos, los planes son Esencial 19 €/mes, Pro 29 €/mes y Full 39 €/mes, siempre sin IVA, y el módulo de Inventario se puede contratar suelto por 16,45 €/mes sin IVA. El despliegue en el servidor del cliente se estudia a presupuesto. Las actualizaciones y el soporte están incluidos, sin costes de partner ni proyectos de cambio de versión."
+    answer: "En Drenpos, el almacén completo va en el plan Almacén, [[p:almacen]]/mes sin IVA con [[n:almacen_usuarios]] usuarios; con TPV, [[p:almacen_tpv]]/mes. Nada se contrata suelto. El despliegue en el servidor del cliente se estudia a presupuesto. Las actualizaciones y el soporte están incluidos, sin costes de partner ni proyectos de cambio de versión."
 ---
 
 > Un software de almacén frigorífico es un sistema que gestiona stock perecedero por lotes y fechas de caducidad, con salidas FEFO, palets identificados con etiqueta SSCC y trazabilidad completa para un recall. A diferencia de un almacén seco, aquí el hueco cuesta energía, la mercancía tiene fecha de muerte y el operario trabaja con guantes a temperatura negativa. Por eso la operativa debe hacerse escaneando desde móvil o tablet dentro de la cámara, no apuntando en papel para pasarlo luego.
@@ -168,7 +168,7 @@ Depende del tamaño y del tipo de operación, pero el error más caro es quedars
 | Operativa en móvil en cámara | No | Limitada | Sí | Sí |
 | Implantación | Inmediata | Días | Meses de proyecto | Días o semanas |
 
-En precio, los planes de Drenpos son Esencial 19 €/mes, Pro 29 €/mes y Full 39 €/mes, sin IVA, y el módulo de Inventario puede contratarse suelto por 16,45 €/mes sin IVA. El despliegue en servidor propio se estudia a presupuesto: desglose en [planes y precios](/pricing).
+En precio, el almacén completo de Drenpos va en el plan Almacén, [[p:almacen]]/mes sin IVA con [[n:almacen_usuarios]] usuarios, y con TPV en el plan Almacén con TPV, [[p:almacen_tpv]]/mes. El despliegue en servidor propio se estudia a presupuesto: desglose en [planes y precios](/pricing).
 
 Y si tu ERP actual funciona, no hace falta cambiarlo: la primera opción siempre es integrar por API y eliminar los procesos manuales de alrededor. El alcance general está en [software de gestión de almacén](/software-gestion-almacen).
 
@@ -196,7 +196,7 @@ Sí, y es un negocio habitual en el sector. Hace falta que cada palet lleve su p
 
 ### ¿Cuánto cuesta un software para almacén de congelados?
 
-En Drenpos, los planes son Esencial 19 €/mes, Pro 29 €/mes y Full 39 €/mes, siempre sin IVA, y el módulo de Inventario se puede contratar suelto por 16,45 €/mes sin IVA. El despliegue en el servidor del cliente se estudia a presupuesto. Las actualizaciones y el soporte están incluidos, sin costes de partner ni proyectos de cambio de versión.
+En Drenpos, el almacén completo va en el plan Almacén, [[p:almacen]]/mes sin IVA con [[n:almacen_usuarios]] usuarios; con TPV, [[p:almacen_tpv]]/mes. Nada se contrata suelto. El despliegue en el servidor del cliente se estudia a presupuesto. Las actualizaciones y el soporte están incluidos, sin costes de partner ni proyectos de cambio de versión.
 
 ## Siguiente paso
 

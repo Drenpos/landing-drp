@@ -1,4 +1,5 @@
 ---
+import { decimal, valor } from "@/lib/precios";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -132,7 +133,7 @@ const casos = [
   {
     tag: "Pequeña fábrica con varios operarios",
     icon: "🏭",
-    body: "Los 8 usuarios de fichaje incluidos en el plan cubren la plantilla del taller: cada operario ficha su jornada y además imputa a qué fase de qué orden fue su tiempo. Registro horario y coste de producción con el mismo dato.",
+    body: "Las [[n:produccion_fichajes]] personas que fichan incluidas en el plan cubren la plantilla del taller: cada operario ficha su jornada y además imputa a qué fase de qué orden fue su tiempo. Registro horario y coste de producción con el mismo dato.",
   },
 ];
 
@@ -171,7 +172,7 @@ const preguntas = [
   {
     id: "precio-software-produccion",
     q: "¿Cuánto cuesta el software de producción de Drenpos?",
-    a: "El plan Producción cuesta 50 € al mes sin IVA e incluye los módulos de Producción, Inventario, Financiero, Informes y Fichajes, más el envío de documentos por correo y WhatsApp. Cada operario que ficha tiempo en las órdenes necesita su usuario y su licencia de fichaje; si la plantilla supera lo incluido, cada usuario adicional cuesta 5 € y cada fichaje 1 € al mes. Sin permanencia.",
+    a: "El plan Producción cuesta [[p:produccion]] al mes sin IVA e incluye los módulos de Producción, Inventario, Financiero, Informes y Fichajes, más el envío de documentos por correo y WhatsApp. Cada operario que ficha tiempo en las órdenes necesita su usuario y su licencia de fichaje; si la plantilla supera lo incluido, cada usuario adicional cuesta [[p:usuario]] y cada fichaje [[p:fichaje]] al mes. Sin permanencia.",
     link: { url: "/pricing", t: "Planes y precios" },
   },
 ];
@@ -187,13 +188,13 @@ const guias = [
 
 // Qué incluye el plan Producción (tabla → elegible para table snippet)
 const incluyePlan = [
-  { m: "Módulo Producción", d: "Órdenes de trabajo, fases, consumo por lectura, tiempos y coste real", s: "22 €" },
-  { m: "Módulo Inventario", d: "Artículos, almacenes, ubicaciones, stock, lotes y trazabilidad", s: "16,45 €" },
-  { m: "Módulo Financiero", d: "Ofertas, pedidos, albaranes, facturación Verifactu, clientes y proveedores", s: "16,45 €" },
-  { m: "Módulo Informes", d: "Informes y análisis de tus datos", s: "6 €" },
-  { m: "8 usuarios del sistema", d: "Con permisos granulares y sesiones simultáneas ilimitadas", s: "40 €" },
-  { m: "8 usuarios de fichaje", d: "Registro de jornada por web, app PWA, QR o llavero RFID", s: "8 €" },
-  { m: "Envío por correo y WhatsApp", d: "Manda documentos al cliente sin salir del sistema", s: "8 €" },
+  { m: "Módulo Producción", d: "Órdenes de trabajo, fases, consumo por lectura, tiempos y coste real", s: "Incluido" },
+  { m: "Módulo Inventario", d: "Artículos, almacenes, ubicaciones, stock, lotes y trazabilidad", s: "Incluido" },
+  { m: "Módulo Financiero", d: "Ofertas, pedidos, albaranes, facturación Verifactu, clientes y proveedores", s: "Incluido" },
+  { m: "Módulo Informes", d: "Informes y análisis de tus datos", s: "Incluido" },
+  { m: "[[n:produccion_usuarios]] usuarios del sistema", d: "Con permisos granulares y sesiones simultáneas ilimitadas; cada uno más, [[p:usuario]]/mes", s: "Incluidos" },
+  { m: "[[n:produccion_fichajes]] personas que fichan", d: "Registro de jornada por web, app PWA, QR o llavero RFID; cada persona más, [[p:fichaje]]/mes", s: "Incluidos" },
+  { m: "Envío por correo y WhatsApp", d: "Manda documentos al cliente sin salir del sistema", s: "Incluido" },
 ];
 
 // FAQ: preguntas tal y como se buscan (AEO), respuestas de 50 a 80 palabras
@@ -204,7 +205,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta el software de producción de Drenpos?",
-    a: "El plan Producción cuesta 50 €/mes sin IVA e incluye los módulos de Producción, Inventario, Financiero e Informes, 8 usuarios del sistema, 8 usuarios de fichaje y el envío de documentos por correo y WhatsApp. Si ya tienes otro plan, el módulo de Producción suelto cuesta 22 €/mes sin IVA. Sin permanencia ni coste de instalación.",
+    a: "El plan Producción cuesta [[p:produccion]]/mes sin IVA e incluye los módulos de Producción, Inventario, Financiero e Informes, [[n:produccion_usuarios]] usuarios del sistema, [[n:produccion_fichajes]] usuarios de fichaje y el envío de documentos por correo y WhatsApp. Si ya tienes otro plan: no se vende suelto. Sin permanencia ni coste de instalación.",
   },
   {
     q: "¿Cómo se calcula el coste real de fabricación?",
@@ -220,11 +221,11 @@ const faqs = [
   },
   {
     q: "¿Sirve para un taller pequeño o solo para fábricas grandes?",
-    a: "Está pensado para talleres y fabricantes pequeños y medianos. El plan Producción incluye 8 usuarios, que cubre la plantilla habitual de un taller, y no requiere proyecto de implantación ni consultores. Drenpos está enfocado deliberadamente en pymes y autónomos, no en corporaciones que necesitan un ERP tipo SAP. La implantación se mide en días o semanas, no en meses.",
+    a: "Está pensado para talleres y fabricantes pequeños y medianos. El plan Producción incluye [[n:produccion_usuarios]] usuarios y [[n:produccion_fichajes]] personas que fichan, que cubre la plantilla habitual de un taller, y no requiere proyecto de implantación ni consultores. Drenpos está enfocado deliberadamente en pymes y autónomos, no en corporaciones que necesitan un ERP tipo SAP. La implantación se mide en días o semanas, no en meses.",
   },
   {
     q: "¿Se integra con el control horario y la facturación?",
-    a: "Sí, es el mismo sistema. El plan Producción incluye 8 usuarios de fichaje para el registro de jornada obligatorio y el módulo Financiero con facturación Verifactu. El tiempo que un operario imputa a una fase y la factura que sale de ese trabajo viven en la misma base de datos, sin exportaciones ni duplicar datos.",
+    a: "Sí, es el mismo sistema. El plan Producción incluye [[n:produccion_fichajes]] usuarios de fichaje para el registro de jornada obligatorio y el módulo Financiero con facturación Verifactu. El tiempo que un operario imputa a una fase y la factura que sale de ese trabajo viven en la misma base de datos, sin exportaciones ni duplicar datos.",
   },
   {
     q: "¿Tiene escandallo o lista de materiales?",
@@ -309,21 +310,11 @@ const productSchema = {
     {
       "@type": "Offer",
       name: "Plan Producción",
-      price: "50.00",
+      price: decimal(valor("produccion")),
       priceCurrency: "EUR",
       description:
-        "Plan Producción: módulos de Producción, Inventario, Financiero e Informes, 8 usuarios del sistema, 8 usuarios de fichaje y envío por correo y WhatsApp. Precio mensual sin IVA.",
+        "Plan Producción: módulos de Producción, Inventario, Financiero e Informes, [[n:produccion_usuarios]] usuarios del sistema, [[n:produccion_fichajes]] usuarios de fichaje y envío por correo y WhatsApp. Precio mensual sin IVA.",
       url: "https://www.drenpos.com/pricing",
-      availability: "https://schema.org/InStock",
-    },
-    {
-      "@type": "Offer",
-      name: "Módulo Producción (suelto)",
-      price: "22.00",
-      priceCurrency: "EUR",
-      description:
-        "Módulo de Producción añadido a un plan existente. Precio mensual sin IVA.",
-      url: "https://www.drenpos.com/modulos",
       availability: "https://schema.org/InStock",
     },
   ],
@@ -355,13 +346,13 @@ const faqSchema = {
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
 const PAGE_PUBLISHED = "2026-08-16";
-const PAGE_UPDATED = "2026-10-17";
+const PAGE_UPDATED = "2026-10-22";
 ---
 
 <Base
   title="Software de Producción y Fabricación · Drenpos"
   meta_title="Software de Producción para Pymes | Coste Real de Fabricación"
-  description="Software de producción para talleres y fabricantes: órdenes de trabajo por fases, consumo de materiales por escaneo, imputación de tiempos y coste real de fabricación. Desde 50 €/mes sin IVA."
+  description="Software de producción para talleres y fabricantes: órdenes de trabajo por fases, consumo de materiales por escaneo, imputación de tiempos y coste real de fabricación."
   canonical={CANONICAL}
   image="/images/power/stock.png"
   published_date={PAGE_PUBLISHED}
@@ -402,7 +393,7 @@ const PAGE_UPDATED = "2026-10-17";
             escaneando el código, imputación de tiempos por operario y
             <strong>coste real de fabricación</strong> al cerrar la orden.
             Dentro del mismo ERP que ya lleva tu almacén, tu facturación y tus
-            fichajes. Desde <strong>50 €/mes sin IVA</strong>.
+            fichajes.
           </p>
 
           <LandingMeta updated={PAGE_UPDATED} published={PAGE_PUBLISHED} class="-mt-4 mb-8" />
@@ -433,7 +424,7 @@ const PAGE_UPDATED = "2026-10-17";
             </div>
             <div class="flex items-center gap-2">
               <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
-              8 usuarios incluidos
+              [[n:produccion_usuarios]] usuarios incluidos
             </div>
           </div>
         </div>
@@ -621,7 +612,7 @@ const PAGE_UPDATED = "2026-10-17";
                 <p class="text-xs" style="color: rgba(255,255,255,0.7);">Trazabilidad materia prima → acabado</p>
               </div>
               <div class="rounded-2xl p-5 text-center" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
-                <p class="text-2xl font-bold mb-1" style="color: #f9b27c;">50 €/mes</p>
+                <p class="text-2xl font-bold mb-1" style="color: #f9b27c;">[[p:produccion]]/mes</p>
                 <p class="text-xs" style="color: rgba(255,255,255,0.7);">Plan Producción, sin IVA</p>
               </div>
             </div>
@@ -658,20 +649,20 @@ const PAGE_UPDATED = "2026-10-17";
       <div class="row justify-center">
         <div class="lg:col-10 text-center mb-10" data-aos="fade-up-sm">
           <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Plan Producción</span>
-          <h2 class="h3 font-bold mb-3">Qué incluye el plan Producción por 50 €/mes</h2>
+          <h2 class="h3 font-bold mb-3">Qué incluye el plan Producción</h2>
           <p class="text-lg" style="color: rgba(16,25,40,0.65);">
-            Contratados por separado, estos módulos costarían 116,90 €/mes sin IVA.
+            Todo va dentro del plan: ningún módulo se contrata por separado.
           </p>
         </div>
         <div class="lg:col-11" data-aos="fade-up-sm">
           <div class="overflow-x-auto rounded-3xl border" style="border-color: rgba(16,25,40,0.1);">
             <table class="w-full bg-white">
-              <caption class="sr-only">Módulos y usuarios incluidos en el plan Producción de Drenpos, con su precio por separado sin IVA</caption>
+              <caption class="sr-only">Módulos y usuarios incluidos en el plan Producción de Drenpos, todo incluido en la cuota</caption>
               <thead>
                 <tr style="background: rgba(16,25,40,0.04);">
                   <th scope="col" class="text-left px-6 py-4 font-semibold">Incluido en el plan</th>
                   <th scope="col" class="text-left px-6 py-4 font-semibold">Qué te da</th>
-                  <th scope="col" class="text-right px-6 py-4 font-semibold">Por separado</th>
+                  <th scope="col" class="text-right px-6 py-4 font-semibold">En el plan</th>
                 </tr>
               </thead>
               <tbody>
@@ -685,13 +676,13 @@ const PAGE_UPDATED = "2026-10-17";
                 <tr style="background: rgba(121,27,70,0.06);">
                   <th scope="row" class="text-left px-6 py-4 font-bold">Plan Producción</th>
                   <td class="px-6 py-4 text-sm font-medium">Todo lo anterior en un solo precio</td>
-                  <td class="px-6 py-4 text-right font-bold whitespace-nowrap" style="color: #791b46;">50 €/mes</td>
+                  <td class="px-6 py-4 text-right font-bold whitespace-nowrap" style="color: #791b46;">[[p:produccion]]/mes</td>
                 </tr>
               </tbody>
             </table>
           </div>
           <p class="text-sm mt-4 mb-0" style="color: rgba(16,25,40,0.55);">
-            Todos los precios son mensuales y sin IVA. El pago anual aplica un 10 % de descuento.
+            Todos los precios son mensuales y sin IVA. Con pago anual pagas 10 meses y usas 12.
             Consulta el detalle en <a href="/pricing" class="text-primary font-medium underline">planes y precios</a>
             o el catálogo completo de <a href="/modulos" class="text-primary font-medium underline">módulos</a>.
           </p>

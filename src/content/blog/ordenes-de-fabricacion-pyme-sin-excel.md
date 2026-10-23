@@ -3,6 +3,7 @@ title: "Órdenes de fabricación en una pyme: cómo llevarlas sin Excel"
 meta_title: "Órdenes de fabricación en una pyme: cómo llevarlas sin Excel"
 description: "Qué datos lleva una orden de fabricación, cómo se mueve por la nave y cómo se lanza desde el pedido, con el ejemplo de un taller de muebles de 9 personas."
 date: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/erp-para-pymes-vs-excel/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -142,7 +143,7 @@ Además, el puesto de trabajo necesita conexión (sin red avisa y bloquea el esc
 
 ## ¿Cuánto cuesta llevar las órdenes de fabricación en Drenpos?
 
-El módulo de producción va en el plan Producción, que cuesta 50 € al mes sin IVA e incluye también los módulos de Inventario, Financiero, Informes y Fichajes. Cada operario que ficha tiempo en las órdenes necesita su usuario y su licencia de fichaje. Si la plantilla supera lo incluido en el plan, cada usuario adicional cuesta 5 € y cada licencia de fichaje 1 € al mes, siempre sin IVA y sin coste de instalación.
+El módulo de producción va en el plan Producción, que cuesta [[p:produccion]] al mes sin IVA e incluye también los módulos de Inventario, Financiero, Informes y Fichajes. Cada operario que ficha tiempo en las órdenes necesita su usuario y su licencia de fichaje. Si la plantilla supera lo incluido en el plan, cada usuario adicional cuesta [[p:usuario]] y cada licencia de fichaje [[p:fichaje]] al mes, siempre sin IVA y sin coste de instalación.
 
 Como el inventario va en el mismo plan, el lote de cada material consumido queda enlazado con el lote de la mesa terminada. Cómo se aprovecha eso ante una reclamación lo contamos en [trazabilidad de lotes en producción](/blog/trazabilidad-lotes-produccion).
 

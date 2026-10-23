@@ -3,6 +3,7 @@ title: "Pedidos y pago desde la mesa con QR: cómo funciona y qué cambia en sal
 meta_title: "Pedidos y pago desde la mesa con QR en restaurantes"
 description: "Cómo funciona pedir y pagar desde la mesa con un QR, qué cambia para camareros y cocina, cuándo compensa y qué requisitos técnicos hacen falta para que no se convierta en un lío."
 date: 2026-09-10
+updated: 2026-10-22
 image: "/images/blog/pedidos-pago-desde-la-mesa-qr-restaurante/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -139,7 +140,7 @@ Tres tareas que puedes hacer ahora y que no se desperdician.
 
 **Poner la cocina fina.** Reparto por familias revisado, al menos una pantalla sin filtro como red de seguridad y una prueba honesta de qué pasa cuando la red parpadea.
 
-Con esas tres hechas, activar el pedido desde la mesa cuando esté disponible será encender una función, no montar un proyecto. Y si además quieres saber cómo va el negocio sin abrir el sistema, el [conector MCP](/conector-mcp-ia) permite preguntar por las ventas desde ChatGPT o Claude por 6 euros al mes por empresa sin IVA.
+Con esas tres hechas, activar el pedido desde la mesa cuando esté disponible será encender una función, no montar un proyecto. Y si además quieres saber cómo va el negocio sin abrir el sistema, el [conector MCP](/conector-mcp-ia) permite preguntar por las ventas desde ChatGPT o Claude por [[n:mcp]] euros al mes por empresa sin IVA.
 
 ## Preguntas frecuentes sobre pedir y pagar desde la mesa
 

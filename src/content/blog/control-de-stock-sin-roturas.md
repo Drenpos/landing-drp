@@ -3,7 +3,7 @@ title: "Control de stock: qué es, métodos y cómo evitar roturas en una pyme"
 meta_title: "Control de stock: qué es, métodos y cómo evitar roturas"
 description: "Qué es el control de stock, qué métodos usar (ABC, stock mínimo, FIFO o FEFO, inventario cíclico), cómo calcular el punto de pedido y evitar roturas."
 date: 2026-08-11
-updated: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/control-de-stock-sin-roturas/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -150,7 +150,7 @@ Además:
 - **Informes de rotación**, con cobertura en días, y de **productos sin movimiento**, con el dinero que hay parado en ellos.
 - **Alertas de pedidos**: cuántas unidades faltan por comprar para servir todo lo pendiente.
 
-Si vendes en mostrador, el TPV del plan Full descuenta del mismo stock en cada ticket, sin hojas intermedias. Tienes todo el detalle en el [software de control de stock](/software-control-stock).
+Si vendes en mostrador, el TPV del plan Almacén con TPV ([[p:almacen_tpv]]/mes) descuenta del mismo stock en cada ticket, sin hojas intermedias. Tienes todo el detalle en el [software de control de stock](/software-control-stock).
 
 ## ¿Cómo pasar del stock a ojo a un control fiable en cinco pasos?
 

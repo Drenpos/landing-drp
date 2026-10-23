@@ -1,4 +1,5 @@
 ---
+import { decimal, valor } from "@/lib/precios";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -66,7 +67,7 @@ const bloques = [
       "Mínimo y máximo configurables en la ficha de cada artículo",
       "Aviso de bajo mínimos y de exceso de stock en el panel de notificaciones",
       "Widget de alertas de pedidos en el panel de inicio con los productos más urgentes",
-      "Con el conector de IA (6 €/mes sin IVA) puedes preguntar a ChatGPT o Claude qué artículos están bajo mínimos",
+      "Con el conector de IA ([[p:mcp]]/mes sin IVA) puedes preguntar a ChatGPT o Claude qué artículos están bajo mínimos",
     ],
     img: alertasImg ? ALERTAS_IMG : undefined,
     alt: "Panel de Drenpos con alertas de artículos bajo mínimos y el widget de propuesta de compra",
@@ -182,7 +183,7 @@ const comparativa = [
     lectura: "Pistola, cámara del móvil y QR por ubicación",
     inventario: "Recuentos por zona con regularización e informe de diferencias",
     valoracion: "Precio medio ponderado o manual, inmovilizado y rotación",
-    precio: "Plan Pro, 29 €/mes sin IVA",
+    precio: "Plan Almacén, [[p:almacen]]/mes sin IVA",
     destacado: true,
   },
   {
@@ -250,7 +251,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta y puedo pasar mis datos desde Excel?",
-    a: "El control de stock va en el módulo de Inventario, incluido en el plan Pro por 29 €/mes sin IVA, con 3 usuarios, soporte y actualizaciones. Cada usuario adicional cuesta 5 €/mes sin IVA. Los artículos, grupos, almacenes, listas de precios, clientes y proveedores se cargan desde plantillas de Excel, y el stock de partida entra como una entrada de inventario inicial.",
+    a: "El control de stock va en el módulo de Inventario, incluido en el plan Almacén por [[p:almacen]]/mes sin IVA, con [[n:almacen_usuarios]] usuarios, soporte y actualizaciones. Cada usuario adicional cuesta [[p:usuario]]/mes sin IVA. Los artículos, grupos, almacenes, listas de precios, clientes y proveedores se cargan desde plantillas de Excel, y el stock de partida entra como una entrada de inventario inicial.",
   },
 ];
 
@@ -321,9 +322,9 @@ const productSchema = {
     "Software de control de stock e inventario para pymes: stock mínimo y máximo con alertas, alertas de pedidos, propuesta de compra asistida, lotes con caducidad y FEFO, trazabilidad con informe PDF, lectura con pistola o cámara del móvil, formatos en cajas y palés, inventarios físicos con regularización y valoración a precio medio ponderado. Integrado con compras, ventas y facturación.",
   offers: {
     "@type": "Offer",
-    price: "29.00",
+    price: decimal(valor("almacen")),
     priceCurrency: "EUR",
-    description: "Plan Pro con el módulo de Inventario incluido, 29 €/mes (sin IVA). Sin coste por uso ni permanencia.",
+    description: "Plan Almacén con el inventario completo, [[p:almacen]]/mes (sin IVA). Sin coste por uso ni permanencia.",
     url: "https://www.drenpos.com/pricing",
   },
   featureList: [
@@ -347,13 +348,13 @@ const productSchema = {
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
 const PAGE_PUBLISHED = "2026-09-23";
-const PAGE_UPDATED = "2026-09-23";
+const PAGE_UPDATED = "2026-10-22";
 ---
 
 <Base
   title="Software de Control de Stock · Drenpos"
   meta_title="Software de Control de Stock con Lotes y Alertas | Drenpos"
-  description="Programa de control de stock para pymes: mínimos y máximos con alertas, propuesta de compra, lotes, caducidad y pistola o móvil. Pro 29 €/mes sin IVA."
+  description="Programa de control de stock para pymes: mínimos y máximos con alertas, propuesta de compra, lotes, caducidad y pistola o móvil, integrado con compras y ventas."
   canonical={CANONICAL}
   image={HERO_IMG}
   published_date={PAGE_PUBLISHED}
@@ -398,8 +399,8 @@ const PAGE_UPDATED = "2026-09-23";
             <strong>lotes y caducidades</strong> con FEFO y se maneja con
             <strong>pistola lectora o con el móvil</strong>. Con el stock en
             unidades, cajas y palés, inventarios sin cerrar y el valor de lo que
-            tienes parado. Dentro del plan Pro, por
-            <strong>29 €/mes sin IVA</strong>.
+            tienes parado. Dentro del plan Almacén, por
+            <strong>[[p:almacen]]/mes sin IVA</strong>.
           </p>
 
           <LandingMeta updated={PAGE_UPDATED} published={PAGE_PUBLISHED} class="-mt-4 mb-8" />
@@ -756,13 +757,12 @@ const PAGE_UPDATED = "2026-09-23";
       <div class="row justify-center">
         <div class="lg:col-8">
           <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
-            <h2 class="h3 font-bold mb-3 text-white">Control de stock completo por 29 €/mes sin IVA</h2>
+            <h2 class="h3 font-bold mb-3 text-white">Pon orden en tu stock</h2>
             <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
-              El plan Pro incluye el módulo de Inventario (mínimos y máximos,
+              El plan Almacén incluye el inventario completo (mínimos y máximos,
               alertas, propuesta de compra, lotes y caducidades, pistola o
               móvil, inventarios y valoración) junto a facturación, informes,
-              correo y WhatsApp, con 3 usuarios. Cada usuario adicional cuesta
-              5 €/mes sin IVA. Soporte y actualizaciones incluidos, sin
+              correo y WhatsApp, con 3 usuarios. Cada usuario adicional cuesta [[p:usuario]]/mes sin IVA. Soporte y actualizaciones incluidos, sin
               permanencia.
             </p>
             <ul class="flex flex-wrap gap-4 justify-center">

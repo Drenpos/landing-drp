@@ -3,6 +3,7 @@ title: "Cómo organizar el stock de una tienda de recambios sin catálogo TecDoc
 meta_title: "Stock de una tienda de recambios sin catálogo TecDoc"
 description: "Cómo organizar el stock de una tienda de recambios o repuestos sin TecDoc: referencias propias y de proveedor, equivalencias, ubicaciones, mínimos y mostrador."
 date: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/control-de-stock-sin-roturas/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -37,7 +38,7 @@ faq:
   - question: "¿Qué stock mínimo pongo a cada recambio?"
     answer: "Una regla sencilla es el consumo medio diario por los días que tarda el proveedor en servir, más un colchón de seguridad. Si vendes 3 unidades por semana y el proveedor tarda 5 días laborables, el mínimo ronda las 4 unidades. Para piezas que se venden una vez al año, mejor no tener mínimo y pedir bajo encargo."
   - question: "¿Cuánto cuesta Drenpos para una tienda de recambios?"
-    answer: "Con mostrador, el plan Full cuesta 39 euros al mes sin IVA, con almacén, TPV de tienda, facturación con Verifactu, informes, correo y WhatsApp, 5 usuarios y fichaje para 5 personas. Sin TPV, el plan Pro cuesta 29 euros al mes sin IVA con 3 usuarios. Cada usuario adicional son 5 euros al mes."
+    answer: "Con mostrador, el plan Almacén con TPV cuesta [[n:almacen_tpv]] euros al mes sin IVA, con almacén, TPV de tienda, facturación con Verifactu, informes, correo y WhatsApp, 3 usuarios y fichaje para 5 personas. Sin TPV, el plan Almacén cuesta [[n:almacen]] euros al mes sin IVA con [[n:almacen_usuarios]] usuarios. Cada usuario adicional son [[n:usuario]] euros al mes."
 ---
 
 > Para organizar el stock de una tienda de recambios sin catálogo TecDoc basta con cinco cosas bien hechas: un código interno por artículo con la referencia del fabricante visible, una tabla propia de equivalencias, una ubicación fija para cada pieza, un mínimo en las que rotan y un TPV que descuente cada venta del stock. Si tu mostrador identifica piezas por matrícula o bastidor, eso ya es otro tipo de programa.
@@ -141,7 +142,7 @@ Es habitual que una tienda use un catálogo para identificar la pieza y otro sis
 
 ## ¿Cuánto cuesta organizar el stock con Drenpos?
 
-Con mostrador, el plan Full cuesta 39 euros al mes sin IVA, con almacén, TPV de tienda, facturación con Verifactu, informes, correo y WhatsApp, 5 usuarios y fichaje para 5 personas. Sin TPV, el plan Pro son 29 euros al mes sin IVA con 3 usuarios. Cada usuario adicional cuesta 5 euros al mes. Sin permanencia.
+Con mostrador, el plan Almacén con TPV cuesta [[n:almacen_tpv]] euros al mes sin IVA, con almacén, TPV de tienda, facturación con Verifactu, informes, correo y WhatsApp, 3 usuarios y fichaje para 5 personas. Sin TPV, el plan Almacén son [[n:almacen]] euros al mes sin IVA con [[n:almacen_usuarios]] usuarios. Cada usuario adicional cuesta [[n:usuario]] euros al mes. Sin permanencia.
 
 Tienes el detalle de lo que hace y lo que no en el [programa de gestión para tiendas de recambios](/software-tienda-recambios).
 
@@ -169,7 +170,7 @@ Una regla sencilla es el consumo medio diario por los días que tarda el proveed
 
 ### ¿Cuánto cuesta Drenpos para una tienda de recambios?
 
-Con mostrador, el plan Full cuesta 39 euros al mes sin IVA, con almacén, TPV de tienda, facturación con Verifactu, informes, correo y WhatsApp, 5 usuarios y fichaje para 5 personas. Sin TPV, el plan Pro cuesta 29 euros al mes sin IVA con 3 usuarios. Cada usuario adicional son 5 euros al mes.
+Con mostrador, el plan Almacén con TPV cuesta [[n:almacen_tpv]] euros al mes sin IVA, con almacén, TPV de tienda, facturación con Verifactu, informes, correo y WhatsApp, 3 usuarios y fichaje para 5 personas. Sin TPV, el plan Almacén cuesta [[n:almacen]] euros al mes sin IVA con [[n:almacen_usuarios]] usuarios. Cada usuario adicional son [[n:usuario]] euros al mes.
 
 ## Siguiente paso
 

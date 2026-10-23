@@ -58,9 +58,9 @@ const {
                     <input
                       type="checkbox"
                       id="checkbox"
-                      class="pricing-check peer w-full cursor-pointer opacity-0"
+                      class="pricing-check peer absolute inset-0 z-10 h-full w-full cursor-pointer opacity-0"
                     />
-                    <span class="absolute left-0 top-0 cursor-pointer before:absolute before:left-1 before:top-1 before:h-6 before:w-6 before:translate-x-0 before:rounded-full before:bg-primary before:transition-all before:delay-75 before:duration-300 peer-checked:before:translate-x-8" />
+                    <span class="pointer-events-none absolute inset-0 before:absolute before:left-1 before:top-1 before:h-6 before:w-6 before:translate-x-0 before:rounded-full before:bg-primary before:transition-all before:delay-75 before:duration-300 peer-checked:before:translate-x-8" />
                   </label>
                 </div>
               </div>
@@ -96,7 +96,7 @@ const {
                     <div class="flex flex-col gap-1">
                       <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
                         {item.price_monthly && item.price_yearly && (
-                          <strong class="h2 group-[.has-dark-bg]:text-text-light">
+                          <strong class="h2 whitespace-nowrap group-[.has-dark-bg]:text-text-light">
                             {markdownify(item.price_prefix)}
                             <span
                               class="data-count"
@@ -104,6 +104,7 @@ const {
                               data-count-monthly={item.price_monthly}
                               set:html={markdownify(item.price_monthly)}
                             />
+                            {item.price_suffix}
                           </strong>
                         )}
                         {item.price_description_monthly &&
@@ -214,79 +215,61 @@ const {
 }
 
 <script>
-  function pricingInit() {
-    // Select the toggle switch element
-    const toggleSwitch =
-      document.querySelector<HTMLInputElement>(".pricing-check");
-    const numbers = document.querySelectorAll<HTMLDivElement>(".data-count");
-    toggleSwitch &&
-      toggleSwitch.addEventListener("change", function () {
-        if (toggleSwitch.checked) {
-          numbers.forEach(function (number) {
-            const yearlyCount = number.getAttribute("data-count-yearly");
-            if (yearlyCount) {
-              const parsedValue = parseFloat(yearlyCount);
-              if (!isNaN(parsedValue)) {
-                animateCounter(number, parsedValue);
-              } else {
-                number.innerHTML = yearlyCount;
-              }
-            }
-          });
-          toggleVisibility(".text-yearly", "d-block", "hidden");
-          toggleVisibility(".text-monthly", "hidden", "d-block");
-        } else {
-          numbers.forEach(function (number) {
-            const monthlyCount = number.getAttribute("data-count-monthly");
-            if (monthlyCount) {
-              const parsedValue = parseFloat(monthlyCount);
-              if (!isNaN(parsedValue)) {
-                animateCounter(number, parsedValue);
-              } else {
-                number.innerHTML = monthlyCount;
-              }
-            }
-          });
-          toggleVisibility(".text-monthly", "d-block", "hidden");
-          toggleVisibility(".text-yearly", "hidden", "d-block");
-        }
-      });
-
-    function animateCounter(element: HTMLElement, endValue: number) {
-      let startValue = 0;
-      const duration = 250;
-      let startTime: number | null = null;
-
-      function step(currentTime: number) {
-        if (!startTime) startTime = currentTime;
-        const progress = currentTime - startTime;
-        const value =
-          Math.min(progress / duration, 1) * (endValue - startValue) +
-          startValue;
-        // Preserve decimals if the end value has them
-        const hasDecimals = endValue % 1 !== 0;
-        element.innerHTML = hasDecimals
-          ? value.toFixed(2)
-          : Math.ceil(value).toString();
-        if (progress < duration) {
-          requestAnimationFrame(step);
-        }
-      }
-
-      requestAnimationFrame(step);
-    }
-
-    function toggleVisibility(
-      selector: string,
-      addClass: string,
-      removeClass: string,
-    ) {
-      const elements = document.querySelectorAll<HTMLElement>(selector);
-      elements.forEach(function (element) {
-        element.classList.add(addClass);
-        element.classList.remove(removeClass);
-      });
-    }
+  // Los data-count-* llegan ya resueltos desde src/config/precios.json
+  // ("19", "15,83"): se leen con coma decimal y se pintan igual.
+  function leer(valor: string | null): number {
+    return valor ? parseFloat(valor.replace(/\./g, "").replace(",", ".")) : NaN;
   }
+
+  function pintar(n: number, decimales: boolean): string {
+    return n.toLocaleString("es-ES", {
+      minimumFractionDigits: decimales ? 2 : 0,
+      maximumFractionDigits: decimales ? 2 : 0,
+    });
+  }
+
+  function animar(el: HTMLElement, fin: number) {
+    const decimales = fin % 1 !== 0;
+    const duracion = 250;
+    let inicio: number | null = null;
+    function paso(t: number) {
+      if (inicio === null) inicio = t;
+      const progreso = Math.min((t - inicio) / duracion, 1);
+      el.textContent = pintar(fin * progreso, decimales);
+      if (progreso < 1) requestAnimationFrame(paso);
+      else el.textContent = pintar(fin, decimales);
+    }
+    requestAnimationFrame(paso);
+  }
+
+  function aplicar(anual: boolean) {
+    document.querySelectorAll<HTMLElement>(".data-count").forEach((el) => {
+      const texto = el.getAttribute(
+        anual ? "data-count-yearly" : "data-count-monthly",
+      );
+      const n = leer(texto);
+      if (isNaN(n)) el.textContent = texto ?? "";
+      else animar(el, n);
+    });
+    document
+      .querySelectorAll(".text-yearly")
+      .forEach((el) => el.classList.toggle("hidden", !anual));
+    document
+      .querySelectorAll(".text-monthly")
+      .forEach((el) => el.classList.toggle("hidden", anual));
+  }
+
+  function pricingInit() {
+    const toggle = document.querySelector<HTMLInputElement>(".pricing-check");
+    if (!toggle || toggle.dataset.listo) return;
+    toggle.dataset.listo = "1";
+    toggle.addEventListener("change", () => aplicar(toggle.checked));
+    // Si el navegador restauró el checkbox marcado (atrás/adelante).
+    if (toggle.checked) aplicar(true);
+  }
+
+  // En dev el script puede cargar después de astro:page-load; se arranca
+  // también en el acto. El data-listo evita enlazarlo dos veces.
+  pricingInit();
   document.addEventListener("astro:page-load", pricingInit);
 </script>

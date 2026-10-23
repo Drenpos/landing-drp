@@ -3,6 +3,7 @@ title: "Fichar con huella o reconocimiento facial: qué dice la AEPD y qué alte
 meta_title: "Fichar con huella: qué dice la AEPD y alternativas legales"
 description: "Fichar con huella o cara obliga a tratar datos biométricos. Qué dice la AEPD, qué pasó con su guía en 2026 y cómo cumplir con llavero, tarjeta, QR o móvil."
 date: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/registro-horario-digital/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -37,7 +38,7 @@ faq:
   - question: "¿Qué alternativas a la huella cumplen el registro de jornada?"
     answer: "El artículo 34.9 del Estatuto exige registrar la hora de inicio y de fin de cada jornada, pero no impone un método. Valen un terminal con llavero o tarjeta RFID, un código QR personal, una app en el móvil o un portal web, siempre que el registro sea fiable, se conserve cuatro años y el trabajador pueda consultarlo. Ninguno de ellos trata datos biométricos."
   - question: "¿El terminal de Drenpos ficha con huella?"
-    answer: "No. Ficha con llavero RFID, tarjeta o código QR personal, así que no trata datos biométricos. Cuesta desde 140 euros sin IVA, sigue fichando si se cae internet y la licencia de fichaje es de 1 euro por usuario y mes sin IVA."
+    answer: "No. Ficha con llavero RFID, tarjeta o código QR personal, así que no trata datos biométricos. Cuesta desde [[n:terminal]] euros sin IVA, sigue fichando si se cae internet y la licencia de fichaje va incluida en todos los planes ([[n:fichaje]] euros por persona adicional; solo fichajes, desde [[n:equipo10]] euros al mes para 10 personas, sin IVA)."
 ---
 
 > Fichar con huella o con la cara supone tratar datos biométricos, que el artículo 9 del RGPD considera categoría especial y prohíbe tratar salvo excepciones. La AEPD entiende que en el trabajo hace falta una norma con rango de ley o un convenio que lo autorice, que el tratamiento sea necesario y una evaluación de impacto previa, y que el consentimiento del trabajador no suele valer. El registro de jornada se cumple igual con llavero, tarjeta, QR, móvil o web.
@@ -136,7 +137,7 @@ No hace imposible el fraude, pero lo hace visible, que es lo que necesitas para 
 
 ## ¿Qué alternativa ofrece Drenpos?
 
-Un terminal propio que ficha con llavero RFID, tarjeta o código QR personal, sin huella ni cara, así que no trata datos biométricos. Cuesta desde 140 euros sin IVA con los llaveros de la plantilla inicial, y la licencia de fichaje es de 1 euro por usuario y mes sin IVA, con vacaciones, calendarios y control de entrada y salida incluidos. Si se cae internet, sigue fichando y sube los registros con su hora real al volver la red.
+Un terminal propio que ficha con llavero RFID, tarjeta o código QR personal, sin huella ni cara, así que no trata datos biométricos. Cuesta desde [[n:terminal]] euros sin IVA con los llaveros de la plantilla inicial, y la licencia de fichaje va incluida en todos los planes ([[n:fichaje]] euros por persona adicional; solo fichajes, desde [[n:equipo10]] euros al mes para 10 personas, sin IVA), con vacaciones, calendarios y control de entrada y salida incluidos. Si se cae internet, sigue fichando y sube los registros con su hora real al volver la red.
 
 Algunos detalles que importan en la práctica:
 
@@ -184,7 +185,7 @@ El artículo 34.9 del Estatuto exige registrar la hora de inicio y de fin de cad
 
 ### ¿El terminal de Drenpos ficha con huella?
 
-No. Ficha con llavero RFID, tarjeta o código QR personal, así que no trata datos biométricos. Cuesta desde 140 euros sin IVA, sigue fichando si se cae internet y la licencia de fichaje es de 1 euro por usuario y mes sin IVA.
+No. Ficha con llavero RFID, tarjeta o código QR personal, así que no trata datos biométricos. Cuesta desde [[n:terminal]] euros sin IVA, sigue fichando si se cae internet y la licencia de fichaje va incluida en todos los planes ([[n:fichaje]] euros por persona adicional; solo fichajes, desde [[n:equipo10]] euros al mes para 10 personas, sin IVA).
 
 ## Siguiente paso
 

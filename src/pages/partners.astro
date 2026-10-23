@@ -1,0 +1,216 @@
+---
+export const prerender = true;
+import Base from "@/layouts/Base.astro";
+import LandingMeta from "@/partials/LandingMeta.astro";
+
+// ════════════════════════════════════════════════════════════════════════
+//  Programa de partners (gestorías, integradores, revendedores)
+//  Condiciones = sección 5 y 11 del plan del 20/10/2026 (proyecto landing-drp).
+// ════════════════════════════════════════════════════════════════════════
+
+const CANONICAL = "https://www.drenpos.com/partners";
+const PAGE_PUBLISHED = "2026-10-20";
+const PAGE_UPDATED = "2026-10-22";
+
+const tipos = [
+  {
+    nombre: "Recomiendas",
+    quien: "Gestorías y asesorías",
+    hace: "Tus clientes te preguntan qué programa usar para facturar, llevar el stock o fichar. Les recomiendas Drenpos, nos pasas el contacto o les das tu enlace, y del resto nos encargamos nosotros: la venta, la puesta en marcha y el soporte.",
+    gana: "El 25 % de lo que pague cada cliente mientras siga con nosotros.",
+    ejemplo: "Además, la gestoría tiene su propio Drenpos Facturación sin coste.",
+    recibe: ["Un panel con tus clientes y sus datos para la gestoría", "Tu enlace para recomendar", "Una hoja resumen para enviar a tus clientes", "Un correo al mes con lo nuevo"],
+  },
+  {
+    nombre: "Implantas",
+    quien: "Informáticos, consultoras e instaladores de TPV",
+    hace: "Vendes Drenpos a tus clientes, lo instalas y das el primer soporte, igual que haces con otros programas: la caja, la impresora de cocina, la pistola o el terminal de fichaje.",
+    gana: "El 30 % de lo que pague cada cliente mientras siga, y lo que cobres por la instalación es tuyo entero.",
+    ejemplo: "Tú pones el precio de tu trabajo; nosotros solo cobramos la cuota.",
+    recibe: ["Dos sesiones de formación", "Un entorno de pruebas para tus demos", "WhatsApp directo con nuestro equipo técnico", "Nosotros llevamos el soporte de segundo nivel"],
+  },
+  {
+    nombre: "Revendes",
+    quien: "Tiendas de TPV, terminales y etiquetadoras",
+    hace: "Vendes el terminal de fichaje o el equipo de caja con Drenpos dentro.",
+    gana: "El 20 % del aparato y el 20 % de la cuota durante el primer año.",
+    ejemplo: "El terminal te sale a precio de distribuidor.",
+    recibe: ["Terminal a precio de distribuidor", "Material para el mostrador", "Alta de clientes desde tu panel"],
+  },
+];
+
+const reglas = [
+  "Pagamos sobre lo que el cliente ha pagado, sin IVA, cada tres meses por transferencia. Si no llegas a 50 €, se acumula para el siguiente trimestre.",
+  "El cliente contrata con Drenpos. El precio es el de la web para todos.",
+  "No hay exclusividad ni mínimos. Si en un año no traes a nadie, tu cuenta pasa a inactiva hasta el siguiente cliente.",
+  "El cliente es de quien lo registra primero, con su enlace o dándolo de alta en el panel antes de la demo.",
+  "Si el cliente tiene descuento por pago anual o por ser empresa nueva, tú cobras tu parte de lo que paga.",
+];
+
+const faqs = [
+  {
+    q: "¿Cuánto gana una gestoría recomendando Drenpos?",
+    a: "El 25 % de la cuota de cada cliente que traiga, sin IVA, mientras el cliente siga pagando. Por ejemplo, diez clientes en el plan Almacén suponen [[p:10×almacen×0.25]] al mes para la gestoría. Se paga cada tres meses, y la gestoría tiene su propio Drenpos Facturación sin coste.",
+  },
+  {
+    q: "¿Qué tiene que hacer un informático o instalador para ser partner?",
+    a: "Dos sesiones de formación con nosotros y un primer cliente. Desde ahí vende, instala y atiende las dudas del día a día, y nosotros nos ocupamos de lo que se escape. Cobra el 30 % de la cuota de por vida y lo que facture por su trabajo de instalación es suyo.",
+  },
+  {
+    q: "¿Hay que trabajar solo con Drenpos?",
+    a: "No. Puedes seguir con los programas que ya vendes. No hay cuota de partner ni objetivos.",
+  },
+  {
+    q: "¿Qué pasa si el cliente se da de baja?",
+    a: "Dejas de cobrar a partir de su última cuota. Lo ya pagado no se devuelve.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.drenpos.com/" },
+    { "@type": "ListItem", position: 2, name: "Partners", item: CANONICAL },
+  ],
+};
+---
+
+<Base
+  title="Partners de Drenpos"
+  meta_title="Partners de Drenpos: gestorías, informáticos e instaladores"
+  description="Si eres gestoría, informático o instalador de TPV y tus clientes necesitan un programa de gestión, recomienda o instala Drenpos y cobra una parte de la cuota mientras sigan."
+  canonical={CANONICAL}
+  published_date={PAGE_PUBLISHED}
+  modified_date={PAGE_UPDATED}
+  author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <section class="section-sm pb-0 relative z-10 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/images/grainy.svg" alt="" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Partners</span>
+      </nav>
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">Partners</span>
+          <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
+            Partners de Drenpos
+          </h1>
+          <p class="text-lg mb-6 max-w-2xl mx-auto" style="color: rgba(16,25,40,0.72);">
+            Si eres gestoría, informático o instalador, tus clientes te preguntan a menudo qué programa usar.
+            Si les recomiendas o les instalas Drenpos, te llevas una parte de lo que pagan cada mes mientras sigan con nosotros.
+          </p>
+          <LandingMeta updated={PAGE_UPDATED} published={PAGE_PUBLISHED} class="mb-8 justify-center" />
+          <ul class="flex flex-wrap gap-4 justify-center mb-10">
+            <li><a href="/contact" class="btn btn-dark">Quiero ser partner</a></li>
+            <li><a href="#tipos" class="btn btn-outline-dark">Ver condiciones</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tipos">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-11" data-aos="fade-up-sm">
+          <h2 class="h3 font-bold mb-8 text-center">Tres maneras de trabajar con nosotros</h2>
+          <div class="grid gap-6 lg:grid-cols-3">
+            {tipos.map((t) => (
+              <div class="rounded-3xl border bg-white p-7 flex flex-col" style="border-color: rgba(16,25,40,0.1);">
+                <span class="text-primary bg-primary/10 px-3 py-1 inline-block self-start rounded-full uppercase text-xs font-medium mb-4">{t.nombre}</span>
+                <h3 class="font-bold text-lg mb-3">{t.quien}</h3>
+                <p class="text-base mb-4" style="color: rgba(16,25,40,0.72);">{t.hace}</p>
+                <p class="text-base font-semibold mb-2" style="color: #791b46;">{t.gana}</p>
+                <p class="text-sm mb-5" style="color: rgba(16,25,40,0.6);">{t.ejemplo}</p>
+                <ul class="mt-auto flex flex-col gap-2 text-sm">
+                  {t.recibe.map((r) => (
+                    <li class="flex gap-2"><span aria-hidden="true" style="color: #16a34a;">✓</span><span>{r}</span></li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <h2 class="h3 font-bold mb-6 text-center">Condiciones</h2>
+          <ol class="flex flex-col gap-3">
+            {reglas.map((r, i) => (
+              <li class="rounded-2xl border bg-white px-6 py-4 flex gap-4" style="border-color: rgba(16,25,40,0.1);">
+                <span class="font-bold" style="color: #791b46;">{i + 1}</span>
+                <span style="color: rgba(16,25,40,0.78);">{r}</span>
+              </li>
+            ))}
+          </ol>
+          <p class="mt-8 text-center" style="color: rgba(16,25,40,0.65);">
+            Lo que recomiendas es un programa de gestión para pymes con
+            <a href="/software-gestion-almacen" class="text-primary underline">almacén</a>,
+            <a href="/software-bares-restaurantes" class="text-primary underline">TPV para tienda y hostelería</a>,
+            <a href="/control-horario" class="text-primary underline">control horario con terminal propio</a>
+            y <a href="/software-verifactu" class="text-primary underline">facturación con Verifactu</a>. Los
+            <a href="/pricing" class="text-primary underline">precios</a> están publicados.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10 text-center mb-10" data-aos="fade-up-sm">
+          <h2 class="h3 font-bold mb-3">Preguntas</h2>
+        </div>
+        <div class="lg:col-10">
+          <div class="flex flex-col gap-3">
+            {faqs.map((f, i) => (
+              <details class="group rounded-2xl border bg-white" style="border-color: rgba(16,25,40,0.1);" data-aos="fade-up-sm" data-aos-delay={i * 40}>
+                <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none">
+                  <h3 class="font-semibold text-base lg:text-lg mb-0">{f.q}</h3>
+                  <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-200 group-open:rotate-45 text-xl leading-none" style="background: rgba(121,27,70,0.10); color: #791b46;" aria-hidden="true">+</span>
+                </summary>
+                <div class="px-6 pb-6 -mt-2">
+                  <p class="text-base leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">{f.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-8 text-center rounded-3xl py-12 px-6" style="background: #101928;" data-aos="fade-up-sm">
+          <h2 class="h3 font-bold mb-3 text-white">¿Hablamos?</h2>
+          <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+            Una llamada de un cuarto de hora para enseñarte el panel y darte tu enlace. Si vas a instalar, cerramos ahí las fechas de formación.
+          </p>
+          <a href="/contact" class="btn btn-light">Quiero ser partner</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

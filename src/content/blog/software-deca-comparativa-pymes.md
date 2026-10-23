@@ -3,6 +3,7 @@ title: "Software para el DeCA: comparativa de 8 opciones para pymes, con precios
 meta_title: "Software DeCA: comparativa de 8 opciones con precios"
 description: "Comparamos 8 programas para emitir el DeCA, desde el albarán del ERP o en plataforma aparte, con los precios publicados a 17 de octubre de 2026 y cuál elegir."
 date: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/cuanto-cuesta-sga-wms-pyme-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -34,7 +35,7 @@ faq:
   - question: "¿Qué es mejor para un cargador, una plataforma aparte o el DeCA desde el ERP?"
     answer: "Si ya haces los albaranes en un programa, lo normal es generar el DeCA desde ahí, porque los datos de los que responde el cargador (sus datos, los del transportista, origen, destino, mercancía y peso) ya están en el albarán. Una plataforma aparte obliga a volver a teclearlos o a pagar una integración."
   - question: "¿Cuánto cuesta el DeCA en Drenpos?"
-    answer: "Va incluido en el módulo Financiero sin coste extra, y ese módulo está en todos los planes de Drenpos: Esencial 19 euros al mes, Pro 29 euros y Full 39 euros, sin IVA y sin pago por documento. Se genera desde el albarán de venta."
+    answer: "Va incluido en el módulo Financiero sin coste extra, y ese módulo está en todos los planes de Drenpos: Facturación [[n:facturacion]] euros al mes, Tienda y Hostelería [[n:tienda]], Almacén [[n:almacen]] y Producción [[n:produccion]], sin IVA y sin pago por documento. Se genera desde el albarán de venta."
   - question: "¿Sirve cualquier generador de PDF con QR?"
     answer: "No. La URL tiene que empezar por https, descargar el PDF directamente sin pedir credenciales ni pulsar botones, y no puede caducar antes de que termine el servicio. Además el PDF debe llevar en sus metadatos la fecha y hora de creación y de modificación. Fenadismer ha avisado de herramientas en el mercado que no cumplen todos los requisitos."
 ---
@@ -79,7 +80,7 @@ A 17 de octubre de 2026, sin IVA: Control Digital Transporte vende bolsas desde 
 
 | Programa | Tipo | ¿Genera desde albarán? | Integración con ERP | Precio publicado (sin IVA) | Fuente |
 | --- | --- | --- | --- | --- | --- |
-| Drenpos | Módulo del ERP | Sí, desde el albarán de venta | Es el propio ERP | Incluido en el módulo Financiero; planes desde 19 €/mes | [Drenpos](/documento-control-transporte-deca) |
+| Drenpos | Módulo del ERP | Sí, desde el albarán de venta | Es el propio ERP | Incluido en el módulo Financiero; planes desde [[p:desde]]/mes | [Drenpos](/documento-control-transporte-deca) |
 | SimplyGest | Módulo del ERP | Sí, desde pedido o albarán (pestaña Transporte) | Es el propio ERP (Desktop y Cloud) | Bajo presupuesto: la página del DeCA no publica precio | [simplygest.es](https://simplygest.es/deca.html) |
 | GEXTOR DeCA (Extra Software) | Módulo del ERP | Sí, desde los albaranes de un envío | Enlazado con GEXTOR Gestión Comercial | Bajo presupuesto | [gextor.es](https://www.gextor.es/software-gestion-pymes/deca-software-transportes/) |
 | eclipse DECA | Módulo del ERP o app individual | Sí, con eclipse ERP | Con eclipse ERP (+20 €/mes) | Alta 95 €; 20 €/mes con 2 vehículos; 5 €/vehículo extra; mínimo 12 meses | [eclipse.es](https://eclipse.es/software/deca/) |
@@ -175,7 +176,7 @@ La denuncia de Fenadismer la recogió [Transporte 3 el 10 de septiembre de 2026]
 
 ## ¿Cómo genera Drenpos el DeCA?
 
-En Drenpos haces el albarán de venta como siempre y pulsas «Activar DeCA». El sistema revisa los ocho datos del artículo 6 y te dice qué falta. Sale un PDF con la página de control y el albarán detrás, con un QR de descarga directa. El QR también va en los formatos de albarán y de carta de porte. Incluido en todos los planes, desde 19 €/mes sin IVA.
+En Drenpos haces el albarán de venta como siempre y pulsas «Activar DeCA». El sistema revisa los ocho datos del artículo 6 y te dice qué falta. Sale un PDF con la página de control y el albarán detrás, con un QR de descarga directa. El QR también va en los formatos de albarán y de carta de porte. Incluido en todos los planes, desde [[p:desde]]/mes sin IVA.
 
 Si cambia la matrícula o el peso, se genera una versión nueva con la misma dirección web y su historial. El paso a paso completo, con lo que hay que preparar antes, está en [cómo generar el DeCA desde el albarán](/blog/como-generar-deca-desde-albaran), y los precios de cada plan, en la página de [precios](/pricing).
 
@@ -199,7 +200,7 @@ Si ya haces los albaranes en un programa, lo normal es generar el DeCA desde ah�
 
 ### ¿Cuánto cuesta el DeCA en Drenpos?
 
-Va incluido en el módulo Financiero sin coste extra, y ese módulo está en todos los planes de Drenpos: Esencial 19 euros al mes, Pro 29 euros y Full 39 euros, sin IVA y sin pago por documento. Se genera desde el albarán de venta.
+Va incluido en el módulo Financiero sin coste extra, y ese módulo está en todos los planes de Drenpos: Facturación [[n:facturacion]] euros al mes, Tienda y Hostelería [[n:tienda]], Almacén [[n:almacen]] y Producción [[n:produccion]], sin IVA y sin pago por documento. Se genera desde el albarán de venta.
 
 ### ¿Sirve cualquier generador de PDF con QR?
 

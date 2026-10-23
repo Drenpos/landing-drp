@@ -3,6 +3,7 @@ title: "Registro de jornada en seguridad privada: cuadrante anual y convenio 202
 meta_title: "Registro de jornada en seguridad privada y cuadrante anual"
 description: "Qué pide el convenio estatal de seguridad 2026-2030 sobre cuadrante anual, 1.782 horas y registro de jornada, y cómo llevar turnos 4x4 y un PDF por vigilante."
 date: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/multas-registro-horario-2026-costo-incumplimiento/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -142,7 +143,7 @@ Para los festivos del año que viene tienes lo publicado en el [calendario labor
 
 Con el método que encaje en cada servicio. En un puesto fijo con alimentación, un terminal con llavero o QR que sigue fichando sin internet y sincroniza al recuperar la red. En servicios móviles o rondas, la app del móvil o el portal web, con geolocalización opcional que la empresa activa y comunica por escrito. Todos los fichajes caen en el mismo registro.
 
-El [terminal de Drenpos](/dispositivo-fichaje) cuesta desde 140 euros sin IVA, ficha con llavero RFID, tarjeta o QR, sin huella ni cara, y funciona a 12 V. Si en el puesto no hay WiFi, guarda los fichajes con la hora de su reloj y los sube cuando se conecta. La licencia de fichaje es de 1 euro por usuario y mes sin IVA, con calendarios rotativos, vacaciones, planificación anual y control de entrada y salida incluidos.
+El [terminal de Drenpos](/dispositivo-fichaje) cuesta desde [[n:terminal]] euros sin IVA, ficha con llavero RFID, tarjeta o QR, sin huella ni cara, y funciona a 12 V. Si en el puesto no hay WiFi, guarda los fichajes con la hora de su reloj y los sube cuando se conecta. La licencia de fichaje va incluida en todos los planes ([[n:fichaje]] euros por persona de más al mes, sin IVA), y si solo quieres el control horario, Drenpos Equipo empieza en [[n:equipo10]] euros al mes para 10 personas, con calendarios rotativos, vacaciones, planificación anual y control de entrada y salida incluidos.
 
 Con el control de entrada y salida activado, cada fichaje se compara con el calendario de esa persona y se registran incidencias como entrada tarde, no ha fichado o exceso de horas en el día o la semana. El responsable las justifica o las descarta con una nota, y todo queda en el informe de fin de mes.
 

@@ -3,6 +3,7 @@ title: "Gestión de mesas en un restaurante: mapa de sala, mesas abiertas y tiem
 meta_title: "Gestión de mesas: mapa de sala y tiempos en el TPV"
 description: "Cómo gestionar las mesas de un restaurante desde el TPV: mapa de sala editable, mesas virtuales para terrazas, cuándo cuenta una mesa como ocupada y cobro mixto al cerrar."
 date: 2026-09-10
+updated: 2026-10-22
 image: "/images/blog/gestion-mesas-restaurante-mapa-sala/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -129,7 +130,7 @@ Una lista corta para preguntar sin rodeos:
 - ¿El cobro admite mezclar métodos de pago en una misma cuenta?
 - ¿La mesa llega a la pantalla de cocina y al QR con el mismo código?
 
-Todo lo anterior está dentro del TPV de Drenpos, que es un módulo del mismo sistema donde viven la facturación, el inventario y los [fichajes del equipo](/control-horario). El precio está en [planes y precios](/pricing): el plan Full incluye TPV por 39 euros al mes sin IVA con 5 usuarios, y el módulo TPV suelto cuesta 20,58 euros al mes sin IVA. Los criterios completos para comparar los recogemos en [cómo elegir un TPV para bares y restaurantes en 2026](/blog/tpv-bares-restaurantes-como-elegir-2026).
+Todo lo anterior está dentro del TPV de Drenpos, que es un módulo del mismo sistema donde viven la facturación, el inventario y los [fichajes del equipo](/control-horario). El precio está en [planes y precios](/pricing): el plan Tienda y Hostelería incluye el TPV por [[n:tienda]] euros al mes sin IVA con [[n:tienda_usuarios]] usuarios y fichaje para 8; con control de stock o varios locales, el plan Almacén con TPV son [[n:almacen_tpv]] euros al mes. Los criterios completos para comparar los recogemos en [cómo elegir un TPV para bares y restaurantes en 2026](/blog/tpv-bares-restaurantes-como-elegir-2026).
 
 ## Preguntas frecuentes sobre gestión de mesas
 

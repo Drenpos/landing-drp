@@ -1,4 +1,5 @@
 ---
+import { resolverPrecios } from "@/lib/precios";
 export const prerender = true;
 import BlogCard from "@/components/BlogCard.astro";
 import ImageMod from "@/components/ImageMod.astro";
@@ -79,7 +80,7 @@ const featuredPost = posts.filter((post) => post.data.featured).slice(0, 1);
                     {/* Extracto plano: nunca embeber el cuerpo completo */}
                     <p class="line-clamp-3">
                       {plainify(
-                        post.data.description || post.body?.slice(0, 400) || "",
+                        resolverPrecios(post.data.description || post.body || "").slice(0, 400),
                       )}
                     </p>
 

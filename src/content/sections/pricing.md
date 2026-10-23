@@ -1,146 +1,130 @@
 ---
-title: "Elige el plan que mejor se adapte a tu negocio"
-description: "Planes claros y módulos a la carta, sin letra pequeña. Paga solo por lo que usas y crece cuando lo necesites."
-badge: "Precios & Planes"
+title: "Elige el plan según lo que haga tu negocio"
+description: "Cuatro planes. Cada uno trae sus usuarios y las personas que pueden fichar. Sin permanencia, y si pagas el año entero te regalamos dos meses."
+badge: "Precios"
 
 help_cta:
   enable: true
-  title: "¿No tienes claro qué necesitas?"
-  description: "Contáctanos y te ayudamos a encontrar la mejor solución para tu negocio"
+  title: "¿No sabes qué plan elegir?"
+  description: "Cuéntanos a qué se dedica tu negocio y te decimos qué necesitas y qué te sobra."
   button:
-    label: "Hablar con un experto"
+    label: "Hablar con nosotros"
     link: "/contact"
 
 plans_labels:
   - "Mensual"
   - "Anual"
 plans:
-  - title: "Essential"
-    description: "Autónomos y gestión administrativa básica."
-    price_prefix: "€"
-    price_monthly: "19"
-    price_yearly: "17.10"
+  - title: "Facturación"
+    description: "Para autónomos y pequeñas empresas que necesitan facturar bien y tener los cobros al día."
+    price_prefix: ""
+    price_suffix: " €"
+    price_monthly: "[[n:facturacion]]"
+    price_yearly: "[[n:facturacion_anual]]"
     price_description_monthly: "/mes"
-    price_description_yearly: "/mes · 10% dto."
+    price_description_yearly: "/mes, pagando el año"
     features:
-      - Sistema en la nube 100% accesible
-      - Copias de seguridad diarias (últimos 5 días)
-      - Multidispositivo y multiusuario sin límites
-      - Soporte básico por email
-      - 2 Usuarios incluidos
-      - Módulo Financiero
-      - Módulo Informes
-      - Módulo Fichajes (2 usuarios)
-      - Envíos de documentos por email sin salir del sistema
-      - Envíos de documentos por WhatsApp sin salir del sistema
+      - "[[n:facturacion_usuarios]] usuarios y [[n:facturacion_fichajes]] personas que fichan"
+      - Presupuestos, pedidos, albaranes y facturas con Verifactu
+      - DeCA del transporte desde el albarán
+      - Facturas de proveedor leídas con OCR
+      - Remesas SEPA y control de cobros y pagos
+      - Envío de documentos por email y WhatsApp
+      - Informes de ventas y compras
     badge:
       enable: false
       label: "Recomendado"
     button:
       enable: true
-      label: "Regístrate y activa el plan"
+      label: "Empezar"
       link: "https://contract.drenpos.com/auth"
-  - title: "Pro"
-    description: "Negocios que necesitan control de stock pero no venta física."
-    price_prefix: "€"
-    price_monthly: "29"
-    price_yearly: "26.10"
+  - title: "Tienda y Hostelería"
+    description: "Para tiendas, bares y restaurantes que cobran en caja y tienen gente fichando por turnos."
+    price_prefix: ""
+    price_suffix: " €"
+    price_monthly: "[[n:tienda]]"
+    price_yearly: "[[n:tienda_anual]]"
     price_description_monthly: "/mes"
-    price_description_yearly: "/mes · 10% dto."
+    price_description_yearly: "/mes, pagando el año"
     features:
-      - Sistema en la nube 100% accesible
-      - Copias de seguridad diarias (últimos 5 días)
-      - Multidispositivo y multiusuario sin límites
-      - Soporte básico por email
-      - 3 Usuarios incluidos
-      - Módulo Financiero
-      - Módulo Informes
-      - Módulo Inventario
-      - Módulo Fichajes (3 usuarios)
-      - Envíos de documentos por email sin salir del sistema
-      - Envíos de documentos por WhatsApp sin salir del sistema
-    badge:
-      enable: true
-      label: "Recomendado"
-    button:
-      enable: true
-      label: "Regístrate y activa el plan"
-      link: "https://contract.drenpos.com/auth"
-  - title: "Full"
-    description: "Negocios con local físico que requieren rapidez en caja (TPV)."
-    price_prefix: "€"
-    price_monthly: "39"
-    price_yearly: "35.10"
-    price_description_monthly: "/mes"
-    price_description_yearly: "/mes · 10% dto."
-    features:
-      - Sistema en la nube 100% accesible
-      - Copias de seguridad diarias (últimos 5 días)
-      - Multidispositivo y multiusuario sin límites
-      - Soporte básico por email
-      - 5 Usuarios incluidos
-      - Módulo Financiero
-      - Módulo Informes
-      - Módulo Inventario
-      - Módulo TPV
-      - Módulo Fichajes (5 usuarios)
-      - Envíos de documentos por email sin salir del sistema
-      - Envíos de documentos por WhatsApp sin salir del sistema
+      - "[[n:tienda_usuarios]] usuarios y [[n:tienda_fichajes]] personas que fichan"
+      - Todo lo del plan Facturación
+      - "TPV de tienda: lector de códigos, tallas y colores, cierre de caja"
+      - "TPV de hostelería: mapa de sala, comanderos, cocina y barra"
+      - QR en las mesas
+      - Fichaje por turnos con vacaciones y calendarios
     badge:
       enable: false
       label: "Recomendado"
     button:
       enable: true
-      label: "Regístrate y activa el plan"
+      label: "Empezar"
+      link: "https://contract.drenpos.com/auth"
+  - title: "Almacén"
+    description: "Para distribuidores y negocios que necesitan saber qué tienen, dónde está y qué caduca."
+    price_prefix: ""
+    price_suffix: " €"
+    price_monthly: "[[n:almacen]]"
+    price_yearly: "[[n:almacen_anual]]"
+    price_description_monthly: "/mes"
+    price_description_yearly: "/mes, pagando el año"
+    features:
+      - "[[n:almacen_usuarios]] usuarios y [[n:almacen_fichajes]] personas que fichan"
+      - Todo lo del plan Facturación
+      - "Inventario completo: lotes, caducidades, ubicaciones y plano del almacén"
+      - Picking, recepciones y traslados con pistola o con el móvil
+      - Stock mínimo y propuesta de compra
+      - Palets con etiqueta SSCC y depósito de terceros
+      - Si también vendes en mostrador, el TPV se añade por [[p:tpv]]/mes
+    badge:
+      enable: true
+      label: "El más usado"
+    button:
+      enable: true
+      label: "Empezar"
       link: "https://contract.drenpos.com/auth"
   - title: "Producción"
-    description: "Talleres y fabricantes que necesitan controlar la producción y su coste real."
-    price_prefix: "€"
-    price_monthly: "50"
-    price_yearly: "45.00"
+    description: "Para talleres, obradores y fábricas pequeñas que quieren saber lo que les cuesta cada cosa que fabrican."
+    price_prefix: ""
+    price_suffix: " €"
+    price_monthly: "[[n:produccion]]"
+    price_yearly: "[[n:produccion_anual]]"
     price_description_monthly: "/mes"
-    price_description_yearly: "/mes · 10% dto."
+    price_description_yearly: "/mes, pagando el año"
     features:
-      - Sistema en la nube 100% accesible
-      - Copias de seguridad diarias (últimos 5 días)
-      - Multidispositivo y multiusuario sin límites
-      - Soporte básico por email
-      - 8 Usuarios incluidos
-      - Módulo Financiero
-      - Módulo Informes
-      - Módulo Inventario
-      - Módulo Producción
-      - Módulo Fichajes (8 usuarios)
-      - Envíos de documentos por email sin salir del sistema
-      - Envíos de documentos por WhatsApp sin salir del sistema
+      - "[[n:produccion_usuarios]] usuarios y [[n:produccion_fichajes]] personas que fichan"
+      - Todo lo del plan Almacén
+      - Órdenes de trabajo por fases y puestos
+      - Escandallos y consumo de material leyendo el código
+      - Horas de cada operario en cada orden
+      - Coste real de cada fabricación
     badge:
       enable: false
       label: "Recomendado"
     button:
       enable: true
-      label: "Regístrate y activa el plan"
+      label: "Empezar"
       link: "https://contract.drenpos.com/auth"
-  - title: "Plan a Medida"
-    description: "Realizamos un estudio integral de tu empresa, medimos tus necesidades y desarrollamos una integración completamente personalizada."
+  - title: "En tu servidor"
+    description: "Drenpos instalado en el servidor de tu empresa, con cualquiera de los planes. Para quien no quiere los datos fuera o tiene muchos puestos en red."
     price_prefix: ""
     price_monthly: "Personalizado"
     price_yearly: "Personalizado"
     price_description_monthly: ""
     price_description_yearly: ""
     features:
-      - Sistema en la nube 100% accesible
-      - Copias de seguridad diarias (últimos 5 días)
-      - Multidispositivo y multiusuario sin límites
-      - Estudio completo de procesos empresariales
-      - Desarrollo a medida según necesidades
-      - Integraciones con sistemas existentes
-      - Formación personalizada del equipo
-      - Mucho más...
+      - Los mismos módulos que en la nube
+      - Funciona en tu red aunque se caiga internet
+      - Varias cajas, pantallas de cocina, PDA y terminales contra tu servidor
+      - Actualizaciones automáticas, igual que en la nube
+      - Copia de seguridad diaria cifrada fuera de la empresa
+      - Vigilamos el servidor y te avisamos si algo falla
+      - Integraciones con los programas que ya usas
     badge:
       enable: false
       label: "Recomendado"
     button:
       enable: true
-      label: "Contactar"
+      label: "Pedir propuesta"
       link: "/contact"
 ---

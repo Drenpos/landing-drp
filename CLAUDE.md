@@ -171,6 +171,18 @@ node agent/index.mjs --idea "..." --keywords "k1,k2" \
 
 **`agent/img-almacen-2026.mjs`** — descargador de imágenes de Pexels para el clúster de almacén (7 posts × cover + 2 secciones). Recorta con `sharp` (1200×675 la portada, 1200×630 las de sección), escribe `credits.json`, cambia el `image:` del frontmatter de `.webp` a `.jpg` e inserta los `![alt](...)` en el cuerpo tras la cápsula del H2 elegido. Idempotente (`--force` para rehacer), `--dry` para simular, `--only <slug>` para uno solo. Lee `PEXELS_API_KEY` de `agent/.env`. **Necesita red**: no funciona desde el bridge de Cowork, hay que lanzarlo desde una terminal local.
 
+## Precios (fuente única, 23/10/2026)
+
+Todos los precios de Drenpos salen de `src/config/precios.json`. No se escribe un precio nuestro a mano en ningún sitio.
+
+- En `.astro`/`.ts`: `import { valor, eur, decimal, P } from "@/lib/precios"`. `decimal(valor("almacen"))` para JSON-LD ("59.00"), `eur(valor("usuario"))` para texto ("7 €").
+- En Markdown, frontmatter y strings: `[[p:almacen]]` → "59 €", `[[n:almacen]]` → "59". Admite cuentas con `+ - × /` y paréntesis: `[[p:almacen_tpv+2×usuario]]`. Multiplica con `×`, nunca con `*` (Markdown lo convierte en cursiva).
+- Claves: `facturacion`, `tienda`, `almacen`, `produccion`, `almacen_tpv`, `<plan>_usuarios`, `<plan>_fichajes`, `<plan>_anual` (al mes pagando el año), `<plan>_ano`, `usuario`, `fichaje`, `caja`, `tpv`, `comerciales`, `mcp`, `soporte`, `equipo10/25/50`, `equipo_persona_extra`, `terminal`, `desde`, `hasta`, `meses_pagados`. Lista completa en `src/lib/precios.ts`.
+- Los resuelve `src/middleware.ts` en cada respuesta de texto (también al prerenderizar). `scripts/check-precios.mjs` corre tras el build y falla si queda alguno sin resolver; una clave que no existe rompe el build.
+- Si un texto recorta contenido antes de llegar al HTML (`.slice()`, imagen OG), pasa antes por `resolverPrecios()` para no cortar un token.
+- Los precios de la competencia, multas y subvenciones se quedan como texto fijo.
+- El contexto del CRM (`context/pricing.md`) no lee este archivo: si cambia un precio, actualízalo a mano.
+
 ## Deploy
 
 - **Production**: Jenkins (`Jenkinsfile`) — `npm i --force && npm run build && wrangler pages deploy dist --project-name=landing-drp --branch=$BRANCH_NAME`. Cloudflare token + Clerk + reCAPTCHA + `SITE` come from Jenkins credentials.

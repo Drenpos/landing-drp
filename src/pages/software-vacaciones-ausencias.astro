@@ -1,4 +1,5 @@
 ---
+import { decimal, valor } from "@/lib/precios";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -71,11 +72,11 @@ const cap = {
   casos:
     "Tres situaciones típicas en las que el Excel de vacaciones deja de dar abasto: un almacén con turnos donde no pueden faltar dos personas del mismo turno, un bar con turnos partidos y temporada alta en verano, y una oficina pequeña donde parte del equipo teletrabaja. En los tres casos las reglas se configuran una vez y el día a día se lleva desde el móvil.",
   precio:
-    "Nada aparte: las vacaciones y los permisos van incluidos en la licencia de fichaje, que cuesta 1 € por usuario y mes sin IVA, junto con los calendarios laborales, los turnos rotativos y el control de entrada y salida. Quien aprueba vacaciones necesita licencia aunque no fiche. El terminal de fichaje es opcional y parte de 140 € sin IVA, con llaveros personalizados para la plantilla inicial.",
+    "Nada aparte: las vacaciones y los permisos van incluidos en la licencia de fichaje, incluida en todos los planes ([[p:fichaje]] por persona adicional y mes, sin IVA), junto con los calendarios laborales, los turnos rotativos y el control de entrada y salida. Quien aprueba vacaciones necesita licencia aunque no fiche. El terminal de fichaje es opcional y parte de [[p:terminal]] sin IVA, con llaveros personalizados para la plantilla inicial.",
   faq:
     "Estas son las dudas típicas de una empresa que quiere dejar la hoja de cálculo: cuánto cuesta, cómo se calculan los días de quien entra a mitad de año, qué pasa con los que sobran en diciembre y quién aprueba qué. Las respuestas son cortas y describen cómo funciona Drenpos hoy, en octubre de 2026, con los precios sin IVA.",
   hermanas:
-    "La misma licencia de 1 € por usuario y mes cubre el registro de jornada, los calendarios laborales y rotativos, el control de entrada y salida y la planificación anual. Cada página explica una parte desde el problema que resuelve. Todas trabajan sobre los mismos datos, así que lo que configuras para las vacaciones sirve también para los turnos y las horas extra.",
+    "La misma licencia de fichaje, incluida en el plan, cubre el registro de jornada, los calendarios laborales y rotativos, el control de entrada y salida y la planificación anual. Cada página explica una parte desde el problema que resuelve. Todas trabajan sobre los mismos datos, así que lo que configuras para las vacaciones sirve también para los turnos y las horas extra.",
   lecturas:
     "La ley de vacaciones y permisos, la tabla de permisos retribuidos y el cálculo paso a paso de prorrateos y arrastres están en el blog, con sus fuentes. Esta página explica qué hace el programa; los artículos explican qué dice la norma y cómo se hacen las cuentas. Si vas a cambiar de herramienta, conviene leer primero el de vacaciones sin Excel.",
 };
@@ -221,7 +222,7 @@ const comparativa = [
     piden: "App del móvil o portal, viendo el saldo; aprobar, rechazar o proponer fechas con motivo",
     saldo: "Sí, con consolidación, prorrateo y arrastre con caducidad",
     donde: "Mismo programa que fichajes, almacén, TPV y facturación; un solo informe",
-    precio: "Incluido en la licencia de fichaje: 1 €/usuario/mes sin IVA",
+    precio: "Incluido en la licencia de fichaje: incluida en el plan, [[p:fichaje]]/usuario/mes sin IVA cada persona adicional",
     encaja: "Quieres vacaciones, fichajes y el resto del negocio juntos, sin evaluación del desempeño ni selección",
     destacado: true,
   },
@@ -274,7 +275,7 @@ const preciosCompetencia = [
 const faqs = [
   {
     q: "¿Cuánto cuesta un software de vacaciones para 10 empleados?",
-    a: "Diez licencias de fichaje son 10 € al mes sin IVA, porque las vacaciones y los permisos van incluidos en la licencia de 1 € por usuario y mes; quien aprueba y no ficha necesita su propia licencia, así que con una encargada que solo aprueba serían 11 €. A eso se suma la cuenta de administración de Drenpos (incluida en cualquier plan). El terminal es opcional y parte de 140 €. Como referencia, Woffu parte de 1,50 € por usuario activo y Holded cobra 1,50 € por empleado en su módulo de RR. HH., según sus webs a fecha 23/09/2026.",
+    a: "Diez personas solo con el control horario (Drenpos Equipo) son [[p:equipo10]] al mes sin IVA, con las vacaciones y los permisos incluidos; quien aprueba y no ficha necesita su propia licencia, así que con una encargada que solo aprueba serían [[p:equipo10+equipo_persona_extra]]. Va sobre la cuota del plan (Facturación [[p:facturacion]], Almacén [[p:almacen]]). El terminal es opcional y parte de [[p:terminal]]. Como referencia, Woffu parte de 1,50 € por usuario activo y Holded cobra 1,50 € por empleado en su módulo de RR. HH., según sus webs a fecha 23/09/2026.",
   },
   {
     q: "¿Cómo se consolidan las vacaciones mes a mes?",
@@ -302,7 +303,7 @@ const faqs = [
   },
   {
     q: "¿Sirve sin el terminal de fichaje?",
-    a: "Sí. El terminal es opcional: se puede fichar y pedir vacaciones desde la app del móvil o desde el portal web, con la misma licencia de 1 € por usuario y mes sin IVA. El terminal, desde 140 € sin IVA, encaja cuando parte del equipo no va a fichar con su teléfono, por ejemplo en la puerta de un almacén, y con él se ficha con un llavero RFID o un QR mientras las vacaciones se siguen pidiendo desde la app o el portal.",
+    a: "Sí. El terminal es opcional: se puede fichar y pedir vacaciones desde la app del móvil o desde el portal web, con la misma licencia de fichaje incluida en el plan, sin IVA. El terminal, desde [[p:terminal]] sin IVA, encaja cuando parte del equipo no va a fichar con su teléfono, por ejemplo en la puerta de un almacén, y con él se ficha con un llavero RFID o un QR mientras las vacaciones se siguen pidiendo desde la app o el portal.",
   },
 ];
 
@@ -326,7 +327,7 @@ const hermanas = [
   {
     url: "/dispositivo-fichaje",
     title: "Terminal de fichaje",
-    body: "Llavero RFID o QR, tu logo en la carcasa y fichajes guardados aunque se caiga internet. Desde 140 € sin IVA.",
+    body: "Llavero RFID o QR, tu logo en la carcasa y fichajes guardados aunque se caiga internet. Desde [[p:terminal]] sin IVA.",
   },
 ];
 
@@ -376,18 +377,18 @@ const productSchema = {
     "Software de gestión de vacaciones, permisos y ausencias para pymes, dentro del módulo de fichajes de Drenpos. Tipos de ausencia configurables, cupo con reinicio el 1 de enero o en el aniversario de la contratación, consolidación mes a mes, prorrateo automático y días que pasan al año siguiente con tope y caducidad. El empleado pide desde la app del móvil o el portal viendo su saldo; el responsable aprueba, rechaza o propone otras fechas con un motivo y nadie aprueba su propia solicitud. Calendario del equipo con vistas Equipo, Mes y Persona y PDF del año por trabajador. Las ausencias salen en el mismo informe que los fichajes y las horas extra.",
   offers: {
     "@type": "Offer",
-    price: "1",
+    price: decimal(valor("fichaje")),
     priceCurrency: "EUR",
     valueAddedTaxIncluded: false,
     priceSpecification: {
       "@type": "UnitPriceSpecification",
-      price: "1",
+      price: decimal(valor("fichaje")),
       priceCurrency: "EUR",
       unitText: "mes por usuario",
       valueAddedTaxIncluded: false,
     },
     description:
-      "Vacaciones y permisos incluidos en la licencia de fichaje de Drenpos, sin coste extra: 1 € por usuario y mes, sin IVA. Quien aprueba vacaciones necesita licencia aunque no fiche. Terminal de fichaje opcional desde 140 € sin IVA.",
+      "Vacaciones y permisos incluidos en la licencia de fichaje de Drenpos, sin coste extra ([[p:fichaje]] por persona adicional y mes, sin IVA). Quien aprueba vacaciones necesita licencia aunque no fiche. Terminal de fichaje opcional desde [[p:terminal]] sin IVA.",
     url: "https://www.drenpos.com/pricing",
   },
   featureList: [
@@ -412,11 +413,11 @@ const productSchema = {
 <Base
   title="Software de Vacaciones y Ausencias · Drenpos"
   meta_title="Software de Vacaciones y Ausencias para Pymes | Drenpos"
-  description="Gestión de vacaciones y permisos para pymes: se piden desde el móvil, el saldo se calcula solo y el responsable aprueba. Incluido en el fichaje, 1 €/usuario."
+  description="Gestión de vacaciones y permisos para pymes: se piden desde el móvil, el saldo se calcula solo y el responsable aprueba. Incluido en el fichaje de todos los planes."
   canonical={CANONICAL}
   image={HERO_IMG}
   published_date="2026-10-07"
-  modified_date="2026-10-07"
+  modified_date="2026-10-22"
   author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
 >
   <!-- Datos estructurados -->
@@ -459,10 +460,10 @@ const productSchema = {
             responsable aprueba, rechaza o propone otras fechas. El cupo de cada
             persona se calcula solo, con <strong>consolidación mes a mes,
             prorrateo y días que pasan al año siguiente</strong>. Está
-            <strong>incluido en la licencia de fichaje de 1 €/usuario/mes sin IVA</strong>.
+            <strong>incluido en la licencia de fichaje (incluida en el plan; [[p:fichaje]]/usuario/mes sin IVA cada persona adicional)</strong>.
           </p>
 
-          <LandingMeta updated="2026-10-07" published="2026-10-07" />
+          <LandingMeta updated="2026-10-22" published="2026-10-07" />
 
           <ul class="flex flex-wrap gap-4 mt-8 mb-6">
             <li data-aos="fade-up-sm" data-aos-delay="100">
@@ -488,7 +489,7 @@ const productSchema = {
           </ul>
 
           <p class="text-sm font-medium mb-6" style="color: rgba(16,25,40,0.72);">
-            1 €/usuario/mes · terminal opcional desde 140 € · sin permanencia.
+            fichajes incluidos en el plan · terminal opcional desde [[p:terminal]] · sin permanencia.
             Precios sin IVA.
           </p>
 
@@ -794,8 +795,7 @@ const productSchema = {
               <p class="mb-6 max-w-2xl mx-auto" style="color: rgba(255,255,255,0.78);">{cap.precio}</p>
               <p class="text-sm mb-8 max-w-2xl mx-auto" style="color: rgba(255,255,255,0.65);">
                 Un ejemplo: diez personas que fichan y una encargada que solo
-                aprueba son 11 licencias, 11 € al mes sin IVA, más la cuenta de
-                administración desde la que se configura el módulo. Si ya usas
+                aprueba son 11 personas: con Drenpos Equipo, 16,50 € al mes sin IVA, o dentro de cualquier plan junto con la cuenta de administración desde la que se configura el módulo. Si ya usas
                 Drenpos para facturar o para el almacén, tu plan incluye
                 licencias de fichaje: 2 en Esencial, 3 en Pro y 5 en Full y en
                 Producción.

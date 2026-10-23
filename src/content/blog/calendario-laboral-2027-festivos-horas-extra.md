@@ -3,7 +3,7 @@ title: "Calendario laboral 2027: festivos, horas esperadas y horas extra"
 meta_title: "Calendario laboral 2027: festivos y cálculo de horas extra"
 description: "Festivos nacionales de 2027 según el BOE del 13 de octubre de 2026, enlaces al calendario de cada comunidad y cómo pasar de festivos a horas y horas extra."
 date: 2026-09-23
-updated: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/control-horario-teletrabajo-cumplir-ley-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -210,4 +210,4 @@ El artículo 34.6 del Estatuto obliga a elaborar el calendario laboral cada año
 
 ## Siguiente paso
 
-Los calendarios laborales, los festivos y el cálculo de horas extra van incluidos en el módulo de fichajes de Drenpos, a 1 € por usuario y mes sin IVA. Tienes el detalle en [calendarios y festivos del control horario](/control-horario#calendarios). Si quieres que las desviaciones del horario te avisen solas, mira el [control de entrada y salida](/blog/control-entrada-salida-retrasos-empleados).
+Los calendarios laborales, los festivos y el cálculo de horas extra van incluidos en el módulo de fichajes de Drenpos, incluido en todos los planes ([[p:fichaje]] por persona adicional y mes sin IVA). Tienes el detalle en [calendarios y festivos del control horario](/control-horario#calendarios). Si quieres que las desviaciones del horario te avisen solas, mira el [control de entrada y salida](/blog/control-entrada-salida-retrasos-empleados).

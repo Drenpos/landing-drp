@@ -141,7 +141,7 @@ El detalle, paso a paso:
 5. **Copia para el conductor.** El QR sale también en todos los formatos de albarán y en el modelo de carta de porte. Desde el albarán ves el PDF, copias la dirección, descargas el QR suelto o lo imprimes.
 6. **Cambios.** Otra matrícula u otro peso generan una versión nueva con la misma dirección web y el historial con su motivo. Un albarán anulado queda indicado. Nada se borra.
 
-Va incluido en el módulo Financiero, en todos los planes desde 19 €/mes sin IVA. Si comparas con otras opciones del mercado, tienes la [comparativa de software para el DeCA](/blog/software-deca-comparativa-pymes). Y si tus envíos salen en palets, el mismo albarán puede llevar los palets escaneados con su [etiqueta SSCC](/blog/etiqueta-sscc-gs1-palets).
+Va incluido en el módulo Financiero, en todos los planes desde [[p:desde]]/mes sin IVA. Si comparas con otras opciones del mercado, tienes la [comparativa de software para el DeCA](/blog/software-deca-comparativa-pymes). Y si tus envíos salen en palets, el mismo albarán puede llevar los palets escaneados con su [etiqueta SSCC](/blog/etiqueta-sscc-gs1-palets).
 
 ## ¿Cuáles son los errores más típicos al generar el DeCA?
 

@@ -3,7 +3,7 @@ title: "Etiqueta SSCC: qué es, cómo se genera y por qué la exigen"
 meta_title: "Etiqueta SSCC: qué es, sus 18 dígitos y cómo generarla"
 description: "Qué es la etiqueta SSCC, cómo se componen sus 18 dígitos y el dígito de control, qué identificadores GS1 lleva el palet y cómo se genera en un SGA."
 date: 2026-08-12
-updated: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/etiqueta-sscc-gs1-palets/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -190,7 +190,7 @@ El palet tiene ciclo de vida propio en Drenpos: abierto, cerrado y pesado, exped
 
 La vista global de contenido responde a la pregunta de siempre: "¿dónde tengo este lote?". El despaletizado se resuelve en tres gestos: vaciar a una ubicación, pasar mercancía a otro palet o partir uno en varios nuevos que nacen cargados y etiquetados. Todas las pantallas funcionan en móvil y tablet, para trabajar a pie de cámara en un [almacén frigorífico](/software-almacen-frigorifico) y no en la oficina.
 
-Tienes el detalle en el [software de gestión de palets](/software-gestion-palets). La gestión de palets va dentro del módulo de Inventario, incluido en los planes Pro (29 €/mes), Full (39 €/mes) y Producción (50 €/mes), o como módulo suelto por 16,45 €/mes sobre el plan Esencial, todo sin IVA a fecha de 17 de octubre de 2026. Más en [precios](/pricing).
+Tienes el detalle en el [software de gestión de palets](/software-gestion-palets). La gestión de palets va dentro del módulo de Inventario, incluido en los planes Almacén ([[p:almacen]]/mes), Almacén con TPV ([[p:almacen_tpv]]/mes) y Producción ([[p:produccion]]/mes), todo sin IVA a fecha de 17 de octubre de 2026. Más en [precios](/pricing).
 
 ## Preguntas frecuentes sobre la etiqueta SSCC
 

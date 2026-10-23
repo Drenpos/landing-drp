@@ -3,6 +3,7 @@ title: "Stock mínimo, stock de seguridad y punto de pedido: fórmulas y ejemplo
 meta_title: "Stock de seguridad y punto de pedido: fórmula y ejemplo"
 description: "Cómo calcular el stock de seguridad y el punto de pedido con fórmulas y un ejemplo resuelto paso a paso, qué nivel de servicio elegir y cuándo recalcular."
 date: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/control-de-stock-sin-roturas/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -164,7 +165,7 @@ A partir de ahí:
 - **Alertas de pedidos:** cruzan lo vendido pendiente de servir con el stock y dicen cuántas unidades faltan.
 - **Informe de rotación:** lo que más sale, por unidades y valor, con la cobertura en días. Es el punto de partida para sacar D y repartir niveles de servicio.
 
-Para calcular la desviación, exporta las ventas a Excel y usa DESVEST sobre las cantidades diarias o semanales. Todo esto va en el [control de stock e inventario](/software-control-stock) del módulo de Inventario, incluido en el plan Pro por 29 €/mes sin IVA.
+Para calcular la desviación, exporta las ventas a Excel y usa DESVEST sobre las cantidades diarias o semanales. Todo esto va en el [control de stock e inventario](/software-control-stock) del módulo de Inventario, incluido en el plan Almacén por [[p:almacen]]/mes sin IVA.
 
 ## Preguntas frecuentes sobre stock mínimo y punto de pedido
 

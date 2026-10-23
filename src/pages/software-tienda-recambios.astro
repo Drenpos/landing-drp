@@ -1,4 +1,5 @@
 ---
+import { decimal, valor } from "@/lib/precios";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -164,7 +165,7 @@ const bloques: Bloque[] = [
       "Inmovilizado con su valor y su ubicación",
       "Rotación con cobertura de stock en días",
       "Auditoría de stock: cada movimiento de una referencia con el documento que lo originó",
-      "Con el conector de IA (6 €/mes sin IVA) preguntas a ChatGPT o Claude qué está bajo mínimos",
+      "Con el conector de IA ([[p:mcp]]/mes sin IVA) preguntas a ChatGPT o Claude qué está bajo mínimos",
     ],
   },
 ];
@@ -214,7 +215,7 @@ const comparativa = [
     compras: "Propuesta de compra y pedido en un clic",
     catalogo: "No: tus referencias, cargadas desde Excel",
     verifactu: "Sí, en cada factura y cada ticket",
-    precio: "Pro 29 €/mes o Full con TPV 39 €/mes, sin IVA",
+    precio: "Almacén [[p:almacen]]/mes o Almacén con TPV [[p:almacen_tpv]]/mes, sin IVA",
     destacado: true,
   },
 ];
@@ -256,7 +257,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta un programa de gestión para tienda de recambios con Drenpos?",
-    a: "Con mostrador, el plan Full: 39 €/mes sin IVA con almacén, TPV de tienda, facturación con Verifactu, informes, correo y WhatsApp, 5 usuarios y fichaje para 5 personas. Sin TPV, el plan Pro cuesta 29 €/mes sin IVA con 3 usuarios. Cada usuario adicional son 5 €/mes y cada fichaje adicional 1 €/usuario/mes, sin IVA, sin permanencia ni coste de instalación.",
+    a: "Con mostrador, el plan Almacén con TPV: [[p:almacen_tpv]]/mes sin IVA con almacén, TPV de tienda, facturación con Verifactu, informes, correo y WhatsApp, 3 usuarios y fichaje para 5 personas. Sin TPV, el plan Almacén cuesta [[p:almacen]]/mes sin IVA con [[n:almacen_usuarios]] usuarios. Cada usuario adicional son [[p:usuario]]/mes y cada fichaje adicional [[p:fichaje]]/usuario/mes, sin IVA, sin permanencia ni coste de instalación.",
   },
   {
     q: "¿Puedo vender en el mostrador y llevar el almacén a la vez?",
@@ -301,7 +302,7 @@ const hermanas = [
   {
     url: "/control-horario",
     title: "Control horario del equipo",
-    body: "El fichaje de quien atiende el mostrador, con vacaciones y turnos, desde 1 €/usuario/mes sin IVA.",
+    body: "El fichaje de quien atiende el mostrador, con vacaciones y turnos, incluido en el plan ([[p:fichaje]]/usuario/mes cada persona adicional, sin IVA).",
   },
 ];
 
@@ -348,17 +349,17 @@ const productSchema = {
     "Programa de gestión para tiendas de recambios y repuestos: stock por referencia en varios almacenes y ubicaciones, varios códigos de barras por artículo, stock mínimo y máximo con alertas, propuesta de compra asistida, pedidos y recepción de proveedor con pistola, TPV de tienda con cierre de caja, facturación Verifactu e informes de rotación e inmovilizado. No incluye catálogo de recambios ni búsqueda por matrícula.",
   offers: {
     "@type": "Offer",
-    price: "29.00",
+    price: decimal(valor("almacen")),
     priceCurrency: "EUR",
     priceSpecification: {
       "@type": "UnitPriceSpecification",
-      price: "29.00",
+      price: decimal(valor("almacen")),
       priceCurrency: "EUR",
       unitCode: "MON",
       valueAddedTaxIncluded: false,
     },
     description:
-      "Plan Pro con almacén, 29 €/mes sin IVA. Con TPV de tienda, plan Full, 39 €/mes sin IVA. Sin permanencia.",
+      "Plan Almacén [[p:almacen]]/mes sin IVA; con TPV de tienda, [[p:almacen_tpv]]/mes sin IVA. Sin permanencia.",
     url: "https://www.drenpos.com/pricing",
   },
   featureList: [
@@ -380,13 +381,13 @@ const productSchema = {
 
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 const PAGE_PUBLISHED = "2026-10-07";
-const PAGE_UPDATED = "2026-10-07";
+const PAGE_UPDATED = "2026-10-22";
 ---
 
 <Base
   title="Programa para Tienda de Recambios · Drenpos"
-  meta_title="Programa para Tienda de Recambios desde 29 €/mes | Drenpos"
-  description="Stock de recambios por referencia y ubicación, mínimos, pedidos a proveedor y TPV con Verifactu en un solo programa. 29 €/mes o 39 € con TPV, sin permanencia."
+  meta_title="Programa de Gestión para Tienda de Recambios | Drenpos"
+  description="Stock de recambios por referencia y ubicación, mínimos, pedidos a proveedor y TPV con Verifactu en un solo programa, con equivalencias y pistola."
   canonical={CANONICAL}
   image={HERO_IMG}
   published_date={PAGE_PUBLISHED}
@@ -431,8 +432,7 @@ const PAGE_UPDATED = "2026-10-07";
             vende en el mostrador con un <strong>punto de venta</strong> que
             descuenta lo vendido y te propone qué pedir a cada proveedor. Sirve
             para recambios de automoción, repuestos de electrodomésticos o
-            suministro industrial. Desde <strong>29 €/mes sin IVA</strong>, o
-            39 € con el TPV de tienda.
+            suministro industrial.
           </p>
 
           <LandingMeta updated={PAGE_UPDATED} published={PAGE_PUBLISHED} class="-mt-4 mb-8" />
@@ -701,7 +701,7 @@ const PAGE_UPDATED = "2026-10-07";
       <p class="text-center mt-6 text-sm max-w-3xl mx-auto" style="color: rgba(16,25,40,0.6);" data-aos="fade-up-sm">
         Si lo que más pesa es identificar la pieza por el vehículo, un programa
         de nicho tiene sentido. Si lo que duele es el stock, las compras y la
-        caja, Drenpos lo resuelve dentro de una cuota de 29 o 39 €/mes sin IVA.
+        caja, Drenpos lo resuelve dentro de una cuota de 59 o [[p:almacen_tpv]]/mes sin IVA.
       </p>
     </div>
   </section>
@@ -741,12 +741,11 @@ const PAGE_UPDATED = "2026-10-07";
           <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
             <h2 class="h3 font-bold mb-3 text-white">¿Cuánto cuesta un programa de gestión para una tienda de recambios?</h2>
             <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
-              Con mostrador, lo normal es el plan Full: 39 €/mes sin IVA con
+              Con mostrador, lo normal es el plan Almacén con TPV: [[p:almacen_tpv]]/mes sin IVA con
               almacén, TPV de tienda, facturación con Verifactu, informes,
               correo, WhatsApp y 5 usuarios. Si solo necesitas almacén y
-              facturación, el plan Pro cuesta 29 €/mes sin IVA con 3 usuarios.
-              Cada usuario adicional son 5 €/mes y cada fichaje adicional
-              1 €/usuario/mes, sin IVA, sin permanencia ni coste de instalación.
+              facturación, el plan Almacén cuesta [[p:almacen]]/mes sin IVA con [[n:almacen_usuarios]] usuarios.
+              Cada usuario adicional son [[p:usuario]]/mes y cada fichaje adicional [[p:fichaje]]/usuario/mes, sin IVA, sin permanencia ni coste de instalación.
             </p>
             <ul class="flex flex-wrap gap-4 justify-center">
               <li>

@@ -3,7 +3,7 @@ title: "Control horario en hostelería: cómo fichar turnos partidos y horas ext
 meta_title: "Control horario en hostelería: turnos partidos y horas extra"
 description: "Registro de jornada de camareros y cocina con turnos partidos, extras de fin de semana y festivos: qué exige hoy la ley y cómo llevarlo en un bar."
 date: 2026-09-23
-updated: 2026-09-28
+updated: 2026-10-22
 image: "/images/blog/gestion-mesas-restaurante-mapa-sala/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -33,7 +33,7 @@ faq:
   - question: "¿Cómo se cuentan las horas extra de los camareros?"
     answer: "El Estatuto de los Trabajadores pide registrar la jornada día a día y totalizarla en el periodo de pago de la nómina, con copia del resumen para el trabajador, y limita las horas extra a ochenta al año. En Drenpos las horas esperadas salen del calendario de cada persona y de sus festivos, y lo trabajado por encima es extra, día a día, con su total en el informe del periodo."
   - question: "¿Cuánto cuesta el control horario para un bar en Drenpos?"
-    answer: "El fichaje cuesta 1 € por persona y mes sin IVA. El plan Full, de 39 €/mes sin IVA, ya trae fichaje para cinco personas junto al TPV, y el plan Esencial, de 19 €, trae dos. Vacaciones, control de entrada y salida y geolocalización van incluidos sin coste extra. El terminal de fichaje para la barra parte de 140 € sin IVA en un único pago."
+    answer: "El fichaje va incluido en el plan ([[p:fichaje]] por persona adicional y mes sin IVA). El plan Tienda y Hostelería, de [[p:tienda]]/mes sin IVA, ya trae fichaje para ocho personas junto al TPV. Vacaciones, control de entrada y salida y geolocalización van incluidos sin coste extra. El terminal de fichaje para la barra parte de [[p:terminal]] sin IVA en un único pago."
   - question: "¿Se pueden llevar libranzas que cambian cada semana en un restaurante?"
     answer: "Sí, con un calendario rotativo. En lugar de lunes a domingo, indicas los días de trabajo, los de descanso, el horario y el primer día del ciclo, y Drenpos va alternando solo: 5/2 con libranzas que se mueven, 6/3 o mañanas y noches dentro del mismo ciclo. Si dos personas se turnan, cada una tiene su primer día sobre el mismo calendario. Las horas esperadas, las extra y las vacaciones ya cuentan con el ciclo."
 ---
@@ -111,9 +111,9 @@ Con el fichaje en el mismo sistema que la caja y un aparato al lado del TPV:
 
 ## ¿Cuánto cuesta?
 
-El fichaje cuesta **1 € por persona y mes sin IVA**. Si usas el TPV de Drenpos, el plan Full (39 €/mes sin IVA) ya trae fichaje para cinco personas; un restaurante de doce paga siete euros más al mes. Si ya tienes TPV y solo quieres el fichaje, el plan Esencial (19 €/mes sin IVA) trae dos personas y cada una más suma 1 €.
+El fichaje va incluido en todos los planes (**[[p:fichaje]] por persona adicional y mes sin IVA**). Si usas el TPV de Drenpos, el plan Tienda y Hostelería ([[p:tienda]]/mes sin IVA) ya trae fichaje para ocho personas; un restaurante de doce paga [[n:4×fichaje]] euros más al mes. Si ya tienes TPV y solo quieres el fichaje, Drenpos Equipo cuesta [[p:equipo10]]/mes para 10 personas sin IVA, y [[p:equipo_persona_extra]] por cada una más.
 
-Vacaciones y permisos, control de entrada y salida y geolocalización van incluidos, sin coste extra. El terminal de fichaje parte de 140 € sin IVA en un único pago. Cuánto cuesta el conjunto en tres locales tipo lo tienes en [cuánto cuesta un TPV para un bar o restaurante](/blog/cuanto-cuesta-tpv-bar-restaurante-2026), y todo el módulo en [control horario](/control-horario).
+Vacaciones y permisos, control de entrada y salida y geolocalización van incluidos, sin coste extra. El terminal de fichaje parte de [[p:terminal]] sin IVA en un único pago. Cuánto cuesta el conjunto en tres locales tipo lo tienes en [cuánto cuesta un TPV para un bar o restaurante](/blog/cuanto-cuesta-tpv-bar-restaurante-2026), y todo el módulo en [control horario](/control-horario).
 
 ## Preguntas frecuentes sobre control horario en hostelería
 
@@ -135,7 +135,7 @@ El Estatuto de los Trabajadores pide registrar la jornada día a día y totaliza
 
 ### ¿Cuánto cuesta el control horario para un bar en Drenpos?
 
-El fichaje cuesta 1 € por persona y mes sin IVA. El plan Full, de 39 €/mes sin IVA, ya trae fichaje para cinco personas junto al TPV, y el plan Esencial, de 19 €, trae dos. Vacaciones, control de entrada y salida y geolocalización van incluidos sin coste extra. El terminal de fichaje para la barra parte de 140 € sin IVA en un único pago.
+El fichaje va incluido en el plan ([[p:fichaje]] por persona adicional y mes sin IVA). El plan Tienda y Hostelería, de [[p:tienda]]/mes sin IVA, ya trae fichaje para ocho personas junto al TPV. Vacaciones, control de entrada y salida y geolocalización van incluidos sin coste extra. El terminal de fichaje para la barra parte de [[p:terminal]] sin IVA en un único pago.
 
 ### ¿Se pueden llevar libranzas que cambian cada semana en un restaurante?
 

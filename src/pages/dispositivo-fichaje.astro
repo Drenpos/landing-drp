@@ -1,4 +1,5 @@
 ---
+import { decimal, valor } from "@/lib/precios";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -214,7 +215,7 @@ const comparativa = [
     logo: "Sí, en carcasa y llaveros",
     legal: "Sí: sellado, trazado y exportable",
     sinRed: "Sí, guarda y sincroniza al volver",
-    precio: "Desde 140 € el terminal",
+    precio: "Desde [[p:terminal]] el terminal",
     destacado: true,
   },
 ];
@@ -257,11 +258,11 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta el dispositivo de fichaje?",
-    a: "El terminal parte de 140 € sin IVA, con llaveros personalizados incluidos para tu plantilla inicial, y la licencia de fichaje de Drenpos cuesta desde 1 € por usuario y mes. En las implantaciones acompañadas el terminal va incluido con las llaves. Pide presupuesto si necesitas varios terminales, tarjetas adicionales o una carcasa con acabado especial.",
+    a: "El terminal parte de [[p:terminal]] sin IVA, con llaveros personalizados incluidos para tu plantilla inicial, y los fichajes van incluidos en todos los planes de Drenpos ([[p:fichaje]] al mes por cada persona adicional, sin IVA). En las implantaciones acompañadas el terminal va incluido con las llaves. Pide presupuesto si necesitas varios terminales, tarjetas adicionales o una carcasa con acabado especial.",
   },
   {
     q: "¿El terminal de fichaje sirve también para gestionar las vacaciones del equipo?",
-    a: "Sí, aunque las vacaciones no se piden en el aparato. El terminal registra entradas y salidas, y la licencia de fichaje de 1 € por usuario y mes incluye las vacaciones y los permisos sin coste extra. El empleado pide los días desde la app del móvil o el portal viendo su saldo, el responsable aprueba, rechaza o propone otras fechas, y el calendario del equipo enseña quién falta cada día.",
+    a: "Sí, aunque las vacaciones no se piden en el aparato. El terminal registra entradas y salidas, y la licencia de fichaje, incluida en el plan, incluye las vacaciones y los permisos sin coste extra. El empleado pide los días desde la app del móvil o el portal viendo su saldo, el responsable aprueba, rechaza o propone otras fechas, y el calendario del equipo enseña quién falta cada día.",
   },
   {
     q: "¿Se puede poner el logo de mi empresa en el terminal?",
@@ -361,14 +362,14 @@ const productSchema = {
   ],
   offers: {
     "@type": "Offer",
-    price: "140",
+    price: decimal(valor("terminal")),
     priceCurrency: "EUR",
     priceValidUntil: "2027-12-31",
     availability: "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
     url: CANONICAL,
     valueAddedTaxIncluded: false,
-    description: "Terminal desde 140 € sin IVA con llaveros personalizados. Licencia de fichaje desde 1 €/usuario/mes.",
+    description: "Terminal desde [[p:terminal]] sin IVA con llaveros personalizados. Fichajes incluidos en el plan; [[p:fichaje]]/usuario/mes cada persona adicional.",
     seller: { "@type": "Organization", name: "Drenpos Tech SL" },
   },
 };
@@ -377,11 +378,11 @@ const productSchema = {
 <Base
   title="Dispositivo de Fichaje con Llavero RFID y QR · Drenpos"
   meta_title="Dispositivo de Fichaje RFID y QR para Empresas | Drenpos"
-  description="Terminal de fichaje con llavero RFID, tarjeta o QR y tu logo en la carcasa. Ficha sin internet y trae vacaciones y turnos incluidos. Desde 140 €."
+  description="Terminal de fichaje con llavero RFID, tarjeta o QR y tu logo en la carcasa. Ficha sin internet y trae vacaciones y turnos incluidos. Fabricado por Drenpos."
   canonical={CANONICAL}
   image={`${IMG}/terminal-drenpos-og.jpg`}
   published_date="2026-09-03"
-  modified_date="2026-10-17"
+  modified_date="2026-10-22"
   author={{ name: "Alonso Bermejo Pérez", url: "/about", jobTitle: "CEO & Founder" }}
 >
   <!-- Datos estructurados -->
@@ -426,7 +427,7 @@ const productSchema = {
             sistema completo.
           </p>
           <div class="mb-8">
-            <LandingMeta updated="2026-10-17" published="2026-09-03" />
+            <LandingMeta updated="2026-10-22" published="2026-09-03" />
           </div>
 
           <ul class="flex flex-wrap gap-4 mb-10">
@@ -459,7 +460,7 @@ const productSchema = {
             </div>
             <div class="flex items-center gap-2">
               <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
-              Desde 140 € sin IVA
+              Fabricado por Drenpos
             </div>
             <div class="flex items-center gap-2">
               <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
@@ -574,7 +575,7 @@ const productSchema = {
         <p class="text-lg leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
           El terminal registra las entradas y las salidas, y detrás va la
           gestión del equipo completa. La licencia de fichaje de Drenpos, de
-          1 € por usuario y mes sin IVA, incluye vacaciones y permisos con
+          incluida en todos los planes ([[p:fichaje]] por persona adicional y mes, sin IVA), incluye vacaciones y permisos con
           cupos, solicitud desde el móvil y aprobación del responsable,
           control de entrada y salida con
           incidencias y tolerancias, calendarios con turnos rotativos y
@@ -883,7 +884,7 @@ const productSchema = {
       <div class="row justify-center">
         <div class="lg:col-8">
           <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
-            <h2 class="h3 font-bold mb-3 text-white">Terminal desde 140 €, fichajes desde 1 € por usuario</h2>
+            <h2 class="h3 font-bold mb-3 text-white">Pide tu terminal con el logo de tu empresa</h2>
             <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
               El terminal incluye los llaveros personalizados de tu plantilla
               inicial y la fuente de alimentación. La licencia de fichaje de
@@ -893,7 +894,7 @@ const productSchema = {
               las implantaciones acompañadas el terminal va incluido.
             </p>
             <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
-              Ese 1 € por usuario y mes incluye vacaciones y permisos, control
+              Esa licencia, incluida en el plan, incluye vacaciones y permisos, control
               de entrada y salida, calendarios laborales, turnos rotativos y
               geolocalización opcional del fichaje desde el móvil.
             </p>

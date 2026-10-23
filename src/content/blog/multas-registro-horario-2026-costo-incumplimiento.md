@@ -3,7 +3,7 @@ title: "Multas del registro horario en 2026: cuánto son de verdad y cómo evita
 meta_title: "Multas registro horario 2026: cuantías y cómo evitarlas"
 description: "Multas por no llevar el registro de jornada a 17 de octubre de 2026: 751 a 7.500 € por infracción grave, qué cambiaría el real decreto y cómo evitar la sanción."
 date: 2026-07-21
-updated: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/multas-registro-horario-2026-costo-incumplimiento/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -31,7 +31,7 @@ faq:
   - question: "¿Qué pide la Inspección de Trabajo sobre el registro de jornada?"
     answer: "El registro diario de cada persona con la hora de inicio y fin, de los últimos cuatro años si hace falta, y que refleje la jornada real. Suele cruzarlo con cuadrantes, nóminas y lo que cuenten los trabajadores. Si hay horas extra, deben estar registradas día a día (artículo 35.5 del Estatuto)."
   - question: "¿Cómo evito una multa del registro horario?"
-    answer: "Registrando cada día el inicio y el fin de la jornada de cada persona en un sistema que no se pueda retocar sin dejar rastro, con las horas extra calculadas desde su horario y un informe que puedas sacar en minutos. En Drenpos cuesta 1 € por usuario y mes sin IVA, con vacaciones, incidencias y turnos incluidos."
+    answer: "Registrando cada día el inicio y el fin de la jornada de cada persona en un sistema que no se pueda retocar sin dejar rastro, con las horas extra calculadas desde su horario y un informe que puedas sacar en minutos. En Drenpos el fichaje va incluido en todos los planes ([[p:fichaje]] por persona adicional y mes sin IVA), con vacaciones, incidencias y turnos incluidos."
   - question: "¿Puede reclamarme horas extra un trabajador si no tengo registro?"
     answer: "Sí. Si no hay registro fiable, la empresa tiene difícil desmentir las horas extra que el trabajador alegue, y puede acabar teniendo que pagarlas. El registro protege a las dos partes: al trabajador frente a horas que nadie paga y a la empresa frente a reclamaciones que no puede rebatir."
 ---
@@ -98,7 +98,7 @@ Registrando cada día el inicio y el fin de la jornada de cada persona en un sis
 
 ![A woman reviewing documents and using a calculator on a wooden table.](/images/blog/multas-registro-horario-2026-costo-incumplimiento/section-2.jpg)
 
-Con Drenpos, por 1 € por usuario y mes sin IVA:
+Con Drenpos, incluido en cualquier plan o solo el control horario desde [[p:equipo10]] al mes para 10 personas, sin IVA:
 
 1. **Cada persona ficha donde le resulta natural:** app en el móvil, web, QR o un [terminal con llavero, tarjeta o QR](/dispositivo-fichaje) que sigue fichando sin internet. El terminal no usa huella ni cara, así que no hay datos biométricos que justificar ante la AEPD ([por qué importa](/blog/fichar-con-huella-aepd-alternativas)).
 2. **Las horas esperadas salen de su calendario**, con turnos rotativos y festivos nacionales, autonómicos o locales. Las extras se calculan día a día.
@@ -125,7 +125,7 @@ El registro diario de cada persona con la hora de inicio y fin, de los últimos 
 
 ### ¿Cómo evito una multa del registro horario?
 
-Registrando cada día el inicio y el fin de la jornada de cada persona en un sistema que no se pueda retocar sin dejar rastro, con las horas extra calculadas desde su horario y un informe que puedas sacar en minutos. En Drenpos cuesta 1 € por usuario y mes sin IVA, con vacaciones, incidencias y turnos incluidos.
+Registrando cada día el inicio y el fin de la jornada de cada persona en un sistema que no se pueda retocar sin dejar rastro, con las horas extra calculadas desde su horario y un informe que puedas sacar en minutos. En Drenpos el fichaje va incluido en todos los planes ([[p:fichaje]] por persona adicional y mes sin IVA), con vacaciones, incidencias y turnos incluidos.
 
 ### ¿Puede reclamarme horas extra un trabajador si no tengo registro?
 

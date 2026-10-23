@@ -3,7 +3,7 @@ title: "Los 10 mejores programas de control horario para pymes en 2026, con prec
 meta_title: "Mejores programas de control horario 2026: precios reales"
 description: "Diez programas de control horario comparados con precios revisados en octubre de 2026: vacaciones, turnos rotativos, terminal propio y mínimos de cada uno."
 date: 2026-06-11
-updated: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/mejores-programas-control-horario/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -30,16 +30,16 @@ faq:
   - question: "¿Cuál es el mejor programa de control horario para una pyme con TPV o almacén?"
     answer: "Uno que viva en el mismo sistema que la caja, el stock y la facturación, para no cuadrar datos entre programas. Drenpos lleva el fichaje dentro del ERP, con vacaciones, control de entrada y salida y turnos rotativos incluidos, y un terminal propio que ficha sin internet. Si solo necesitas RRHH y tienes más de 15 personas, Sesame HR o Factorial son opciones sólidas."
   - question: "¿Cuánto cuesta un programa de control horario?"
-    answer: "A 17 de octubre de 2026, los precios de partida publicados van de 1 € a unos 6,65 € por usuario y mes. Fíjate en los mínimos: Sesame HR pide 15 empleados como mínimo y Track People, 5 licencias. En Drenpos el fichaje cuesta 1 € por usuario y mes sin IVA, con vacaciones, incidencias de entrada y salida, turnos rotativos y geolocalización opcional incluidos."
+    answer: "A 17 de octubre de 2026, los precios de partida publicados van de 1,50 € a unos 6,65 € por usuario y mes. Fíjate en los mínimos: Sesame HR pide 15 empleados como mínimo y Track People, 5 licencias. En Drenpos el fichaje va incluido en todos los planes ([[p:fichaje]] por persona adicional y mes sin IVA), con vacaciones, incidencias de entrada y salida, turnos rotativos y geolocalización opcional incluidos."
   - question: "¿Sirve un Excel o una app gratuita para fichar?"
     answer: "Es arriesgado. Un Excel se puede rehacer sin dejar rastro y es difícil de defender ante la Inspección o en un juicio por horas extra. La infracción grave por no llevar bien el registro se sanciona hoy con 751 a 7.500 euros. Las apps gratuitas pensadas para medir proyectos no suelen sacar el informe diario por persona que se pide en España."
   - question: "¿Qué programa de control horario tiene terminal de fichaje propio?"
-    answer: "Drenpos fabrica el suyo: ficha con llavero RFID, tarjeta o QR, muestra el nombre y la foto del empleado, funciona a 12 voltios y sigue fichando sin internet, guardando cada fichaje con su hora real. Cuesta desde 140 euros sin IVA. No usa huella ni cara, así que la empresa no trata datos biométricos."
+    answer: "Drenpos fabrica el suyo: ficha con llavero RFID, tarjeta o QR, muestra el nombre y la foto del empleado, funciona a 12 voltios y sigue fichando sin internet, guardando cada fichaje con su hora real. Cuesta desde [[n:terminal]] euros sin IVA. No usa huella ni cara, así que la empresa no trata datos biométricos."
   - question: "¿Qué programa de control horario gestiona turnos rotativos 4x4?"
-    answer: "Drenpos incluye calendarios rotativos (4x4, 5/2, 6/3 o turnos de noche) en la licencia de fichaje de 1 € por usuario y mes: defines el ciclo y el primer día de cada persona, y el sistema calcula horas esperadas, extras y vacaciones. En Sesame HR los turnos van en todos los planes; en Woffu, solo en Enterprise y bajo demanda; en Track People, en el plan Premium."
+    answer: "Drenpos incluye calendarios rotativos (4x4, 5/2, 6/3 o turnos de noche) en la licencia de fichaje incluida en el plan ([[p:fichaje]] por persona adicional): defines el ciclo y el primer día de cada persona, y el sistema calcula horas esperadas, extras y vacaciones. En Sesame HR los turnos van en todos los planes; en Woffu, solo en Enterprise y bajo demanda; en Track People, en el plan Premium."
 ---
 
-> **Respuesta corta:** para una pyme con mostrador, almacén o turnos, el mejor programa de control horario es el que ficha donde está la gente y no obliga a cuadrar datos con otro sistema. Drenpos cuesta 1 € por usuario y mes sin IVA, con vacaciones, incidencias y turnos rotativos incluidos y un terminal propio desde 140 € que ficha sin internet. Si buscas una suite de RRHH para más de 15 personas, mira Sesame HR o Factorial. Abajo tienes los diez con precios revisados el 17 de octubre de 2026.
+> **Respuesta corta:** para una pyme con mostrador, almacén o turnos, el mejor programa de control horario es el que ficha donde está la gente y no obliga a cuadrar datos con otro sistema. En Drenpos el fichaje va incluido en todos los planes ([[p:fichaje]] por persona adicional y mes sin IVA), con vacaciones, incidencias y turnos rotativos incluidos y un terminal propio desde [[p:terminal]] que ficha sin internet. Si buscas una suite de RRHH para más de 15 personas, mira Sesame HR o Factorial. Abajo tienes los diez con precios revisados el 17 de octubre de 2026.
 
 > **Actualizado el 17 de octubre de 2026**
 >
@@ -66,7 +66,7 @@ Son Drenpos, Factorial, Sesame HR, Bizneo HR, Kenjo, Woffu, netTime one, Track P
 
 | Programa | Pensado para | Vacaciones | Turnos rotativos | Terminal propio | Precio de partida publicado |
 | --- | --- | --- | --- | --- | --- |
-| **Drenpos** | Pyme con TPV, almacén o turnos | Incluidas | Incluidos (4x4, 5/2, 6/3) | Sí, desde 140 €, ficha sin internet | 1 €/usuario/mes sin IVA |
+| **Drenpos** | Pyme con TPV, almacén o turnos | Incluidas | Incluidos (4x4, 5/2, 6/3) | Sí, desde [[p:terminal]], ficha sin internet | [[p:fichaje]]/persona; desde [[p:equipo10]]/mes para 10 |
 | Factorial | RRHH completo | Sí (ausencias) | No lo detalla su web | No | Desde 5 €/persona/mes |
 | Sesame HR | RRHH, desde 15 personas | Sí | Sí, en todos los planes | No | 4,75 €/empleado/mes (anual), mínimo 15 |
 | Bizneo HR | RRHH modular | Módulo aparte | Módulo aparte | No | Pack de 5 empleados: 399 €/año |
@@ -85,10 +85,10 @@ Son Drenpos, Factorial, Sesame HR, Bizneo HR, Kenjo, Woffu, netTime one, Track P
 
 Drenpos es un ERP con TPV, almacén y facturación, y el fichaje vive dentro. Eso evita lo que más tiempo quita en una pyme: pasar horas de un programa a otro. El informe que va a la gestoría sale con los fichajes, las ausencias y las horas extra del mismo sitio donde se hace la caja.
 
-Lo que incluye la licencia de fichaje (1 € por usuario y mes sin IVA):
+Lo que incluye la licencia de fichaje (incluida en todos los planes; solo fichajes, Drenpos Equipo desde [[p:equipo10]]/mes para 10 personas, sin IVA):
 
 - **Formas de fichar:** app instalable en el móvil, web, código QR o llavero RFID en el [terminal de fichaje](/dispositivo-fichaje) propio.
-- **Terminal que ficha sin internet:** si se cae la WiFi o está en una obra sin cobertura, guarda cada fichaje con la hora de su reloj y lo sube solo al volver la red. Funciona a 12 V, así que va también en la furgoneta. Desde 140 € sin IVA con llaveros para la plantilla.
+- **Terminal que ficha sin internet:** si se cae la WiFi o está en una obra sin cobertura, guarda cada fichaje con la hora de su reloj y lo sube solo al volver la red. Funciona a 12 V, así que va también en la furgoneta. Desde [[p:terminal]] sin IVA con llaveros para la plantilla.
 - **[Vacaciones y ausencias](/software-vacaciones-ausencias):** saldo por persona (reinicio en enero o en el aniversario, consolidado mes a mes, días que pasan al año siguiente), solicitud desde el móvil, aprobación o contrapropuesta de fechas con motivo, ausencias por horas y bajas sin fecha de fin.
 - **Control de entrada y salida:** opcional. Compara cada fichaje con el horario de la persona y marca entrada tarde, salida anticipada, olvidos y exceso de horas, con tolerancias en minutos. El responsable justifica o descarta cada incidencia con una nota.
 - **[Turnos rotativos](/software-turnos-rotativos):** calendarios 4x4, 5/2, 6/3 o de noche con el primer día del ciclo de cada persona. Los días de descanso no suman horas ni gastan vacaciones.
@@ -231,17 +231,17 @@ Y tres perfiles que ayudan a decidir rápido:
 
 ## ¿Cuánto cuesta de verdad para una pyme de 8 personas?
 
-El precio por usuario engaña cuando hay mínimos. Con 8 personas y los precios publicados a 17 de octubre de 2026, el fichaje sale por unos 8 € al mes en Drenpos, 12 € en Woffu Lite y 20 € en Track People Standard, mientras que en Sesame HR pagas el mínimo de 15 empleados: 71,25 € al mes en anual. La diferencia anual supera los 750 €.
+El precio por usuario no cuenta toda la historia cuando hay mínimos o paquetes. Con 8 personas y los precios publicados a 17 de octubre de 2026, el fichaje sale por 12 € al mes en Woffu Lite, [[p:equipo10]] en Drenpos Equipo (paquete hasta 10 personas) y 20 € en Track People Standard. En Sesame HR se paga el mínimo de 15 empleados, 71,25 € al mes en anual. Antes de mirar la cifra, mira qué entra en cada una.
 
 | Programa | Cálculo con 8 personas | Coste mensual aproximado | Qué incluye a ese precio |
 | --- | --- | --- | --- |
-| **Drenpos** | 8 × 1 € | 8 € sin IVA | Fichaje, vacaciones, incidencias, turnos rotativos, planificación anual |
+| **Drenpos Equipo** | Paquete hasta 10 personas | [[p:equipo10]] sin IVA | Fichaje, vacaciones, incidencias, turnos rotativos, planificación anual |
 | Woffu Lite | 8 × 1,50 € | 12 € | Fichaje y vacaciones; sin turnos |
 | Track People Standard | 8 × 2,50 € | 20 € | Fichaje y gestión de ausencias; sin turnos |
 | Kenjo | 8 × 5,40 € (precio "desde") | 43,20 € | Según plan en su calculadora |
 | Sesame HR Essential | Mínimo 15 × 4,75 € | 71,25 € (anual) | Fichaje, vacaciones y turnos |
 
-El terminal de Drenpos es opcional y se paga una vez (desde 140 € sin IVA). Los precios de terceros son los publicados en sus webs en esa fecha; pueden llevar IVA o no según el proveedor.
+El terminal de Drenpos es opcional y se paga una vez (desde [[p:terminal]] sin IVA). Los precios de terceros son los publicados en sus webs en esa fecha; pueden llevar IVA o no según el proveedor.
 
 ![Propietario de pequeño negocio revisando gestión de horarios en portátil.](/images/blog/mejores-programas-control-horario/section-2.jpg)
 
@@ -282,7 +282,7 @@ Uno que viva en el mismo sistema que la caja, el stock y la facturación, para n
 
 ### ¿Cuánto cuesta un programa de control horario?
 
-A 17 de octubre de 2026, los precios de partida publicados van de 1 € a unos 6,65 € por usuario y mes. Fíjate en los mínimos: Sesame HR pide 15 empleados como mínimo y Track People, 5 licencias. En Drenpos el fichaje cuesta 1 € por usuario y mes sin IVA, con vacaciones, incidencias de entrada y salida, turnos rotativos y geolocalización opcional incluidos.
+A 17 de octubre de 2026, los precios de partida publicados van de 1,50 € a unos 6,65 € por usuario y mes. Fíjate en los mínimos: Sesame HR pide 15 empleados como mínimo y Track People, 5 licencias. En Drenpos el fichaje va incluido en todos los planes ([[p:fichaje]] por persona adicional y mes sin IVA), con vacaciones, incidencias de entrada y salida, turnos rotativos y geolocalización opcional incluidos.
 
 ### ¿Sirve un Excel o una app gratuita para fichar?
 
@@ -290,8 +290,8 @@ Es arriesgado. Un Excel se puede rehacer sin dejar rastro y es difícil de defen
 
 ### ¿Qué programa de control horario tiene terminal de fichaje propio?
 
-Drenpos fabrica el suyo: ficha con llavero RFID, tarjeta o QR, muestra el nombre y la foto del empleado, funciona a 12 voltios y sigue fichando sin internet, guardando cada fichaje con su hora real. Cuesta desde 140 euros sin IVA. No usa huella ni cara, así que la empresa no trata datos biométricos.
+Drenpos fabrica el suyo: ficha con llavero RFID, tarjeta o QR, muestra el nombre y la foto del empleado, funciona a 12 voltios y sigue fichando sin internet, guardando cada fichaje con su hora real. Cuesta desde [[n:terminal]] euros sin IVA. No usa huella ni cara, así que la empresa no trata datos biométricos.
 
 ### ¿Qué programa de control horario gestiona turnos rotativos 4x4?
 
-Drenpos incluye calendarios rotativos (4x4, 5/2, 6/3 o turnos de noche) en la licencia de fichaje de 1 € por usuario y mes: defines el ciclo y el primer día de cada persona, y el sistema calcula horas esperadas, extras y vacaciones. En Sesame HR los turnos van en todos los planes; en Woffu, solo en Enterprise y bajo demanda; en Track People, en el plan Premium.
+Drenpos incluye calendarios rotativos (4x4, 5/2, 6/3 o turnos de noche) en la licencia de fichaje incluida en el plan ([[p:fichaje]] por persona adicional): defines el ciclo y el primer día de cada persona, y el sistema calcula horas esperadas, extras y vacaciones. En Sesame HR los turnos van en todos los planes; en Woffu, solo en Enterprise y bajo demanda; en Track People, en el plan Premium.

@@ -3,6 +3,7 @@ title: "Control de entrada y salida de empleados: qué hacer con los retrasos"
 meta_title: "Control de entrada y salida de empleados y retrasos"
 description: "Cuántos minutos de retraso se toleran, qué permite la ley ante retrasos reiterados y cómo detectar incidencias de fichaje con tolerancias y notas."
 date: 2026-09-23
+updated: 2026-10-22
 image: "/images/blog/registro-horario-2026-nuevos-requisitos-adaptacion/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -143,4 +144,4 @@ En Drenpos el terminal sigue fichando con su propio reloj y sube los fichajes al
 
 ## Siguiente paso
 
-El control de entrada y salida va incluido en el módulo de fichajes de Drenpos, a 1 € por usuario y mes sin IVA, sin coste extra. Tienes el detalle en [control de entrada y salida](/control-horario#entrada-salida) y el terminal para la puerta del almacén en [dispositivo de fichaje](/dispositivo-fichaje). Si además llevas las vacaciones en una hoja, mira cómo se hace la [gestión de vacaciones y ausencias sin Excel](/blog/gestion-vacaciones-permisos-pymes-sin-excel), y para que las horas esperadas cuadren con los festivos del año que viene, el [calendario laboral 2027](/blog/calendario-laboral-2027-festivos-horas-extra).
+El control de entrada y salida va incluido en el módulo de fichajes de Drenpos, incluido en todos los planes ([[p:fichaje]] por persona adicional y mes sin IVA), sin coste extra. Tienes el detalle en [control de entrada y salida](/control-horario#entrada-salida) y el terminal para la puerta del almacén en [dispositivo de fichaje](/dispositivo-fichaje). Si además llevas las vacaciones en una hoja, mira cómo se hace la [gestión de vacaciones y ausencias sin Excel](/blog/gestion-vacaciones-permisos-pymes-sin-excel), y para que las horas esperadas cuadren con los festivos del año que viene, el [calendario laboral 2027](/blog/calendario-laboral-2027-festivos-horas-extra).

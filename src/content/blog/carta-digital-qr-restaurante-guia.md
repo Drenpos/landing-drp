@@ -3,6 +3,7 @@ title: "Carta digital con QR para restaurantes: qué debe tener y cómo montarla
 meta_title: "Carta digital con QR para restaurantes: guía 2026"
 description: "Qué necesita una carta digital con QR en un bar o restaurante: alérgenos, grupos con fotos, varias cartas por horario, un QR que no cambia nunca y analítica de escaneos."
 date: 2026-09-10
+updated: 2026-10-22
 image: "/images/blog/carta-digital-qr-restaurante-guia/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -134,7 +135,7 @@ Con las cartas pasa lo mismo que con el resto del sistema: preferimos contar el 
 
 **Próximamente.** Pedidos desde la mesa y pago desde el móvil del cliente. Están en desarrollo y no damos fecha, porque preferimos no darla a darla mal. Cómo encajará ese flujo en la sala lo contamos en [pedidos y pago desde la mesa con QR](/blog/pedidos-pago-desde-la-mesa-qr-restaurante).
 
-Todo esto vive dentro del mismo sistema que lleva la facturación, el inventario y el [control horario del equipo](/control-horario), así que la carta no es una herramienta más que mantener aparte. El detalle de precios está en [planes y precios](/pricing): el plan Full incluye TPV por 39 euros al mes sin IVA con 5 usuarios, y el módulo TPV suelto cuesta 20,58 euros al mes sin IVA.
+Todo esto vive dentro del mismo sistema que lleva la facturación, el inventario y el [control horario del equipo](/control-horario), así que la carta no es una herramienta más que mantener aparte. El detalle de precios está en [planes y precios](/pricing): el plan Tienda y Hostelería incluye el TPV por [[n:tienda]] euros al mes sin IVA con [[n:tienda_usuarios]] usuarios y fichaje para 8; con control de stock o varios locales, el plan Almacén con TPV son [[n:almacen_tpv]] euros al mes.
 
 ## ¿Cuánto tiempo lleva ponerla en marcha?
 

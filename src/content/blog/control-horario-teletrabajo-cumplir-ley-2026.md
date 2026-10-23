@@ -3,7 +3,7 @@ title: "Control horario en teletrabajo: cómo cumplir la ley en 2026"
 meta_title: "Control horario en teletrabajo 2026: qué exige la ley"
 description: "Cómo registrar la jornada en teletrabajo según la Ley 10/2021: fichaje desde el móvil o la web, pausas, horas extra, desconexión y ubicación sin vigilar."
 date: 2026-05-27
-updated: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/control-horario-teletrabajo-cumplir-ley-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -99,7 +99,7 @@ Con el [control de entrada y salida](/control-entrada-salida-empleados) activado
 
 Con un solo registro para todos. Quien va a la oficina ficha en el terminal o con el QR y quien está en casa, con la app; todo cae en el mismo sistema, con el mismo calendario y los mismos festivos. Si cada modalidad va por un canal distinto, el informe de fin de mes se convierte en un rompecabezas.
 
-En Drenpos cada persona tiene su calendario laboral y sus festivos (nacionales, autonómicos y locales, que importan cuando hay gente teletrabajando desde otra comunidad). La planificación anual del equipo enseña de un vistazo quién trabaja, quién libra y quién está de vacaciones cada día, y descarga un PDF del año por trabajador. La licencia de fichaje cuesta 1 € por usuario y mes sin IVA, con todo esto incluido.
+En Drenpos cada persona tiene su calendario laboral y sus festivos (nacionales, autonómicos y locales, que importan cuando hay gente teletrabajando desde otra comunidad). La planificación anual del equipo enseña de un vistazo quién trabaja, quién libra y quién está de vacaciones cada día, y descarga un PDF del año por trabajador. El fichaje va incluido en todos los planes ([[p:fichaje]] por persona adicional y mes sin IVA), con todo esto incluido.
 
 ## ¿Qué dice hoy la ley y qué puede cambiar?
 

@@ -1,4 +1,5 @@
 ---
+import { decimal, valor } from "@/lib/precios";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -55,7 +56,7 @@ const ficha = [
   { k: "Tipos de factura", v: "Facturas completas, simplificadas y rectificativas" },
   { k: "Series", v: "Series y numeración configurables con auto incremento" },
   { k: "Entrega al cliente", v: "Envío de la factura por correo electrónico y por WhatsApp desde el propio sistema" },
-  { k: "Planes", v: "Incluido en todos los planes, desde 19 €/mes sin IVA (plan Essential)" },
+  { k: "Planes", v: "Incluido en todos los planes, desde [[p:desde]]/mes sin IVA (plan Facturación)" },
 ];
 
 const ventajas = [
@@ -119,7 +120,7 @@ const comparativa = [
     registro: "Sí, con huella encadenada",
     envio: "Sí, con panel de envíos",
     qr: "Sí, con la leyenda VERI*FACTU",
-    riesgo: "Incluido en todos los planes, desde 19 €/mes sin IVA",
+    riesgo: "Incluido en todos los planes, desde [[p:desde]]/mes sin IVA",
     destacado: true,
   },
 ];
@@ -174,11 +175,11 @@ const faqs = [
   },
   {
     q: "¿Sirve para autónomos?",
-    a: "Sí. Un autónomo que emite facturas con un programa informático entra en el reglamento igual que una sociedad. La fecha es octubre de 2028, anunciada por Hacienda el 5 de octubre de 2026 y pendiente de publicación en el BOE; hasta entonces el RDL 15/2025 mantiene el 1 de julio de 2027. El plan Essential parte de 19 €/mes sin IVA e incluye la facturación con Verifactu, el envío de las facturas por correo y por WhatsApp y los informes.",
+    a: "Sí. Un autónomo que emite facturas con un programa informático entra en el reglamento igual que una sociedad. La fecha es octubre de 2028, anunciada por Hacienda el 5 de octubre de 2026 y pendiente de publicación en el BOE; hasta entonces el RDL 15/2025 mantiene el 1 de julio de 2027. El plan Facturación cuesta [[p:facturacion]]/mes sin IVA e incluye la facturación con Verifactu, el envío de las facturas por correo y por WhatsApp y los informes.",
   },
   {
     q: "¿Incluye TPV para tienda o restaurante?",
-    a: "El TPV está en el plan Full, desde 39 €/mes sin IVA, y también como módulo suelto. Los tickets simplificados y las facturas que salen del TPV pasan por el mismo motor de facturación, con su registro, su QR y su remisión a la AEAT. Puedes verlo en la página de software de almacén y tienda.",
+    a: "El TPV viene en el plan Tienda y Hostelería ([[p:tienda]]/mes) y se puede añadir al plan Almacén por [[p:tpv]]/mes, sin IVA. Los tickets simplificados y las facturas que salen del TPV pasan por el mismo motor de facturación, con su registro, su QR y su remisión a la AEAT. Puedes verlo en la página de software de almacén y tienda.",
   },
   {
     q: "¿Qué hago con mis facturas antiguas?",
@@ -209,7 +210,7 @@ const otrasObligaciones = [
   {
     tag: "Laboral · artículo 34.9 ET",
     title: "Registro de la jornada",
-    body: "El registro diario de entrada y salida de cada trabajador, con informes para la Inspección. Desde 1 €/usuario/mes sin IVA.",
+    body: "El registro diario de entrada y salida de cada trabajador, con informes para la Inspección. Incluido en todos los planes; [[p:fichaje]]/usuario/mes cada persona adicional, sin IVA.",
     url: "/control-horario",
   },
   {
@@ -268,13 +269,13 @@ const softwareSchema = {
   ],
   offers: {
     "@type": "Offer",
-    price: "19.00",
+    price: decimal(valor("facturacion")),
     priceCurrency: "EUR",
     priceValidUntil: "2027-12-31",
     availability: "https://schema.org/InStock",
     url: "https://www.drenpos.com/pricing",
     valueAddedTaxIncluded: false,
-    description: "Facturación Verifactu incluida en todos los planes. Plan Essential desde 19 €/mes sin IVA, sin permanencia.",
+    description: "Facturación Verifactu incluida en todos los planes. Plan Facturación, [[p:facturacion]]/mes sin IVA, sin permanencia.",
     seller: { "@type": "Organization", name: "Drenpos Tech SL" },
   },
 };
@@ -282,13 +283,13 @@ const softwareSchema = {
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
 const PAGE_PUBLISHED = "2026-09-14";
-const PAGE_UPDATED = "2026-10-07";
+const PAGE_UPDATED = "2026-10-22";
 ---
 
 <Base
   title="Software de Facturación Verifactu · Drenpos"
   meta_title="Software de Facturación Verifactu para Pymes | Drenpos"
-  description="Programa de facturación adaptado a Verifactu para pymes y autónomos: huella encadenada, QR, remisión a la AEAT y panel de envíos. Desde 19 €/mes sin IVA."
+  description="Programa de facturación adaptado a Verifactu para pymes y autónomos: huella encadenada, QR, remisión a la AEAT y panel de envíos, en todos los planes."
   canonical={CANONICAL}
   image={`${IMG}/verifactu-cover.webp`}
   published_date={PAGE_PUBLISHED}
@@ -373,7 +374,7 @@ const PAGE_UPDATED = "2026-10-07";
             </div>
             <div class="flex items-center gap-2">
               <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
-              Desde 19 €/mes sin IVA
+              Tickets del TPV incluidos
             </div>
             <div class="flex items-center gap-2">
               <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
@@ -710,12 +711,12 @@ const PAGE_UPDATED = "2026-10-07";
       <div class="row justify-center">
         <div class="lg:col-8">
           <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
-            <h2 class="h3 font-bold mb-3 text-white">Verifactu incluido, desde 19 € al mes</h2>
+            <h2 class="h3 font-bold mb-3 text-white">Verifactu ya viene dentro</h2>
             <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
               La facturación en modalidad Verifactu entra en todos los planes,
-              también en el plan Essential de 19 €/mes sin IVA. Si además
-              necesitas almacén, el plan Pro cuesta 29 €/mes, y si vendes en
-              mostrador el plan Full con TPV cuesta 39 €/mes. Sin permanencia,
+              también en el plan Facturación, de [[p:facturacion]]/mes sin IVA. Si además
+              necesitas almacén, el plan Almacén cuesta [[p:almacen]]/mes, y si vendes en
+              mostrador el plan Almacén con TPV cuesta [[p:almacen_tpv]]/mes. Sin permanencia,
               con actualizaciones y soporte incluidos.
             </p>
             <ul class="flex flex-wrap gap-4 justify-center mb-6">
@@ -727,8 +728,7 @@ const PAGE_UPDATED = "2026-10-07";
               </li>
             </ul>
             <p class="text-sm max-w-xl mx-auto" style="color: rgba(255,255,255,0.55);">
-              Precios sin IVA. El módulo financiero suelto cuesta 16,45 €/mes si
-              prefieres montar tu combinación de módulos.
+              Precios sin IVA, sin permanencia y con las actualizaciones incluidas.
             </p>
           </div>
         </div>

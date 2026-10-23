@@ -3,6 +3,7 @@ title: "Kits y packs montables: cómo llevar el stock de componentes sin descuad
 meta_title: "Kits y packs montables: stock de componentes y montaje"
 description: "Cuántos packs puedes montar con tu stock, cuándo montar por adelantado y cuándo bajo pedido, y qué coste, lote y caducidad lleva cada pack o kit."
 date: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/cuanto-cuesta-sga-wms-pyme-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -121,7 +122,7 @@ La ventaja es que la bolsa de herrajes sirve para varios muebles. Se prepara en 
 
 El pack es un artículo normal, con precio, peso y stock propio, que lleva su lista de materiales en la propia ficha. Un botón monta N packs de una vez: comprueba antes que hay de todo (si falta algo, dice qué y no toca nada), consume los componentes con el mismo criterio de lotes que las ventas y da entrada al pack con su lote propio y la caducidad del componente que antes caduca.
 
-Para montar bajo pedido no hace falta salir de la [preparación de pedidos](/software-preparacion-pedidos-picking). Si lo que falta para servir un pedido son packs que se pueden montar con lo que hay, el semáforo de preparación lo dice en ámbar y se montan en un paso, o solos si la empresa lo configura así. El montaje usa el módulo de producción, que va en el plan Producción por 50 € al mes sin IVA, con el inventario incluido.
+Para montar bajo pedido no hace falta salir de la [preparación de pedidos](/software-preparacion-pedidos-picking). Si lo que falta para servir un pedido son packs que se pueden montar con lo que hay, el semáforo de preparación lo dice en ámbar y se montan en un paso, o solos si la empresa lo configura así. El montaje usa el módulo de producción, que va en el plan Producción por [[p:produccion]] al mes sin IVA, con el inventario incluido.
 
 ## ¿Qué preguntar a un software antes de gestionar packs?
 

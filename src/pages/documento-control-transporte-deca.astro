@@ -1,4 +1,5 @@
 ---
+import { decimal, valor } from "@/lib/precios";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -152,7 +153,7 @@ const ficha = [
   { k: "Cambios", v: "Versión nueva con la misma dirección web e historial de cambios con su motivo. El albarán anulado queda indicado" },
   { k: "Control", v: "Activarlo requiere un permiso específico y no se puede deshacer" },
   { k: "Conservación", v: "Nada se borra: se conserva el tiempo que exige la ley, al menos un año" },
-  { k: "Precio", v: "Incluido en el módulo Financiero sin coste extra. Todos los planes, desde 19 €/mes sin IVA" },
+  { k: "Precio", v: "Incluido en el módulo Financiero sin coste extra. Todos los planes, desde [[p:desde]]/mes sin IVA" },
 ];
 
 const obligados = [
@@ -295,7 +296,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta el DeCA en Drenpos?",
-    a: "Nada aparte. Va incluido en el módulo Financiero, que está en todos los planes: Esencial desde 19 €/mes sin IVA, Pro 29 €/mes y Full 39 €/mes, sin permanencia. No hay pago por documento ni cuota de una plataforma externa.",
+    a: "Nada aparte. Va incluido en el módulo Financiero, que está en todos los planes: Facturación [[p:facturacion]]/mes sin IVA, Almacén [[p:almacen]]/mes y Almacén con TPV [[p:almacen_tpv]]/mes, sin permanencia. No hay pago por documento ni cuota de una plataforma externa.",
   },
   {
     q: "¿Necesito una aplicación o un registro del Ministerio?",
@@ -353,13 +354,13 @@ const softwareSchema = {
   ],
   offers: {
     "@type": "Offer",
-    price: "19.00",
+    price: decimal(valor("facturacion")),
     priceCurrency: "EUR",
     priceValidUntil: "2027-12-31",
     availability: "https://schema.org/InStock",
     url: "https://www.drenpos.com/pricing",
     valueAddedTaxIncluded: false,
-    description: "DeCA incluido sin coste extra en el módulo Financiero, presente en todos los planes. Plan Esencial desde 19 €/mes sin IVA, sin permanencia.",
+    description: "DeCA incluido sin coste extra en el módulo Financiero, presente en todos los planes. Plan Facturación, [[p:facturacion]]/mes sin IVA, sin permanencia.",
     seller: { "@type": "Organization", name: "Drenpos Tech SL" },
   },
 };
@@ -368,7 +369,7 @@ const softwareSchema = {
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
 const PAGE_PUBLISHED = "2026-09-28";
-const PAGE_UPDATED = "2026-10-17";
+const PAGE_UPDATED = "2026-10-22";
 ---
 
 <Base
@@ -455,7 +456,7 @@ const PAGE_UPDATED = "2026-10-17";
             </div>
             <div class="flex items-center gap-2">
               <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
-              Desde 19 €/mes sin IVA
+              Desde el albarán, en todos los planes
             </div>
             <div class="flex items-center gap-2">
               <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
@@ -990,8 +991,7 @@ const PAGE_UPDATED = "2026-10-17";
             <h2 class="h3 font-bold mb-3 text-white">DeCA incluido, sin pagar por documento</h2>
             <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
               El documento de control va dentro del módulo Financiero, sin coste
-              extra, y el módulo Financiero está en todos los planes: Esencial
-              desde 19 €/mes, Pro con almacén 29 €/mes y Full con TPV 39 €/mes.
+              extra, y el módulo Financiero está en todos los planes: Facturación [[p:facturacion]]/mes, Almacén [[p:almacen]]/mes y Almacén con TPV [[p:almacen_tpv]]/mes.
               Emitas diez albaranes o mil, el precio es el mismo. Sin
               permanencia, con actualizaciones y soporte incluidos.
             </p>
@@ -1004,8 +1004,7 @@ const PAGE_UPDATED = "2026-10-17";
               </li>
             </ul>
             <p class="text-sm max-w-xl mx-auto mb-0" style="color: rgba(255,255,255,0.55);">
-              Precios sin IVA. El módulo Financiero suelto cuesta 16,45 €/mes si
-              prefieres montar tu combinación de módulos.
+              Precios sin IVA, sin permanencia y con las actualizaciones incluidas.
             </p>
           </div>
         </div>

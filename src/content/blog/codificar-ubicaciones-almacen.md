@@ -3,6 +3,7 @@ title: "Cómo codificar las ubicaciones de un almacén: ejemplos de códigos, et
 meta_title: "Cómo codificar ubicaciones de almacén: ejemplos reales"
 description: "Cómo codificar las ubicaciones del almacén por zona, pasillo, estantería, altura y hueco: ejemplos de códigos, etiquetas, errores típicos y fija o caótica."
 date: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/preparacion-de-pedidos-picking-almacen/section-1.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -163,7 +164,7 @@ Cada almacén tiene sus ubicaciones y cada ubicación su QR imprimible para pega
 - **Orden de ruta y plano.** Picking, oleadas, recepción e inventarios siguen el recorrido que sale de los nombres. Más detalle en [preparación de pedidos y rutas de picking](/software-preparacion-pedidos-picking).
 - **Si vienes de otro programa.** La consulta por escáner reconoce las etiquetas de otro ERP por el nombre de la ubicación: no hace falta reetiquetar para empezar.
 
-Drenpos no decide por ti en qué hueco va cada palet según su rotación (lo que en un SGA grande se llama *slotting* automático). Para una pyme con personas y carretillas, la decisión la toma el mozo con el contenido del hueco en pantalla. Va en el módulo de Inventario, incluido en el plan Pro por 29 €/mes sin IVA.
+Drenpos no decide por ti en qué hueco va cada palet según su rotación (lo que en un SGA grande se llama *slotting* automático). Para una pyme con personas y carretillas, la decisión la toma el mozo con el contenido del hueco en pantalla. Va en el módulo de Inventario, incluido en el plan Almacén por [[p:almacen]]/mes sin IVA.
 
 ## Preguntas frecuentes sobre la codificación de ubicaciones
 

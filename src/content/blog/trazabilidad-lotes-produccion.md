@@ -3,6 +3,7 @@ title: "Trazabilidad de lotes en producción: de la materia prima al producto te
 meta_title: "Trazabilidad de lotes en producción y Reglamento 178/2002"
 description: "Cómo enlazar cada lote de materia prima con el lote de producto terminado, qué pide el Reglamento 178/2002 y cómo responder a una alerta de un proveedor."
 date: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/etiqueta-sscc-gs1-palets/section-1.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -131,7 +132,7 @@ Un simulacro útil sigue estos pasos:
 
 La pantalla de trazabilidad de un lote enseña su árbol de producción en los dos sentidos: de qué se hizo (qué lotes de materia prima se consumieron en la orden que lo fabricó, y de dónde salieron esos si también se fabricaron) y en qué se usó (qué órdenes lo consumieron, qué lote salió de ellas y a qué clientes se vendió). Funciona con lotes, con números de serie y con productos sin lote, y genera un informe PDF.
 
-Además, cada orden tiene su expediente en PDF: producto, lote y caducidad, unidades buenas y defectuosas, consumos por lote, serie, palet y ubicación, fases con operario y horas, incidencias, comentarios y firmas. Es el papel que suele pedir un cliente o una auditoría de calidad. El módulo de producción va en el plan Producción, 50 € al mes sin IVA, que incluye también el inventario con lotes, caducidades y salida FEFO.
+Además, cada orden tiene su expediente en PDF: producto, lote y caducidad, unidades buenas y defectuosas, consumos por lote, serie, palet y ubicación, fases con operario y horas, incidencias, comentarios y firmas. Es el papel que suele pedir un cliente o una auditoría de calidad. El módulo de producción va en el plan Producción, [[p:produccion]] al mes sin IVA, que incluye también el inventario con lotes, caducidades y salida FEFO.
 
 Si fabricas pan, bollería o platos preparados, en la guía de [producción en obrador e industria alimentaria](/blog/produccion-obrador-industria-alimentaria) tienes cómo se combina esto con caducidades cortas y mermas diarias. Y si tu transformación es de despiece, el vínculo entre lotes está en la guía de [despiece y merma cárnica](/blog/despiece-merma-trazabilidad-carnica).
 

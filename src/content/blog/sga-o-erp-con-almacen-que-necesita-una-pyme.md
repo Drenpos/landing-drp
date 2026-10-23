@@ -3,7 +3,7 @@ title: "¿SGA aparte o ERP con almacén? Cómo elegir según tu caso y lo que cu
 meta_title: "SGA aparte o ERP con almacén: cómo elegir en 2026"
 description: "Cuándo basta el almacén del ERP y cuándo compensa un SGA aparte: preguntas para decidir, lo que cuesta cada camino y ejemplos según el tipo de empresa."
 date: 2026-09-23
-updated: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/cuanto-cuesta-sga-wms-pyme-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -32,7 +32,7 @@ faq:
   - question: "¿Qué le conviene a una pyme de 10 a 20 personas con almacén?"
     answer: "Si el almacén se mueve con personas, transpaletas y pistolas, lo normal es un ERP cuyo módulo de almacén tenga ubicaciones, lotes, reservas, picking guiado y palets. Un solo programa, un solo maestro de artículos y un solo stock. El SGA aparte solo tiene sentido si hay máquinas que gobernar o un ERP grande que no se va a cambiar."
   - question: "¿Cuánto cuesta un SGA aparte frente al módulo del ERP?"
-    answer: "Un SGA aparte suma licencia, implantación e integración con el ERP. Según un informe de Softdoit de 2018 con 36 proveedores, el 47,2 % de los proyectos de SGA tradicional costaba entre 10.000 y 30.000 euros. En Drenpos el almacén va dentro del plan Pro por 29 euros al mes sin IVA y no hay integración que pagar, porque es el mismo sistema que factura."
+    answer: "Un SGA aparte suma licencia, implantación e integración con el ERP. Según un informe de Softdoit de 2018 con 36 proveedores, el 47,2 % de los proyectos de SGA tradicional costaba entre 10.000 y 30.000 euros. En Drenpos el almacén va dentro del plan Almacén por [[n:almacen]] euros al mes sin IVA y no hay integración que pagar, porque es el mismo sistema que factura."
   - question: "¿Sale caro tener el SGA separado del ERP?"
     answer: "El coste visible es la licencia; el oculto es todo lo demás. Mantener dos maestros de artículos, vigilar una integración que falla cuando menos conviene, resolver descuadres entre el stock del almacén y el que factura y tratar con dos proveedores cuando algo no cuadra. En una pyme, ese trabajo invisible suele pesar más que la diferencia de precio."
   - question: "¿Puedo usar Drenpos como SGA si llevo la contabilidad en Holded?"
@@ -99,7 +99,7 @@ Con eso, las partidas quedan así:
 | Descuadres | Un solo stock | Stock del SGA frente a stock del ERP |
 | Soporte | Un proveedor | Dos, y la duda de a quién llamar |
 
-En Drenpos, el almacén va en el plan Pro por 29 euros al mes sin IVA, con 3 usuarios, soporte y actualizaciones; cada usuario adicional son 5 euros al mes sin IVA. Tienes el desglose completo, con hardware y mantenimiento, en [cuánto cuesta un SGA para una pyme](/blog/cuanto-cuesta-sga-wms-pyme-2026).
+En Drenpos, el almacén va en el plan Almacén por [[n:almacen]] euros al mes sin IVA, con [[n:almacen_usuarios]] usuarios, soporte y actualizaciones; cada usuario adicional son [[n:usuario]] euros al mes sin IVA. Tienes el desglose completo, con hardware y mantenimiento, en [cuánto cuesta un SGA para una pyme](/blog/cuanto-cuesta-sga-wms-pyme-2026).
 
 Lo que no aparece en ninguna oferta es el trabajo de mantener dos sistemas de acuerdo: dar de alta cada artículo dos veces, vigilar la integración, cuadrar el stock que ve el mozo con el que ve quien factura y decidir a qué proveedor llamar cuando algo no cuadra. Un SGA separado no es mala idea; simplemente hay que sumar su coste entero.
 
@@ -176,7 +176,7 @@ Si el almacén se mueve con personas, transpaletas y pistolas, lo normal es un E
 
 ### ¿Cuánto cuesta un SGA aparte frente al módulo del ERP?
 
-Un SGA aparte suma licencia, implantación e integración con el ERP. Según un informe de Softdoit de 2018 con 36 proveedores, el 47,2 % de los proyectos de SGA tradicional costaba entre 10.000 y 30.000 euros. En Drenpos el almacén va dentro del plan Pro por 29 euros al mes sin IVA y no hay integración que pagar, porque es el mismo sistema que factura.
+Un SGA aparte suma licencia, implantación e integración con el ERP. Según un informe de Softdoit de 2018 con 36 proveedores, el 47,2 % de los proyectos de SGA tradicional costaba entre 10.000 y 30.000 euros. En Drenpos el almacén va dentro del plan Almacén por [[n:almacen]] euros al mes sin IVA y no hay integración que pagar, porque es el mismo sistema que factura.
 
 ### ¿Sale caro tener el SGA separado del ERP?
 

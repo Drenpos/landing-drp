@@ -3,7 +3,7 @@ title: "ERP para pymes: cuándo dejar Excel para ganar control"
 meta_title: "ERP vs Excel: ¿Cuándo tu pyme necesita un cambio?"
 description: "Descubre cuándo las hojas de cálculo empiezan a frenar tu crecimiento y cómo un ERP para pymes puede eliminar la duplicidad de datos y los errores manuales."
 date: 2026-08-11
-updated: 2026-09-10
+updated: 2026-10-22
 image: "/images/blog/erp-para-pymes-vs-excel/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -30,13 +30,13 @@ faq:
   - question: "¿Qué gana una pyme con un ERP frente a las hojas de cálculo?"
     answer: "Una única fuente de verdad: cada venta, compra o movimiento de almacén actualiza el resto del sistema al momento, sin duplicar datos ni reescribir información. Se acaban los errores de copia y el tiempo administrativo se convierte en tiempo de negocio."
   - question: "¿Es caro implantar un ERP en una pyme pequeña?"
-    answer: "No tiene por qué. Drenpos parte de 19 € al mes con estructura modular: activas solo lo que necesitas y amplías cuando el negocio lo pide. La implantación estándar se hace en días, con importación de datos y formación incluidas, sin permanencia."
+    answer: "No tiene por qué. Drenpos parte de [[p:desde]] al mes con estructura modular: activas solo lo que necesitas y amplías cuando el negocio lo pide. La implantación estándar se hace en días, con importación de datos y formación incluidas, sin permanencia."
   - question: "¿Puedo migrar mis datos de Excel al ERP?"
     answer: "Sí. En la implantación se importan artículos, clientes, proveedores y stock inicial desde tus hojas de cálculo actuales, y se configura la empresa con sus series y periodos. Tu histórico no se pierde: se ordena."
   - question: "¿Necesito un WMS aparte del ERP para gestionar el almacén?"
     answer: "No siempre, y en una pyme rara vez compensa. Un WMS separado obliga a mantener dos maestros de artículos y una sincronización que falla justo cuando más volumen hay. Si el ERP ya gestiona ubicaciones, lotes, series, palets con etiqueta SSCC y picking móvil, el almacén y la facturación comparten los mismos datos y desaparece el punto de fallo."
   - question: "¿Cuánto cuesta el módulo de inventario de Drenpos?"
-    answer: "Los planes parten de 19 €/mes sin IVA (Esencial), 29 €/mes (Pro) y 39 €/mes (Full), y el módulo de Inventario se añade por 16,45 €/mes sin IVA. Es modular: activas el almacén cuando lo necesitas y el resto del ERP sigue igual, sin cambiar de sistema ni volver a migrar los datos."
+    answer: "El módulo de Inventario va completo en el plan Almacén, [[p:almacen]]/mes sin IVA con [[n:almacen_usuarios]] usuarios, y en Almacén con TPV, [[p:almacen_tpv]]/mes. Sin almacén, el plan Facturación cuesta [[p:facturacion]]/mes. Es modular: activas el almacén cuando lo necesitas y el resto del ERP sigue igual, sin cambiar de sistema ni volver a migrar los datos."
 ---
 
 ## ¿Sigues gestionando la duplicidad de datos con Excel?
@@ -143,7 +143,7 @@ Aquí hay una diferencia práctica entre tener los datos en hojas de cálculo y 
 
 El **conector MCP** de Drenpos enlaza tu cuenta con ChatGPT, Claude o cualquier cliente compatible con el protocolo MCP. No es una IA de Drenpos: es un conector para que la IA que ya pagas pueda consultar tus datos. Desde el chat puedes preguntar "¿qué vendimos la semana pasada?", "compras y ventas netas de este mes" o "dame la ficha del producto con esta referencia", y la respuesta sale de tu propio sistema.
 
-La seguridad funciona como dentro de Drenpos: **la IA solo ve lo que ese usuario puede ver**, con los mismos permisos y roles, cada usuario conecta su propia cuenta y por ahora todas las consultas son de solo lectura. El módulo cuesta 6 € al mes por empresa sin IVA, con todos los usuarios incluidos. Puedes verlo en detalle en el [conector MCP para IA](/conector-mcp-ia).
+La seguridad funciona como dentro de Drenpos: **la IA solo ve lo que ese usuario puede ver**, con los mismos permisos y roles, cada usuario conecta su propia cuenta y por ahora todas las consultas son de solo lectura. El módulo cuesta [[p:mcp]] al mes por empresa sin IVA, con todos los usuarios incluidos. Puedes verlo en detalle en el [conector MCP para IA](/conector-mcp-ia).
 
 ## El siguiente paso (sin compromiso)
 
@@ -167,7 +167,7 @@ Una única fuente de verdad: cada venta, compra o movimiento de almacén actuali
 
 ### ¿Es caro implantar un ERP en una pyme pequeña?
 
-No tiene por qué. Drenpos parte de 19 € al mes con estructura modular: activas solo lo que necesitas y amplías cuando el negocio lo pide. La implantación estándar se hace en días, con importación de datos y formación incluidas, sin permanencia.
+No tiene por qué. Drenpos parte de [[p:desde]] al mes con estructura modular: activas solo lo que necesitas y amplías cuando el negocio lo pide. La implantación estándar se hace en días, con importación de datos y formación incluidas, sin permanencia.
 
 ### ¿Puedo migrar mis datos de Excel al ERP?
 
@@ -179,4 +179,4 @@ No siempre, y en una pyme rara vez compensa. Un WMS separado obliga a mantener d
 
 ### ¿Cuánto cuesta el módulo de inventario de Drenpos?
 
-Los planes parten de 19 €/mes sin IVA (Esencial), 29 €/mes (Pro) y 39 €/mes (Full), y el módulo de Inventario se añade por 16,45 €/mes sin IVA. Es modular: activas el almacén cuando lo necesitas y el resto del ERP sigue igual, sin cambiar de sistema ni volver a migrar los datos.
+El módulo de Inventario va completo en el plan Almacén, [[p:almacen]]/mes sin IVA con [[n:almacen_usuarios]] usuarios, y en Almacén con TPV, [[p:almacen_tpv]]/mes. Sin almacén, el plan Facturación cuesta [[p:facturacion]]/mes. Es modular: activas el almacén cuando lo necesitas y el resto del ERP sigue igual, sin cambiar de sistema ni volver a migrar los datos.

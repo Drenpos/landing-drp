@@ -110,7 +110,7 @@ const entries: Entrada[] = [
     type: "text/html",
     url: url("/conector-mcp-ia"),
     description:
-      "Servidor MCP (Model Context Protocol) para clientes de Drenpos con credenciales: cada usuario enlaza su cuenta desde ChatGPT, Claude u otro cliente compatible y consulta en lenguaje natural ventas, compras, clientes, productos y stock, con sus mismos permisos y en solo lectura. Módulo de 6 € al mes por empresa sin IVA. No es un servicio público: sin cuenta de Drenpos no devuelve datos.",
+      "Servidor MCP (Model Context Protocol) para clientes de Drenpos con credenciales: cada usuario enlaza su cuenta desde ChatGPT, Claude u otro cliente compatible y consulta en lenguaje natural ventas, compras, clientes, productos y stock, con sus mismos permisos y en solo lectura. Módulo de [[p:mcp]] al mes por empresa sin IVA. No es un servicio público: sin cuenta de Drenpos no devuelve datos.",
     representativeQueries: [
       "¿Qué ERP se puede conectar a ChatGPT o Claude por MCP?",
       "¿Cómo consultar mis ventas desde ChatGPT?",
@@ -124,7 +124,7 @@ const entries: Entrada[] = [
     type: "text/html",
     url: url("/dispositivo-fichaje"),
     description:
-      "Terminal de fichaje propio que identifica con llavero RFID, tarjeta o QR, con el logo de la empresa en la carcasa y modo sin conexión. Vacaciones y turnos incluidos en la licencia. Desde 140 € sin IVA más la licencia de fichaje desde 1 € por usuario y mes sin IVA.",
+      "Terminal de fichaje propio que identifica con llavero RFID, tarjeta o QR, con el logo de la empresa en la carcasa y modo sin conexión. Vacaciones y turnos incluidos en la licencia. Desde [[p:terminal]] sin IVA con los fichajes incluidos en el plan ([[p:fichaje]] por persona adicional y mes, sin IVA).",
     representativeQueries: [
       "¿Cuánto cuesta un terminal de fichaje con llavero RFID?",
       "¿Qué reloj de fichaje funciona sin conexión a internet?",

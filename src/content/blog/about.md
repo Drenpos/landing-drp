@@ -35,7 +35,7 @@ Las credenciales están para poder comprobarlas. Estas son las nuestras:
 
 ## Qué hacemos
 
-Nuestro producto es el [ERP modular Drenpos](/modulos): activas solo los módulos que necesitas (almacén multialmacén con lotes y ubicaciones, TPV para tienda y hostelería, facturación electrónica, [control horario con hardware propio de fichaje](/control-horario), OCR de facturas, WhatsApp integrado) y creces a tu ritmo, desde 19 €/mes y sin costes ocultos por uso.
+Nuestro producto es el [ERP modular Drenpos](/modulos): activas solo los módulos que necesitas (almacén multialmacén con lotes y ubicaciones, TPV para tienda y hostelería, facturación electrónica, [control horario con hardware propio de fichaje](/control-horario), OCR de facturas, WhatsApp integrado) y creces a tu ritmo, desde [[p:desde]]/mes y sin costes ocultos por uso.
 
 Además del producto, desarrollamos **soluciones a medida** para retos que el mercado no cubre: como startup certificada por ENISA, colaboramos con pymes tractoras en proyectos de innovación abierta financiados al 100% por la Junta de Extremadura, desde la definición del reto hasta la entrega de la solución.
 

@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import satori from "satori";
 import sharp from "sharp";
+import { resolverPrecios } from "@/lib/precios";
 
 export const prerender = true;
 
@@ -42,8 +43,8 @@ export const GET: APIRoute = async ({ props }) => {
     post: any;
     collection: Variant["collection"];
   };
-  const title = post.data.meta_title || post.data.title;
-  const subtitle = post.data.description || "";
+  const title = resolverPrecios(post.data.meta_title || post.data.title);
+  const subtitle = resolverPrecios(post.data.description || "");
   const tag = collection === "local" ? "GUÍA LOCAL" : "BLOG DRENPOS";
 
   // Satori acepta un árbol de objetos plano (element-like); su tipado pide

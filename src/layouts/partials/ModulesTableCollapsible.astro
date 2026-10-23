@@ -44,9 +44,9 @@ const {
                   <input
                     type="checkbox"
                     id="modules-checkbox"
-                    class="modules-pricing-check peer w-full cursor-pointer opacity-0"
+                    class="modules-pricing-check peer absolute inset-0 z-10 h-full w-full cursor-pointer opacity-0"
                   />
-                  <span class="absolute left-0 top-0 cursor-pointer before:absolute before:left-1 before:top-1 before:h-6 before:w-6 before:translate-x-0 before:rounded-full before:bg-primary before:transition-all before:delay-75 before:duration-300 peer-checked:before:translate-x-8" />
+                  <span class="pointer-events-none absolute inset-0 before:absolute before:left-1 before:top-1 before:h-6 before:w-6 before:translate-x-0 before:rounded-full before:bg-primary before:transition-all before:delay-75 before:duration-300 peer-checked:before:translate-x-8" />
                 </label>
                 <span class="select-none font-medium order-3">Anual</span>
               </div>
@@ -136,13 +136,14 @@ const {
                               {module.price_monthly !== "Incluido" &&
                                 module.price_monthly !==
                                   "Incluido hasta fin 2026" &&
-                                module.price_monthly !== "A consultar" && (
+                                module.price_monthly !== "A consultar" &&
+                                module.price_monthly !== "Sin coste" && (
                                   <>
                                     <span class="text-sm text-text/60 module-price-desc-monthly">
                                       /mes
                                     </span>
                                     <span class="text-sm text-text/60 module-price-desc-yearly hidden">
-                                      /mes (dto. 10%)
+                                      /mes, pagando el año
                                     </span>
                                   </>
                                 )}
@@ -242,7 +243,8 @@ const {
                           {module.price_monthly !== "Incluido" &&
                             module.price_monthly !==
                               "Incluido hasta fin 2026" &&
-                            module.price_monthly !== "A consultar" && (
+                            module.price_monthly !== "A consultar" &&
+                                module.price_monthly !== "Sin coste" && (
                               <>
                                 <span class="text-sm module-price-desc-monthly">
                                   {" "}
@@ -250,7 +252,7 @@ const {
                                 </span>
                                 <span class="text-sm module-price-desc-yearly hidden">
                                   {" "}
-                                  /mes (dto. 10%)
+                                  /mes, pagando el año
                                 </span>
                               </>
                             )}
@@ -321,6 +323,11 @@ const {
 
 <script>
   function modulesInit() {
+    // Se llama al cargar y en astro:page-load: sin esta marca los
+    // listeners se enlazaban dos veces y el desplegable se abría y cerraba
+    // en el mismo clic.
+    if (document.body.dataset.modulosListo) return;
+    document.body.dataset.modulosListo = "1";
     // Toggle de precios mensual/anual
     const toggleSwitch = document.querySelector<HTMLInputElement>(
       ".modules-pricing-check",

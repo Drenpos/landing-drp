@@ -3,6 +3,7 @@ title: "Control horario en almacenes y naves: cómo fichar a turnos sin móvil"
 meta_title: "Control horario en almacenes y naves con turnos sin móvil"
 description: "Cómo fichar en un almacén o una nave con turnos de mañana, tarde y noche sin usar el móvil: terminal en la entrada, rotativos, horas extra e incidencias."
 date: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/preparacion-de-pedidos-picking-almacen/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -37,7 +38,7 @@ faq:
   - question: "¿Cómo se calculan las horas extra con turnos rotativos?"
     answer: "Las horas esperadas de cada día salen del calendario de cada persona, rotativo o semanal, de sus festivos y de sus ausencias. Las extra son lo trabajado por encima de lo esperado, día a día, y la semana o el mes son la suma de los días. Los días de descanso del ciclo no suman horas esperadas."
   - question: "¿Cuánto cuesta el control horario para un almacén con Drenpos?"
-    answer: "La licencia de fichaje cuesta 1 euro por usuario y mes sin IVA, con calendarios, vacaciones y control de entrada y salida incluidos. El terminal parte de 140 euros sin IVA con los llaveros de la plantilla inicial. Si además quieres llevar el almacén, el plan Pro cuesta 29 euros al mes y el Full, con TPV, 39 euros, sin IVA."
+    answer: "La licencia de fichaje va incluida en todos los planes ([[n:fichaje]] euros por persona adicional) y, solo el control horario, Drenpos Equipo cuesta desde [[n:equipo10]] euros al mes para 10 personas, sin IVA, con calendarios, vacaciones y control de entrada y salida incluidos. El terminal parte de [[n:terminal]] euros sin IVA con los llaveros de la plantilla inicial. Si además quieres llevar el almacén, el plan Almacén cuesta [[n:almacen]] euros al mes y con TPV, [[n:almacen_tpv]] euros, sin IVA."
 ---
 
 > En un almacén o una nave con turnos lo más práctico es un terminal en la entrada de personal: cada persona pasa su llavero, tarjeta o QR, sin móvil y sin papel. Cada turno (mañana, tarde, noche o rotativo) se monta como un calendario, y con eso el sistema sabe las horas esperadas de cada uno, calcula las extra día a día y avisa de quien entra tarde o no ficha. Si se cae internet, el terminal sigue fichando.
@@ -134,16 +135,16 @@ Si estás valorando el almacén, el punto de partida es el [software de gestión
 
 ## ¿Cuánto cuesta montar el control horario en una nave?
 
-La licencia de fichaje de Drenpos cuesta 1 euro por usuario y mes sin IVA, con calendarios semanales y rotativos, vacaciones y permisos y control de entrada y salida incluidos. El terminal parte de 140 euros sin IVA con los llaveros de la plantilla inicial. Para 25 personas en tres turnos, el fichaje son 25 euros al mes más el terminal, una vez.
+La licencia de fichaje de Drenpos va incluida en todos los planes ([[n:fichaje]] euros por persona adicional) y, sin el resto del ERP, Drenpos Equipo cuesta desde [[n:equipo10]] euros al mes para 10 personas, sin IVA, con calendarios semanales y rotativos, vacaciones y permisos y control de entrada y salida incluidos. El terminal parte de [[n:terminal]] euros sin IVA con los llaveros de la plantilla inicial. Para 25 personas en tres turnos, el fichaje con Drenpos Equipo son [[n:equipo25]] euros al mes más el terminal, una vez.
 
 | Concepto | Precio sin IVA |
 | --- | --- |
-| Licencia de fichaje | 1 € por usuario y mes |
-| Terminal con llaveros de la plantilla inicial | Desde 140 € |
+| Licencia de fichaje | Incluida en el plan; [[p:fichaje]] por persona adicional y mes (solo fichajes: desde [[p:equipo10]]/mes para 10 personas) |
+| Terminal con llaveros de la plantilla inicial | Desde [[p:terminal]] |
 | Vacaciones, turnos rotativos e incidencias | Incluidos en la licencia |
-| Almacén (plan Pro, 3 usuarios y 3 fichajes) | 29 € al mes |
-| Almacén y TPV (plan Full, 5 usuarios y 5 fichajes) | 39 € al mes |
-| Usuario adicional del sistema | 5 € por usuario y mes |
+| Almacén (plan Almacén, [[n:almacen_usuarios]] usuarios y [[n:almacen_fichajes]] fichajes) | [[p:almacen]] al mes |
+| Almacén y TPV (plan Almacén con TPV, [[n:almacen_usuarios]] usuarios y [[n:almacen_fichajes]] fichajes) | [[p:almacen_tpv]] al mes |
+| Usuario adicional del sistema | [[p:usuario]] por usuario y mes |
 
 Si necesitas varios terminales o tarjetas adicionales, se presupuesta aparte.
 
@@ -171,7 +172,7 @@ Las horas esperadas de cada día salen del calendario de cada persona, rotativo 
 
 ### ¿Cuánto cuesta el control horario para un almacén con Drenpos?
 
-La licencia de fichaje cuesta 1 euro por usuario y mes sin IVA, con calendarios, vacaciones y control de entrada y salida incluidos. El terminal parte de 140 euros sin IVA con los llaveros de la plantilla inicial. Si además quieres llevar el almacén, el plan Pro cuesta 29 euros al mes y el Full, con TPV, 39 euros, sin IVA.
+La licencia de fichaje va incluida en todos los planes ([[n:fichaje]] euros por persona adicional) y, solo el control horario, Drenpos Equipo cuesta desde [[n:equipo10]] euros al mes para 10 personas, sin IVA, con calendarios, vacaciones y control de entrada y salida incluidos. El terminal parte de [[n:terminal]] euros sin IVA con los llaveros de la plantilla inicial. Si además quieres llevar el almacén, el plan Almacén cuesta [[n:almacen]] euros al mes y con TPV, [[n:almacen_tpv]] euros, sin IVA.
 
 ## Siguiente paso
 

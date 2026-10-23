@@ -3,7 +3,7 @@ title: "Software para distribuidores de bebidas: vender en unidades, cajas y pal
 meta_title: "Software para distribuidores de bebidas: cajas y palés"
 description: "Software para distribuidor de bebidas y alimentación: vende en unidades, cajas y palés, con peso y bultos calculados, lotes, caducidad y palets SSCC."
 date: 2026-09-23
-updated: 2026-10-07
+updated: 2026-10-22
 image: "/images/blog/preparacion-de-pedidos-picking-almacen/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -33,7 +33,7 @@ faq:
   - question: "¿Drenpos tiene preventa, autoventa o rutas de reparto?"
     answer: "Hoy no. Drenpos no tiene preventa ni autoventa con tablet, ni planificación de rutas de reparto, ni gestión de envases retornables. Lo que sí cubre es el almacén y la venta en oficina: formatos, stock en cajas y palés, lotes, preparación por oleadas, palets SSCC, albarán con peso y bultos, tarifas por cliente, comerciales con cartera propia y facturación con Verifactu."
   - question: "¿Cuánto cuesta Drenpos para una distribuidora?"
-    answer: "El almacén va en el plan Pro por 29 euros al mes sin IVA, con 3 usuarios, facturación, informes, correo y WhatsApp. Si además vendes en mostrador, el plan Full incluye el TPV por 39 euros al mes sin IVA con 5 usuarios. Cada usuario adicional cuesta 5 euros al mes y el módulo de comerciales, 16,45 euros al mes, todo sin IVA."
+    answer: "El almacén va en el plan Almacén por [[n:almacen]] euros al mes sin IVA, con [[n:almacen_usuarios]] usuarios, facturación, informes, correo y WhatsApp. Si además vendes en mostrador, el plan Almacén con TPV son [[n:almacen_tpv]] euros al mes sin IVA con [[n:almacen_usuarios]] usuarios. Cada usuario adicional cuesta [[n:usuario]] euros al mes y el módulo de comerciales va incluido, todo sin IVA."
 ---
 
 > Un software para distribuidores de bebidas tiene que resolver una cosa antes que ninguna: vender el mismo artículo en unidades, cajas y palés sin que el stock se descuadre. Después vienen el stock visto en cajas, el peso y los bultos del albarán calculados, los lotes con su caducidad, la preparación de pedidos en una sola vuelta y los palets con etiqueta SSCC. Drenpos hace todo eso; lo que no hace hoy es preventa, autoventa, rutas ni envases retornables.
@@ -116,7 +116,7 @@ Lo que sí tienes para la parte comercial: listas de precios en cascada, una tar
 
 ## ¿Cuánto cuesta?
 
-El almacén va en el plan Pro por 29 euros al mes sin IVA; con venta en mostrador, el plan Full con TPV cuesta 39 euros al mes sin IVA. El desglose de usuarios y módulos está en las preguntas de abajo y en [planes y precios](/pricing).
+El almacén va en el plan Almacén por [[n:almacen]] euros al mes sin IVA; con venta en mostrador, el plan Almacén con TPV cuesta [[n:almacen_tpv]] euros al mes sin IVA. El desglose de usuarios y módulos está en las preguntas de abajo y en [planes y precios](/pricing).
 
 ## Preguntas frecuentes sobre software para distribuidores de bebidas
 
@@ -138,7 +138,7 @@ Hoy no. Drenpos no tiene preventa ni autoventa con tablet, ni planificación de 
 
 ### ¿Cuánto cuesta Drenpos para una distribuidora?
 
-El almacén va en el plan Pro por 29 euros al mes sin IVA, con 3 usuarios, facturación, informes, correo y WhatsApp. Si además vendes en mostrador, el plan Full incluye el TPV por 39 euros al mes sin IVA con 5 usuarios. Cada usuario adicional cuesta 5 euros al mes y el módulo de comerciales, 16,45 euros al mes, todo sin IVA.
+El almacén va en el plan Almacén por [[n:almacen]] euros al mes sin IVA, con [[n:almacen_usuarios]] usuarios, facturación, informes, correo y WhatsApp. Si además vendes en mostrador, el plan Almacén con TPV son [[n:almacen_tpv]] euros al mes sin IVA con [[n:almacen_usuarios]] usuarios. Cada usuario adicional cuesta [[n:usuario]] euros al mes y el módulo de comerciales va incluido, todo sin IVA.
 
 ## Siguiente paso
 

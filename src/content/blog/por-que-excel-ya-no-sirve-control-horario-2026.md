@@ -3,7 +3,7 @@ title: "Por qué Excel ya no sirve para controlar horarios laborales en 2026"
 meta_title: "Excel para control horario en 2026: riesgos y alternativa"
 description: "Por qué el Excel se queda corto para fichajes, vacaciones y turnos: qué exige la ley en octubre de 2026, el coste oculto y cómo pasar a un registro digital."
 date: 2026-05-27
-updated: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/por-que-excel-ya-no-sirve-control-horario-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -29,12 +29,12 @@ faq:
   - question: "¿Qué multa hay si el registro en Excel no refleja la jornada real?"
     answer: "Es infracción grave de la LISOS, con multa de 751 a 7.500 euros por infracción. Si hay falsedad en los registros, puede llegar a muy grave, de 7.501 a 225.018 euros. Además, el trabajador puede reclamar horas extra que la empresa no podrá desmentir."
   - question: "¿Qué alternativa hay al Excel de fichajes?"
-    answer: "Un sistema que guarde cada fichaje con su hora y deje rastro de cualquier corrección, con las horas extra calculadas desde el horario de cada persona. En Drenpos cuesta 1 € por usuario y mes sin IVA e incluye vacaciones con saldo y aprobación, incidencias de entrada y salida, turnos rotativos y planificación anual."
+    answer: "Un sistema que guarde cada fichaje con su hora y deje rastro de cualquier corrección, con las horas extra calculadas desde el horario de cada persona. En Drenpos el fichaje va incluido en todos los planes ([[p:fichaje]] por persona adicional y mes sin IVA) e incluye vacaciones con saldo y aprobación, incidencias de entrada y salida, turnos rotativos y planificación anual."
   - question: "¿Y el Excel de vacaciones?"
     answer: "Es el siguiente en romperse: saldos, prorrateo del primer año, días que pasan al año siguiente y solapes entre compañeros. El artículo 38 del Estatuto fija 30 días naturales como mínimo y que cada persona conozca sus fechas con dos meses de antelación. Un sistema con saldo por persona y aprobación evita discusiones y sale en el mismo informe que los fichajes."
 ---
 
-> **Respuesta corta:** hoy la ley no prohíbe el Excel, pero un registro que se puede rehacer sin dejar rastro es difícil de defender ante la Inspección. El real decreto en tramitación, sin aprobar a 17 de octubre de 2026, lo dejaría fuera. Además del de fichajes, casi toda pyme arrastra otros dos Excel que fallan antes: el de vacaciones y el de turnos. Un registro digital por 1 € por usuario y mes resuelve los tres.
+> **Respuesta corta:** hoy la ley no prohíbe el Excel, pero un registro que se puede rehacer sin dejar rastro es difícil de defender ante la Inspección. El real decreto en tramitación, sin aprobar a 17 de octubre de 2026, lo dejaría fuera. Además del de fichajes, casi toda pyme arrastra otros dos Excel que fallan antes: el de vacaciones y el de turnos. Un registro digital desde [[p:equipo10]] al mes para 10 personas resuelve los tres.
 
 > **Actualizado el 17 de octubre de 2026**
 >
@@ -67,7 +67,7 @@ Más de lo que parece. Piensa en una distribuidora de 12 personas: el encargado 
 
 A eso súmale el riesgo: la infracción grave por no llevar bien el registro se sanciona hoy con 751 a 7.500 euros por infracción. Las versiones conocidas del real decreto plantean hasta 10.000 euros por trabajador afectado, aunque no está en vigor. El detalle está en [multas del registro horario](/blog/multas-registro-horario-2026-costo-incumplimiento).
 
-Frente a eso, un registro digital para esas 12 personas cuesta 12 € al mes en Drenpos (1 € por usuario sin IVA).
+Frente a eso, un registro digital para esas 12 personas cuesta [[p:equipo10+2×equipo_persona_extra]] al mes en Drenpos Equipo ([[p:equipo10]] hasta 10 personas y [[p:equipo_persona_extra]] por cada una más, sin IVA).
 
 ## ¿Y el Excel de vacaciones?
 
@@ -102,7 +102,7 @@ En una semana, si tienes claros los horarios. Primero das de alta a la plantilla
 | 4 | Una semana de prueba con todos y revisión de incidencias |
 | 5 | Primer informe a la gestoría con fichajes, ausencias y horas extra |
 
-Si en la nave o la tienda la gente ficha con las manos ocupadas, el [terminal de Drenpos](/dispositivo-fichaje) lee llavero, tarjeta o QR y sigue fichando aunque se caiga internet. Cuesta desde 140 € sin IVA. Qué exige hoy la ley y qué cambiará con el real decreto lo tienes en la guía de [registro horario digital](/blog/registro-horario-digital).
+Si en la nave o la tienda la gente ficha con las manos ocupadas, el [terminal de Drenpos](/dispositivo-fichaje) lee llavero, tarjeta o QR y sigue fichando aunque se caiga internet. Cuesta desde [[p:terminal]] sin IVA. Qué exige hoy la ley y qué cambiará con el real decreto lo tienes en la guía de [registro horario digital](/blog/registro-horario-digital).
 
 ## Preguntas frecuentes sobre el Excel y el control horario
 
@@ -116,7 +116,7 @@ Es infracción grave de la LISOS, con multa de 751 a 7.500 euros por infracción
 
 ### ¿Qué alternativa hay al Excel de fichajes?
 
-Un sistema que guarde cada fichaje con su hora y deje rastro de cualquier corrección, con las horas extra calculadas desde el horario de cada persona. En Drenpos cuesta 1 € por usuario y mes sin IVA e incluye vacaciones con saldo y aprobación, incidencias de entrada y salida, turnos rotativos y planificación anual.
+Un sistema que guarde cada fichaje con su hora y deje rastro de cualquier corrección, con las horas extra calculadas desde el horario de cada persona. En Drenpos el fichaje va incluido en todos los planes ([[p:fichaje]] por persona adicional y mes sin IVA) e incluye vacaciones con saldo y aprobación, incidencias de entrada y salida, turnos rotativos y planificación anual.
 
 ### ¿Y el Excel de vacaciones?
 

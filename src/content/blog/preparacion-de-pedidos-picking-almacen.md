@@ -3,7 +3,7 @@ title: "Preparación de pedidos y picking: qué es, métodos y ruta en el almac�
 meta_title: "Preparación de pedidos y picking: métodos y ruta"
 description: "Qué es la preparación de pedidos y el picking, cuándo usar picking por pedido, por lotes, por zonas o por oleadas y cómo ordenar la ruta con el plano."
 date: 2026-08-12
-updated: 2026-10-17
+updated: 2026-10-22
 image: "/images/blog/preparacion-de-pedidos-picking-almacen/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -44,7 +44,7 @@ faq:
   - question: "¿Se puede preparar un pedido directamente sobre un palet?"
     answer: "Sí, y es lo razonable cuando el pedido sale entero en palet. En Drenpos el pedido se prepara sobre un palet con su etiqueta SSCC del estándar GS1, de modo que al expedir sale la unidad logística completa con su trazabilidad. El palet admite varios productos y varios lotes, y su contenido queda registrado línea a línea."
   - question: "¿Qué necesito para empezar a preparar pedidos con Drenpos?"
-    answer: "Ubicaciones creadas con su QR pegado en la estantería, artículos con almacén y ubicación por defecto, el plano del almacén si quieres orden de ruta, y un móvil o una pistola lectora por preparador. El almacén va incluido en los planes Pro (29 €/mes), Full (39 €/mes) y Producción (50 €/mes), o como módulo de Inventario suelto por 16,45 €/mes, siempre sin IVA."
+    answer: "Ubicaciones creadas con su QR pegado en la estantería, artículos con almacén y ubicación por defecto, el plano del almacén si quieres orden de ruta, y un móvil o una pistola lectora por preparador. El almacén va incluido en los planes Almacén ([[p:almacen]]/mes, [[p:almacen_tpv]] con TPV) y Producción ([[p:produccion]]/mes), siempre sin IVA."
 ---
 
 > **Respuesta corta:** la preparación de pedidos es el proceso que convierte un pedido de venta confirmado en mercancía lista para salir: elegir qué pedidos se lanzan, recoger cada artículo en su ubicación, agruparlo por pedido, verificarlo y dejarlo identificado. El picking es solo la fase de recogida dentro de ese proceso, y la expedición es la salida física con su albarán o factura. Bien organizada, los errores se ven en el muelle y no en casa del cliente.
@@ -190,7 +190,7 @@ Si el almacén también atiende mostrador o tienda, revisa cómo conviven los do
 
 ## ¿Cuánto cuesta digitalizar la preparación de pedidos?
 
-En Drenpos la preparación de pedidos forma parte del módulo de Inventario, que va incluido en los planes Pro (29 €/mes, 3 usuarios), Full (39 €/mes, 5 usuarios) y Producción (50 €/mes). Con el plan Esencial (19 €/mes) se añade como módulo suelto por 16,45 €/mes. Todos los precios son sin IVA, a fecha de 17 de octubre de 2026, e incluyen picking, plano y orden de ruta, recepción, palets con SSCC y actualizaciones.
+En Drenpos la preparación de pedidos forma parte del módulo de Inventario, que va incluido en los planes Almacén ([[p:almacen]]/mes, [[n:almacen_usuarios]] usuarios; [[p:almacen_tpv]] con TPV) y Producción ([[p:produccion]]/mes). No se contrata suelto. Todos los precios son sin IVA, a fecha de 17 de octubre de 2026, e incluyen picking, plano y orden de ruta, recepción, palets con SSCC y actualizaciones.
 
 El resto de módulos y planes están en la página de [precios](/pricing).
 
@@ -230,7 +230,7 @@ Sí, y es lo razonable cuando el pedido sale entero en palet. En Drenpos el pedi
 
 ### ¿Qué necesito para empezar a preparar pedidos con Drenpos?
 
-Ubicaciones creadas con su QR pegado en la estantería, artículos con almacén y ubicación por defecto, el plano del almacén si quieres orden de ruta, y un móvil o una pistola lectora por preparador. El almacén va incluido en los planes Pro (29 €/mes), Full (39 €/mes) y Producción (50 €/mes), o como módulo de Inventario suelto por 16,45 €/mes, siempre sin IVA.
+Ubicaciones creadas con su QR pegado en la estantería, artículos con almacén y ubicación por defecto, el plano del almacén si quieres orden de ruta, y un móvil o una pistola lectora por preparador. El almacén va incluido en los planes Almacén ([[p:almacen]]/mes, [[p:almacen_tpv]] con TPV) y Producción ([[p:produccion]]/mes), siempre sin IVA.
 
 ## ¿Por dónde se empieza mañana mismo?
 
