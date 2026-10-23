@@ -14,6 +14,11 @@ import { AstroFont } from "astro-font";
 import { ClientRouter } from "astro:transitions";
 import { join } from "node:path";
 import CookieConsent from "@/components/cookies/CookieConsent.astro";
+import TemaAdornos from "@/partials/TemaAdornos.astro";
+import temas from "@/config/temas.json";
+
+// Calendario de temas de temporada para el script del <head>
+const temasCalendario = temas.temas.map(({ id, activo, desde, hasta }) => ({ id, activo, desde, hasta }));
 
 // font families
 const pf = theme.fonts.font_family.primary;
@@ -642,6 +647,44 @@ const jsonLd = {
 
     <!-- Structured data: @graph per route -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- Tema de temporada (src/config/temas.json): se decide en el navegador
+         con la fecha del visitante, así cambia sin redesplegar ni purgar caché.
+         ?tema=<id> lo previsualiza en esta pestaña y ?tema=ninguno lo quita. -->
+    <script is:inline define:vars={{ temasCalendario }}>
+      (function (w, d) {
+        function elegir() {
+          var q = new URLSearchParams(w.location.search).get("tema");
+          try {
+            if (q === "ninguno") w.sessionStorage.removeItem("drp-tema");
+            else if (q) w.sessionStorage.setItem("drp-tema", q);
+            var guardado = w.sessionStorage.getItem("drp-tema");
+            if (guardado) return guardado;
+          } catch (e) {
+            if (q && q !== "ninguno") return q;
+          }
+          if (q === "ninguno") return null;
+          var h = new Date(), hoy = (h.getMonth() + 1) * 100 + h.getDate();
+          var n = function (s) { return Number(s.replace("-", "")); };
+          var t = temasCalendario.find(function (t) {
+            var a = n(t.desde), b = n(t.hasta);
+            return t.activo && (a <= b ? hoy >= a && hoy <= b : hoy >= a || hoy <= b);
+          });
+          return t ? t.id : null;
+        }
+        function aplicar(doc) {
+          var id = elegir();
+          if (id) doc.documentElement.setAttribute("data-tema", id);
+          else doc.documentElement.removeAttribute("data-tema");
+        }
+        aplicar(d);
+        if (!w.__drpTema) {
+          w.__drpTema = true;
+          // ClientRouter cambia el <html>: el tema pasa al documento nuevo
+          d.addEventListener("astro:before-swap", function (e) { aplicar(e.newDocument); });
+        }
+      })(window, document);
+    </script>
   </head>
   <body class="overflow-x-hidden">
     <noscript
@@ -652,6 +695,7 @@ const jsonLd = {
         style="display:none;visibility:hidden"></iframe></noscript
     >
     <TwSizeIndicator />
+    <TemaAdornos />
     <Header />
     <main id="main-content">
       <slot />

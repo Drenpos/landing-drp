@@ -476,7 +476,7 @@ const PAGE_UPDATED = "2026-10-22";
   <!-- ═══════════════ FLUJO DE VENTAS ═══════════════ -->
   <section class="section pt-0">
     <div class="container">
-      <div class="rounded-[28px] p-8 lg:p-12 border border-dark/6" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%);" data-aos="fade-up-sm">
+      <div class="rounded-[28px] p-8 lg:p-12 border border-dark/6" style="background: linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 6%, transparent) 0%, color-mix(in oklab, var(--color-secondary) 10%, transparent) 100%);" data-aos="fade-up-sm">
         <div class="text-center mb-8">
           <h2 class="h4 font-bold mb-2">De la oferta a la factura, en un flujo continuo</h2>
           <p class="text-base mb-0 text-dark/65">La información se arrastra entre documentos. Copiar un albarán a factura es un clic.</p>
@@ -674,7 +674,7 @@ const PAGE_UPDATED = "2026-10-22";
           <p class="text-sm mb-6 text-dark/60">Soporte cercano para empresas de Extremadura.</p>
           <div class="flex flex-wrap gap-2.5">
             {ciudades.map((c) => (
-              <a href={`/local/${c.s}`} class="text-sm px-4 py-2 rounded-full border transition-colors hover:border-primary hover:text-primary" style="border-color: rgba(16,25,40,0.12); color: rgba(16,25,40,0.7);">{c.n}</a>
+              <a href={`/local/${c.s}`} class="text-sm px-4 py-2 rounded-full border transition-colors hover:border-primary hover:text-primary" style="border-color: color-mix(in oklab, var(--color-dark) 12%, transparent); color: color-mix(in oklab, var(--color-dark) 70%, transparent);">{c.n}</a>
             ))}
           </div>
         </div>
@@ -683,7 +683,7 @@ const PAGE_UPDATED = "2026-10-22";
           <p class="text-sm mb-6 text-dark/60">Monitorización de stock, ventas y caja para alimentación.</p>
           <div class="flex flex-wrap gap-2.5">
             {supermercados.map((c) => (
-              <a href={`/local/${c.s}`} class="text-sm px-4 py-2 rounded-full border transition-colors hover:border-primary hover:text-primary" style="border-color: rgba(16,25,40,0.12); color: rgba(16,25,40,0.7);">{c.n}</a>
+              <a href={`/local/${c.s}`} class="text-sm px-4 py-2 rounded-full border transition-colors hover:border-primary hover:text-primary" style="border-color: color-mix(in oklab, var(--color-dark) 12%, transparent); color: color-mix(in oklab, var(--color-dark) 70%, transparent);">{c.n}</a>
             ))}
           </div>
         </div>

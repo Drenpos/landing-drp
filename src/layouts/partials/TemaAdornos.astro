@@ -1,0 +1,21 @@
+---
+// Adornos de los temas de temporada (src/config/temas.json).
+// Cada tema puede tener src/layouts/temas/<id>.astro. Se pintan todos ocultos
+// y el CSS que genera tw-theme.mjs muestra solo el del tema activo
+// (html[data-tema]). El envoltorio no lleva clases: una clase de display
+// (flex, block) ganaría al display:none de la capa base.
+import temas from "@/config/temas.json";
+
+const componentes = import.meta.glob<{ default: unknown }>("../temas/*.astro", { eager: true });
+const adornos = temas.temas
+  .map((t) => ({ id: t.id, Adorno: componentes[`../temas/${t.id}.astro`]?.default as any }))
+  .filter((a) => a.Adorno);
+---
+
+{
+  adornos.map(({ id, Adorno }) => (
+    <div data-tema-adorno={id} aria-hidden="true">
+      <Adorno />
+    </div>
+  ))
+}

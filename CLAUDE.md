@@ -93,6 +93,14 @@ Available in all `.md`/`.mdx` without import (`astro.config.mjs`): `Button`, `Ac
 - Theme tokens: `src/config/theme.json`
 - Site/menu/social config: `src/config/{config,menu,social,theme}.json`
 
+### Temas de temporada (Halloween, Navidad…)
+- `src/config/temas.json`: cada tema `{ id, nombre, activo, desde, hasta, colores }`. Fechas `MM-DD`, ambas incluidas; si `desde` > `hasta` cruza el año. `colores` redefine claves de `theme_color` (con guion bajo: `accent_light`).
+- `tw-theme.mjs` genera `html[data-tema="<id>"] { --color-…}` y valida el JSON: un id repetido, una fecha mal escrita o un color que no existe rompe el build.
+- Un script inline en el `<head>` de `Base.astro` pone `data-tema` en `<html>` según la fecha del navegador. El tema entra y sale solo, sin redesplegar ni purgar la caché, y se reaplica al navegar con `ClientRouter` (`astro:before-swap`).
+- Previsualizar: `?tema=halloween` (se guarda en la pestaña) y `?tema=ninguno` para quitarlo. Funciona aunque el tema tenga `activo: false`.
+- Adornos: `src/layouts/temas/<id>.astro` (opcional). `TemaAdornos.astro` los pinta todos ocultos y el CSS solo muestra el del tema activo. Deben ser `aria-hidden`, `pointer-events-none` y respetar `prefers-reduced-motion`.
+- Para un tema nuevo: entrada en `temas.json` → probar con `?tema=<id>` → poner `activo: true` → `git push`. Funciona porque todos los colores pasan por variables (ver la regla de colores).
+
 ### Cookies / Consent Mode v2
 `Base.astro` boots Google Consent Mode v2 (**denied by default**) + GTM (`GTM-PDNNFZ98`) inline before any tracker. `CookieConsent` (vanilla-cookieconsent) controls grants. Don't move/duplicate the inline consent script.
 
@@ -204,7 +212,7 @@ Obligatorias para cualquier cambio. `npm run build` comprueba las que se pueden 
 - Ojo con los precios en prosa: "16,50 €" escrito a mano para "Equipo 10 + 1 persona" se queda viejo en cuanto cambia una tarifa. Escribe la cuenta: `[[p:equipo10+persona_extra]]`.
 - Precios de competencia, multas y subvenciones sí van como texto fijo, siempre con la fecha de consulta y la fuente enlazada.
 - Si un valor se repite con el mismo significado en dos sitios, pasa a ser una constante (`as const`) o un JSON en `src/config/`. Para conjuntos cerrados (planes, `interes` de `DemoForm`, categorías) usa un array `as const` y deriva el tipo de él.
-- Colores: usa clases del tema (`text-primary`, `bg-dark`, `text-dark/70`) en vez de `style="color: #791b46"` o `rgba(16,25,40,…)`. Los colores viven en `src/config/theme.json`.
+- Colores: usa clases del tema (`text-primary`, `bg-dark`, `text-dark/70`) en vez de `style="color: #791b46"` o `rgba(16,25,40,…)`. Los colores viven en `src/config/theme.json`: marca (`primary`, `secondary`, `dark`, `light`, `border`) y semánticos (`success`, `success-light`, `warning`, `warning-light`, `danger`, `danger-light`, `muted`, `accent`, `accent-light`, `whatsapp`). Si no cabe en una clase (degradado, sombra, SVG), usa la variable: `var(--color-primary)` o `color-mix(in oklab, var(--color-dark) 85%, transparent)`. `scripts/check-estilos.mjs` rompe el build si un `.astro` o `.css` escribe a mano un color del tema, porque un tema de temporada no podría cambiarlo.
 
 ### Código
 

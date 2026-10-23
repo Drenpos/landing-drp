@@ -1,5 +1,6 @@
 import plugin from "tailwindcss/plugin";
 import themeConfig from "../config/theme.json";
+import temasConfig from "../config/temas.json";
 
 // Helper to extract a clean font name.
 const findFont = (fontStr) =>
@@ -46,6 +47,26 @@ const getVars = (groups) => {
 const defaultVars = getVars(defaultColorGroups);
 const darkVars = getVars(darkColorGroups);
 
+// Temas de temporada (src/config/temas.json): cada uno redefine variables de
+// color bajo html[data-tema="<id>"] y muestra sus adornos ([data-tema-adorno]).
+// Un tema mal escrito rompe el build aquí, no en producción.
+const temaVars = {};
+const FECHA = /^(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
+temasConfig.temas.forEach((t) => {
+  const donde = `temas.json (${t.id})`;
+  if (!/^[a-z0-9-]+$/.test(t.id)) throw new Error(`${donde}: id inválido`);
+  if (!FECHA.test(t.desde) || !FECHA.test(t.hasta))
+    throw new Error(`${donde}: desde/hasta deben ser MM-DD`);
+  Object.keys(t.colores).forEach((k) => {
+    if (!(k in themeConfig.colors.default.theme_color))
+      throw new Error(`${donde}: el color "${k}" no existe en theme.json`);
+  });
+  temaVars[`html[data-tema="${t.id}"]`] = getVars([{ colors: t.colores, prefix: "" }]);
+  temaVars[`html[data-tema="${t.id}"] [data-tema-adorno="${t.id}"]`] = { display: "revert" };
+});
+if (new Set(temasConfig.temas.map((t) => t.id)).size !== temasConfig.temas.length)
+  throw new Error("temas.json: hay ids repetidos");
+
 const baseSize = Number(themeConfig.fonts.font_size.base);
 const scale = Number(themeConfig.fonts.font_size.scale);
 const calculateFontSizes = (base, scale) => {
@@ -87,6 +108,8 @@ module.exports = plugin.withOptions(() => {
     addBase({
       ":root": baseVars,
       ".dark": darkVars,
+      "[data-tema-adorno]": { display: "none" },
+      ...temaVars,
     });
 
     const fontUtils = {};

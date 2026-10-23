@@ -1,0 +1,31 @@
+{
+  "_comentario": "Temas de temporada. Cada tema redefine colores de theme.json (claves de theme_color) entre dos fechas MM-DD, ambas incluidas; si 'desde' es mayor que 'hasta', el rango cruza el año. Con 'activo': false no se aplica solo, pero se puede previsualizar con ?tema=<id>. Los adornos van en src/layouts/temas/<id>.astro (opcional). Ver CLAUDE.md, 'Temas de temporada'.",
+  "temas": [
+    {
+      "id": "halloween",
+      "nombre": "Halloween",
+      "activo": false,
+      "desde": "10-27",
+      "hasta": "10-31",
+      "colores": {
+        "primary": "#c2410c",
+        "secondary": "#7e22ce",
+        "light": "#fb923c",
+        "accent": "#f59e0b",
+        "accent_light": "#fde68a"
+      }
+    },
+    {
+      "id": "navidad",
+      "nombre": "Navidad",
+      "activo": false,
+      "desde": "12-15",
+      "hasta": "01-06",
+      "colores": {
+        "primary": "#b91c1c",
+        "secondary": "#15803d",
+        "light": "#f87171"
+      }
+    }
+  ]
+}

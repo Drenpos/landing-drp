@@ -153,7 +153,7 @@ const capturas = [
 const hojaRuta = [
   {
     estado: "Disponible hoy",
-    color: "#16a34a",
+    color: "success",
     icon: "✓",
     intro: "Funcionando en los locales que ya usan el TPV de Drenpos.",
     items: [
@@ -166,7 +166,7 @@ const hojaRuta = [
   },
   {
     estado: "En las próximas semanas",
-    color: "#b45309",
+    color: "warning",
     icon: "◷",
     intro: "Está en camino y el QR que imprimas hoy ya apunta a ello.",
     items: [
@@ -178,7 +178,7 @@ const hojaRuta = [
   },
   {
     estado: "Próximamente",
-    color: "#791b46",
+    color: "primary",
     icon: "◌",
     intro: "En desarrollo. No damos fecha hasta que lo tengamos.",
     items: [
@@ -801,7 +801,7 @@ const PAGE_UPDATED = "2026-10-22";
                 <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay={(i % 2) * 100}>
                   <div class="rounded-2xl overflow-hidden h-full relative border border-white/10">
                     <img src={c.src} alt={c.alt} width="1200" height="750" class="w-full h-auto block" loading="lazy" />
-                    <div class="absolute bottom-0 inset-x-0 p-6" style="background: linear-gradient(to top, rgba(16,25,40,0.90), transparent);">
+                    <div class="absolute bottom-0 inset-x-0 p-6" style="background: linear-gradient(to top, color-mix(in oklab, var(--color-dark) 90%, transparent), transparent);">
                       <p class="text-white font-bold text-lg mb-1">{c.title}</p>
                       <p class="text-sm mb-0 text-white/78">{c.caption}</p>
                     </div>
@@ -835,14 +835,14 @@ const PAGE_UPDATED = "2026-10-22";
             <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
               <div class="h-full rounded-3xl border border-dark/10 bg-body p-7">
                 <div class="flex items-center gap-3 mb-4">
-                  <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-white text-sm font-bold" style={`background: ${h.color};`} aria-hidden="true">{h.icon}</span>
+                  <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-white text-sm font-bold" style={`background: var(--color-${h.color});`} aria-hidden="true">{h.icon}</span>
                   <h3 class="h6 font-bold mb-0 leading-snug">{h.estado}</h3>
                 </div>
                 <p class="text-sm mb-4 text-dark/65">{h.intro}</p>
                 <ul class="space-y-2.5">
                   {h.items.map((it) => (
                     <li class="flex items-start gap-2.5">
-                      <span class="w-1.5 h-1.5 mt-2 rounded-full flex-shrink-0" style={`background: ${h.color};`} aria-hidden="true"></span>
+                      <span class="w-1.5 h-1.5 mt-2 rounded-full flex-shrink-0" style={`background: var(--color-${h.color});`} aria-hidden="true"></span>
                       <span class="text-sm text-dark/72">{it}</span>
                     </li>
                   ))}
@@ -1038,7 +1038,7 @@ const PAGE_UPDATED = "2026-10-22";
         }
       </div>
 
-      <div class="rounded-2xl p-6 lg:p-8 mt-8 border border-dark/6" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%);" data-aos="fade-up-sm">
+      <div class="rounded-2xl p-6 lg:p-8 mt-8 border border-dark/6" style="background: linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 6%, transparent) 0%, color-mix(in oklab, var(--color-secondary) 10%, transparent) 100%);" data-aos="fade-up-sm">
         <p class="font-semibold text-text-dark mb-2">En qué se apoya</p>
         <p class="text-sm leading-relaxed mb-0 text-dark/72">
           Los requisitos técnicos los fijan el Real Decreto 1007/2023 y la Orden
@@ -1100,7 +1100,7 @@ const PAGE_UPDATED = "2026-10-22";
         </div>
       </div>
 
-      <div class="rounded-2xl p-6 lg:p-8 mt-8 border border-dark/6" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%);" data-aos="fade-up-sm">
+      <div class="rounded-2xl p-6 lg:p-8 mt-8 border border-dark/6" style="background: linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 6%, transparent) 0%, color-mix(in oklab, var(--color-secondary) 10%, transparent) 100%);" data-aos="fade-up-sm">
         <p class="font-semibold text-text-dark mb-2">Qué exige hoy la ley</p>
         <p class="text-sm leading-relaxed mb-3 text-dark/72">
           El registro diario de jornada es obligatorio desde 2019 por el
