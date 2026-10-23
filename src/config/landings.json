@@ -1,0 +1,207 @@
+{
+  "_comentario": "Registro único de páginas públicas. De aquí salen el mega menú de Funcionalidades (Header.astro), la lista 'Páginas principales' de llms.txt y las comprobaciones de scripts/check-landings.mjs. Al crear una landing, añádela aquí.",
+  "grupos": [
+    {
+      "id": "almacen",
+      "titulo": "Almacén y stock",
+      "hub": {
+        "nombre": "Ver todo sobre almacén",
+        "ruta": "/software-gestion-almacen"
+      }
+    },
+    {
+      "id": "equipo",
+      "titulo": "Equipo y fichaje",
+      "hub": {
+        "nombre": "Ver todo sobre control horario",
+        "ruta": "/control-horario"
+      }
+    },
+    {
+      "id": "ventas",
+      "titulo": "Ventas y producción",
+      "hub": {
+        "nombre": "Ver todas las funcionalidades",
+        "ruta": "/funcionalidades"
+      }
+    },
+    {
+      "id": "cumplimiento",
+      "titulo": "Cumplimiento e integraciones",
+      "hub": {
+        "nombre": "Todos los módulos y precios",
+        "ruta": "/modulos"
+      }
+    }
+  ],
+  "paginas": [
+    {
+      "ruta": "/software-gestion-almacen",
+      "titulo": "Gestión de almacén (SGA)",
+      "grupo": "almacen",
+      "llms": "Multialmacén, ubicaciones QR, plano del almacén por plantas, lotes, picking, palets y trazabilidad"
+    },
+    {
+      "ruta": "/software-control-stock",
+      "titulo": "Control de stock",
+      "grupo": "almacen",
+      "llms": "Mínimos y máximos con alertas, propuesta de compra, lotes y caducidad, pistola o móvil, inventarios y valoración"
+    },
+    {
+      "ruta": "/software-preparacion-pedidos-picking",
+      "titulo": "Preparación de pedidos y picking",
+      "menu": "Preparación de pedidos (picking)",
+      "grupo": "almacen",
+      "llms": "Oleadas, asistente móvil con orden de ruta según el plano del almacén y expedición con escaneo"
+    },
+    {
+      "ruta": "/software-gestion-palets",
+      "titulo": "Gestión de palets y etiqueta SSCC",
+      "menu": "Gestión de palets (SSCC)",
+      "grupo": "almacen",
+      "llms": "Palet como unidad logística: SSCC GS1, cierre y pesado, movimiento en un escaneo, despaletizado y depósito"
+    },
+    {
+      "ruta": "/software-almacen-frigorifico",
+      "titulo": "Almacén frigorífico",
+      "grupo": "almacen",
+      "llms": "Frío, congelados, FEFO y operativa en móvil dentro de la cámara"
+    },
+    {
+      "ruta": "/software-alquiler-huecos-palet",
+      "titulo": "Alquiler de huecos de palet",
+      "grupo": "almacen",
+      "llms": "Depósito de terceros con tarifario y liquidación"
+    },
+    {
+      "ruta": "/control-horario",
+      "titulo": "Control Horario",
+      "menu": "Control horario",
+      "grupo": "equipo",
+      "llms": "Software de control horario, fichaje RFID/QR, hardware propio, vacaciones y permisos, control de entrada y salida, calendarios con festivos, turnos rotativos (#turnos-rotativos), planificación anual con PDF por trabajador (#planificacion-anual) y geolocalización opcional al fichar entrada y salida"
+    },
+    {
+      "ruta": "/dispositivo-fichaje",
+      "titulo": "Dispositivo de fichaje",
+      "grupo": "equipo",
+      "llms": "Terminal de fichaje propio con llavero RFID y QR, modo sin conexión, alimentación a 12 V, ficha técnica, precio y personalización con el logo del cliente"
+    },
+    {
+      "ruta": "/software-vacaciones-ausencias",
+      "titulo": "Vacaciones y ausencias",
+      "grupo": "equipo",
+      "llms": "Software de vacaciones y permisos para pymes: cupos por tipo de ausencia con consolidación mes a mes, aniversario y arrastre, solicitud desde el móvil, aprobación o contrapropuesta de fechas y calendario de equipo; incluido en el fichaje (incluido en el plan; [[p:fichaje]]/usuario/mes cada persona adicional, sin IVA)"
+    },
+    {
+      "ruta": "/control-entrada-salida-empleados",
+      "titulo": "Control de entrada y salida",
+      "grupo": "equipo",
+      "llms": "Retrasos, salidas anticipadas y fichajes olvidados como incidencias, con tolerancias en minutos y nota del responsable; opcional y apagado por defecto, es una ayuda de gestión y el registro legal siguen siendo los fichajes"
+    },
+    {
+      "ruta": "/software-turnos-rotativos",
+      "titulo": "Turnos rotativos",
+      "grupo": "equipo",
+      "llms": "Calendarios rotativos 4x4, 5/2 y 6/3 con el primer día del ciclo de cada persona; los descansos no cuentan como faltas ni gastan vacaciones; no reparte la plantilla según la demanda"
+    },
+    {
+      "ruta": "/software-almacen-tienda",
+      "titulo": "Almacén y tienda",
+      "menu": "Tienda con almacén y TPV",
+      "grupo": "ventas",
+      "llms": "Almacén más TPV para retail"
+    },
+    {
+      "ruta": "/software-tienda-recambios",
+      "titulo": "Tienda de recambios y repuestos",
+      "menu": "Tienda de recambios",
+      "grupo": "ventas",
+      "llms": "Programa de gestión para tiendas de recambios y repuestos: stock por referencia, mínimos y propuesta de compra, recepción con pistola y venta en mostrador con TPV y Verifactu; sin catálogo de recambios ni búsqueda por matrícula"
+    },
+    {
+      "ruta": "/software-bares-restaurantes",
+      "titulo": "Software para bares y restaurantes",
+      "menu": "Bares y restaurantes",
+      "grupo": "ventas",
+      "llms": "TPV con mapa de sala y mesas, combinados y extras, pantallas de cocina y barra, QR de mesa con analítica, qué incluye frente a otros TPV, Verifactu en el ticket y fichaje del equipo"
+    },
+    {
+      "ruta": "/software-produccion-fabricacion",
+      "titulo": "Producción y fabricación",
+      "grupo": "ventas",
+      "llms": "Órdenes de trabajo por fases, recetas con subórdenes, necesidades de material, packs montables, consumo por lectura, imputación de tiempos y coste previsto frente a real"
+    },
+    {
+      "ruta": "/software-verifactu",
+      "titulo": "Software de facturación Verifactu",
+      "menu": "Facturación Verifactu",
+      "grupo": "cumplimiento",
+      "llms": "Facturación en modalidad Verifactu con huella encadenada, QR, remisión a la AEAT y panel de envíos, incluida en todos los planes"
+    },
+    {
+      "ruta": "/documento-control-transporte-deca",
+      "titulo": "Documento de control del transporte (DeCA)",
+      "grupo": "cumplimiento",
+      "llms": "DeCA obligatorio desde el 5 de octubre de 2026, generado desde el albarán de venta con PDF, QR de descarga directa y versiones con historial; incluido en el módulo Financiero sin coste extra"
+    },
+    {
+      "ruta": "/conector-mcp-ia",
+      "titulo": "Conector MCP con tu IA",
+      "menu": "Conector IA (MCP)",
+      "grupo": "cumplimiento",
+      "llms": "Conecta Drenpos con ChatGPT o Claude y pregunta por ventas, clientes y productos con tus permisos"
+    },
+    {
+      "ruta": "/partners",
+      "titulo": "Partners",
+      "menu": "Programa de partners",
+      "grupo": "cumplimiento",
+      "llms": "programa de partners para gestorías (25 % de por vida), integradores (30 % + implantación) y revendedores de hardware"
+    },
+    {
+      "ruta": "/",
+      "titulo": "Inicio",
+      "llms": "Visión general del ecosistema Drenpos"
+    },
+    {
+      "ruta": "/funcionalidades",
+      "titulo": "Funcionalidades",
+      "llms": "Módulos y capacidades del ERP"
+    },
+    {
+      "ruta": "/empresas-nuevas",
+      "titulo": "Empresas nuevas",
+      "llms": "programa Drenpos Arranca, [[n:nuevas_descuento]] % de descuento [[n:nuevas_meses]] meses prorrogable a [[n:nuevas_meses+nuevas_prorroga]] para empresas y autónomos con menos de [[n:nuevas_antiguedad]] años y menos de [[p:nuevas_facturacion_max]] de facturación"
+    },
+    {
+      "ruta": "/pricing",
+      "titulo": "Precios",
+      "llms": "Planes Facturación, Tienda y Hostelería, Almacén y Producción, y módulos opcionales"
+    },
+    {
+      "ruta": "/modulos",
+      "titulo": "Módulos",
+      "llms": "Detalle de cada módulo activable y precios"
+    },
+    {
+      "ruta": "/about",
+      "titulo": "Sobre nosotros",
+      "llms": "Equipo y filosofía"
+    },
+    {
+      "ruta": "/contact",
+      "titulo": "Contacto",
+      "llms": "Demo gratuita y consultas comerciales"
+    },
+    {
+      "ruta": "/faq",
+      "titulo": "FAQ",
+      "llms": "Preguntas frecuentes"
+    },
+    {
+      "ruta": "/blog",
+      "titulo": "Blog",
+      "llms": "Artículos sobre ERP, gestión empresarial y normativa"
+    }
+  ]
+}

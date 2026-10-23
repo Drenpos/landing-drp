@@ -317,6 +317,12 @@ Unidades logísticas: cada palet nace con su etiqueta SSCC estándar GS1 imprimi
 
 ---
 
+# Programa de partners
+
+- ${BASE}/partners: programa para quien recomienda, implanta o revende Drenpos. Gestorías y asesorías que recomiendan: el 25 % de la cuota de cada cliente, sin IVA, mientras siga pagando, y su propio Drenpos Facturación sin coste. Informáticos, consultoras e instaladores de TPV que implantan: el 30 % de la cuota mientras el cliente siga, y la instalación la cobran ellos entera; reciben dos sesiones de formación, entorno de pruebas y soporte de segundo nivel. Tiendas de TPV, terminales y etiquetadoras que revenden: el 20 % del aparato y el 20 % de la cuota durante el primer año.
+
+---
+
 # Planes y Precios
 
 ${pricingData}

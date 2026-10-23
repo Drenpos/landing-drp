@@ -5,6 +5,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { resolverPrecios } from "@/lib/precios";
+import { PAGINAS } from "@/lib/landings";
 import { EMPRESA, SITE_URL } from "@/lib/site";
 
 const BASE = SITE_URL;
@@ -35,6 +36,7 @@ function getContentLinks(dir: string, urlPrefix: string): string[] {
 export const GET: APIRoute = () => {
   const blogLinks = getContentLinks("blog", "blog");
   const localLinks = getContentLinks("local", "local");
+  const paginasLinks = PAGINAS.map((p) => `- [${p.titulo}](${BASE}${p.ruta}): ${p.llms}`);
 
   const content = `# Drenpos
 
@@ -475,34 +477,7 @@ Cualquier plan se puede instalar en el servidor de la empresa (funciona sin inte
 
 ## Páginas principales
 
-- [Inicio](${BASE}/): Visión general del ecosistema Drenpos
-- [Funcionalidades](${BASE}/funcionalidades): Módulos y capacidades del ERP
-- [Software de facturación Verifactu](${BASE}/software-verifactu): Facturación en modalidad Verifactu con huella encadenada, QR, remisión a la AEAT y panel de envíos, incluida en todos los planes
-- [Documento de control del transporte (DeCA)](${BASE}/documento-control-transporte-deca): DeCA obligatorio desde el 5 de octubre de 2026, generado desde el albarán de venta con PDF, QR de descarga directa y versiones con historial; incluido en el módulo Financiero sin coste extra
-- [Control Horario](${BASE}/control-horario): Software de control horario, fichaje RFID/QR, hardware propio, vacaciones y permisos, control de entrada y salida, calendarios con festivos, turnos rotativos (#turnos-rotativos), planificación anual con PDF por trabajador (#planificacion-anual) y geolocalización opcional al fichar entrada y salida
-- [Dispositivo de fichaje](${BASE}/dispositivo-fichaje): Terminal de fichaje propio con llavero RFID y QR, modo sin conexión, alimentación a 12 V, ficha técnica, precio y personalización con el logo del cliente
-- [Vacaciones y ausencias](${BASE}/software-vacaciones-ausencias): Software de vacaciones y permisos para pymes: cupos por tipo de ausencia con consolidación mes a mes, aniversario y arrastre, solicitud desde el móvil, aprobación o contrapropuesta de fechas y calendario de equipo; incluido en el fichaje (incluido en el plan; [[p:fichaje]]/usuario/mes cada persona adicional, sin IVA)
-- [Control de entrada y salida](${BASE}/control-entrada-salida-empleados): Retrasos, salidas anticipadas y fichajes olvidados como incidencias, con tolerancias en minutos y nota del responsable; opcional y apagado por defecto, es una ayuda de gestión y el registro legal siguen siendo los fichajes
-- [Turnos rotativos](${BASE}/software-turnos-rotativos): Calendarios rotativos 4x4, 5/2 y 6/3 con el primer día del ciclo de cada persona; los descansos no cuentan como faltas ni gastan vacaciones; no reparte la plantilla según la demanda
-- [Software para bares y restaurantes](${BASE}/software-bares-restaurantes): TPV con mapa de sala y mesas, combinados y extras, pantallas de cocina y barra, QR de mesa con analítica, qué incluye frente a otros TPV, Verifactu en el ticket y fichaje del equipo
-- [Conector MCP con tu IA](${BASE}/conector-mcp-ia): Conecta Drenpos con ChatGPT o Claude y pregunta por ventas, clientes y productos con tus permisos
-- [Gestión de almacén (SGA)](${BASE}/software-gestion-almacen): Multialmacén, ubicaciones QR, plano del almacén por plantas, lotes, picking, palets y trazabilidad
-- [Control de stock](${BASE}/software-control-stock): Mínimos y máximos con alertas, propuesta de compra, lotes y caducidad, pistola o móvil, inventarios y valoración
-- [Gestión de palets y etiqueta SSCC](${BASE}/software-gestion-palets): Palet como unidad logística: SSCC GS1, cierre y pesado, movimiento en un escaneo, despaletizado y depósito
-- [Almacén frigorífico](${BASE}/software-almacen-frigorifico): Frío, congelados, FEFO y operativa en móvil dentro de la cámara
-- [Preparación de pedidos y picking](${BASE}/software-preparacion-pedidos-picking): Oleadas, asistente móvil con orden de ruta según el plano del almacén y expedición con escaneo
-- [Alquiler de huecos de palet](${BASE}/software-alquiler-huecos-palet): Depósito de terceros con tarifario y liquidación
-- [Almacén y tienda](${BASE}/software-almacen-tienda): Almacén más TPV para retail
-- [Tienda de recambios y repuestos](${BASE}/software-tienda-recambios): Programa de gestión para tiendas de recambios y repuestos: stock por referencia, mínimos y propuesta de compra, recepción con pistola y venta en mostrador con TPV y Verifactu; sin catálogo de recambios ni búsqueda por matrícula
-- [Producción y fabricación](${BASE}/software-produccion-fabricacion): Órdenes de trabajo por fases, recetas con subórdenes, necesidades de material, packs montables, consumo por lectura, imputación de tiempos y coste previsto frente a real
-- [Empresas nuevas](${BASE}/empresas-nuevas): programa Drenpos Arranca, [[n:nuevas_descuento]] % de descuento [[n:nuevas_meses]] meses prorrogable a [[n:nuevas_meses+nuevas_prorroga]] para empresas y autónomos con menos de [[n:nuevas_antiguedad]] años y menos de [[p:nuevas_facturacion_max]] de facturación
-- [Partners](${BASE}/partners): programa de partners para gestorías (25 % de por vida), integradores (30 % + implantación) y revendedores de hardware
-- [Precios](${BASE}/pricing): Planes Facturación, Tienda y Hostelería, Almacén y Producción, y módulos opcionales
-- [Módulos](${BASE}/modulos): Detalle de cada módulo activable y precios
-- [Sobre nosotros](${BASE}/about): Equipo y filosofía
-- [Contacto](${BASE}/contact): Demo gratuita y consultas comerciales
-- [FAQ](${BASE}/faq): Preguntas frecuentes
-- [Blog](${BASE}/blog): Artículos sobre ERP, gestión empresarial y normativa
+${paginasLinks.join("\n")}
 - [DeCA digital obligatorio](${BASE}/blog/deca-documento-control-transporte-digital-5-octubre-2026): Qué es el documento de control digital del transporte, quién lo emite, qué datos lleva, multas y cómo generarlo desde el albarán
 - [Software para el DeCA: comparativa](${BASE}/blog/software-deca-comparativa-pymes): 8 opciones para pymes con precios
 - [Fichar con huella: qué dice el RGPD](${BASE}/blog/fichar-con-huella-aepd-alternativas): Arts. 9 y 35 del RGPD, la guía de la AEPD anulada por forma en 2026 y alternativas sin biometría

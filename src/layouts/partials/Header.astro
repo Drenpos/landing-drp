@@ -4,6 +4,7 @@ import Logo from "@/components/Logo.astro";
 import UserNav from "@/components/UserNav.astro";
 import config from "@/config/config.json";
 import menu from "@/config/menu.json";
+import { GRUPOS_MENU } from "@/lib/landings";
 import { Icon } from "astro-icon/components";
 
 export interface ChildNavigationLink {
@@ -25,9 +26,13 @@ export interface NavigationLink {
   children?: ChildNavigationLink[];
   // Mega menú agrupado por columnas; tiene prioridad sobre children
   groups?: NavigationGroup[];
+  // En menu.json: los grupos salen de src/config/landings.json
+  megaMenu?: boolean;
 }
 
-const { main }: { main: NavigationLink[] } = menu;
+const main: NavigationLink[] = (menu.main as NavigationLink[]).map((item) =>
+  item.megaMenu ? { ...item, groups: GRUPOS_MENU } : item,
+);
 const { navigation_button } = config;
 const { pathname } = Astro.url;
 

@@ -14,7 +14,7 @@ Marketing/landing site for **Drenpos** (ERP SaaS modular para pymes en España).
 | `npm run build` | Build SSR bundle to `./dist/` + genera los `.md` alternativos (`scripts/markdown-alternates.mjs`). También corre en `preview`, `check` y `deploy:manual` |
 | `npm run markdown:check -- dist/pricing.html` | Imprime por stdout el Markdown que se generaría para esa página (tras un build) |
 | `npm run preview` | Build + run Wrangler dev server (uses Cloudflare runtime) |
-| `npm run check` | `astro build && tsc && wrangler deploy --dry-run` — full CI check |
+| `npm run check` | `npm run build && tsc` — full CI check |
 | `npm run deploy` | `wrangler deploy` (production) |
 | `npm run cf-typegen` | Regenerate `worker-configuration.d.ts` from `wrangler.json` |
 | `npm run astro -- --help` | Astro CLI |
@@ -68,7 +68,7 @@ Key collections:
 - `software-verifactu.astro`: facturación en modalidad Verifactu (sección `#otras-obligaciones` con enlaces a las demás obligaciones)
 - `documento-control-transporte-deca.astro`: documento de control del transporte (DeCA) desde el albarán, obligatorio desde el 5/10/2026. Usa `<DemoForm interes="deca" />`: los valores de `interes` salen de `src/config/intereses.ts`
 
-Al tocar una, revisa: `src/config/menu.json` (submenú Funcionalidades), `src/pages/llms.txt.ts` y `src/pages/llms-full.txt.ts` (bloque "Páginas de solución"), y los enlaces cruzados del array `hermanas` en `software-gestion-almacen.astro`. `seoGraph` valida en build enlaces internos, unicidad de metadatos y H1 único: un enlace roto o un `meta_title` duplicado rompe el build.
+Al crear una, regístrala en `src/config/landings.json` (ver "Registro de páginas" más abajo) y menciónala en `src/pages/llms-full.txt.ts`; revisa también los enlaces cruzados del array `hermanas` en `software-gestion-almacen.astro`. `seoGraph` valida en build enlaces internos, unicidad de metadatos y H1 único: un enlace roto o un `meta_title` duplicado rompe el build.
 
 **Fecha y autor visibles en landings**: `src/layouts/partials/LandingMeta.astro` (`<LandingMeta updated="AAAA-MM-DD" published="AAAA-MM-DD" />`, bajo el lead del hero). Cada landing pasa además `published_date`, `modified_date` y `author` a `<Base>`, que los vuelca en `dateModified`/`datePublished`/`author` del `WebPage`. Al cambiar de fondo una landing, actualiza su `PAGE_UPDATED`.
 
@@ -76,7 +76,9 @@ Al tocar una, revisa: `src/config/menu.json` (submenú Funcionalidades), `src/pa
 
 **Caché**: no hay `public/_headers` (decisión del 07/10/2026: malas experiencias previas con cabeceras en Cloudflare). Tras cada despliegue que cambie páginas existentes, purgar la caché a mano en el panel de Cloudflare (Caching, Purge Everything) o con `npm run purge:cf`. El despliegue se hace con `git push` a `main`.
 
-**Menú Funcionalidades (mega menú, 14/10/2026)**: en `src/config/menu.json` la entrada "Funcionalidades" lleva `groups` (array de `{ title, hub?: {name,url}, children: [{name,url}] }`) en vez de `children`. `Header.astro` pinta 4 columnas si hay `groups` y el desplegable plano si hay `children`; todo se renderiza en servidor. Al crear una landing nueva, añádela al grupo que toque (Almacén y stock, Equipo y fichaje, Ventas y producción, Cumplimiento e integraciones). El conector Holded no aparece en la tabla de módulos ni en precios (decisión 14/10/2026).
+**Menú Funcionalidades (mega menú, 14/10/2026)**: en `src/config/menu.json` la entrada "Funcionalidades" lleva `"megaMenu": true`; `Header.astro` le pone los grupos de `GRUPOS_MENU` (`src/lib/landings.ts`), que salen de `src/config/landings.json`. Pinta 4 columnas si hay grupos y el desplegable plano si hay `children`; todo se renderiza en servidor. El conector Holded no aparece en la tabla de módulos ni en precios (decisión 14/10/2026).
+
+**Registro de páginas (`src/config/landings.json`, 23/10/2026)**: una entrada por página pública `{ ruta, titulo, menu?, grupo?, llms }`. `grupo` (`almacen`, `equipo`, `ventas`, `cumplimiento`) la mete en el mega menú; `menu` es el nombre del menú si no coincide con el título; `llms` es su línea en "Páginas principales" de `llms.txt` (admite `[[p:clave]]`). `scripts/check-landings.mjs` corre en el build y falla si una página `.astro` de primer nivel no está registrada, si una ruta no la cubre `run_worker_first` o si una landing del menú no aparece en `llms-full.txt.ts`.
 
 ### Auto-imported shortcodes
 Available in all `.md`/`.mdx` without import (`astro.config.mjs`): `Button`, `Accordion`, `Notice`, `Video`, `Youtube`, `Tab`, `Tabs`. Sources in `src/layouts/shortcodes/`.
@@ -118,7 +120,7 @@ Lo que tiene el sitio para que los agentes de IA lo descubran y lo lean:
 
 **Por qué en el worker y no en `src/middleware.ts`**: las páginas públicas son prerenderizadas. El handler de `@astrojs/cloudflare` (v12) las devuelve desde `ASSETS` sin ejecutar el middleware de Astro, así que un middleware nunca vería esas peticiones. La entrada propia se declara en `astro.config.mjs` (`adapter: cloudflare({ workerEntryPoint: { path: "src/worker.ts" } })`). Al subir a `@astrojs/cloudflare` 13 hay que migrarla (allí desaparece `createExports`).
 
-**`run_worker_first` en `wrangler.json`**: con Workers Static Assets un fichero estático se sirve sin pasar por el worker. Para que las páginas pasen por él, `assets.run_worker_first` lista SOLO rutas de página (más los dos catálogos de `/.well-known`). Imágenes, `/_astro/*`, fuentes y ficheros de texto no pasan. **Al crear una landing nueva que no empiece por `/software-`, añádela a esa lista** (máximo 100 entradas) o no tendrá Markdown ni cabecera `Link`. Esto solo aplica a `wrangler deploy` (Workers); un `wrangler pages deploy` ignora `run_worker_first` y usa `_routes.json`.
+**`run_worker_first` en `wrangler.json`**: con Workers Static Assets un fichero estático se sirve sin pasar por el worker. Para que las páginas pasen por él, `assets.run_worker_first` lista SOLO rutas de página (más los dos catálogos de `/.well-known`). Imágenes, `/_astro/*`, fuentes y ficheros de texto no pasan. **Al crear una landing nueva que no empiece por `/software-`, añádela a esa lista** (máximo 100 entradas) o no tendrá Markdown ni cabecera `Link`; `check-landings.mjs` rompe el build si se te olvida. Esto solo aplica a `wrangler deploy` (Workers); un `wrangler pages deploy` ignora `run_worker_first` y usa `_routes.json`.
 
 Cómo probarlo (tras desplegar):
 
@@ -195,6 +197,7 @@ Obligatorias para cualquier cambio. `npm run build` comprueba las que se pueden 
 | URL del sitio | `src/config/config.json` → `site.base_url` | `abs("/ruta")`, `SITE_URL` de `@/lib/site` |
 | Empresa: marca, razón social, email, teléfono, sede, perfiles, fundador | `src/config/empresa.json` | `EMPRESA`, `AUTOR`, `waUrl()` de `@/lib/site` |
 | JSON-LD de una landing | `src/lib/schema.ts` | `breadcrumb()`, `softwareApp()`, `faqPage()`, `oferta()` + `<JsonLd data={[...]} />` |
+| Páginas públicas: ruta, nombre en el menú, grupo, descripción para llms.txt | `src/config/landings.json` | `PAGINAS`, `GRUPOS_MENU` de `@/lib/landings` |
 | Ids del grafo (Organization, WebSite, fundador) | `src/lib/site.ts` | `ORG_ID`, `WEBSITE_ID`, `FOUNDER_ID`. Un JSON-LD de página referencia `{ "@id": ORG_ID }`, no repite nombre ni URL |
 
 - Nunca escribas a mano `https://www.drenpos.com`, el teléfono, el correo, el nombre del fundador ni un precio nuestro en `.astro`, `.ts` o Markdown. Si el dato no existe en una fuente, añádelo a la fuente primero.
