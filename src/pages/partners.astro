@@ -90,7 +90,7 @@ const breadcrumbSchema = breadcrumb([{ name: "Partners", path: PATH }]);
       <img src="/images/grainy.svg" alt="" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
     </div>
     <div class="container relative z-10">
-      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm text-dark/55">
         <a href="/" class="hover:text-primary">Inicio</a>
         <span class="mx-2" aria-hidden="true">/</span>
         <span class="text-primary font-medium">Partners</span>
@@ -101,7 +101,7 @@ const breadcrumbSchema = breadcrumb([{ name: "Partners", path: PATH }]);
           <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
             Partners de Drenpos
           </h1>
-          <p class="text-lg mb-6 max-w-2xl mx-auto" style="color: rgba(16,25,40,0.72);">
+          <p class="text-lg mb-6 max-w-2xl mx-auto text-dark/72">
             Si eres gestoría, informático o instalador, tus clientes te preguntan a menudo qué programa usar.
             Si les recomiendas o les instalas Drenpos, te llevas una parte de lo que pagan cada mes mientras sigan con nosotros.
           </p>
@@ -122,15 +122,15 @@ const breadcrumbSchema = breadcrumb([{ name: "Partners", path: PATH }]);
           <h2 class="h3 font-bold mb-8 text-center">Tres maneras de trabajar con nosotros</h2>
           <div class="grid gap-6 lg:grid-cols-3">
             {tipos.map((t) => (
-              <div class="rounded-3xl border bg-white p-7 flex flex-col" style="border-color: rgba(16,25,40,0.1);">
+              <div class="rounded-3xl border bg-white p-7 flex flex-col border-dark/10">
                 <span class="text-primary bg-primary/10 px-3 py-1 inline-block self-start rounded-full uppercase text-xs font-medium mb-4">{t.nombre}</span>
                 <h3 class="font-bold text-lg mb-3">{t.quien}</h3>
-                <p class="text-base mb-4" style="color: rgba(16,25,40,0.72);">{t.hace}</p>
-                <p class="text-base font-semibold mb-2" style="color: #791b46;">{t.gana}</p>
-                <p class="text-sm mb-5" style="color: rgba(16,25,40,0.6);">{t.ejemplo}</p>
+                <p class="text-base mb-4 text-dark/72">{t.hace}</p>
+                <p class="text-base font-semibold mb-2 text-primary">{t.gana}</p>
+                <p class="text-sm mb-5 text-dark/60">{t.ejemplo}</p>
                 <ul class="mt-auto flex flex-col gap-2 text-sm">
                   {t.recibe.map((r) => (
-                    <li class="flex gap-2"><span aria-hidden="true" style="color: #16a34a;">✓</span><span>{r}</span></li>
+                    <li class="flex gap-2"><span class="text-success" aria-hidden="true">✓</span><span>{r}</span></li>
                   ))}
                 </ul>
               </div>
@@ -148,13 +148,13 @@ const breadcrumbSchema = breadcrumb([{ name: "Partners", path: PATH }]);
           <h2 class="h3 font-bold mb-6 text-center">Condiciones</h2>
           <ol class="flex flex-col gap-3">
             {reglas.map((r, i) => (
-              <li class="rounded-2xl border bg-white px-6 py-4 flex gap-4" style="border-color: rgba(16,25,40,0.1);">
-                <span class="font-bold" style="color: #791b46;">{i + 1}</span>
-                <span style="color: rgba(16,25,40,0.78);">{r}</span>
+              <li class="rounded-2xl border bg-white px-6 py-4 flex gap-4 border-dark/10">
+                <span class="font-bold text-primary">{i + 1}</span>
+                <span class="text-dark/78">{r}</span>
               </li>
             ))}
           </ol>
-          <p class="mt-8 text-center" style="color: rgba(16,25,40,0.65);">
+          <p class="mt-8 text-center text-dark/65">
             Lo que recomiendas es un programa de gestión para pymes con
             <a href="/software-gestion-almacen" class="text-primary underline">almacén</a>,
             <a href="/software-bares-restaurantes" class="text-primary underline">TPV para tienda y hostelería</a>,
@@ -176,13 +176,13 @@ const breadcrumbSchema = breadcrumb([{ name: "Partners", path: PATH }]);
         <div class="lg:col-10">
           <div class="flex flex-col gap-3">
             {faqs.map((f, i) => (
-              <details class="group rounded-2xl border bg-white" style="border-color: rgba(16,25,40,0.1);" data-aos="fade-up-sm" data-aos-delay={i * 40}>
+              <details class="group rounded-2xl border bg-white border-dark/10" data-aos="fade-up-sm" data-aos-delay={i * 40}>
                 <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none">
                   <h3 class="font-semibold text-base lg:text-lg mb-0">{f.q}</h3>
-                  <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-200 group-open:rotate-45 text-xl leading-none" style="background: rgba(121,27,70,0.10); color: #791b46;" aria-hidden="true">+</span>
+                  <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-200 group-open:rotate-45 text-xl leading-none bg-primary/10 text-primary" aria-hidden="true">+</span>
                 </summary>
                 <div class="px-6 pb-6 -mt-2">
-                  <p class="text-base leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">{f.a}</p>
+                  <p class="text-base leading-relaxed mb-0 text-dark/72">{f.a}</p>
                 </div>
               </details>
             ))}
@@ -195,9 +195,9 @@ const breadcrumbSchema = breadcrumb([{ name: "Partners", path: PATH }]);
   <section class="section pt-0">
     <div class="container">
       <div class="row justify-center">
-        <div class="lg:col-8 text-center rounded-3xl py-12 px-6" style="background: #101928;" data-aos="fade-up-sm">
+        <div class="lg:col-8 text-center rounded-3xl py-12 px-6 bg-dark" data-aos="fade-up-sm">
           <h2 class="h3 font-bold mb-3 text-white">¿Hablamos?</h2>
-          <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+          <p class="mb-6 max-w-xl mx-auto text-white/75">
             Una llamada de un cuarto de hora para enseñarte el panel y darte tu enlace. Si vas a instalar, cerramos ahí las fechas de formación.
           </p>
           <a href="/contact" class="btn btn-light">Quiero ser partner</a>

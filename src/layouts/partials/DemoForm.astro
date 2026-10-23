@@ -72,11 +72,11 @@ const VENTAJAS = [
       <div class="row gx-0 items-stretch">
         <!-- Columna izquierda: argumento y WhatsApp -->
         <div
-          class="lg:col-5 p-8 lg:p-12"
-          style="background: rgba(121,27,70,0.04);"
+          class="lg:col-5 p-8 lg:p-12 bg-primary/4"
+         
         >
           <h2 class="h4 font-bold mb-4 leading-snug">{titulo}</h2>
-          <p class="text-base mb-8" style="color: rgba(16,25,40,0.72);">
+          <p class="text-base mb-8 text-dark/72">
             {subtitulo}
           </p>
 
@@ -85,8 +85,8 @@ const VENTAJAS = [
               VENTAJAS.map((v) => (
                 <li class="flex items-start gap-3">
                   <span
-                    class="w-5 h-5 mt-1 rounded-full flex items-center justify-center shrink-0 text-white text-[10px] font-bold"
-                    style="background: #16a34a;"
+                    class="w-5 h-5 mt-1 rounded-full flex items-center justify-center shrink-0 text-white text-[10px] font-bold bg-success"
+                   
                     aria-hidden="true"
                   >
                     ✓
@@ -96,8 +96,8 @@ const VENTAJAS = [
                       {v.title}
                     </span>
                     <span
-                      class="block text-sm"
-                      style="color: rgba(16,25,40,0.65);"
+                      class="block text-sm text-dark/65"
+                     
                     >
                       {v.body}
                     </span>
@@ -107,15 +107,15 @@ const VENTAJAS = [
             }
           </ul>
 
-          <p class="text-sm mb-3" style="color: rgba(16,25,40,0.65);">
+          <p class="text-sm mb-3 text-dark/65">
             ¿Prefieres escribir y que te contestemos ahí mismo?
           </p>
           <a
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener"
-            class="inline-flex items-center gap-3 rounded-full px-5 py-3 font-medium text-white transition hover:opacity-90"
-            style="background: #25D366;"
+            class="inline-flex items-center gap-3 rounded-full px-5 py-3 font-medium text-white transition hover:opacity-90 bg-whatsapp"
+           
           >
             <svg
               width="20"
@@ -266,8 +266,8 @@ const VENTAJAS = [
 
               <div class="col-12">
                 <label
-                  class="flex items-start gap-3 text-sm cursor-pointer"
-                  style="color: rgba(16,25,40,0.72);"
+                  class="flex items-start gap-3 text-sm cursor-pointer text-dark/72"
+                 
                 >
                   <input
                     class="mt-1 shrink-0"
@@ -312,7 +312,7 @@ const VENTAJAS = [
               <button type="submit" class="btn btn-dark ps-6! pe-6! py-3!">
                 Pedir mi demo
               </button>
-              <span class="text-sm" style="color: rgba(16,25,40,0.55);">
+              <span class="text-sm text-dark/55">
                 Sin compromiso y sin tarjeta.
               </span>
             </div>
@@ -337,14 +337,14 @@ const VENTAJAS = [
             aria-live="polite"
           >
             <div
-              class="w-14 h-14 rounded-full mx-auto mb-5 flex items-center justify-center text-2xl text-white font-bold"
-              style="background: #16a34a;"
+              class="w-14 h-14 rounded-full mx-auto mb-5 flex items-center justify-center text-2xl text-white font-bold bg-success"
+             
               aria-hidden="true"
             >
               ✓
             </div>
             <h3 class="h5 font-bold mb-3">Recibido, gracias</h3>
-            <p class="mb-6" style="color: rgba(16,25,40,0.7);">
+            <p class="mb-6 text-dark/70">
               Te escribimos en menos de 24 horas laborables para cuadrar la
               demo. Si tienes prisa, escríbenos por WhatsApp y lo vemos hoy.
             </p>
@@ -352,8 +352,8 @@ const VENTAJAS = [
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener"
-              class="inline-flex items-center gap-2 rounded-full px-5 py-3 font-medium text-white transition hover:opacity-90"
-              style="background: #25D366;"
+              class="inline-flex items-center gap-2 rounded-full px-5 py-3 font-medium text-white transition hover:opacity-90 bg-whatsapp"
+             
             >
               Hablar por WhatsApp
             </a>

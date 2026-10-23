@@ -135,7 +135,7 @@ const cumplimiento = [
           Control horario
         </span>
         <h2 class="h3 font-bold mb-4">El registro de jornada, las vacaciones y los retrasos en el mismo sitio</h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+        <p class="text-lg max-w-2xl mx-auto text-dark/65">
           El fichaje va incluido en todos los planes ([[p:fichaje]]/mes por persona adicional, sin IVA) y ya incluye
           vacaciones y permisos, calendarios con festivos (también
           rotativos) y control de entrada y salida.
@@ -146,10 +146,10 @@ const cumplimiento = [
         {
           horario.map((h, i) => (
             <div class="col-12 md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
-              <a href={h.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(121,27,70,0.08);">{h.icon}</div>
+              <a href={h.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300 border-dark/10">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 bg-primary/8">{h.icon}</div>
                 <h3 class="h6 font-semibold mb-2">{h.title}</h3>
-                <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.65);">{h.body}</p>
+                <p class="text-sm leading-relaxed mb-3 text-dark/65">{h.body}</p>
                 <span class="text-sm font-medium text-primary">{h.cta} →</span>
               </a>
             </div>
@@ -169,7 +169,7 @@ const cumplimiento = [
           Almacén y tienda
         </span>
         <h2 class="h3 font-bold mb-4">Si vendes en una tienda y tienes stock que controlar</h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+        <p class="text-lg max-w-2xl mx-auto text-dark/65">
           El almacén va en el plan Almacén, [[p:almacen]]/mes sin IVA, y con el TPV de
           tienda, en el plan Almacén con TPV por [[p:almacen_tpv]]/mes sin IVA.
         </p>
@@ -179,10 +179,10 @@ const cumplimiento = [
         {
           almacenTienda.map((h, i) => (
             <div class="col-12 md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
-              <a href={h.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(121,27,70,0.08);">{h.icon}</div>
+              <a href={h.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300 border-dark/10">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 bg-primary/8">{h.icon}</div>
                 <h3 class="h6 font-semibold mb-2">{h.title}</h3>
-                <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.65);">{h.body}</p>
+                <p class="text-sm leading-relaxed mb-3 text-dark/65">{h.body}</p>
                 <span class="text-sm font-medium text-primary">{h.cta} →</span>
               </a>
             </div>
@@ -202,7 +202,7 @@ const cumplimiento = [
           Facturación y cumplimiento
         </span>
         <h2 class="h3 font-bold mb-4">Las obligaciones que salen de tus facturas y albaranes</h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+        <p class="text-lg max-w-2xl mx-auto text-dark/65">
           Van en el módulo Financiero, que está en todos los planes desde
           [[p:facturacion]]/mes sin IVA.
         </p>
@@ -212,10 +212,10 @@ const cumplimiento = [
         {
           cumplimiento.map((h, i) => (
             <div class="col-12 md:col-6 lg:col-5" data-aos="fade-up-sm" data-aos-delay={i * 100}>
-              <a href={h.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(121,27,70,0.08);">{h.icon}</div>
+              <a href={h.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300 border-dark/10">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 bg-primary/8">{h.icon}</div>
                 <h3 class="h6 font-semibold mb-2">{h.title}</h3>
-                <p class="text-sm leading-relaxed mb-3" style="color: rgba(16,25,40,0.65);">{h.body}</p>
+                <p class="text-sm leading-relaxed mb-3 text-dark/65">{h.body}</p>
                 <span class="text-sm font-medium text-primary">{h.cta} →</span>
               </a>
             </div>
@@ -235,7 +235,7 @@ const cumplimiento = [
           Hostelería
         </span>
         <h2 class="h3 font-bold mb-4">Si lo tuyo es un bar o un restaurante</h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+        <p class="text-lg max-w-2xl mx-auto text-dark/65">
           El módulo TPV trae la parte de sala, cocina y carta dentro del mismo
           sistema que ya lleva tu stock y tu facturación. Y el equipo ficha en
           la barra con los turnos partidos bien contados:
@@ -247,10 +247,10 @@ const cumplimiento = [
         {
           hosteleria.map((h, i) => (
             <div class="col-12 md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
-              <div class="border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(121,27,70,0.08);">{h.icon}</div>
+              <div class="border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300 border-dark/10">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 bg-primary/8">{h.icon}</div>
                 <h3 class="h6 font-semibold mb-2">{h.title}</h3>
-                <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{h.body}</p>
+                <p class="text-sm leading-relaxed mb-0 text-dark/65">{h.body}</p>
               </div>
             </div>
           ))

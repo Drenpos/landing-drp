@@ -381,7 +381,7 @@ const PAGE_UPDATED = "2026-10-22";
     </div>
 
     <div class="container relative z-10">
-      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm text-dark/55">
         <a href="/" class="hover:text-primary">Inicio</a>
         <span class="mx-2" aria-hidden="true">/</span>
         <a href="/funcionalidades" class="hover:text-primary">Funcionalidades</a>
@@ -392,14 +392,14 @@ const PAGE_UPDATED = "2026-10-22";
       <div class="row gx-0 gy-12 lg:gy-0 items-center">
         <div class="lg:col-6" data-aos="fade-up-sm">
           <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
-            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            <span class="w-2 h-2 rounded-full bg-success" aria-hidden="true"></span>
             Obligatorio desde el 5 de octubre de 2026
           </span>
 
           <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
             <span class="text-primary">Documento de control del transporte digital (DeCA)</span> desde el albarán
           </h1>
-          <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
+          <p class="text-lg mb-8 max-w-xl text-dark/72">
             Si contratas transportistas para mover tu mercancía, desde el 5 de
             octubre el documento de control tiene que ser un
             <strong>PDF con código QR</strong>. En Drenpos lo generas desde el
@@ -434,17 +434,17 @@ const PAGE_UPDATED = "2026-10-22";
             </li>
           </ul>
 
-          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm text-dark/62">
             <div class="flex items-center gap-2">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold bg-success">✓</span>
               Incluido sin coste extra
             </div>
             <div class="flex items-center gap-2">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold bg-success">✓</span>
               Desde el albarán, en todos los planes
             </div>
             <div class="flex items-center gap-2">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold bg-success">✓</span>
               Sin plataforma externa
             </div>
           </div>
@@ -452,11 +452,11 @@ const PAGE_UPDATED = "2026-10-22";
 
         <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
           <div class="relative px-4 lg:px-0 pt-10 pb-10">
-            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
-            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none bg-primary/10"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none bg-secondary/12"></div>
 
             {showAlbaranImg ? (
-              <div class="rounded-2xl overflow-hidden relative z-10 mx-auto" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
+              <div class="rounded-2xl overflow-hidden relative z-10 mx-auto border border-dark/8" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08);">
                 <img
                   src={IMG_ALBARAN}
                   alt="Albarán de venta en Drenpos con el botón Activar DeCA y los datos del transportista"
@@ -467,7 +467,7 @@ const PAGE_UPDATED = "2026-10-22";
                 />
               </div>
             ) : (
-              <div class="rounded-2xl relative z-10 mx-auto bg-white p-6 lg:p-8 max-w-md" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);" aria-label="Esquema de la página de control de un DeCA generado desde el albarán">
+              <div class="rounded-2xl relative z-10 mx-auto bg-white p-6 lg:p-8 max-w-md border border-dark/8" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08);" aria-label="Esquema de la página de control de un DeCA generado desde el albarán">
                 <div class="flex items-start justify-between gap-4 mb-5">
                   <div>
                     <p class="text-xs uppercase font-semibold tracking-wide text-primary mb-1">Documento de control</p>
@@ -481,31 +481,31 @@ const PAGE_UPDATED = "2026-10-22";
                 <ul class="space-y-2.5 text-sm">
                   {apartados.map((a) => (
                     <li class="flex items-center gap-3">
-                      <span class="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 text-[11px] font-bold text-white" style="background: #791b46;">{a.l}</span>
-                      <span class="h-2 rounded-full flex-1" style="background: rgba(16,25,40,0.08);"></span>
+                      <span class="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 text-[11px] font-bold text-white bg-primary">{a.l}</span>
+                      <span class="h-2 rounded-full flex-1 bg-dark/8"></span>
                     </li>
                   ))}
                 </ul>
-                <p class="text-xs mt-5 mb-0" style="color: rgba(16,25,40,0.55);">
+                <p class="text-xs mt-5 mb-0 text-dark/55">
                   Página de control con los ocho apartados, seguida del albarán
                   con su formato de siempre.
                 </p>
               </div>
             )}
 
-            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3 z-20" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
-              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0 font-bold" style="background: #dcfce7; color: #16a34a;">✓</div>
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3 z-20 border border-dark/7" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0 font-bold bg-success-light text-success">✓</div>
               <div>
                 <p class="text-xs font-bold text-dark">QR de descarga directa</p>
-                <p class="text-xs" style="color: #9ca3af;">Sin usuario ni contraseña</p>
+                <p class="text-xs text-muted">Sin usuario ni contraseña</p>
               </div>
             </div>
 
-            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5 z-20" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
-              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #fef3c7;">📅</div>
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5 z-20 border border-dark/7" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0 bg-warning-light">📅</div>
               <div>
                 <p class="text-xs font-bold text-dark">5 de octubre de 2026</p>
-                <p class="text-xs" style="color: #9ca3af;">Sin periodo transitorio</p>
+                <p class="text-xs text-muted">Sin periodo transitorio</p>
               </div>
             </div>
           </div>
@@ -524,7 +524,7 @@ const PAGE_UPDATED = "2026-10-22";
       <div class="row justify-center">
         <div class="lg:col-9 text-center" data-aos="fade-up-sm">
           <h2 class="h4 font-bold mb-4">¿Qué es el DeCA?</h2>
-          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+          <p class="text-lg leading-relaxed text-dark/72">
             El <strong>DeCA (documento electrónico de control administrativo)</strong>
             es el documento que acompaña cada envío de transporte público de
             mercancías por carretera en España, ahora en PDF con un
@@ -548,7 +548,7 @@ const PAGE_UPDATED = "2026-10-22";
       <div class="row justify-center mb-12">
         <div class="lg:col-9 text-center" data-aos="fade-up-sm">
           <h2 class="h3 font-bold mb-4">¿Qué exige la Resolución de 5 de junio de 2026?</h2>
-          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+          <p class="text-lg leading-relaxed text-dark/72">
             La <a href={RES_URL} class="text-primary underline" target="_blank" rel="noopener">Resolución de 5 de junio de 2026</a>
             (BOE del 12 de junio) no cambia qué datos lleva el documento de
             control: cambia cómo tiene que ser. Un PDF creado desde los datos
@@ -566,7 +566,7 @@ const PAGE_UPDATED = "2026-10-22";
               <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
                 <div class="text-3xl mb-4">{r.icon}</div>
                 <h3 class="h6 font-bold mb-3 leading-snug">{r.title}</h3>
-                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{r.body}</p>
+                <p class="text-sm text-dark/68">{r.body}</p>
               </div>
             </div>
           ))
@@ -576,7 +576,7 @@ const PAGE_UPDATED = "2026-10-22";
       <div class="row justify-center mt-14">
         <div class="lg:col-10">
           <h3 class="h5 font-bold mb-3 text-center" data-aos="fade-up-sm">Los ocho datos del artículo 6 y quién responde de cada uno</h3>
-          <p class="text-sm text-center mb-6 max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);" data-aos="fade-up-sm">
+          <p class="text-sm text-center mb-6 max-w-2xl mx-auto text-dark/65" data-aos="fade-up-sm">
             Según el <a href={`${ORDEN_URL}#a6`} class="text-primary underline" target="_blank" rel="noopener">artículo 6</a>
             y el <a href={`${ORDEN_URL}#a7`} class="text-primary underline" target="_blank" rel="noopener">artículo 7</a>
             de la Orden FOM/2861/2012.
@@ -595,7 +595,7 @@ const PAGE_UPDATED = "2026-10-22";
                   apartados.map((a, i) => (
                     <tr class={i % 2 === 0 ? "bg-primary/5" : ""}>
                       <td class="p-4 font-bold text-primary">{a.l})</td>
-                      <td class="p-4" style="color: rgba(16,25,40,0.78);">{a.dato}</td>
+                      <td class="p-4 text-dark/78">{a.dato}</td>
                       <td class="p-4 font-medium">{a.responde}</td>
                     </tr>
                   ))
@@ -603,7 +603,7 @@ const PAGE_UPDATED = "2026-10-22";
               </tbody>
             </table>
           </div>
-          <p class="text-xs mt-4" style="color: rgba(16,25,40,0.55);" data-aos="fade-up-sm">
+          <p class="text-xs mt-4 text-dark/55" data-aos="fade-up-sm">
             Si el conjunto cambia de vehículo una vez empezado el transporte,
             la empresa de transportes lo tiene que hacer constar en el
             documento. El documento es de libre edición: no hay un modelo
@@ -621,9 +621,9 @@ const PAGE_UPDATED = "2026-10-22";
   ═══════════════════════════════════════════════════════════════════ -->
   <section id="como-se-genera" class="section pt-0 overflow-hidden scroll-mt-24">
     <div class="container">
-      <div class="rounded-[32px] overflow-hidden relative" style="background: rgba(16,25,40,0.97);">
-        <div class="absolute -top-20 -right-20 w-96 h-96 rounded-full blur-3xl pointer-events-none" style="background: rgba(211,167,118,0.18);"></div>
-        <div class="absolute -bottom-24 -left-16 w-80 h-80 rounded-full blur-3xl pointer-events-none" style="background: rgba(121,27,70,0.35);"></div>
+      <div class="rounded-[32px] overflow-hidden relative bg-dark/97">
+        <div class="absolute -top-20 -right-20 w-96 h-96 rounded-full blur-3xl pointer-events-none bg-secondary/18"></div>
+        <div class="absolute -bottom-24 -left-16 w-80 h-80 rounded-full blur-3xl pointer-events-none bg-primary/35"></div>
 
         <div class="relative p-8 lg:p-16">
           <div class="text-center max-w-3xl mx-auto mb-14" data-aos="fade-up-sm">
@@ -631,9 +631,9 @@ const PAGE_UPDATED = "2026-10-22";
               Módulo Financiero · albarán de venta
             </span>
             <h2 class="h3 font-bold mb-4 text-white leading-tight">
-              ¿Cómo se genera el DeCA <span style="color: #f9b27c;">en Drenpos</span>?
+              ¿Cómo se genera el DeCA <span class="text-accent">en Drenpos</span>?
             </h2>
-            <p class="text-lg leading-relaxed mb-0" style="color: rgba(255,255,255,0.78);">
+            <p class="text-lg leading-relaxed mb-0 text-white/78">
               Desde el albarán de venta que ya haces. Pulsas «Activar DeCA», el
               sistema comprueba que están los datos que pide la Orden y te dice
               qué falta, y genera un PDF con la página de control y el albarán
@@ -646,7 +646,7 @@ const PAGE_UPDATED = "2026-10-22";
           {showPdfImg && (
             <div class="row justify-center mb-12">
               <div class="lg:col-10" data-aos="fade-up-sm">
-                <figure class="rounded-2xl overflow-hidden relative" style="border: 1px solid rgba(255,255,255,0.10);">
+                <figure class="rounded-2xl overflow-hidden relative border border-white/10">
                   <img
                     src={IMG_PDF}
                     alt="PDF del DeCA generado por Drenpos: página de control con los ocho apartados rotulados y el código QR de descarga"
@@ -664,10 +664,10 @@ const PAGE_UPDATED = "2026-10-22";
             {
               pasos.map((p, i) => (
                 <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 100}>
-                  <div class="rounded-2xl p-6 h-full" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
-                    <div class="w-10 h-10 rounded-xl flex items-center justify-center text-base font-bold text-white mb-4" style="background: #791b46;">{p.n}</div>
+                  <div class="rounded-2xl p-6 h-full bg-white/5 border border-white/8">
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center text-base font-bold text-white mb-4 bg-primary">{p.n}</div>
                     <h3 class="text-white font-semibold mb-1.5 text-base">{p.title}</h3>
-                    <p class="text-sm mb-0" style="color: rgba(255,255,255,0.72);">{p.body}</p>
+                    <p class="text-sm mb-0 text-white/72">{p.body}</p>
                   </div>
                 </div>
               ))
@@ -687,7 +687,7 @@ const PAGE_UPDATED = "2026-10-22";
         <div class="lg:col-9">
           <div class="text-center mb-10" data-aos="fade-up-sm">
             <h2 class="h3 font-bold mb-4">Qué incluye el DeCA de Drenpos</h2>
-            <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+            <p class="text-lg text-dark/65">
               Lo que hace el sistema, punto por punto.
             </p>
           </div>
@@ -698,14 +698,14 @@ const PAGE_UPDATED = "2026-10-22";
                   ficha.map((f, i) => (
                     <tr class={i % 2 === 0 ? "bg-primary/5" : ""}>
                       <th scope="row" class="text-left p-4 font-bold align-top w-44">{f.k}</th>
-                      <td class="p-4" style="color: rgba(16,25,40,0.75);">{f.v}</td>
+                      <td class="p-4 text-dark/75">{f.v}</td>
                     </tr>
                   ))
                 }
               </tbody>
             </table>
           </div>
-          <p class="text-xs mt-4" style="color: rgba(16,25,40,0.55);" data-aos="fade-up-sm">
+          <p class="text-xs mt-4 text-dark/55" data-aos="fade-up-sm">
             Precios sin IVA. La guía completa, con ejemplos y qué hacer si algo
             cambia en ruta, está en
             <a href="/blog/deca-documento-control-transporte-digital-5-octubre-2026" class="text-primary underline">DeCA digital obligatorio: qué es y cómo generarlo desde el albarán</a>. Si estás comparando programas, mira la <a href="/blog/software-deca-comparativa-pymes" class="text-primary underline">comparativa de software para el DeCA</a>.
@@ -723,7 +723,7 @@ const PAGE_UPDATED = "2026-10-22";
       <div class="row justify-center mb-12">
         <div class="lg:col-9 text-center" data-aos="fade-up-sm">
           <h2 class="h3 font-bold mb-4">¿A quién obliga el DeCA y a quién no?</h2>
-          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+          <p class="text-lg leading-relaxed text-dark/72">
             Obliga a los dos lados del porte en el transporte público de
             mercancías dentro de España: al <strong>transportista efectivo</strong>,
             que tiene la autorización, y al <strong>cargador contractual</strong>,
@@ -743,10 +743,10 @@ const PAGE_UPDATED = "2026-10-22";
               {
                 obligados.map((o) => (
                   <div class="flex items-start gap-3">
-                    <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[11px] font-bold mt-0.5" style="background: #16a34a;">✓</span>
+                    <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[11px] font-bold mt-0.5 bg-success">✓</span>
                     <div>
                       <h3 class="h6 font-bold mb-1">{o.title}</h3>
-                      <p class="text-sm mb-0" style="color: rgba(16,25,40,0.7);">{o.body}</p>
+                      <p class="text-sm mb-0 text-dark/70">{o.body}</p>
                     </div>
                   </div>
                 ))
@@ -757,11 +757,11 @@ const PAGE_UPDATED = "2026-10-22";
         <div class="lg:col-5" data-aos="fade-up-sm" data-aos-delay="100">
           <div class="h-full rounded-3xl border border-dark/10 bg-body p-7">
             <p class="font-bold mb-5">No lo necesitan</p>
-            <ul class="space-y-3 text-sm" style="color: rgba(16,25,40,0.7);">
+            <ul class="space-y-3 text-sm text-dark/70">
               {
                 excluidos.map((e) => (
                   <li class="flex items-start gap-3">
-                    <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[11px] font-bold mt-0.5" style="background: #9ca3af;">✕</span>
+                    <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[11px] font-bold mt-0.5 bg-muted">✕</span>
                     <span>{e}</span>
                   </li>
                 ))
@@ -771,7 +771,7 @@ const PAGE_UPDATED = "2026-10-22";
         </div>
       </div>
 
-      <p class="text-sm text-center mt-8 max-w-3xl mx-auto" style="color: rgba(16,25,40,0.62);" data-aos="fade-up-sm">
+      <p class="text-sm text-center mt-8 max-w-3xl mx-auto text-dark/62" data-aos="fade-up-sm">
         Sujetos y exenciones: artículos
         <a href={`${ORDEN_URL}#a2`} class="text-primary underline" target="_blank" rel="noopener">2</a> y
         <a href={`${ORDEN_URL}#a4`} class="text-primary underline" target="_blank" rel="noopener">4</a>
@@ -791,7 +791,7 @@ const PAGE_UPDATED = "2026-10-22";
       <div class="row justify-center mb-10">
         <div class="lg:col-9 text-center" data-aos="fade-up-sm">
           <h2 class="h3 font-bold mb-4">¿Qué pasa si no llevas el DeCA?</h2>
-          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+          <p class="text-lg leading-relaxed text-dark/72">
             Circular sin documento de control, o con uno al que le faltan
             datos esenciales, es una infracción grave de la Ley de Ordenación
             de los Transportes Terrestres: multa de <strong>401 a 600 €</strong>.
@@ -830,9 +830,9 @@ const PAGE_UPDATED = "2026-10-22";
 
       <div class="row justify-center mt-10">
         <div class="lg:col-10">
-          <div class="rounded-2xl p-6 lg:p-8" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
+          <div class="rounded-2xl p-6 lg:p-8 border border-dark/6" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%);" data-aos="fade-up-sm">
             <p class="font-semibold mb-2">Quién responde de qué</p>
-            <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">
+            <p class="text-sm leading-relaxed mb-0 text-dark/72">
               Según el <a href={`${ORDEN_URL}#a7`} class="text-primary underline" target="_blank" rel="noopener">artículo 7 de la Orden FOM/2861/2012</a>,
               los dos responden de no formalizar el documento, y también de que
               no vaya a bordo, salvo que el cargador pruebe que lo emitió.
@@ -855,7 +855,7 @@ const PAGE_UPDATED = "2026-10-22";
     <div class="container">
       <div class="text-center mb-10" data-aos="fade-up-sm">
         <h2 class="h3 font-bold mb-4">¿Plataforma de DeCA aparte o desde tu albarán?</h2>
-        <p class="text-lg max-w-3xl mx-auto" style="color: rgba(16,25,40,0.65);">
+        <p class="text-lg max-w-3xl mx-auto text-dark/65">
           Las tres situaciones en las que suele estar un cargador que ya hace
           albaranes con su programa de gestión.
         </p>
@@ -884,7 +884,7 @@ const PAGE_UPDATED = "2026-10-22";
           </tbody>
         </table>
       </div>
-      <p class="text-xs mt-4 max-w-4xl mx-auto" style="color: rgba(16,25,40,0.55);">
+      <p class="text-xs mt-4 max-w-4xl mx-auto text-dark/55">
         Tarifas públicas de plataformas de DeCA consultadas el 28 de septiembre
         de 2026: bonos desde 0,25 €/documento (60 documentos) hasta 0,10
         €/documento a partir de 12.000
@@ -906,30 +906,30 @@ const PAGE_UPDATED = "2026-10-22";
   ═══════════════════════════════════════════════════════════════════ -->
   <section class="section pt-0">
     <div class="container">
-      <div class="rounded-3xl p-8 lg:p-12" style="background: #101928;" data-aos="fade-up-sm">
+      <div class="rounded-3xl p-8 lg:p-12 bg-dark" data-aos="fade-up-sm">
         <h2 class="h4 font-bold mb-8 text-white text-center">¿A cuántas empresas y camiones afecta?</h2>
         <div class="row g-6 text-center">
           <div class="md:col-4">
-            <p class="text-3xl lg:text-4xl font-bold mb-2" style="color: #f9b27c;">157.116</p>
-            <p class="text-sm mb-0" style="color: rgba(255,255,255,0.75);">
+            <p class="text-3xl lg:text-4xl font-bold mb-2 text-accent">157.116</p>
+            <p class="text-sm mb-0 text-white/75">
               empresas de transporte de mercancías por carretera en España a 1
               de septiembre de 2026
             </p>
           </div>
           <div class="md:col-4">
-            <p class="text-3xl lg:text-4xl font-bold mb-2" style="color: #f9b27c;">104.635</p>
-            <p class="text-sm mb-0" style="color: rgba(255,255,255,0.75);">
+            <p class="text-3xl lg:text-4xl font-bold mb-2 text-accent">104.635</p>
+            <p class="text-sm mb-0 text-white/75">
               de ellas son de transporte público, las que llevan el DeCA a bordo
             </p>
           </div>
           <div class="md:col-4">
-            <p class="text-3xl lg:text-4xl font-bold mb-2" style="color: #f9b27c;">393.593</p>
-            <p class="text-sm mb-0" style="color: rgba(255,255,255,0.75);">
+            <p class="text-3xl lg:text-4xl font-bold mb-2 text-accent">393.593</p>
+            <p class="text-sm mb-0 text-white/75">
               vehículos autorizados en servicio público a 1 de enero de 2026
             </p>
           </div>
         </div>
-        <p class="text-xs mt-8 mb-0 text-center" style="color: rgba(255,255,255,0.55);">
+        <p class="text-xs mt-8 mb-0 text-center text-white/55">
           Fuentes: datos del Ministerio de Transportes recogidos por
           <a href={EMPRESAS_URL} class="underline" target="_blank" rel="noopener">Cadena de Suministro (septiembre de 2026)</a>
           y <a href={OBSERVATORIO_URL} class="underline" target="_blank" rel="noopener">Observatorio de oferta y demanda del transporte de mercancías por carretera, enero de 2026</a>.
@@ -956,7 +956,7 @@ const PAGE_UPDATED = "2026-10-22";
                 <div class="text-3xl mb-4">{c.icon}</div>
                 <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
                 <h3 class="h6 font-bold mb-3 leading-snug">{c.title}</h3>
-                <p class="text-sm" style="color: rgba(16,25,40,0.68);">{c.body}</p>
+                <p class="text-sm text-dark/68">{c.body}</p>
               </div>
             </div>
           ))
@@ -972,9 +972,9 @@ const PAGE_UPDATED = "2026-10-22";
     <div class="container">
       <div class="row justify-center">
         <div class="lg:col-8">
-          <div class="rounded-3xl p-8 lg:p-12 text-center text-white" style="background: #101928;" data-aos="fade-up-sm">
+          <div class="rounded-3xl p-8 lg:p-12 text-center text-white bg-dark" data-aos="fade-up-sm">
             <h2 class="h3 font-bold mb-3 text-white">DeCA incluido, sin pagar por documento</h2>
-            <p class="mb-6 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+            <p class="mb-6 max-w-xl mx-auto text-white/75">
               El documento de control va dentro del módulo Financiero, sin coste
               extra, y el módulo Financiero está en todos los planes: Facturación [[p:facturacion]]/mes, Almacén [[p:almacen]]/mes y Almacén con TPV [[p:almacen_tpv]]/mes.
               Emitas diez albaranes o mil, el precio es el mismo. Sin
@@ -985,10 +985,10 @@ const PAGE_UPDATED = "2026-10-22";
                 <a href="#demo-form" class="btn btn-light">Pedir demo gratuita</a>
               </li>
               <li>
-                <a href="/pricing" class="btn btn-dark" style="border-color: rgba(255,255,255,0.35);">Ver planes y precios</a>
+                <a href="/pricing" class="btn btn-dark border-white/35">Ver planes y precios</a>
               </li>
             </ul>
-            <p class="text-sm max-w-xl mx-auto mb-0" style="color: rgba(255,255,255,0.55);">
+            <p class="text-sm max-w-xl mx-auto mb-0 text-white/55">
               Precios sin IVA, sin permanencia y con las actualizaciones incluidas.
             </p>
           </div>
@@ -1014,7 +1014,7 @@ const PAGE_UPDATED = "2026-10-22";
       <div class="row justify-center">
         <div class="lg:col-9">
           <h2 class="h3 font-bold mb-3 text-center" data-aos="fade-up-sm">DeCA: lo que más nos preguntan</h2>
-          <p class="text-center mb-10" style="color: rgba(16,25,40,0.62);" data-aos="fade-up-sm">
+          <p class="text-center mb-10 text-dark/62" data-aos="fade-up-sm">
             Respuestas directas, con la norma a mano.
           </p>
           <div class="space-y-4">
@@ -1025,7 +1025,7 @@ const PAGE_UPDATED = "2026-10-22";
                     <h3 class="h6 font-bold leading-snug">{f.q}</h3>
                     <span class="text-primary text-xl leading-none mt-0.5 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
                   </summary>
-                  <p class="mt-4 text-sm leading-relaxed" style="color: rgba(16,25,40,0.7);">{f.a}</p>
+                  <p class="mt-4 text-sm leading-relaxed text-dark/70">{f.a}</p>
                 </details>
               ))
             }
@@ -1075,7 +1075,7 @@ const PAGE_UPDATED = "2026-10-22";
               <a href="/pricing" class="text-primary hover:underline">Planes y precios de Drenpos</a>
             </li>
           </ul>
-          <p class="text-sm" style="color: rgba(16,25,40,0.7);">
+          <p class="text-sm text-dark/70">
             El DeCA sale al final de un camino que empieza antes: en la
             <a href="/software-preparacion-pedidos-picking" class="text-primary underline">preparación de pedidos</a>,
             donde escanear el pedido preparado ya genera el albarán, y en la

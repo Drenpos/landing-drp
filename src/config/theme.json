@@ -7,7 +7,17 @@
         "body": "#fff",
         "border": "#F9F9F9",
         "light": "#d17b87",
-        "dark": "#101928"
+        "dark": "#101928",
+        "success": "#16a34a",
+        "success_light": "#dcfce7",
+        "warning": "#b45309",
+        "warning_light": "#fef3c7",
+        "danger": "#dc2626",
+        "danger_light": "#fee2e2",
+        "muted": "#9ca3af",
+        "accent": "#f9b27c",
+        "accent_light": "#fcd9b6",
+        "whatsapp": "#25d366"
       },
       "text_color": {
         "text": "#101828",

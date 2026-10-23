@@ -354,7 +354,7 @@ const PAGE_UPDATED = "2026-10-22";
     </div>
 
     <div class="container relative z-10">
-      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm text-dark/55">
         <a href="/" class="hover:text-primary">Inicio</a>
         <span class="mx-2" aria-hidden="true">/</span>
         <a href="/funcionalidades" class="hover:text-primary">Funcionalidades</a>
@@ -365,14 +365,14 @@ const PAGE_UPDATED = "2026-10-22";
       <div class="row gx-0 gy-12 lg:gy-0 items-center">
         <div class="lg:col-6" data-aos="fade-up-sm">
           <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
-            <span class="w-2 h-2 rounded-full" style="background: #16a34a;" aria-hidden="true"></span>
+            <span class="w-2 h-2 rounded-full bg-success" aria-hidden="true"></span>
             Nuevo módulo
           </span>
 
           <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
             Software de <span class="text-primary">producción</span> que te dice cuánto cuesta fabricar de verdad
           </h1>
-          <p class="text-lg mb-8 max-w-xl" style="color: rgba(16,25,40,0.72);">
+          <p class="text-lg mb-8 max-w-xl text-dark/72">
             Órdenes de trabajo divididas en fases, consumo de materiales
             escaneando el código, imputación de tiempos por operario y
             <strong>coste real de fabricación</strong> al cerrar la orden.
@@ -397,17 +397,17 @@ const PAGE_UPDATED = "2026-10-22";
             </li>
           </ul>
 
-          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm" style="color: rgba(16,25,40,0.62);">
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm text-dark/62">
             <div class="flex items-center gap-2">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold bg-success">✓</span>
               Coste real por orden
             </div>
             <div class="flex items-center gap-2">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold bg-success">✓</span>
               Consumo por escaneo
             </div>
             <div class="flex items-center gap-2">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background: #16a34a;">✓</span>
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold bg-success">✓</span>
               [[n:produccion_usuarios]] usuarios incluidos
             </div>
           </div>
@@ -415,23 +415,23 @@ const PAGE_UPDATED = "2026-10-22";
 
         <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
           <div class="relative px-4 lg:px-0 pt-10 pb-10">
-            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none" style="background: rgba(121,27,70,0.10);"></div>
-            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none" style="background: rgba(211,167,118,0.12);"></div>
-            <div class="rounded-2xl overflow-hidden relative z-10" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08); border: 1px solid rgba(16,25,40,0.08);">
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none bg-primary/10"></div>
+            <div class="absolute bottom-0 left-0 w-56 h-56 rounded-full blur-2xl -z-10 pointer-events-none bg-secondary/12"></div>
+            <div class="rounded-2xl overflow-hidden relative z-10 border border-dark/8" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18), 0 6px 20px rgba(0,0,0,0.08);">
               <img src="/images/power/stock.png" alt="Panel de Drenpos con el stock del almacén sobre el que trabaja el módulo de Producción" width="720" height="480" class="w-full h-auto block" fetchpriority="high" />
             </div>
-            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="zoom-in-up-sm" data-aos-delay="500">
-              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0" style="background: #dcfce7;">💶</div>
+            <div class="absolute -bottom-5 -left-2 lg:-left-8 rounded-2xl px-4 py-3 flex items-center gap-3 border border-dark/7" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13);" data-aos="zoom-in-up-sm" data-aos-delay="500">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0 bg-success-light">💶</div>
               <div>
                 <p class="text-xs font-bold text-dark">Coste real de la orden</p>
-                <p class="text-xs" style="color: #9ca3af;">materiales + tiempos imputados</p>
+                <p class="text-xs text-muted">materiales + tiempos imputados</p>
               </div>
             </div>
-            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13); border: 1px solid rgba(16,25,40,0.07);" data-aos="fade-up-sm" data-aos-delay="450">
-              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0" style="background: #fef3c7;">🪜</div>
+            <div class="absolute -top-5 -right-2 lg:-right-6 rounded-2xl px-4 py-3 flex items-center gap-2.5 border border-dark/7" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13);" data-aos="fade-up-sm" data-aos-delay="450">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-lg flex-shrink-0 bg-warning-light">🪜</div>
               <div>
                 <p class="text-xs font-bold text-dark">Fase 2 de 4</p>
-                <p class="text-xs" style="color: #9ca3af;">montaje · en curso</p>
+                <p class="text-xs text-muted">montaje · en curso</p>
               </div>
             </div>
           </div>
@@ -448,7 +448,7 @@ const PAGE_UPDATED = "2026-10-22";
       <div class="row justify-center">
         <div class="lg:col-9 text-center" data-aos="fade-up-sm">
           <h2 class="h4 font-bold mb-4">¿Qué es un software de producción?</h2>
-          <p class="text-lg leading-relaxed" style="color: rgba(16,25,40,0.72);">
+          <p class="text-lg leading-relaxed text-dark/72">
             Un <strong>software de producción</strong> controla qué se fabrica,
             en qué fase está cada trabajo, qué materiales consume y cuánto
             tiempo lleva. En Drenpos, cada fabricación es una
@@ -471,14 +471,14 @@ const PAGE_UPDATED = "2026-10-22";
           <div class="text-center mb-10" data-aos="fade-up-sm">
             <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Respuestas cortas</span>
             <h2 class="h3 font-bold mb-3">Lo que pregunta un fabricante pequeño antes de dejar el Excel</h2>
-            <p class="text-lg mb-0" style="color: rgba(16,25,40,0.65);">Seis preguntas que nos hacen talleres, obradores y fábricas de 5 a 30 personas, con la guía completa de cada una.</p>
+            <p class="text-lg mb-0 text-dark/65">Seis preguntas que nos hacen talleres, obradores y fábricas de 5 a 30 personas, con la guía completa de cada una.</p>
           </div>
           <div class="row g-4">
             {preguntas.map((p) => (
               <div class="col-12 md:col-6" id={p.id}>
-                <div class="border rounded-[20px] p-7 h-full bg-white" style="border-color: rgba(16,25,40,0.1);">
+                <div class="border rounded-[20px] p-7 h-full bg-white border-dark/10">
                   <h3 class="h6 font-semibold mb-3">{p.q}</h3>
-                  <p class="text-base leading-relaxed mb-4" style="color: rgba(16,25,40,0.72);">{p.a}</p>
+                  <p class="text-base leading-relaxed mb-4 text-dark/72">{p.a}</p>
                   <a href={p.link.url} class="text-primary font-semibold text-sm underline">{p.link.t}</a>
                 </div>
               </div>
@@ -495,17 +495,17 @@ const PAGE_UPDATED = "2026-10-22";
       <div class="text-center mb-12" data-aos="fade-up-sm">
         <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Si te suena esto</span>
         <h2 class="h3 font-bold mb-4">Fabricas bien. El problema es que no lo mides.</h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+        <p class="text-lg max-w-2xl mx-auto text-dark/65">
           Cuatro señales de que tu taller necesita control de producción y no solo un programa de facturación.
         </p>
       </div>
       <div class="row g-4">
         {sintomas.map((s, i) => (
           <div class="col-12 md:col-6" data-aos="fade-up-sm" data-aos-delay={(i % 2) * 80}>
-            <div class="border rounded-[20px] p-7 h-full" style="border-color: rgba(16,25,40,0.1);">
-              <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(211,167,118,0.15);">{s.icon}</div>
+            <div class="border rounded-[20px] p-7 h-full border-dark/10">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 bg-secondary/15">{s.icon}</div>
               <h3 class="h6 font-semibold mb-2">{s.title}</h3>
-              <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{s.body}</p>
+              <p class="text-sm leading-relaxed mb-0 text-dark/65">{s.body}</p>
             </div>
           </div>
         ))}
@@ -519,7 +519,7 @@ const PAGE_UPDATED = "2026-10-22";
       <div class="text-center mb-12" data-aos="fade-up-sm">
         <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Módulo de Producción</span>
         <h2 class="h3 font-bold mb-4">Qué hace exactamente el módulo</h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(16,25,40,0.65);">
+        <p class="text-lg max-w-2xl mx-auto text-dark/65">
           Lo que registra, lo que descuenta y lo que calcula. Sin humo.
         </p>
       </div>
@@ -527,10 +527,10 @@ const PAGE_UPDATED = "2026-10-22";
       <div class="row g-4">
         {capacidades.map((f, i) => (
           <div class="col-12 md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 80}>
-            <div class="border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
-              <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(121,27,70,0.08);">{f.icon}</div>
+            <div class="border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300 border-dark/10">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 bg-primary/8">{f.icon}</div>
               <h3 class="h6 font-semibold mb-2">{f.title}</h3>
-              <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{f.body}</p>
+              <p class="text-sm leading-relaxed mb-0 text-dark/65">{f.body}</p>
             </div>
           </div>
         ))}
@@ -541,18 +541,18 @@ const PAGE_UPDATED = "2026-10-22";
   <!-- ═══════════════ FLUJO DE UNA ORDEN ═══════════════ -->
   <section class="section pt-0">
     <div class="container">
-      <div class="rounded-[28px] p-8 lg:p-12" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%); border: 1px solid rgba(16,25,40,0.06);" data-aos="fade-up-sm">
+      <div class="rounded-[28px] p-8 lg:p-12 border border-dark/6" style="background: linear-gradient(135deg, rgba(121,27,70,0.06) 0%, rgba(211,167,118,0.10) 100%);" data-aos="fade-up-sm">
         <div class="text-center mb-10">
           <h2 class="h4 font-bold mb-2">Cómo funciona una orden de trabajo, paso a paso</h2>
-          <p class="text-base mb-0" style="color: rgba(16,25,40,0.65);">Cuatro pasos. Ningún parte de papel entre medias.</p>
+          <p class="text-base mb-0 text-dark/65">Cuatro pasos. Ningún parte de papel entre medias.</p>
         </div>
         <ol class="row g-4 list-none ps-0 mb-0">
           {flujo.map((p) => (
             <li class="col-12 md:col-6 lg:col-3">
               <div class="rounded-2xl p-6 h-full" style="background: white; box-shadow: 0 6px 18px rgba(0,0,0,0.06);">
-                <span class="inline-flex items-center justify-center w-9 h-9 rounded-full font-bold mb-4 text-white" style="background: #791b46;">{p.n}</span>
+                <span class="inline-flex items-center justify-center w-9 h-9 rounded-full font-bold mb-4 text-white bg-primary">{p.n}</span>
                 <h3 class="text-base font-semibold mb-2">{p.t}</h3>
-                <p class="text-sm mb-0" style="color: rgba(16,25,40,0.65);">{p.d}</p>
+                <p class="text-sm mb-0 text-dark/65">{p.d}</p>
               </div>
             </li>
           ))}
@@ -564,14 +564,14 @@ const PAGE_UPDATED = "2026-10-22";
   <!-- ═══════════════ COSTE TEÓRICO VS REAL ═══════════════ -->
   <section class="section pt-0">
     <div class="container">
-      <div class="rounded-[28px] overflow-hidden" style="background: rgba(16,25,40,0.97);">
+      <div class="rounded-[28px] overflow-hidden bg-dark/97">
         <div class="row gx-0 gy-8 lg:gy-0 items-center p-10 lg:p-14">
           <div class="lg:col-7 lg:pe-10">
             <span class="text-white bg-white/10 px-3 py-1 inline-block rounded-full uppercase text-xs font-medium mb-5 tracking-wide" data-aos="fade-up-sm">El dato que cambia decisiones</span>
             <h2 class="h3 font-bold mb-4 text-white leading-tight" data-aos="fade-up-sm">
-              Coste presupuestado <span style="color: #f9b27c;">contra coste real</span>
+              Coste presupuestado <span class="text-accent">contra coste real</span>
             </h2>
-            <p class="text-lg leading-relaxed mb-0" style="color: rgba(255,255,255,0.78);" data-aos="fade-up-sm">
+            <p class="text-lg leading-relaxed mb-0 text-white/78" data-aos="fade-up-sm">
               La mayoría de talleres presupuesta con un coste calculado una vez y
               actualizado pocas veces. Cuando el material sube o la pieza lleva
               más horas de las previstas, el margen desaparece sin dejar rastro
@@ -583,21 +583,21 @@ const PAGE_UPDATED = "2026-10-22";
           </div>
           <div class="lg:col-5">
             <div class="grid grid-cols-2 gap-4">
-              <div class="rounded-2xl p-5 text-center" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
-                <p class="text-2xl font-bold mb-1" style="color: #f9b27c;">Por orden</p>
-                <p class="text-xs" style="color: rgba(255,255,255,0.7);">Coste calculado trabajo a trabajo</p>
+              <div class="rounded-2xl p-5 text-center bg-white/5 border border-white/8">
+                <p class="text-2xl font-bold mb-1 text-accent">Por orden</p>
+                <p class="text-xs text-white/70">Coste calculado trabajo a trabajo</p>
               </div>
-              <div class="rounded-2xl p-5 text-center" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
-                <p class="text-2xl font-bold mb-1" style="color: #f9b27c;">Por fase</p>
-                <p class="text-xs" style="color: rgba(255,255,255,0.7);">Tiempos imputados donde se gastan</p>
+              <div class="rounded-2xl p-5 text-center bg-white/5 border border-white/8">
+                <p class="text-2xl font-bold mb-1 text-accent">Por fase</p>
+                <p class="text-xs text-white/70">Tiempos imputados donde se gastan</p>
               </div>
-              <div class="rounded-2xl p-5 text-center" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
-                <p class="text-2xl font-bold mb-1" style="color: #f9b27c;">Por lote</p>
-                <p class="text-xs" style="color: rgba(255,255,255,0.7);">Trazabilidad materia prima → acabado</p>
+              <div class="rounded-2xl p-5 text-center bg-white/5 border border-white/8">
+                <p class="text-2xl font-bold mb-1 text-accent">Por lote</p>
+                <p class="text-xs text-white/70">Trazabilidad materia prima → acabado</p>
               </div>
-              <div class="rounded-2xl p-5 text-center" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
-                <p class="text-2xl font-bold mb-1" style="color: #f9b27c;">[[p:produccion]]/mes</p>
-                <p class="text-xs" style="color: rgba(255,255,255,0.7);">Plan Producción, sin IVA</p>
+              <div class="rounded-2xl p-5 text-center bg-white/5 border border-white/8">
+                <p class="text-2xl font-bold mb-1 text-accent">[[p:produccion]]/mes</p>
+                <p class="text-xs text-white/70">Plan Producción, sin IVA</p>
               </div>
             </div>
           </div>
@@ -616,10 +616,10 @@ const PAGE_UPDATED = "2026-10-22";
       <div class="row g-5">
         {casos.map((c, i) => (
           <div class="col-12 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
-            <div class="border rounded-[24px] p-8 h-full" style="border-color: rgba(16,25,40,0.1); background: #fff;">
-              <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background: rgba(121,27,70,0.08);">{c.icon}</div>
-              <p class="text-xs font-semibold uppercase tracking-wide mb-3" style="color: #b45309;">{c.tag}</p>
-              <p class="text-base leading-relaxed mb-0" style="color: rgba(16,25,40,0.7);">{c.body}</p>
+            <div class="border rounded-[24px] p-8 h-full border-dark/10 bg-white">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 bg-primary/8">{c.icon}</div>
+              <p class="text-xs font-semibold uppercase tracking-wide mb-3 text-warning">{c.tag}</p>
+              <p class="text-base leading-relaxed mb-0 text-dark/70">{c.body}</p>
             </div>
           </div>
         ))}
@@ -634,16 +634,16 @@ const PAGE_UPDATED = "2026-10-22";
         <div class="lg:col-10 text-center mb-10" data-aos="fade-up-sm">
           <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Plan Producción</span>
           <h2 class="h3 font-bold mb-3">Qué incluye el plan Producción</h2>
-          <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          <p class="text-lg text-dark/65">
             Todo va dentro del plan: ningún módulo se contrata por separado.
           </p>
         </div>
         <div class="lg:col-11" data-aos="fade-up-sm">
-          <div class="overflow-x-auto rounded-3xl border" style="border-color: rgba(16,25,40,0.1);">
+          <div class="overflow-x-auto rounded-3xl border border-dark/10">
             <table class="w-full bg-white">
               <caption class="sr-only">Módulos y usuarios incluidos en el plan Producción de Drenpos, todo incluido en la cuota</caption>
               <thead>
-                <tr style="background: rgba(16,25,40,0.04);">
+                <tr class="bg-dark/4">
                   <th scope="col" class="text-left px-6 py-4 font-semibold">Incluido en el plan</th>
                   <th scope="col" class="text-left px-6 py-4 font-semibold">Qué te da</th>
                   <th scope="col" class="text-right px-6 py-4 font-semibold">En el plan</th>
@@ -653,19 +653,19 @@ const PAGE_UPDATED = "2026-10-22";
                 {incluyePlan.map((r, i) => (
                   <tr style={i % 2 === 1 ? "background: rgba(16,25,40,0.02);" : ""}>
                     <th scope="row" class="text-left px-6 py-4 font-medium align-top">{r.m}</th>
-                    <td class="px-6 py-4 text-sm align-top" style="color: rgba(16,25,40,0.68);">{r.d}</td>
+                    <td class="px-6 py-4 text-sm align-top text-dark/68">{r.d}</td>
                     <td class="px-6 py-4 text-right whitespace-nowrap align-top">{r.s}</td>
                   </tr>
                 ))}
-                <tr style="background: rgba(121,27,70,0.06);">
+                <tr class="bg-primary/6">
                   <th scope="row" class="text-left px-6 py-4 font-bold">Plan Producción</th>
                   <td class="px-6 py-4 text-sm font-medium">Todo lo anterior en un solo precio</td>
-                  <td class="px-6 py-4 text-right font-bold whitespace-nowrap" style="color: #791b46;">[[p:produccion]]/mes</td>
+                  <td class="px-6 py-4 text-right font-bold whitespace-nowrap text-primary">[[p:produccion]]/mes</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <p class="text-sm mt-4 mb-0" style="color: rgba(16,25,40,0.55);">
+          <p class="text-sm mt-4 mb-0 text-dark/55">
             Todos los precios son mensuales y sin IVA. Con pago anual pagas 10 meses y usas 12.
             Consulta el detalle en <a href="/pricing" class="text-primary font-medium underline">planes y precios</a>
             o el catálogo completo de <a href="/modulos" class="text-primary font-medium underline">módulos</a>.
@@ -684,20 +684,20 @@ const PAGE_UPDATED = "2026-10-22";
         <div class="lg:col-10 text-center mb-12" data-aos="fade-up-sm">
           <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Preguntas frecuentes</span>
           <h2 class="h3 font-bold mb-3">Producción: lo que más nos preguntan</h2>
-          <p class="text-lg" style="color: rgba(16,25,40,0.65);">
+          <p class="text-lg text-dark/65">
             Si tu duda no está aquí, <a href="/contact" class="text-primary font-semibold underline">escríbenos</a>.
           </p>
         </div>
         <div class="lg:col-10">
           <div class="flex flex-col gap-3">
             {faqs.map((f, i) => (
-              <details class="group rounded-2xl border bg-white" style="border-color: rgba(16,25,40,0.1);" data-aos="fade-up-sm" data-aos-delay={i * 40}>
+              <details class="group rounded-2xl border bg-white border-dark/10" data-aos="fade-up-sm" data-aos-delay={i * 40}>
                 <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none">
                   <h3 class="font-semibold text-base lg:text-lg mb-0">{f.q}</h3>
-                  <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-200 group-open:rotate-45 text-xl leading-none" style="background: rgba(121,27,70,0.10); color: #791b46;" aria-hidden="true">+</span>
+                  <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-200 group-open:rotate-45 text-xl leading-none bg-primary/10 text-primary" aria-hidden="true">+</span>
                 </summary>
                 <div class="px-6 pb-6 -mt-2">
-                  <p class="text-base leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">{f.a}</p>
+                  <p class="text-base leading-relaxed mb-0 text-dark/72">{f.a}</p>
                 </div>
               </details>
             ))}
@@ -712,14 +712,14 @@ const PAGE_UPDATED = "2026-10-22";
     <div class="container">
       <div class="text-center mb-10" data-aos="fade-up-sm">
         <h2 class="h4 font-bold mb-2">Guías para fabricar con números</h2>
-        <p class="text-base mb-0" style="color: rgba(16,25,40,0.65);">Ejemplos con cifras de un obrador, un taller de muebles y un fabricante de cosmética.</p>
+        <p class="text-base mb-0 text-dark/65">Ejemplos con cifras de un obrador, un taller de muebles y un fabricante de cosmética.</p>
       </div>
       <div class="row g-4 justify-center">
         {guias.map((g, i) => (
           <div class="col-12 md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 80}>
-            <a href={g.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
+            <a href={g.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300 border-dark/10">
               <h3 class="h6 font-semibold mb-2">{g.t}</h3>
-              <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{g.d}</p>
+              <p class="text-sm leading-relaxed mb-0 text-dark/65">{g.d}</p>
             </a>
           </div>
         ))}
@@ -732,14 +732,14 @@ const PAGE_UPDATED = "2026-10-22";
     <div class="container">
       <div class="text-center mb-10" data-aos="fade-up-sm">
         <h2 class="h4 font-bold mb-2">Sigue por aquí</h2>
-        <p class="text-base mb-0" style="color: rgba(16,25,40,0.65);">Producción no vive sola: se apoya en el almacén, la expedición y el control horario.</p>
+        <p class="text-base mb-0 text-dark/65">Producción no vive sola: se apoya en el almacén, la expedición y el control horario.</p>
       </div>
       <div class="row g-4 justify-center">
         {hermanas.map((h, i) => (
           <div class="col-12 md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 80}>
-            <a href={h.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300" style="border-color: rgba(16,25,40,0.1);">
+            <a href={h.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300 border-dark/10">
               <h3 class="h6 font-semibold mb-2">{h.title}</h3>
-              <p class="text-sm leading-relaxed mb-0" style="color: rgba(16,25,40,0.65);">{h.body}</p>
+              <p class="text-sm leading-relaxed mb-0 text-dark/65">{h.body}</p>
             </a>
           </div>
         ))}
@@ -753,7 +753,7 @@ const PAGE_UPDATED = "2026-10-22";
       <div class="row justify-center">
         <div class="lg:col-10">
           <h2 class="h5 font-bold mb-2">Sistema de facturación y ERP por ciudad</h2>
-          <p class="text-sm mb-6" style="color: rgba(16,25,40,0.6);">Soporte cercano para talleres y fabricantes de Extremadura.</p>
+          <p class="text-sm mb-6 text-dark/60">Soporte cercano para talleres y fabricantes de Extremadura.</p>
           <div class="flex flex-wrap gap-2.5">
             {ciudades.map((c) => (
               <a href={`/local/${c.s}`} class="text-sm px-4 py-2 rounded-full border transition-colors hover:border-primary hover:text-primary" style="border-color: rgba(16,25,40,0.12); color: rgba(16,25,40,0.7);">{c.n}</a>

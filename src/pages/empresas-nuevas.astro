@@ -92,7 +92,7 @@ const offerSchema = {
       <img src="/images/grainy.svg" alt="" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
     </div>
     <div class="container relative z-10">
-      <nav aria-label="Migas de pan" class="mb-6 text-sm" style="color: rgba(16,25,40,0.55);">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm text-dark/55">
         <a href="/" class="hover:text-primary">Inicio</a>
         <span class="mx-2" aria-hidden="true">/</span>
         <a href="/pricing" class="hover:text-primary">Precios</a>
@@ -105,7 +105,7 @@ const offerSchema = {
           <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
             Si acabas de montar la empresa, <span class="text-primary">empieza ya con un programa en condiciones</span>
           </h1>
-          <p class="text-lg mb-6 max-w-2xl mx-auto" style="color: rgba(16,25,40,0.72);">
+          <p class="text-lg mb-6 max-w-2xl mx-auto text-dark/72">
             Los primeros meses de una empresa son los peores para cambiar de programa, y los mejores para empezar bien.
             Por eso, si llevas menos de dos años y facturas menos de [[p:nuevas_facturacion_max]], te dejamos Drenpos a mitad de cuota
             mientras arrancas.
@@ -125,10 +125,10 @@ const offerSchema = {
       <div class="row justify-center">
         <div class="lg:col-10" data-aos="fade-up-sm">
           <h2 class="h3 font-bold mb-3 text-center">Lo que pagas los primeros meses</h2>
-          <p class="text-center mb-8" style="color: rgba(16,25,40,0.65);">Sin IVA. Después, el precio normal del plan.</p>
-          <div class="overflow-x-auto rounded-2xl border" style="border-color: rgba(16,25,40,0.1);">
+          <p class="text-center mb-8 text-dark/65">Sin IVA. Después, el precio normal del plan.</p>
+          <div class="overflow-x-auto rounded-2xl border border-dark/10">
             <table class="w-full text-left">
-              <thead style="background: rgba(121,27,70,0.06);">
+              <thead class="bg-primary/6">
                 <tr>
                   <th scope="col" class="px-6 py-4 font-semibold">Plan</th>
                   <th scope="col" class="px-6 py-4 font-semibold">Para qué</th>
@@ -138,11 +138,11 @@ const offerSchema = {
               </thead>
               <tbody>
                 {planes.map((p) => (
-                  <tr class="border-t" style="border-color: rgba(16,25,40,0.08);">
+                  <tr class="border-t border-dark/8">
                     <td class="px-6 py-4 font-semibold">{p.nombre}</td>
-                    <td class="px-6 py-4" style="color: rgba(16,25,40,0.72);">{p.para}</td>
+                    <td class="px-6 py-4 text-dark/72">{p.para}</td>
                     <td class="px-6 py-4 text-right">{eur(p.precio)}/mes</td>
-                    <td class="px-6 py-4 text-right font-bold" style="color: #791b46;">{eur(p.precio * valor("nuevas_descuento") / 100)}/mes</td>
+                    <td class="px-6 py-4 text-right font-bold text-primary">{eur(p.precio * valor("nuevas_descuento") / 100)}/mes</td>
                   </tr>
                 ))}
               </tbody>
@@ -160,13 +160,13 @@ const offerSchema = {
           <h2 class="h3 font-bold mb-8 text-center">Condiciones</h2>
           <div class="grid gap-4 md:grid-cols-2">
             {condiciones.map((c) => (
-              <div class="rounded-2xl border bg-white p-6" style="border-color: rgba(16,25,40,0.1);">
+              <div class="rounded-2xl border bg-white p-6 border-dark/10">
                 <h3 class="font-semibold text-base mb-2">{c.k}</h3>
-                <p class="mb-0 text-base leading-relaxed" style="color: rgba(16,25,40,0.72);">{c.v}</p>
+                <p class="mb-0 text-base leading-relaxed text-dark/72">{c.v}</p>
               </div>
             ))}
           </div>
-          <p class="mt-8 text-center" style="color: rgba(16,25,40,0.65);">
+          <p class="mt-8 text-center text-dark/65">
             Lo hacemos porque el programa con el que empiezas suele ser el que tienes diez años después. Preferimos que
             empieces con las facturas, la caja y los fichajes bien montados a que lo hagas en un Excel que luego toque pasar a otro sitio.
           </p>
@@ -184,13 +184,13 @@ const offerSchema = {
         <div class="lg:col-10">
           <div class="flex flex-col gap-3">
             {faqs.map((f, i) => (
-              <details class="group rounded-2xl border bg-white" style="border-color: rgba(16,25,40,0.1);" data-aos="fade-up-sm" data-aos-delay={i * 40}>
+              <details class="group rounded-2xl border bg-white border-dark/10" data-aos="fade-up-sm" data-aos-delay={i * 40}>
                 <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none">
                   <h3 class="font-semibold text-base lg:text-lg mb-0">{f.q}</h3>
-                  <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-200 group-open:rotate-45 text-xl leading-none" style="background: rgba(121,27,70,0.10); color: #791b46;" aria-hidden="true">+</span>
+                  <span class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-200 group-open:rotate-45 text-xl leading-none bg-primary/10 text-primary" aria-hidden="true">+</span>
                 </summary>
                 <div class="px-6 pb-6 -mt-2">
-                  <p class="text-base leading-relaxed mb-0" style="color: rgba(16,25,40,0.72);">{f.a}</p>
+                  <p class="text-base leading-relaxed mb-0 text-dark/72">{f.a}</p>
                 </div>
               </details>
             ))}
