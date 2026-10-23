@@ -100,7 +100,7 @@ Available in all `.md`/`.mdx` without import (`astro.config.mjs`): `Button`, `Ac
 `pricing.astro` emite además su propio `BreadcrumbList` + `SoftwareApplication` con `AggregateOffer` (un `Offer` por plan, `valueAddedTaxIncluded: false`) + `FAQPage`. Los precios viven duplicados en el array `planes` de `pricing.astro` porque el JSON-LD necesita valores numéricos limpios: **si cambias `src/content/sections/pricing.md`, cambia también ese array**.
 
 ### Two key components
-`MODULES_TABLE_README.md` documents `ModulesTableCollapsible.astro` + `PlansComparison.astro` (collapsible module catalog + plan comparison matrix). The collapsible variant supersedes the legacy `ModulesTable.astro`.
+`MODULES_TABLE_README.md` documents `ModulesTableCollapsible.astro` + `PlansComparison.astro` (collapsible module catalog + plan comparison matrix).
 
 ## Agent readiness (isitagentready.com, 14/10/2026)
 

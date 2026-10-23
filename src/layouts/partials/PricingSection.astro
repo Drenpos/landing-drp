@@ -11,7 +11,8 @@ const pricing = (await getEntry(
   "pricing",
 )) as CollectionEntry<"pricingSection">;
 
-let { title, badge, description, plans, plans_labels, help_cta } = pricing.data;
+let { title, badge, description, plans, plans_labels, help_cta, server_note } =
+  pricing.data;
 
 // Override default blog data (Title, Subtitle & Description) with props if provided
 if (content) {
@@ -179,6 +180,22 @@ const {
                     </span>
                   </span>
                 </a>
+              </div>
+            )}
+            {!compact && server_note?.enable && (
+              <div class="col-12 mt-12" data-aos="fade-up-sm">
+                <div class="flex flex-col gap-4 rounded-3xl border border-dark/10 px-8 py-8 md:flex-row md:items-start md:gap-6 md:px-12">
+                  <span class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-xl">
+                    <DynamicIcon icon={"FaServer"} />
+                  </span>
+                  <div>
+                    <h3 class="h5 mb-2" set:html={markdownify(server_note.title)} />
+                    <p class="text-lg/[inherit] mb-3" set:html={markdownify(server_note.description)} />
+                    <a class="font-medium text-primary underline underline-offset-4" href={server_note.link}>
+                      {server_note.link_label}
+                    </a>
+                  </div>
+                </div>
               </div>
             )}
             {!compact && help_cta?.enable && (

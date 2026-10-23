@@ -11,6 +11,7 @@
 // Fechas en formato ISO "yyyy-mm-dd". Se renderiza en build (sin JS en
 // cliente), válido en páginas prerenderizadas.
 import dateFormat from "@/lib/utils/dateFormat";
+import { AUTOR } from "@/lib/site";
 
 interface Props {
   updated: string;
@@ -26,8 +27,8 @@ const {
   class: className = "mb-6",
 } = Astro.props;
 
-const AUTHOR_NAME = "Alonso Bermejo Pérez";
-const AUTHOR_URL = "/about";
+const AUTHOR_NAME = AUTOR.name;
+const AUTHOR_URL = AUTOR.url;
 const PATTERN = "d 'de' MMMM 'de' yyyy";
 
 // "2026-10-07" se interpreta como medianoche UTC: en una zona horaria negativa

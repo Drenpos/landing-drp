@@ -242,6 +242,15 @@ const pricingPlanCollection = defineCollection({
         }),
       })
       .optional(),
+    server_note: z
+      .object({
+        enable: z.boolean(),
+        title: z.string(),
+        description: z.string(),
+        link_label: z.string(),
+        link: z.string(),
+      })
+      .optional(),
     plans_labels: z.array(z.string()),
     plans: z.array(
       z.object({

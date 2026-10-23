@@ -4,8 +4,9 @@ export const prerender = true;
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import { EMPRESA, SITE_URL } from "@/lib/site";
 
-const BASE = "https://www.drenpos.com";
+const BASE = SITE_URL;
 
 function readContentDir(dir: string, urlPrefix: string): string {
   const absDir = path.join(process.cwd(), "src/content", dir);
@@ -58,11 +59,11 @@ Fuente: ${BASE}
 Última actualización: ${new Date().toISOString().split("T")[0]}
 Idioma: Español
 Producto: ERP SaaS modular para pymes en España
-Email: administracion@drenpos.com
-Teléfono: +34 640 315 259
+Email: ${EMPRESA.email}
+Teléfono: ${EMPRESA.telefono.visible}
 Razón social: Drenpos Tech SL
-Sede: Solana de los Barros (Badajoz, Extremadura), España
-Fundador y CEO: Alonso Bermejo Pérez (https://www.linkedin.com/in/alonso-bermejo/)
+Sede: ${EMPRESA.sede.localidad} (${EMPRESA.sede.provincia}, ${EMPRESA.sede.region}), España
+Fundador y CEO: ${EMPRESA.fundador.nombre} (${EMPRESA.fundador.linkedin})
 Web: www.drenpos.com
 
 ---

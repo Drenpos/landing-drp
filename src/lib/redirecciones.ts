@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 // ════════════════════════════════════════════════════════════════════════
 //  Redirecciones 301 de URLs retiradas (posts fusionados, slugs cambiados)
 //
@@ -34,7 +35,7 @@ export const REDIRECCIONES_301: Readonly<Record<string, string>> = {
     "/blog/registro-horario-digital",
 };
 
-const CANONICO = "https://www.drenpos.com";
+const CANONICO = SITE_URL;
 
 /** Ruta de destino para un pathname, o null si no hay redirección. */
 export function destinoRedireccion(pathname: string): string | null {

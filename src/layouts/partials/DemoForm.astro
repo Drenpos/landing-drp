@@ -13,6 +13,7 @@
 //  pueden apuntar a "#demo-form".
 // ════════════════════════════════════════════════════════════════════════
 import config from "@/config/config.json";
+import { waUrl } from "@/lib/site";
 
 export interface Props {
   interes?:
@@ -49,8 +50,7 @@ const TOOL_NAME =
 const TOOL_DESCRIPTION =
   "Solicita una demo gratuita de 20 minutos de Drenpos (ERP para pymes: almacén, TPV, facturación Verifactu, control horario y conector MCP). Una persona del equipo responde en menos de 24 horas laborables. Requiere nombre, correo, teléfono y aceptar la política de privacidad.";
 
-const WHATSAPP_URL =
-  "https://wa.me/34640315259?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Drenpos";
+const WHATSAPP_URL = waUrl();
 
 const INTERESES = [
   { value: "almacen", label: "Almacén e inventario" },

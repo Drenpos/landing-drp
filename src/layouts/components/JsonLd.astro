@@ -1,0 +1,10 @@
+---
+// Pinta uno o varios bloques JSON-LD. Construye los datos con src/lib/schema.ts.
+interface Props {
+  data: Record<string, unknown> | Record<string, unknown>[];
+}
+const { data } = Astro.props;
+const bloques = Array.isArray(data) ? data : [data];
+---
+
+{bloques.map((b) => <script type="application/ld+json" set:html={JSON.stringify(b)} />)}

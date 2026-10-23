@@ -47,6 +47,9 @@ valores.nuevas_prorroga = datos.empresas_nuevas.prorroga_meses;
 valores.nuevas_facturacion_max = datos.empresas_nuevas.facturacion_max;
 valores.nuevas_facturacion_prorroga_max =
   datos.empresas_nuevas.facturacion_prorroga_max;
+valores.nuevas_antiguedad = datos.empresas_nuevas.antiguedad_max_anos;
+valores.nuevas_documentos = datos.empresas_nuevas.uso_documentos;
+valores.nuevas_dias_fichaje = datos.empresas_nuevas.uso_dias_fichaje;
 
 export const VALORES: Readonly<Record<string, number>> = valores;
 
@@ -98,6 +101,14 @@ export function resolverPrecios(texto: string): string {
     const n = valor(expr);
     return tipo === "p" ? eur(n) : num(n);
   });
+}
+
+/** "3 en Facturación, 8 en Tienda y Hostelería, 5 en Almacén y 10 en Producción" */
+export function fichajesPorPlan(): string {
+  const partes = Object.values(datos.planes).map((p) => `${p.fichajes} en ${p.nombre}`);
+  return partes.length > 1
+    ? `${partes.slice(0, -1).join(", ")} y ${partes[partes.length - 1]}`
+    : partes.join("");
 }
 
 export function tieneTokens(texto: string): boolean {

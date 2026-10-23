@@ -23,5 +23,5 @@
   },
   "terminal": 149,
   "anual": { "meses_pagados": 10 },
-  "empresas_nuevas": { "descuento": 50, "meses": 3, "prorroga_meses": 3, "facturacion_max": 100000, "facturacion_prorroga_max": 150000 }
+  "empresas_nuevas": { "descuento": 50, "meses": 3, "prorroga_meses": 3, "facturacion_max": 100000, "facturacion_prorroga_max": 150000, "antiguedad_max_anos": 2, "uso_documentos": 30, "uso_dias_fichaje": 20 }
 }

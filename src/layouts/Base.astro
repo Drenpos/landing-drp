@@ -2,6 +2,7 @@
 import { decimal, P, valor } from "@/lib/precios";
 import TwSizeIndicator from "@/components/TwSizeIndicator.astro";
 import config from "@/config/config.json";
+import { EMPRESA, FOUNDER_ID, ORG_ID, WEBSITE_ID } from "@/lib/site";
 import social from "@/config/social.json";
 import theme from "@/config/theme.json";
 import { plainify } from "@/lib/utils/textConverter";
@@ -114,25 +115,22 @@ const pubDate = published_date ? new Date(published_date).toISOString() : null;
 const modDate = modified_date ? new Date(modified_date).toISOString() : pubDate;
 
 // Build JSON-LD @graph per route
-const orgId = `${siteUrl}/#organization`;
-const websiteId = `${siteUrl}/#website`;
+const orgId = ORG_ID;
+const websiteId = WEBSITE_ID;
 const pageId = `${canonicalURL}#webpage`;
 const articleId = `${canonicalURL}#article`;
 const imageId = `${canonicalURL}#primaryimage`;
 
 // Entidad: perfiles de social.json (los del pie) más los perfiles de empresa.
-const COMPANY_PROFILES = [
-  "https://www.linkedin.com/company/drenpos",
-  "https://x.com/Drenpos",
-];
+const COMPANY_PROFILES = EMPRESA.perfiles;
 const sameAs = Array.from(
   new Set([...social.main.map((s) => s.link), ...COMPANY_PROFILES]),
 );
 
 // Fundador: mismo @id en Organization.founder y en el autor de los posts.
-const founderId = `${siteUrl}/#founder`;
-const FOUNDER_NAME = "Alonso Bermejo Pérez";
-const FOUNDER_LINKEDIN = "https://www.linkedin.com/in/alonso-bermejo/";
+const founderId = FOUNDER_ID;
+const FOUNDER_NAME = EMPRESA.fundador.nombre;
+const FOUNDER_LINKEDIN = EMPRESA.fundador.linkedin;
 
 const orgLogo = {
   "@type": "ImageObject",
@@ -145,8 +143,8 @@ const graph: Record<string, unknown>[] = [
   {
     "@type": "Organization",
     "@id": orgId,
-    name: "Drenpos",
-    legalName: "Drenpos Tech SL",
+    name: EMPRESA.marca,
+    legalName: EMPRESA.razon_social,
     url: siteUrl,
     logo: orgLogo,
     description:
@@ -155,15 +153,15 @@ const graph: Record<string, unknown>[] = [
       "@type": "Person",
       "@id": founderId,
       name: FOUNDER_NAME,
-      jobTitle: "CEO & Founder",
-      url: `${siteUrl}/about`,
+      jobTitle: EMPRESA.fundador.cargo,
+      url: `${siteUrl}${EMPRESA.fundador.url}`,
       sameAs: [FOUNDER_LINKEDIN],
     },
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Solana de los Barros",
-      addressRegion: "Badajoz",
-      addressCountry: "ES",
+      addressLocality: EMPRESA.sede.localidad,
+      addressRegion: EMPRESA.sede.provincia,
+      addressCountry: EMPRESA.sede.pais,
     },
     sameAs,
     contactPoint: {

@@ -5,8 +5,9 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { resolverPrecios } from "@/lib/precios";
+import { EMPRESA, SITE_URL } from "@/lib/site";
 
-const BASE = "https://www.drenpos.com";
+const BASE = SITE_URL;
 
 function getContentLinks(dir: string, urlPrefix: string): string[] {
   const absDir = path.join(process.cwd(), "src/content", dir);
@@ -40,7 +41,7 @@ export const GET: APIRoute = () => {
 > Drenpos es un ERP SaaS modular español para pequeños negocios. Unifica finanzas, almacén, personal (control horario), ventas y TPV en un único sistema, sin la complejidad ni el coste de un ERP enterprise. Su mayor fortaleza es la gestión de almacén. Activa solo los módulos que necesitas, sin costes ocultos por uso y con soporte humano incluido. Web: ${BASE}
 
 **Entidad:** Drenpos (razón social Drenpos Tech SL) · Software / SaaS · ERP modular para pymes y autónomos
-**Sede:** Solana de los Barros (Badajoz, Extremadura), España · **Fundador y CEO:** Alonso Bermejo Pérez (https://www.linkedin.com/in/alonso-bermejo/) · **Mercado:** España (todo el territorio)
+**Sede:** ${EMPRESA.sede.localidad} (${EMPRESA.sede.provincia}, ${EMPRESA.sede.region}), España · **Fundador y CEO:** ${EMPRESA.fundador.nombre} (${EMPRESA.fundador.linkedin}) · **Mercado:** España (todo el territorio)
 **Idioma de soporte:** Español · **Web:** ${BASE}
 **Punto fuerte:** gestión de almacén de nivel WMS (lotes, ubicaciones, trazabilidad, caducidad, control de stock con alertas y propuesta de compra, picking con oleadas, palets con etiqueta SSCC GS1, despiece con merma, depósito de terceros con tarifario por palet/día y plano del almacén por plantas con orden de ruta de picking)
 **Novedades (septiembre y octubre de 2026):** 24 guías nuevas el 17 de octubre de 2026 (producción, almacén, DeCA, fichajes con calendarios laborales 2027 por comunidad y tiendas de recambios); módulo de Producción con recetas, subórdenes, necesidades de material, packs montables y coste previsto frente a real; página para tiendas de recambios y repuestos; Verifactu aplazado por Hacienda a octubre de 2028 (pendiente de BOE); página propia para vacaciones y ausencias, control de entrada y salida y turnos rotativos, incluidos en el fichaje (incluido en el plan; [[p:fichaje]]/usuario/mes cada persona adicional, sin IVA); documento de control del transporte (DeCA) desde el albarán, obligatorio desde el 5 de octubre de 2026 e incluido en el módulo Financiero sin coste extra; calendarios rotativos (4x4, 5/2, 6/3) y planificación anual con PDF por trabajador en el módulo de fichajes; vacaciones y permisos, control de entrada y salida con incidencias y calendarios laborales sin coste extra; página de control de stock; conector Holded; geolocalización opcional en los fichajes, terminal de fichaje con modo sin conexión y plano de almacén con orden de ruta de picking. Detalle en la sección "Novedades".
@@ -343,19 +344,21 @@ Drenpos cubre cuatro obligaciones legales en España. No son extras: son necesid
 
 | Plan | Precio/mes | Usuarios | Personas que fichan | Para quién | Incluye |
 |------|-----------|----------|----------|-----------|---------|
-| **Facturación** | [[p:facturacion]] | 2 | 3 | Autónomos y pequeñas empresas | Presupuestos, pedidos, albaranes y facturas con Verifactu, DeCA desde el albarán, OCR de facturas de proveedor, remesas SEPA, cobros y pagos, informes, envío por email y WhatsApp |
-| **Tienda y Hostelería** | [[p:tienda]] | 3 | 8 | Tiendas, bares y restaurantes | Todo lo de Facturación más el TPV (un solo módulo para tienda y hostelería): lector de códigos, tallas y colores, cierre de caja, mapa de sala, comanderos, pantallas de cocina y barra, QR en las mesas |
-| **Almacén** | [[p:almacen]] | 3 | 5 | Distribuidores y negocios con almacén | Todo lo de Facturación más el módulo de Inventario completo: stock en tiempo real, lotes, caducidades, FEFO, ubicaciones, plano, picking con pistola, propuesta de compra, palets SSCC y depósito de terceros. El TPV se añade por [[p:tpv]]/mes |
-| **Producción** | [[p:produccion]] | 6 | 10 | Talleres, obradores, fábricas pequeñas | Todo lo de Almacén más órdenes de trabajo por fases, escandallos, consumo de material por lectura, horas por operario y coste real |
-| **A medida o en servidor propio** | Presupuesto | Según proyecto | Según proyecto | Empresas que necesitan el sistema en su servidor o integraciones a medida | Se estudia cada caso |
+| **Facturación** | [[p:facturacion]] | [[n:facturacion_usuarios]] | [[n:facturacion_fichajes]] | Autónomos y pequeñas empresas | Presupuestos, pedidos, albaranes y facturas con Verifactu, DeCA desde el albarán, OCR de facturas de proveedor, remesas SEPA, cobros y pagos, informes, envío por email y WhatsApp |
+| **Tienda y Hostelería** | [[p:tienda]] | [[n:tienda_usuarios]] | [[n:tienda_fichajes]] | Tiendas, bares y restaurantes | Todo lo de Facturación más el TPV (un solo módulo para tienda y hostelería): lector de códigos, tallas y colores, cierre de caja, mapa de sala, comanderos, pantallas de cocina y barra, QR en las mesas |
+| **Almacén** | [[p:almacen]] | [[n:almacen_usuarios]] | [[n:almacen_fichajes]] | Distribuidores y negocios con almacén | Todo lo de Facturación más el módulo de Inventario completo: stock en tiempo real, lotes, caducidades, FEFO, ubicaciones, plano, picking con pistola, propuesta de compra, palets SSCC y depósito de terceros. El TPV se añade por [[p:tpv]]/mes |
+| **Producción** | [[p:produccion]] | [[n:produccion_usuarios]] | [[n:produccion_fichajes]] | Talleres, obradores, fábricas pequeñas | Todo lo de Almacén más órdenes de trabajo por fases, escandallos, consumo de material por lectura, horas por operario y coste real |
+| **A medida** | Presupuesto | Según necesidades | Según necesidades | Empresas con necesidades específicas | Plan configurado con los módulos y usuarios que usen, adaptaciones a sus procesos, integraciones y formación |
+
+Cualquier plan se puede instalar en el servidor de la empresa (funciona sin internet, con las mismas actualizaciones y copia diaria cifrada fuera). Se estudia cada caso y se hace una propuesta.
 
 **Pago anual:** dos meses gratis. **Sin permanencia.** No se publican precios de puesta en marcha: depende de cada empresa y se habla antes de empezar.
 
-**Opcional en cualquier plan (€/mes, sin IVA):** usuario de más 7 · persona de más que ficha 1,50 · caja o comandero de más 15 · TPV en Almacén o Producción 20 · comerciales y comisiones 9 · conector con ChatGPT o Claude (MCP) 12 por empresa · soporte prioritario 49. Sin coste y opcionales: agencias de transporte (MRW, UPS, DHL, CTT Express y reparto propio) y conectores con Holded, WooCommerce y Faire.
+**Opcional en cualquier plan (€/mes, sin IVA):** usuario de más [[n:usuario]] · persona de más que ficha [[n:fichaje]] · caja o comandero de más [[n:caja]] · TPV en Almacén o Producción [[n:tpv]] · comerciales y comisiones [[n:comerciales]] · conector con ChatGPT o Claude (MCP) [[n:mcp]] por empresa · soporte prioritario [[n:soporte]]. Sin coste y opcionales: agencias de transporte (MRW, UPS, DHL, CTT Express y reparto propio) y conectores con Holded, WooCommerce y Faire.
 
 **Drenpos Equipo (solo control horario, sin el resto del programa):** [[p:equipo10]]/mes hasta 10 personas, [[p:equipo25]] hasta 25, [[p:equipo50]] hasta 50 y [[p:equipo_persona_extra]] por cada persona más. Lleva fichaje por web, app, QR y llavero, vacaciones y permisos, avisos de retrasos y olvidos, turnos rotativos, calendarios con festivos, planificación anual y geolocalización. Terminal de fichaje opcional desde [[p:terminal]]. Página: ${BASE}/control-horario#equipo
 
-**Empresas nuevas:** empresas y autónomos con menos de dos años y menos de 100.000 € facturados en el último año tienen la mitad de la cuota tres meses, y otros tres si usan el programa (30 documentos de venta o 20 días de fichajes) y siguen por debajo de 150.000 € al año. Una vez por NIF. Detalle en ${BASE}/empresas-nuevas.
+**Empresas nuevas:** empresas y autónomos con menos de dos años y menos de [[p:nuevas_facturacion_max]] facturados en el último año tienen la mitad de la cuota tres meses, y otros tres si usan el programa ([[n:nuevas_documentos]] documentos de venta o [[n:nuevas_dias_fichaje]] días de fichajes) y siguen por debajo de [[p:nuevas_facturacion_prorroga_max]] al año. Una vez por NIF. Detalle en ${BASE}/empresas-nuevas.
 
 **Partners:** gestorías (25 % de la cuota mientras el cliente siga), informáticos e instaladores que implantan (30 % y su instalación) y tiendas de hardware. Detalle en ${BASE}/partners.
 
@@ -461,11 +464,11 @@ Drenpos cubre cuatro obligaciones legales en España. No son extras: son necesid
 
 - **Web:** ${BASE}
 - **Contacto / Demo:** ${BASE}/contact
-- **Email:** administracion@drenpos.com
-- **Teléfono:** +34 640 315 259
+- **Email:** ${EMPRESA.email}
+- **Teléfono:** ${EMPRESA.telefono.visible}
 - **Razón social:** Drenpos Tech SL
-- **Sede:** Solana de los Barros (Badajoz, Extremadura), España
-- **Fundador y CEO:** Alonso Bermejo Pérez (https://www.linkedin.com/in/alonso-bermejo/)
+- **Sede:** ${EMPRESA.sede.localidad} (${EMPRESA.sede.provincia}, ${EMPRESA.sede.region}), España
+- **Fundador y CEO:** ${EMPRESA.fundador.nombre} (${EMPRESA.fundador.linkedin})
 - **Registro gratuito:** https://contract.drenpos.com/auth
 
 ---
@@ -492,7 +495,7 @@ Drenpos cubre cuatro obligaciones legales en España. No son extras: son necesid
 - [Almacén y tienda](${BASE}/software-almacen-tienda): Almacén más TPV para retail
 - [Tienda de recambios y repuestos](${BASE}/software-tienda-recambios): Programa de gestión para tiendas de recambios y repuestos: stock por referencia, mínimos y propuesta de compra, recepción con pistola y venta en mostrador con TPV y Verifactu; sin catálogo de recambios ni búsqueda por matrícula
 - [Producción y fabricación](${BASE}/software-produccion-fabricacion): Órdenes de trabajo por fases, recetas con subórdenes, necesidades de material, packs montables, consumo por lectura, imputación de tiempos y coste previsto frente a real
-- [Empresas nuevas](${BASE}/empresas-nuevas): programa Drenpos Arranca, 50 % de descuento 3 meses prorrogable a 6 para empresas y autónomos con menos de 2 años y menos de 100.000 € de facturación
+- [Empresas nuevas](${BASE}/empresas-nuevas): programa Drenpos Arranca, [[n:nuevas_descuento]] % de descuento [[n:nuevas_meses]] meses prorrogable a [[n:nuevas_meses+nuevas_prorroga]] para empresas y autónomos con menos de [[n:nuevas_antiguedad]] años y menos de [[p:nuevas_facturacion_max]] de facturación
 - [Partners](${BASE}/partners): programa de partners para gestorías (25 % de por vida), integradores (30 % + implantación) y revendedores de hardware
 - [Precios](${BASE}/pricing): Planes Facturación, Tienda y Hostelería, Almacén y Producción, y módulos opcionales
 - [Módulos](${BASE}/modulos): Detalle de cada módulo activable y precios

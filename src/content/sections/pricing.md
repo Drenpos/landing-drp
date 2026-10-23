@@ -11,6 +11,13 @@ help_cta:
     label: "Hablar con nosotros"
     link: "/contact"
 
+server_note:
+  enable: true
+  title: "También en el servidor de tu empresa"
+  description: "Cualquier plan se puede instalar en un servidor dentro de tu empresa, si prefieres tener los datos en casa o trabajas con muchos puestos en red. Sigue funcionando aunque se caiga internet, recibe las actualizaciones igual que en la nube y hace cada día una copia de seguridad cifrada fuera de la empresa. Lo vemos contigo y te pasamos una propuesta."
+  link_label: "Pedir propuesta"
+  link: "/contact"
+
 plans_labels:
   - "Mensual"
   - "Anual"
@@ -105,21 +112,20 @@ plans:
       enable: true
       label: "Empezar"
       link: "https://contract.drenpos.com/auth"
-  - title: "En tu servidor"
-    description: "Drenpos instalado en el servidor de tu empresa, con cualquiera de los planes. Para quien no quiere los datos fuera o tiene muchos puestos en red."
+  - title: "A medida"
+    description: "Para empresas cuyo trabajo no cabe en un plan cerrado. Vemos cómo trabajáis, configuramos un plan con lo que necesitáis y adaptamos Drenpos a vuestros procesos."
     price_prefix: ""
     price_monthly: "Personalizado"
     price_yearly: "Personalizado"
     price_description_monthly: ""
     price_description_yearly: ""
     features:
-      - Los mismos módulos que en la nube
-      - Funciona en tu red aunque se caiga internet
-      - Varias cajas, pantallas de cocina, PDA y terminales contra tu servidor
-      - Actualizaciones automáticas, igual que en la nube
-      - Copia de seguridad diaria cifrada fuera de la empresa
-      - Vigilamos el servidor y te avisamos si algo falla
-      - Integraciones con los programas que ya usas
+      - Plan configurado con los módulos, usuarios y fichajes que uses
+      - Adaptaciones del programa a tu forma de trabajar
+      - Integraciones con los programas que ya tienes
+      - Paso de datos desde tu programa actual
+      - Formación para tu equipo
+      - Una persona de contacto que conoce tu empresa
     badge:
       enable: false
       label: "Recomendado"

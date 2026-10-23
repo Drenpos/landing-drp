@@ -1,5 +1,5 @@
 ---
-import { decimal, valor } from "@/lib/precios";
+import { decimal, fichajesPorPlan, valor } from "@/lib/precios";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import CallToAction from "@/partials/CallToAction.astro";
@@ -795,10 +795,9 @@ const productSchema = {
               <p class="mb-6 max-w-2xl mx-auto" style="color: rgba(255,255,255,0.78);">{cap.precio}</p>
               <p class="text-sm mb-8 max-w-2xl mx-auto" style="color: rgba(255,255,255,0.65);">
                 Un ejemplo: diez personas que fichan y una encargada que solo
-                aprueba son 11 personas: con Drenpos Equipo, 16,50 € al mes sin IVA, o dentro de cualquier plan junto con la cuenta de administración desde la que se configura el módulo. Si ya usas
+                aprueba son 11 personas: con Drenpos Equipo, [[p:equipo10+equipo_persona_extra]] al mes sin IVA, o dentro de cualquier plan junto con la cuenta de administración desde la que se configura el módulo. Si ya usas
                 Drenpos para facturar o para el almacén, tu plan incluye
-                licencias de fichaje: 2 en Esencial, 3 en Pro y 5 en Full y en
-                Producción.
+                licencias de fichaje: {fichajesPorPlan()}.
               </p>
             </div>
 

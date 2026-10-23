@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 // ════════════════════════════════════════════════════════════════════════
 //  Agent readiness · negociación de Markdown y cabeceras Link
 //
@@ -182,7 +183,7 @@ export async function conAgentReadiness(
       if (md && env.ASSETS) {
         const respuestaMd = await env.ASSETS.fetch(new URL(md, url.origin));
         if (respuestaMd.status === 200) {
-          const canonical = new URL(pathname.replace(/\/+$/, "") || "/", "https://www.drenpos.com").href;
+          const canonical = new URL(pathname.replace(/\/+$/, "") || "/", SITE_URL).href;
           const salida = new Response(metodo === "HEAD" ? null : respuestaMd.body, respuestaMd);
           salida.headers.set("Content-Type", "text/markdown; charset=utf-8");
           salida.headers.set("X-Markdown-Source", "static");

@@ -1,0 +1,28 @@
+{
+  "_nota": "Datos de la empresa y del autor. Fuente única: se leen desde src/lib/site.ts. No escribas estos valores a mano en páginas ni en textos generados.",
+  "marca": "Drenpos",
+  "razon_social": "Drenpos Tech SL",
+  "email": "administracion@drenpos.com",
+  "telefono": { "e164": "+34640315259", "visible": "+34 640 315 259" },
+  "whatsapp_texto": "Hola, quiero información sobre Drenpos",
+  "sede": {
+    "localidad": "Solana de los Barros",
+    "provincia": "Badajoz",
+    "region": "Extremadura",
+    "pais": "ES"
+  },
+  "app": {
+    "acceso": "https://contract.drenpos.com/"
+  },
+  "gtm_id": "GTM-PDNNFZ98",
+  "perfiles": [
+    "https://www.linkedin.com/company/drenpos",
+    "https://x.com/Drenpos"
+  ],
+  "fundador": {
+    "nombre": "Alonso Bermejo Pérez",
+    "cargo": "CEO & Founder",
+    "url": "/about",
+    "linkedin": "https://www.linkedin.com/in/alonso-bermejo/"
+  }
+}

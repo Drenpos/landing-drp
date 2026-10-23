@@ -6,8 +6,9 @@
 //  (evento "whatsapp_click" en dataLayer), no hace falta nada aquí.
 //  En móvil sube a 88 px para no tapar los CTA que quedan al pie.
 // ════════════════════════════════════════════════════════════════════════
-const WHATSAPP_URL =
-  "https://wa.me/34640315259?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Drenpos";
+import { waUrl } from "@/lib/site";
+
+const WHATSAPP_URL = waUrl();
 ---
 
 <a
