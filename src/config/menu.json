@@ -15,6 +15,12 @@
       "megaMenu": true
     },
     {
+      "name": "Control horario",
+      "url": "/control-horario",
+      "blank": false,
+      "data-cc": ""
+    },
+    {
       "name": "Precios",
       "url": "/pricing",
       "blank": false,

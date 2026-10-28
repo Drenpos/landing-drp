@@ -1,0 +1,35 @@
+---
+// Cierre de los posts de control horario (categoría "Control Horario"):
+// lleva al producto en vez del CTA genérico del blog.
+// variante "calendario": texto para los calendarios laborales, que traen
+// mucho tráfico de gente que monta el cuadrante de su empresa.
+const { variante = "general" } = Astro.props;
+const esCalendario = variante === "calendario";
+---
+
+<div class="mt-16 rounded-3xl border border-primary/20 bg-gradient-to-r from-primary/10 to-primary/5 p-8 md:p-12">
+  <div class="mx-auto max-w-3xl text-center">
+    <p class="mb-3 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium uppercase text-primary">
+      Control horario Drenpos
+    </p>
+    <h3 class="mb-4 text-2xl font-bold md:text-3xl">
+      {esCalendario
+        ? "Carga este calendario en el fichaje y olvídate del Excel"
+        : "Fichajes, turnos y vacaciones en un solo sitio"}
+    </h3>
+    <p class="mb-8 text-lg text-text-dark/70">
+      {esCalendario
+        ? "En Drenpos cargas los festivos de tu comunidad y de tu localidad, montas los turnos (también rotativos 4x4, 5/2 o 6/3) y cada trabajador tiene su calendario del año en PDF. Ficha con el móvil o con nuestro terminal, que funciona sin internet."
+        : "Registro de jornada con terminal propio que ficha sin internet, turnos rotativos, vacaciones desde el móvil y avisos de retrasos. Incluido en todos los planes o suelto con Drenpos Equipo."}
+    </p>
+    <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <a href="/control-horario" class="btn btn-primary">Ver el control horario</a>
+      <a href={esCalendario ? "/software-turnos-rotativos" : "/dispositivo-fichaje"} class="btn btn-outline-primary">
+        {esCalendario ? "Turnos rotativos" : "Terminal de fichaje"}
+      </a>
+    </div>
+    <p class="mt-6 text-sm text-text-dark/60">
+      Solo fichajes: Drenpos Equipo desde [[p:equipo10]] al mes hasta [[n:equipo10_personas]] personas, sin IVA.
+    </p>
+  </div>
+</div>

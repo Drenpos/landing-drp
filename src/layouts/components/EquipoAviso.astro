@@ -1,0 +1,21 @@
+---
+// Aviso corto para quien solo quiere el control horario (Drenpos Equipo).
+// Va bajo el texto principal de /control-horario y /dispositivo-fichaje,
+// para que no tenga que bajar hasta el final de la página para saber que
+// el fichaje se contrata sin el resto del programa.
+const { href = "/control-horario#equipo", clase = "" } = Astro.props;
+---
+
+<a
+  href={href}
+  class={`group mb-6 flex max-w-xl items-start gap-3 rounded-2xl border border-primary/20 bg-primary/5 px-4 py-3 no-underline ${clase}`}
+>
+  <span class="mt-0.5 flex-shrink-0 rounded-full bg-primary px-2.5 py-0.5 text-xs font-semibold uppercase text-white">
+    Solo fichajes
+  </span>
+  <span class="text-base text-dark/80">
+    <strong>Drenpos Equipo</strong>: el control horario sin el resto del
+    programa, desde [[p:equipo10]] al mes hasta [[n:equipo10_personas]] personas.
+    <span class="font-semibold text-primary underline underline-offset-4">Ver Drenpos Equipo</span>
+  </span>
+</a>

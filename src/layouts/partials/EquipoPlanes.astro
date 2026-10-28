@@ -1,0 +1,73 @@
+---
+// Precios: Drenpos Equipo (solo control horario) visible junto a los
+// planes. Antes solo salía en una línea del texto y en una pregunta
+// frecuente, y quien venía a por el fichaje veía únicamente planes de ERP.
+const paquetes = [
+  { n: "Hasta [[n:equipo10_personas]] personas", p: "[[p:equipo10]]", d: "Equipo 10" },
+  { n: "Hasta [[n:equipo25_personas]] personas", p: "[[p:equipo25]]", d: "Equipo 25" },
+  { n: "Hasta [[n:equipo50_personas]] personas", p: "[[p:equipo50]]", d: "Equipo 50" },
+];
+const incluye = [
+  "Fichaje por móvil, ordenador, QR o llavero RFID",
+  "Turnos rotativos (4x4, 5/2, 6/3) y calendarios con festivos",
+  "Vacaciones y permisos desde el móvil con el saldo al día",
+  "Avisos de retrasos y salidas antes de hora",
+  "Registro inalterable cuatro años, exportable para la Inspección",
+  "Terminal propio opcional que ficha sin internet",
+];
+---
+
+<section id="solo-fichajes" class="section pt-0 scroll-mt-24">
+  <div class="container">
+    <div class="row justify-center">
+      <div class="lg:col-10 text-center mb-10" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">
+          Drenpos Equipo
+        </span>
+        <h2 class="h3 font-bold mb-3">¿Solo necesitas el control horario?</h2>
+        <p class="text-lg mb-0 text-dark/65">
+          Drenpos Equipo es el mismo control horario de los planes, sin el resto
+          del programa. Para empresas que ya facturan con otro sistema y quieren
+          fichar bien. Si un día quieres facturar o llevar el almacén, pasas a un
+          plan sin perder nada.
+        </p>
+      </div>
+      <div class="lg:col-10">
+        <div class="grid gap-5 md:grid-cols-3">
+          {
+            paquetes.map((e) => (
+              <div class="rounded-2xl border border-dark/10 bg-white p-6 text-center" data-aos="fade-up-sm">
+                <p class="mb-2 text-sm font-medium uppercase text-dark/55">{e.n}</p>
+                <p class="mb-1 text-3xl font-bold text-primary">
+                  {e.p}
+                  <span class="text-base font-medium text-dark/55">/mes</span>
+                </p>
+                <p class="mb-0 font-semibold">{e.d}</p>
+              </div>
+            ))
+          }
+        </div>
+        <p class="mt-6 mb-8 text-center text-dark/72">
+          Al mes y sin IVA. Por encima de [[n:equipo50_personas]] personas,
+          [[p:equipo_persona_extra]] cada una. El
+          <a href="/dispositivo-fichaje" class="text-primary underline">terminal de fichaje</a>
+          es opcional, desde [[p:terminal]].
+        </p>
+        <ul class="grid gap-3 md:grid-cols-2 mb-8">
+          {
+            incluye.map((t) => (
+              <li class="flex items-start gap-3 rounded-xl border border-dark/10 bg-white px-4 py-3">
+                <span class="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-success text-[10px] font-bold text-white">✓</span>
+                <span>{t}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/control-horario#equipo" class="btn btn-dark">Ver Drenpos Equipo</a>
+          <a href="/control-horario#demo-form" class="btn btn-light">Pedir una demo del fichaje</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,6 +1,8 @@
 ---
 import BlogCard from "@/components/BlogCard.astro";
 import BlogCTA from "@/components/BlogCTA.astro";
+import FichajeAvisoPost from "@/components/FichajeAvisoPost.astro";
+import FichajeCTA from "@/components/FichajeCTA.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import similarItems from "@/lib/utils/similarItems";
 import type { CollectionEntry } from "astro:content";
@@ -26,6 +28,12 @@ const { Content } = await render(post);
 const { title, description, image, date, updated, author } = post.data;
 
 const blogData = { author, date, updated };
+
+// Posts de control horario: cierre propio hacia el producto de fichaje.
+// Los calendarios laborales llevan además un aviso arriba.
+const categorias = (post.data.categories ?? []).map((c: string) => c.toLowerCase());
+const esControlHorario = categorias.includes("control horario");
+const esCalendario = post.id.startsWith("calendario-laboral");
 
 // El schema BlogPosting lo emite Base.astro dentro del @graph (con keywords,
 // autor y fechas). No se duplica aquí; este layout solo aporta el FAQPage.
@@ -82,11 +90,18 @@ const faqSchema =
         <div
           class="content prose prose-lg max-w-none prose-headings:font-bold prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-2xl prose-pre:rounded-xl"
         >
+          {esCalendario && <FichajeAvisoPost />}
           <Content />
         </div>
 
-        <!-- Blog CTA -->
-        <BlogCTA />
+        <!-- Blog CTA: los de control horario van al producto de fichaje -->
+        {
+          esControlHorario || esCalendario ? (
+            <FichajeCTA variante={esCalendario ? "calendario" : "general"} />
+          ) : (
+            <BlogCTA />
+          )
+        }
 
         <div class="mt-16 pt-8 border-t border-dark/10">
           <div

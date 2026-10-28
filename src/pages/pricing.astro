@@ -7,6 +7,7 @@ export const prerender = true;
 import Base from "@/layouts/Base.astro";
 import PageHeader from "@/partials/PageHeader.astro";
 import PricingSection from "@/partials/PricingSection.astro";
+import EquipoPlanes from "@/partials/EquipoPlanes.astro";
 import { getEntry, type CollectionEntry } from "astro:content";
 import PlansComparison from "@/partials/PlansComparison.astro";
 import ModulesTableCollapsible from "@/partials/ModulesTableCollapsible.astro";
@@ -191,7 +192,7 @@ const faqSchema = faqPage(faqs);
             que fichan, y lo que no necesites no lo pagas. Comerciales, agencias de
             transporte, conectores o el asistente de IA se añaden aparte si te hacen
             falta. Si solo quieres el control horario, tienes
-            <a href="/control-horario#equipo" class="text-primary font-medium underline">Drenpos Equipo</a>,
+            <a href="#solo-fichajes" class="text-primary font-medium underline">Drenpos Equipo</a>,
             y si tu empresa acaba de empezar, mira el
             <a href="/empresas-nuevas" class="text-primary font-medium underline">programa para empresas nuevas</a>.
             Cualquier plan se puede instalar también en el servidor de tu empresa.
@@ -206,6 +207,7 @@ const faqSchema = faqPage(faqs);
        mensual/anual. -->
   <div class="relative z-20 pb-0">
     <PricingSection isSection={true} />
+    <EquipoPlanes />
     <PlansComparison isSection={true} />
     <ModulesTableCollapsible isSection={true} />
   </div>

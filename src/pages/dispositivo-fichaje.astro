@@ -1,4 +1,5 @@
 ---
+import EquipoAviso from "@/components/EquipoAviso.astro";
 import { decimal, valor } from "@/lib/precios";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
@@ -262,7 +263,11 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta el dispositivo de fichaje?",
-    a: "El terminal parte de [[p:terminal]] sin IVA, con llaveros personalizados incluidos para tu plantilla inicial, y los fichajes van incluidos en todos los planes de Drenpos ([[p:fichaje]] al mes por cada persona adicional, sin IVA). En las implantaciones acompañadas el terminal va incluido con las llaves. Pide presupuesto si necesitas varios terminales, tarjetas adicionales o una carcasa con acabado especial.",
+    a: "El terminal parte de [[p:terminal]] sin IVA, con llaveros personalizados incluidos para tu plantilla inicial. El software de fichaje se paga aparte: si solo quieres el control horario, Drenpos Equipo cuesta [[p:equipo10]] al mes hasta [[n:equipo10_personas]] personas, [[p:equipo25]] hasta [[n:equipo25_personas]] y [[p:equipo50]] hasta [[n:equipo50_personas]], sin IVA; si ya usas un plan de Drenpos, los fichajes van incluidos ([[p:fichaje]] al mes por cada persona adicional). En las implantaciones acompañadas el terminal va incluido con las llaves. Pide presupuesto si necesitas varios terminales, tarjetas adicionales o una carcasa con acabado especial.",
+  },
+  {
+    q: "¿Sirve para una nave o un almacén con turnos rotativos?",
+    a: "Sí. Es el uso más habitual: el terminal va en la entrada de la nave, cada operario ficha con su llavero RFID o su tarjeta sin sacar el móvil, y si se cae internet guarda cada fichaje con su hora y lo sube al volver la conexión. Los turnos se montan en Drenpos con ciclos rotativos como el 4x4, el 5/2 o el 6/3, también con noches, y cada fichaje se compara con el turno que le tocaba para avisar de retrasos y salidas antes de hora. El registro queda inalterable durante los cuatro años que exige la ley y se exporta para la asesoría o la Inspección de Trabajo.",
   },
   {
     q: "¿El terminal de fichaje sirve también para gestionar las vacaciones del equipo?",
@@ -417,8 +422,9 @@ const jsonLd = [
             <strong>marca de tu empresa</strong>. Se compra suelto o con el
             sistema completo.
           </p>
+          <EquipoAviso />
           <div class="mb-8">
-            <LandingMeta updated="2026-10-22" published="2026-09-03" />
+            <LandingMeta updated="2026-10-28" published="2026-09-03" />
           </div>
 
           <ul class="flex flex-wrap gap-4 mb-10">

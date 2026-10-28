@@ -1,0 +1,97 @@
+---
+// Sección de home: control horario con terminal propio.
+// El fichaje es la puerta de entrada de muchos clientes: tiene que verse en
+// la home sin entrar en Funcionalidades.
+import { Icon } from "astro-icon/components";
+
+const bullets = [
+  {
+    title: "Terminal propio que ficha sin internet",
+    description:
+      "Llavero RFID, tarjeta o QR, sin huella ni cara. Si se cae la conexión guarda cada fichaje con su hora y lo sube al volver.",
+  },
+  {
+    title: "Turnos rotativos y calendarios",
+    description:
+      "Ciclos 4x4, 5/2 o 6/3, mañanas y noches, con los festivos de cada comunidad y el calendario anual de cada trabajador en PDF.",
+  },
+  {
+    title: "Vacaciones, permisos y retrasos",
+    description:
+      "Se piden desde el móvil con el saldo delante, el responsable aprueba y ves quién llega tarde o sale antes.",
+  },
+  {
+    title: "Listo para la Inspección de Trabajo",
+    description:
+      "Registro inalterable con el historial de cada corrección, conservado cuatro años y exportable para la asesoría.",
+  },
+];
+---
+
+<section class="section pt-0" id="control-horario">
+  <div class="container">
+    <div class="section-title">
+      <div class="col-10 xl:col-8" data-aos="fade-up-sm">
+        <p class="text-primary bg-primary/10 px-[10px] py-1 inline-block rounded-full uppercase text-sm">
+          Control horario y fichajes
+        </p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold my-5">
+          Fichajes con terminal propio, turnos y vacaciones
+        </h2>
+        <p class="text-lg">
+          El registro de jornada que pide la ley para naves, almacenes,
+          talleres, tiendas y hostelería. Va incluido en todos los planes y,
+          si solo quieres fichar, se contrata suelto como Drenpos Equipo.
+        </p>
+      </div>
+    </div>
+
+    <div class="row gx-0 gy-8 items-center max-w-6xl mx-auto">
+      <div class="lg:col-6 lg:pe-16 relative" data-aos="fade-up-sm">
+        <div class="rounded-2xl overflow-hidden border border-dark/10 shadow-2xl">
+          <img
+            src="/images/funcionalidades/control-horario/hardware/terminal-drenpos.webp"
+            alt="Terminal de fichaje Drenpos con pantalla, lector de llaveros RFID y llaveros con el logo de la empresa"
+            width="1200"
+            height="1200"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-auto block"
+          />
+        </div>
+      </div>
+
+      <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="200">
+        <ul class="flex flex-col gap-5 mb-8">
+          {
+            bullets.map((point) => (
+              <li class="flex items-start gap-3">
+                <Icon name="random/circleCheck" class="w-6 h-6 flex-shrink-0 mt-1" />
+                <span>
+                  <strong>{point.title}.</strong> {point.description}
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <p class="mb-8 rounded-2xl border border-primary/20 bg-primary/5 px-5 py-4 text-base">
+          <strong>Solo fichajes:</strong> Drenpos Equipo desde [[p:equipo10]] al
+          mes hasta [[n:equipo10_personas]] personas, sin IVA. El terminal es
+          opcional, desde [[p:terminal]].
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a class="btn btn-dark" href="/control-horario">
+            Ver el control horario
+            <span class="icon-wrapper">
+              <span class="icon"><Icon name="arrowRight" width="19" height="12" /></span>
+              <span class="icon" aria-hidden="true"><Icon name="arrowRight" width="19" height="12" /></span>
+            </span>
+          </a>
+          <a class="btn btn-light" href="/dispositivo-fichaje">Ver el terminal de fichaje</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
