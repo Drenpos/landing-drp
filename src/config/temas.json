@@ -6,7 +6,7 @@
       "nombre": "Halloween",
       "activo": true,
       "desde": "10-01",
-      "hasta": "10-31",
+      "hasta": "11-05",
       "og_image": "/images/og-image-halloween.png",
       "colores": {
         "primary": "#b23a0e",
