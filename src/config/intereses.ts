@@ -9,6 +9,8 @@ export const INTERESES = [
   { value: "verifactu", label: "Facturación Verifactu" },
   { value: "mcp", label: "Conector MCP para ChatGPT o Claude" },
   { value: "deca", label: "Documento de control del transporte (DeCA)" },
+  { value: "sat", label: "Partes de trabajo y órdenes de servicio (SAT)" },
+  { value: "ropa", label: "Tienda de ropa y calzado (tallas y colores)" },
   { value: "todo", label: "Todo el sistema" },
 ] as const;
 

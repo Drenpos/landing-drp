@@ -89,6 +89,21 @@ const bloques = [
     ],
   },
   {
+    id: "minimos-por-almacen",
+    icon: "🏬",
+    h2: "¿Puede cada almacén tener su propio mínimo y máximo?",
+    capsula:
+      "Sí. Además del mínimo y máximo general del artículo, en la pestaña Inventario se fija uno por almacén: la tienda puede pedir 6 cajas de mínimo y el central 40. La propuesta de compra, en su pestaña «Por almacén», calcula qué le falta a cada uno y abre un traslado ya relleno desde el almacén que lo surte.",
+    bullets: [
+      "Mínimo y máximo por almacén, distinto del general del artículo",
+      "Reposición «Por almacén»: traslado prellenado con sus lotes, que alguien revisa y confirma",
+      "Traslado en dos pasos: sale del origen, queda en tránsito y se recibe en destino",
+      "Las diferencias al recibir quedan anotadas y lo que no llega sigue en tránsito",
+      "Lo que está en tránsito nunca se asigna a un pedido",
+    ],
+    enlace: { href: "/blog/traslados-entre-almacenes-transito", texto: "Traslados entre almacenes con tránsito: enviar, recibir y reponer" },
+  },
+  {
     id: "lotes-caducidad",
     icon: "🗓️",
     h2: "¿Cómo se controlan los lotes y las fechas de caducidad?",
@@ -101,6 +116,19 @@ const bloques = [
       "El OCR lee el albarán del proveedor y da de alta los lotes que vengan en él (con una revisión rápida)",
     ],
     nota: true,
+  },
+  {
+    id: "entrada-rapida",
+    icon: "⚡",
+    h2: "¿Cómo se mete mercancía con varios lotes sin perder la mañana?",
+    capsula:
+      "Con la entrada rápida (Movimientos › Entrada rápida). Eliges almacén y artículo y se abre una ventana donde caben varios lotes en la misma línea, cada uno con su caducidad ya propuesta, en cualquier unidad de medida y con lote o serie. Es una entrada directa de stock: no genera albarán de proveedor.",
+    bullets: [
+      "Varios lotes en una misma línea, en cajas o en unidades",
+      "Caducidad propuesta: fecha de entrada más los días de consumo preferente del artículo, editable",
+      "Los artículos nuevos pueden nacer ya «gestionados por lotes» y con peso por unidad",
+      "Para entradas contra pedido de compra sigue estando la recepción con su albarán",
+    ],
   },
   {
     id: "pistola",
@@ -237,6 +265,18 @@ const faqs = [
     a: "En la ficha de cada artículo pones un stock mínimo y un máximo. Cuando el stock baja del mínimo o supera el máximo, aparece una notificación en el panel en tiempo real. Aparte, las alertas de pedidos cruzan lo que tienes vendido pendiente de servir con el stock físico y te dicen cuántas unidades faltan por comprar, con un widget en el panel de inicio.",
   },
   {
+    q: "¿Se puede poner un stock mínimo distinto en cada almacén?",
+    a: "Sí. En la pestaña Inventario del artículo se fija un mínimo y un máximo por almacén, así la tienda tiene el suyo y el central el suyo. La propuesta de compra, en la pestaña «Por almacén», calcula lo que le falta a cada uno y abre un traslado ya relleno, con sus lotes, desde el almacén que lo surte. Nadie lo confirma por ti: alguien lo revisa y lo da por bueno.",
+  },
+  {
+    q: "¿Qué pasa con la mercancía mientras viaja de un almacén a otro?",
+    a: "Si el almacén de destino tiene una ubicación marcada como «Tránsito», el traslado se hace en dos pasos. Al confirmarlo, la mercancía sale del origen y queda en tránsito con el traslado «En curso». En destino, «Recibir traslados» registra lo que llega de verdad: las diferencias quedan anotadas y lo que falta sigue en tránsito. Ese stock nunca se asigna a un pedido.",
+  },
+  {
+    q: "¿Cómo se calcula la caducidad al dar de alta un lote?",
+    a: "Si el artículo tiene días de consumo preferente, la caducidad se propone sola: fecha de entrada más esos días. Se puede cambiar en el momento. Sirve en la entrada rápida, donde caben varios lotes en una misma línea, y evita que cada operario calcule fechas de cabeza.",
+  },
+  {
     q: "¿Puedo llevar el control de stock con pistola lectora o con el móvil?",
     a: "Sí. En cada dispositivo eliges si lees con una pistola externa o con la cámara del móvil u ordenador. Cada artículo admite varios códigos de barras, uno por unidad de medida, así que el sistema distingue una botella de una caja. Las ubicaciones llevan un QR imprimible y los traslados, las recepciones y los recuentos se hacen escaneando.",
   },
@@ -285,6 +325,7 @@ const hermanas = [
 const articulos = [
   { t: "Control de stock: qué es, métodos y cómo evitar roturas", s: "control-de-stock-sin-roturas" },
   { t: "Stock mínimo, stock de seguridad y punto de pedido", s: "stock-minimo-punto-de-pedido" },
+  { t: "Traslados entre almacenes con tránsito: enviar, recibir y reponer", s: "traslados-entre-almacenes-transito" },
   { t: "Inventario cíclico: contar el almacén sin cerrarlo", s: "inventario-ciclico-almacen" },
   { t: "FIFO, FEFO y LIFO en el almacén: cuál usar", s: "fifo-fefo-lifo-almacen" },
   { t: "Recepción de mercancía: qué comprobar y cómo registrarla", s: "recepcion-mercancia-almacen" },
@@ -308,6 +349,10 @@ const productSchema = softwareApp({
   offerDescription: "Plan Almacén con el inventario completo, [[p:almacen]]/mes (sin IVA). Sin coste por uso ni permanencia.",
   featureList: [
     "Stock mínimo y máximo por artículo con notificaciones",
+    "Stock mínimo y máximo por almacén",
+    "Reposición por almacén con traslado prellenado desde el almacén que lo surte",
+    "Traslado en dos pasos con ubicación de tránsito y recepción con diferencias",
+    "Entrada rápida con varios lotes por línea y caducidad propuesta",
     "Alertas de pedidos: unidades que faltan para servir lo vendido",
     "Propuesta de compra asistida con consumo real, reservas y pedidos en camino",
     "Lotes y números de serie con fecha de fabricación y caducidad",
@@ -328,7 +373,7 @@ const faqSchema = faqPage(faqs);
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
 const PAGE_PUBLISHED = "2026-09-23";
-const PAGE_UPDATED = "2026-10-22";
+const PAGE_UPDATED = "2026-11-06";
 ---
 
 <Base
@@ -572,6 +617,11 @@ const PAGE_UPDATED = "2026-10-22";
               <div class="text-3xl mb-4">{b.icon}</div>
               <h2 class="h4 mb-4 font-bold leading-tight">{b.h2}</h2>
               <p class="text-lg leading-relaxed mb-4 text-dark/75">{b.capsula}</p>
+              {b.enlace && (
+                <p class="text-sm leading-relaxed text-dark/65">
+                  Paso a paso en <a href={b.enlace.href} class="text-primary underline">{b.enlace.texto}</a>.
+                </p>
+              )}
               {b.nota && (
                 <p class="text-sm leading-relaxed text-dark/65">
                   Si trabajas con alimentos, el

@@ -103,6 +103,21 @@ const entradaSalidaClave = [
   "Es una ayuda de gestión: el registro legal siguen siendo los fichajes. Un fichaje con hora reconstruida por el terminal sin conexión nunca cuenta como tarde.",
 ];
 
+// Bono de horas (sección #bono-de-horas)
+const bonoClave = [
+  "Horas por ciclo y duración del ciclo: por ejemplo, 20 h cada mes. Tú decides si lo no usado pasa al siguiente y cuándo empieza el bono de cada persona.",
+  "En la app el empleado ve imputadas, pendientes, total, ciclo y fecha de renovación. Recibe «Te quedan X h» al bajar del umbral y un aviso cuando el bono se agota.",
+  "Con bono no hay control de horario ni incidencias (salvo la salida olvidada), no se bloquea el fichaje al agotarse, no se cobra el exceso y el aviso va al empleado, no al responsable.",
+];
+
+// Informes del equipo y formatos (sección #bono-de-horas, segundo bloque)
+const informesEquipo = [
+  { informe: "Informe legal", para: "Inspección de Trabajo o RRHH", lleva: "Entradas, salidas, pausas, horas ordinarias y extra, festivos, ausencias e incidencias por día." },
+  { informe: "Informe mensual del equipo (PDF o Excel)", para: "La gestoría, cada mes", lleva: "Por persona: días laborables, trabajados y sin fichar, horas previstas, trabajadas, extra y que faltan, ausencias por tipo e incidencias. Hasta 300 personas." },
+  { informe: "Horas extra y de menos con el bono", para: "Quien trabaja por bolsa de horas", lleva: "Lo consumido frente a las horas del ciclo de cada persona." },
+  { informe: "Formato a medida", para: "Un cliente con necesidades concretas", lleva: "Por ejemplo, el informe legal sin la columna de horas extra." },
+];
+
 // Calendarios laborales, festivos y horas extra (sección #calendarios)
 const calendarios = [
   {
@@ -399,6 +414,14 @@ const faqs = [
     a: "Sí. El responsable aprueba, rechaza o propone otras fechas, siempre con un motivo, y el empleado acepta o rechaza la propuesta desde la app o el portal. En el calendario del equipo ve quién falta cada día para evitar solapes. Los responsables se definen por usuarios o grupos; si no defines ninguno, deciden los administradores. La ley pide fijar las fechas de común acuerdo (artículo 38 del Estatuto), así que la propuesta con motivo deja rastro de esa negociación.",
   },
   {
+    q: "¿Puedo llevar con Drenpos una bolsa de horas o un bono de horas?",
+    a: "Sí. A la persona se le asigna un bono: horas por ciclo y duración del ciclo (por ejemplo, 20 horas cada mes), si lo no usado pasa al siguiente y cuándo empieza. En la app ve imputadas, pendientes, total y fecha de renovación, y recibe «Te quedan X h» al bajar del umbral. Con bono no hay control de horario, no se bloquea el fichaje al agotarse ni se cobra el exceso.",
+  },
+  {
+    q: "¿Puedo sacar un informe de fichajes de todo el equipo para la gestoría?",
+    a: "Sí, el informe mensual del equipo en PDF o Excel: un mes o un rango, todo el equipo, un departamento o personas concretas, hasta 300. Por persona salen días laborables, trabajados y sin fichar, horas previstas, trabajadas, extra y que faltan, ausencias por tipo e incidencias. Administración puede elegir además entre varios formatos: informe legal, cómputo del equipo y horas extra y de menos con el bono.",
+  },
+  {
     q: "¿Las vacaciones y el control de entrada y salida tienen coste extra?",
     a: "No. Vacaciones y permisos, control de entrada y salida, calendarios laborales (también los rotativos), planificación anual y geolocalización van incluidos en el módulo de fichajes, incluido en todos los planes ([[p:fichaje]] por persona adicional y mes, sin IVA). Son opciones que activas cuando las necesitas. Un matiz: quien aprueba vacaciones o revisa incidencias necesita licencia de fichaje aunque no fiche.",
   },
@@ -469,6 +492,9 @@ const productSchema = {
       "Aprobación de vacaciones por responsables definidos; nadie aprueba su propia solicitud",
       "Página de primeros pasos con lo que falta por configurar y ayuda en pantalla en cada campo",
       "Reportes y trazabilidad para Inspección de Trabajo",
+      "Bono de horas por ciclo con arrastre opcional y aviso de horas restantes en la app",
+      "Informe mensual del equipo en PDF o Excel, hasta 300 personas",
+      "Formatos de informe a elegir: legal, cómputo del equipo y horas extra y de menos con el bono",
       "Hardware de fichaje propio (lector RFID + llaveros + tarjetas QR) con el logo del cliente en la carcasa",
       "Geolocalización opcional del fichaje desde móvil PWA y web, solo en la entrada y la salida, sin seguimiento continuo",
       "Mapa (OpenStreetMap) y ubicación del fichaje en el informe exportable para la Inspección",
@@ -495,7 +521,7 @@ const productSchema = {
   canonical={CANONICAL}
   image="/images/funcionalidades/control-horario/01-gestion-personal.png"
   published_date="2026-05-27"
-  modified_date="2026-10-22"
+  modified_date="2026-11-06"
   author={AUTOR}
 >
   <!-- Datos estructurados -->
@@ -550,7 +576,7 @@ const productSchema = {
           </p>
           <EquipoAviso href="#equipo" />
           <div class="mb-8">
-            <LandingMeta updated="2026-10-28" published="2026-05-27" />
+            <LandingMeta updated="2026-11-06" published="2026-05-27" />
           </div>
 
           <ul class="flex flex-wrap gap-4 mb-10">
@@ -1451,6 +1477,86 @@ const productSchema = {
             <a href="/blog/calendario-laboral-2027-cataluna" class="text-primary underline">Cataluña</a>,
             <a href="/blog/calendario-laboral-2027-comunidad-valenciana" class="text-primary underline">Comunitat Valenciana</a> y
             <a href="/blog/calendario-laboral-2027-castilla-y-leon" class="text-primary underline">Castilla y León</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       BONO DE HORAS E INFORMES DEL EQUIPO
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="bono-de-horas" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto mb-10" data-aos="fade-up-sm">
+        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">Bono de horas</span>
+        <h2 class="h3 font-bold mb-4">¿Cómo se controla a quien trabaja con una bolsa de horas en vez de un horario?</h2>
+        <p class="text-lg leading-relaxed mb-0 text-dark/72">
+          Con el bono de horas. En lugar de un horario, la persona tiene un
+          paquete de horas por ciclo, por ejemplo 20 horas al mes. Ficha como
+          siempre, cada fichaje descuenta del bono y en la app ve lo imputado,
+          lo pendiente y cuándo se renueva. Sirve para coworking, servicios por
+          bolsa de horas y colaboradores.
+        </p>
+      </div>
+      <div class="row justify-center">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <ul class="space-y-3 rounded-3xl border border-dark/10 bg-body p-7">
+            {
+              bonoClave.map((t) => (
+                <li class="flex items-start gap-3">
+                  <span class="w-5 h-5 mt-0.5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold bg-success">✓</span>
+                  <span class="text-sm text-dark/75">{t}</span>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="text-sm mt-4 text-center text-dark/62">
+            Ejemplos y límites, en
+            <a href="/blog/bolsa-de-horas-bono-control-horario" class="text-primary underline">bolsa de horas y bono en el control horario</a>.
+          </p>
+        </div>
+      </div>
+
+      <div id="informe-mensual-equipo" class="text-center max-w-3xl mx-auto mt-16 mb-10 scroll-mt-24" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Qué informe de fichajes le paso a la gestoría cada mes?</h2>
+        <p class="text-lg leading-relaxed mb-0 text-dark/72">
+          El informe mensual del equipo, en PDF o Excel. Saca un mes o un
+          rango para todo el equipo, un departamento o personas concretas, y
+          por cada una da días trabajados y sin fichar, horas previstas,
+          trabajadas, extra y que faltan, ausencias por tipo e incidencias. Es
+          lo que pide la gestoría para la nómina.
+        </p>
+      </div>
+      <div class="row justify-center">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse min-w-[720px]">
+              <thead>
+                <tr class="bg-dark text-white">
+                  <th class="text-left p-4 rounded-tl-2xl">Formato</th>
+                  <th class="text-left p-4">Para quién</th>
+                  <th class="text-left p-4 rounded-tr-2xl">Qué lleva</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  informesEquipo.map((r) => (
+                    <tr class="border-b border-dark/5">
+                      <td class="p-4 font-medium">{r.informe}</td>
+                      <td class="p-4">{r.para}</td>
+                      <td class="p-4">{r.lleva}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm mt-6 text-dark/65">
+            Administración elige el formato con los botones «Informes globales»
+            e «Informe por usuario», igual que al imprimir un documento. El
+            empleado sigue sacando el suyo con el formato por defecto. Los
+            formatos a medida para un cliente los prepara el equipo.
           </p>
         </div>
       </div>

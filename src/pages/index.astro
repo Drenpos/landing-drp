@@ -1,42 +1,74 @@
 ---
 export const prerender = true;
+import JsonLd from "@/components/JsonLd.astro";
 import Base from "@/layouts/Base.astro";
+import { faqPage, type Pregunta } from "@/lib/schema";
 import BannerHero from "@/partials/BannerHero.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import CustomersLogo from "@/partials/CustomersLogo.astro";
+import FaqLista from "@/partials/FaqLista.astro";
 import FeatureAllIn from "@/partials/FeatureAllIn.astro";
 import FeatureBeforeAfter from "@/partials/FeatureBeforeAfter.astro";
 import FeatureFichaje from "@/partials/FeatureFichaje.astro";
 import FeatureMcp from "@/partials/FeatureMcp.astro";
 import PricingSection from "@/partials/PricingSection.astro";
 import Problems from "@/partials/Problems.astro";
-import Solution from "@/partials/Solution.astro";
-import StandoutSection from "@/partials/StandoutSection.astro";
+import SolucionesPorTipo from "@/partials/SolucionesPorTipo.astro";
 import Testimonial from "@/partials/Testimonial.astro";
+
+const faqs: Pregunta[] = [
+  {
+    q: "¿Qué es Drenpos?",
+    a: "Drenpos es un software de gestión en la nube para pymes españolas, hecho por módulos: facturación con Verifactu, almacén con lotes, ubicaciones y palets, TPV para tienda y hostelería, producción, órdenes de servicio y control horario con terminal propio. Se activa solo lo que hace falta y no tiene permanencia.",
+  },
+  {
+    q: "¿Cuánto cuesta Drenpos?",
+    a: "El plan Facturación cuesta [[p:facturacion]] al mes sin IVA, Tienda y Hostelería [[p:tienda]], Almacén [[p:almacen]] y Producción [[p:produccion]]. Pagando el año hay dos meses gratis y no hay permanencia. Solo control horario, con Drenpos Equipo, desde [[p:equipo10]] al mes hasta 10 personas.",
+  },
+  {
+    q: "¿Para qué tipo de empresa sirve?",
+    a: "Para distribuidores y almacenes (también frigoríficos y logísticos que guardan mercancía de otros), tiendas de recambios y de ropa, bares y restaurantes, talleres y obradores que fabrican, empresas de servicios con operarios en la calle y cualquier pyme que necesite facturar con Verifactu y registrar la jornada.",
+  },
+  {
+    q: "¿Puedo usar solo el control horario?",
+    a: "Sí. Drenpos Equipo es el módulo de fichajes completo sin facturación: fichaje desde el móvil o con terminal de llavero, vacaciones, turnos rotativos e informes para la Inspección. Si más adelante quieres facturar o llevar el almacén, pasas a un plan sin perder nada.",
+  },
+  {
+    q: "¿Puedo pasar mis datos desde Excel o desde otro programa?",
+    a: "Sí. Clientes, proveedores, artículos (también con tallas y colores), ubicaciones, stock inicial con lotes, listas de precios y usuarios se cargan con plantillas de Excel. Para catálogos grandes o con histórico, el equipo prepara la migración y te dice antes lo que cuesta.",
+  },
+  {
+    q: "¿Mi gestoría puede seguir con su programa de contabilidad?",
+    a: "Sí. Drenpos no es un programa de contabilidad: entrega a la gestoría un paquete con las facturas y un Excel resumen, y exporta las facturas al formato de enlace contable de A3, incluido en el plan Facturación. Exporta solo facturas, no cobros ni pagos.",
+  },
+];
 ---
 
 <Base
   meta_title="Software de gestión para pymes y ERP modular | Drenpos"
   description="Drenpos, el software de gestión para pymes: inventario, ventas, TPV, facturación Verifactu y control horario. Por módulos, sin permanencia y con soporte humano."
 >
+  <JsonLd data={[faqPage(faqs)]} />
   <BannerHero />
-  <!-- <CustomersLogo sectionGap="section" /> -->
-  <!-- Problemas  - te suena esto-->
   <Problems />
+  <!-- Entradas por sector o problema: sale de src/config/landings.json -->
+  <SolucionesPorTipo />
   <!-- Control horario con terminal propio: puerta de entrada de muchos clientes -->
   <FeatureFichaje />
   <!-- Ecosistema un solo sitio para todo -->
   <FeatureAllIn />
   <!-- Conector MCP: los datos en el asistente de IA del cliente -->
   <FeatureMcp />
-  <!-- Antes y despues  -->
   <FeatureBeforeAfter />
   <CallToAction compact={true} />
   <!-- Prueba social con las empresas que ya nos usan -->
   <CustomersLogo sectionGap="section" />
-  <!-- Precios Reducidos  -->
   <PricingSection compact={true} />
-  <!-- Facil de usar  -->
   <Testimonial />
+  <FaqLista
+    faqs={faqs}
+    title="Preguntas frecuentes sobre Drenpos"
+    lead="Respuestas cortas, con precios sin IVA y también con lo que no hace."
+  />
   <CallToAction />
 </Base>

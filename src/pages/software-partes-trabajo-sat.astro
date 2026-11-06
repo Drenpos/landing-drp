@@ -1,0 +1,664 @@
+---
+import { abs, AUTOR } from "@/lib/site";
+import { breadcrumb, faqPage, softwareApp } from "@/lib/schema";
+import JsonLd from "@/components/JsonLd.astro";
+export const prerender = true;
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+import ClientLogosStrip from "@/partials/ClientLogosStrip.astro";
+import DemoForm from "@/partials/DemoForm.astro";
+import LandingMeta from "@/partials/LandingMeta.astro";
+
+// ════════════════════════════════════════════════════════════════════════
+//  Partes de trabajo y SAT: órdenes de servicio con app para el operario
+//  Intención de búsqueda objetivo:
+//    - "software partes de trabajo" / "app partes de trabajo"
+//    - "software SAT pymes" / "programa para empresas de limpieza"
+//    - "app para empresa de limpieza fichar y partes"
+//  SERP consultada el 06/11/2026: apps sueltas de partes (itcons.app, AppSat,
+//  CreaPartes), rankings de software de limpieza (Connecteam, CleanManager,
+//  ZenMaid) y ERP de servicios (STEL Order, Sage 50 Servicios). Casi ninguno
+//  explica qué pasa con el parte después: cómo llega a la factura y a la
+//  remesa SEPA. Esta página responde a eso y dice lo que no hace.
+//  Fuente de las funciones: context/products_modules.md («Módulo SAT» y
+//  «Tesorería»). Precio sin definir (06/11/2026): no se da cifra.
+// ════════════════════════════════════════════════════════════════════════
+
+const PATH = "/software-partes-trabajo-sat";
+const CANONICAL = abs(PATH);
+
+const sintomas = [
+  {
+    icon: "📝",
+    title: "El parte llega el viernes, arrugado",
+    body: "La operaria lo rellena a boli en el coche, se le olvida la hora de salida y la oficina lo pasa a mano el lunes. Lo que no se apunta no se factura.",
+  },
+  {
+    icon: "🧴",
+    title: "El material se pierde por el camino",
+    body: "Dos botellas de producto, un desplazamiento extra, una pieza cambiada. Si no queda escrito en el momento, a fin de mes nadie se acuerda de cobrarlo.",
+  },
+  {
+    icon: "📸",
+    title: "«Eso ya estaba roto cuando llegamos»",
+    body: "Sin una foto con fecha, la discusión con el cliente es palabra contra palabra. La foto existe, pero está en el móvil personal de alguien.",
+  },
+  {
+    icon: "🏦",
+    title: "Fin de mes: facturar y montar la remesa a mano",
+    body: "Cuarenta clientes, cuarenta facturas y luego el fichero del banco. Un IBAN mal copiado y el recibo vuelve devuelto con comisión.",
+  },
+];
+
+type Bloque = {
+  id: string;
+  icon: string;
+  h2: string;
+  capsula: string;
+  bullets: string[];
+};
+
+const bloques: Bloque[] = [
+  {
+    id: "oficina",
+    icon: "🗂️",
+    h2: "¿Qué hace la oficina con las órdenes de servicio?",
+    capsula:
+      "La oficina crea cada visita o trabajo como una orden de servicio: cliente, persona asignada, día, urgencia, dirección donde se trabaja, notas, tareas y conceptos previstos. Las ve ordenadas en pestañas (Hoy, Próximas, Atrasadas, Terminadas, Todas y Por albaranar) y, cuando el operario termina, tiene delante las horas, el material y las fotos de cada trabajo.",
+    bullets: [
+      "Dirección de trabajo propia en cada orden, distinta de la fiscal del cliente",
+      "Tareas con casillas para que el operario sepa qué tiene que hacer",
+      "Conceptos por horas de cada tipo, material y kilómetros",
+      "«Repetir para otros días»: días sueltos o cada semana hasta una fecha, con un máximo de 52 visitas",
+      "Pestaña Atrasadas para ver lo que se quedó sin hacer",
+    ],
+  },
+  {
+    id: "app-operario",
+    icon: "📱",
+    h2: "¿Qué ve el operario en el móvil?",
+    capsula:
+      "El operario abre la app «Drenpos», la misma con la que ficha, y entra en Mis trabajos: salen los de hoy y los atrasados. En cada uno tiene «Cómo llegar» y «Llamar», un crono de Empezar y Parar o el tiempo a mano, las tareas con casillas, fotos con la cámara, comentarios y botones rápidos para el material. Termina con «Terminar trabajo».",
+    bullets: [
+      "Portada con iconos según lo contratado: Fichar y Mis trabajos",
+      "El tiempo se apunta sin elegir línea ni tipo de hora: menos pasos, menos errores",
+      "«Material y otros» con botones que define la empresa: producto de limpieza, desplazamiento, filtro…",
+      "Fotos hechas en el momento, que la oficina ve en la orden",
+      "App web instalable: se añade a la pantalla de inicio del móvil, sin tiendas de aplicaciones",
+    ],
+  },
+  {
+    id: "cobro",
+    icon: "💶",
+    h2: "¿Cómo pasa el parte a la factura y al cobro?",
+    capsula:
+      "La pestaña «Por albaranar» junta todo lo terminado y pendiente y lo convierte en albaranes, uno por cliente, de una vez. Después la factura se hace con «Copiar de» esos albaranes, en modalidad Verifactu, y la remesa SEPA recoge las facturas domiciliadas que están listas para cobrar. Nadie vuelve a teclear horas ni material.",
+    bullets: [
+      "También desde el albarán: «Copiar de › Órdenes de servicio»",
+      "Una factura puede juntar varios albaranes del mes",
+      "La remesa dice por cada factura si está lista o qué falta: IBAN, mandato, mandato caducado o ID de acreedor",
+      "Primer cobro o recurrente (FRST o RCUR) decidido por el mandato, y fecha de cobro a elegir",
+      "Si la empresa lo activa, el material apuntado descuenta stock",
+    ],
+  },
+];
+
+// Tabla de flujo: del parte al cobro
+const flujo = [
+  { paso: "1. Orden de servicio", quien: "Oficina", donde: "Órdenes de servicio (web)", sale: "Visita con cliente, día, dirección, tareas y operario" },
+  { paso: "2. Parte de trabajo", quien: "Operario", donde: "App «Drenpos», Mis trabajos", sale: "Horas, material, fotos y comentarios; trabajo terminado" },
+  { paso: "3. Albarán", quien: "Oficina", donde: "Pestaña Por albaranar", sale: "Un albarán por cliente con todo lo terminado" },
+  { paso: "4. Factura", quien: "Oficina", donde: "Factura con «Copiar de» albaranes", sale: "Factura Verifactu con uno o varios albaranes" },
+  { paso: "5. Remesa SEPA", quien: "Oficina", donde: "Tesorería, remesas", sale: "Fichero XML para el banco con las facturas listas" },
+];
+
+const sectores = [
+  {
+    tag: "Limpieza",
+    icon: "🧽",
+    title: "Casas, comunidades y oficinas",
+    body: "Pongamos una empresa de limpieza con 8 operarias y 40 clientes. La oficina programa las casas de la semana con «Repetir para otros días». Cada operaria ve las suyas de hoy, pulsa Empezar al llegar, apunta dos botellas de producto con un botón y hace una foto si algo está roto. A fin de mes, se albarana a los 40 clientes de una vez, se factura y se descarga la remesa.",
+  },
+  {
+    tag: "Mantenimiento e instaladores",
+    icon: "🔧",
+    title: "Revisiones periódicas y avisos",
+    body: "Las revisiones de cada contrato se programan cada semana o en días sueltos, y los avisos urgentes entran con su urgencia y la dirección de la avería. El técnico apunta tiempo, kilómetros y material, y si la empresa lo activa, ese material descuenta stock.",
+  },
+  {
+    tag: "Jardinería y asistencia técnica",
+    icon: "🌿",
+    title: "Trabajos en casa del cliente",
+    body: "Cada visita queda con sus fotos del antes y el después, sus horas y lo que se ha gastado. El operario no tiene que elegir el tipo de hora en el móvil: lo reparte después la oficina.",
+  },
+];
+
+const noHace = [
+  "No planifica rutas ni calcula la capacidad de cada operario: el reparto lo decide la oficina",
+  "El operario no elige el tipo de hora: lo reparte la oficina",
+  "La factura no sale sola: alguien la hace con «Copiar de» albaranes",
+  "No funciona sin conexión: el operario necesita cobertura para apuntar el trabajo",
+  "Todavía no recoge la firma del cliente en el parte",
+  "No está en App Store ni Google Play: es una app web instalable desde el navegador",
+];
+
+const faqs = [
+  {
+    q: "¿Qué es un software de partes de trabajo?",
+    a: "Es el programa que sustituye al parte en papel: la oficina crea la orden de servicio, el operario apunta en el móvil horas, material, fotos y comentarios, y la oficina lo convierte en albarán y factura sin volver a teclear. En Drenpos, además, la factura domiciliada entra en la remesa SEPA para el banco.",
+  },
+  {
+    q: "¿Sirve para una empresa de limpieza?",
+    a: "Sí, es uno de los casos para los que se ha hecho. Las visitas fijas de cada semana se crean de una vez con «Repetir para otros días», cada operaria ve sus casas de hoy en el móvil, apunta el producto con un botón y a fin de mes la oficina albarana a todos los clientes de una vez y monta la remesa SEPA.",
+  },
+  {
+    q: "¿Puede el operario fichar y hacer el parte en la misma app?",
+    a: "Sí. La app «Drenpos» es la misma de los fichajes: en la portada salen los iconos Fichar y Mis trabajos según lo que tenga contratado la empresa. El fichaje cumple el registro de jornada y el parte recoge lo hecho en cada casa; son dos registros distintos que se hacen desde el mismo móvil.",
+  },
+  {
+    q: "¿Cuánto cuesta el módulo SAT de Drenpos?",
+    a: "Se contrata con una licencia «Usuario de SAT» por persona, igual que los fichajes; también la necesita quien gestiona las órdenes en la oficina. El precio de esa licencia todavía no está publicado: consúltanos y te lo damos con tu número de operarios. No hace falta contratar el módulo de Producción.",
+  },
+  {
+    q: "¿Necesito comprar móviles o instalar algo?",
+    a: "No hace falta un móvil especial. Es una app web instalable: se abre en el navegador del móvil y se añade a la pantalla de inicio. No está en App Store ni en Google Play. Un operario con solo la licencia de SAT entra en la app sin ocupar un usuario completo del sistema.",
+  },
+  {
+    q: "¿El material que apunta el operario descuenta stock?",
+    a: "Si la empresa lo activa, sí: el material apuntado en el trabajo descuenta el stock. Si no lo activa, el material solo sirve para cobrarlo en el albarán. Los botones rápidos de «Material y otros» los define la empresa, para que el operario no tenga que buscar artículos en un catálogo.",
+  },
+  {
+    q: "¿Planifica las rutas de los operarios?",
+    a: "No. Drenpos no calcula rutas ni la capacidad de cada persona: la oficina decide quién va a cada sitio y qué día. Dentro de cada trabajo, el operario tiene «Cómo llegar» a la dirección del trabajo y «Llamar» para hablar con el cliente.",
+  },
+  {
+    q: "¿La factura sale automáticamente al terminar el trabajo?",
+    a: "No, y es a propósito. Al terminar, el trabajo pasa a la pestaña «Por albaranar». La oficina genera los albaranes por cliente de una vez y después la factura con «Copiar de» albaranes, en modalidad Verifactu. Así se revisan horas y material antes de cobrar.",
+  },
+];
+
+const hermanas = [
+  {
+    url: "/control-horario",
+    title: "Control horario",
+    body: "El fichaje del equipo en la misma app del móvil, con vacaciones, turnos y geolocalización opcional al fichar.",
+  },
+  {
+    url: "/software-verifactu",
+    title: "Facturación Verifactu",
+    body: "Las facturas que salen de los albaranes llevan su huella encadenada y su QR, sin configurar nada.",
+  },
+  {
+    url: "/software-control-stock",
+    title: "Control de stock",
+    body: "Si el material apuntado descuenta stock: mínimos, alertas y propuesta de compra del producto que más gastas.",
+  },
+];
+
+const articulos = [
+  { t: "Cómo dejar el parte de trabajo en papel en una empresa de limpieza", s: "app-partes-de-trabajo-empresa-limpieza" },
+  { t: "Del parte de trabajo a la factura y la remesa SEPA", s: "parte-de-trabajo-a-factura-remesa-sepa" },
+  { t: "¿Es legal fichar desde el móvil en 2026?", s: "fichar-desde-el-movil-legal-2026" },
+  { t: "Registro horario digital: qué exige la ley", s: "registro-horario-digital" },
+  { t: "VERI*FACTU: qué es y cómo adaptarte antes de octubre de 2028", s: "verifactu-pymes-guia-2026" },
+  { t: "Drenpos o STEL Order: comparativa para pymes", s: "drenpos-vs-stel-order" },
+];
+
+const breadcrumbSchema = breadcrumb([
+  { name: "Funcionalidades", path: "/funcionalidades" },
+  { name: "Partes de trabajo y SAT", path: PATH },
+]);
+
+const productSchema = softwareApp({
+  name: "Drenpos · Software de partes de trabajo y órdenes de servicio (SAT)",
+  path: PATH,
+  description:
+    "Órdenes de servicio con app para el operario: la oficina programa las visitas, el operario apunta horas, material, fotos y comentarios desde el móvil, y lo terminado pasa a albarán por cliente, factura Verifactu y remesa SEPA. Licencia por persona. No planifica rutas ni está en las tiendas de aplicaciones.",
+  featureList: [
+    "Órdenes de servicio con cliente, operario, día, urgencia y dirección de trabajo",
+    "Visitas repetidas en días sueltos o cada semana hasta una fecha",
+    "App web instalable con Fichar y Mis trabajos",
+    "Crono Empezar y Parar o tiempo a mano",
+    "Tareas con casillas, fotos con la cámara y comentarios",
+    "Botones rápidos de material definidos por la empresa",
+    "Pestaña Por albaranar: albaranes por cliente de una vez",
+    "Factura con Copiar de albaranes en modalidad Verifactu",
+    "Remesa SEPA con aviso de lo que falta por factura",
+    "Descuento de stock del material apuntado (opcional)",
+  ],
+});
+
+const faqSchema = faqPage(faqs);
+
+const PAGE_PUBLISHED = "2026-11-06";
+const PAGE_UPDATED = "2026-11-06";
+---
+
+<Base
+  title="Software de Partes de Trabajo y SAT · Drenpos"
+  meta_title="Software de partes de trabajo y SAT con app | Drenpos"
+  description="Partes de trabajo en el móvil para limpieza, mantenimiento e instaladores: horas, fotos y material que pasan a albarán, factura y remesa SEPA."
+  canonical={CANONICAL}
+  published_date={PAGE_PUBLISHED}
+  modified_date={PAGE_UPDATED}
+  author={AUTOR}
+>
+  <JsonLd data={[breadcrumbSchema, productSchema, faqSchema]} />
+
+  <!-- HERO -->
+  <section class="section-sm pb-0 relative z-10 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <img src="/images/grainy.svg" alt="" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="mb-6 text-sm text-dark/55">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/funcionalidades" class="hover:text-primary">Funcionalidades</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Partes de trabajo y SAT</span>
+      </nav>
+
+      <div class="row gx-0 gy-12 lg:gy-0 items-center">
+        <div class="lg:col-7" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full bg-success" aria-hidden="true"></span>
+            Limpieza, mantenimiento, instaladores
+          </span>
+
+          <h1 class="mb-5 text-h3 lg:text-h1 font-bold leading-tight">
+            Software de <span class="text-primary">partes de trabajo</span> con app para el operario: del parte a la factura y la remesa SEPA
+          </h1>
+          <p class="text-lg mb-8 max-w-xl text-dark/72">
+            Drenpos sustituye el parte en papel por <strong>órdenes de servicio</strong>:
+            la oficina programa las visitas, el operario apunta en el móvil
+            <strong>horas, material y fotos</strong>, y lo terminado pasa a
+            albarán, factura y <strong>remesa SEPA</strong> sin volver a
+            teclear. Fichaje y partes en la misma app.
+          </p>
+
+          <LandingMeta updated={PAGE_UPDATED} published={PAGE_PUBLISHED} class="-mt-4 mb-8" />
+
+          <ul class="flex flex-wrap gap-4 mb-10">
+            <li data-aos="fade-up-sm" data-aos-delay="100">
+              <a href="#demo-form" class="btn btn-dark">
+                Pedir demo gratuita
+                <span class="icon-wrapper">
+                  <span class="icon">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="icon" aria-hidden="true">
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li data-aos="fade-up-sm" data-aos-delay="150">
+              <a href="#flujo" class="btn btn-light">Ver cómo funciona</a>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-x-8 gap-y-3 text-sm text-dark/62">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold bg-success">✓</span>
+              Fotos y material desde el móvil
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold bg-success">✓</span>
+              Albaranes por cliente de una vez
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold bg-success">✓</span>
+              Remesa SEPA
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold bg-success">✓</span>
+              No exige Producción
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-5" data-aos="fade-up-sm" data-aos-delay="200">
+          <div class="relative px-4 lg:px-0 pt-6 pb-10 max-w-sm mx-auto">
+            <div class="absolute -top-10 -right-10 w-80 h-80 rounded-full blur-3xl -z-10 pointer-events-none bg-primary/10"></div>
+            <div class="rounded-[2rem] border border-dark/10 bg-body p-5 relative z-10" style="box-shadow: 0 30px 80px rgba(0,0,0,0.18);" aria-label="Ejemplo de la pantalla Mis trabajos en el móvil" role="img">
+              <p class="text-xs uppercase tracking-wide text-muted mb-1">Mis trabajos · Hoy</p>
+              <p class="h6 font-bold mb-4">3 trabajos</p>
+              <div class="space-y-3">
+                <div class="rounded-2xl border border-dark/10 p-4">
+                  <p class="text-sm font-bold text-dark">Limpieza vivienda</p>
+                  <p class="text-xs text-muted mb-3">C/ Mayor 12, 2.º B · 09:00</p>
+                  <div class="flex flex-wrap gap-2 text-xs">
+                    <span class="rounded-full px-3 py-1 bg-success-light text-dark">⏱ 01:42</span>
+                    <span class="rounded-full px-3 py-1 bg-primary/10 text-primary">+ Producto limpieza ×2</span>
+                    <span class="rounded-full px-3 py-1 bg-primary/10 text-primary">📷 1 foto</span>
+                  </div>
+                </div>
+                <div class="rounded-2xl border border-dark/10 p-4">
+                  <p class="text-sm font-bold text-dark">Oficinas planta baja</p>
+                  <p class="text-xs text-muted">Pol. Ind. nave 4 · 12:30</p>
+                </div>
+                <div class="rounded-2xl border border-dark/10 p-4 opacity-70">
+                  <p class="text-sm font-bold text-dark">Comunidad portal 3</p>
+                  <p class="text-xs text-muted">Atrasado de ayer</p>
+                </div>
+              </div>
+            </div>
+            <div class="absolute -bottom-2 -left-2 lg:-left-10 rounded-2xl px-4 py-3 flex items-center gap-3 border border-dark/7 z-20" style="background: white; box-shadow: 0 8px 32px rgba(0,0,0,0.13);">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-base flex-shrink-0 bg-success-light">🏦</div>
+              <div>
+                <p class="text-xs font-bold text-dark">Por albaranar: 40 clientes</p>
+                <p class="text-xs text-muted">Albaranes, factura y remesa SEPA</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ClientLogosStrip />
+
+  <!-- DEFINICIÓN CITABLE -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h4 font-bold mb-4">¿Qué es un software de partes de trabajo y SAT?</h2>
+          <p class="text-lg leading-relaxed text-dark/72">
+            Es el programa con el que una empresa de servicios organiza las
+            visitas a casa del cliente y recoge lo que se ha hecho en cada una.
+            La oficina crea la orden de servicio, el operario apunta desde el
+            móvil horas, material y fotos, y ese parte se convierte en albarán y
+            factura sin volver a escribirlo. SAT significa servicio de asistencia
+            técnica.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SÍNTOMAS -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Por qué dejar el parte en papel?</h2>
+        <p class="text-lg text-dark/65">
+          Porque cada parte que se pierde o se pasa tarde es trabajo hecho que no se cobra.
+        </p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          sintomas.map((s, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{s.icon}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{s.title}</h3>
+                <p class="text-sm text-dark/65">{s.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO FUNCIONA: OFICINA / APP / COBRO -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      {
+        bloques.map((b, i) => (
+          <div id={b.id} class={`row gy-8 items-start scroll-mt-24 ${i > 0 ? "mt-16 lg:mt-24" : ""}`}>
+            <div class="lg:col-6" data-aos="fade-up-sm">
+              <div class="text-3xl mb-4">{b.icon}</div>
+              <h2 class="h4 mb-4 font-bold leading-tight">{b.h2}</h2>
+              <p class="text-lg leading-relaxed mb-4 text-dark/75">{b.capsula}</p>
+            </div>
+            <div class="lg:col-6" data-aos="fade-up-sm" data-aos-delay="150">
+              <div class="rounded-3xl border border-dark/10 bg-body p-7">
+                <ul class="space-y-3">
+                  {b.bullets.map((t) => (
+                    <li class="flex items-start gap-3">
+                      <span class="w-5 h-5 mt-0.5 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold bg-success">✓</span>
+                      <span class="text-sm text-dark/75">{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- TABLA DE FLUJO -->
+  <section id="flujo" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Qué recorrido hace un parte hasta que se cobra?</h2>
+        <p class="text-lg max-w-3xl mx-auto text-dark/65">
+          Cinco pasos, de la orden de servicio a la remesa SEPA. El operario
+          solo interviene en el segundo; el resto lo hace la oficina con los
+          datos que él ya ha apuntado.
+        </p>
+      </div>
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[860px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Paso</th>
+              <th class="text-left p-4">Quién</th>
+              <th class="text-left p-4">Dónde</th>
+              <th class="text-left p-4 rounded-tr-2xl">Qué sale</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              flujo.map((r) => (
+                <tr class="border-b border-dark/5">
+                  <td class="p-4 font-bold text-primary">{r.paso}</td>
+                  <td class="p-4">{r.quien}</td>
+                  <td class="p-4">{r.donde}</td>
+                  <td class="p-4">{r.sale}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="text-center mt-6 text-sm max-w-3xl mx-auto text-dark/60" data-aos="fade-up-sm">
+        El detalle de los pasos 3 a 5, con mandatos, FRST y RCUR y los motivos
+        por los que una factura no entra en la remesa, está en
+        <a href="/blog/parte-de-trabajo-a-factura-remesa-sepa" class="text-primary underline">del parte de trabajo a la remesa SEPA</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTORES -->
+  <section class="section pt-0 overflow-hidden">
+    <div class="container">
+      <div class="text-center mb-12" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-4">¿Para qué empresas de servicios sirve?</h2>
+        <p class="text-lg max-w-3xl mx-auto text-dark/65">
+          Para las que trabajan en casa del cliente y cobran por visita, por
+          horas o por cuota: limpieza, mantenimiento, instaladores, jardinería
+          y asistencia técnica.
+        </p>
+      </div>
+      <div class="row g-4 justify-center">
+        {
+          sectores.map((c, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-3xl mb-4">{c.icon}</div>
+                <p class="text-xs uppercase font-semibold tracking-wide mb-2 text-primary">{c.tag}</p>
+                <h3 class="h6 font-bold mb-3">{c.title}</h3>
+                <p class="text-sm text-dark/68">{c.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- QUÉ NO HACE -->
+  <section id="que-no-hace" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-10">
+          <div class="rounded-3xl p-8 lg:p-12 text-white bg-dark" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-4 text-white">¿Qué no hace el módulo SAT de Drenpos?</h2>
+            <p class="text-lg leading-relaxed mb-8 text-white/82">
+              No planifica rutas ni calcula la capacidad de cada operario: quién
+              va a cada casa lo decide la oficina. La factura tampoco sale sola
+              al terminar el trabajo, la hace alguien con «Copiar de». La app
+              necesita conexión y todavía no recoge la firma del cliente. Y no está en App Store ni Google Play: es una app web que se instala
+              desde el navegador del móvil.
+            </p>
+            <div class="row g-6 items-start">
+              <div class="md:col-6">
+                <ul class="space-y-3">
+                  {
+                    noHace.map((t) => (
+                      <li class="flex items-start gap-3">
+                        <span class="w-5 h-5 mt-0.5 rounded-full flex items-center justify-center flex-shrink-0 text-[11px] font-bold bg-white/12 text-accent-light" aria-hidden="true">✕</span>
+                        <span class="text-sm text-white/80">{t}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+              <div class="md:col-6">
+                <p class="text-sm leading-relaxed mb-4 text-white/72">
+                  Si tu negocio vive de optimizar rutas con muchos técnicos al
+                  día, un programa de gestión de servicios de campo especializado
+                  te encajará mejor. Si lo que duele es que el parte llegue,
+                  se facture y se cobre, esto lo resuelve.
+                </p>
+                <p class="text-sm leading-relaxed text-white/72">
+                  Comparamos las dos opciones con datos en
+                  <a href="/blog/drenpos-vs-stel-order" class="underline text-accent-light">Drenpos o STEL Order</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LICENCIAS Y PRECIO -->
+  <section id="precio" class="section pt-0 scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-8">
+          <div class="rounded-3xl p-8 lg:p-12 text-center text-white bg-dark" data-aos="fade-up-sm">
+            <h2 class="h3 font-bold mb-3 text-white">¿Cómo se contrata y cuánto cuesta?</h2>
+            <p class="mb-4 max-w-xl mx-auto text-white/75">
+              Con una licencia «Usuario de SAT» por persona, igual que los
+              fichajes. La necesita cada operario y también quien gestiona las
+              órdenes en la oficina. Un operario con solo esta licencia entra en
+              la app sin ocupar un usuario completo del sistema, y no hace falta
+              contratar el módulo de Producción.
+            </p>
+            <p class="mb-6 max-w-xl mx-auto text-white/75">
+              El precio de la licencia aún no está publicado. Cuéntanos cuántas
+              personas sois y te lo damos, junto con el plan que te encaja para
+              facturar.
+            </p>
+            <ul class="flex flex-wrap gap-4 justify-center">
+              <li>
+                <a href="#demo-form" class="btn btn-light">Consúltanos el precio</a>
+              </li>
+              <li>
+                <a href="/pricing" class="btn btn-dark border-white/35">Ver planes</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <DemoForm interes="sat" />
+
+  <!-- FAQ -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-9">
+          <h2 class="h3 font-bold mb-3 text-center" data-aos="fade-up-sm">Partes de trabajo y SAT: lo que más nos preguntan</h2>
+          <p class="text-center mb-10 text-dark/62" data-aos="fade-up-sm">
+            Respuestas directas, también sobre lo que no hace.
+          </p>
+          <div class="space-y-4">
+            {
+              faqs.map((f, i) => (
+                <details class="group rounded-2xl border border-dark/10 bg-body p-5" data-aos="fade-up-sm" data-aos-delay={Math.min(i * 50, 300)}>
+                  <summary class="cursor-pointer list-none flex items-start justify-between gap-4">
+                    <h3 class="h6 font-bold leading-snug">{f.q}</h3>
+                    <span class="text-primary text-xl leading-none mt-0.5 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <p class="mt-4 text-sm leading-relaxed text-dark/70">{f.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENLAZADO INTERNO -->
+  <section class="section pt-0">
+    <div class="container">
+      <div class="text-center mb-10" data-aos="fade-up-sm">
+        <h2 class="h3 font-bold mb-3">El mismo sistema, visto desde otros problemas</h2>
+      </div>
+
+      <div class="row g-4 justify-center mb-14">
+        {
+          hermanas.map((h, i) => (
+            <div class="md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+              <a href={h.url} class="block h-full rounded-3xl border border-dark/10 bg-body p-6 hover:shadow-xl hover:border-primary/30 transition-all duration-300">
+                <h3 class="h6 font-bold mb-2 leading-snug text-primary">{h.title}</h3>
+                <p class="text-sm mb-3 text-dark/68">{h.body}</p>
+                <span class="text-primary text-sm font-medium">Ver solución →</span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center gy-6">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <h2 class="h5 font-bold mb-3">Sigue leyendo sobre partes, fichajes y cobros</h2>
+          <ul class="row g-2 text-sm mb-6">
+            {
+              articulos.map((a) => (
+                <li class="md:col-6">
+                  <a href={`/blog/${a.s}`} class="text-primary hover:underline">{a.t}</a>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="text-sm text-dark/65">
+            ¿Quieres ver el sistema completo? Repasa
+            <a href="/modulos" class="text-primary underline">todos los módulos de Drenpos</a>
+            o <a href="/contact" class="text-primary underline">escríbenos</a> y
+            te enseñamos tus órdenes de servicio funcionando en veinte minutos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>

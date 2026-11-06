@@ -3,7 +3,7 @@ title: "Drenpos o STEL Order: comparativa para pymes (2026)"
 meta_title: "Drenpos vs STEL Order: comparativa para pymes 2026"
 description: "Drenpos o STEL Order según sus webs a 20/10/2026: app móvil y SAT frente a almacén con lotes y ubicaciones, TPV, fichajes, precios y cuándo encaja cada uno."
 date: 2026-10-20
-updated: 2026-10-23
+updated: 2026-11-06
 image: "/images/blog/erp-para-pymes-vs-excel/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -30,7 +30,7 @@ faq:
   - question: "¿Cuánto cuesta STEL Order?"
     answer: "A 20 de octubre de 2026 y sin IVA, STEL Order Lite cuesta 24 euros al mes (20 con pago anual), Business 36 (30 anual) y Pro 60 (50 anual), cada uno con 1 usuario incluido. El usuario adicional va de 12 a 27 euros al mes según el plan, el multialmacén cuesta desde 12,50 euros y el control horario STEL Tempo desde 3 euros por usuario. STEL POS no publica precio."
   - question: "¿Qué hace STEL Order que no haga Drenpos?"
-    answer: "Partes de trabajo y servicio técnico con firma del cliente, fotos y audios, app móvil nativa con modo sin conexión y GPS, y un asistente de IA propio. Drenpos no tiene módulo de SAT ni app nativa. Lo nuestro es el almacén con lotes, ubicaciones y pistola, el TPV de hostelería, los fichajes con terminal y la producción."
+    answer: "Partes de trabajo y servicio técnico con firma del cliente, fotos y audios, app móvil nativa con modo sin conexión y GPS, y un asistente de IA propio. Drenpos tiene órdenes de servicio con app web para el operario desde noviembre de 2026, pero no app nativa ni planificación de rutas. Lo nuestro es el almacén con lotes, ubicaciones y pistola, el TPV de hostelería, los fichajes con terminal y la producción."
   - question: "¿STEL Order lleva contabilidad?"
     answer: "No. Según su web, STEL Order hace un traspaso contable a archivos compatibles con los programas de contabilidad más usados y tiene conciliación bancaria. Drenpos tampoco lleva contabilidad: genera el reporte y el ZIP para la gestoría. En este punto los dos funcionan igual y la contabilidad sigue en manos de tu asesoría."
 ---
@@ -56,7 +56,7 @@ Los dos están en la nube, no tienen permanencia y trabajan con Verifactu, remes
 | Función | STEL Order | Drenpos |
 | --- | --- | --- |
 | Presupuestos, albaranes, facturas, Verifactu | Sí | Sí |
-| Partes de trabajo y SAT con firma, fotos y audio | Sí | No |
+| Partes de trabajo y SAT con firma, fotos y audio | Sí | Órdenes de servicio con horas, material y fotos (desde noviembre de 2026) |
 | App móvil nativa con modo sin conexión y GPS | Sí | PWA (sin modo sin conexión) |
 | Stock real y virtual | Sí | Sí |
 | Varios almacenes | Sí (ilimitados; extra desde 12,50 €) | Sí, incluido |
@@ -107,7 +107,7 @@ El DeCA sale directamente del albarán y está incluido. Y si no quieres los dat
 
 ## Lo que Drenpos no hace (y STEL Order sí)
 
-No hacemos partes de trabajo con firma ni tenemos app nativa con modo sin conexión. Tampoco damos chat de soporte hasta las 23 h ni conectamos con Shopify y PrestaShop. Si lo que vendes son servicios y no productos, STEL te va a encajar mejor.
+Nuestras [órdenes de servicio](/software-partes-trabajo-sat) recogen horas, material y fotos desde el móvil, pero la app necesita conexión, todavía no recoge la firma del cliente y no planificamos rutas. Tampoco damos chat de soporte hasta las 23 h ni conectamos con Shopify y PrestaShop. Si lo que vendes son servicios y no productos, STEL te va a encajar mejor.
 
 ## Cuál elegir
 
@@ -129,7 +129,7 @@ A 20 de octubre de 2026 y sin IVA, STEL Order Lite cuesta 24 euros al mes (20 co
 
 ### ¿Qué hace STEL Order que no haga Drenpos?
 
-Partes de trabajo y servicio técnico con firma del cliente, fotos y audios, app móvil nativa con modo sin conexión y GPS, y un asistente de IA propio. Drenpos no tiene módulo de SAT ni app nativa. Lo nuestro es el almacén con lotes, ubicaciones y pistola, el TPV de hostelería, los fichajes con terminal y la producción.
+Partes de trabajo y servicio técnico con firma del cliente, fotos y audios, app móvil nativa con modo sin conexión y GPS, y un asistente de IA propio. Drenpos tiene órdenes de servicio con app web para el operario desde noviembre de 2026, pero no app nativa ni planificación de rutas. Lo nuestro es el almacén con lotes, ubicaciones y pistola, el TPV de hostelería, los fichajes con terminal y la producción.
 
 ### ¿STEL Order lleva contabilidad?
 

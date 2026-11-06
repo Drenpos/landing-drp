@@ -3,7 +3,7 @@ title: "Cómo generar el DeCA desde el albarán: paso a paso, QR y errores típi
 meta_title: "Cómo generar el DeCA desde el albarán, paso a paso"
 description: "Paso a paso para convertir tu albarán en DeCA: datos de la Orden FOM/2861/2012, PDF nativo, QR y URL única, cambios en ruta, conservación y errores típicos."
 date: 2026-10-17
-updated: 2026-10-23
+updated: 2026-11-06
 image: "/images/blog/etiqueta-sscc-gs1-palets/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -36,6 +36,8 @@ faq:
     answer: "Que se descargue directamente el PDF. La URL tiene que empezar por https, con TLS 1.2 o superior, y no puede llevar a una página que pida usuario o contraseña ni obligue a pulsar un botón de descarga. Puede tener medidas de seguridad, pero no caducar antes de que acabe el servicio."
   - question: "¿Se pueden incluir varios albaranes en un mismo DeCA?"
     answer: "Sí, si el cargador contractual y el transportista efectivo son los mismos en todos los envíos. En ese caso hay que identificar por separado el origen, el destino, la mercancía y el peso de cada envío, según el apartado sexto de la Resolución de 5 de junio de 2026."
+  - question: "¿Se puede hacer el DeCA desde el móvil?"
+    answer: "Sí. La norma pide un PDF nativo con QR generado antes de salir, no un ordenador. En Drenpos el albarán rápido del móvil pide cliente, recogida y destino, kilos y bultos, camión y conductor, revisa los datos y deja el DeCA activo con su QR, su enlace y el PDF. Funciona con el módulo Financiero, en todos los planes."
   - question: "¿Cómo se genera el DeCA en Drenpos?"
     answer: "Desde el albarán de venta, con el botón Activar DeCA. El sistema comprueba los datos que exige la norma, avisa de lo que falta y genera un PDF con la página de control y el albarán detrás, con un QR de descarga directa. Va incluido en el módulo Financiero, en todos los planes."
 ---
@@ -144,6 +146,23 @@ El detalle, paso a paso:
 
 Va incluido en el módulo Financiero, en todos los planes desde [[p:desde]]/mes sin IVA. Si comparas con otras opciones del mercado, tienes la [comparativa de software para el DeCA](/blog/software-deca-comparativa-pymes). Y si tus envíos salen en palets, el mismo albarán puede llevar los palets escaneados con su [etiqueta SSCC](/blog/etiqueta-sscc-gs1-palets).
 
+## ¿Se puede generar el DeCA desde el móvil, sin PC?
+
+Sí, si el programa tiene una versión móvil que cree el albarán y genere el PDF con su QR. La norma no pide un ordenador: pide un PDF generado desde los datos antes de arrancar y que el conductor lleve la copia, en el móvil o impresa. Lo práctico es que quien sale con la carga pueda hacerlo en el muelle, sin llamar a la oficina.
+
+En Drenpos eso es el albarán rápido (Ventas › Albarán rápido, versión móvil). Un asistente con botones grandes y seis pasos:
+
+| Paso | Qué se pide |
+| --- | --- |
+| 1. Cliente | Se elige o se crea en el momento |
+| 2. Recogida y destino | Dónde se carga y dónde se entrega |
+| 3. Kilos y bultos | Con peso por bulto si hace falta |
+| 4. Camión y conductor | Matrícula y quién conduce |
+| 5. Revisar | Si falta un dato del DeCA, dice cuál y cómo corregirlo |
+| 6. Hecho | DeCA activo: QR, enlace y PDF para compartir o imprimir |
+
+Funciona solo con el módulo Financiero, que va en todos los planes; si además tienes el módulo de agencias, crea también el envío. No es una app de reparto: en transporte propio, los estados de entrega se siguen marcando a mano. Más detalle en [DeCA desde el albarán](/documento-control-transporte-deca#albaran-rapido-movil).
+
 ## ¿Cuáles son los errores más típicos al generar el DeCA?
 
 Los más habituales: el NIF del transportista vacío, el peso a cero porque faltan pesos de artículos, la matrícula del tractor sin la del semirremolque, el PDF generado cuando el camión ya ha salido, un QR que lleva a una página con login, y cambios en ruta hechos a mano sobre el papel. Todos tienen arreglo fácil si se detectan antes de la salida.
@@ -182,6 +201,10 @@ Que se descargue directamente el PDF. La URL tiene que empezar por https, con TL
 ### ¿Se pueden incluir varios albaranes en un mismo DeCA?
 
 Sí, si el cargador contractual y el transportista efectivo son los mismos en todos los envíos. En ese caso hay que identificar por separado el origen, el destino, la mercancía y el peso de cada envío, según el apartado sexto de la Resolución de 5 de junio de 2026.
+
+### ¿Se puede hacer el DeCA desde el móvil?
+
+Sí. La norma pide un PDF nativo con QR generado antes de salir, no un ordenador. En Drenpos el albarán rápido del móvil pide cliente, recogida y destino, kilos y bultos, camión y conductor, revisa los datos y deja el DeCA activo con su QR, su enlace y el PDF. Funciona con el módulo Financiero, en todos los planes.
 
 ### ¿Cómo se genera el DeCA en Drenpos?
 

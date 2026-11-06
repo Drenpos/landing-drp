@@ -3,7 +3,7 @@ title: "Cómo gestionar palets en un almacén frigorífico: FEFO, lotes y SSCC"
 meta_title: "Gestión de palets en almacén frigorífico: FEFO, lotes y SSCC"
 description: "Cómo montar, etiquetar, mover y deshacer palets en un almacén frigorífico sin perder lote ni caducidad: SSCC, FEFO, pesado, palets mixtos y depósito ajeno."
 date: 2026-09-03
-updated: 2026-10-23
+updated: 2026-11-06
 image: "/images/blog/gestion-palets-almacen-frigorifico-fefo-sscc/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -33,6 +33,8 @@ faq:
     answer: "Sí. Un palet mixto es normal en distribución de congelados. El sistema debe guardar el contenido línea a línea, con producto, lote, cantidad y caducidad de cada una, para que un lote concreto se localice sin abrir el palet y para que el despaletizado conserve la traza de cada caja."
   - question: "¿Para qué sirve pesar el palet al cerrarlo?"
     answer: "Para expedir y facturar por peso real, para detectar diferencias entre lo apuntado y lo cargado, y para cumplir con clientes y transportistas que exigen el peso en la etiqueta y en el albarán. Se registran bruto, tara y neto, y el dato queda en la ficha del palet y en su etiqueta SSCC."
+  - question: "¿Se puede obligar a apuntar la temperatura de llegada de cada palet?"
+    answer: "Sí. En Drenpos la empresa puede activar la temperatura de llegada obligatoria: la entrada del palet no se cierra sin apuntarla y la temperatura sale impresa en su etiqueta. No lee sondas ni registra la temperatura de la cámara de forma continua; guarda la temperatura con la que llegó cada palet, junto a su lote y su peso."
   - question: "¿Cómo se controlan los palets de clientes en depósito?"
     answer: "Asignando un propietario a cada palet desde la entrada. El sistema bloquea mezclar mercancía de dueños distintos y venderla por error, y cada entrada, salida o manipulación genera su apunte de tarifa por palet/día, kg/día o bulto. El cliente ve su posición en vivo y el informe del periodo se genera en PDF."
   - question: "¿Qué etiqueta lleva un palet de congelados para la gran distribución?"
@@ -64,6 +66,21 @@ El palet se monta desde el propio dispositivo que lleva el operario: se abre un 
 Hay dos caminos y los dos deben estar siempre disponibles: pistola lectora para el flujo rápido y entrada manual para el día en que la etiqueta llega ilegible por la escarcha. En Drenpos todas las pantallas de palets funcionan en móvil y tablet, precisamente para que el dato nazca donde ocurre la operación.
 
 Un detalle que ahorra discusiones: los palets propios son explícitos y cada línea guarda su origen. Si el palet se formó con tres entradas de proveedores distintos, la ficha del palet lo dice. Y si alguien intenta tocar un palet ya cerrado, el sistema avisa antes de dejarle hacer nada.
+
+## ¿Cómo se registra la temperatura de llegada del palet?
+
+Apuntándola en la propia entrada del palet, antes de cerrarla, y no en una libreta aparte. La comprobación de temperatura en el muelle es lo primero que hace un frigorífico al recibir. Si el dato vive en el mismo registro que el palet, su lote y su peso, cualquier reclamación posterior se responde con una pantalla.
+
+En Drenpos la empresa puede activar la temperatura de llegada obligatoria: con ella puesta, la entrada del palet no se cierra sin apuntar los grados, y la temperatura sale impresa en la etiqueta. Drenpos no lee sondas ni registra la temperatura de la cámara: guarda la de llegada de cada palet.
+
+En la misma entrada se apunta el peso como se pesa de verdad:
+
+| Mercancía | Qué se teclea | Qué calcula el sistema |
+| --- | --- | --- |
+| Propia | Peso neto | Bruto, sumando la tara |
+| De un cliente en depósito | Peso bruto (lo que marca la báscula) | Neto, restando la tara |
+
+Pongamos un palet de cliente que llega a -19 °C y marca 640 kg en báscula con una tara de 25 kg. Se apuntan -19 y 640, el sistema guarda 615 kg netos y la etiqueta lleva la temperatura. Si el propietario aún no está dado de alta, se crea en ese momento.
 
 ## ¿Qué etiqueta lleva el palet y cuándo se imprime?
 
@@ -114,6 +131,7 @@ Una lista corta para comparar, sin adornos:
 - Generar el SSCC con dígito de control y la etiqueta GS1-128 desde el propio palet
 - Guardar el contenido línea a línea con lote y caducidad
 - Cerrar y pesar con bruto, tara y neto, con permisos separados por paso
+- Exigir la temperatura de llegada antes de cerrar la entrada
 - Proponer el lote por FEFO al preparar y avisar de caducidades próximas
 - Mover el palet entero con un escaneo, en móvil o tablet
 - Despaletizar en tres gestos conservando la traza
@@ -140,6 +158,10 @@ Sí. Un palet mixto es normal en distribución de congelados. El sistema debe gu
 ### ¿Para qué sirve pesar el palet al cerrarlo?
 
 Para expedir y facturar por peso real, para detectar diferencias entre lo apuntado y lo cargado, y para cumplir con clientes y transportistas que exigen el peso en la etiqueta y en el albarán. Se registran bruto, tara y neto, y el dato queda en la ficha del palet y en su etiqueta SSCC.
+
+### ¿Se puede obligar a apuntar la temperatura de llegada de cada palet?
+
+Sí. En Drenpos la empresa puede activar la temperatura de llegada obligatoria: la entrada del palet no se cierra sin apuntarla y la temperatura sale impresa en su etiqueta. No lee sondas ni registra la temperatura de la cámara de forma continua; guarda la temperatura con la que llegó cada palet, junto a su lote y su peso.
 
 ### ¿Cómo se controlan los palets de clientes en depósito?
 

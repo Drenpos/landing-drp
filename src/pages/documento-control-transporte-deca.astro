@@ -147,9 +147,19 @@ const pasos = [
   },
 ];
 
+// Albarán rápido desde el móvil (Ventas › Albarán rápido (móvil))
+const pasosMovil = [
+  { paso: "Cliente", detalle: "Se elige de la lista o se crea en el momento." },
+  { paso: "Recogida y destino", detalle: "Dónde se carga y dónde se entrega." },
+  { paso: "Kilos y bultos", detalle: "Con peso por bulto si hace falta." },
+  { paso: "Camión y conductor", detalle: "Matrícula y persona que conduce." },
+  { paso: "Revisar", detalle: "Si falta un dato del DeCA, dice cuál y cómo corregirlo." },
+  { paso: "Hecho", detalle: "El DeCA queda activo: QR, enlace y PDF para compartir o imprimir." },
+];
+
 // Qué incluye, en formato ficha (AEO)
 const ficha = [
-  { k: "Dónde", v: "En el albarán de venta, con el botón «Activar DeCA». Sin plataforma externa ni programa aparte" },
+  { k: "Dónde", v: "En el albarán de venta, con el botón «Activar DeCA», o desde el móvil con el albarán rápido. Sin plataforma externa ni programa aparte" },
   { k: "Comprobación", v: "Revisa los datos del artículo 6 de la Orden FOM/2861/2012 y avisa de lo que falta antes de generar" },
   { k: "Documento", v: "PDF con la página de control (los ocho apartados rotulados) seguida del albarán con su formato habitual" },
   { k: "QR", v: "Dirección web única de descarga directa, sin usuario ni contraseña. También sale en los formatos de albarán y en la carta de porte" },
@@ -298,6 +308,10 @@ const faqs = [
     a: "Al menos un año, tanto el cargador contractual como el transportista efectivo. Si lo generó uno de los dos, basta con que el otro pueda descargarlo durante ese año. La descarga desde el QR para la inspección se puede desactivar a los siete días naturales de terminar el servicio, pero el fichero se sigue conservando. En Drenpos no se borra nada.",
   },
   {
+    q: "¿Puedo generar el DeCA desde el móvil?",
+    a: "Sí. El albarán rápido del móvil es un asistente paso a paso: cliente (o crearlo en el momento), recogida y destino, kilos y bultos, camión y conductor, revisar y hecho. Al terminar el DeCA ya está activo, con QR, enlace y PDF para compartir o imprimir. Si falta un dato dice cuál. Funciona con el módulo Financiero; con el de agencias crea también el envío.",
+  },
+  {
     q: "¿Cuánto cuesta el DeCA en Drenpos?",
     a: "Nada aparte. Va incluido en el módulo Financiero, que está en todos los planes: Facturación [[p:facturacion]]/mes sin IVA, Almacén [[p:almacen]]/mes y Almacén con TPV [[p:almacen_tpv]]/mes, sin permanencia. No hay pago por documento ni cuota de una plataforma externa.",
   },
@@ -332,6 +346,7 @@ const jsonLd = [
         "Versiones con historial de cambios y motivo",
         "Albarán anulado indicado en el documento",
         "Activación con permiso específico e irreversible",
+        "Albarán rápido en el móvil con el DeCA activo al terminar",
       ],
     }),
     applicationSubCategory: "Documento electrónico de control administrativo del transporte",
@@ -356,7 +371,7 @@ const jsonLd = [
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
 const PAGE_PUBLISHED = "2026-09-28";
-const PAGE_UPDATED = "2026-10-22";
+const PAGE_UPDATED = "2026-11-06";
 ---
 
 <Base
@@ -672,6 +687,70 @@ const PAGE_UPDATED = "2026-10-22";
                 </div>
               ))
             }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ALBARÁN RÁPIDO DESDE EL MÓVIL (para el chófer)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="albaran-rapido-movil" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center mb-10">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-5">
+            <span class="w-2 h-2 rounded-full bg-success" aria-hidden="true"></span>
+            DeCA desde el móvil
+          </span>
+          <h2 class="h3 font-bold mb-4">¿Se puede hacer el albarán y el DeCA desde el móvil del chófer?</h2>
+          <p class="text-lg leading-relaxed text-dark/72">
+            Sí, con el albarán rápido (Ventas › Albarán rápido, versión móvil).
+            Es un asistente paso a paso con botones grandes: cliente, recogida y
+            destino, kilos y bultos, camión y conductor, revisar y hecho. Al
+            terminar el DeCA ya está activo, con su QR, su enlace y el PDF para
+            compartir o imprimir.
+          </p>
+        </div>
+      </div>
+      <div class="row justify-center">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse min-w-[560px]">
+              <thead>
+                <tr class="bg-dark text-white">
+                  <th class="text-left p-4 rounded-tl-2xl">Paso</th>
+                  <th class="text-left p-4 rounded-tr-2xl">Qué se hace</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  pasosMovil.map((p, i) => (
+                    <tr class="border-b border-dark/5">
+                      <td class="p-4 font-medium">{`${i + 1}. ${p.paso}`}</td>
+                      <td class="p-4">{p.detalle}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+          <div class="rounded-3xl border border-dark/10 bg-body p-7 lg:p-9 mt-8">
+            <p class="text-sm leading-relaxed mb-4 text-dark/72">
+              Funciona solo con el módulo Financiero, que va en todos los
+              planes. Si además tienes contratado el módulo de agencias de
+              transporte, el mismo asistente crea el envío. Está pensado para
+              quien sale con la carga y no tiene un PC a mano: hace el albarán
+              en el muelle o en la cabina y el QR ya viaja con él.
+            </p>
+            <p class="text-sm leading-relaxed text-dark/72">
+              Lo que no hace: no es una app de reparto. En transporte propio los
+              estados de entrega se marcan a mano en el sistema (o se firma el
+              acta en la tablet), y no planifica rutas de reparto. Quién tiene
+              que emitir el documento, cargador o transportista, lo explicamos en
+              <a href="/blog/deca-quien-lo-emite-cargador-transportista" class="text-primary underline">quién emite el DeCA</a>.
+            </p>
           </div>
         </div>
       </div>

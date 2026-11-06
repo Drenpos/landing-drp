@@ -3,7 +3,7 @@ title: "Stock mínimo, stock de seguridad y punto de pedido: fórmulas y ejemplo
 meta_title: "Stock de seguridad y punto de pedido: fórmula y ejemplo"
 description: "Cómo calcular el stock de seguridad y el punto de pedido con fórmulas y un ejemplo resuelto paso a paso, qué nivel de servicio elegir y cuándo recalcular."
 date: 2026-10-17
-updated: 2026-10-22
+updated: 2026-11-06
 image: "/images/blog/control-de-stock-sin-roturas/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -36,6 +36,8 @@ faq:
     answer: "Depende de lo que cueste quedarse sin el artículo. Una pauta razonable es un 97 a 98 % en las referencias A o críticas, un 95 % en las B y un 90 % en las C. Pasar del 95 al 99 % en el ejemplo del artículo sube el stock de seguridad de 80 a 113 cajas: un 41 % más de stock parado para ese artículo."
   - question: "¿Cada cuánto hay que recalcular el punto de pedido?"
     answer: "Como mínimo cada trimestre, y siempre que cambie algo de fondo: el plazo del proveedor, la temporada, una promoción, un cliente grande nuevo o una rotura repetida. En productos estacionales, calcula con la demanda de la temporada que viene, no con la media del año."
+  - question: "¿Se puede poner un stock mínimo distinto en cada almacén?"
+    answer: "Sí. En Drenpos el artículo tiene su mínimo y máximo general y, en la pestaña Inventario, uno por almacén. La propuesta de compra, en la pestaña «Por almacén», calcula lo que le falta a cada uno y abre un traslado ya relleno desde el almacén que lo surte. El mínimo de cada almacén se calcula igual que el general, con su propia demanda y su plazo de reposición."
   - question: "¿Drenpos calcula el punto de pedido automáticamente?"
     answer: "No calcula el stock de seguridad con la fórmula: el mínimo y el máximo los fijas tú en la ficha de cada artículo. Lo que hace es avisar cuando el stock baja del mínimo o supera el máximo, y la propuesta de compra sugiere qué pedir combinando esos límites con el consumo real de los últimos meses, lo reservado y lo que ya viene de camino."
 ---
@@ -154,6 +156,20 @@ Comparar el punto de pedido con el stock físico en lugar de con la posición de
 
 Uno más, menos evidente: calcular sobre un stock que no cuadra. Si el sistema dice 300 cajas y en la estantería hay 260, ninguna fórmula te salva. Antes de afinar el punto de pedido, asegúrate de que el stock es fiable con recuentos frecuentes y una [recepción de mercancía](/blog/recepcion-mercancia-almacen) bien registrada.
 
+## ¿Y si tengo varios almacenes, cada uno con su mínimo?
+
+Entonces el punto de pedido se calcula por almacén, no por artículo. Una tienda que vende 2 cajas al día y se repone desde el central en 2 días necesita un mínimo distinto que el central, que compra al proveedor con 10 días de plazo. El cálculo es el mismo; cambian la demanda y el plazo de cada sitio.
+
+Con los números del ejemplo:
+
+| Almacén  | Demanda diaria | Plazo de reposición  | Seguridad | Punto de pedido (mínimo) |
+| -------- | -------------- | -------------------- | --------- | ------------------------ |
+| Central  | 40 cajas       | 5 días (proveedor)   | 80 cajas  | 280 cajas                |
+| Tienda A | 2 cajas        | 2 días (traslado)    | 2 cajas   | 6 cajas                  |
+| Tienda B | 5 cajas        | 2 días (traslado)    | 5 cajas   | 15 cajas                 |
+
+Lo que repone la tienda no es una compra: es un traslado desde el central. Y mientras la mercancía viaja, no está en ninguno de los dos almacenes para vender. Cómo se lleva eso, con el envío y la recepción por separado, lo contamos en [traslados entre almacenes con tránsito](/blog/traslados-entre-almacenes-transito).
+
 ## ¿Cómo se lleva el stock mínimo y el punto de pedido en Drenpos?
 
 En la ficha de cada artículo pones un stock mínimo y un máximo, y el sistema avisa en el panel cuando el stock baja del mínimo o supera el máximo. Drenpos no calcula el stock de seguridad con la fórmula: el número lo calculas tú. Nuestra recomendación es poner como mínimo el punto de pedido, para que el aviso llegue cuando toca comprar.
@@ -163,6 +179,8 @@ A partir de ahí:
 - **Stock disponible en todas las pantallas:** el físico menos lo reservado para pedidos confirmados.
 - **Propuesta de compra asistida:** sugiere qué comprar y cuánto combinando mínimo y máximo, consumo real de los últimos meses, unidades reservadas, demanda sin stock y lo que ya viene de camino. Revisas, ajustas y generas el pedido con un clic, con el último proveedor ya puesto. Nunca compra sola.
 - **Alertas de pedidos:** cruzan lo vendido pendiente de servir con el stock y dicen cuántas unidades faltan.
+- **Mínimo y máximo por almacén:** en la pestaña Inventario del artículo, cada almacén puede tener su propio mínimo y máximo, distinto del general.
+- **Reposición por almacén:** la pestaña «Por almacén» de la propuesta de compra calcula qué le falta a cada almacén según su mínimo y máximo y abre un traslado ya relleno, con sus lotes, desde el almacén que lo surte. Alguien lo revisa y lo confirma.
 - **Informe de rotación:** lo que más sale, por unidades y valor, con la cobertura en días. Es el punto de partida para sacar D y repartir niveles de servicio.
 
 Para calcular la desviación, exporta las ventas a Excel y usa DESVEST sobre las cantidades diarias o semanales. Todo esto va en el [control de stock e inventario](/software-control-stock) del módulo de Inventario, incluido en el plan Almacén por [[p:almacen]]/mes sin IVA.
@@ -188,6 +206,10 @@ Depende de lo que cueste quedarse sin el artículo. Una pauta razonable es un 97
 ### ¿Cada cuánto hay que recalcular el punto de pedido?
 
 Como mínimo cada trimestre, y siempre que cambie algo de fondo: el plazo del proveedor, la temporada, una promoción, un cliente grande nuevo o una rotura repetida. En productos estacionales, calcula con la demanda de la temporada que viene, no con la media del año.
+
+### ¿Se puede poner un stock mínimo distinto en cada almacén?
+
+Sí. En Drenpos el artículo tiene su mínimo y máximo general y, en la pestaña Inventario, uno por almacén. La propuesta de compra, en la pestaña «Por almacén», calcula lo que le falta a cada uno y abre un traslado ya relleno desde el almacén que lo surte. El mínimo de cada almacén se calcula igual que el general, con su propia demanda y su plazo de reposición.
 
 ### ¿Drenpos calcula el punto de pedido automáticamente?
 

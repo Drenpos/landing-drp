@@ -60,7 +60,7 @@ features:
 modules:
   - category: "Módulos"
     items:
-      - name: "Facturación con Verifactu y DeCA"
+      - name: "Facturación con Verifactu, DeCA y exportación a A3"
         facturacion: true
         tpv: true
         almacen: true

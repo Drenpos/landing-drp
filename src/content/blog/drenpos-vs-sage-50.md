@@ -3,7 +3,7 @@ title: "Drenpos o Sage 50: comparativa para pymes con almacén (2026)"
 meta_title: "Drenpos vs Sage 50: comparativa para pymes 2026"
 description: "Drenpos o Sage 50 comparados con sus webs a 20/10/2026: contabilidad, stock, TPV, fichajes, precios con contrato anual y en qué casos encaja cada uno."
 date: 2026-10-20
-updated: 2026-10-23
+updated: 2026-11-06
 image: "/images/blog/erp-para-pymes-vs-excel/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -111,12 +111,12 @@ Y funcionamos solo en el navegador, así que da igual que uses Mac, Linux, una t
 
 ## Lo que Drenpos no hace (y Sage 50 sí)
 
-No llevamos contabilidad ni partes de trabajo para SAT. Tampoco tenemos app nativa, un asistente tipo Copilot, soporte telefónico con horario amplio ni una red de asesorías que ya nos use. Si tu gestoría te pide trabajar en Sage, es un argumento de peso y conviene escucharlo.
+No llevamos contabilidad. Tenemos [órdenes de servicio con app para el operario](/software-partes-trabajo-sat), pero no app nativa, un asistente tipo Copilot, soporte telefónico con horario amplio ni una red de asesorías que ya nos use. Si tu gestoría te pide trabajar en Sage, es un argumento de peso y conviene escucharlo.
 
 ## Cuál elegir
 
 - Llevas la contabilidad tú o tu gestoría entra en tu programa: Sage 50.
-- Eres instalador o servicio técnico con partes de trabajo: Sage 50 Servicios o STEL Order (lo vemos en la [comparativa con STEL Order](/blog/drenpos-vs-stel-order)).
+- Eres instalador o servicio técnico con partes de trabajo y necesitas firma del cliente o planificación de rutas: Sage 50 Servicios o STEL Order (lo vemos en la [comparativa con STEL Order](/blog/drenpos-vs-stel-order)). Si lo que te importa es pasar los partes a factura y cobrarlos por remesa sin teclear, mira los [partes de trabajo de Drenpos](/software-partes-trabajo-sat).
 - Distribuidor, almacén con lotes o caducidades, recambios, alimentación: Drenpos, por el [almacén](/software-gestion-almacen).
 - Tienda o bar con almacén y empleados que fichan: Drenpos, por el TPV y el [control horario](/control-horario) incluidos.
 - Si ya tienes Sage y el almacén se te queda corto, lo habitual es dejar la contabilidad en Sage o en la gestoría y llevar la operativa en Drenpos, que entrega el reporte y el ZIP cada mes.

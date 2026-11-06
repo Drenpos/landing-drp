@@ -1,0 +1,40 @@
+---
+// Entradas por problema o sector, sacadas del registro de páginas
+// (src/config/landings.json): una landing nueva con grupo sale aquí sola.
+import { GRUPOS_MENU } from "@/lib/landings";
+---
+
+<section class="section pt-0">
+  <div class="container">
+    <div class="section-title">
+      <div class="col-10 xl:col-8" data-aos="fade-up-sm">
+        <p>Por dónde empezar</p>
+        <h2>¿Qué parte de tu empresa quieres ordenar primero?</h2>
+        <p>
+          Cada módulo resuelve un problema concreto y se puede activar solo. Elige el tuyo:
+          verás qué hace, qué no hace y cuánto cuesta.
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4 justify-center">
+      {
+        GRUPOS_MENU.map((g, i) => (
+          <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+            <div class="h-full rounded-3xl border border-dark/10 bg-body p-6">
+              <h3 class="h6 font-bold mb-4 text-primary">{g.title}</h3>
+              <ul class="space-y-2 text-sm">
+                {g.children.map((c) => (
+                  <li>
+                    <a href={c.url} class="text-dark/75 hover:text-primary">{c.name}</a>
+                  </li>
+                ))}
+              </ul>
+              <a href={g.hub.url} class="mt-5 inline-block text-primary text-sm font-medium">{g.hub.name} →</a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

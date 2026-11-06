@@ -47,6 +47,11 @@ const almacen = [
     body: "Botella = 1, caja = 6, palet = 96: cada unidad con su precio y su código de barras. La pistola distingue sola cuál estás procesando.",
   },
   {
+    icon: "🎨",
+    title: "Variantes por talla, color o lo que haga falta",
+    body: "Un modelo agrupa sus variantes (talla × color, color × potencia) y cada una es un artículo con su stock y su código de barras. Pedidos, recepción, recuentos y etiquetas se rellenan en una rejilla.",
+  },
+  {
     icon: "🔫",
     title: "Traslados con pistola lectora",
     body: "Flujo lineal pensado para operarios: escanea ubicación origen → producto → cantidad → ubicación destino. Sin tocar la pantalla, con auditoría completa del movimiento.",
@@ -65,7 +70,7 @@ const tienda: Tarjeta[] = [
   {
     icon: "🛒",
     title: "TPV de tienda integrado",
-    body: "Grupos de artículos, búsqueda global, líneas manuales, múltiples cuentas simultáneas y asistente de cambio. El stock se descuenta solo del inventario, sin doble gestión.",
+    body: "Grupos de artículos, búsqueda global, líneas manuales, múltiples cuentas simultáneas y asistente de cambio. Un modelo con tallas y colores se abre con un botón por variante, con su foto y su stock. El stock se descuenta solo del inventario, sin doble gestión.",
   },
   {
     icon: "🍽️",
@@ -115,6 +120,13 @@ const tiposTienda: Tarjeta[] = [
     linkLabel: "Ver el programa para tiendas de recambios",
   },
   {
+    icon: "👕",
+    title: "Ropa, calzado y complementos",
+    body: "Cada prenda es un modelo con sus tallas y colores, y cada variante lleva su stock, su código de barras y su etiqueta. En el TPV se vende con un botón por talla y en WooCommerce o Faire se publica el modelo con todas sus opciones.",
+    link: "/software-tienda-ropa",
+    linkLabel: "Ver el programa para tiendas de ropa",
+  },
+  {
     icon: "🔩",
     title: "Ferretería y suministros",
     body: "Lo que entra en cajas y se vende suelto tiene un precio y un código de barras por formato, con el stock siempre en la unidad base. Los clientes profesionales pueden tener su propia lista de precios.",
@@ -153,6 +165,8 @@ const casos: Tarjeta[] = [
 // Landings hermanas (soluciones específicas por tipo de negocio)
 const articulos = [
   { t: "Cómo organizar el stock de una tienda de recambios sin TecDoc", s: "stock-tienda-recambios-sin-tecdoc" },
+  { t: "Stock por talla y color en una tienda de ropa sin duplicar artículos", s: "tallas-colores-stock-tienda-ropa" },
+  { t: "Tarifas sobre coste: actualizar precios cuando sube el proveedor", s: "tarifas-sobre-coste-actualizar-precios" },
   { t: "Control de stock: qué es, métodos y cómo evitar roturas", s: "control-de-stock-sin-roturas" },
   { t: "Stock mínimo, stock de seguridad y punto de pedido", s: "stock-minimo-punto-de-pedido" },
   { t: "Recepción de mercancía: qué comprobar y cómo registrarla", s: "recepcion-mercancia-almacen" },
@@ -192,6 +206,11 @@ const hermanas = [
     url: "/software-tienda-recambios",
     title: "Tienda de recambios y repuestos",
     body: "Stock por referencia, mostrador con TPV y pedidos a proveedor, sin catálogo de piezas integrado.",
+  },
+  {
+    url: "/software-tienda-ropa",
+    title: "Tienda de ropa, calzado y complementos",
+    body: "Tallas y colores como variantes de un modelo, rejilla en compras y etiquetas, y TPV con un botón por talla.",
   },
 ];
 
@@ -257,6 +276,7 @@ const productSchema = {
       "FIFO / LIFO / FEFO automático",
       "Traslados con pistola lectora",
       "Unidades de medida múltiples",
+      "Variantes por talla, color u otros atributos, con rejilla de cantidades",
       "TPV de tienda y restaurante",
       "Cierre de caja y facturación Verifactu",
     ],
@@ -277,7 +297,7 @@ const faqSchema = faqPage(faqs);
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
 const PAGE_PUBLISHED = "2026-06-16";
-const PAGE_UPDATED = "2026-10-22";
+const PAGE_UPDATED = "2026-11-06";
 ---
 
 <Base
@@ -417,7 +437,7 @@ const PAGE_UPDATED = "2026-10-22";
           Para cualquier tienda que tenga stock que controlar y un mostrador en el que vender. Estas son las que más nos preguntan.
         </p>
       </div>
-      <div class="row g-4">
+      <div class="row g-4 justify-center">
         {tiposTienda.map((f, i) => (
           <div class="col-12 md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 80}>
             <div class="border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300 border-dark/10">
@@ -445,7 +465,7 @@ const PAGE_UPDATED = "2026-10-22";
         </p>
       </div>
 
-      <div class="row g-4 mb-16">
+      <div class="row g-4 mb-16 justify-center">
         {almacen.map((f, i) => (
           <div class="col-12 md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={(i % 3) * 80}>
             <div class="border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300 border-dark/10">

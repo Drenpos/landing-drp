@@ -3,7 +3,7 @@ title: "¿Es legal fichar desde el móvil en 2026? Requisitos y cómo hacerlo bi
 meta_title: "Fichar desde el móvil es legal en 2026: requisitos y app"
 description: "Fichar desde el móvil es legal en 2026 si guarda la hora real y deja rastro de cada cambio. Ubicación, móvil personal, vacaciones e incidencias desde la app."
 date: 2026-07-27
-updated: 2026-10-22
+updated: 2026-11-06
 image: "/images/blog/fichar-desde-el-movil-legal-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -98,6 +98,8 @@ Pedir vacaciones, ver tus incidencias y corregir un fichaje olvidado, todo con r
 | Calendario | Sus ausencias, festivos y días que no trabaja | Ve el calendario de todo el equipo |
 
 Las [vacaciones y ausencias](/software-vacaciones-ausencias) y el [control de entrada y salida](/control-entrada-salida-empleados) van incluidos en la licencia de fichaje del plan (cada persona adicional, [[p:fichaje]] al mes sin IVA), igual que los turnos rotativos, los festivos por comunidad y la planificación anual del equipo con un PDF del año por trabajador.
+
+Si tu equipo trabaja en casa del cliente, la misma app enseña también «Mis trabajos» para hacer el parte con horas, material y fotos, como contamos en [partes de trabajo y SAT](/software-partes-trabajo-sat).
 
 ![Cajera cobrando a un cliente que paga con el móvil en una tienda](/images/blog/fichar-desde-el-movil-legal-2026/section-2.jpg)
 

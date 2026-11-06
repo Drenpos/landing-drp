@@ -3,7 +3,7 @@ title: "Preparación de pedidos y picking: qué es, métodos y ruta en el almac�
 meta_title: "Preparación de pedidos y picking: métodos y ruta"
 description: "Qué es la preparación de pedidos y el picking, cuándo usar picking por pedido, por lotes, por zonas o por oleadas y cómo ordenar la ruta con el plano."
 date: 2026-08-12
-updated: 2026-10-22
+updated: 2026-11-06
 image: "/images/blog/preparacion-de-pedidos-picking-almacen/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -43,6 +43,8 @@ faq:
     answer: "Una oleada agrupa varios pedidos en una sola ruta por el almacén, normalmente alrededor de una hora de salida. El operario recoge de una vez las unidades que necesitan esos pedidos y las va repartiendo en cajas o bultos, uno por pedido: eso es pick-to-box. Se ahorran vueltas a la misma estantería a cambio de más disciplina en el reparto."
   - question: "¿Se puede preparar un pedido directamente sobre un palet?"
     answer: "Sí, y es lo razonable cuando el pedido sale entero en palet. En Drenpos el pedido se prepara sobre un palet con su etiqueta SSCC del estándar GS1, de modo que al expedir sale la unidad logística completa con su trazabilidad. El palet admite varios productos y varios lotes, y su contenido queda registrado línea a línea."
+  - question: "¿Se puede preparar un pedido solo con la PDA, escaneando?"
+    answer: "Sí. En la preparación guiada por escáner de Drenpos el operario pulsa «Siguiente pedido», recibe el pedido libre más antiguo de su almacén y solo escanea: el sistema comprueba producto, lote o serie, suma las unidades si lee una caja y salta de línea al completarla. Para lo que no cuadra hay tres botones: Falta, Luego y Cantidad. Con «Varios pedidos» prepara 2, 4 o 6 a la vez y la pantalla le dice en qué caja va cada unidad."
   - question: "¿Qué necesito para empezar a preparar pedidos con Drenpos?"
     answer: "Ubicaciones creadas con su QR pegado en la estantería, artículos con almacén y ubicación por defecto, el plano del almacén si quieres orden de ruta, y un móvil o una pistola lectora por preparador. El almacén va incluido en los planes Almacén ([[p:almacen]]/mes, [[p:almacen_tpv]] con TPV) y Producción ([[p:produccion]]/mes), siempre sin IVA."
 ---
@@ -157,6 +159,28 @@ En Drenpos la preparación es un flujo pensado para móvil y pistola, no una pan
 
 Para pedidos que salen enteros en palet, la preparación se hace directamente sobre el palet con su [etiqueta SSCC](/blog/etiqueta-sscc-gs1-palets) del estándar GS1. Al expedir sale la unidad logística completa, con su contenido y su trazabilidad. Es la operativa habitual en un [almacén frigorífico](/software-almacen-frigorifico), donde el palet es la unidad de trabajo real.
 
+## ¿Cómo se hace el picking solo con el escáner de la PDA?
+
+Con una cola por almacén y un escáner en la mano. El operario pulsa «Siguiente pedido» y el sistema le asigna el pedido libre más antiguo, así nadie elige a dedo ni dos personas cogen el mismo. Desde ahí solo escanea: si lo leído es el producto, el lote o la serie de la línea, cuenta; si no, avisa. Al completar la línea salta a la siguiente.
+
+Si escanea una caja, suma sus unidades. La empresa decide dos cosas: si un escaneo confirma la línea entera o se cuenta unidad a unidad, y si hay que escanear la ubicación antes de coger. Lo segundo frena un poco y evita coger del hueco de al lado.
+
+Abajo de la pantalla quedan tres botones grandes para lo que no sale a la primera:
+
+| Botón    | Cuándo se pulsa                                   | Qué pasa                                                    |
+| -------- | ------------------------------------------------- | ----------------------------------------------------------- |
+| Falta    | No hay producto, está roto o caducado             | Se marca con el motivo en un toque y queda como incidencia  |
+| Luego    | El hueco está tapado o se repone en un rato       | La línea pasa al final del pedido                           |
+| Cantidad | Se coge una cantidad que no es la de un escaneo   | Se teclea lo cogido en esa línea                            |
+
+### ¿Y la oleada desde la PDA?
+
+Con «Varios pedidos» el operario prepara 2, 4 o 6 pedidos a la vez. Recoge una sola vez cada producto y lote, y la pantalla le dice en grande en qué CAJA va cada unidad: CAJA 1, CAJA 3. Al terminar, todos los pedidos quedan preparados de una vez y las incidencias se ven en la sesión preparada.
+
+Pongamos una tienda online con 24 pedidos de tres líneas a media mañana. Con oleadas de 6 son cuatro vueltas al almacén en lugar de veinticuatro. El límite está en el carro: seis cajas abiertas es lo que un preparador maneja sin liarse.
+
+Si hay pedidos que no quieres que nadie prepare todavía, por ejemplo porque un almacén externo solo debe tocar lo que la marca libera, Drenpos los retiene en «Pedidos en espera» y la cola de preparación no los ve. Más detalle en el [software de preparación de pedidos](/software-preparacion-pedidos-picking#picking-pda).
+
 ## ¿Cómo se expide la mercancía sin papeleo manual?
 
 Escaneando el pedido preparado: Drenpos genera el albarán o la factura con la trazabilidad documental completa desde el pedido de venta. Antes se puede exigir una verificación configurable, un recuento que confirma lo preparado. Desde la misma pantalla se imprimen la lista de picking y la etiqueta de envío. Nadie vuelve a teclear las líneas del pedido en un documento de salida.
@@ -227,6 +251,10 @@ Una oleada agrupa varios pedidos en una sola ruta por el almacén, normalmente a
 ### ¿Se puede preparar un pedido directamente sobre un palet?
 
 Sí, y es lo razonable cuando el pedido sale entero en palet. En Drenpos el pedido se prepara sobre un palet con su etiqueta SSCC del estándar GS1, de modo que al expedir sale la unidad logística completa con su trazabilidad. El palet admite varios productos y varios lotes, y su contenido queda registrado línea a línea.
+
+### ¿Se puede preparar un pedido solo con la PDA, escaneando?
+
+Sí. En la preparación guiada por escáner de Drenpos el operario pulsa «Siguiente pedido», recibe el pedido libre más antiguo de su almacén y solo escanea: el sistema comprueba producto, lote o serie, suma las unidades si lee una caja y salta de línea al completarla. Para lo que no cuadra hay tres botones: Falta, Luego y Cantidad. Con «Varios pedidos» prepara 2, 4 o 6 a la vez y la pantalla le dice en qué caja va cada unidad.
 
 ### ¿Qué necesito para empezar a preparar pedidos con Drenpos?
 

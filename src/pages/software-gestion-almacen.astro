@@ -144,6 +144,65 @@ const deca = [
 ];
 
 // Landings hermanas del clúster de almacén
+// Novedades de almacén y logística desde el 20/10/2026 (products_modules.md)
+const novedades = [
+  {
+    novedad: "Preparación guiada por escáner",
+    resuelve: "Preparar desde la PDA solo escaneando, con Falta, Luego y Cantidad y oleadas de 2, 4 o 6 pedidos por CAJA.",
+    href: "/software-preparacion-pedidos-picking#picking-pda",
+  },
+  {
+    novedad: "Pedidos en espera",
+    resuelve: "Retener pedidos de canales o manuales hasta liberarlos, solo si hay stock completo.",
+    href: "/software-preparacion-pedidos-picking#pedidos-en-espera",
+  },
+  {
+    novedad: "Mínimo y máximo por almacén",
+    resuelve: "Cada almacén con su mínimo, y reposición con un traslado ya relleno desde el que lo surte.",
+    href: "/software-control-stock#minimos-por-almacen",
+  },
+  {
+    novedad: "Traslado en dos pasos con tránsito",
+    resuelve: "Sale del origen, queda en tránsito y en destino se recibe lo que llega, con diferencias anotadas.",
+    href: "/blog/traslados-entre-almacenes-transito",
+  },
+  {
+    novedad: "Entrada rápida",
+    resuelve: "Varios lotes en una línea con la caducidad propuesta por los días de consumo preferente.",
+    href: "/software-control-stock#entrada-rapida",
+  },
+  {
+    novedad: "Temperatura de llegada y peso neto o bruto",
+    resuelve: "No se cierra la entrada del palet sin la temperatura, que sale en la etiqueta.",
+    href: "/software-almacen-frigorifico#temperatura-llegada",
+  },
+  {
+    novedad: "Cuadro de mandos de almacén",
+    resuelve: "Mapa de ocupación de todos los almacenes para un monitor de oficina. Módulo aparte, solo consulta.",
+    href: "/software-almacen-frigorifico#cuadro-mandos",
+  },
+  {
+    novedad: "Informe 3PL",
+    resuelve: "Valorar lo que debería cobrarte un almacén externo: hueco por día, unidades, pedidos y servicios.",
+    href: "/blog/controlar-factura-almacen-externo-3pl",
+  },
+  {
+    novedad: "Etiquetas con varios lotes, cajas y paquetes",
+    resuelve: "Una caja con dos lotes lleva los dos, con la fecha que antes caduca, y la jerarquía de cajas y paquetes se imprime de una vez desde el Centro de etiquetas.",
+    href: "",
+  },
+  {
+    novedad: "Documentos para la agencia (UPS)",
+    resuelve: "Adjuntar PDF a un envío ya creado. Con UPS se genera la factura comercial de exportación y se manda por su servicio sin papel (Paperless). Hoy solo UPS admite adjuntar, y su arranque con cada cliente se confirma con el equipo.",
+    href: "",
+  },
+  {
+    novedad: "Albarán rápido en el móvil",
+    resuelve: "El chófer hace el albarán y deja el DeCA activo desde el móvil, paso a paso.",
+    href: "/documento-control-transporte-deca#albaran-rapido-movil",
+  },
+];
+
 const hermanas = [
   {
     url: "/software-control-stock",
@@ -476,6 +535,8 @@ const articulos = [
   { t: "FIFO, FEFO y LIFO en el almacén: cuál usar", s: "fifo-fefo-lifo-almacen" },
   { t: "Stock mínimo y punto de pedido: fórmulas y ejemplo", s: "stock-minimo-punto-de-pedido" },
   { t: "Preparación de pedidos y picking: métodos y ruta", s: "preparacion-de-pedidos-picking-almacen" },
+  { t: "Traslados entre almacenes con tránsito: enviar, recibir y reponer", s: "traslados-entre-almacenes-transito" },
+  { t: "Cómo controlar la factura de un almacén externo 3PL", s: "controlar-factura-almacen-externo-3pl" },
   { t: "Cómo organizar el almacén de una pyme", s: "como-organizar-almacen-pyme" },
   { t: "Cuánto cuesta un SGA para una pyme en 2026", s: "cuanto-cuesta-sga-wms-pyme-2026" },
 ];
@@ -520,7 +581,7 @@ const faqSchema = faqPage(faqs);
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
 const PAGE_PUBLISHED = "2026-07-21";
-const PAGE_UPDATED = "2026-10-22";
+const PAGE_UPDATED = "2026-11-06";
 ---
 
 <Base
@@ -1107,6 +1168,55 @@ const PAGE_UPDATED = "2026-10-22";
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       NOVEDADES DE ALMACÉN Y LOGÍSTICA (noviembre de 2026)
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="novedades-almacen" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center mb-10">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h3 font-bold mb-4">¿Qué ha cambiado en el almacén de Drenpos este otoño?</h2>
+          <p class="text-lg leading-relaxed text-dark/72">
+            Desde el 20 de octubre de 2026 el almacén prepara pedidos solo con
+            el escáner, retiene pedidos hasta liberarlos, lleva mínimos por
+            almacén con reposición por traslado, mueve stock en dos pasos con
+            tránsito y apunta la temperatura de llegada. Va dentro del plan
+            Almacén sin coste aparte; solo el cuadro de mandos se contrata
+            por separado.
+          </p>
+        </div>
+      </div>
+      <div class="overflow-x-auto" data-aos="fade-up-sm">
+        <table class="w-full text-sm border-collapse min-w-[720px]">
+          <thead>
+            <tr class="bg-dark text-white">
+              <th class="text-left p-4 rounded-tl-2xl">Novedad</th>
+              <th class="text-left p-4">Qué resuelve</th>
+              <th class="text-left p-4 rounded-tr-2xl">Más detalle</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              novedades.map((n) => (
+                <tr class="border-b border-dark/5">
+                  <td class="p-4 font-medium">{n.novedad}</td>
+                  <td class="p-4">{n.resuelve}</td>
+                  <td class="p-4">{n.href && <a href={n.href} class="text-primary underline">Ver</a>}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="text-center mt-8 text-sm max-w-2xl mx-auto text-dark/60" data-aos="fade-up-sm">
+        El cuadro de mandos de almacén es un módulo aparte sin precio
+        publicado (consúltanos). El albarán rápido del móvil funciona con el
+        Financiero, en cualquier plan. El informe 3PL solo sirve para cotejar
+        la factura del almacén externo: no factura ni reparte ese coste.
+      </p>
     </div>
   </section>
 

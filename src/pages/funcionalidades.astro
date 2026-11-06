@@ -5,8 +5,194 @@ import CallToAction from "@/partials/CallToAction.astro";
 import FeaturePowerSection from "@/partials/FeaturePowerSection.astro";
 import PageHeader from "@/partials/PageHeader.astro";
 
-// Bloque de hostelería: resumen de lo que hace el TPV en un bar o restaurante,
-// con enlace a la landing pilar /software-bares-restaurantes.
+interface Tarjeta {
+  icon: string;
+  title: string;
+  body: string;
+  url: string;
+  cta: string;
+}
+
+interface Bloque {
+  id: string;
+  badge: string;
+  title: string;
+  lead: string;
+  tarjetas: Tarjeta[];
+}
+
+// Un bloque por problema. Cada tarjeta lleva a su landing; el plan y el
+// precio van en el lead, siempre con tokens de src/config/precios.json.
+const bloques: Bloque[] = [
+  {
+    id: "almacen",
+    badge: "Almacén y logística",
+    title: "Si tienes un almacén, del pedido a la expedición",
+    lead: "Va en el plan Almacén, [[p:almacen]]/mes sin IVA: lotes, ubicaciones, palets, preparación con PDA y envíos con agencia.",
+    tarjetas: [
+      {
+        icon: "📍",
+        title: "Gestión de almacén (SGA)",
+        body: "Ubicaciones con QR, plano por plantas con la ruta más corta, traslados en dos pasos con tránsito y trazabilidad de lotes.",
+        url: "/software-gestion-almacen",
+        cta: "Ver la gestión de almacén",
+      },
+      {
+        icon: "📦",
+        title: "Preparación de pedidos",
+        body: "El operario prepara escaneando con la PDA, hasta 6 pedidos a la vez repartidos por cajas. Pedidos en espera hasta que los liberas.",
+        url: "/software-preparacion-pedidos-picking",
+        cta: "Ver la preparación de pedidos",
+      },
+      {
+        icon: "🔔",
+        title: "Control de stock",
+        body: "Mínimo y máximo por almacén, reposición con traslado ya relleno, propuesta de compra, caducidad propuesta e inventarios.",
+        url: "/software-control-stock",
+        cta: "Ver el control de stock",
+      },
+      {
+        icon: "🧱",
+        title: "Palets y etiqueta SSCC",
+        body: "Palet con su etiqueta GS1, montaje con pistola, despaletizado y despiece con lote nuevo y merma apuntada.",
+        url: "/software-gestion-palets",
+        cta: "Ver la gestión de palets",
+      },
+      {
+        icon: "❄️",
+        title: "Almacén frigorífico",
+        body: "FEFO, temperatura de llegada del palet y un cuadro de mandos con la ocupación de cada cámara y túnel.",
+        url: "/software-almacen-frigorifico",
+        cta: "Ver el almacén frigorífico",
+      },
+      {
+        icon: "🏷️",
+        title: "Alquiler de huecos de palet",
+        body: "Mercancía de clientes en depósito con tarifa por palet o kilo y día, apuntes automáticos e informe del periodo.",
+        url: "/software-alquiler-huecos-palet",
+        cta: "Ver el depósito de terceros",
+      },
+    ],
+  },
+  {
+    id: "almacen-tienda",
+    badge: "Tiendas",
+    title: "Si vendes en una tienda y tienes stock que controlar",
+    lead: "Tienda y Hostelería cuesta [[p:tienda]]/mes sin IVA. Con almacén completo, Almacén con TPV por [[p:almacen_tpv]]/mes.",
+    tarjetas: [
+      {
+        icon: "🏬",
+        title: "Programa de gestión para tiendas",
+        body: "Almacén y TPV en el mismo sistema: cada venta descuenta stock, con ubicaciones, lotes, traslados con pistola y cierre de caja.",
+        url: "/software-almacen-tienda",
+        cta: "Ver almacén y tienda",
+      },
+      {
+        icon: "👕",
+        title: "Tienda de ropa y calzado",
+        body: "Tallas y colores sin duplicar artículos: rejilla para comprar y recibir, botones por variante en el TPV y stock por talla.",
+        url: "/software-tienda-ropa",
+        cta: "Ver el programa para tiendas de ropa",
+      },
+      {
+        icon: "🚗",
+        title: "Tienda de recambios y repuestos",
+        body: "Stock por referencia, venta en mostrador con TPV y propuesta de compra al proveedor. Sin catálogo de piezas integrado.",
+        url: "/software-tienda-recambios",
+        cta: "Ver el programa para recambios",
+      },
+    ],
+  },
+  {
+    id: "servicios-produccion",
+    badge: "Servicios y producción",
+    title: "Si fabricas o trabajas en casa del cliente",
+    lead: "Producción va en su plan, [[p:produccion]]/mes sin IVA. Las órdenes de servicio son un módulo aparte: pregúntanos el precio.",
+    tarjetas: [
+      {
+        icon: "🛠️",
+        title: "Partes de trabajo y SAT",
+        body: "El operario apunta en el móvil tiempo, material y fotos de cada trabajo; la oficina lo pasa a albarán, factura y remesa SEPA.",
+        url: "/software-partes-trabajo-sat",
+        cta: "Ver los partes de trabajo",
+      },
+      {
+        icon: "🏭",
+        title: "Producción y fabricación",
+        body: "Órdenes por fases y puestos, escandallos, consumo por lectura, horas por operario y coste real de cada pieza.",
+        url: "/software-produccion-fabricacion",
+        cta: "Ver la producción",
+      },
+    ],
+  },
+  {
+    id: "control-horario",
+    badge: "Control horario",
+    title: "El registro de jornada, las vacaciones y los retrasos en el mismo sitio",
+    lead: "El fichaje va incluido en todos los planes ([[p:fichaje]]/mes por persona adicional, sin IVA), con vacaciones, calendarios rotativos, bonos de horas y control de entrada y salida.",
+    tarjetas: [
+      {
+        icon: "🔑",
+        title: "Fichaje con llavero, QR o móvil",
+        body: "Terminal propio con llavero RFID que sigue fichando sin internet, app en el móvil y fichaje web. Informe listo para la Inspección.",
+        url: "/control-horario",
+        cta: "Ver el control horario",
+      },
+      {
+        icon: "🏖️",
+        title: "Vacaciones y permisos",
+        body: "Cupos por tipo de ausencia, solicitud desde el móvil con el saldo a la vista y aprobación o contrapropuesta de fechas del responsable.",
+        url: "/software-vacaciones-ausencias",
+        cta: "Ver vacaciones y ausencias",
+      },
+      {
+        icon: "⏱️",
+        title: "Entrada, salida e incidencias",
+        body: "Si lo activas, registra incidencias cuando alguien llega tarde, sale antes o no ficha, con tolerancias en minutos y nota del responsable.",
+        url: "/control-entrada-salida-empleados",
+        cta: "Ver control de entrada y salida",
+      },
+      {
+        icon: "📅",
+        title: "Turnos rotativos 4x4, 5/2 y 6/3",
+        body: "Ciclos con el primer día de cada persona: los descansos no cuentan como faltas ni gastan vacaciones. Y el año del equipo en PDF.",
+        url: "/software-turnos-rotativos",
+        cta: "Ver turnos rotativos",
+      },
+    ],
+  },
+  {
+    id: "cumplimiento",
+    badge: "Facturación y cumplimiento",
+    title: "Las obligaciones que salen de tus facturas y albaranes",
+    lead: "Van en el módulo Financiero, que está en todos los planes desde [[p:facturacion]]/mes sin IVA, igual que la exportación a A3 y las remesas SEPA.",
+    tarjetas: [
+      {
+        icon: "🧾",
+        title: "Facturación Verifactu",
+        body: "Cada factura con su huella encadenada y su QR, y el registro enviado a la AEAT desde el propio sistema. Drenpos ya lo cumple hoy.",
+        url: "/software-verifactu",
+        cta: "Ver facturación Verifactu",
+      },
+      {
+        icon: "🚚",
+        title: "Documento de control del transporte (DeCA)",
+        body: "Lo activas desde el albarán de venta o lo hace el chófer desde el móvil, paso a paso, sin coste extra en el módulo Financiero.",
+        url: "/documento-control-transporte-deca",
+        cta: "Ver el DeCA desde el albarán",
+      },
+      {
+        icon: "📒",
+        title: "Exportación a A3",
+        body: "Las facturas del periodo en el fichero de enlace contable de A3, con revisión previa y sin repetir las ya enviadas a la gestoría.",
+        url: "/blog/exportar-facturas-a3-suenlace",
+        cta: "Ver cómo se exporta a A3",
+      },
+    ],
+  },
+];
+
+// Hostelería: resumen sin enlace por tarjeta; el botón lleva a la landing pilar.
 const hosteleria = [
   {
     icon: "🗺️",
@@ -24,210 +210,52 @@ const hosteleria = [
     body: "Un QR estándar por local o por mesa, imprimible desde el sistema, que no cambia cuando cambias la carta. Con panel de escaneos por día, hora, día de la semana, mesa y dispositivo.",
   },
 ];
-
-// Bloque de control horario: fichaje, vacaciones e incidencias. La primera
-// tarjeta lleva al hub /control-horario; las demás a su landing dedicada.
-const horario = [
-  {
-    icon: "🔑",
-    title: "Fichaje con llavero, QR o móvil",
-    body: "Terminal propio con llavero RFID que sigue fichando sin internet, app en el móvil y fichaje web. Sellado inalterable e informe listo para la Inspección.",
-    url: "/control-horario",
-    cta: "Ver el control horario",
-  },
-  {
-    icon: "🏖️",
-    title: "Vacaciones y permisos",
-    body: "Cupos por tipo de ausencia, solicitud desde el móvil con el saldo a la vista y aprobación o contrapropuesta de fechas del responsable. Sin coste extra.",
-    url: "/software-vacaciones-ausencias",
-    cta: "Ver vacaciones y ausencias",
-  },
-  {
-    icon: "⏱️",
-    title: "Entrada, salida e incidencias",
-    body: "Si lo activas, registra incidencias cuando alguien llega tarde, sale antes o no ficha, con tolerancias en minutos y nota del responsable.",
-    url: "/control-entrada-salida-empleados",
-    cta: "Ver control de entrada y salida",
-  },
-  {
-    icon: "📅",
-    title: "Turnos rotativos 4x4, 5/2 y 6/3",
-    body: "Ciclos 4x4, 5/2 o 6/3 con el primer día de cada persona: los descansos no cuentan como faltas ni gastan vacaciones. Y el año del equipo en PDF.",
-    url: "/software-turnos-rotativos",
-    cta: "Ver turnos rotativos",
-  },
-];
-
-// Bloque de almacén y tienda: landings del clúster para quien vende en
-// mostrador con stock detrás.
-const almacenTienda = [
-  {
-    icon: "🏬",
-    title: "Programa de gestión para tiendas",
-    body: "Almacén y TPV en el mismo sistema: cada venta descuenta stock, con ubicaciones, lotes, traslados con pistola y cierre de caja.",
-    url: "/software-almacen-tienda",
-    cta: "Ver almacén y tienda",
-  },
-  {
-    icon: "🚗",
-    title: "Tienda de recambios y repuestos",
-    body: "Stock por referencia, venta en mostrador con TPV y propuesta de compra al proveedor. Sin catálogo de piezas integrado.",
-    url: "/software-tienda-recambios",
-    cta: "Ver el programa para recambios",
-  },
-  {
-    icon: "🔔",
-    title: "Control de stock",
-    body: "Mínimos y máximos con alertas, propuesta de compra, lotes y caducidad, inventarios por zonas y valoración del stock.",
-    url: "/software-control-stock",
-    cta: "Ver el control de stock",
-  },
-  {
-    icon: "📍",
-    title: "Gestión de almacén (SGA)",
-    body: "Ubicaciones con QR, plano por plantas, picking por oleadas, palets con SSCC y trazabilidad de lotes.",
-    url: "/software-gestion-almacen",
-    cta: "Ver la gestión de almacén",
-  },
-];
-
-// Bloque de facturación y cumplimiento: obligaciones que se resuelven desde
-// los documentos de venta, con enlace a su landing.
-const cumplimiento = [
-  {
-    icon: "🧾",
-    title: "Facturación Verifactu",
-    body: "Cada factura con su huella encadenada y su QR, y el registro enviado a la AEAT desde el propio sistema. Obligatorio en octubre de 2028 para todos (anuncio de Hacienda del 5/10/2026, pendiente de BOE). Drenpos ya lo cumple hoy.",
-    url: "/software-verifactu",
-    cta: "Ver facturación Verifactu",
-  },
-  {
-    icon: "🚚",
-    title: "Documento de control del transporte (DeCA)",
-    body: "Si contratas transportistas, desde el 5 de octubre de 2026 cada envío lleva un PDF con QR. Lo activas desde el albarán de venta, sin coste extra en el módulo Financiero.",
-    url: "/documento-control-transporte-deca",
-    cta: "Ver el DeCA desde el albarán",
-  },
-];
 ---
 
 <Base
   title="Funcionalidades Drenpos"
-  meta_title="Funcionalidades de Drenpos: fichaje, stock, TPV y Verifactu"
-  description="Funcionalidades de Drenpos: envío de documentos por QR o email, trazabilidad de stock por lotes y caducidad, informes automáticos y control de accesos."
+  meta_title="Funcionalidades de Drenpos: almacén, TPV, fichaje y Verifactu"
+  description="Qué hace Drenpos por áreas: almacén y preparación de pedidos, tiendas con tallas y colores, producción, partes de trabajo, control horario y Verifactu."
 >
   <PageHeader
-    title="Funcionalidades que marcan la diferencia"
-    description="Más allá del TPV y la facturación. Drenpos incluye herramientas avanzadas que automatizan lo que antes hacías a mano, o que directamente no podías hacer."
+    title="Funcionalidades de Drenpos por área de tu empresa"
+    description="Cada bloque lleva a su página con lo que hace, lo que no hace y lo que cuesta. Activa solo los módulos que necesitas."
   />
 
   <div class="section-up pb-0">
     <FeaturePowerSection />
   </div>
 
-  <!-- ══════════════════════════════════════════
-       Control horario: fichaje, vacaciones e incidencias
-  ══════════════════════════════════════════ -->
-  <section id="control-horario" class="section pt-0 overflow-hidden scroll-mt-24">
-    <div class="container">
-      <div class="text-center mb-12" data-aos="fade-up-sm">
-        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">
-          Control horario
-        </span>
-        <h2 class="h3 font-bold mb-4">El registro de jornada, las vacaciones y los retrasos en el mismo sitio</h2>
-        <p class="text-lg max-w-2xl mx-auto text-dark/65">
-          El fichaje va incluido en todos los planes ([[p:fichaje]]/mes por persona adicional, sin IVA) y ya incluye
-          vacaciones y permisos, calendarios con festivos (también
-          rotativos) y control de entrada y salida.
-        </p>
-      </div>
+  {
+    bloques.map((b) => (
+      <section id={b.id} class="section pt-0 overflow-hidden scroll-mt-24">
+        <div class="container">
+          <div class="text-center mb-12" data-aos="fade-up-sm">
+            <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">
+              {b.badge}
+            </span>
+            <h2 class="h3 font-bold mb-4">{b.title}</h2>
+            <p class="text-lg max-w-2xl mx-auto text-dark/65">{b.lead}</p>
+          </div>
 
-      <div class="row g-4 justify-center">
-        {
-          horario.map((h, i) => (
-            <div class="col-12 md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
-              <a href={h.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300 border-dark/10">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 bg-primary/8">{h.icon}</div>
-                <h3 class="h6 font-semibold mb-2">{h.title}</h3>
-                <p class="text-sm leading-relaxed mb-3 text-dark/65">{h.body}</p>
-                <span class="text-sm font-medium text-primary">{h.cta} →</span>
-              </a>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+          <div class="row g-4 justify-center">
+            {b.tarjetas.map((h, i) => (
+              <div class="col-12 md:col-6 lg:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+                <a href={h.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300 border-dark/10">
+                  <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 bg-primary/8">{h.icon}</div>
+                  <h3 class="h6 font-semibold mb-2">{h.title}</h3>
+                  <p class="text-sm leading-relaxed mb-3 text-dark/65">{h.body}</p>
+                  <span class="text-sm font-medium text-primary">{h.cta} →</span>
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
 
-  <!-- ══════════════════════════════════════════
-       Almacén y tienda
-  ══════════════════════════════════════════ -->
-  <section id="almacen-tienda" class="section pt-0 overflow-hidden scroll-mt-24">
-    <div class="container">
-      <div class="text-center mb-12" data-aos="fade-up-sm">
-        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">
-          Almacén y tienda
-        </span>
-        <h2 class="h3 font-bold mb-4">Si vendes en una tienda y tienes stock que controlar</h2>
-        <p class="text-lg max-w-2xl mx-auto text-dark/65">
-          El almacén va en el plan Almacén, [[p:almacen]]/mes sin IVA, y con el TPV de
-          tienda, en el plan Almacén con TPV por [[p:almacen_tpv]]/mes sin IVA.
-        </p>
-      </div>
-
-      <div class="row g-4 justify-center">
-        {
-          almacenTienda.map((h, i) => (
-            <div class="col-12 md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={i * 100}>
-              <a href={h.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300 border-dark/10">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 bg-primary/8">{h.icon}</div>
-                <h3 class="h6 font-semibold mb-2">{h.title}</h3>
-                <p class="text-sm leading-relaxed mb-3 text-dark/65">{h.body}</p>
-                <span class="text-sm font-medium text-primary">{h.cta} →</span>
-              </a>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════
-       Facturación y cumplimiento: Verifactu y DeCA
-  ══════════════════════════════════════════ -->
-  <section id="cumplimiento" class="section pt-0 overflow-hidden scroll-mt-24">
-    <div class="container">
-      <div class="text-center mb-12" data-aos="fade-up-sm">
-        <span class="text-primary bg-primary/10 px-3 py-1 inline-block rounded-full uppercase text-sm font-medium mb-4">
-          Facturación y cumplimiento
-        </span>
-        <h2 class="h3 font-bold mb-4">Las obligaciones que salen de tus facturas y albaranes</h2>
-        <p class="text-lg max-w-2xl mx-auto text-dark/65">
-          Van en el módulo Financiero, que está en todos los planes desde
-          [[p:facturacion]]/mes sin IVA.
-        </p>
-      </div>
-
-      <div class="row g-4 justify-center">
-        {
-          cumplimiento.map((h, i) => (
-            <div class="col-12 md:col-6 lg:col-5" data-aos="fade-up-sm" data-aos-delay={i * 100}>
-              <a href={h.url} class="block border rounded-[20px] p-7 h-full hover:shadow-lg transition-shadow duration-300 border-dark/10">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 bg-primary/8">{h.icon}</div>
-                <h3 class="h6 font-semibold mb-2">{h.title}</h3>
-                <p class="text-sm leading-relaxed mb-3 text-dark/65">{h.body}</p>
-                <span class="text-sm font-medium text-primary">{h.cta} →</span>
-              </a>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════
-       Hostelería: sala, cocina y QR
-  ══════════════════════════════════════════ -->
+  <!-- Hostelería: sala, cocina y QR -->
   <section id="hosteleria" class="section pt-0 overflow-hidden scroll-mt-24">
     <div class="container">
       <div class="text-center mb-12" data-aos="fade-up-sm">

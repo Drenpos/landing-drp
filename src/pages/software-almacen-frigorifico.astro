@@ -67,6 +67,8 @@ const capacidades = [
     title: "Etiqueta SSCC estándar GS1 y palet pesado",
     body: "Cada palet nace con su etiqueta SSCC estándar GS1 imprimible en rollo o A4, la misma que exigen las grandes plataformas logísticas. Ciclo de vida completo: abierto mientras se carga, cerrado y pesado con bruto, tara y neto, expedido o anulado, con permisos separados para cada paso.",
     bullets: [
+      "Temperatura de llegada obligatoria si la activas, impresa en la etiqueta",
+      "Peso como se pesa: neto en mercancía propia, bruto en la de cliente",
       "Mover el palet entero de cámara o ubicación en un escaneo",
       "Despaletizado en tres gestos: vaciar, pasar a otro o partir en varios",
       "Mezcla libre de productos, lotes y series, con traza de todo el palet",
@@ -115,6 +117,30 @@ const capacidades = [
       "Posición del cliente en vivo y simulador de coste con desglose",
       "Informe formal del periodo en PDF sin necesidad de facturar",
     ],
+  },
+];
+
+// Cuadro de mandos de almacén (módulo aparte, sin precio publicado)
+const cuadroMandos = [
+  {
+    vista: "Vista global",
+    muestra: "Mapa de todos los almacenes con huecos libres frente a capacidad. Cada almacén se marca como túnel, cámara, auxiliar u otro.",
+  },
+  {
+    vista: "Por almacén",
+    muestra: "Su plano con la ocupación y el detalle de cada hueco y palé: cliente, lote, kg y temperatura.",
+  },
+  {
+    vista: "Stock por familia",
+    muestra: "Palés y kilos por familia, filtrables por propio, de clientes o todo.",
+  },
+  {
+    vista: "Pantalla de oficina",
+    muestra: "Se refresca sola y tiene modo pantalla completa, para dejarla en un monitor.",
+  },
+  {
+    vista: "Lo que aún no hace",
+    muestra: "Solo consulta. Las alarmas y el histórico de ocupación son la siguiente fase.",
   },
 ];
 
@@ -237,6 +263,14 @@ const faqs = [
     a: "En el despiece se marca qué sale del palet y qué productos entran a cambio, con su lote nuevo y su caducidad. La merma se registra de forma explícita como una línea más: nunca desaparece en silencio. Los despieces se ejecutan en bloque todo o nada, de modo que jamás queda una salida sin su entrada, y queda traza completa de qué cantidades se dedicaron a fabricar qué. Si el palet es de un cliente en depósito, la manipulación genera su apunte de tarifa sola.",
   },
   {
+    q: "¿Se puede obligar a apuntar la temperatura de llegada del palet?",
+    a: "Sí. Si la empresa activa la temperatura de llegada obligatoria, la entrada del palet no se cierra sin apuntarla y la temperatura sale impresa en la etiqueta. Drenpos no lee sondas ni registra la temperatura de la cámara de forma continua: guarda la temperatura con la que llegó cada palet.",
+  },
+  {
+    q: "¿Hay una pantalla para ver la ocupación de las cámaras?",
+    a: "Sí, el cuadro de mandos de almacén. Enseña un mapa de todos los almacenes con huecos libres frente a capacidad y, por almacén, su plano con la ocupación y cada palé con cliente, lote, kilos y temperatura, filtrable por mercancía propia, de clientes o todo. Hoy es solo consulta: las alarmas y el histórico de ocupación vienen después. Es un módulo aparte sin precio publicado; consúltanos.",
+  },
+  {
     q: "¿Cuánto cuesta y cuánto se tarda en implantarlo?",
     a: "El almacén va incluido en el plan Almacén, [[p:almacen]]/mes sin IVA, con actualizaciones y soporte humano incluidos, sin coste por uso ni permanencia. La implantación estándar se hace en días: importamos los artículos desde Excel o desde el sistema anterior, definimos cámaras, almacenes y ubicaciones, cargamos el stock inicial y formamos al equipo. Para quien necesita que los datos no salgan de la empresa, existe despliegue on-premise en el servidor del cliente, a presupuesto.",
   },
@@ -308,6 +342,8 @@ const productSchema = softwareApp({
     "Palets con etiqueta SSCC estándar GS1 imprimible en rollo o A4",
     "Ciclo de vida del palet: abierto, cerrado y pesado, expedido o anulado",
     "Pesado de palet con bruto, tara y neto",
+    "Temperatura de llegada obligatoria por palet, impresa en la etiqueta",
+    "Cuadro de mandos de almacén con mapa de ocupación (módulo aparte)",
     "Traslado del palet completo en un escaneo y despaletizado en tres gestos",
     "Todas las pantallas de palets en móvil y tablet, a pie de cámara",
     "Trazabilidad total con informe de recall en PDF",
@@ -325,7 +361,7 @@ const faqSchema = faqPage(faqs);
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
 const PAGE_PUBLISHED = "2026-08-12";
-const PAGE_UPDATED = "2026-10-22";
+const PAGE_UPDATED = "2026-11-06";
 ---
 
 <Base
@@ -727,6 +763,85 @@ const PAGE_UPDATED = "2026-10-22";
               <a href="/blog/alquiler-huecos-palet-tarifas" class="text-primary underline">tarifas y contrato de alquiler de huecos</a>.
             </p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       TEMPERATURA DE LLEGADA Y CUADRO DE MANDOS
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="temperatura-llegada" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center mb-12">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <h2 class="h3 font-bold mb-4">¿Cómo se registra la temperatura de llegada de cada palet?</h2>
+          <p class="text-lg leading-relaxed text-dark/72">
+            Activando la temperatura de llegada obligatoria. Con ella puesta,
+            la entrada de un palet no se cierra hasta que alguien apunta los
+            grados con los que ha llegado, y ese dato sale impreso en la
+            etiqueta del palet. Así la comprobación del muelle queda en el
+            sistema y no en una libreta.
+          </p>
+        </div>
+      </div>
+      <div class="row justify-center">
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <div class="rounded-3xl border border-dark/10 bg-body p-7 lg:p-9">
+            <p class="text-sm leading-relaxed mb-4 text-dark/72">
+              La opción la activa la empresa, pensada para frío. Junto a ella,
+              el peso se apunta como se pesa en el muelle: en mercancía propia se
+              teclea el neto y en la de cliente el bruto, y el otro se calcula
+              con la tara. Al asignar el propietario del palet se puede crear el
+              cliente en ese momento.
+            </p>
+            <p class="text-sm leading-relaxed text-dark/72">
+              Lo que no hace: Drenpos no lee sondas ni registra la temperatura
+              de la cámara de forma continua. Apunta la temperatura con la que
+              llega cada palet. Cómo encaja con el FEFO y el SSCC, en
+              <a href="/blog/gestion-palets-almacen-frigorifico-fefo-sscc" class="text-primary underline">la guía de palets en almacén frigorífico</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="cuadro-mandos" class="row justify-center mt-16 scroll-mt-24">
+        <div class="lg:col-9 text-center mb-10" data-aos="fade-up-sm">
+          <h2 class="h3 font-bold mb-4">¿Qué enseña el cuadro de mandos de almacén?</h2>
+          <p class="text-lg leading-relaxed text-dark/72">
+            Es una pantalla de sala de control para frigoríficos y logísticos:
+            un mapa de todos los almacenes con huecos libres frente a
+            capacidad, y por almacén su plano con la ocupación y cada palé con
+            cliente, lote, kilos y temperatura. Se deja en un monitor de la
+            oficina y se refresca sola. Hoy es solo de consulta.
+          </p>
+        </div>
+        <div class="lg:col-10" data-aos="fade-up-sm">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse min-w-[640px]">
+              <thead>
+                <tr class="bg-dark text-white">
+                  <th class="text-left p-4 rounded-tl-2xl">Vista</th>
+                  <th class="text-left p-4 rounded-tr-2xl">Qué muestra</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  cuadroMandos.map((c) => (
+                    <tr class="border-b border-dark/5">
+                      <td class="p-4 font-medium">{c.vista}</td>
+                      <td class="p-4">{c.muestra}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm mt-6 text-dark/65">
+            El mapa se dibuja en la propia pantalla (paredes, puertas, áreas y
+            rótulos) con un permiso propio. Es un módulo que se contrata aparte
+            y todavía no tiene precio publicado: consúltanos.
+          </p>
         </div>
       </div>
     </div>

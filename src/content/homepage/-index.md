@@ -1,8 +1,8 @@
 ---
 # Banner
 banner:
-  title: "El software de gestión que da libertad a tu pyme"
-  content: "ERP modular 100% en la nube: gestión de almacén de nivel WMS, control horario con terminal de fichaje propio, TPV para tienda y para bares y restaurantes y facturación Verifactu. Activa solo los módulos que necesitas, sin permanencia y con soporte **humano**. Y ahora, pregunta a tu asistente de IA por tus ventas."
+  title: "Software de gestión para pymes: almacén, TPV, facturación y control horario"
+  content: "ERP modular en la nube para pymes españolas: almacén con lotes, ubicaciones y palets, preparación de pedidos con PDA, TPV para tienda y hostelería, producción, partes de trabajo, facturación Verifactu y control horario con terminal propio. Activa solo lo que necesitas, sin permanencia y con soporte **humano**."
   main_image:
     src: "/images/ventas.png"
     alt: "Analítica de ventas de Drenpos: ventas netas, ticket medio y embudo de oferta a factura"

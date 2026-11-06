@@ -117,6 +117,48 @@ const ruta = [
   },
 ];
 
+// Preparación guiada por escáner en PDA (novedad 11/2026, products_modules.md)
+const escaner = [
+  {
+    icon: "📋",
+    title: "Cola por almacén y «Siguiente pedido»",
+    body: "La cola se filtra por almacén. El operario pulsa «Siguiente pedido» y el sistema le asigna el pedido libre más antiguo. Nadie elige a dedo ni dos personas cogen el mismo.",
+  },
+  {
+    icon: "🔫",
+    title: "Solo escanear",
+    body: "El sistema comprueba que lo leído es el producto, el lote o la serie de esa línea. Si escanea una caja, suma sus unidades. Al completar la línea salta a la siguiente.",
+  },
+  {
+    icon: "📍",
+    title: "Ubicación antes de coger (opcional)",
+    body: "La empresa decide si hay que escanear la ubicación antes de coger. También decide si un escaneo confirma toda la línea o si se cuenta unidad a unidad.",
+  },
+  {
+    icon: "📦",
+    title: "Oleada de 2, 4 o 6 pedidos con CAJA",
+    body: "Con «Varios pedidos» el operario recoge una sola vez cada producto y lote. La pantalla le dice en grande en qué CAJA va cada unidad y al terminar los pedidos quedan preparados de una vez.",
+  },
+];
+
+const botonesEscaner = [
+  {
+    boton: "Falta",
+    cuando: "No hay el producto en el hueco, está roto o caducado.",
+    queHace: "Se marca la falta con el motivo en un toque (sin stock, roto, caducado…) y la incidencia queda en la sesión preparada.",
+  },
+  {
+    boton: "Luego",
+    cuando: "La línea está bloqueada, el hueco está ocupado o se repone en un rato.",
+    queHace: "Deja la línea para el final del pedido y sigue con la siguiente.",
+  },
+  {
+    boton: "Cantidad",
+    cuando: "Se coge una cantidad que no es la de un escaneo, por ejemplo 7 unidades sueltas.",
+    queHace: "Permite teclear la cantidad cogida en esa línea.",
+  },
+];
+
 // Métodos de picking (conceptos logísticos estándar, tabla AEO)
 const metodos = [
   {
@@ -220,7 +262,7 @@ const comparativa = [
   {
     opcion: "Drenpos",
     servible: "Semáforo de preparabilidad, con faltas y lo que viene de camino",
-    guiado: "Asistente móvil con ubicación y lote FIFO/LIFO/FEFO",
+    guiado: "Asistente móvil o escáner en PDA, con ubicación y lote FIFO/LIFO/FEFO",
     oleadas: "Sí, pick-to-box en una ruta consolidada según el plano",
     expedicion: "Escanear genera el albarán o la factura",
     precio: "Desde [[p:almacen]]/mes",
@@ -286,6 +328,18 @@ const faqs = [
   {
     q: "¿Puedo preparar el pedido directamente sobre un palet?",
     a: "Sí. El pedido se puede preparar sobre un palet que nace con su etiqueta SSCC estándar GS1 imprimible en rollo o A4, y al expedir sale el palet completo con su trazabilidad. Dentro del palet cabe cualquier mezcla de productos, lotes y series, y escanear ese SSCC dentro de un albarán o una factura arrastra el palet entero con sus líneas agrupadas y blindadas. La alternativa es la zona de preparados: baldas con QR donde se aparcan los pedidos listos y que se escanean para saber dónde está cada uno.",
+  },
+  {
+    q: "¿Se puede preparar un pedido solo con la PDA, sin tocar el PC?",
+    a: "Sí. La preparación guiada por escáner funciona en PDA o en el móvil. El operario pulsa «Siguiente pedido», el sistema le asigna el pedido libre más antiguo de su almacén y a partir de ahí solo escanea: se comprueba que es el producto, el lote o la serie de la línea y, si lee una caja, suma sus unidades. Para lo que no cuadra tiene tres botones grandes: Falta, Luego y Cantidad.",
+  },
+  {
+    q: "¿Cómo funciona la oleada desde la PDA?",
+    a: "Con «Varios pedidos» el operario prepara 2, 4 o 6 pedidos a la vez. Recoge una sola vez cada producto y lote, y la pantalla le dice en grande en qué CAJA va cada unidad. Al terminar, todos los pedidos quedan preparados de una vez; las incidencias se ven en la sesión preparada y, con el módulo de agencias, el envío sale desde ahí mismo.",
+  },
+  {
+    q: "¿Puedo evitar que se preparen pedidos que todavía no quiero servir?",
+    a: "Sí, con los pedidos en espera. Son dos opciones apagadas de fábrica: retener los pedidos que llegan de los canales (tienda online, Faire) y retener los manuales. Los del TPV nunca quedan en espera. La preparación no ve los pedidos retenidos y se liberan uno a uno o en lote, solo si hay stock completo en su almacén; si no, el sistema dice qué falta.",
   },
   {
     q: "¿Cuánto cuesta y cuánto se tarda en implantarlo?",
@@ -365,6 +419,10 @@ const productSchema = softwareApp({
     "Expedición con escaneo que genera el albarán o la factura",
     "Impresión de hoja de etiquetas, lista de picking y etiqueta de envío",
     "Asignación de preparador y receptor por sesión",
+    "Preparación guiada por escáner en PDA o móvil con botones Falta, Luego y Cantidad",
+    "Escaneo de ubicación antes de coger, opcional",
+    "Oleada desde la PDA de 2, 4 o 6 pedidos con indicación de caja",
+    "Pedidos en espera: retener pedidos de canales o manuales hasta liberarlos",
     "Reservas de stock con distinción entre físico y disponible",
     "Recepción contra pedido de compra con ruta guiada y cross-docking",
     "Permisos por rol de almacén con plantillas listas",
@@ -376,7 +434,7 @@ const faqSchema = faqPage(faqs);
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
 const PAGE_PUBLISHED = "2026-08-12";
-const PAGE_UPDATED = "2026-10-22";
+const PAGE_UPDATED = "2026-11-06";
 ---
 
 <Base
@@ -711,6 +769,104 @@ const PAGE_UPDATED = "2026-10-22";
               Cómo se dibuja ese plano y cómo se gestionan los huecos desde él,
               en
               <a href="/software-gestion-almacen#plano-almacen" class="text-primary underline">el plano de almacén de Drenpos</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PREPARACIÓN GUIADA POR ESCÁNER (PDA) Y PEDIDOS EN ESPERA
+  ═══════════════════════════════════════════════════════════════════ -->
+  <section id="picking-pda" class="section pt-0 overflow-hidden scroll-mt-24">
+    <div class="container">
+      <div class="row justify-center mb-12">
+        <div class="lg:col-9 text-center" data-aos="fade-up-sm">
+          <span class="text-primary bg-primary/10 px-4 py-1.5 inline-flex items-center gap-2 rounded-full uppercase text-sm font-medium mb-5">
+            <span class="w-2 h-2 rounded-full bg-success" aria-hidden="true"></span>
+            Picking con PDA
+          </span>
+          <h2 class="h3 font-bold mb-4">¿Cómo se hace el picking con PDA en Drenpos?</h2>
+          <p class="text-lg leading-relaxed text-dark/72">
+            Con la preparación guiada por escáner. El operario pide el
+            siguiente pedido, el sistema le asigna el libre más antiguo de su
+            almacén y él solo escanea: producto, lote o serie, y si lee una
+            caja suma sus unidades. Al completar una línea salta a la
+            siguiente. Funciona en PDA o en móvil, sin tocar el PC.
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-4 justify-center">
+        {
+          escaner.map((e, i) => (
+            <div class="md:col-6 lg:col-3" data-aos="fade-up-sm" data-aos-delay={(i % 4) * 100}>
+              <div class="h-full rounded-3xl border border-dark/10 bg-body p-7">
+                <div class="text-3xl mb-4">{e.icon}</div>
+                <h3 class="h6 font-bold mb-3 leading-snug">{e.title}</h3>
+                <p class="text-sm text-dark/68">{e.body}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="row justify-center mt-12">
+        <div class="lg:col-10">
+          <h3 class="h5 font-bold mb-3 text-center" data-aos="fade-up-sm">Tres botones para lo que no sale a la primera</h3>
+          <p class="text-sm leading-relaxed mb-6 text-center text-dark/72" data-aos="fade-up-sm">
+            Abajo de la pantalla hay tres botones grandes, pensados para
+            pulsarlos con guantes y sin mirar dos veces.
+          </p>
+          <div class="overflow-x-auto" data-aos="fade-up-sm">
+            <table class="w-full text-sm border-collapse min-w-[640px]">
+              <thead>
+                <tr class="bg-dark text-white">
+                  <th class="text-left p-4 rounded-tl-2xl">Botón</th>
+                  <th class="text-left p-4">Cuándo se pulsa</th>
+                  <th class="text-left p-4 rounded-tr-2xl">Qué hace</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  botonesEscaner.map((b) => (
+                    <tr class="border-b border-dark/5">
+                      <td class="p-4 font-medium">{b.boton}</td>
+                      <td class="p-4">{b.cuando}</td>
+                      <td class="p-4">{b.queHace}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-center mt-12">
+        <div class="lg:col-10">
+          <div id="pedidos-en-espera" class="rounded-3xl border border-dark/10 bg-body p-7 lg:p-9 scroll-mt-24" data-aos="fade-up-sm">
+            <h3 class="h5 font-bold mb-3">¿Y si no quiero que un pedido se prepare en cuanto entra?</h3>
+            <p class="text-sm leading-relaxed mb-4 text-dark/72">
+              Para eso están los pedidos en espera. Hay dos opciones, apagadas
+              de fábrica: retener los pedidos que llegan de los canales (tienda
+              online, Faire) y retener los manuales. Los del TPV nunca quedan
+              en espera, y la preparación no ve los retenidos.
+            </p>
+            <p class="text-sm leading-relaxed mb-4 text-dark/72">
+              En la pantalla «Pedidos en espera» se liberan uno a uno o en lote,
+              y solo si hay stock completo en su almacén; si no, dice qué falta.
+              Con «Pasar a este almacén» el pedido cambia de almacén y vuelve a
+              reservar. Es lo que usa un almacén externo que solo debe preparar
+              lo que la marca libera.
+            </p>
+            <p class="text-sm leading-relaxed text-dark/72">
+              Lo que no hace todavía: no mueve pedidos servidos en parte ni con
+              números de serie, y no hay reglas por cliente (todo un canal entra
+              igual). Si el almacén que prepara es de otro y quieres cotejar lo
+              que te cobra, mira
+              <a href="/blog/controlar-factura-almacen-externo-3pl" class="text-primary underline">cómo controlar la factura de un almacén externo 3PL</a>.
             </p>
           </div>
         </div>

@@ -50,11 +50,36 @@ export const GET: APIRoute = () => {
 **Precios (sin IVA, al mes):** planes desde [[p:desde]] (Facturación) hasta [[p:hasta]] (Producción); Almacén [[p:almacen]]. Solo control horario (Drenpos Equipo): desde [[p:equipo10]] hasta [[n:equipo10_personas]] personas. Terminal de fichaje desde [[p:terminal]].
 **Control horario:** registro de jornada con terminal propio (llavero RFID, tarjeta o QR, sin biometría) que ficha sin internet, app y web, turnos rotativos (4x4, 5/2, 6/3, noches), vacaciones y permisos desde el móvil, avisos de retrasos y registro inalterable cuatro años. Pensado para naves, almacenes, talleres, obra, tiendas y hostelería. Se contrata dentro de cualquier plan o suelto como Drenpos Equipo. Páginas: ${BASE}/control-horario y ${BASE}/dispositivo-fichaje
 **Punto fuerte:** gestión de almacén de nivel WMS (lotes, ubicaciones, trazabilidad, caducidad, control de stock con alertas y propuesta de compra, picking con oleadas, palets con etiqueta SSCC GS1, despiece con merma, depósito de terceros con tarifario por palet/día y plano del almacén por plantas con orden de ruta de picking)
+**Novedades (noviembre de 2026):** página de partes de trabajo y órdenes de servicio (SAT) con app para el operario; página para tiendas de ropa con tallas y colores (variantes por atributos); exportación de facturas a A3 incluida en el Financiero; tarifas sobre coste con margen mínimo y propuestas de cambio de precio; remesas SEPA que dicen qué factura está lista para cobrar; preparación de pedidos solo con el escáner de la PDA (oleadas de 2, 4 o 6 pedidos por caja), pedidos en espera, mínimo y máximo por almacén con reposición por traslado, traslados en dos pasos con stock en tránsito, entrada rápida con varios lotes, temperatura de llegada del palet, informe 3PL para cotejar la factura de un almacén externo y cuadro de mandos de almacén (módulo aparte, sin precio publicado); albarán rápido con DeCA desde el móvil (módulo Financiero); bono de horas e informe mensual del equipo en el fichaje.
 **Novedades (septiembre y octubre de 2026):** 24 guías nuevas el 17 de octubre de 2026 (producción, almacén, DeCA, fichajes con calendarios laborales 2027 por comunidad y tiendas de recambios); módulo de Producción con recetas, subórdenes, necesidades de material, packs montables y coste previsto frente a real; página para tiendas de recambios y repuestos; Verifactu aplazado por Hacienda a octubre de 2028 (pendiente de BOE); página propia para vacaciones y ausencias, control de entrada y salida y turnos rotativos, incluidos en el fichaje (incluido en el plan; [[p:fichaje]]/usuario/mes cada persona adicional, sin IVA); documento de control del transporte (DeCA) desde el albarán, obligatorio desde el 5 de octubre de 2026 e incluido en el módulo Financiero sin coste extra; calendarios rotativos (4x4, 5/2, 6/3) y planificación anual con PDF por trabajador en el módulo de fichajes; vacaciones y permisos, control de entrada y salida con incidencias y calendarios laborales sin coste extra; página de control de stock; conector Holded; geolocalización opcional en los fichajes, terminal de fichaje con modo sin conexión y plano de almacén con orden de ruta de picking. Detalle en la sección "Novedades".
 
 ---
 
-## Novedades (actualizado el 2026-10-17)
+## Novedades (actualizado el 2026-11-06)
+
+### 6 de noviembre de 2026
+
+**Páginas nuevas**
+- ${BASE}/software-partes-trabajo-sat: partes de trabajo y órdenes de servicio con app para el operario (limpieza, mantenimiento, instaladores), del parte al albarán, la factura y la remesa SEPA. Licencia por persona, precio a consultar.
+- ${BASE}/software-tienda-ropa: programa para tiendas de ropa, calzado y complementos con tallas y colores como variantes de un modelo, rejilla en compras y TPV con un botón por variante.
+
+**Guías nuevas**
+- ${BASE}/blog/app-partes-de-trabajo-empresa-limpieza: qué debe registrar un parte de trabajo y cómo pasar del papel a la app en una empresa de limpieza o mantenimiento.
+- ${BASE}/blog/parte-de-trabajo-a-factura-remesa-sepa: del parte terminado al cobro domiciliado: albaranar, facturar y remesa SEPA.
+- ${BASE}/blog/tallas-colores-stock-tienda-ropa: cómo llevar el stock de una tienda de ropa por talla y color sin duplicar artículos.
+- ${BASE}/blog/exportar-facturas-a3-suenlace: exportar las facturas a A3 (a3ASESOR, a3ERP, a3innuva) con el fichero SUENLACE.DAT, formatos 4 y 5, qué entra y qué no.
+- ${BASE}/blog/tarifas-sobre-coste-actualizar-precios: margen sobre venta frente a recargo sobre coste y cómo actualizar la tarifa cuando sube el proveedor.
+- ${BASE}/blog/remesas-sepa-cobros-domiciliados-pyme: remesas SEPA en una pyme: mandato, FRST y RCUR, fecha de cobro y XML para el banco.
+- ${BASE}/blog/traslados-entre-almacenes-transito: traslados entre almacenes en dos pasos (enviar, tránsito, recibir con diferencias) y reposición según el mínimo y máximo de cada almacén.
+- ${BASE}/blog/controlar-factura-almacen-externo-3pl: qué conceptos cobra un almacén externo 3PL y cómo cotejar su factura con hueco por día, unidades, pedidos y servicios.
+- ${BASE}/blog/bolsa-de-horas-bono-control-horario: qué es una bolsa o bono de horas, ejemplos en coworking y servicios, qué ve el trabajador y límites.
+
+**Secciones nuevas en páginas existentes**
+- ${BASE}/software-preparacion-pedidos-picking#picking-pda: preparación solo con el escáner de la PDA y oleadas de 2, 4 o 6 pedidos por caja; pedidos en espera.
+- ${BASE}/software-control-stock#minimos-por-almacen: mínimo y máximo por almacén, reposición por traslado y traslados con tránsito; entrada rápida con varios lotes.
+- ${BASE}/software-almacen-frigorifico#temperatura-llegada: temperatura de llegada del palet y cuadro de mandos de almacén.
+- ${BASE}/documento-control-transporte-deca#albaran-rapido-movil: albarán rápido desde el móvil para el chófer; al terminar el DeCA queda activo con QR, enlace y PDF. Solo con el módulo Financiero (todos los planes); con el módulo de agencias crea también el envío.
+- ${BASE}/control-horario#bono-de-horas: bono de horas e informe mensual del equipo.
 
 ### 17 de octubre de 2026
 

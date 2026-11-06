@@ -3,7 +3,7 @@ title: "Software de gestión para pymes con almacén: comparativa de Holded, Odo
 meta_title: "Comparativa software gestión pymes con almacén 2026"
 description: "Comparativa de software de gestión para pymes con almacén: Holded, Odoo, Sage 50, STEL Order, SimplyGest y Drenpos, función a función, con precios a 20/10/2026."
 date: 2026-10-20
-updated: 2026-10-23
+updated: 2026-11-06
 image: "/images/blog/cuanto-cuesta-sga-wms-pyme-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -67,7 +67,7 @@ Todo lo que pongo aquí sale de las webs oficiales de cada fabricante a 20 de oc
 | Control horario | Sí (extra) | Sí | No | Sí (producto aparte) | Sí | Sí, con terminal |
 | Nóminas | Sí (extra) | No consta en España | No | No consta | No consta | No |
 | Producción | Básica | Completa | Genérica | No consta | Sí (Desktop) | Sí |
-| Partes de trabajo / SAT | No | Sí (servicio de campo) | Sí (Servicios) | Sí | Sí (Desktop) | No |
+| Partes de trabajo / SAT | No | Sí (servicio de campo) | Sí (Servicios) | Sí | Sí (Desktop) | Sí, desde noviembre de 2026 (app web, sin rutas) |
 | DeCA desde el albarán | No consta | No consta | No consta | No consta | No consta | Sí |
 | App móvil nativa | Sí | Sí | Sí | Sí | Sí (Cloud) | PWA |
 | API pública | Sí | Solo Personalizado | No consta | Sí | Sí (Cloud) | Acordada |
@@ -108,7 +108,7 @@ Hay dos casos más que se resuelven rápido. Si no puedes dedicar mucho al arran
 
 ## Lo que Drenpos no hace
 
-Para que esta comparativa sirva de algo, empiezo por lo que nos falta. Nosotros no llevamos contabilidad ni nóminas, no tenemos partes de trabajo para SAT ni app nativa, y no conectamos con Shopify, Amazon o PrestaShop. Tampoco tenemos API pública abierta, ni pago único, ni una red de partners y asesorías como la de Holded o Sage. Si tu empresa necesita alguna de esas cosas, en el artículo de cada programa decimos cuál elegir en su lugar.
+Para que esta comparativa sirva de algo, empiezo por lo que nos falta. Nosotros no llevamos contabilidad ni nóminas, no tenemos app nativa (las [órdenes de servicio con app para el operario](/software-partes-trabajo-sat) funcionan como app web), y no conectamos con Shopify, Amazon o PrestaShop. Tampoco tenemos API pública abierta, ni pago único, ni una red de partners y asesorías como la de Holded o Sage. Si tu empresa necesita alguna de esas cosas, en el artículo de cada programa decimos cuál elegir en su lugar.
 
 Lo que sí hacemos mejor, según lo que publican los demás, está sobre todo en el almacén: ubicaciones, plano, picking y FEFO junto a la facturación. También el TPV de hostelería, los fichajes con terminal RFID y la producción dentro del plan, la DeCA desde el albarán, una sola versión sin migraciones y la opción de instalarlo en tu propio servidor. Lo tienes con detalle en [software de gestión de almacén](/software-gestion-almacen), [control de stock](/software-control-stock) y [control horario](/control-horario).
 

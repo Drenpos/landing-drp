@@ -3,7 +3,7 @@ title: "Alquiler de huecos de palet: tarifas, contrato y cómo gestionarlo"
 meta_title: "Alquiler de huecos de palet: tarifas y contrato"
 description: "Cómo se construye una tarifa de alquiler de huecos de palet: conceptos que se cobran, modos de cómputo, contrato de depósito y cómo montar el servicio."
 date: 2026-08-12
-updated: 2026-10-23
+updated: 2026-11-06
 image: "/images/blog/alquiler-huecos-palet-tarifas/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -110,6 +110,8 @@ Antes de firmar, el depositante debería salir de la reunión con cinco respuest
 - **Visibilidad**: posición viva en palets y kilos, e informe del periodo aunque no te facturen desde ahí.
 
 Pide siempre una simulación con tu volumen real de un mes tipo. Comparar solo el precio por palet y día es el error más caro de esta negociación.
+
+Y una vez firmado, toca vigilar cada factura. Si eres la marca que deja la mercancía en un almacén ajeno, el caso contrario a este artículo, tienes la guía en [cómo controlar la factura de un almacén externo 3PL](/blog/controlar-factura-almacen-externo-3pl): qué conceptos cobra y cómo cotejarlos con tu propia actividad.
 
 ## ¿Qué contrato y qué normativa aplican al depósito?
 

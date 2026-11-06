@@ -19,7 +19,7 @@
     },
     {
       "id": "ventas",
-      "titulo": "Ventas y producción",
+      "titulo": "Ventas, servicios y producción",
       "hub": {
         "nombre": "Ver todas las funcionalidades",
         "ruta": "/funcionalidades"
@@ -119,6 +119,13 @@
       "llms": "Programa de gestión para tiendas de recambios y repuestos: stock por referencia, mínimos y propuesta de compra, recepción con pistola y venta en mostrador con TPV y Verifactu; sin catálogo de recambios ni búsqueda por matrícula"
     },
     {
+      "ruta": "/software-tienda-ropa",
+      "titulo": "Tienda de ropa, calzado y complementos",
+      "menu": "Tienda de ropa",
+      "grupo": "ventas",
+      "llms": "Programa para tiendas de ropa, zapaterías y complementos: tallas y colores como variantes de un modelo con stock por variante, rejilla en compras, recepción, recuentos y etiquetas, TPV con un botón por talla, WooCommerce y Faire, importación desde Excel y Verifactu; un artículo con movimientos no se convierte en modelo"
+    },
+    {
       "ruta": "/software-bares-restaurantes",
       "titulo": "Software para bares y restaurantes",
       "menu": "Bares y restaurantes",
@@ -130,6 +137,12 @@
       "titulo": "Producción y fabricación",
       "grupo": "ventas",
       "llms": "Órdenes de trabajo por fases, recetas con subórdenes, necesidades de material, packs montables, consumo por lectura, imputación de tiempos y coste previsto frente a real"
+    },
+    {
+      "ruta": "/software-partes-trabajo-sat",
+      "titulo": "Partes de trabajo y SAT",
+      "grupo": "ventas",
+      "llms": "Órdenes de servicio con app para el operario (limpieza, mantenimiento, instaladores): horas, material y fotos desde el móvil, albaranes por cliente de una vez, factura Verifactu y remesa SEPA; licencia por persona, precio a consultar; no planifica rutas ni está en App Store o Google Play"
     },
     {
       "ruta": "/software-verifactu",
