@@ -87,6 +87,12 @@
       "llms": "Terminal de fichaje propio con llavero RFID y QR, modo sin conexión, alimentación a 12 V, ficha técnica, precio y personalización con el logo del cliente"
     },
     {
+      "ruta": "/drenpos-tap",
+      "titulo": "Drenpos Tap",
+      "grupo": "equipo",
+      "llms": "Página de producto del terminal de fichaje Drenpos Tap: vídeos reales, giro de 360°, fichaje en 2 segundos con llavero, tarjeta o QR, modo sin conexión y versión a medida con huella"
+    },
+    {
       "ruta": "/software-vacaciones-ausencias",
       "titulo": "Vacaciones y ausencias",
       "grupo": "equipo",

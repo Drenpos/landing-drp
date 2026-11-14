@@ -1,0 +1,1228 @@
+---
+export const prerender = true;
+import Base from "@/layouts/Base.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+import DemoForm from "@/partials/DemoForm.astro";
+import LandingMeta from "@/partials/LandingMeta.astro";
+import JsonLd from "@/components/JsonLd.astro";
+import { abs, AUTOR, ORG_ID } from "@/lib/site";
+import { breadcrumb, faqPage } from "@/lib/schema";
+import { decimal, valor } from "@/lib/precios";
+
+// ════════════════════════════════════════════════════════════════════════
+//  Drenpos Tap · página de producto (escaparate)
+//  Qué es: la marca del terminal de fichaje que fabrica Drenpos. Esta página
+//  enseña el aparato (parallax, giro de 360°, vídeos reales) y manda a la
+//  demo. La ficha técnica, la comparativa y el precio detallado siguen en
+//  /dispositivo-fichaje, que es la landing de búsqueda ("terminal de
+//  fichaje", "dispositivo de fichaje"). Aquí la intención es de marca:
+//  "drenpos tap", "terminal de fichaje drenpos".
+//  Material: /public/images/drenpos-tap (recortes con transparencia y giro
+//  de 15 fotogramas) y /public/video/drenpos-tap (clips reales, sin audio).
+// ════════════════════════════════════════════════════════════════════════
+
+const PATH = "/drenpos-tap";
+const CANONICAL = abs(PATH);
+const IMG = "/images/drenpos-tap";
+const VID = "/video/drenpos-tap";
+const PAGE_PUBLISHED = "2026-11-14";
+const PAGE_UPDATED = "2026-11-14";
+
+const SPIN_FRAMES = 15;
+const spinFrames = Array.from({ length: SPIN_FRAMES }, (_, i) => `${IMG}/spin/tap-${String(i).padStart(2, "0")}.webp`);
+
+// Etiquetas que aparecen durante el giro (fracción del recorrido en la que se enseñan)
+const etiquetas = [
+  { desde: 0.0, hasta: 0.16, lado: "izq", titulo: "Pantalla de estado", texto: "Nombre y foto de quien ficha, entrada o salida, hora y versión del firmware." },
+  { desde: 0.06, hasta: 0.22, lado: "der", titulo: "Lector RFID y QR", texto: "Ventana iluminada. Lee llaveros, tarjetas y el QR personal de cada empleado." },
+  { desde: 0.26, hasta: 0.46, lado: "der", titulo: "Rejilla de ventilación", texto: "La placa trabaja fría en una nave en agosto o en una cámara." },
+  { desde: 0.5, hasta: 0.7, lado: "izq", titulo: "Anclajes de pared", texto: "Dos puntos de fijación. También se apoya en un mostrador o va en la furgoneta." },
+  { desde: 0.56, hasta: 0.76, lado: "der", titulo: "Alimentación a 12 V", texto: "Fuente de red, batería auxiliar o mechero del vehículo." },
+  { desde: 0.84, hasta: 1.0, lado: "izq", titulo: "Carcasa impresa en 3D", texto: "PETG, con el logo de tu empresa en el frontal si lo quieres." },
+];
+
+const pasos = [
+  { t: "0,0 s", titulo: "Acercas", texto: "Llavero, tarjeta o el QR del móvil. Con guantes, con las manos ocupadas, sin mirar." },
+  { t: "0,8 s", titulo: "Te reconoce", texto: "La pantalla enseña tu nombre y tu foto. Si el llavero no está dado de alta, el fichaje queda en cuarentena." },
+  { t: "2,0 s", titulo: "Registrado", texto: "Hora exacta, sellada e inalterable. En Drenpos al momento si hay red; si no, en cuanto vuelve." },
+];
+
+const videos = [
+  { src: "tap-tarjeta", titulo: "Con la tarjeta", texto: "La acercas a la ventana y el lector la coge antes de que la apoyes. La pantalla pasa de Disponible a Fichaje iniciado." },
+  { src: "tap-llavero", titulo: "Con el llavero", texto: "El llavero lleva el logo de tu empresa. Lo mismo: un gesto y queda registrado." },
+  { src: "tap-cerca", titulo: "De cerca", texto: "Confirmación en pantalla con nombre, foto y hora. El empleado sabe que ha fichado sin preguntar a nadie." },
+];
+
+const ventajas = [
+  { titulo: "Ficha sin internet", texto: "Reloj propio. Si cae la WiFi o la obra no tiene cobertura, guarda cada fichaje con su hora y lo sube al volver la red." },
+  { titulo: "Sin huella ni cara", texto: "Llavero, tarjeta o QR. No tratas datos biométricos y te ahorras la evaluación de impacto del RGPD." },
+  { titulo: "Placa, firmware y carcasa propios", texto: "Lo diseñamos y lo fabricamos nosotros en Extremadura. Si tu operativa pide algo distinto, lo hacemos." },
+  { titulo: "Se actualiza solo", texto: "El firmware se actualiza desde su panel web. Sin desmontarlo, sin enviarlo." },
+  { titulo: "Un lector por concepto", texto: "El de la puerta ficha Trabajo y el del comedor, Comida. Las pausas quedan separadas sin tocar una pantalla." },
+  { titulo: "Con tu logo", texto: "Carcasa y llaveros con tu marca. El terminal que ve tu plantilla cada mañana lleva tu nombre." },
+];
+
+const equipo = [
+  { titulo: "Vacaciones y permisos", texto: "El empleado pide desde el móvil viendo su saldo y el responsable aprueba o propone otras fechas.", href: "/software-vacaciones-ausencias" },
+  { titulo: "Turnos rotativos", texto: "Ciclos 4x4, 5/2 o 6/3, con noches. Cada fichaje se compara con el turno que tocaba.", href: "/software-turnos-rotativos" },
+  { titulo: "Entrada y salida", texto: "Retrasos, salidas antes de hora y fichajes olvidados como incidencias, con tolerancia en minutos.", href: "/control-entrada-salida-empleados" },
+];
+
+const faqs = [
+  {
+    q: "¿Qué es Drenpos Tap?",
+    a: "Drenpos Tap es el terminal de fichaje que diseña y fabrica Drenpos para el control horario. Lee llaveros y tarjetas RFID y el código QR personal de cada empleado, enseña en pantalla el nombre y la foto de quien ficha y envía cada registro al software de Drenpos con sellado temporal. Placa electrónica, firmware y carcasa son propios. Funciona sin internet: guarda los fichajes con su reloj integrado y los sincroniza al recuperar la red.",
+  },
+  {
+    q: "¿Cuánto tarda en fichar?",
+    a: "Unos dos segundos desde que se acerca el llavero o la tarjeta hasta que la pantalla confirma el fichaje con el nombre y la foto del empleado. El tiempo está cronometrado en los vídeos de esta página, grabados con el terminal real.",
+  },
+  {
+    q: "¿Qué diferencia hay entre Drenpos Tap y el dispositivo de fichaje de la otra página?",
+    a: "Es el mismo terminal. Drenpos Tap es su nombre. Esta página enseña el aparato en vídeo y en 360 grados; la página de dispositivo de fichaje tiene la ficha técnica completa, la comparativa con otras opciones y el detalle de precio.",
+  },
+  {
+    q: "¿Se puede fichar con huella?",
+    a: "El Drenpos Tap de catálogo ficha con llavero, tarjeta o QR y no trata datos biométricos. Como la placa, el firmware y la carcasa son nuestros, para un cliente fabricamos una versión con lector de huella, que se ve en esta página. La huella es un dato de categoría especial: el artículo 9 del RGPD limita su tratamiento y el artículo 35 obliga a una evaluación de impacto previa, así que solo tiene sentido en casos concretos.",
+  },
+  {
+    q: "¿Hace falta instalación?",
+    a: "No. Se alimenta a 12 V con la fuente incluida, con una batería o con el mechero del vehículo, y se conecta a la WiFi desde su panel web. Se fija a la pared por sus dos anclajes, se apoya en un mostrador o viaja en la furgoneta.",
+  },
+  {
+    q: "¿Cuánto cuesta Drenpos Tap?",
+    a: "El terminal parte de [[p:terminal]] sin IVA con llaveros personalizados. El software de control horario va aparte: Drenpos Equipo desde [[p:equipo10]] al mes hasta [[n:equipo10_personas]] personas, o incluido en cualquier plan de Drenpos. El detalle está en la página del dispositivo de fichaje y en precios.",
+  },
+];
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Drenpos Tap",
+  alternateName: "Terminal de fichaje Drenpos",
+  url: CANONICAL,
+  image: [abs(`${IMG}/drenpos-tap-og.jpg`), abs(`${IMG}/drenpos-tap-foto.jpg`)],
+  description:
+    "Drenpos Tap es el terminal de fichaje fabricado por Drenpos: lee llavero y tarjeta RFID y código QR, muestra nombre y foto del empleado, ficha sin internet con reloj propio y se personaliza con el logo del cliente. Placa, firmware y carcasa propios.",
+  brand: { "@type": "Brand", name: "Drenpos" },
+  manufacturer: { "@id": ORG_ID },
+  category: "Terminal de control de presencia",
+  video: {
+    "@type": "VideoObject",
+    name: "Drenpos Tap: fichaje con tarjeta",
+    description: "Un empleado ficha con la tarjeta en el terminal Drenpos Tap. La pantalla pasa de Disponible a Fichaje iniciado.",
+    thumbnailUrl: abs(`${VID}/tap-tarjeta.webp`),
+    contentUrl: abs(`${VID}/tap-tarjeta.mp4`),
+    uploadDate: PAGE_PUBLISHED,
+  },
+  offers: {
+    "@type": "Offer",
+    price: decimal(valor("terminal")),
+    priceCurrency: "EUR",
+    priceValidUntil: "2027-12-31",
+    availability: "https://schema.org/InStock",
+    itemCondition: "https://schema.org/NewCondition",
+    url: abs("/dispositivo-fichaje"),
+    valueAddedTaxIncluded: false,
+    seller: { "@id": ORG_ID },
+  },
+};
+
+const jsonLd = [
+  breadcrumb([
+    { name: "Control horario", path: "/control-horario" },
+    { name: "Drenpos Tap", path: PATH },
+  ]),
+  productSchema,
+  faqPage(faqs),
+];
+
+const flecha = `<span class="icon-wrapper"><span class="icon"><svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span class="icon" aria-hidden="true"><svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 1L17.5 6L12.5 11M1.5 6H17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></span>`;
+---
+
+<Base
+  title="Drenpos Tap · Terminal de fichaje fabricado por Drenpos"
+  meta_title="Drenpos Tap: terminal de fichaje en 2 segundos | Drenpos"
+  description="Drenpos Tap es el terminal de fichaje que fabricamos nosotros: llavero, tarjeta o QR, nombre y foto en pantalla, ficha sin internet y lleva tu logo. Míralo en 360°."
+  canonical={CANONICAL}
+  image={`${IMG}/drenpos-tap-og.jpg`}
+  published_date={PAGE_PUBLISHED}
+  modified_date={PAGE_UPDATED}
+  author={AUTOR}
+>
+  <JsonLd data={jsonLd} />
+
+  <!-- ═══════════════════════ HERO · parallax ═══════════════════════ -->
+  <section class="tap-hero relative overflow-hidden" id="tap-hero">
+    <div class="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+      <img src="/images/grainy.svg" alt="" width="1440" height="900" class="w-full h-full object-cover opacity-[.08]" />
+    </div>
+    <div class="tap-glow" aria-hidden="true"></div>
+
+    <div class="container relative z-10">
+      <nav aria-label="Migas de pan" class="pt-6 text-sm text-dark/55">
+        <a href="/" class="hover:text-primary">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <a href="/control-horario" class="hover:text-primary">Control horario</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-primary font-medium">Drenpos Tap</span>
+      </nav>
+
+      <div class="row gx-0 items-center min-h-[calc(100svh-6rem)] py-10 lg:py-0">
+        <div class="lg:col-6 order-2 lg:order-1" data-aos="fade-up-sm">
+          <p class="tap-kicker">
+            <span class="tap-dot" aria-hidden="true"></span>
+            Drenpos Tap · terminal de fichaje · fabricado por Drenpos
+          </p>
+          <h1 class="tap-h1 mb-6">
+            Acercas el llavero.<br />
+            <span class="text-primary">Ya has fichado.</span>
+          </h1>
+          <p class="text-lg lg:text-xl text-dark/72 max-w-xl mb-6">
+            Dos segundos, cronometrados. Sin móvil, sin huella, sin cola en la puerta.
+            La pantalla enseña tu nombre y tu foto y la jornada queda registrada en
+            Drenpos con hora sellada. Si se cae internet, ficha igual.
+          </p>
+          <div class="mb-8">
+            <LandingMeta updated={PAGE_UPDATED} published={PAGE_PUBLISHED} compact class="mb-0" />
+          </div>
+          <ul class="flex flex-wrap gap-4 mb-10">
+            <li>
+              <a href="#demo-form" class="btn btn-dark">
+                Quiero verlo en mi empresa
+                <Fragment set:html={flecha} />
+              </a>
+            </li>
+            <li>
+              <a href="#giro" class="btn btn-light">Verlo en 360°</a>
+            </li>
+          </ul>
+          <ul class="flex flex-wrap gap-x-7 gap-y-3 text-sm text-dark/62">
+            <li class="flex items-center gap-2"><span class="tap-tick" aria-hidden="true">✓</span>Llavero, tarjeta o QR</li>
+            <li class="flex items-center gap-2"><span class="tap-tick" aria-hidden="true">✓</span>Ficha sin internet</li>
+            <li class="flex items-center gap-2"><span class="tap-tick" aria-hidden="true">✓</span>Sin datos biométricos</li>
+            <li class="flex items-center gap-2"><span class="tap-tick" aria-hidden="true">✓</span>Tu logo en el frontal</li>
+          </ul>
+        </div>
+
+        <div class="lg:col-6 order-1 lg:order-2">
+          <div
+            class="tap-stage"
+            id="tap-parallax"
+            data-tap={`${IMG}/tap.webp`}
+            data-tarjeta={`${IMG}/tarjeta.webp`}
+            data-llavero={`${IMG}/llavero.webp`}
+          >
+            <!-- Sin JS o con movimiento reducido se ve esta composición fija -->
+            <div class="tap-static" aria-hidden="true">
+              <img src={`${IMG}/tarjeta.webp`} alt="" width="1235" height="620" class="tap-static-tarjeta" loading="eager" />
+              <img src={`${IMG}/tap.webp`} alt="Drenpos Tap, terminal de fichaje con pantalla de estado y lector RFID y QR" width="635" height="1200" class="tap-static-tap" loading="eager" fetchpriority="high" />
+              <img src={`${IMG}/llavero.webp`} alt="" width="455" height="360" class="tap-static-llavero" loading="eager" />
+            </div>
+            <p class="tap-hint" aria-hidden="true">Mueve el ratón</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ CRONÓMETRO ═══════════════════════ -->
+  <section class="pb-20 lg:pb-28" id="como-funciona">
+    <div class="container">
+      <div class="tap-chrono" id="tap-chrono">
+        <div class="tap-chrono-head">
+          <p class="tap-kicker">Así ficha tu equipo</p>
+          <p class="tap-chrono-num text-dark"><span data-chrono>0,0</span><span class="text-primary"> s</span></p>
+        </div>
+        <ol class="tap-steps">
+          {pasos.map((p, i) => (
+            <li class="tap-step" data-step={i}>
+              <span class="tap-step-t">{p.t}</span>
+              <h2 class="tap-step-h text-dark">{p.titulo}</h2>
+              <p class="tap-step-p">{p.texto}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ GIRO 360 · scroll ═══════════════════════ -->
+  <section class="tap-spin-section" id="giro">
+    <div class="tap-spin-sticky">
+      <div class="container h-full">
+        <div class="tap-spin-layout">
+          <div class="tap-spin-copy">
+            <p class="tap-kicker">Míralo por fuera</p>
+            <h2 class="tap-h2 text-dark">Placa, firmware y carcasa: nuestros.</h2>
+            <p class="text-dark/65 max-w-md">
+              No revendemos un terminal genérico. Lo que ves aquí sale de nuestro taller
+              en Solana de los Barros. Baja para girarlo.
+            </p>
+            <p class="tap-spin-progress" aria-hidden="true"><span data-spin-deg>0</span>°</p>
+          </div>
+
+          <div class="tap-spin-stage" id="tap-spin" data-frames={SPIN_FRAMES} data-base={`${IMG}/spin/tap-`}>
+            <img
+              src={spinFrames[0]}
+              alt="Drenpos Tap visto de frente, de lado y por detrás: pantalla, lector, rejilla y anclajes de pared"
+              width="388"
+              height="720"
+              class="tap-spin-img"
+              id="tap-spin-img"
+              decoding="async"
+            />
+            {etiquetas.map((e) => (
+              <div class={`tap-callout tap-callout-${e.lado}`} data-desde={e.desde} data-hasta={e.hasta}>
+                <span class="tap-callout-line" aria-hidden="true"></span>
+                <strong>{e.titulo}</strong>
+                <span>{e.texto}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ VÍDEOS REALES ═══════════════════════ -->
+  <section class="section bg-body" id="en-accion">
+    <div class="container">
+      <div class="max-w-2xl mb-12">
+        <p class="tap-kicker">Grabado con el terminal real</p>
+        <h2 class="tap-h2 text-dark">Tres formas de fichar, el mismo gesto.</h2>
+        <p class="text-dark/65 text-lg">
+          Sin pantalla que tocar y sin app que abrir. El lector coge el llavero o la tarjeta
+          antes de apoyarlos y la pantalla confirma con nombre, foto y hora.
+        </p>
+      </div>
+      <div class="row g-4">
+        {videos.map((v, i) => (
+          <div class="md:col-4" data-aos="fade-up-sm" data-aos-delay={i * 100}>
+            <figure class="tap-video">
+              <video
+                class="tap-video-el"
+                muted
+                loop
+                playsinline
+                preload="none"
+                poster={`${VID}/${v.src}.webp`}
+                width="720"
+                height="900"
+                aria-label={`Drenpos Tap: ${v.titulo.toLowerCase()}`}
+              >
+                <source src={`${VID}/${v.src}.mp4`} type="video/mp4" />
+              </video>
+              <figcaption>
+                <strong>{v.titulo}</strong>
+                <span>{v.texto}</span>
+              </figcaption>
+            </figure>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ VENTAJAS ═══════════════════════ -->
+  <section class="section pt-0 bg-body" id="por-que">
+    <div class="container">
+      <div class="tap-bento">
+        <div class="tap-bento-big">
+          <p class="tap-kicker">Sin cobertura</p>
+          <h2 class="tap-h2 text-dark">Ficha en la obra, sincroniza en la nave.</h2>
+          <p class="text-dark/70 max-w-lg mb-6">
+            Alimentado al mechero de la furgoneta, el Tap va donde va la cuadrilla. Cada fichaje
+            se guarda con la hora de su reloj integrado y, al coger la WiFi de vuelta, se sube
+            a Drenpos con su hora original. Nadie tiene que hacer nada.
+          </p>
+          <a href="/dispositivo-fichaje#sin-conexion" class="text-primary font-medium hover:underline">Cómo funciona el modo sin conexión</a>
+        </div>
+        {ventajas.map((v) => (
+          <div class="tap-bento-card">
+            <h3>{v.titulo}</h3>
+            <p>{v.texto}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ A MEDIDA · HUELLA ═══════════════════════ -->
+  <section class="section pt-0" id="a-medida">
+    <div class="container">
+      <div class="row gx-0 gy-10 items-center">
+        <div class="lg:col-5">
+          <p class="tap-kicker">Este no está en el catálogo</p>
+          <h2 class="tap-h2 text-dark">Nos pidieron huella. Lo fabricamos.</h2>
+          <p class="text-dark/70 mb-5">
+            El Tap de serie ficha con llavero, tarjeta o QR y no trata datos biométricos. Un
+            cliente necesitaba huella, y como la placa, el firmware y la carcasa son nuestros,
+            hicimos uno con lector. Pones el dedo y has fichado. El dedo de otro, no.
+          </p>
+          <p class="text-dark/55 text-sm mb-8">
+            La huella es un dato de categoría especial. El artículo 9 del RGPD limita su uso y el
+            35 pide una evaluación de impacto previa.
+            <a href="/blog/fichar-con-huella-aepd-alternativas" class="text-primary hover:underline">Lo explicamos en el blog</a>.
+          </p>
+          <a href="#demo-form" class="btn btn-dark">
+            Cuéntanos tu caso
+            <Fragment set:html={flecha} />
+          </a>
+        </div>
+        <div class="lg:col-7">
+          <div class="grid grid-cols-2 gap-4 lg:pl-10">
+            <figure class="tap-video">
+              <video class="tap-video-el" muted loop playsinline preload="none" poster={`${VID}/huella-ok.webp`} width="720" height="900" aria-label="Drenpos Tap con lector de huella: fichaje correcto">
+                <source src={`${VID}/huella-ok.mp4`} type="video/mp4" />
+              </video>
+              <figcaption><strong>Huella correcta</strong><span>Anillo verde y fichaje registrado.</span></figcaption>
+            </figure>
+            <figure class="tap-video">
+              <video class="tap-video-el" muted loop playsinline preload="none" poster={`${VID}/huella-no.webp`} width="720" height="900" aria-label="Drenpos Tap con lector de huella: huella no reconocida">
+                <source src={`${VID}/huella-no.mp4`} type="video/mp4" />
+              </video>
+              <figcaption><strong>Huella de otro</strong><span>Anillo rojo. Ni lo intentes.</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ LO QUE VE LA EMPRESA ═══════════════════════ -->
+  <section class="section bg-body" id="gestion-equipo">
+    <div class="container">
+      <div class="max-w-2xl mb-10">
+        <p class="tap-kicker">Detrás del terminal</p>
+        <h2 class="tap-h2 text-dark">El fichaje entra en Drenpos. El resto lo hace el software.</h2>
+        <p class="text-dark/65 text-lg">
+          Con la licencia de fichaje van incluidos el calendario del equipo, las vacaciones y
+          los turnos. El registro queda inalterable los cuatro años que pide la ley y se
+          exporta para la asesoría o la Inspección.
+        </p>
+      </div>
+      <div class="row g-4">
+        {equipo.map((e) => (
+          <div class="md:col-4">
+            <a href={e.href} class="tap-link-card">
+              <h3>{e.titulo}</h3>
+              <p>{e.texto}</p>
+              <span class="tap-link-more">Ver cómo funciona</span>
+            </a>
+          </div>
+        ))}
+      </div>
+      <p class="mt-10 text-dark/60">
+        ¿Quieres la ficha técnica completa, la comparativa con otras opciones y el precio al detalle?
+        <a href="/dispositivo-fichaje" class="text-primary font-medium hover:underline">Está en la página del dispositivo de fichaje</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ FAQ ═══════════════════════ -->
+  <section class="section pt-0 bg-body" id="faq">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="tap-h2 text-dark mb-8">Preguntas sobre Drenpos Tap</h2>
+        <div class="divide-y divide-dark/10 border-y border-dark/10">
+          {faqs.map((f) => (
+            <details class="tap-faq group">
+              <summary>
+                <span>{f.q}</span>
+                <span class="tap-faq-plus" aria-hidden="true"></span>
+              </summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <DemoForm
+    interes="fichaje"
+    titulo="Te enseñamos el Tap fichando con tu equipo"
+    subtitulo="Veinte minutos por videollamada, con el terminal delante. Si encaja, te mandamos uno con tus llaveros."
+  />
+  <CallToAction />
+</Base>
+
+<style>
+  /* ── tokens locales (los colores de marca van por variable del tema) ── */
+  .tap-hero,
+  .tap-spin-section,
+  #como-funciona {
+    --tap-line: color-mix(in oklab, var(--color-dark) 10%, transparent);
+  }
+  .tap-glow {
+    position: absolute;
+    right: -10%;
+    top: 5%;
+    width: 60vw;
+    height: 60vw;
+    max-width: 900px;
+    max-height: 900px;
+    pointer-events: none;
+    background: radial-gradient(circle, color-mix(in oklab, var(--color-primary) 10%, transparent), transparent 62%);
+    filter: blur(24px);
+  }
+  .tap-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background: color-mix(in oklab, var(--color-primary) 10%, transparent);
+    border-radius: 999px;
+    padding: 0.35rem 1rem;
+    margin-bottom: 1.25rem;
+    font-weight: 500;
+  }
+  .tap-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--color-success);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-success) 25%, transparent);
+  }
+  .tap-h1 {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    font-size: clamp(2.6rem, 6.2vw, 5.4rem);
+    color: var(--color-dark);
+  }
+  .tap-h2 {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    font-size: clamp(1.9rem, 3.6vw, 3rem);
+    margin-bottom: 1rem;
+  }
+  .tap-tick {
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: white;
+    background: var(--color-success);
+    flex-shrink: 0;
+  }
+
+  /* ── escenario parallax ── */
+  .tap-stage {
+    position: relative;
+    aspect-ratio: 5 / 6;
+    max-height: 78vh;
+    width: 100%;
+  }
+  .tap-stage canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .tap-static {
+    position: absolute;
+    inset: 0;
+  }
+  .tap-static-tap {
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    height: 90%;
+    width: auto;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.28));
+  }
+  .tap-static-tarjeta {
+    position: absolute;
+    left: -4%;
+    bottom: 6%;
+    width: 46%;
+    height: auto;
+    transform: rotate(-8deg);
+    filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.25));
+  }
+  .tap-static-llavero {
+    position: absolute;
+    right: 4%;
+    top: 14%;
+    width: 22%;
+    height: auto;
+    filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.25));
+  }
+  .tap-stage.is-3d .tap-static {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+  .tap-hint {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: color-mix(in oklab, var(--color-dark) 45%, transparent);
+    opacity: 0;
+    transition: opacity 0.6s ease 1.2s;
+  }
+  .tap-stage.is-3d .tap-hint {
+    opacity: 1;
+  }
+  @media (hover: none), (pointer: coarse), (max-width: 1023px) {
+    .tap-hint {
+      display: none;
+    }
+  }
+
+  /* ── cronómetro ── */
+  .tap-chrono {
+    border-top: 1px solid var(--tap-line);
+    padding-top: 3rem;
+  }
+  .tap-chrono-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .tap-chrono-num {
+    font-family: var(--font-secondary);
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    font-size: clamp(3.5rem, 9vw, 7.5rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .tap-steps {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .tap-step {
+    border-top: 2px solid var(--tap-line);
+    padding-top: 1.25rem;
+    transition: border-color 0.4s ease;
+  }
+  .tap-step.is-on {
+    border-top-color: var(--color-primary);
+  }
+  .tap-step-t {
+    display: block;
+    font-family: var(--font-secondary);
+    color: var(--color-primary);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+  }
+  .tap-step-h {
+    font-family: var(--font-secondary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .tap-step-p {
+    color: color-mix(in oklab, var(--color-dark) 65%, transparent);
+    margin: 0;
+  }
+
+  /* ── giro 360 ── */
+  .tap-spin-section {
+    height: 320vh;
+    position: relative;
+  }
+  .tap-spin-sticky {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  .tap-spin-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    height: 100%;
+    gap: 1rem;
+  }
+  @media (min-width: 1024px) {
+    .tap-spin-layout {
+      grid-template-columns: 5fr 7fr;
+      gap: 3rem;
+    }
+  }
+  .tap-spin-copy {
+    padding-top: 4rem;
+  }
+  @media (min-width: 1024px) {
+    .tap-spin-copy {
+      padding-top: 0;
+    }
+  }
+  .tap-spin-progress {
+    font-family: var(--font-secondary);
+    font-variant-numeric: tabular-nums;
+    font-size: 3rem;
+    font-weight: 700;
+    color: color-mix(in oklab, var(--color-dark) 18%, transparent);
+    margin-top: 1.5rem;
+  }
+  .tap-spin-stage {
+    position: relative;
+    height: min(62svh, 720px);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  @media (min-width: 1024px) {
+    .tap-spin-stage {
+      height: min(82svh, 760px);
+    }
+  }
+  .tap-spin-img {
+    height: 100%;
+    width: auto;
+    filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.3));
+  }
+  .tap-callout {
+    position: absolute;
+    top: 18%;
+    width: min(220px, 30%);
+    font-size: 0.85rem;
+    line-height: 1.35;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    pointer-events: none;
+  }
+  .tap-callout strong {
+    display: block;
+    font-family: var(--font-secondary);
+    color: var(--color-primary);
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+  .tap-callout span:not(.tap-callout-line) {
+    color: color-mix(in oklab, var(--color-dark) 70%, transparent);
+  }
+  .tap-callout.is-on {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .tap-callout-izq {
+    left: -2%;
+    text-align: right;
+  }
+  .tap-callout-der {
+    right: -2%;
+    text-align: left;
+  }
+  .tap-callout-line {
+    display: block;
+    height: 1px;
+    width: 48px;
+    background: var(--color-primary);
+    margin-bottom: 0.6rem;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.4s ease 0.1s;
+  }
+  .tap-callout-izq .tap-callout-line {
+    margin-left: auto;
+    transform-origin: right;
+  }
+  .tap-callout.is-on .tap-callout-line {
+    transform: scaleX(1);
+  }
+  .tap-callout:nth-of-type(2),
+  .tap-callout:nth-of-type(3) {
+    top: 46%;
+  }
+  .tap-callout:nth-of-type(4),
+  .tap-callout:nth-of-type(5) {
+    top: 62%;
+  }
+  .tap-callout:nth-of-type(6) {
+    top: 8%;
+  }
+  @media (max-width: 1023px) {
+    .tap-callout {
+      font-size: 0.75rem;
+      width: 34%;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tap-spin-section {
+      height: auto;
+    }
+    .tap-spin-sticky {
+      position: static;
+      height: auto;
+      padding-block: 4rem;
+    }
+    .tap-callout {
+      opacity: 1;
+      transform: none;
+      position: static;
+      width: auto;
+      margin-top: 1rem;
+    }
+    .tap-callout-line {
+      transform: none;
+    }
+    .tap-spin-stage {
+      flex-wrap: wrap;
+      height: auto;
+    }
+    .tap-spin-img {
+      height: 60svh;
+    }
+  }
+
+  /* ── vídeos ── */
+  .tap-video {
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background: var(--color-dark);
+    position: relative;
+    aspect-ratio: 4 / 5;
+    margin: 0;
+  }
+  .tap-video-el {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .tap-video figcaption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 1.25rem;
+    background: linear-gradient(180deg, transparent, color-mix(in oklab, var(--color-dark) 92%, transparent));
+    color: white;
+  }
+  .tap-video figcaption strong {
+    display: block;
+    font-family: var(--font-secondary);
+    font-size: 1.15rem;
+    margin-bottom: 0.2rem;
+  }
+  .tap-video figcaption span {
+    color: color-mix(in oklab, white 75%, transparent);
+    font-size: 0.9rem;
+  }
+
+  /* ── bento ── */
+  .tap-bento {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 1024px) {
+    .tap-bento {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .tap-bento-big {
+    grid-column: span 2;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    border: 1px solid color-mix(in oklab, var(--color-primary) 20%, transparent);
+    background: color-mix(in oklab, var(--color-primary) 5%, white);
+  }
+  @media (min-width: 1024px) {
+    .tap-bento-big {
+      padding: 2.5rem;
+    }
+  }
+  .tap-bento-card {
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid color-mix(in oklab, var(--color-dark) 10%, transparent);
+    background: white;
+  }
+  .tap-bento-card h3 {
+    font-family: var(--font-secondary);
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-dark);
+  }
+  .tap-bento-card p {
+    color: color-mix(in oklab, var(--color-dark) 65%, transparent);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* ── tarjetas enlace ── */
+  .tap-link-card {
+    display: block;
+    border-radius: 1.5rem;
+    padding: 1.75rem;
+    border: 1px solid color-mix(in oklab, var(--color-dark) 10%, transparent);
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .tap-link-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px color-mix(in oklab, var(--color-dark) 10%, transparent);
+  }
+  .tap-link-card h3 {
+    font-family: var(--font-secondary);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-dark);
+  }
+  .tap-link-card p {
+    color: color-mix(in oklab, var(--color-dark) 65%, transparent);
+    margin-bottom: 1rem;
+  }
+  .tap-link-more {
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+
+  /* ── faq ── */
+  .tap-faq summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    padding: 1.25rem 0;
+    font-family: var(--font-secondary);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    list-style: none;
+  }
+  .tap-faq summary::-webkit-details-marker {
+    display: none;
+  }
+  .tap-faq-plus {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .tap-faq-plus::before,
+  .tap-faq-plus::after {
+    content: "";
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: 14px;
+    height: 2px;
+    background: var(--color-primary);
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease;
+  }
+  .tap-faq-plus::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  .tap-faq[open] .tap-faq-plus::after {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  .tap-faq p {
+    padding-bottom: 1.25rem;
+    color: color-mix(in oklab, var(--color-dark) 72%, transparent);
+    max-width: 65ch;
+  }
+</style>
+
+<script>
+  import * as THREE from "three";
+
+  const reduced = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ── Parallax 2.5D del hero (Three.js, capas con transparencia) ──
+  function initParallax() {
+    const stage = document.getElementById("tap-parallax") as HTMLElement | null;
+    if (!stage || stage.dataset.ready || reduced()) return;
+    stage.dataset.ready = "1";
+
+    const canvas = document.createElement("canvas");
+    stage.appendChild(canvas);
+    let W = stage.offsetWidth;
+    let H = stage.offsetHeight;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, W / H, 0.1, 100);
+    // Con el escenario más estrecho que 0.83 (móvil) la cámara se aleja para que quepan las capas
+    const fitZ = () => 6 * Math.max(1, 0.83 / (W / H));
+    camera.position.z = fitZ();
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.setSize(W, H);
+    renderer.setClearColor(0x000000, 0);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+    const loader = new THREE.TextureLoader();
+    const loadTex = (src: string) =>
+      new Promise<THREE.Texture>((res, rej) =>
+        loader.load(
+          src,
+          (t) => {
+            t.colorSpace = THREE.SRGBColorSpace;
+            res(t);
+          },
+          undefined,
+          rej,
+        ),
+      );
+
+    type Layer = THREE.Mesh & { userData: { base: number[]; pFactor: number; scrollFX: number; scrollFY: number; floatA: number; floatS: number } };
+    const layers: Layer[] = [];
+    const makeLayer = (tex: THREE.Texture, pw: number, aspect: number, pos: number[], pFactor: number, order: number, sfx: number, sfy: number, floatA = 0, floatS = 1) => {
+      const geo = new THREE.PlaneGeometry(pw, pw / aspect);
+      const mat = new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false, depthTest: false });
+      const mesh = new THREE.Mesh(geo, mat) as Layer;
+      mesh.position.set(pos[0], pos[1], pos[2]);
+      mesh.renderOrder = order;
+      mesh.userData = { base: pos, pFactor, scrollFX: sfx, scrollFY: sfy, floatA, floatS };
+      scene.add(mesh);
+      layers.push(mesh);
+      return mesh;
+    };
+
+    // Halo detrás del terminal: un plano con degradado radial generado en canvas
+    const haloCanvas = document.createElement("canvas");
+    haloCanvas.width = haloCanvas.height = 256;
+    const g = haloCanvas.getContext("2d")!;
+    // Colores del tema (pueden cambiar con un tema de temporada), leídos de las variables CSS
+    const css = getComputedStyle(document.documentElement);
+    const hexA = (hex: string, a: number) => {
+      const h = hex.trim().replace("#", "");
+      const n = parseInt(h.length === 3 ? h.replace(/(.)/g, "$1$1") : h, 16);
+      return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`;
+    };
+    const grad = g.createRadialGradient(128, 128, 10, 128, 128, 128);
+    grad.addColorStop(0, hexA(css.getPropertyValue("--color-secondary") || "#8a8a8a", 0.22));
+    grad.addColorStop(0.5, hexA(css.getPropertyValue("--color-primary") || "#5a5a5a", 0.12));
+    grad.addColorStop(1, "rgba(0,0,0,0)");
+    g.fillStyle = grad;
+    g.fillRect(0, 0, 256, 256);
+    const haloTex = new THREE.CanvasTexture(haloCanvas);
+    haloTex.colorSpace = THREE.SRGBColorSpace;
+    makeLayer(haloTex, 6.5, 1, [0.2, 0.2, -2], 0.04, 0, 0, 0.05);
+
+    Promise.all([loadTex(stage.dataset.tap!), loadTex(stage.dataset.tarjeta!), loadTex(stage.dataset.llavero!)])
+      .then(([tap, tarjeta, llavero]) => {
+        // Alturas en unidades de mundo: el escenario mide unos 5 de alto a z=0
+        makeLayer(tap, 2.45, 635 / 1200, [0.15, -0.05, 0], 0.16, 1, 0, 0.08);
+        const card = makeLayer(tarjeta, 2.2, 1235 / 620, [-1.15, -1.5, 0.7], 0.36, 2, -0.3, 0.18, 0.05, 0.7);
+        card.rotation.z = -0.14;
+        makeLayer(llavero, 0.9, 455 / 360, [1.35, 1.2, 1.0], 0.46, 3, 0.25, 0.32, 0.07, 1.1);
+        stage.classList.add("is-3d");
+      })
+      .catch(() => {});
+
+    let tX = 0, tY = 0, cX = 0, cY = 0;
+    const onMove = (e: MouseEvent) => {
+      tX = (e.clientX / innerWidth - 0.5) * 2;
+      tY = -(e.clientY / innerHeight - 0.5) * 2;
+    };
+    document.addEventListener("mousemove", onMove, { passive: true });
+    // En móvil, el giroscopio sustituye al ratón si el navegador lo permite sin pedir permiso
+    window.addEventListener(
+      "deviceorientation",
+      (e) => {
+        if (e.gamma == null || e.beta == null) return;
+        tX = Math.max(-1, Math.min(1, e.gamma / 30));
+        tY = Math.max(-1, Math.min(1, -(e.beta - 45) / 30));
+      },
+      { passive: true },
+    );
+
+    let scrollProg = 0, smooth = 0;
+    const updateScroll = () => {
+      const r = stage.getBoundingClientRect();
+      const vh = innerHeight;
+      const mid = r.top + r.height / 2;
+      scrollProg = Math.max(-1.4, Math.min(1.4, (vh / 2 - mid) / (vh / 2 + r.height / 2)));
+    };
+    window.addEventListener("scroll", updateScroll, { passive: true });
+    updateScroll();
+
+    const ro = new ResizeObserver(() => {
+      W = stage.offsetWidth;
+      H = stage.offsetHeight;
+      camera.aspect = W / H;
+      camera.position.z = fitZ();
+      camera.updateProjectionMatrix();
+      renderer.setSize(W, H);
+    });
+    ro.observe(stage);
+
+    let raf = 0;
+    let visible = true;
+    new IntersectionObserver((en) => (visible = en[0].isIntersecting), { threshold: 0 }).observe(stage);
+    const t0 = performance.now();
+    const animate = () => {
+      raf = requestAnimationFrame(animate);
+      if (!visible) return;
+      const t = (performance.now() - t0) / 1000;
+      cX += (tX - cX) * 0.06;
+      cY += (tY - cY) * 0.06;
+      smooth += (scrollProg - smooth) * 0.06;
+      camera.rotation.y = cX * 0.04;
+      camera.rotation.x = cY * 0.03;
+      for (const l of layers) {
+        const u = l.userData;
+        l.position.x = u.base[0] + cX * u.pFactor + u.scrollFX * smooth;
+        l.position.y = u.base[1] + cY * u.pFactor + u.scrollFY * smooth + Math.sin(t * u.floatS) * u.floatA;
+      }
+      renderer.render(scene, camera);
+    };
+    animate();
+
+    document.addEventListener(
+      "astro:before-swap",
+      () => {
+        cancelAnimationFrame(raf);
+        document.removeEventListener("mousemove", onMove);
+        ro.disconnect();
+        renderer.dispose();
+      },
+      { once: true },
+    );
+  }
+
+  // ── Cronómetro: cuenta de 0,0 a 2,0 s al entrar en pantalla y enciende cada paso ──
+  function initChrono() {
+    const box = document.getElementById("tap-chrono");
+    if (!box || box.dataset.ready) return;
+    box.dataset.ready = "1";
+    const num = box.querySelector("[data-chrono]") as HTMLElement;
+    const steps = Array.from(box.querySelectorAll<HTMLElement>(".tap-step"));
+    const marks = [0, 0.8, 2.0];
+    const run = () => {
+      if (reduced()) {
+        num.textContent = "2,0";
+        steps.forEach((s) => s.classList.add("is-on"));
+        return;
+      }
+      const start = performance.now();
+      const dur = 2000;
+      const tick = () => {
+        const p = Math.min(1, (performance.now() - start) / dur);
+        const v = p * 2;
+        num.textContent = v.toFixed(1).replace(".", ",");
+        steps.forEach((s, i) => s.classList.toggle("is-on", v >= marks[i] - 0.01));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      tick();
+    };
+    const io = new IntersectionObserver(
+      (en) => {
+        if (en[0].isIntersecting) {
+          run();
+          io.disconnect();
+        }
+      },
+      { threshold: 0.4 },
+    );
+    io.observe(box);
+  }
+
+  // ── Giro 360 ligado al scroll ──
+  function initSpin() {
+    const section = document.getElementById("giro");
+    const stage = document.getElementById("tap-spin") as HTMLElement | null;
+    const img = document.getElementById("tap-spin-img") as HTMLImageElement | null;
+    if (!section || !stage || !img || stage.dataset.ready) return;
+    stage.dataset.ready = "1";
+    const n = Number(stage.dataset.frames);
+    const base = stage.dataset.base!;
+    const src = (i: number) => `${base}${String(i).padStart(2, "0")}.webp`;
+    const deg = section.querySelector("[data-spin-deg]") as HTMLElement | null;
+    const callouts = Array.from(stage.querySelectorAll<HTMLElement>(".tap-callout"));
+
+    if (reduced()) {
+      callouts.forEach((c) => c.classList.add("is-on"));
+      return;
+    }
+
+    // Precarga de los fotogramas para que el giro no parpadee
+    const frames: HTMLImageElement[] = [];
+    for (let i = 0; i < n; i++) {
+      const im = new Image();
+      im.decoding = "async";
+      im.src = src(i);
+      frames.push(im);
+    }
+
+    let current = 0;
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const r = section.getBoundingClientRect();
+      const total = r.height - innerHeight;
+      const p = Math.max(0, Math.min(1, -r.top / total));
+      const idx = Math.min(n - 1, Math.floor(p * n));
+      if (idx !== current) {
+        current = idx;
+        img.src = frames[idx].src;
+      }
+      if (deg) deg.textContent = String(Math.round(p * 360));
+      for (const c of callouts) {
+        const a = Number(c.dataset.desde), b = Number(c.dataset.hasta);
+        c.classList.toggle("is-on", p >= a && p <= b);
+      }
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    update();
+    document.addEventListener("astro:before-swap", () => window.removeEventListener("scroll", onScroll), { once: true });
+  }
+
+  // ── Vídeos: se reproducen solos al entrar en pantalla y se paran al salir ──
+  function initVideos() {
+    const vids = Array.from(document.querySelectorAll<HTMLVideoElement>(".tap-video-el"));
+    if (!vids.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          const v = e.target as HTMLVideoElement;
+          if (e.isIntersecting) {
+            if (v.preload === "none") v.preload = "auto";
+            v.play().catch(() => {});
+          } else v.pause();
+        }
+      },
+      { threshold: 0.35 },
+    );
+    vids.forEach((v) => io.observe(v));
+  }
+
+  const init = () => {
+    initParallax();
+    initChrono();
+    initSpin();
+    initVideos();
+  };
+  init();
+  document.addEventListener("astro:page-load", init);
+</script>
