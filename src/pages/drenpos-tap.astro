@@ -215,9 +215,9 @@ const flecha = `<span class="icon-wrapper"><span class="icon"><svg width="19" he
           >
             <!-- Sin JS o con movimiento reducido se ve esta composición fija -->
             <div class="tap-static" aria-hidden="true">
-              <img src={`${IMG}/tarjeta.webp`} alt="" width="1235" height="620" class="tap-static-tarjeta" loading="eager" />
-              <img src={`${IMG}/tap.webp`} alt="Drenpos Tap, terminal de fichaje con pantalla de estado y lector RFID y QR" width="635" height="1200" class="tap-static-tap" loading="eager" fetchpriority="high" />
-              <img src={`${IMG}/llavero.webp`} alt="" width="455" height="360" class="tap-static-llavero" loading="eager" />
+              <img src={`${IMG}/tarjeta.webp`} alt="" width="1235" height="616" class="tap-static-tarjeta" loading="eager" />
+              <img src={`${IMG}/tap.webp`} alt="Drenpos Tap, terminal de fichaje con pantalla de estado y lector RFID y QR" width="639" height="1200" class="tap-static-tap" loading="eager" fetchpriority="high" />
+              <img src={`${IMG}/llavero.webp`} alt="" width="455" height="351" class="tap-static-llavero" loading="eager" />
             </div>
             <p class="tap-hint" aria-hidden="true">Mueve el ratón</p>
           </div>
@@ -700,7 +700,7 @@ const flecha = `<span class="icon-wrapper"><span class="icon"><svg width="19" he
   .tap-spin-img {
     height: 100%;
     width: auto;
-    filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.14));
   }
   .tap-callout {
     position: absolute;
@@ -1025,10 +1025,10 @@ const flecha = `<span class="icon-wrapper"><span class="icon"><svg width="19" he
     Promise.all([loadTex(stage.dataset.tap!), loadTex(stage.dataset.tarjeta!), loadTex(stage.dataset.llavero!)])
       .then(([tap, tarjeta, llavero]) => {
         // Alturas en unidades de mundo: el escenario mide unos 5 de alto a z=0
-        makeLayer(tap, 2.45, 635 / 1200, [0.15, -0.05, 0], 0.16, 1, 0, 0.08);
-        const card = makeLayer(tarjeta, 2.2, 1235 / 620, [-1.15, -1.5, 0.7], 0.36, 2, -0.3, 0.18, 0.05, 0.7);
+        makeLayer(tap, 2.45, 639 / 1200, [0.15, -0.05, 0], 0.16, 1, 0, 0.08);
+        const card = makeLayer(tarjeta, 2.2, 1235 / 616, [-1.15, -1.5, 0.7], 0.36, 2, -0.3, 0.18, 0.05, 0.7);
         card.rotation.z = -0.14;
-        makeLayer(llavero, 0.9, 455 / 360, [1.35, 1.2, 1.0], 0.46, 3, 0.25, 0.32, 0.07, 1.1);
+        makeLayer(llavero, 0.9, 455 / 351, [1.35, 1.2, 1.0], 0.46, 3, 0.25, 0.32, 0.07, 1.1);
         stage.classList.add("is-3d");
       })
       .catch(() => {});
