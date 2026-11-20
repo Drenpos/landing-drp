@@ -1,9 +1,9 @@
 ---
 title: "Preparación de pedidos y picking: qué es, métodos y ruta en el almacén"
-meta_title: "Preparación de pedidos y picking: métodos y ruta"
-description: "Qué es la preparación de pedidos y el picking, cuándo usar picking por pedido, por lotes, por zonas o por oleadas y cómo ordenar la ruta con el plano."
+meta_title: "Preparación de pedidos: qué es, sistemas y tipos de picking"
+description: "Qué es la preparación de pedidos, qué sistemas hay (papel, PDA, luz, voz), cómo organizar la zona de preparación y qué método de picking usar en tu almacén."
 date: 2026-08-12
-updated: 2026-11-06
+updated: 2026-11-20
 image: "/images/blog/preparacion-de-pedidos-picking-almacen/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -93,6 +93,33 @@ El picking por oleadas lanza varios pedidos a la vez en una única ruta por el a
 ![Comparación de rutas de picking sobre la planta de un almacén: cuatro vueltas preparando pedido a pedido frente a una sola vuelta con picking por oleadas](/images/blog/preparacion-de-pedidos-picking-almacen/figura-1.png)
 
 En Drenpos la oleada se lanza desde el listado de preparación seleccionando los pedidos que interesan. El asistente construye una sola ruta, en el orden que sale del plano del almacén, y va indicando en qué caja va cada unidad.
+
+## ¿Qué sistemas de preparación de pedidos hay?
+
+Los sistemas de preparación de pedidos se distinguen por cómo le llega la orden al operario y cómo confirma lo que coge: papel, PDA con escáner, luces en la estantería, voz o máquinas que traen la mercancía. Para una pyme, la elección real suele estar entre papel y PDA. El resto compensa con volúmenes altos y mucha referencia repetida.
+
+| Sistema | Cómo funciona | Para quién encaja |
+| --- | --- | --- |
+| Lista en papel | El operario recoge con una hoja impresa y la marca a boli | Muy pocos pedidos al día y pocas referencias |
+| PDA o escáner (radiofrecuencia) | La pantalla dice qué coger y dónde, y se confirma escaneando producto, lote o ubicación | La mayoría de pymes con almacén: errores bajos sin obra ni instalación |
+| Pick-to-light | Una luz en el hueco indica qué coger y cuántas unidades | Muchas líneas pequeñas en estanterías fijas, como farmacia o recambios de alta rotación |
+| Put-to-light o put-to-wall | Se recoge en bloque y una pared de luces indica en qué casillero va cada unidad | Comercio electrónico con muchos pedidos de pocas líneas |
+| Picking por voz | El operario oye las órdenes por auriculares y confirma hablando | Cámaras de frío y trabajo con guantes y manos ocupadas |
+| Mercancía a persona | Robots o transelevadores llevan la caja al puesto del operario | Grandes almacenes con inversión fuerte |
+
+La PDA con escáner es el punto de equilibrio: cuesta poco, no exige tocar las estanterías y deja registrado qué se cogió, de dónde y con qué lote. Es lo que usa Drenpos, con el móvil o con una PDA.
+
+## ¿Cómo se organiza la zona de preparación de pedidos?
+
+La zona de preparación de pedidos es el espacio donde se agrupa, se revisa y se embala lo recogido antes de expedirlo. Conviene que esté separada de la recepción, cerca de los muelles de carga y con un sitio fijo para cada cosa: bultos en curso, mesa de verificación, material de embalaje y pedidos listos esperando transportista.
+
+Cinco reglas que funcionan en casi cualquier nave:
+
+1. **Recepción y expedición, cada una a su lado.** Si comparten espacio, la mercancía que entra se mezcla con la que sale y aparecen los errores de inventario.
+2. **Una mesa de verificación con báscula e impresora.** Ahí se comprueba el pedido, se pesa y sale la etiqueta del bulto o del palé con su [código SSCC](/blog/etiqueta-sscc-gs1-palets).
+3. **Huecos de espera por ruta o por transportista**, marcados en el suelo. Así, cuando llega el camión, se carga lo suyo y nada más.
+4. **Lo que más sale, más cerca.** Las referencias de mayor rotación van junto a la zona de preparación para acortar la ruta de picking.
+5. **Pasillos libres y flujo en un solo sentido**, en forma de U o en línea recta, para que nadie vaya a contracorriente con la transpaleta.
 
 ## ¿Qué es la ruta de picking y por qué pesa tanto?
 

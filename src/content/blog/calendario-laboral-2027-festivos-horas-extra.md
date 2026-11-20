@@ -136,7 +136,7 @@ El [artículo 35 del Estatuto](https://www.conceptosjuridicos.com/estatuto-de-lo
 - **Máximo 80 al año**, en proporción si la jornada es menor. Las compensadas con descanso en esos cuatro meses no cuentan para el límite.
 - **Se registran día a día** y se totalizan en el periodo de pago de la nómina, con copia al trabajador (art. 35.5).
 
-De fondo, el artículo 34.1 fija la jornada ordinaria máxima en 40 horas semanales de promedio en cómputo anual; tu convenio concreta la tuya.
+De fondo, el artículo 34.1 fija la jornada ordinaria máxima en 40 horas semanales de promedio en cómputo anual; tu convenio concreta la tuya. Si quieres el cálculo completo, con un ejemplo en euros y los tipos de cotización de 2026, está en [horas extra: cómo se calculan, se pagan y se registran](/blog/horas-extra-como-se-calculan).
 
 Con el calendario bien hecho, la cuenta de cada día es una resta:
 

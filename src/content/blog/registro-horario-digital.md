@@ -1,9 +1,9 @@
 ---
 title: "Registro horario digital en 2026: qué exige la ley, requisitos y estado del real decreto"
 meta_title: "Registro horario digital 2026: requisitos y estado legal"
-description: "Qué exige hoy el registro de jornada, qué cambia con el real decreto (sin aprobar a 17 de octubre de 2026), requisitos del sistema, multas y cómo adaptarte."
+description: "Qué exige hoy el registro de jornada, qué cambia con el real decreto (sin aprobar a 20 de noviembre de 2026), requisitos del sistema, multas y cómo adaptarte."
 date: 2026-08-03
-updated: 2026-10-23
+updated: 2026-11-20
 image: "/images/blog/registro-horario-digital/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -23,12 +23,12 @@ featured: false
 draft: false
 hero:
   title: "Registro horario digital: lo que exige hoy la ley y lo que cambiará"
-  description: "Estado del real decreto a 17 de octubre de 2026, requisitos que debe cumplir tu sistema, multas vigentes y un plan para pasar del papel o el Excel sin parar el negocio."
+  description: "Estado del real decreto a 20 de noviembre de 2026, requisitos que debe cumplir tu sistema, multas vigentes y un plan para pasar del papel o el Excel sin parar el negocio."
 faq:
   - question: "¿Es obligatorio el registro horario digital en 2026?"
-    answer: "El registro de jornada es obligatorio desde mayo de 2019 para toda empresa con personas por cuenta ajena (artículo 34.9 del Estatuto de los Trabajadores). Que sea obligatoriamente digital depende de un real decreto que, a 17 de octubre de 2026, no está aprobado por el Consejo de Ministros ni publicado en el BOE. Hasta entonces el papel sigue siendo legal si refleja la jornada real."
+    answer: "El registro de jornada es obligatorio desde mayo de 2019 para toda empresa con personas por cuenta ajena (artículo 34.9 del Estatuto de los Trabajadores). Que sea obligatoriamente digital depende de un real decreto que, a 20 de noviembre de 2026, no está aprobado por el Consejo de Ministros ni publicado en el BOE. Hasta entonces el papel sigue siendo legal si refleja la jornada real."
   - question: "¿Cuándo se aprueba el real decreto de registro horario digital?"
-    answer: "No hay fecha oficial. El Consejo de Estado emitió dictamen desfavorable el 23 de marzo de 2026, el Ministerio de Trabajo dio por cerrada la revisión del texto el 2 de octubre y espera llevarlo al Consejo de Ministros en octubre. Las elecciones del 29 de noviembre no lo bloquean, porque un real decreto no necesita convalidación del Congreso. El proyecto prevé entrar en vigor a los 20 días de publicarse."
+    answer: "No hay fecha oficial. El Consejo de Estado emitió dictamen desfavorable el 23 de marzo de 2026 y Trabajo dio por cerrada la revisión del texto el 2 de octubre, pero no se ha llevado al Consejo de Ministros. El 17 de noviembre la ministra de Trabajo pidió aprobarlo en el Consejo extraordinario del viernes 20, y fuentes de la Moncloa dijeron que no está previsto antes de las elecciones del 29 de noviembre. El proyecto prevé entrar en vigor a los 20 días de publicarse."
   - question: "¿Qué multa hay por no llevar el registro de jornada?"
     answer: "Hoy es infracción grave de la LISOS, con multa de 751 a 7.500 euros por infracción; falsear los registros puede ser muy grave, de 7.501 a 225.018 euros. Las versiones conocidas del proyecto de real decreto plantean hasta 10.000 euros por trabajador afectado, pero eso no está en vigor."
   - question: "¿Qué requisitos debe cumplir un sistema de registro horario digital?"
@@ -39,11 +39,11 @@ faq:
     answer: "Se puede, pero obliga a tratar datos biométricos, que el RGPD considera categoría especial. El artículo 9 del RGPD prohíbe tratarlos salvo excepción y el artículo 35 obliga a una evaluación de impacto previa. Fichar con llavero, tarjeta, QR o móvil cumple igual la ley y evita ese tratamiento."
 ---
 
-> **Respuesta corta:** el registro de jornada es obligatorio desde 2019 y la Inspección puede pedirlo en cualquier momento. Lo que todavía no es obligatorio es que sea digital: el real decreto que lo exigiría no está aprobado ni publicado a fecha de 17 de octubre de 2026. Hoy la multa por no llevarlo bien es de 751 a 7.500 euros. Un sistema digital con historial de cambios te cubre ahora y cuando salga la norma.
+> **Respuesta corta:** el registro de jornada es obligatorio desde 2019 y la Inspección puede pedirlo en cualquier momento. Lo que todavía no es obligatorio es que sea digital: el real decreto que lo exigiría no está aprobado ni publicado a fecha de 20 de noviembre de 2026. Hoy la multa por no llevarlo bien es de 751 a 7.500 euros. Un sistema digital con historial de cambios te cubre ahora y cuando salga la norma.
 
-> **Actualizado el 17 de octubre de 2026**
+> **Actualizado el 20 de noviembre de 2026**
 >
-> Hemos revisado el estado del real decreto: no figura en la [referencia del Consejo de Ministros del 13 de octubre](https://www.lamoncloa.gob.es/consejodeministros/referencias/Paginas/2026/20261013-referencia-rueda-de-prensa-ministros.aspx) y no hay nada en el BOE. Esta guía integra la antigua página "Registro horario 2026: nuevos requisitos y cómo adaptarse", que ahora redirige aquí, con un plan de adaptación paso a paso.
+> El real decreto sigue sin aprobar ni publicar. El 17 de noviembre la ministra de Trabajo pidió aprobarlo en el Consejo de Ministros extraordinario del viernes 20 ([elDiario.es](https://www.eldiario.es/politica/ultima-hora-elecciones-generales-actualidad-politica-directo_6_13669522_1126664.html)), y al día siguiente fuentes de la Moncloa dijeron que «no está previsto» aprobarlo antes de las elecciones del 29 de noviembre ([El País](https://elpais.com/economia/2026-11-18/el-gobierno-entierra-el-registro-horario-pese-a-las-promesas-de-aprobarlo-antes-de-las-elecciones.html)). Esta guía integra la antigua página "Registro horario 2026: nuevos requisitos y cómo adaptarse", que ahora redirige aquí, con un plan de adaptación paso a paso.
 
 ## ¿Qué exige hoy la ley sobre el registro horario?
 
@@ -55,7 +55,7 @@ La ley de hoy no impone un método. Papel, Excel o un programa valen si reflejan
 
 ## ¿Cuál es el estado del real decreto de registro horario digital?
 
-A 17 de octubre de 2026, el real decreto no está aprobado por el Consejo de Ministros ni publicado en el BOE. El Ministerio de Trabajo dio por terminada la revisión del texto el 2 de octubre y quiere aprobarlo este mes. Las elecciones generales del 29 de noviembre no lo frenan: al ser un real decreto, el Gobierno puede aprobarlo sin pasar por el Congreso.
+A 20 de noviembre de 2026, el real decreto no está aprobado por el Consejo de Ministros ni publicado en el BOE. Trabajo dio por terminada la revisión del texto el 2 de octubre, pero el Gobierno no se pone de acuerdo para aprobarlo: la ministra de Trabajo lo quiere ya y la Moncloa dice que no está previsto antes de las elecciones del 29 de noviembre. Legalmente las elecciones no lo impiden, porque un real decreto no pasa por el Congreso. Lo que haga el Gobierno que salga de las urnas está por ver.
 
 | Fecha | Qué pasó |
 | --- | --- |
@@ -67,6 +67,9 @@ A 17 de octubre de 2026, el real decreto no está aprobado por el Consejo de Min
 | 2 de octubre de 2026 | Trabajo da por cerrada la revisión y espera llevarlo al Consejo de Ministros en octubre ([Infobae, con Europa Press](https://www.infobae.com/america/agencias/2026/10/05/la-reforma-del-registro-horario-todavia-podria-ver-la-luz-antes-de-las-elecciones-del-29n/)) |
 | 6 de octubre de 2026 | El BOE publica la disolución de las Cortes y la convocatoria de elecciones para el 29 de noviembre |
 | 13 de octubre de 2026 | El Consejo de Ministros se reúne y no lo aprueba ([referencia oficial](https://www.lamoncloa.gob.es/consejodeministros/referencias/Paginas/2026/20261013-referencia-rueda-de-prensa-ministros.aspx)) |
+| 28 de octubre de 2026 | Sigue sin publicarse en el BOE ([Europa Press](https://www.europapress.es/comunicados/empresas-00908/noticia-comunicado-control-jornada-laboral-incertidumbre-aprobacion-registro-horario-digital-20261028135622.html)) |
+| 17 de noviembre de 2026 | La ministra de Trabajo pide aprobarlo en el Consejo de Ministros extraordinario del viernes 20 ([elDiario.es](https://www.eldiario.es/politica/ultima-hora-elecciones-generales-actualidad-politica-directo_6_13669522_1126664.html)) |
+| 18 de noviembre de 2026 | La Moncloa dice que «no está previsto» aprobarlo antes del 29 de noviembre ([El País](https://elpais.com/economia/2026-11-18/el-gobierno-entierra-el-registro-horario-pese-a-las-promesas-de-aprobarlo-antes-de-las-elecciones.html)) |
 
 El [proyecto publicado por el Ministerio](https://expinterweb.mites.gob.es/participa/listado/download/6cb63e79-48a8-4e99-9784-3a0b26ae6106) prevé que entre en vigor a los 20 días de su publicación. Si sale con ese plazo, quien siga con papel tendrá menos de un mes para cambiar. Revisaremos esta guía el día que se publique.
 
@@ -156,11 +159,11 @@ El informe por persona sale con cada día y su estado (normal, vacaciones, festi
 
 ### ¿Es obligatorio el registro horario digital en 2026?
 
-El registro de jornada es obligatorio desde mayo de 2019 para toda empresa con personas por cuenta ajena (artículo 34.9 del Estatuto de los Trabajadores). Que sea obligatoriamente digital depende de un real decreto que, a 17 de octubre de 2026, no está aprobado por el Consejo de Ministros ni publicado en el BOE. Hasta entonces el papel sigue siendo legal si refleja la jornada real.
+El registro de jornada es obligatorio desde mayo de 2019 para toda empresa con personas por cuenta ajena (artículo 34.9 del Estatuto de los Trabajadores). Que sea obligatoriamente digital depende de un real decreto que, a 20 de noviembre de 2026, no está aprobado por el Consejo de Ministros ni publicado en el BOE. Hasta entonces el papel sigue siendo legal si refleja la jornada real.
 
 ### ¿Cuándo se aprueba el real decreto de registro horario digital?
 
-No hay fecha oficial. El Consejo de Estado emitió dictamen desfavorable el 23 de marzo de 2026, el Ministerio de Trabajo dio por cerrada la revisión del texto el 2 de octubre y espera llevarlo al Consejo de Ministros en octubre. Las elecciones del 29 de noviembre no lo bloquean, porque un real decreto no necesita convalidación del Congreso. El proyecto prevé entrar en vigor a los 20 días de publicarse.
+No hay fecha oficial. El Consejo de Estado emitió dictamen desfavorable el 23 de marzo de 2026 y Trabajo dio por cerrada la revisión del texto el 2 de octubre, pero no se ha llevado al Consejo de Ministros. El 17 de noviembre la ministra de Trabajo pidió aprobarlo en el Consejo extraordinario del viernes 20, y fuentes de la Moncloa dijeron que no está previsto antes de las elecciones del 29 de noviembre. El proyecto prevé entrar en vigor a los 20 días de publicarse.
 
 ### ¿Qué multa hay por no llevar el registro de jornada?
 

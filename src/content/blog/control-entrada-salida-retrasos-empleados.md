@@ -3,7 +3,7 @@ title: "Control de entrada y salida de empleados: qué hacer con los retrasos"
 meta_title: "Control de entrada y salida de empleados y retrasos"
 description: "Cuántos minutos de retraso se toleran, qué permite la ley ante retrasos reiterados y cómo detectar incidencias de fichaje con tolerancias y notas."
 date: 2026-09-23
-updated: 2026-10-22
+updated: 2026-11-20
 image: "/images/blog/registro-horario-2026-nuevos-requisitos-adaptacion/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -69,7 +69,7 @@ Porque la conversación con quien llega tarde siempre empieza igual: "no es para
 
 Con un registro fiable la conversación cambia. Tienes la hora de cada entrada, el horario que tocaba, si hubo incidencia y si alguien la justificó con una nota. Puedes decir "este mes llevas seis entradas por encima de la tolerancia y ninguna tiene justificación" y enseñar el informe. Es más justo para la persona también: ve lo mismo que ve su responsable.
 
-La base de todo es el [registro de jornada obligatorio](/blog/registro-horario-digital) del artículo 34.9 del Estatuto, vigente desde 2019. A 23 de septiembre de 2026, el real decreto que obligaría a que ese registro sea digital sigue sin aprobarse ni publicarse en el BOE. Pero un registro que se puede editar sin dejar huella no sirve para sancionar ni para defenderse.
+La base de todo es el [registro de jornada obligatorio](/blog/registro-horario-digital) del artículo 34.9 del Estatuto, vigente desde 2019. A 20 de noviembre de 2026, el real decreto que obligaría a que ese registro sea digital sigue sin aprobarse ni publicarse en el BOE. Pero un registro que se puede editar sin dejar huella no sirve para sancionar ni para defenderse.
 
 ## ¿En qué se diferencia el control de entrada y salida del registro de jornada?
 

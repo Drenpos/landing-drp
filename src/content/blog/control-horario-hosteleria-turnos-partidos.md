@@ -3,7 +3,7 @@ title: "Control horario en hostelería: cómo fichar turnos partidos y horas ext
 meta_title: "Control horario en hostelería: turnos partidos y horas extra"
 description: "Registro de jornada de camareros y cocina con turnos partidos, extras de fin de semana y festivos: qué exige hoy la ley y cómo llevarlo en un bar."
 date: 2026-09-23
-updated: 2026-10-22
+updated: 2026-11-20
 image: "/images/blog/gestion-mesas-restaurante-mapa-sala/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -22,14 +22,14 @@ featured: false
 draft: false
 hero:
   title: "En un bar la jornada tiene dos mitades, y el registro también"
-  description: "Qué obliga la ley a fecha de 28 de septiembre de 2026, dónde se complica en hostelería y cómo se resuelve con un llavero en la barra."
+  description: "Qué obliga la ley a fecha de 20 de noviembre de 2026, dónde se complica en hostelería y cómo se resuelve con un llavero en la barra."
 faq:
   - question: "¿Es obligatorio el registro de jornada en un bar o un restaurante?"
     answer: "Sí. Desde el 12 de mayo de 2019, el artículo 34.9 del Estatuto de los Trabajadores obliga a toda empresa con trabajadores a registrar cada día la hora de inicio y de fin de la jornada de cada persona y a guardar esos registros cuatro años. La hostelería no tiene ninguna excepción. No llevarlo es una infracción grave de la LISOS, con multa de 751 a 7.500 € por infracción."
   - question: "¿Cómo se ficha un turno partido?"
     answer: "Con dos entradas y dos salidas en el mismo día: al empezar el servicio de mediodía, al terminarlo, al volver por la noche y al cerrar. Así el registro refleja el horario real y el hueco de la tarde no cuenta como trabajo. Con un calendario que recoja ese turno, el sistema sabe cuántas horas tocaban y calcula las extra."
   - question: "¿Ya es obligatorio el registro horario digital?"
-    answer: "No a fecha de 28 de septiembre de 2026. El real decreto que haría obligatorio el registro digital no está aprobado ni publicado en el BOE, y el Consejo de Estado emitió un dictamen desfavorable el 23 de marzo de 2026. Lo vigente es el artículo 34.9 del Estatuto de los Trabajadores, que no fija un formato concreto pero sí la obligación de registrar la jornada cada día."
+    answer: "No a fecha de 20 de noviembre de 2026. El real decreto que haría obligatorio el registro digital no está aprobado ni publicado en el BOE: el Consejo de Estado emitió un dictamen desfavorable el 23 de marzo de 2026 y la Moncloa dijo el 18 de noviembre que no está previsto aprobarlo antes de las elecciones del 29 de noviembre. Lo vigente es el artículo 34.9 del Estatuto de los Trabajadores, que no fija un formato concreto pero sí la obligación de registrar la jornada cada día."
   - question: "¿Cómo se cuentan las horas extra de los camareros?"
     answer: "El Estatuto de los Trabajadores pide registrar la jornada día a día y totalizarla en el periodo de pago de la nómina, con copia del resumen para el trabajador, y limita las horas extra a ochenta al año. En Drenpos las horas esperadas salen del calendario de cada persona y de sus festivos, y lo trabajado por encima es extra, día a día, con su total en el informe del periodo."
   - question: "¿Cuánto cuesta el control horario para un bar en Drenpos?"
@@ -38,7 +38,7 @@ faq:
     answer: "Sí, con un calendario rotativo. En lugar de lunes a domingo, indicas los días de trabajo, los de descanso, el horario y el primer día del ciclo, y Drenpos va alternando solo: 5/2 con libranzas que se mueven, 6/3 o mañanas y noches dentro del mismo ciclo. Si dos personas se turnan, cada una tiene su primer día sobre el mismo calendario. Las horas esperadas, las extra y las vacaciones ya cuentan con el ciclo."
 ---
 
-> En hostelería el registro de jornada es obligatorio desde 2019, como en cualquier empresa: hora de entrada y de salida de cada persona, cada día, guardadas cuatro años. Con turno partido son dos entradas y dos salidas en el mismo día, y con extras de fin de semana hay que saber cuántas horas tocaban. No llevarlo se multa hoy con **751 a 7.500 € por infracción grave**. El reglamento del registro digital sigue sin publicarse a 28 de septiembre de 2026.
+> En hostelería el registro de jornada es obligatorio desde 2019, como en cualquier empresa: hora de entrada y de salida de cada persona, cada día, guardadas cuatro años. Con turno partido son dos entradas y dos salidas en el mismo día, y con extras de fin de semana hay que saber cuántas horas tocaban. No llevarlo se multa hoy con **751 a 7.500 € por infracción grave**. El reglamento del registro digital sigue sin publicarse a 20 de noviembre de 2026.
 
 <div class="my-8 flex justify-center">
   <a href="/software-bares-restaurantes#fichaje-hosteleria" class="inline-flex rounded-full px-6 py-3 font-semibold text-white" style="background: var(--bg-menu-lig);">
@@ -56,7 +56,7 @@ No llevar el registro es una infracción grave del artículo 7.5 de la [Ley sobr
 
 ## ¿En qué punto está el nuevo real decreto de registro horario?
 
-A fecha de 28 de septiembre de 2026, **no está aprobado ni publicado en el BOE**. El Consejo de Estado emitió un dictamen desfavorable el 23 de marzo de 2026, como recoge [Mi Fichaje Legal](https://mifichajelegal.com/blog/real-decreto-registro-horario-digital-mayo-2026-estado-tramitacion-pymes/) en su seguimiento de la tramitación. El texto en trámite quiere que el registro sea digital, con trazabilidad de cualquier cambio y acceso a distancia para la Inspección.
+A fecha de 20 de noviembre de 2026, **no está aprobado ni publicado en el BOE**. El Consejo de Estado emitió un dictamen desfavorable el 23 de marzo de 2026, como recoge [Mi Fichaje Legal](https://mifichajelegal.com/blog/real-decreto-registro-horario-digital-mayo-2026-estado-tramitacion-pymes/), y el 18 de noviembre la Moncloa dijo que no está previsto aprobarlo antes de las elecciones del 29 de noviembre ([El País](https://elpais.com/economia/2026-11-18/el-gobierno-entierra-el-registro-horario-pese-a-las-promesas-de-aprobarlo-antes-de-las-elecciones.html)). El texto en trámite quiere que el registro sea digital, con trazabilidad de cualquier cambio y acceso a distancia para la Inspección.
 
 Mientras tanto se aplica la norma de 2019 con las multas de la LISOS. Si alguien te dice que ya hay multa por trabajador, no es así. El estado completo lo mantenemos al día en la [guía del registro horario digital](/blog/registro-horario-digital).
 
@@ -93,7 +93,7 @@ El cierre tardío también está resuelto. Si el horario va de 19:00 a 1:30 y la
 
 ## ¿Cómo se cuentan las horas extra del fin de semana y los festivos?
 
-Con una sola cuenta. En Drenpos las horas esperadas de cada día salen del calendario de la persona, de sus festivos y de sus ausencias aprobadas. Lo trabajado por encima es extra, día a día, y la semana y el mes son la suma de los días. Es lo que pide el artículo 35.5: registro diario y total en el periodo de la nómina.
+Con una sola cuenta. En Drenpos las horas esperadas de cada día salen del calendario de la persona, de sus festivos y de sus ausencias aprobadas. Lo trabajado por encima es extra, día a día, y la semana y el mes son la suma de los días. Es lo que pide el artículo 35.5: registro diario y total en el periodo de la nómina. Cómo se pagan y cuánto cotizan lo tienes en [horas extra: cómo se calculan y registran](/blog/horas-extra-como-se-calculan).
 
 Los festivos se asignan por persona, nacionales y autonómicos, porque un camarero en Extremadura no libra los mismos días que uno en Cataluña. Los fijos se marcan como recurrentes para no tener que meterlos cada año. Trabajar un festivo o un día de vacaciones cuenta como horas extra y sale con su nombre en el informe PDF, listo para la gestoría o para la Inspección.
 
@@ -127,7 +127,7 @@ Con dos entradas y dos salidas en el mismo día: al empezar el servicio de medio
 
 ### ¿Ya es obligatorio el registro horario digital?
 
-No a fecha de 28 de septiembre de 2026. El real decreto que haría obligatorio el registro digital no está aprobado ni publicado en el BOE, y el Consejo de Estado emitió un dictamen desfavorable el 23 de marzo de 2026. Lo vigente es el artículo 34.9 del Estatuto de los Trabajadores, que no fija un formato concreto pero sí la obligación de registrar la jornada cada día.
+No a fecha de 20 de noviembre de 2026. El real decreto que haría obligatorio el registro digital no está aprobado ni publicado en el BOE: el Consejo de Estado emitió un dictamen desfavorable el 23 de marzo de 2026 y la Moncloa dijo el 18 de noviembre que no está previsto aprobarlo antes de las elecciones del 29 de noviembre. Lo vigente es el artículo 34.9 del Estatuto de los Trabajadores, que no fija un formato concreto pero sí la obligación de registrar la jornada cada día.
 
 ### ¿Cómo se cuentan las horas extra de los camareros?
 

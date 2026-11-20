@@ -1,7 +1,7 @@
 ---
-title: "Etiqueta SSCC: qué es, cómo se genera y por qué la exigen"
-meta_title: "Etiqueta SSCC: qué es, sus 18 dígitos y cómo generarla"
-description: "Qué es la etiqueta SSCC, cómo se componen sus 18 dígitos y el dígito de control, qué identificadores GS1 lleva el palet y cómo se genera en un SGA."
+title: "Qué es el SSCC: el código y la etiqueta del palé, cómo se genera y por qué la exigen"
+meta_title: "Qué es el SSCC: código y etiqueta del palé, 18 dígitos"
+description: "El SSCC es el código GS1 de 18 dígitos que identifica cada palé. Qué es, cómo se calcula el dígito de control, qué lleva la etiqueta y cómo se genera."
 date: 2026-08-12
 updated: 2026-10-22
 image: "/images/blog/etiqueta-sscc-gs1-palets/cover.jpg"

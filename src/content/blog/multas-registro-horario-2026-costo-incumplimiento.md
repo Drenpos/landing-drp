@@ -1,9 +1,9 @@
 ---
 title: "Multas del registro horario en 2026: cuánto son de verdad y cómo evitarlas"
 meta_title: "Multas registro horario 2026: cuantías y cómo evitarlas"
-description: "Multas por no llevar el registro de jornada a 17 de octubre de 2026: 751 a 7.500 € por infracción grave, qué cambiaría el real decreto y cómo evitar la sanción."
+description: "Multas por no llevar el registro de jornada a 20 de noviembre de 2026: 751 a 7.500 € por infracción grave, qué cambiaría el real decreto y cómo evitarla."
 date: 2026-07-21
-updated: 2026-10-22
+updated: 2026-11-20
 image: "/images/blog/multas-registro-horario-2026-costo-incumplimiento/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -22,12 +22,12 @@ featured: false
 draft: false
 hero:
   title: "Multas del registro horario: lo que está en vigor y lo que solo es proyecto"
-  description: "Cuantías reales de la LISOS a 17 de octubre de 2026, qué mira la Inspección, cuánto cambiaría con el real decreto y qué hacer para no tener que comprobarlo."
+  description: "Cuantías reales de la LISOS a 20 de noviembre de 2026, qué mira la Inspección, cuánto cambiaría con el real decreto y qué hacer para no tener que comprobarlo."
 faq:
   - question: "¿De cuánto es la multa por no llevar el registro horario en 2026?"
-    answer: "A 17 de octubre de 2026, no llevar el registro de jornada o llevarlo de forma que no refleje la jornada real es infracción grave del artículo 7.5 de la LISOS, con multa de 751 a 7.500 euros por infracción. Falsear los registros puede considerarse muy grave, de 7.501 a 225.018 euros."
+    answer: "A 20 de noviembre de 2026, no llevar el registro de jornada o llevarlo de forma que no refleje la jornada real es infracción grave del artículo 7.5 de la LISOS, con multa de 751 a 7.500 euros por infracción. Falsear los registros puede considerarse muy grave, de 7.501 a 225.018 euros."
   - question: "¿La multa del registro horario es por trabajador?"
-    answer: "Hoy no: la LISOS sanciona por infracción. Las versiones conocidas del proyecto de real decreto plantean hasta 10.000 euros por trabajador afectado, y no todos los análisis lo leen igual. El real decreto no está aprobado ni publicado en el BOE a 17 de octubre de 2026, así que esa multa por trabajador no está en vigor."
+    answer: "Hoy no: la LISOS sanciona por infracción. Las versiones conocidas del proyecto de real decreto plantean hasta 10.000 euros por trabajador afectado, y no todos los análisis lo leen igual. El real decreto no está aprobado ni publicado en el BOE a 20 de noviembre de 2026, así que esa multa por trabajador no está en vigor."
   - question: "¿Qué pide la Inspección de Trabajo sobre el registro de jornada?"
     answer: "El registro diario de cada persona con la hora de inicio y fin, de los últimos cuatro años si hace falta, y que refleje la jornada real. Suele cruzarlo con cuadrantes, nóminas y lo que cuenten los trabajadores. Si hay horas extra, deben estar registradas día a día (artículo 35.5 del Estatuto)."
   - question: "¿Cómo evito una multa del registro horario?"
@@ -36,11 +36,11 @@ faq:
     answer: "Sí. Si no hay registro fiable, la empresa tiene difícil desmentir las horas extra que el trabajador alegue, y puede acabar teniendo que pagarlas. El registro protege a las dos partes: al trabajador frente a horas que nadie paga y a la empresa frente a reclamaciones que no puede rebatir."
 ---
 
-> **Respuesta corta:** a 17 de octubre de 2026, no llevar bien el registro de jornada es infracción grave con multa de 751 a 7.500 euros por infracción, según la LISOS. Si hay falsedad, puede ser muy grave: de 7.501 a 225.018 euros. La multa de hasta 10.000 euros por trabajador que se lee en muchas webs es del proyecto de real decreto, que no está aprobado. Abajo tienes las cuantías por grado y cómo evitarlas.
+> **Respuesta corta:** a 20 de noviembre de 2026, no llevar bien el registro de jornada es infracción grave con multa de 751 a 7.500 euros por infracción, según la LISOS. Si hay falsedad, puede ser muy grave: de 7.501 a 225.018 euros. La multa de hasta 10.000 euros por trabajador que se lee en muchas webs es del proyecto de real decreto, que no está aprobado. Abajo tienes las cuantías por grado y cómo evitarlas.
 
-> **Actualizado el 17 de octubre de 2026**
+> **Actualizado el 20 de noviembre de 2026**
 >
-> Hemos corregido las cuantías con el texto vigente de la LISOS (la versión anterior daba cifras por empleado que no están en vigor) y revisado el estado del real decreto de registro digital.
+> Hemos revisado las cuantías con el texto consolidado de la LISOS (última actualización publicada el 3 de octubre de 2026) y el estado del real decreto de registro digital, que sigue sin aprobarse: la Moncloa dijo el 18 de noviembre que no está previsto antes de las elecciones del 29 de noviembre ([El País](https://elpais.com/economia/2026-11-18/el-gobierno-entierra-el-registro-horario-pese-a-las-promesas-de-aprobarlo-antes-de-las-elecciones.html)).
 
 ## ¿De cuánto es la multa por no llevar el registro horario?
 
@@ -52,11 +52,11 @@ De 751 a 7.500 euros por infracción grave. El [artículo 7.5 de la LISOS](https
 | **Grave (registro de jornada)** | **751 a 1.500 €** | **1.501 a 3.750 €** | **3.751 a 7.500 €** |
 | Muy grave | 7.501 a 30.000 € | 30.001 a 120.005 € | 120.006 a 225.018 € |
 
-Cuantías del artículo 40.1 de la [LISOS](https://www.boe.es/buscar/act.php?id=BOE-A-2000-15060), vigentes a 17 de octubre de 2026. Para el grado se tienen en cuenta, entre otras cosas, la negligencia, el número de trabajadores afectados, el perjuicio causado y la reincidencia.
+Cuantías del artículo 40.1 de la [LISOS](https://www.boe.es/buscar/act.php?id=BOE-A-2000-15060), vigentes a 20 de noviembre de 2026. Para el grado se tienen en cuenta, entre otras cosas, la negligencia, el número de trabajadores afectados, el perjuicio causado y la reincidencia.
 
 ## ¿La multa es por trabajador o por empresa?
 
-Hoy, por infracción, no por trabajador. Lo de "hasta 10.000 euros por trabajador afectado" viene de las versiones conocidas del proyecto de real decreto, que a 17 de octubre de 2026 no está aprobado por el Consejo de Ministros ni publicado en el BOE. Y aun así, no todos los análisis coinciden en que se aplicaría por cabeza.
+Hoy, por infracción, no por trabajador. Lo de "hasta 10.000 euros por trabajador afectado" viene de las versiones conocidas del proyecto de real decreto, que a 20 de noviembre de 2026 no está aprobado por el Consejo de Ministros ni publicado en el BOE. Y aun así, no todos los análisis coinciden en que se aplicaría por cabeza.
 
 | | Hoy (en vigor) | Proyecto de real decreto (no en vigor) |
 | --- | --- | --- |
@@ -113,11 +113,11 @@ Si estás eligiendo programa, comparamos diez con precios en los [mejores progra
 
 ### ¿De cuánto es la multa por no llevar el registro horario en 2026?
 
-A 17 de octubre de 2026, no llevar el registro de jornada o llevarlo de forma que no refleje la jornada real es infracción grave del artículo 7.5 de la LISOS, con multa de 751 a 7.500 euros por infracción. Falsear los registros puede considerarse muy grave, de 7.501 a 225.018 euros.
+A 20 de noviembre de 2026, no llevar el registro de jornada o llevarlo de forma que no refleje la jornada real es infracción grave del artículo 7.5 de la LISOS, con multa de 751 a 7.500 euros por infracción. Falsear los registros puede considerarse muy grave, de 7.501 a 225.018 euros.
 
 ### ¿La multa del registro horario es por trabajador?
 
-Hoy no: la LISOS sanciona por infracción. Las versiones conocidas del proyecto de real decreto plantean hasta 10.000 euros por trabajador afectado, y no todos los análisis lo leen igual. El real decreto no está aprobado ni publicado en el BOE a 17 de octubre de 2026, así que esa multa por trabajador no está en vigor.
+Hoy no: la LISOS sanciona por infracción. Las versiones conocidas del proyecto de real decreto plantean hasta 10.000 euros por trabajador afectado, y no todos los análisis lo leen igual. El real decreto no está aprobado ni publicado en el BOE a 20 de noviembre de 2026, así que esa multa por trabajador no está en vigor.
 
 ### ¿Qué pide la Inspección de Trabajo sobre el registro de jornada?
 

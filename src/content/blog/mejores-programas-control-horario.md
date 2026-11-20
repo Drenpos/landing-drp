@@ -47,7 +47,7 @@ faq:
 
 ## ¿Qué debe cumplir un programa de control horario en 2026?
 
-Hoy la ley pide registrar cada día la hora de inicio y de fin de la jornada de cada persona, conservarlo cuatro años y tenerlo a disposición de la plantilla, sus representantes y la Inspección de Trabajo (artículo 34.9 del Estatuto de los Trabajadores, desde 2019). El real decreto en tramitación quiere que además sea digital, inalterable y consultable en remoto. A 17 de octubre de 2026 no está aprobado, pero tiene sentido elegir ya un sistema que lo cumpla.
+Hoy la ley pide registrar cada día la hora de inicio y de fin de la jornada de cada persona, conservarlo cuatro años y tenerlo a disposición de la plantilla, sus representantes y la Inspección de Trabajo (artículo 34.9 del Estatuto de los Trabajadores, desde 2019). El real decreto en tramitación quiere que además sea digital, inalterable y consultable en remoto. A 20 de noviembre de 2026 no está aprobado, pero tiene sentido elegir ya un sistema que lo cumpla.
 
 En la práctica, el filtro mínimo es este:
 
@@ -259,7 +259,7 @@ Porque la cuota es solo una parte. Cuenta también las horas de cuadrar fichajes
 
 ## ¿Es obligatorio tener un programa de control horario?
 
-Es obligatorio llevar el registro de jornada, no un programa concreto. Desde el Real Decreto-ley 8/2019, toda empresa con personas por cuenta ajena registra cada día el inicio y el fin de la jornada y lo conserva cuatro años. Hoy el papel sigue siendo legal; dejaría de serlo con el real decreto de registro digital, que a 17 de octubre de 2026 no está aprobado.
+Es obligatorio llevar el registro de jornada, no un programa concreto. Desde el Real Decreto-ley 8/2019, toda empresa con personas por cuenta ajena registra cada día el inicio y el fin de la jornada y lo conserva cuatro años. Hoy el papel sigue siendo legal; dejaría de serlo con el real decreto de registro digital, que a 20 de noviembre de 2026 no está aprobado.
 
 Estado a 17 de octubre de 2026: el Consejo de Estado emitió dictamen desfavorable en marzo y Trabajo dio por cerrada la revisión del texto el 2 de octubre, con intención de llevarlo al Consejo de Ministros este mes. La [referencia del Consejo de Ministros del 13 de octubre](https://www.lamoncloa.gob.es/consejodeministros/referencias/Paginas/2026/20261013-referencia-rueda-de-prensa-ministros.aspx) no lo incluye. Con las elecciones generales del 29 de noviembre convocadas, puede aprobarse igual porque es un real decreto y no necesita convalidación del Congreso ([Infobae, con Europa Press, 5/10/2026](https://www.infobae.com/america/agencias/2026/10/05/la-reforma-del-registro-horario-todavia-podria-ver-la-luz-antes-de-las-elecciones-del-29n/)).
 

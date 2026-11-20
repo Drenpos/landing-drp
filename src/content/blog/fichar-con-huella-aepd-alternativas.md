@@ -1,9 +1,9 @@
 ---
-title: "Fichar con huella o reconocimiento facial: qué dice la AEPD y qué alternativas son legales"
-meta_title: "Fichar con huella: qué dice la AEPD y alternativas legales"
-description: "Fichar con huella o cara obliga a tratar datos biométricos. Qué dice la AEPD, qué pasó con su guía en 2026 y cómo cumplir con llavero, tarjeta, QR o móvil."
+title: "¿Es legal fichar con huella? Qué dice la AEPD y qué alternativas cumplen"
+meta_title: "¿Es legal fichar con huella dactilar? AEPD y alternativas"
+description: "Fichar con huella dactilar trata datos biométricos. Qué dice la AEPD, qué pasó con su guía en 2026, qué multas hay y cómo cumplir con llavero, tarjeta o QR."
 date: 2026-10-17
-updated: 2026-10-22
+updated: 2026-11-20
 image: "/images/blog/registro-horario-digital/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -48,6 +48,8 @@ faq:
     Ver el terminal con llavero, tarjeta o QR
   </a>
 </div>
+
+Si lo que tienes delante es un terminal que ficha con la cara, lo explico aparte en [¿es legal fichar con reconocimiento facial?](/blog/fichar-reconocimiento-facial-legal), con lo que añade el Reglamento europeo de IA.
 
 Llevo años viendo lectores de huella en la entrada de naves y oficinas. Tienen su lógica: nadie se olvida el dedo en casa y nadie ficha por otro. Técnicamente funcionan; la pega es legal, y desde 2023 el criterio ha cambiado bastante. Aquí va lo que dice la norma, lo que dijo la AEPD, lo que pasó con su guía en 2026 y qué opciones tienes para cumplir.
 

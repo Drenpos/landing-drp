@@ -3,7 +3,7 @@ title: "Fichaje portátil 12V: cumple la ley de jornada en cualquier lugar"
 meta_title: "Dispositivo de fichaje portátil 12V para obras y furgonetas"
 description: "Terminal de fichaje portátil a 12 V: se enchufa al mechero, ficha con llavero RFID, tarjeta o QR y funciona sin internet. Desde [[p:terminal]] sin IVA."
 date: 2026-08-05
-updated: 2026-10-23
+updated: 2026-11-20
 image: "/images/funcionalidades/control-horario/hardware/terminal-drenpos-og.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -34,7 +34,7 @@ faq:
   - question: "¿Sirve para cuadrillas que cambian de obra cada semana?"
     answer: "Es su caso de uso ideal. Al no depender de instalación fija ni de enchufe de red, el encargado lleva el dispositivo en la furgoneta y los operarios fichan al llegar y al salir con su llavero, sin usar el móvil personal. Si en la obra no hay cobertura, el terminal guarda los fichajes con su hora y los sincroniza al volver."
   - question: "¿Qué pasa cuando se apruebe el nuevo real decreto de registro horario?"
-    answer: "A 17 de octubre de 2026 no está aprobado ni publicado en el BOE. El borrador exige sistemas digitales, inalterables y accesibles en remoto por la Inspección de Trabajo. Un fichaje con dispositivo físico sincronizado con software que guarda el historial de cada corrección ya cumple ese estándar, por lo que no necesitarás cambiar de sistema cuando se publique."
+    answer: "A 20 de noviembre de 2026 no está aprobado ni publicado en el BOE. El borrador exige sistemas digitales, inalterables y accesibles en remoto por la Inspección de Trabajo. Un fichaje con dispositivo físico sincronizado con software que guarda el historial de cada corrección ya cumple ese estándar, por lo que no necesitarás cambiar de sistema cuando se publique."
   - question: "¿Por qué el terminal no ficha con huella?"
     answer: "Porque con llavero, tarjeta o QR la empresa no trata datos biométricos. La huella y la cara son categoría especial para el RGPD: su artículo 9 prohíbe tratarlas salvo excepción y el artículo 35 obliga a una evaluación de impacto previa. El llavero cumple igual la ley de registro de jornada y te ahorras ese papeleo."
   - question: "¿Se puede personalizar el dispositivo con el logo de mi empresa?"
@@ -201,7 +201,7 @@ Es su caso de uso ideal. Al no depender de instalación fija ni de enchufe de re
 
 ### ¿Qué pasa cuando se apruebe el nuevo real decreto de registro horario?
 
-A 17 de octubre de 2026 no está aprobado ni publicado en el BOE. El borrador exige sistemas digitales, inalterables y accesibles en remoto por la Inspección de Trabajo. Un fichaje con dispositivo físico sincronizado con software que guarda el historial de cada corrección ya cumple ese estándar, por lo que no necesitarás cambiar de sistema cuando se publique.
+A 20 de noviembre de 2026 no está aprobado ni publicado en el BOE. El borrador exige sistemas digitales, inalterables y accesibles en remoto por la Inspección de Trabajo. Un fichaje con dispositivo físico sincronizado con software que guarda el historial de cada corrección ya cumple ese estándar, por lo que no necesitarás cambiar de sistema cuando se publique.
 
 ### ¿Por qué el terminal no ficha con huella?
 

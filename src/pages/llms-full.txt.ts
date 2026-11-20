@@ -134,6 +134,7 @@ Almacén:
 - ${BASE}/blog/codificar-ubicaciones-almacen: cómo codificar ubicaciones con pasillo, estantería, altura y hueco, etiquetas y errores típicos.
 - ${BASE}/blog/inventario-ciclico-almacen: contar el almacén sin cerrarlo, con método ABC y ejemplo.
 - ${BASE}/blog/recepcion-mercancia-almacen: qué comprobar al recibir, cómo registrarlo y qué hacer con las incidencias.
+- ${BASE}/blog/entradas-salidas-almacen-movimientos-stock: tipos de entradas y salidas de almacén, documento de cada una, por qué se descuadra el stock y cómo registrarlas, con ejemplo.
 - ${BASE}/blog/stock-minimo-punto-de-pedido: fórmulas de stock mínimo, de seguridad y punto de pedido con ejemplo resuelto.
 - ${BASE}/blog/fifo-fefo-lifo-almacen: FIFO, FEFO y LIFO, cuál usar según el sector y qué admite la contabilidad.
 
@@ -145,6 +146,8 @@ Logística y transporte:
 
 Fichajes y equipo:
 - ${BASE}/blog/fichar-con-huella-aepd-alternativas: fichar con huella o cara frente a los arts. 9 y 35 del RGPD, qué pasó con la guía de la AEPD y alternativas sin biometría.
+- ${BASE}/blog/fichar-reconocimiento-facial-legal: si es legal fichar con la cara según el art. 9 del RGPD, la guía de la AEPD anulada por forma en 2026, lo que prohíbe el Reglamento de IA en el trabajo y la diferencia entre foto y reconocimiento facial.
+- ${BASE}/blog/horas-extra-como-se-calculan: qué cuenta como hora extra, límite de 80 al año, pago o compensación con descanso, cotización de 2026 (Orden PJC/297/2026: 28,30 % o 14 % por fuerza mayor) y registro día a día del art. 35.5 del Estatuto.
 - ${BASE}/blog/control-horario-almacenes-naves-turnos: fichar a turnos en almacenes y naves sin móvil.
 - ${BASE}/blog/registro-jornada-seguridad-privada-cuadrante-anual: registro de jornada en seguridad privada, cuadrante anual y convenio 2026-2030.
 - Calendarios laborales 2027 por comunidad: ${BASE}/blog/calendario-laboral-2027-extremadura, ${BASE}/blog/calendario-laboral-2027-andalucia, ${BASE}/blog/calendario-laboral-2027-madrid, ${BASE}/blog/calendario-laboral-2027-cataluna, ${BASE}/blog/calendario-laboral-2027-comunidad-valenciana y ${BASE}/blog/calendario-laboral-2027-castilla-y-leon.
@@ -154,9 +157,9 @@ Tienda y recambios:
 
 Posts fusionados: la comparativa de software de control horario vive ahora en ${BASE}/blog/mejores-programas-control-horario y los requisitos del registro horario de 2026 en ${BASE}/blog/registro-horario-digital; las URL antiguas redirigen con un 301.
 
-## Estado legal del registro horario (a 17 de octubre de 2026)
+## Estado legal del registro horario (a 20 de noviembre de 2026)
 
-El real decreto de registro horario digital sigue sin aprobarse por el Consejo de Ministros y sin publicarse en el BOE. Lo vigente es el art. 34.9 del Estatuto de los Trabajadores (RD-ley 8/2019) y la sanción de la LISOS de 751 a 7.500 € por infracción.
+El real decreto de registro horario digital sigue sin aprobarse por el Consejo de Ministros y sin publicarse en el BOE; el 18/11/2026 la Moncloa dijo que no está previsto aprobarlo antes de las elecciones del 29/11. Lo vigente es el art. 34.9 del Estatuto de los Trabajadores (RD-ley 8/2019) y la sanción de la LISOS de 751 a 7.500 € por infracción.
 
 ## Calendario laboral 2027 (BOE del 13 de octubre de 2026)
 

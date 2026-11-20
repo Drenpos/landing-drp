@@ -1,7 +1,7 @@
 ---
 title: "FIFO, FEFO y LIFO en el almacén: diferencias, cuál usar en tu sector y qué admite la contabilidad"
-meta_title: "FIFO, FEFO y LIFO: diferencias y cuál usar en tu almacén"
-description: "Diferencias entre FIFO, FEFO y LIFO, cuál usar en alimentación, farmacia o recambios, su relación con lotes y caducidad y por qué el PGC no admite LIFO."
+meta_title: "FIFO, FEFO y LIFO: qué es cada uno, con ejemplos"
+description: "FIFO saca primero lo que entró antes, FEFO lo que caduca antes y LIFO lo último. Ejemplos, cuál usar en tu sector y por qué el PGC no admite LIFO."
 date: 2026-10-17
 updated: 2026-10-22
 image: "/images/blog/trazabilidad-alimentaria-lotes-recall/section-1.jpg"
