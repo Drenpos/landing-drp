@@ -42,6 +42,8 @@ const EXCLUIR = [
   // Los posts del blog ya tienen su .md original (blog/[...slug].md.ts).
   // El índice /blog (blog.html) sí se convierte.
   /^blog\/[^/]+\.html$/,
+  // Páginas privadas con enlace secreto (public/d/): sin versión Markdown.
+  /^d\//,
 ];
 
 // Carpetas de dist que nunca contienen páginas.

@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Dosier de inversión de Drenpos preparado para JM.">
+<meta property="og:title" content="JM, esto es Drenpos">
+<meta property="og:description" content="Dosier de inversión · Drenpos Tech, S.L.">
+<meta name="theme-color" content="#59A9A1">
+<link rel="icon" href="/images/favicon.png">
+<style>
+@font-face{font-family:"Aptos";src:url("/fonts/Aptos.ttf") format("truetype");font-weight:400 600;font-display:swap}
+@font-face{font-family:"Aptos";src:url("/fonts/Aptos-Bold.ttf") format("truetype");font-weight:700 900;font-display:swap}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>Drenpos · Dosier de inversión</title>
+</head>
+<body>
+
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: cabecera en banda turquesa con el corte diagonal de la plantilla Drenpos, luego secciones en una columna de lectura con tarjetas solo para cifras y opciones. */
+:root{
+  --brand:#59A9A1; --brand-deep:#2F6F69; --brand-soft:#E3F1EF;
+  --bg:#FFFFFF; --surface:#F4F8F8; --fg:#1F2A30; --muted:#5B6770; --line:#DCE5E7;
+  --on-brand:#FFFFFF; --bar-alt:#B8C4C9;
+  --font:"Aptos","Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --brand:#6BBDB4; --brand-deep:#8FD3CA; --brand-soft:#16302E;
+  --bg:#0F1719; --surface:#162226; --fg:#E7EEF0; --muted:#9AA9AF; --line:#25343A;
+  --on-brand:#0B1416; --bar-alt:#4A5A61; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --brand:#6BBDB4; --brand-deep:#8FD3CA; --brand-soft:#16302E;
+  --bg:#0F1719; --surface:#162226; --fg:#E7EEF0; --muted:#9AA9AF; --line:#25343A;
+  --on-brand:#0B1416; --bar-alt:#4A5A61; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance;line-height:1.15;margin:0}
+h2{font-size:clamp(1.45rem,3.6vw,1.9rem);font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.08rem;font-weight:700}
+p{margin:0}
+.num{font-variant-numeric:tabular-nums}
+.eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-deep)}
+.logo{display:block;height:auto}
+.print-only{display:none}
+
+/* HERO */
+.hero{position:relative;background:var(--brand);color:#fff;margin-top:calc(-1 * env(safe-area-inset-top,0px));padding-top:calc(env(safe-area-inset-top,0px) + 2.2rem);padding-bottom:5.5rem;overflow:hidden}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:70px;background:var(--bg);clip-path:polygon(0 100%,100% 0,100% 100%)}
+.hero .logo{width:170px;color:#fff;--logo-mark:#fff}
+.hero h1{font-size:clamp(2.2rem,7vw,3.6rem);font-weight:800;letter-spacing:-.02em;margin-top:2.6rem;max-width:14ch}
+.hero .sub{margin-top:.9rem;font-size:1.05rem;max-width:46ch;opacity:.95}
+.hero .meta{margin-top:1.4rem;font-size:.85rem;opacity:.85;display:flex;flex-wrap:wrap;gap:.4rem 1.2rem}
+.hero .mark{position:absolute;right:-60px;top:20px;width:340px;opacity:.13;color:#fff;--logo-mark:#fff;pointer-events:none}
+.hero .mark svg{width:1100px;max-width:none;transform:translateX(-4px)}
+
+section{padding-block:2.6rem}
+.lead{font-size:1.08rem;color:var(--fg);max-width:62ch;margin-top:.8rem}
+.note{font-size:.84rem;color:var(--muted);margin-top:.7rem;max-width:68ch}
+
+/* KPIs */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:1.4rem}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1rem .9rem;min-width:0}
+.kpi .v{font-size:clamp(1.35rem,3.4vw,1.75rem);font-weight:800;letter-spacing:-.01em;color:var(--fg)}
+.kpi .l{font-size:.8rem;color:var(--muted);margin-top:.15rem}
+.kpi .d{display:inline-block;margin-top:.55rem;font-size:.76rem;font-weight:700;color:var(--brand-deep);background:var(--brand-soft);border-radius:99px;padding:.12rem .55rem}
+.kpi.hl{background:var(--brand);border-color:var(--brand)}
+.kpi.hl .v,.kpi.hl .l{color:var(--on-brand)} .kpi.hl .d{background:rgba(255,255,255,.22);color:var(--on-brand)}
+@media (max-width:680px){.hero .mark{display:none}}
+@media (max-width:680px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* tables */
+.tbl{overflow-x:auto;margin-top:1.1rem;border:1px solid var(--line);border-radius:var(--r)}
+table{border-collapse:collapse;width:100%;font-size:.92rem;font-variant-numeric:tabular-nums}
+th,td{padding:.62rem .85rem;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;background:var(--surface)}
+tr:last-child td{border-bottom:0}
+td.r,th.r{text-align:right;white-space:nowrap}
+tr.total td{font-weight:800;background:var(--brand-soft)}
+
+/* charts */
+.chart{margin-top:1.2rem;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1rem .6rem;position:relative}
+.chart h3{font-size:.98rem}
+.chart .cap{font-size:.8rem;color:var(--muted);margin-top:.1rem}
+.chart svg{display:block;width:100%;height:auto;margin-top:.6rem;overflow:visible}
+.chart text{fill:var(--muted);font-family:var(--font);font-size:11px}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .area{fill:var(--brand);opacity:.16}
+.chart .line{fill:none;stroke:var(--brand);stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+.chart .bar{fill:var(--brand)} .chart .bar.soft{fill:var(--brand);opacity:.4}
+.chart .bar:hover,.chart .hit:hover+.dot{opacity:.8}
+.chart .end{fill:var(--brand-deep);stroke:var(--bg);stroke-width:2}
+.chart .val{fill:var(--fg);font-weight:700;font-size:12px}
+.chart .hit{fill:transparent;cursor:crosshair}
+.tip{position:absolute;pointer-events:none;background:var(--fg);color:var(--bg);font-size:.78rem;font-weight:600;padding:.3rem .55rem;border-radius:8px;white-space:nowrap;transform:translate(-50%,-120%);opacity:0;transition:opacity .12s}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:680px){.two{grid-template-columns:1fr}}
+
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:1.1rem}
+.fact{border-left:3px solid var(--brand);padding:.2rem 0 .2rem .8rem;min-width:0}
+.fact b{display:block;font-size:1.25rem;font-weight:800}
+.fact span{font-size:.82rem;color:var(--muted)}
+@media (max-width:680px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+ul.clean{list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:.55rem}
+ul.clean li{padding-left:1.4rem;position:relative}
+ul.clean li::before{content:"";position:absolute;left:0;top:.62em;width:.6rem;height:2px;background:var(--brand)}
+
+/* options */
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:1.3rem}
+@media (max-width:680px){.opts{grid-template-columns:1fr}}
+.opt{border:1px solid var(--line);border-radius:var(--r);padding:1.2rem;background:var(--bg);min-width:0}
+.opt.pref{border:2px solid var(--brand)}
+.opt .tag{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-deep)}
+.opt h3{margin-top:.3rem;font-size:1.15rem}
+.split{margin-top:1rem;display:grid;gap:.7rem}
+.split .row{font-size:.86rem}
+.split .row div:first-child{display:flex;justify-content:space-between;gap:.5rem}
+.meter{height:12px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:.3rem;display:flex}
+.meter i{display:block;height:100%;background:var(--brand-deep)} .meter i+i{background:var(--brand)}
+.meter.grow i{transform-origin:left;animation:grow 1.1s cubic-bezier(.2,.7,.2,1) both}
+@keyframes grow{from{transform:scaleX(0)}}
+
+.steps{counter-reset:s;list-style:none;padding:0;margin:1.1rem 0 0;display:grid;gap:.7rem}
+.steps li{counter-increment:s;display:flex;gap:.8rem;align-items:baseline}
+.steps li::before{content:counter(s);flex:none;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--brand-soft);color:var(--brand-deep);font-weight:800;font-size:.85rem;display:grid;place-items:center}
+
+footer{border-top:1px solid var(--line);padding-block:1.6rem 2.4rem;font-size:.8rem;color:var(--muted)}
+footer .logo{width:110px;color:var(--fg);--logo-mark:var(--brand);margin-bottom:.7rem}
+
+/* motion */
+.rise{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{transform:translateY(14px)}}
+.draw{stroke-dasharray:var(--len);stroke-dashoffset:0;animation:draw 1.6s cubic-bezier(.4,0,.2,1) both}
+@keyframes draw{from{stroke-dashoffset:var(--len)}}
+.chart .bar{transform-box:fill-box;transform-origin:bottom;animation:barup .8s cubic-bezier(.2,.7,.2,1) both}
+.chart .hbar{transform-box:fill-box;transform-origin:left;animation:barright .8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes barup{from{transform:scaleY(.04)}} @keyframes barright{from{transform:scaleX(.04)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+/* scroll reveal (solo pantalla) */
+@media screen{
+  main .wrap>*{transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1)}
+  main .wrap>.pre{opacity:.35;transform:translateY(28px)}
+  .opt,.kpi,.fact{transition:transform .25s ease,box-shadow .25s ease}
+  .opt:hover,.kpi:hover{transform:translateY(-3px);box-shadow:0 10px 28px -14px rgba(31,42,48,.35)}
+}
+@media (prefers-reduced-motion:reduce){main .wrap>.pre{opacity:1;transform:none}}
+
+
+/* print / PDF A4 */
+@page{size:A4;margin:14mm 0 14mm}
+@page:first{margin:0}
+@media print{
+  *{animation:none!important}
+  body{font-size:10.5pt}
+  .hero{padding-top:28mm;padding-bottom:0;height:290mm;margin-top:0;overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact;break-after:page}
+  .hero h1{margin-top:150mm;font-size:40pt}
+  .hero::after{height:45mm}
+  .hero .logo{width:60mm}
+  .hero .mark{display:none}
+  .hero::after{height:40mm}
+  .wrap{padding-left:16mm;padding-right:16mm;max-width:none}
+  section{padding-block:6mm;break-inside:auto}
+  .pb{break-before:page}
+  .chart,.kpi,.opt,.tbl,.fact,tr{break-inside:avoid}
+  .kpi,.kpi.hl,.chart,.tbl th,tr.total td,.opt,.meter,.meter i{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .tip{display:none}
+  .keep .wrap{break-inside:avoid}
+  footer{display:none}
+  .print-only{display:block!important}
+  .lead,p{break-inside:avoid}
+  #paco ul.clean{gap:.35rem}
+  .eyebrow,h2,h3,.lead{break-after:avoid}
+  .kpi .v{font-size:15pt}
+  section{padding-block:4mm}
+}
+</style>
+
+<header class="hero">
+  <div class="mark" aria-hidden="true"><svg viewBox="0 0 2907 973" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Drenpos" class="logo"><g transform="matrix(0.242562,0,0,0.242562,1429.85,476.549)"><g transform="matrix(1,0,0,1,-7308.33,-5168.75)"><g transform="matrix(4.35893,0,0,4.35893,4363.91,4461.45)"><g><g><g><path d="M259.51,242.8L259.51,64.23C258.9,58.64 255.85,36.47 236.67,19.16C225.545,9.223 211.574,3.029 196.74,1.46L0,1.46L0,324.46L177.81,324.46C180.91,324.59 223.44,325.73 246.81,291.96C260.82,271.71 260.09,250.13 259.51,242.8ZM189.15,262.88C186.48,268.19 180.35,268.76 173.21,269.01L64.69,269.01L64.69,57.48L172.29,57.48C176.814,56.81 181.426,57.91 185.16,60.55C188.257,62.822 190.521,66.053 191.6,69.74L191.6,250.61C191.906,254.846 191.059,259.086 189.15,262.88Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/><path d="M902.52,0.92L902.52,324.19L1066.69,324.19L1039.56,260.27L966.44,260.27L966.44,127.84L1176.59,324.19L1176.59,0.92L999.09,0.92L1039.56,63.92L1112.67,63.92L1112.67,187.16L902.52,0.92Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/><path d="M1429.3,17.77C1414.44,7.506 1396.97,1.663 1378.92,0.92L1240.51,0.92L1240.51,324.19L1404.68,324.19L1377.09,264.87L1304,264.87L1304,205.55L1382.63,205.55C1418.32,206.517 1450.91,184.669 1463.57,151.29L1463.57,61.16C1456.66,43.643 1444.74,28.546 1429.3,17.77ZM1403.3,129.22C1401.33,133.935 1398.15,138.055 1394.1,141.17C1388.68,145.243 1382.03,147.359 1375.25,147.17L1304.89,147.17L1304.89,55.64C1308.17,55.5 1351.06,53.64 1374.79,55.64C1380.61,55.898 1386.26,57.618 1391.24,60.64C1396.45,64.065 1400.62,68.853 1403.3,74.48L1403.3,129.22Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/><path d="M1739.9,19.31C1716.41,0.24 1690.53,0.65 1684.26,0.92L1578,0.92C1571.52,1.05 1541.22,2.35 1517.76,26.67C1506.36,38.625 1498.68,53.652 1495.69,69.9L1495.69,259.81C1498.76,276.563 1507.14,291.888 1519.6,303.5C1540.26,322.57 1564.38,324.01 1570.6,324.19L1687.86,324.19C1693.45,324.31 1723.68,324.41 1747.18,300.74C1758.98,288.698 1766.7,273.252 1769.25,256.59L1769.25,69.9C1768.3,63.7 1763.35,38.35 1739.9,19.31ZM1705.42,251.08C1704.56,255.997 1702.14,260.509 1698.52,263.95C1689.99,271.87 1678.6,269.72 1677.36,269.47L1586.77,269.47C1585.2,269.59 1574.52,270.26 1566.54,262.11C1562.68,258.103 1560.26,252.929 1559.65,247.4L1559.65,78.63C1561.62,65.16 1573.16,54.991 1586.77,54.73L1678.28,54.73C1691.78,55.314 1703.13,65.317 1705.42,78.63L1705.42,251.08Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/><path d="M1814.86,60.24L1814.86,128.76C1818.69,143.186 1826.5,156.25 1837.39,166.46C1858.32,185.92 1883.12,187.46 1889.81,187.62L1969.81,187.62C1978.88,189.343 1986.02,196.478 1987.74,205.55L1987.74,253.37C1982.85,263.173 1972.95,269.536 1962,269.92L1901.3,269.92C1889.84,269.233 1879.54,262.599 1874.17,252.45L1874.17,205.55L1814.85,205.55L1814.85,264.87C1818.35,279.225 1825.85,292.3 1836.46,302.58C1857.05,322.35 1881.93,323.98 1888.46,324.21L1969.86,324.21C1976.65,324.03 2001.63,322.55 2023.2,303.04C2035.54,291.758 2044.18,277.007 2048,260.73L2048,196.81C2044.62,178.738 2035.41,162.26 2021.79,149.91C1998.43,128.98 1971.15,128.66 1964.79,128.76L1902.25,128.76C1895.67,129.739 1888.96,128.264 1883.4,124.62C1879.66,122.061 1876.65,118.573 1874.66,114.5L1874.66,78.17C1879.78,67.732 1890.18,60.858 1901.79,60.24L2020.89,60.24L2048,0.85L1889.81,0.85C1871.01,2.943 1853.33,10.845 1839.23,23.45C1828.18,33.498 1819.8,46.144 1814.86,60.24Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/><path d="M520,155.21C523.34,154.29 532.25,147.68 539.74,137.95C545.767,129.932 548.557,119.93 547.55,109.95L547.55,61.16C543.139,44.947 533.821,30.487 520.88,19.77C506.449,8.066 488.46,1.608 469.88,1.46L309.78,0L309.78,324.53L377.84,324.53L377.84,174.28L442.68,174.28C461.834,174.634 478.496,187.887 483.15,206.47L483.15,324.53L547.52,324.53L547.52,193.6C546.444,183.717 542.071,174.478 535.11,167.38C529.61,161.92 523.77,156.62 520,155.21ZM487.28,96.57C486.006,101.18 483.458,105.34 479.93,108.57C472.11,115.57 462.53,115.15 460.61,115.01L374.16,115.01C374.307,94.783 374.46,74.55 374.62,54.31L459.23,54.77C466.078,54.065 472.94,56.045 478.36,60.29C482.819,63.929 485.955,68.939 487.28,74.54L487.28,96.57Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/><path d="M593.05,64.38C593.05,54.26 590.77,29.38 607.61,14.76C629.42,-4.16 639,0.92 675.36,0.92L853.36,0.92L853.36,100.71L793.54,100.71L793.54,54.26L680.88,54.26C680.01,54.11 669.41,52.44 662.02,60.26C658.46,64.149 656.492,69.238 656.51,74.51L656.51,133.37L820.21,133.37L802.74,188.1L657.43,188.1L657.43,269.95L766.43,269.95C773.464,269.772 780.186,266.983 785.28,262.13C789.326,258.14 792.056,253.006 793.1,247.42L793.1,223.94L853.34,223.94L853.34,264.87C848.74,281.113 839.269,295.562 826.21,306.26C802,325.88 774.66,324.65 768.27,324.19L593.05,324.19L593.05,64.38Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/></g></g></g></g><g transform="matrix(2.82054,0,0,2.82054,3084.43,1271.47)"><g><g transform="matrix(0.746726,0,0,0.746717,-518.817,705.489)"><g><g><g><path d="M741.68,378.61L0,378.61L0,1442.39L1109,333.39L1109,0L741.68,378.61ZM219,892.84L219,590.52L515.64,590.52L219,892.84Z" style="fill:none;fill-rule:nonzero;stroke:var(--logo-mark,currentColor);stroke-width:42px;"/></g></g></g></g><g transform="matrix(0.741842,0,0,0.741842,-514.911,999.516)"><g><g><g><path d="M0,1113.23L0,1426.85L373,1053.85L1113.27,1053.85L1113.27,0L0,1113.23ZM892.84,836.33L599,836.33L892.84,550.48L892.84,836.33Z" style="fill:none;fill-rule:nonzero;stroke:var(--logo-mark,currentColor);stroke-width:42px;"/></g></g></g></g></g></g></g></g></svg>
+</div>
+  <div class="wrap">
+    <svg viewBox="0 0 2907 973" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Drenpos" class="logo"><g transform="matrix(0.242562,0,0,0.242562,1429.85,476.549)"><g transform="matrix(1,0,0,1,-7308.33,-5168.75)"><g transform="matrix(4.35893,0,0,4.35893,4363.91,4461.45)"><g><g><g><path d="M259.51,242.8L259.51,64.23C258.9,58.64 255.85,36.47 236.67,19.16C225.545,9.223 211.574,3.029 196.74,1.46L0,1.46L0,324.46L177.81,324.46C180.91,324.59 223.44,325.73 246.81,291.96C260.82,271.71 260.09,250.13 259.51,242.8ZM189.15,262.88C186.48,268.19 180.35,268.76 173.21,269.01L64.69,269.01L64.69,57.48L172.29,57.48C176.814,56.81 181.426,57.91 185.16,60.55C188.257,62.822 190.521,66.053 191.6,69.74L191.6,250.61C191.906,254.846 191.059,259.086 189.15,262.88Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/><path d="M902.52,0.92L902.52,324.19L1066.69,324.19L1039.56,260.27L966.44,260.27L966.44,127.84L1176.59,324.19L1176.59,0.92L999.09,0.92L1039.56,63.92L1112.67,63.92L1112.67,187.16L902.52,0.92Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/><path d="M1429.3,17.77C1414.44,7.506 1396.97,1.663 1378.92,0.92L1240.51,0.92L1240.51,324.19L1404.68,324.19L1377.09,264.87L1304,264.87L1304,205.55L1382.63,205.55C1418.32,206.517 1450.91,184.669 1463.57,151.29L1463.57,61.16C1456.66,43.643 1444.74,28.546 1429.3,17.77ZM1403.3,129.22C1401.33,133.935 1398.15,138.055 1394.1,141.17C1388.68,145.243 1382.03,147.359 1375.25,147.17L1304.89,147.17L1304.89,55.64C1308.17,55.5 1351.06,53.64 1374.79,55.64C1380.61,55.898 1386.26,57.618 1391.24,60.64C1396.45,64.065 1400.62,68.853 1403.3,74.48L1403.3,129.22Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/><path d="M1739.9,19.31C1716.41,0.24 1690.53,0.65 1684.26,0.92L1578,0.92C1571.52,1.05 1541.22,2.35 1517.76,26.67C1506.36,38.625 1498.68,53.652 1495.69,69.9L1495.69,259.81C1498.76,276.563 1507.14,291.888 1519.6,303.5C1540.26,322.57 1564.38,324.01 1570.6,324.19L1687.86,324.19C1693.45,324.31 1723.68,324.41 1747.18,300.74C1758.98,288.698 1766.7,273.252 1769.25,256.59L1769.25,69.9C1768.3,63.7 1763.35,38.35 1739.9,19.31ZM1705.42,251.08C1704.56,255.997 1702.14,260.509 1698.52,263.95C1689.99,271.87 1678.6,269.72 1677.36,269.47L1586.77,269.47C1585.2,269.59 1574.52,270.26 1566.54,262.11C1562.68,258.103 1560.26,252.929 1559.65,247.4L1559.65,78.63C1561.62,65.16 1573.16,54.991 1586.77,54.73L1678.28,54.73C1691.78,55.314 1703.13,65.317 1705.42,78.63L1705.42,251.08Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/><path d="M1814.86,60.24L1814.86,128.76C1818.69,143.186 1826.5,156.25 1837.39,166.46C1858.32,185.92 1883.12,187.46 1889.81,187.62L1969.81,187.62C1978.88,189.343 1986.02,196.478 1987.74,205.55L1987.74,253.37C1982.85,263.173 1972.95,269.536 1962,269.92L1901.3,269.92C1889.84,269.233 1879.54,262.599 1874.17,252.45L1874.17,205.55L1814.85,205.55L1814.85,264.87C1818.35,279.225 1825.85,292.3 1836.46,302.58C1857.05,322.35 1881.93,323.98 1888.46,324.21L1969.86,324.21C1976.65,324.03 2001.63,322.55 2023.2,303.04C2035.54,291.758 2044.18,277.007 2048,260.73L2048,196.81C2044.62,178.738 2035.41,162.26 2021.79,149.91C1998.43,128.98 1971.15,128.66 1964.79,128.76L1902.25,128.76C1895.67,129.739 1888.96,128.264 1883.4,124.62C1879.66,122.061 1876.65,118.573 1874.66,114.5L1874.66,78.17C1879.78,67.732 1890.18,60.858 1901.79,60.24L2020.89,60.24L2048,0.85L1889.81,0.85C1871.01,2.943 1853.33,10.845 1839.23,23.45C1828.18,33.498 1819.8,46.144 1814.86,60.24Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/><path d="M520,155.21C523.34,154.29 532.25,147.68 539.74,137.95C545.767,129.932 548.557,119.93 547.55,109.95L547.55,61.16C543.139,44.947 533.821,30.487 520.88,19.77C506.449,8.066 488.46,1.608 469.88,1.46L309.78,0L309.78,324.53L377.84,324.53L377.84,174.28L442.68,174.28C461.834,174.634 478.496,187.887 483.15,206.47L483.15,324.53L547.52,324.53L547.52,193.6C546.444,183.717 542.071,174.478 535.11,167.38C529.61,161.92 523.77,156.62 520,155.21ZM487.28,96.57C486.006,101.18 483.458,105.34 479.93,108.57C472.11,115.57 462.53,115.15 460.61,115.01L374.16,115.01C374.307,94.783 374.46,74.55 374.62,54.31L459.23,54.77C466.078,54.065 472.94,56.045 478.36,60.29C482.819,63.929 485.955,68.939 487.28,74.54L487.28,96.57Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/><path d="M593.05,64.38C593.05,54.26 590.77,29.38 607.61,14.76C629.42,-4.16 639,0.92 675.36,0.92L853.36,0.92L853.36,100.71L793.54,100.71L793.54,54.26L680.88,54.26C680.01,54.11 669.41,52.44 662.02,60.26C658.46,64.149 656.492,69.238 656.51,74.51L656.51,133.37L820.21,133.37L802.74,188.1L657.43,188.1L657.43,269.95L766.43,269.95C773.464,269.772 780.186,266.983 785.28,262.13C789.326,258.14 792.056,253.006 793.1,247.42L793.1,223.94L853.34,223.94L853.34,264.87C848.74,281.113 839.269,295.562 826.21,306.26C802,325.88 774.66,324.65 768.27,324.19L593.05,324.19L593.05,64.38Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/></g></g></g></g><g transform="matrix(2.82054,0,0,2.82054,3084.43,1271.47)"><g><g transform="matrix(0.746726,0,0,0.746717,-518.817,705.489)"><g><g><g><path d="M741.68,378.61L0,378.61L0,1442.39L1109,333.39L1109,0L741.68,378.61ZM219,892.84L219,590.52L515.64,590.52L219,892.84Z" style="fill:none;fill-rule:nonzero;stroke:var(--logo-mark,currentColor);stroke-width:42px;"/></g></g></g></g><g transform="matrix(0.741842,0,0,0.741842,-514.911,999.516)"><g><g><g><path d="M0,1113.23L0,1426.85L373,1053.85L1113.27,1053.85L1113.27,0L0,1113.23ZM892.84,836.33L599,836.33L892.84,550.48L892.84,836.33Z" style="fill:none;fill-rule:nonzero;stroke:var(--logo-mark,currentColor);stroke-width:42px;"/></g></g></g></g></g></g></g></g></svg>
+
+    <h1 class="rise">JM, esto es Drenpos</h1>
+    <p class="sub rise" style="animation-delay:.08s">Te he preparado este dosier para que veas dónde estamos, qué queremos hacer en los próximos dos años y cómo encajaría tu inversión.</p>
+    <div class="meta"><span>Drenpos Tech, S.L.</span><span>Noviembre de 2026</span><span>Preparado para JM · Confidencial</span></div>
+  </div>
+</header>
+
+<main>
+<section id="resumen"><div class="wrap">
+  <div class="eyebrow">En resumen</div>
+  <h2>Un producto que ya cobra cada mes y crece rápido</h2>
+  <p class="lead">Ya conoces Drenpos porque lo usáis en vuestro almacén. Hoy lo pagan 38 empresas, el ingreso por suscripciones se ha multiplicado por 3,3 en un año y las ventas de 2026 casi quintuplican las de 2025. Tu inversión serviría para sostener y acelerar este crecimiento durante al menos dos años: un equipo pequeño, una oficina sencilla y un fondo para marketing y mejoras del producto.</p>
+  <div class="kpis">
+    <div class="kpi rise"><div class="v num">699,62 €</div><div class="l">Ingreso recurrente mensual</div><span class="d">×3,3 en 12 meses</span></div>
+    <div class="kpi rise" style="animation-delay:.06s"><div class="v num">38</div><div class="l">Clientes de suscripción</div><span class="d">+24 en 12 meses</span></div>
+    <div class="kpi rise" style="animation-delay:.12s"><div class="v num">33.350 €</div><div class="l">Ventas netas 2026 (a 21 nov)</div><span class="d">×4,8 vs. 2025</span></div>
+    <div class="kpi hl rise" style="animation-delay:.18s"><div class="v num">175.000 €</div><div class="l">Valoración propuesta</div><span class="d">antes de la inversión</span></div>
+  </div>
+</div></section>
+
+<section id="empresa"><div class="wrap">
+  <div class="eyebrow">La empresa</div>
+  <h2>Qué es Drenpos</h2>
+  <p class="lead">Un único sistema en la nube que sustituye varias herramientas sueltas, como has visto en tu almacén. Se contrata por módulos y por suscripción mensual o anual, con packs de implantación, hardware y desarrollos a medida.</p>
+  <div class="tbl"><table>
+    <tr><th>Dato</th><th>Valor</th></tr>
+    <tr><td>Razón social</td><td>Drenpos Tech, S.L. (unipersonal) · CIF B22872501</td></tr>
+    <tr><td>Domicilio</td><td>C/ Badajoz 4, 06209 Solana de los Barros (Badajoz)</td></tr>
+    <tr><td>Primera suscripción</td><td>Abril de 2025</td></tr>
+    <tr><td>Desarrollo del producto</td><td>Más de 2 años</td></tr>
+    <tr><td>Web</td><td>www.drenpos.com</td></tr>
+  </table></div>
+  <div class="chart" data-chart="modules">
+    <h3>Módulos más contratados</h3>
+    <p class="cap">Número de clientes que usan cada módulo</p>
+  </div>
+</div></section>
+
+<section id="traccion"><div class="wrap">
+  <div class="eyebrow">Tracción</div>
+  <h2>El ingreso recurrente se ha triplicado en un año</h2>
+  <p class="lead">De 213,58 € al mes en noviembre de 2025 a 699,62 € hoy. Solo en los tres últimos meses se han sumado 19 clientes.</p>
+  <div class="chart" data-chart="mrr">
+    <h3>Ingreso recurrente mensual (MRR)</h3>
+    <p class="cap">Suscripciones activas a fin de cada mes, sin IVA</p>
+  </div>
+  <div class="chart" data-chart="customers">
+    <h3>Clientes de suscripción</h3>
+    <p class="cap">Clientes activos a fin de cada mes</p>
+  </div>
+  <div class="facts">
+    <div class="fact"><b class="num">18,91 €</b><span>Ingreso medio por cliente al mes</span></div>
+    <div class="fact"><b class="num">77,8 %</b><span>Pruebas que pasan a cliente (90 días)</span></div>
+    <div class="fact"><b class="num">4</b><span>Bajas en 20 meses de historia</span></div>
+    <div class="fact"><b class="num">6 + 6</b><span>Empresas en prueba y prospectos</span></div>
+    <div class="fact"><b class="num">8.395 €</b><span>Ingreso recurrente anual</span></div>
+    <div class="fact"><b class="num">73 / 27 %</b><span>Facturación mensual / anual</span></div>
+  </div>
+</div></section>
+
+<section id="ventas"><div class="wrap">
+  <div class="eyebrow">Facturación total</div>
+  <h2>Ventas netas por mes</h2>
+  <p class="lead">Aquí entra todo: suscripciones, implantaciones, hardware y desarrollos a medida. En 2026 llevamos 33.350 € facturados y 37.954 € cobrados, y la caja ha crecido en 26.226 €.</p>
+  <div class="chart" data-chart="sales">
+    <h3>Ventas netas mensuales</h3>
+    <p class="cap">Facturas menos rectificativas, sin IVA · noviembre de 2026 hasta el día 21</p>
+  </div>
+  <div class="tbl"><table>
+    <tr><th>Indicador</th><th class="r">2025*</th><th class="r">2026*</th></tr>
+    <tr><td>Ventas netas</td><td class="r">6.920 €</td><td class="r">33.350 €</td></tr>
+    <tr><td>Facturas emitidas</td><td class="r">27</td><td class="r">134</td></tr>
+    <tr><td>Clientes con factura</td><td class="r">16</td><td class="r">38</td></tr>
+    <tr><td>Ofertas emitidas</td><td class="r">9.175 €</td><td class="r">39.660 €</td></tr>
+  </table></div>
+  <p class="note">* 2025: de septiembre a diciembre. 2026: de enero al 21 de noviembre.</p>
+  <h3 style="margin-top:1.6rem">De dónde vienen los ingresos</h3>
+  <ul class="clean">
+    <li><b>Suscripciones:</b> unos 700 € al mes y creciendo. Es la base que queremos escalar.</li>
+    <li><b>Desarrollo a medida:</b> el mayor cliente, el grupo AGF, contrata desarrollo por unos 2.500 € al mes y supone cerca del 70 % de las ventas de 2026.</li>
+    <li><b>Implantaciones y hardware:</b> packs TPV, tarjetas RFID y proyectos de 4.000 a 5.000 €, con varios en negociación.</li>
+  </ul>
+  <p class="note">Te lo digo claro: depender tanto de un cliente es hoy nuestro mayor riesgo. Precisamente por eso buscamos tu apoyo, para crecer en clientes que pagan cada mes y depender menos de uno solo.</p>
+</div></section>
+
+<section id="valoracion" class="pb"><div class="wrap">
+  <div class="eyebrow">Valoración</div>
+  <h2>175.000 € antes de la inversión</h2>
+  <p class="lead">Me pediste que valorásemos el producto. Lo he calculado de dos formas y te propongo la segunda, porque es la que mejor refleja lo que costaría construir hoy lo que ya tenemos.</p>
+  <div class="chart" data-chart="valuation">
+    <h3>Rango de valoración por método</h3>
+    <p class="cap">Miles de euros</p>
+  </div>
+  <div class="two" style="margin-top:12px">
+    <div class="tbl" style="margin-top:0"><table>
+      <tr><th colspan="2">A · Múltiplo de facturación</th></tr>
+      <tr><td>Facturación anualizada 2026</td><td class="r">~36.000 €</td></tr>
+      <tr><td>× 3</td><td class="r">108.000 €</td></tr>
+      <tr><td>× 4</td><td class="r">144.000 €</td></tr>
+    </table></div>
+    <div class="tbl" style="margin-top:0"><table>
+      <tr><th colspan="2">B · Coste de reconstrucción</th></tr>
+      <tr><td>2 años × 40 h/semana</td><td class="r">~3.600 h</td></tr>
+      <tr><td>A 35–45 €/h</td><td class="r">126–162 k€</td></tr>
+      <tr><td>Diseño, pruebas y gestión (+20 %)</td><td class="r">25–32 k€</td></tr>
+      <tr class="total"><td>Total</td><td class="r">151–194 k€</td></tr>
+    </table></div>
+  </div>
+  <p class="note">El método A está sesgado: la mayor parte de la facturación son servicios a un solo cliente, no suscripciones. En el método B computamos 40 horas semanales aunque la dedicación real ha sido mayor. Ninguno incluye el valor de la cartera de clientes ni de la marca.</p>
+</div></section>
+
+<section id="propuesta"><div class="wrap">
+  <div class="eyebrow">Propuesta</div>
+  <h2>Dos formas de entrar, tú eliges</h2>
+  <div class="opts">
+    <div class="opt">
+      <div class="tag">Opción 1</div>
+      <h3>Entrada directa en el capital</h3>
+      <p class="note" style="margin-top:.4rem">Ampliación de capital sobre una valoración de 175.000 €.</p>
+      <div class="split">
+        <div class="row"><div><span>Inversión de 50.000 €</span><b class="num">22,2 %</b></div><div class="meter grow"><i style="width:22.2%"></i></div></div>
+        <div class="row"><div><span>Inversión de 100.000 €</span><b class="num">36,4 %</b></div><div class="meter grow"><i style="width:36.4%"></i></div></div>
+      </div>
+      <p class="note">Tu porcentaje después de la ampliación. Yo mantendría el 77,8 % o el 63,6 %.</p>
+    </div>
+    <div class="opt pref">
+      <div class="tag">Opción 2 · preferida</div>
+      <h3>Préstamo participativo convertible</h3>
+      <ul class="clean" style="font-size:.92rem">
+        <li>Importe: 100.000 €.</li>
+        <li>Interés fijo bajo más un variable ligado al beneficio.</li>
+        <li>Se convierte en participaciones en la próxima ronda o a los 24–36 meses, con un 20 % de descuento.</li>
+        <li>Valoración máxima de conversión: 500.000 €. Tendrías como mínimo un 16,7 %.</li>
+      </ul>
+      <p class="note">Así no tenemos que fijar hoy el precio de una empresa tan joven, y tú tienes premio por haber entrado el primero.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="plan"><div class="wrap">
+  <div class="eyebrow">Plan a dos años</div>
+  <h2>Primero agilizar, después acelerar</h2>
+  <p class="lead">Tu dinero nos daría dos años de margen, y no queremos gastarlo de golpe. Drenpos ya se vende, pero cada cliente nuevo nos cuesta muchas horas de llamadas, formación y puesta en marcha. Primero vamos a agilizar todo eso para que crecer no nos ahogue, y después pondremos toda la energía en vender más. El equipo irá creciendo según lo pidan los números, sin compromisos cerrados desde el primer día.</p>
+  <div class="opts">
+    <div class="opt">
+      <div class="tag">Fase 1 · meses 1 a 6</div>
+      <h3>Agilizar</h3>
+      <ul class="clean" style="font-size:.92rem">
+        <li>Altas y puestas en marcha más rápidas, con menos trabajo manual nuestro.</li>
+        <li>Formación y ayuda dentro de la propia aplicación, con guías y vídeos, para recibir menos llamadas.</li>
+        <li>Planes, precios y contratos tipo que agilicen cada venta.</li>
+        <li>Soporte organizado para atender a más clientes sin perder calidad.</li>
+        <li>Imagen de marca renovada, hecha por nosotros.</li>
+      </ul>
+    </div>
+    <div class="opt pref">
+      <div class="tag">Fase 2 · meses 7 a 24</div>
+      <h3>Crecer</h3>
+      <ul class="clean" style="font-size:.92rem">
+        <li>Marketing y promoción constantes para captar suscripciones.</li>
+        <li>Un comercial para clientes grandes, si los números lo piden.</li>
+        <li>Más manos en desarrollo, soporte o marketing según vayamos necesitando.</li>
+        <li>Seguir mejorando el producto con lo que nos piden los clientes.</li>
+      </ul>
+    </div>
+  </div>
+  <h3 style="margin-top:1.8rem">Cómo repartiríamos tu inversión</h3>
+  <p class="note">Porcentajes orientativos. Los iremos ajustando contigo según avance cada fase.</p>
+  <div class="split" style="margin-top:.9rem">
+    <div class="row"><div><span>Equipo</span><b class="num">50 %</b></div><div class="meter grow"><i style="width:50%"></i></div></div>
+    <div class="row"><div><span>Marketing y captación de clientes</span><b class="num">20 %</b></div><div class="meter grow"><i style="width:20%"></i></div></div>
+    <div class="row"><div><span>Producto, seguridad y servicios externos</span><b class="num">10 %</b></div><div class="meter grow"><i style="width:10%"></i></div></div>
+    <div class="row"><div><span>Oficina sencilla en Badajoz</span><b class="num">7 %</b></div><div class="meter grow"><i style="width:7%"></i></div></div>
+    <div class="row"><div><span>Colchón para imprevistos</span><b class="num">13 %</b></div><div class="meter grow"><i style="width:13%"></i></div></div>
+  </div>
+  <div class="chart" data-chart="cash">
+    <h3>Cómo evoluciona la caja con tus 100.000 €</h3>
+    <p class="cap">Saldo acumulado mes a mes en cuatro escenarios. Por debajo de cero hace falta más dinero.</p>
+  </div>
+  <div class="tbl"><table>
+    <tr><th>Escenario</th><th class="r">Caja al mes 24</th></tr>
+    <tr><td><b>Bueno</b><br><span class="note">Seguimos con el desarrollo para AGF. Las suscripciones crecen el triple de rápido que este año y cerramos un proyecto grande al mes.</span></td><td class="r">+65.000 €</td></tr>
+    <tr><td><b>Base</b><br><span class="note">Seguimos con AGF. Las suscripciones crecen el doble de rápido y cerramos 8 proyectos grandes al año.</span></td><td class="r">+20.600 €</td></tr>
+    <tr><td><b>Sin AGF</b><br><span class="note">Como el base, pero sin los ingresos de desarrollo para AGF.</span></td><td class="r">−39.400 €</td></tr>
+    <tr><td><b>Prudente</b><br><span class="note">Sin AGF y creciendo al mismo ritmo que este año.</span></td><td class="r">−83.800 €</td></tr>
+  </table></div>
+  <p class="note">Con 100.000 € el plan llega a los dos años si mantenemos el desarrollo para AGF. Si ese ingreso desaparece, el dinero da para entre 10 y 14 meses, y habría que recortar equipo o buscar una segunda ronda antes. Lo ideal es entrar por tramos: una parte al principio y el resto al cumplir objetivos que acordemos juntos.</p>
+</div></section>
+
+<section id="gobierno" class="keep"><div class="wrap">
+  <div class="eyebrow">Tú y yo</div>
+  <h2>Cómo trabajaríamos juntos</h2>
+  <ul class="clean">
+    <li>Yo mantengo la mayoría, la gestión del día a día y las decisiones operativas, como me propusiste.</li>
+    <li>Tú participas en las decisiones estratégicas. Nos vemos cada trimestre y te paso informes de ventas y caja.</li>
+    <li>Tendré un sueldo moderado. Parte lo iré ahorrando para acudir a las próximas ampliaciones de capital y mantener mi porcentaje, y queremos que el pacto de socios nos dé derecho preferente en esas ampliaciones.</li>
+    <li>Los servicios de contabilidad y marketing de tu otra empresa irían en un contrato aparte, con su precio y condiciones de salida.</li>
+  </ul>
+  <h3 style="margin-top:1.8rem">Próximos pasos</h3>
+  <ol class="steps">
+    <li>Quedamos para revisar este dosier y resolver tus dudas.</li>
+    <li>Eliges la fórmula y el calendario de los tramos.</li>
+    <li>Firmar una carta de intenciones con las condiciones principales.</li>
+    <li>Revisión por asesores legales y firma del pacto de socios.</li>
+  </ol>
+  <p class="note print-only" style="margin-top:1.6rem">Datos del sistema de gestión de Drenpos y del panel de suscripciones a 21 de noviembre de 2026. Costes estimados con sueldos y alquileres de mercado de Badajoz de 2026. La valoración y el plan son una propuesta para hablarla juntos, no una tasación profesional.</p>
+</div></section>
+<section id="paco" class="pb"><div class="wrap">
+  <div class="eyebrow">Una oportunidad más</div>
+  <h2>Por qué nos interesaría que Paco entrase también</h2>
+  <p class="lead">Quiero contarte algo antes de que decidas. Paco está detrás de AGF, nuestro mayor cliente y el primero que confió en nosotros. Hemos hablado de que entre también, y creemos que te beneficiaría a ti tanto como a mí.</p>
+  <div class="facts" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+    <div class="fact"><b class="num">~50.000 €</b><span>Capital que podría aportar Paco</span></div>
+    <div class="fact"><b>1.º cliente</b><span>AGF seguiría pagando cada mes mientras desarrollamos</span></div>
+    <div class="fact"><b>Ticket alto</b><span>Un segundo producto para empresas grandes</span></div>
+  </div>
+  <h3 style="margin-top:1.8rem">Lo que estamos construyendo con él</h3>
+  <p style="margin-top:.6rem;max-width:62ch">Junto a Paco estamos desarrollando una solución con inteligencia artificial para la gestión administrativa de equipos de ingeniería grandes. Resuelve tareas que hoy les cuestan muchas horas:</p>
+  <ul class="clean">
+    <li>Peticiones y comparación de ofertas.</li>
+    <li>Cruce y correlación de datos de distintas fuentes.</li>
+    <li>Revisión de trabajos y documentación técnica.</li>
+    <li>Y muchas más tareas del día a día administrativo de estos equipos.</li>
+  </ul>
+  <p class="note">Es un producto de ticket alto: cada cliente paga mucho más que una suscripción de Drenpos, y se apoya en la misma base técnica.</p>
+  <h3 style="margin-top:1.8rem">Qué ganarías tú con su entrada</h3>
+  <ul class="clean">
+    <li><b>Desaparece nuestro mayor riesgo.</b> Los ingresos de AGF quedarían asegurados, porque AGF sería el primer cliente de la nueva solución. Es justo lo que separa el escenario base del escenario sin AGF.</li>
+    <li><b>Más margen.</b> Con 150.000 € entre los dos, el plan aguanta los dos años incluso en el escenario sin AGF, y en el escenario base acabaríamos con unos 70.000 € de caja.</li>
+    <li><b>Conocimiento del sector.</b> Paco conoce a fondo cómo trabajan los equipos de ingeniería y tiene los contactos para vender a otras empresas como la suya.</li>
+    <li><b>Una segunda vía de crecimiento.</b> Además de las suscripciones de Drenpos, un producto caro y difícil de copiar.</li>
+  </ul>
+  <p class="note">Cómo encajarían las participaciones de los tres lo hablaríamos juntos. Mi intención es mantener la mayoría y que los tres estemos protegidos en el pacto de socios.</p>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <svg viewBox="0 0 2907 973" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Drenpos" class="logo"><g transform="matrix(0.242562,0,0,0.242562,1429.85,476.549)"><g transform="matrix(1,0,0,1,-7308.33,-5168.75)"><g transform="matrix(4.35893,0,0,4.35893,4363.91,4461.45)"><g><g><g><path d="M259.51,242.8L259.51,64.23C258.9,58.64 255.85,36.47 236.67,19.16C225.545,9.223 211.574,3.029 196.74,1.46L0,1.46L0,324.46L177.81,324.46C180.91,324.59 223.44,325.73 246.81,291.96C260.82,271.71 260.09,250.13 259.51,242.8ZM189.15,262.88C186.48,268.19 180.35,268.76 173.21,269.01L64.69,269.01L64.69,57.48L172.29,57.48C176.814,56.81 181.426,57.91 185.16,60.55C188.257,62.822 190.521,66.053 191.6,69.74L191.6,250.61C191.906,254.846 191.059,259.086 189.15,262.88Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/><path d="M902.52,0.92L902.52,324.19L1066.69,324.19L1039.56,260.27L966.44,260.27L966.44,127.84L1176.59,324.19L1176.59,0.92L999.09,0.92L1039.56,63.92L1112.67,63.92L1112.67,187.16L902.52,0.92Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/><path d="M1429.3,17.77C1414.44,7.506 1396.97,1.663 1378.92,0.92L1240.51,0.92L1240.51,324.19L1404.68,324.19L1377.09,264.87L1304,264.87L1304,205.55L1382.63,205.55C1418.32,206.517 1450.91,184.669 1463.57,151.29L1463.57,61.16C1456.66,43.643 1444.74,28.546 1429.3,17.77ZM1403.3,129.22C1401.33,133.935 1398.15,138.055 1394.1,141.17C1388.68,145.243 1382.03,147.359 1375.25,147.17L1304.89,147.17L1304.89,55.64C1308.17,55.5 1351.06,53.64 1374.79,55.64C1380.61,55.898 1386.26,57.618 1391.24,60.64C1396.45,64.065 1400.62,68.853 1403.3,74.48L1403.3,129.22Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/><path d="M1739.9,19.31C1716.41,0.24 1690.53,0.65 1684.26,0.92L1578,0.92C1571.52,1.05 1541.22,2.35 1517.76,26.67C1506.36,38.625 1498.68,53.652 1495.69,69.9L1495.69,259.81C1498.76,276.563 1507.14,291.888 1519.6,303.5C1540.26,322.57 1564.38,324.01 1570.6,324.19L1687.86,324.19C1693.45,324.31 1723.68,324.41 1747.18,300.74C1758.98,288.698 1766.7,273.252 1769.25,256.59L1769.25,69.9C1768.3,63.7 1763.35,38.35 1739.9,19.31ZM1705.42,251.08C1704.56,255.997 1702.14,260.509 1698.52,263.95C1689.99,271.87 1678.6,269.72 1677.36,269.47L1586.77,269.47C1585.2,269.59 1574.52,270.26 1566.54,262.11C1562.68,258.103 1560.26,252.929 1559.65,247.4L1559.65,78.63C1561.62,65.16 1573.16,54.991 1586.77,54.73L1678.28,54.73C1691.78,55.314 1703.13,65.317 1705.42,78.63L1705.42,251.08Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/><path d="M1814.86,60.24L1814.86,128.76C1818.69,143.186 1826.5,156.25 1837.39,166.46C1858.32,185.92 1883.12,187.46 1889.81,187.62L1969.81,187.62C1978.88,189.343 1986.02,196.478 1987.74,205.55L1987.74,253.37C1982.85,263.173 1972.95,269.536 1962,269.92L1901.3,269.92C1889.84,269.233 1879.54,262.599 1874.17,252.45L1874.17,205.55L1814.85,205.55L1814.85,264.87C1818.35,279.225 1825.85,292.3 1836.46,302.58C1857.05,322.35 1881.93,323.98 1888.46,324.21L1969.86,324.21C1976.65,324.03 2001.63,322.55 2023.2,303.04C2035.54,291.758 2044.18,277.007 2048,260.73L2048,196.81C2044.62,178.738 2035.41,162.26 2021.79,149.91C1998.43,128.98 1971.15,128.66 1964.79,128.76L1902.25,128.76C1895.67,129.739 1888.96,128.264 1883.4,124.62C1879.66,122.061 1876.65,118.573 1874.66,114.5L1874.66,78.17C1879.78,67.732 1890.18,60.858 1901.79,60.24L2020.89,60.24L2048,0.85L1889.81,0.85C1871.01,2.943 1853.33,10.845 1839.23,23.45C1828.18,33.498 1819.8,46.144 1814.86,60.24Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/><path d="M520,155.21C523.34,154.29 532.25,147.68 539.74,137.95C545.767,129.932 548.557,119.93 547.55,109.95L547.55,61.16C543.139,44.947 533.821,30.487 520.88,19.77C506.449,8.066 488.46,1.608 469.88,1.46L309.78,0L309.78,324.53L377.84,324.53L377.84,174.28L442.68,174.28C461.834,174.634 478.496,187.887 483.15,206.47L483.15,324.53L547.52,324.53L547.52,193.6C546.444,183.717 542.071,174.478 535.11,167.38C529.61,161.92 523.77,156.62 520,155.21ZM487.28,96.57C486.006,101.18 483.458,105.34 479.93,108.57C472.11,115.57 462.53,115.15 460.61,115.01L374.16,115.01C374.307,94.783 374.46,74.55 374.62,54.31L459.23,54.77C466.078,54.065 472.94,56.045 478.36,60.29C482.819,63.929 485.955,68.939 487.28,74.54L487.28,96.57Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/><path d="M593.05,64.38C593.05,54.26 590.77,29.38 607.61,14.76C629.42,-4.16 639,0.92 675.36,0.92L853.36,0.92L853.36,100.71L793.54,100.71L793.54,54.26L680.88,54.26C680.01,54.11 669.41,52.44 662.02,60.26C658.46,64.149 656.492,69.238 656.51,74.51L656.51,133.37L820.21,133.37L802.74,188.1L657.43,188.1L657.43,269.95L766.43,269.95C773.464,269.772 780.186,266.983 785.28,262.13C789.326,258.14 792.056,253.006 793.1,247.42L793.1,223.94L853.34,223.94L853.34,264.87C848.74,281.113 839.269,295.562 826.21,306.26C802,325.88 774.66,324.65 768.27,324.19L593.05,324.19L593.05,64.38Z" style="fill:currentColor;fill-rule:nonzero;stroke:currentColor;stroke-width:7.33px;"/></g></g></g></g><g transform="matrix(2.82054,0,0,2.82054,3084.43,1271.47)"><g><g transform="matrix(0.746726,0,0,0.746717,-518.817,705.489)"><g><g><g><path d="M741.68,378.61L0,378.61L0,1442.39L1109,333.39L1109,0L741.68,378.61ZM219,892.84L219,590.52L515.64,590.52L219,892.84Z" style="fill:none;fill-rule:nonzero;stroke:var(--logo-mark,currentColor);stroke-width:42px;"/></g></g></g></g><g transform="matrix(0.741842,0,0,0.741842,-514.911,999.516)"><g><g><g><path d="M0,1113.23L0,1426.85L373,1053.85L1113.27,1053.85L1113.27,0L0,1113.23ZM892.84,836.33L599,836.33L892.84,550.48L892.84,836.33Z" style="fill:none;fill-rule:nonzero;stroke:var(--logo-mark,currentColor);stroke-width:42px;"/></g></g></g></g></g></g></g></g></svg>
+
+  <p>Datos del sistema de gestión de Drenpos y del panel de suscripciones a 21 de noviembre de 2026. Costes estimados con sueldos y alquileres de mercado de Badajoz de 2026. La valoración y el plan son una propuesta para hablarla juntos, no una tasación profesional.</p>
+</div></footer>
+
+<script>
+const D={"mLab": ["abr 25", "may 25", "jun 25", "jul 25", "ago 25", "sep 25", "oct 25", "nov 25", "dic 25", "ene 26", "feb 26", "mar 26", "abr 26", "may 26", "jun 26", "jul 26", "ago 26", "sep 26", "oct 26", "nov 26"], "mrr": [25.17, 35.17, 90, 90, 90, 115, 163, 213.58, 228.16, 236.16, 265.02, 265.02, 285.6, 299.1, 299.1, 318.1, 338.1, 512.52, 622.12, 699.62], "customers": [2, 3, 6, 6, 6, 8, 11, 14, 15, 16, 18, 19, 20, 21, 21, 22, 23, 30, 34, 38], "sLab": ["sep 25", "oct 25", "nov 25", "dic 25", "ene 26", "feb 26", "mar 26", "abr 26", "may 26", "jun 26", "jul 26", "ago 26", "sep 26", "oct 26", "nov 26"], "sales": [1280, 3895, 1281.9, 463, 3153.5, 1645.99, 3153.28, 2192.34, 720.43, 5143.93, 2610.58, 3152.68, 4527.01, 4449.2, 2601.26], "modules": [["Usuarios", 35], ["Financiero", 29], ["Informes", 29], ["Almacén", 21], ["Firma", 18], ["Correo", 15], ["WhatsApp", 11], ["TPV", 9], ["IA", 3], ["Envíos", 2]], "cash": {"Bueno": [93537, 87193, 80970, 74867, 68883, 63020, 62110, 61320, 60650, 60100, 59670, 59360, 59170, 59100, 59150, 59320, 59610, 60020, 60550, 61200, 61970, 62860, 63870, 65000], "Base": [92147, 84373, 76680, 69067, 61533, 54080, 51540, 49080, 46700, 44400, 42180, 40040, 37980, 36000, 34100, 32280, 30540, 28880, 27300, 25800, 24380, 23040, 21780, 20600], "Sin AGF": [89647, 79373, 69180, 59067, 49033, 39080, 34040, 29080, 24200, 19400, 14680, 10040, 5480, 1000, -3400, -7720, -11960, -16120, -20200, -24200, -28120, -31960, -35720, -39400], "Prudente": [88257, 76553, 64890, 53267, 41683, 30140, 23470, 16840, 10250, 3700, -2810, -9280, -15710, -22100, -28450, -34760, -41030, -47260, -53450, -59600, -65710, -71780, -77810, -83800]}};
+const NS="http://www.w3.org/2000/svg";
+const eur=v=>v.toLocaleString("es-ES",{maximumFractionDigits:0})+" €";
+function el(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p&&p.appendChild(e);return e}
+function tip(box){let t=box.querySelector(".tip");if(!t){t=document.createElement("div");t.className="tip";box.appendChild(t)}return t}
+function show(box,svg,x,y,txt){const t=tip(box),r=svg.getBoundingClientRect(),b=box.getBoundingClientRect(),vb=svg.viewBox.baseVal,s=r.width/vb.width;t.textContent=txt;t.style.left=(r.left-b.left+x*s)+"px";t.style.top=(r.top-b.top+y*s)+"px";t.style.opacity=1}
+function hide(box){const t=box.querySelector(".tip");if(t)t.style.opacity=0}
+const CW=box=>Math.max(320,Math.min(760,box.clientWidth-34));
+function frame(box,W,H){const svg=el("svg",{viewBox:`0 0 ${W} ${H}`},box);svg.addEventListener("mouseleave",()=>hide(box));return svg}
+function yAxis(svg,x0,x1,y,max,steps,fmt){for(let i=0;i<=steps;i++){const v=max*i/steps,yy=y(v);el("line",{x1:x0,x2:x1,y1:yy,y2:yy,class:"grid"},svg);el("text",{x:x0-8,y:yy+4,"text-anchor":"end"},svg).textContent=fmt(v)}}
+function xLabels(svg,labels,xf,y,every){const n=labels.length-1;labels.forEach((l,i)=>{if((i%every===0&&Math.abs(xf(n)-xf(i))>46)||i===n)el("text",{x:xf(i),y,"text-anchor":"middle"},svg).textContent=l})}
+
+function lineChart(box,labels,vals,max,steps,fmt,mark){
+  const W=CW(box),H=W<500?230:280,L=52,R=16,T=24,B=30,svg=frame(box,W,H),n=vals.length;
+  const x=i=>L+(W-L-R)*i/(n-1),y=v=>T+(H-T-B)*(1-v/max);
+  yAxis(svg,L,W-R,y,max,steps,fmt);xLabels(svg,labels,x,H-8,W<500?6:3);
+  const pts=vals.map((v,i)=>[x(i),y(v)]);
+  el("path",{d:`M${x(0)},${y(0)} `+pts.map(p=>"L"+p).join(" ")+` L${x(n-1)},${y(0)}Z`,class:"area"},svg);
+  const line=el("path",{d:"M"+pts.map(p=>p.join(",")).join(" L"),class:"line draw"},svg);
+  line.style.setProperty("--len",Math.ceil(line.getTotalLength?line.getTotalLength():2000));
+  if(mark!=null){el("circle",{cx:x(mark),cy:y(vals[mark]),r:4.5,fill:"var(--muted)",stroke:"var(--bg)","stroke-width":2},svg);el("text",{x:x(mark),y:y(vals[mark])-12,"text-anchor":"middle"},svg).textContent=fmt(vals[mark])+" · "+labels[mark]}
+  el("circle",{cx:x(n-1),cy:y(vals[n-1]),r:6,class:"end"},svg);
+  el("text",{x:x(n-1)-10,y:y(vals[n-1])-12,"text-anchor":"end",class:"val"},svg).textContent=fmt(vals[n-1])+" / mes";
+  const step=(W-L-R)/(n-1);
+  vals.forEach((v,i)=>{const h=el("rect",{x:x(i)-step/2,y:T,width:step,height:H-T-B,class:"hit"},svg);h.addEventListener("mouseenter",()=>show(box,svg,x(i),y(v),labels[i]+": "+v.toLocaleString("es-ES",{minimumFractionDigits:2,maximumFractionDigits:2})+" €"))});
+}
+function barChart(box,labels,vals,max,steps,fmt,opt={}){
+  const W=CW(box),H=W<500?220:260,L=opt.L||52,R=14,T=22,B=30,svg=frame(box,W,H),n=vals.length,step=(W-L-R)/n,bw=step*.62;
+  const x=i=>L+step*i+step/2,y=v=>T+(H-T-B)*(1-v/max);
+  yAxis(svg,L,W-R,y,max,steps,fmt);xLabels(svg,labels,x,H-8,(opt.every||2)*(W<500?2:1));
+  vals.forEach((v,i)=>{const r=el("rect",{x:x(i)-bw/2,y:y(v),width:bw,height:y(0)-y(v),rx:3,class:"bar"+(opt.softLast&&i===n-1?" soft":"")},svg);r.style.animationDelay=(i*28)+"ms";
+    const h=el("rect",{x:x(i)-step/2,y:T,width:step,height:H-T-B,class:"hit"},svg);h.addEventListener("mouseenter",()=>show(box,svg,x(i),y(v),labels[i]+": "+(opt.tipFmt||fmt)(v)))});
+  (opt.labelIdx||[]).forEach(i=>{el("text",{x:x(i),y:y(vals[i])-7,"text-anchor":"middle",class:"val"},svg).textContent=(opt.tipFmt||fmt)(vals[i])});
+  if(opt.softLast)el("text",{x:x(n-1)+bw/2,y:y(vals[n-1])-7,"text-anchor":"end"},svg).textContent="parcial";
+}
+function hbars(box,items){
+  const W=CW(box),rh=26,T=6,L=86,R=40,H=T+items.length*rh,svg=frame(box,W,H),max=40,x=v=>L+(W-L-R)*v/max;
+  items.forEach(([n,v],i)=>{const yy=T+i*rh;el("text",{x:L-10,y:yy+rh/2+4,"text-anchor":"end"},svg).textContent=n;
+    const r=el("rect",{x:L,y:yy+5,width:x(v)-L,height:rh-10,rx:3,class:"bar hbar"},svg);r.style.animationDelay=(i*40)+"ms";
+    el("text",{x:x(v)+6,y:yy+rh/2+4,class:"val"},svg).textContent=v;
+    const h=el("rect",{x:0,y:yy,width:W,height:rh,class:"hit"},svg);h.addEventListener("mouseenter",()=>show(box,svg,x(v),yy+4,n+": "+v+" clientes"))});
+}
+function valuation(box){
+  const W=CW(box),H=150,L=W<500?118:210,R=40,svg=frame(box,W,H),lo=80,hi=220,x=v=>L+(W-L-R)*(v-lo)/(hi-lo);
+  [100,125,150,175,200].forEach(v=>{el("line",{x1:x(v),x2:x(v),y1:28,y2:H-24,class:"grid"},svg);el("text",{x:x(v),y:H-6,"text-anchor":"middle"},svg).textContent=v+"k"});
+  const rows=[["Coste de reconstrucción",151,194,"var(--brand)"],["Múltiplo 3–4× facturación",108,144,"var(--bar-alt)"]];
+  rows.forEach(([n,a,b,c],i)=>{const yy=54+i*42;el("text",{x:L-14,y:yy+5,"text-anchor":"end",fill:"var(--fg)",style:"fill:var(--fg);font-size:"+(W<500?"11px":"12.5px")},svg).textContent=W<500?n.replace("Coste de reconstrucción","Reconstrucción").replace("Múltiplo 3–4× facturación","Múltiplo 3–4×"):n;
+    const r=el("rect",{x:x(a),y:yy-9,width:x(b)-x(a),height:18,rx:9,fill:c,class:"hbar"},svg);r.style.cssText+=";transform-box:fill-box;transform-origin:left;animation:barright .9s cubic-bezier(.2,.7,.2,1) both";
+    el("text",{x:x(a)-6,y:yy+4,"text-anchor":"end"},svg).textContent=a+"k";el("text",{x:x(b)+6,y:yy+4},svg).textContent=b+"k"});
+  el("line",{x1:x(175),x2:x(175),y1:24,y2:H-24,stroke:"var(--brand-deep)","stroke-width":2,"stroke-dasharray":"4 3"},svg);
+  el("text",{x:W<500?x(175)-6:x(175)+6,y:20,"text-anchor":W<500?"end":"start",class:"val",style:"fill:var(--brand-deep)"},svg).textContent="Propuesta: 175.000 €";
+}
+function cashChart(box,P){
+  const W=CW(box),H=W<500?240:300,L=W<500?50:60,R=W<500?64:90,T=16,B=30,svg=frame(box,W,H),n=24,min=-100000,max=100000;
+  const x=i=>L+(W-L-R)*i/(n-1),y=v=>T+(H-T-B)*(1-(v-min)/(max-min));
+  [-100000,-50000,0,50000,100000].forEach(v=>{el("line",{x1:L,x2:W-R,y1:y(v),y2:y(v),class:"grid",style:v===0?"stroke:var(--muted);stroke-width:1.2":""},svg);el("text",{x:L-8,y:y(v)+4,"text-anchor":"end"},svg).textContent=(v/1000)+"k"});
+  [0,5,11,17,23].forEach(i=>el("text",{x:x(i),y:H-8,"text-anchor":"middle"},svg).textContent="mes "+(i+1));
+  const st={"Bueno":["var(--brand-deep)",""],"Base":["var(--brand)",""],"Sin AGF":["var(--muted)","6 4"],"Prudente":["var(--bar-alt)","2 4"]};
+  Object.entries(P).forEach(([k,v])=>{const pts=v.map((c,i)=>[x(i),y(Math.max(min,c))]);
+    const pth=el("path",{d:"M"+pts.map(p=>p.join(",")).join(" L"),fill:"none",stroke:st[k][0],"stroke-width":2.4,"stroke-dasharray":st[k][1],"stroke-linejoin":"round"},svg);
+    if(!st[k][1]){pth.setAttribute("class","draw");pth.style.setProperty("--len",Math.ceil(pth.getTotalLength()))}
+    el("text",{x:x(n-1)+6,y:y(Math.max(min,v[n-1]))+4,style:"fill:var(--fg);font-weight:700;font-size:11.5px"},svg).textContent=k;});
+  const step=(W-L-R)/(n-1);
+  for(let i=0;i<n;i++){const h=el("rect",{x:x(i)-step/2,y:T,width:step,height:H-T-B,class:"hit"},svg);h.addEventListener("mouseenter",()=>show(box,svg,x(i),T+10,"Mes "+(i+1)+": "+Object.entries(P).map(([k,v])=>k+" "+Math.round(v[i]/1000)+"k").join(" · ")))}
+}
+const q=s=>document.querySelector(`[data-chart="${s}"]`);
+const CH={
+  mrr:()=>lineChart(q("mrr"),D.mLab,D.mrr,800,4,v=>eur(v),D.mLab.indexOf("nov 25")),
+  customers:()=>barChart(q("customers"),D.mLab,D.customers,40,4,v=>String(Math.round(v)),{labelIdx:[D.mLab.indexOf("nov 25"),D.mLab.length-1],every:3,L:40}),
+  sales:()=>barChart(q("sales"),D.sLab,D.sales,6000,3,v=>eur(v),{softLast:true,every:2}),
+  modules:()=>hbars(q("modules"),D.modules),
+  valuation:()=>valuation(q("valuation")),
+  cash:()=>cashChart(q("cash"),D.cash)};
+function redraw(k){const b=q(k),sv=b.querySelector("svg");sv&&sv.remove();CH[k]()}
+function drawAll(){Object.keys(CH).forEach(redraw)}
+drawAll();let rw=innerWidth,rt;addEventListener("resize",()=>{if(Math.abs(innerWidth-rw)<40)return;rw=innerWidth;clearTimeout(rt);rt=setTimeout(drawAll,200)});
+
+/* números que cuentan hacia arriba */
+const fmt=(v,d)=>{let [i,f]=v.toFixed(d).split(".");i=i.replace(/\B(?=(\d{3})+(?!\d))/g,".");return f?i+","+f:i};
+function countUp(el){const t=el.dataset.final||el.textContent;el.dataset.final=t;const m=t.match(/\d[\d.]*(?:,\d+)?/g);if(!m||m.length!==1)return;
+  const raw=m[0],d=(raw.split(",")[1]||"").length,val=parseFloat(raw.replace(/\./g,"").replace(",","."));const t0=performance.now(),dur=1100;
+  (function step(now){const k=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-k,3);el.textContent=t.replace(raw,fmt(val*e,d));if(k<1)requestAnimationFrame(step);else el.textContent=t})(t0)}
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!reduce){document.querySelectorAll(".kpi .v").forEach(countUp)}
+
+/* aparición al hacer scroll */
+if("IntersectionObserver" in window&&!reduce){
+  const vh=innerHeight,items=[...document.querySelectorAll("main .wrap>*")].filter(el=>el.getBoundingClientRect().top>vh*.92);
+  items.forEach(el=>{el.classList.add("pre");const sib=[...el.parentNode.children].filter(x=>x.classList.contains("pre"));el.style.transitionDelay=(Math.min(sib.indexOf(el),3)*60)+"ms"});
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;io.unobserve(el);el.classList.remove("pre");
+    if(el.matches("[data-chart]"))redraw(el.dataset.chart);
+    el.querySelectorAll("[data-chart]").forEach(c=>redraw(c.dataset.chart));
+    el.querySelectorAll(".meter.grow i").forEach(i=>{i.style.animation="none";void i.offsetWidth;i.style.animation=""});
+    el.querySelectorAll(".fact b.num, .kpi .v").forEach(countUp);
+  }),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+  items.forEach(el=>io.observe(el));
+  addEventListener("beforeprint",()=>items.forEach(el=>el.classList.remove("pre")));
+}
+</script>
+
+</body>
+</html>
