@@ -17,14 +17,16 @@ import datos from "@/config/precios.json";
 export const P = datos;
 export type ClavePlan = keyof typeof datos.planes;
 
+const FACTOR_ANUAL = 1 - datos.anual.descuento / 100;
+
 const valores: Record<string, number> = {};
 for (const [id, plan] of Object.entries(datos.planes)) {
   valores[id] = plan.mensual;
   valores[`${id}_usuarios`] = plan.usuarios;
   valores[`${id}_fichajes`] = plan.fichajes;
-  // Precio al mes pagando el año entero (meses_pagados de 12).
-  valores[`${id}_anual`] = (plan.mensual * datos.anual.meses_pagados) / 12;
-  valores[`${id}_ano`] = plan.mensual * datos.anual.meses_pagados;
+  // Pagando el año entero: los 12 meses con el descuento anual.
+  valores[`${id}_anual`] = plan.mensual * FACTOR_ANUAL; // al mes
+  valores[`${id}_ano`] = plan.mensual * 12 * FACTOR_ANUAL; // el año
 }
 for (const [id, v] of Object.entries(datos.extras)) valores[id] = v;
 for (const [id, v] of Object.entries(datos.equipo)) {
@@ -39,8 +41,8 @@ valores.almacen_tpv = datos.planes.almacen.mensual + datos.extras.tpv;
 valores.produccion_tpv = datos.planes.produccion.mensual + datos.extras.tpv;
 valores.desde = Math.min(...Object.values(datos.planes).map((p) => p.mensual));
 valores.hasta = Math.max(...Object.values(datos.planes).map((p) => p.mensual));
-valores.meses_gratis = 12 - datos.anual.meses_pagados;
-valores.meses_pagados = datos.anual.meses_pagados;
+valores.anual_descuento = datos.anual.descuento;
+valores.factor_anual = FACTOR_ANUAL;
 valores.nuevas_descuento = datos.empresas_nuevas.descuento;
 valores.nuevas_meses = datos.empresas_nuevas.meses;
 valores.nuevas_prorroga = datos.empresas_nuevas.prorroga_meses;

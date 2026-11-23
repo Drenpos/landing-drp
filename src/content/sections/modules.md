@@ -75,7 +75,7 @@ modules:
   - name: "Fichajes"
     description: "Control horario completo en todos los planes. Cada persona más que fiche o apruebe vacaciones, [[p:fichaje]]/mes."
     price_monthly: "[[p:fichaje]]"
-    price_yearly: "[[p:fichaje×meses_pagados/12]]"
+    price_yearly: "[[p:fichaje×factor_anual]]"
     included_in:
       - "Facturación"
       - "Tienda y Hostelería"
@@ -105,7 +105,7 @@ modules:
   - name: "Usuarios"
     description: "Personas de más que entran al sistema, aparte de las que trae tu plan."
     price_monthly: "[[p:usuario]]"
-    price_yearly: "[[p:usuario×meses_pagados/12]]"
+    price_yearly: "[[p:usuario×factor_anual]]"
     included_in: []
     features:
       - "Permisos por persona"
@@ -115,7 +115,7 @@ modules:
   - name: "Puntos de venta"
     description: "Cajas o comanderos de más sobre los que trae tu plan."
     price_monthly: "[[p:caja]]"
-    price_yearly: "[[p:caja×meses_pagados/12]]"
+    price_yearly: "[[p:caja×factor_anual]]"
     included_in: []
     features:
       - "Otra caja en el mismo local o en otro"
@@ -124,7 +124,7 @@ modules:
   - name: "Comerciales"
     description: "Opcional. Agentes comerciales con su cartera de clientes y sus comisiones."
     price_monthly: "[[p:comerciales]]"
-    price_yearly: "[[p:comerciales×meses_pagados/12]]"
+    price_yearly: "[[p:comerciales×factor_anual]]"
     included_in: []
     features:
       - "Cada comercial ve y vende solo a sus clientes"
@@ -153,7 +153,7 @@ modules:
   - name: "Conector con ChatGPT o Claude"
     description: "Opcional. Preguntas a tu asistente por ventas, clientes o stock y te contesta con tus datos, con los permisos de cada usuario."
     price_monthly: "[[p:mcp]]"
-    price_yearly: "[[p:mcp×meses_pagados/12]]"
+    price_yearly: "[[p:mcp×factor_anual]]"
     included_in: []
     features:
       - "Ventas por fechas, compras y ventas netas"
@@ -164,7 +164,7 @@ modules:
   - name: "Soporte prioritario"
     description: "Opcional. Respuesta en 4 horas laborables y teléfono directo."
     price_monthly: "[[p:soporte]]"
-    price_yearly: "[[p:soporte×meses_pagados/12]]"
+    price_yearly: "[[p:soporte×factor_anual]]"
     included_in: []
     features:
       - "Respuesta en 4 horas laborables"
@@ -173,7 +173,7 @@ modules:
 
 notes:
   - "Precios sin IVA"
-  - "Pagando el año, dos meses gratis"
+  - "Pagando el año, [[n:anual_descuento]] % de descuento"
   - "Los módulos opcionales se activan y se quitan cuando quieras"
   - "Sin permanencia"
 ---

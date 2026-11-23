@@ -386,7 +386,7 @@ Drenpos cubre cuatro obligaciones legales en España. No son extras: son necesid
 
 Cualquier plan se puede instalar en el servidor de la empresa (funciona sin internet, con las mismas actualizaciones y copia diaria cifrada fuera). Se estudia cada caso y se hace una propuesta.
 
-**Pago anual:** dos meses gratis. **Sin permanencia.** No se publican precios de puesta en marcha: depende de cada empresa y se habla antes de empezar.
+**Pago anual:** [[n:anual_descuento]] % de descuento. **Sin permanencia.** No se publican precios de puesta en marcha: depende de cada empresa y se habla antes de empezar.
 
 **Opcional en cualquier plan (€/mes, sin IVA):** usuario de más [[n:usuario]] · persona de más que ficha [[n:fichaje]] · caja o comandero de más [[n:caja]] · TPV en Almacén o Producción [[n:tpv]] · comerciales y comisiones [[n:comerciales]] · conector con ChatGPT o Claude (MCP) [[n:mcp]] por empresa · soporte prioritario [[n:soporte]]. Sin coste y opcionales: agencias de transporte (MRW, UPS, DHL, CTT Express y reparto propio) y conectores con Holded, WooCommerce y Faire.
 

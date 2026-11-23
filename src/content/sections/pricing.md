@@ -1,6 +1,6 @@
 ---
 title: "Elige el plan según lo que haga tu negocio"
-description: "Cuatro planes. Cada uno trae sus usuarios y las personas que pueden fichar. Sin permanencia, y si pagas el año entero te regalamos dos meses."
+description: "Cuatro planes. Cada uno trae sus usuarios y las personas que pueden fichar. Sin permanencia, y si pagas el año entero tienes un [[n:anual_descuento]] % de descuento."
 badge: "Precios"
 
 help_cta:

@@ -55,7 +55,7 @@ list:
   - title: ¿Qué soporte ofrecéis?
     description: Soporte cercano en español con respuesta habitual ≤ 24h laborables y acompañamiento en el arranque. También resolvemos dudas de configuración y mejores prácticas.
   - title: ¿Cómo funcionan los precios?
-    description: "Cuatro planes al mes, sin IVA: Facturación [[p:facturacion]], Tienda y Hostelería [[p:tienda]], Almacén [[p:almacen]] y Producción [[p:produccion]]. Cada uno trae sus usuarios y las personas que fichan, y lo demás se añade si hace falta. Pagando el año, dos meses gratis. Sin permanencia y con las actualizaciones incluidas. Tienes el detalle en la página de precios."
+    description: "Cuatro planes al mes, sin IVA: Facturación [[p:facturacion]], Tienda y Hostelería [[p:tienda]], Almacén [[p:almacen]] y Producción [[p:produccion]]. Cada uno trae sus usuarios y las personas que fichan, y lo demás se añade si hace falta. Pagando el año, [[n:anual_descuento]] % de descuento. Sin permanencia y con las actualizaciones incluidas. Tienes el detalle en la página de precios."
   - title: ¿Hay demo o prueba?
     description: Sí, ofrecemos demo guiada para evaluar encaje y resolver dudas de procesos, datos y trazabilidad. Si te interesa, solicita una demo desde el botón de la página.
 ---

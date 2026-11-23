@@ -96,5 +96,5 @@ notes:
   - "Usuario de más: [[p:usuario]]/mes. Persona de más que ficha: [[p:fichaje]]/mes. Caja o comandero de más: [[p:caja]]/mes"
   - "Si solo quieres el control horario, mira Drenpos Equipo en la página de control horario"
   - "Cualquier plan se puede instalar en el servidor de tu empresa; lo estudiamos y te pasamos una propuesta"
-  - "Pagando el año, dos meses gratis. Sin permanencia"
+  - "Pagando el año, [[n:anual_descuento]] % de descuento. Sin permanencia"
 ---
