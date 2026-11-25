@@ -3,7 +3,7 @@ title: "Stock por talla y color en una tienda de ropa sin duplicar artículos"
 meta_title: "Stock por talla y color en tienda de ropa, sin duplicar"
 description: "Cómo llevar el stock de una tienda de ropa por talla y color: modelo y variantes, matriz de tallas, reposición por talla, recuentos y etiquetas por variante."
 date: 2026-11-06
-updated: 2026-11-06
+updated: 2026-11-25
 image: "/images/blog/control-de-stock-sin-roturas/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -38,7 +38,7 @@ faq:
   - question: "¿Hace falta una etiqueta distinta para cada talla?"
     answer: "Sí, si quieres que el stock cuadre. Cada variante necesita su propio código de barras para que en caja, al recibir o al contar, la pistola distinga la S de la L. Con una etiqueta por modelo, alguien acaba eligiendo la talla a mano y ahí empiezan los descuadres."
   - question: "¿Cuánto cuesta llevar las tallas y colores con Drenpos?"
-    answer: "Para llevar el stock por talla y color con pedidos, recepción y recuentos, el plan Almacén con TPV cuesta [[n:almacen_tpv]] euros al mes sin IVA. Si solo necesitas vender y facturar con las tallas en el TPV, el plan Tienda y Hostelería cuesta [[n:tienda]] euros al mes sin IVA, sin módulo de inventario."
+    answer: "El plan Almacén con TPV cuesta [[n:almacen_tpv]] euros al mes sin IVA, con el stock por talla y color, pedidos, recepción, recuentos y el TPV de tienda, y [[n:almacen_usuarios]] usuarios."
 ---
 
 > Para llevar el stock de una tienda de ropa por talla y color sin duplicar artículos hay que trabajar con modelos y variantes: el modelo («Camiseta básica») agrupa y cada combinación de talla y color es una variante con su propio stock, su código de barras y su etiqueta. Con eso, el pedido y la recepción se rellenan en una rejilla, la reposición se calcula talla a talla y la caja sabe qué talla ha vendido.
@@ -167,7 +167,7 @@ Sí, si quieres que el stock cuadre. Cada variante necesita su propio código de
 
 ### ¿Cuánto cuesta llevar las tallas y colores con Drenpos?
 
-Para llevar el stock por talla y color con pedidos, recepción y recuentos, el plan Almacén con TPV cuesta [[n:almacen_tpv]] euros al mes sin IVA. Si solo necesitas vender y facturar con las tallas en el TPV, el plan Tienda y Hostelería cuesta [[n:tienda]] euros al mes sin IVA, sin módulo de inventario.
+El plan Almacén con TPV cuesta [[n:almacen_tpv]] euros al mes sin IVA ([[n:almacen]] del plan y [[n:tpv]] del TPV), con el stock por talla y color, pedidos, recepción, recuentos y el TPV de tienda, y [[n:almacen_usuarios]] usuarios.
 
 ## Siguiente paso
 

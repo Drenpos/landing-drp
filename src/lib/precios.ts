@@ -106,7 +106,7 @@ export function resolverPrecios(texto: string): string {
   });
 }
 
-/** "3 en Facturación, 8 en Tienda y Hostelería, 5 en Almacén y 10 en Producción" */
+/** "3 en Facturación, 5 en Almacén y 10 en Producción" */
 export function fichajesPorPlan(): string {
   const partes = Object.values(datos.planes).map((p) => `${p.fichajes} en ${p.nombre}`);
   return partes.length > 1

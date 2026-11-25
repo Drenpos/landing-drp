@@ -242,7 +242,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta un programa para tienda de ropa con Drenpos?",
-    a: "Si quieres llevar el stock por talla y color, con pedidos, recepción, recuentos y propuesta de compra, el plan es Almacén con TPV: [[p:almacen_tpv]]/mes sin IVA con [[n:almacen_usuarios]] usuarios. Si solo necesitas vender y facturar con el TPV, el plan Tienda y Hostelería cuesta [[p:tienda]]/mes sin IVA con [[n:tienda_usuarios]] usuarios: el TPV también marca el stock de cada talla, pero no lleva el módulo de inventario (pedidos a proveedor, recepción, recuentos ni propuesta de compra). Sin permanencia.",
+    a: "Si quieres llevar el stock por talla y color, con pedidos, recepción, recuentos y propuesta de compra, el plan es Almacén con TPV: [[p:almacen_tpv]]/mes sin IVA ([[p:almacen]] del plan y [[p:tpv]] del TPV) con [[n:almacen_usuarios]] usuarios. Cada usuario adicional son [[p:usuario]]/mes. Sin permanencia.",
   },
   {
     q: "¿Qué no hace Drenpos con las variantes?",
@@ -299,9 +299,9 @@ const productSchema = softwareApp({
   path: PATH,
   description:
     "Programa de gestión para tiendas de ropa, zapaterías y tiendas de complementos: modelos con variantes por talla y color (o cualquier atributo), stock por variante, rejilla de cantidades en compras, recepción, recuentos y etiquetas, TPV de tienda con un botón por variante, etiquetas con código de barras por talla, conectores con WooCommerce y Faire, importación desde Excel y facturación Verifactu.",
-  plan: "tienda",
+  plan: "almacen_tpv",
   offerDescription:
-    "Plan Tienda y Hostelería [[p:tienda]]/mes sin IVA; con stock por talla y color, plan Almacén con TPV [[p:almacen_tpv]]/mes sin IVA. Sin permanencia.",
+    "Plan Almacén con TPV [[p:almacen_tpv]]/mes sin IVA, con el stock por talla y color. Sin permanencia.",
   featureList: [
     "Modelos con variantes por atributos: talla, color, número, acabado",
     "Generación de todas las variantes de una vez con código propio",
@@ -318,7 +318,7 @@ const productSchema = softwareApp({
 const faqSchema = faqPage(faqs);
 
 const PAGE_PUBLISHED = "2026-11-06";
-const PAGE_UPDATED = "2026-11-06";
+const PAGE_UPDATED = "2026-11-25";
 ---
 
 <Base
@@ -671,17 +671,14 @@ const PAGE_UPDATED = "2026-11-06";
           <div class="rounded-3xl p-8 lg:p-12 text-center text-white bg-dark" data-aos="fade-up-sm">
             <h2 class="h3 font-bold mb-3 text-white">¿Qué plan necesita una tienda de ropa?</h2>
             <p class="mb-4 max-w-xl mx-auto text-white/75">
-              Depende de si quieres llevar el stock. Para el stock por talla y
-              color, con pedidos, recepción, recuentos y propuesta de compra, el
-              plan es Almacén con TPV: [[p:almacen_tpv]]/mes sin IVA con
-              [[n:almacen_usuarios]] usuarios.
+              El plan Almacén con TPV: [[p:almacen_tpv]]/mes sin IVA, con el
+              stock por talla y color, pedidos, recepción, recuentos, propuesta
+              de compra y el TPV de tienda, y [[n:almacen_usuarios]] usuarios.
             </p>
             <p class="mb-6 max-w-xl mx-auto text-white/75">
-              Si solo necesitas vender y facturar con el TPV y sus tallas y
-              colores, el plan Tienda y Hostelería cuesta [[p:tienda]]/mes sin
-              IVA con [[n:tienda_usuarios]] usuarios, sin el módulo de
-              inventario. Cada usuario adicional son [[p:usuario]]/mes, sin
-              permanencia ni coste de instalación.
+              Son [[p:almacen]] del plan Almacén y [[p:tpv]] del TPV. Cada
+              usuario adicional son [[p:usuario]]/mes, sin permanencia ni coste
+              de instalación.
             </p>
             <ul class="flex flex-wrap gap-4 justify-center">
               <li>

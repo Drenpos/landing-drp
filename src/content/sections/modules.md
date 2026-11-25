@@ -1,6 +1,6 @@
 ---
 title: "Módulos de Drenpos"
-description: "Los cuatro módulos principales van dentro de los planes. Lo demás lo activas solo si lo necesitas."
+description: "Facturación, inventario, producción y fichajes van dentro de los planes. El TPV y lo demás lo activas solo si lo necesitas."
 badge: "Módulos"
 
 modules:
@@ -10,7 +10,6 @@ modules:
     price_yearly: "Incluido"
     included_in:
       - "Facturación"
-      - "Tienda y Hostelería"
       - "Almacén"
       - "Producción"
     features:
@@ -26,11 +25,10 @@ modules:
       - "Informes de ventas, compras y márgenes"
 
   - name: "TPV"
-    description: "Un solo módulo para tienda y para hostelería. Viene en el plan Tienda y Hostelería; en Almacén o Producción se añade por [[p:tpv]]/mes."
-    price_monthly: "Incluido"
-    price_yearly: "Incluido"
-    included_in:
-      - "Tienda y Hostelería"
+    description: "Un solo módulo para tienda y para hostelería. Se añade al plan Almacén o al de Producción por [[p:tpv]]/mes."
+    price_monthly: "[[p:tpv]]"
+    price_yearly: "[[p:tpv×factor_anual]]"
+    included_in: []
     features:
       - "Venta con lector de códigos, tallas y colores"
       - "Tickets, devoluciones y cierre de caja"
@@ -78,7 +76,6 @@ modules:
     price_yearly: "[[p:fichaje×factor_anual]]"
     included_in:
       - "Facturación"
-      - "Tienda y Hostelería"
       - "Almacén"
       - "Producción"
     features:

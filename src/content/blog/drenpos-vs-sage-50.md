@@ -64,7 +64,7 @@ Los dos facturan con Verifactu, gestionan compras, ventas y stock, tienen TPV, r
 | Picking con pistola | No consta (solo "código de barras") | Sí, con orden de ruta |
 | Caducidades y FEFO | No consta | Sí |
 | Tallas, colores y medidas | Sí, en Comercio | Sí (atributos y formatos) |
-| TPV tienda | Sí, en Comercio (sin precio público) | Sí, incluido en Tienda y Hostelería; opcional en Almacén |
+| TPV tienda | Sí, en Comercio (sin precio público) | Sí, se añade al plan Almacén por [[p:tpv]] |
 | TPV hostelería | No consta | Sí |
 | Control horario | No: producto aparte (Sage HR) o terceros | Sí, incluido, con terminal RFID |
 | Nóminas | No: Sage 200 Laboral aparte | No |
@@ -76,7 +76,7 @@ Los dos facturan con Verifactu, gestionan compras, ventas y stock, tienen TPV, r
 | Conexión con IA | Sage Copilot | MCP: ChatGPT, Claude o el asistente que uses |
 | Despliegue | Windows local o nube (Windows y Mac) | Navegador o servidor propio |
 | Contrato | Anual | Mensual, sin permanencia |
-| Soporte | Online, teléfono o prioritario según plan; lunes a jueves 9:00-18:30, viernes 9:00-15:00 | Correo; teléfono desde Tienda y Hostelería |
+| Soporte | Online, teléfono o prioritario según plan; lunes a jueves 9:00-18:30, viernes 9:00-15:00 | Correo; teléfono desde Almacén |
 
 ## Precios
 
@@ -87,7 +87,7 @@ Sin IVA, a 20 de octubre de 2026. Sage cobra por tramos de usuarios y con contra
 | Hasta 2 usuarios, facturación y stock | Essential 45 €/mes (anual) | Facturación [[p:facturacion]] ([[n:facturacion_usuarios]] usuarios, sin stock) o Almacén [[p:almacen]] ([[n:almacen_usuarios]] usuarios, inventario completo) |
 | Hasta 5 usuarios | Standard 102 €/mes | Almacén con TPV [[p:almacen_tpv]] ([[n:almacen_usuarios]] usuarios) + [[p:usuario]] por usuario más |
 | Más de 5 usuarios | Premium 154 €/mes | Producción [[p:produccion]] ([[n:produccion_usuarios]] usuarios) o Almacén + [[p:usuario]]/usuario |
-| TPV | Edición Comercio, sin precio público | Incluido en Tienda y Hostelería; [[p:tpv]] en Almacén; [[p:caja]] cada TPV adicional |
+| TPV | Edición Comercio, sin precio público | [[p:tpv]] añadido al plan Almacén; [[p:caja]] cada caja adicional |
 | Control horario | No incluido | Incluido; [[p:fichaje]]/empleado extra |
 | Contabilidad | Incluida | No disponible |
 

@@ -65,7 +65,7 @@ Los dos están en la nube, no tienen permanencia y trabajan con Verifactu, remes
 | Picking con pistola y ruta | No consta | Sí |
 | Caducidades y FEFO | No consta | Sí |
 | Productos compuestos / kits | Sí | Sí (packs montables) |
-| TPV | STEL POS, aparte, sin precio público; Verifactu sin conexión | Incluido en Tienda y Hostelería; opcional en Almacén |
+| TPV | STEL POS, aparte, sin precio público; Verifactu sin conexión | Se añade al plan Almacén por [[p:tpv]] |
 | Control horario | STEL Tempo, aparte, desde 3 €/usuario | Incluido; terminal RFID; [[p:fichaje]]/empleado extra |
 | Producción | No consta | Sí: órdenes, fases, tiempos, coste real |
 | Contabilidad | No: traspaso contable | No: reporte y ZIP para la gestoría |
@@ -74,7 +74,7 @@ Los dos están en la nube, no tienen permanencia y trabajan con Verifactu, remes
 | API y conectores | API; WooCommerce (plugin), Shopify y PrestaShop por API | WooCommerce, Faire, Holded, agencias de transporte |
 | IA | STEL Assistant (agentes propios) | MCP con ChatGPT, Claude o el que uses |
 | Despliegue | Solo nube | Nube o servidor propio |
-| Soporte | Chat de 8 a 23 h, teléfono de 8 a 19 h | Correo; teléfono desde Tienda y Hostelería |
+| Soporte | Chat de 8 a 23 h, teléfono de 8 a 19 h | Correo; teléfono desde Almacén |
 | Usuarios incluidos | 1 | De [[n:facturacion_usuarios]] a [[n:produccion_usuarios]] según plan |
 
 ## Precios

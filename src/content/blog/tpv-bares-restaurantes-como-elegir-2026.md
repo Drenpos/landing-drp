@@ -3,7 +3,7 @@ title: "TPV para bares y restaurantes: cómo elegirlo en 2026"
 meta_title: "TPV para bares y restaurantes: cómo elegirlo en 2026"
 description: "Checklist de 11 puntos para elegir un TPV de hostelería en 2026: mesas, cocina, QR, stock, Verifactu, cierre de caja y coste total con el fichaje dentro."
 date: 2026-09-10
-updated: 2026-10-23
+updated: 2026-11-25
 image: "/images/blog/tpv-bares-restaurantes-como-elegir-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -27,7 +27,7 @@ faq:
   - question: "¿Qué debe tener un TPV para bares y restaurantes en 2026?"
     answer: "Mesas con mapa de sala, combinados y extras configurables con su propio precio, pantallas de cocina que no pierdan comandas, QR de mesa, stock descontado en cada venta, Verifactu en el ticket, fichaje del personal, cierre de caja con desglose por método de pago, funcionamiento en tablet, móvil y ordenador, y un precio sin sorpresas por usuario o por volumen."
   - question: "¿Cuánto cuesta un TPV de hostelería?"
-    answer: "Depende de si pagas por licencia, por terminal, por usuario o por porcentaje de las ventas, y esa es la primera pregunta que conviene hacer. En Drenpos el TPV va incluido en el plan Tienda y Hostelería ([[n:tienda]] euros al mes sin IVA, [[n:tienda_usuarios]] usuarios y fichaje para [[n:tienda_fichajes]] personas), con actualizaciones y soporte incluidos y sin permanencia. Los precios publicados de otros fabricantes y tres ejemplos de coste están en nuestra guía de cuánto cuesta un TPV para un bar."
+    answer: "Depende de si pagas por licencia, por terminal, por usuario o por porcentaje de las ventas, y esa es la primera pregunta que conviene hacer. En Drenpos el TPV se añade al plan Almacén: [[n:almacen_tpv]] euros al mes sin IVA en total, con el stock, [[n:almacen_usuarios]] usuarios y fichaje para [[n:almacen_fichajes]] personas, con actualizaciones y soporte incluidos y sin permanencia. Los precios publicados de otros fabricantes y tres ejemplos de coste están en nuestra guía de cuánto cuesta un TPV para un bar."
   - question: "¿Necesito hardware específico para el TPV?"
     answer: "No necesariamente. Si el sistema funciona en navegador, sirve la tablet, el móvil o el ordenador que ya tengas, y las pantallas de cocina pueden ser cualquier monitor con navegador. Lo que sí suele hacer falta es una impresora de tickets y, si cobras con tarjeta, el datáfono de tu banco o proveedor de pagos."
   - question: "¿Qué errores se cometen al elegir un TPV de hostelería?"
@@ -37,7 +37,7 @@ faq:
   - question: "¿El TPV tiene que emitir tickets conformes a Verifactu?"
     answer: "Sí, el ticket de un bar es una factura simplificada y entra dentro del alcance del Real Decreto 1007/2023. Hacienda anunció el 5 de octubre de 2026 que la obligación se aplaza a octubre de 2028 para todos, pendiente de publicación en el BOE; hasta entonces, el Real Decreto-ley 15/2025 marcaba el 1 de enero de 2027 para las sociedades y el 1 de julio de 2027 para los autónomos. Conviene comprobar hoy que el TPV que estás mirando ya lo cumple."
   - question: "¿Cómo calculo el coste total de un TPV de hostelería?"
-    answer: "Suma a tres años la cuota o la licencia, el hardware que te falte, las comisiones por pago con tarjeta si el TPV trae su propio cobro, la pantalla de cocina si se paga aparte y el fichaje del personal, que es obligatorio aunque el TPV no lo traiga. En Drenpos, el plan Tienda y Hostelería a tres años son [[n:tienda×36]] euros sin IVA con TPV, pantallas de cocina, almacén, Verifactu y fichaje para [[n:tienda_fichajes]] personas."
+    answer: "Suma a tres años la cuota o la licencia, el hardware que te falte, las comisiones por pago con tarjeta si el TPV trae su propio cobro, la pantalla de cocina si se paga aparte y el fichaje del personal, que es obligatorio aunque el TPV no lo traiga. En Drenpos, el plan Almacén con TPV a tres años son [[n:almacen_tpv×36]] euros sin IVA con TPV, pantallas de cocina, stock, Verifactu y fichaje para [[n:almacen_fichajes]] personas."
 ---
 
 > Para elegir un TPV de bar o restaurante hay que comprobar once cosas: mapa de sala, combinados con precio propio, pantallas de cocina que no pierdan comandas, QR de mesa, stock, Verifactu, fichaje, cierre de caja, dispositivos, modelo de precio y coste total a tres años. Y probarlas pensando en un viernes a las diez de la noche con la terraza llena, no en la pantalla de cobro. Aquí van también los errores que salen caros y qué tipo de solución encaja según el local.
@@ -108,10 +108,9 @@ Los precios de Drenpos, sin IVA y sin permanencia:
 
 | Concepto | Precio |
 | --- | --- |
-| Plan Tienda y Hostelería (TPV de tienda y de hostelería, caja, comanderos, cocina, QR en las mesas, [[n:tienda_usuarios]] usuarios y [[n:tienda_fichajes]] personas que fichan) | [[p:tienda]] al mes |
-| Plan Almacén con TPV (si además quieres controlar stock y lotes) | [[p:almacen_tpv]] al mes |
+| Plan Almacén con TPV (TPV de tienda y de hostelería, caja, comanderos, cocina, QR en las mesas, stock con lotes y consumos, [[n:almacen_usuarios]] usuarios y [[n:almacen_fichajes]] personas que fichan) | [[p:almacen_tpv]] al mes |
 | Usuario adicional | [[p:usuario]] al mes |
-| Fichaje, por cada persona por encima de las [[n:tienda_fichajes]] incluidas en Tienda y Hostelería | [[p:fichaje]] por persona y mes |
+| Fichaje, por cada persona por encima de las [[n:almacen_fichajes]] incluidas en el plan | [[p:fichaje]] por persona y mes |
 | Punto de venta o comandero adicional | [[p:caja]] al mes |
 | Asistentes de IA (MCP) | [[p:mcp]] al mes por empresa |
 
@@ -141,7 +140,7 @@ Dos obligaciones que llegan al mismo mostrador. El ticket de un bar es una factu
 
 El registro de jornada es la otra. En hostelería, con turnos partidos y personal que entra y sale, es donde más se complica llevarlo en papel. Que el fichaje esté en el mismo sistema que la caja evita la cuota extra y el cuadre manual a fin de mes. Cómo se ficha un turno partido y cómo se cuentan las horas extra lo explicamos en [control horario en hostelería](/blog/control-horario-hosteleria-turnos-partidos), y las opciones del mercado las comparamos en [mejores programas de control horario](/blog/mejores-programas-control-horario).
 
-Drenpos cumple las dos: Verifactu en cada ticket y factura, y fichaje del personal con llavero RFID, QR o app, con [[n:tienda_fichajes]] personas incluidas en el plan Tienda y Hostelería y [[n:fichaje]] euros al mes sin IVA por cada una más.
+Drenpos cumple las dos: Verifactu en cada ticket y factura, y fichaje del personal con llavero RFID, QR o app, con [[n:almacen_fichajes]] personas incluidas en el plan Almacén con TPV y [[n:fichaje]] euros al mes sin IVA por cada una más.
 
 ## ¿Cómo probarlo bien antes de decidir?
 
@@ -172,7 +171,7 @@ Mesas con mapa de sala, combinados y extras configurables con su propio precio, 
 
 ### ¿Cuánto cuesta un TPV de hostelería?
 
-Depende de si pagas por licencia, por terminal, por usuario o por porcentaje de las ventas, y esa es la primera pregunta que conviene hacer. En Drenpos el TPV va incluido en el plan Tienda y Hostelería ([[n:tienda]] euros al mes sin IVA, [[n:tienda_usuarios]] usuarios y fichaje para [[n:tienda_fichajes]] personas), con actualizaciones y soporte incluidos y sin permanencia. Los precios publicados de otros fabricantes y tres ejemplos de coste están en nuestra guía de cuánto cuesta un TPV para un bar.
+Depende de si pagas por licencia, por terminal, por usuario o por porcentaje de las ventas, y esa es la primera pregunta que conviene hacer. En Drenpos el TPV se añade al plan Almacén: [[n:almacen_tpv]] euros al mes sin IVA en total, con el stock, [[n:almacen_usuarios]] usuarios y fichaje para [[n:almacen_fichajes]] personas, con actualizaciones y soporte incluidos y sin permanencia. Los precios publicados de otros fabricantes y tres ejemplos de coste están en nuestra guía de cuánto cuesta un TPV para un bar.
 
 ### ¿Necesito hardware específico para el TPV?
 
@@ -192,7 +191,7 @@ Sí, el ticket de un bar es una factura simplificada y entra dentro del alcance 
 
 ### ¿Cómo calculo el coste total de un TPV de hostelería?
 
-Suma a tres años la cuota o la licencia, el hardware que te falte, las comisiones por pago con tarjeta si el TPV trae su propio cobro, la pantalla de cocina si se paga aparte y el fichaje del personal, que es obligatorio aunque el TPV no lo traiga. En Drenpos, el plan Tienda y Hostelería a tres años son [[n:tienda×36]] euros sin IVA con TPV, pantallas de cocina, almacén, Verifactu y fichaje para [[n:tienda_fichajes]] personas.
+Suma a tres años la cuota o la licencia, el hardware que te falte, las comisiones por pago con tarjeta si el TPV trae su propio cobro, la pantalla de cocina si se paga aparte y el fichaje del personal, que es obligatorio aunque el TPV no lo traiga. En Drenpos, el plan Almacén con TPV a tres años son [[n:almacen_tpv×36]] euros sin IVA con TPV, pantallas de cocina, stock, Verifactu y fichaje para [[n:almacen_fichajes]] personas.
 
 ## Siguiente paso
 

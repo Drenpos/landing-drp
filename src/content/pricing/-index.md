@@ -1,6 +1,6 @@
 ---
 title: "Precios de Drenpos"
-description: "Cuatro planes para pymes y autónomos: Facturación, Tienda y Hostelería, Almacén y Producción. Usuarios y fichajes incluidos y módulos opcionales."
+description: "Tres planes para pymes y autónomos: Facturación, Almacén (con TPV para tienda y hostelería) y Producción. Usuarios y fichajes incluidos y módulos opcionales."
 meta_title: "Precios de Drenpos: planes para pymes y autónomos"
 image: "/images/pricing/pricing-hero.jpg"
 

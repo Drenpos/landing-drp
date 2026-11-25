@@ -6,8 +6,6 @@ badge: "Comparativa"
 plans:
   - id: "facturacion"
     name: "Facturación"
-  - id: "tpv"
-    name: "Tienda y Hostelería"
   - id: "almacen"
     name: "Almacén"
   - id: "produccion"
@@ -18,42 +16,34 @@ features:
     items:
       - name: "Precio al mes, sin IVA"
         facturacion: "[[p:facturacion]]"
-        tpv: "[[p:tienda]]"
         almacen: "[[p:almacen]]"
         produccion: "[[p:produccion]]"
       - name: "Usuarios"
         facturacion: "[[n:facturacion_usuarios]]"
-        tpv: "[[n:tienda_usuarios]]"
         almacen: "[[n:almacen_usuarios]]"
         produccion: "[[n:produccion_usuarios]]"
       - name: "Personas que fichan"
         facturacion: "[[n:facturacion_fichajes]]"
-        tpv: "[[n:tienda_fichajes]]"
         almacen: "[[n:almacen_fichajes]]"
         produccion: "[[n:produccion_fichajes]]"
-      - name: "Cajas de TPV"
+      - name: "TPV de tienda y hostelería"
         facturacion: false
-        tpv: 1
         almacen: "+[[p:tpv]]/mes"
         produccion: "+[[p:tpv]]/mes"
       - name: "En la nube, desde cualquier dispositivo"
         facturacion: true
-        tpv: true
         almacen: true
         produccion: true
       - name: "Copia de seguridad diaria"
         facturacion: true
-        tpv: true
         almacen: true
         produccion: true
       - name: "Soporte por email"
         facturacion: true
-        tpv: true
         almacen: true
         produccion: true
       - name: "Soporte por teléfono y WhatsApp"
         facturacion: false
-        tpv: true
         almacen: true
         produccion: true
 
@@ -62,32 +52,26 @@ modules:
     items:
       - name: "Facturación con Verifactu, DeCA y exportación a A3"
         facturacion: true
-        tpv: true
         almacen: true
         produccion: true
       - name: "Fichajes, vacaciones, turnos y calendarios"
         facturacion: true
-        tpv: true
         almacen: true
         produccion: true
       - name: "Informes y envío por email y WhatsApp"
         facturacion: true
-        tpv: true
         almacen: true
         produccion: true
       - name: "TPV de tienda y de hostelería"
         facturacion: false
-        tpv: true
         almacen: "+[[p:tpv]]/mes"
         produccion: "+[[p:tpv]]/mes"
       - name: "Inventario: stock, lotes, caducidades, ubicaciones, picking"
         facturacion: false
-        tpv: false
         almacen: true
         produccion: true
       - name: "Producción: órdenes, escandallos, tiempos y coste real"
         facturacion: false
-        tpv: false
         almacen: false
         produccion: true
 

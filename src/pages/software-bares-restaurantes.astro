@@ -220,7 +220,7 @@ const comparativa = [
     cocina: "Sí, varias pantallas por familias con consulta cada 3 s",
     qr: "Sí, QR propio con analítica (carta digital en semanas)",
     stock: "Sí, stock descontado solo y facturación Verifactu",
-    precio: "Plan Tienda y Hostelería [[p:tienda]]/mes (sin IVA), TPV incluido",
+    precio: "Plan Almacén con TPV [[p:almacen_tpv]]/mes (sin IVA)",
     destacado: true,
   },
 ];
@@ -265,9 +265,9 @@ const preciosMercado = [
     url: "https://ventatpv.com/blog/software-numier-guia-caracteristicas-tipos-y-precios-guia-2021-n12",
   },
   {
-    nombre: "Drenpos (plan Tienda y Hostelería)",
-    precio: "[[p:tienda]]/mes sin IVA",
-    nota: "TPV con mesas y pantallas de cocina y barra, facturación con Verifactu, 3 usuarios y fichaje para 8 personas. Cada persona más que ficha, [[p:fichaje]]/mes.",
+    nombre: "Drenpos (plan Almacén con TPV)",
+    precio: "[[p:almacen_tpv]]/mes sin IVA",
+    nota: "TPV con mesas y pantallas de cocina y barra, stock con consumos, facturación con Verifactu, [[n:almacen_usuarios]] usuarios y fichaje para [[n:almacen_fichajes]] personas. Cada persona más que ficha, [[p:fichaje]]/mes.",
     fuente: "drenpos.com/pricing",
     url: "",
     destacado: true,
@@ -387,7 +387,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta un TPV para un bar?",
-    a: "Con los precios que publicaban los fabricantes el 23 de septiembre de 2026, el software va de 0 a 175 € al mes en suscripción (con comisión por pago con tarjeta en algunos casos) o ronda los 499 a 550 € en licencia sin cuota, con los módulos aparte. En Drenpos, el plan Tienda y Hostelería cuesta [[p:tienda]]/mes sin IVA e incluye el TPV con caja y dos comanderos, la facturación con Verifactu, 3 usuarios y fichaje para 8 personas. Sin permanencia ni coste de instalación.",
+    a: "Con los precios que publicaban los fabricantes el 23 de septiembre de 2026, el software va de 0 a 175 € al mes en suscripción (con comisión por pago con tarjeta en algunos casos) o ronda los 499 a 550 € en licencia sin cuota, con los módulos aparte. En Drenpos, el plan Almacén con TPV cuesta [[p:almacen_tpv]]/mes sin IVA e incluye el TPV con caja y dos comanderos, el stock con consumos, la facturación con Verifactu, [[n:almacen_usuarios]] usuarios y fichaje para [[n:almacen_fichajes]] personas. Sin permanencia ni coste de instalación.",
   },
   {
     q: "¿Es obligatorio Verifactu en un bar?",
@@ -395,7 +395,7 @@ const faqs = [
   },
   {
     q: "¿El software para bares integra el fichaje del personal?",
-    a: "Sí, en el mismo sistema que la caja. El equipo ficha con un llavero RFID o una tarjeta QR en el terminal de la barra (desde [[p:terminal]] sin IVA, sigue fichando aunque se caiga internet) o con la app del móvil. Hay calendarios por turno y por temporada, festivos por comunidad, horas extra calculadas día a día, vacaciones pedidas desde el móvil y control de entrada y salida opcional. El plan Tienda y Hostelería incluye [[n:tienda_fichajes]] personas con fichaje; cada una más cuesta [[p:fichaje]]/mes sin IVA.",
+    a: "Sí, en el mismo sistema que la caja. El equipo ficha con un llavero RFID o una tarjeta QR en el terminal de la barra (desde [[p:terminal]] sin IVA, sigue fichando aunque se caiga internet) o con la app del móvil. Hay calendarios por turno y por temporada, festivos por comunidad, horas extra calculadas día a día, vacaciones pedidas desde el móvil y control de entrada y salida opcional. El plan Almacén con TPV incluye [[n:almacen_fichajes]] personas con fichaje; cada una más cuesta [[p:fichaje]]/mes sin IVA.",
   },
   {
     q: "¿Sirve para una cafetería o un food truck?",
@@ -452,9 +452,9 @@ const productSchema = {
     name: "Drenpos · Software para bares y restaurantes",
     path: PATH,
     description:
-      "Software para bares y restaurantes con TPV de hostelería: mapa de sala editable, combinados y extras guiados con precio por opción, pantallas de cocina y barra por familias, QR de mesa con analítica de escaneos y cierre de caja (y stock descontado en el plan Almacén con TPV). Cada ticket simplificado genera su registro Verifactu y su QR (obligatorio en octubre de 2028 para todos, según anunció Hacienda el 5 de octubre de 2026, pendiente de publicación en el BOE). Incluye fichaje del personal con terminal RFID en la barra que funciona sin conexión, app móvil, calendarios por turno, horas extra día a día y vacaciones. Plan Tienda y Hostelería [[p:tienda]]/mes sin IVA con [[n:tienda_usuarios]] usuarios y fichaje para [[n:tienda_fichajes]] personas.",
-    plan: "tienda",
-    offerDescription: "Plan Tienda y Hostelería con TPV, caja y 2 comanderos, cocina, facturación con Verifactu, [[n:tienda_usuarios]] usuarios y fichaje para [[n:tienda_fichajes]] personas, [[p:tienda]]/mes sin IVA. Fichaje adicional [[p:fichaje]]/persona/mes.",
+      "Software para bares y restaurantes con TPV de hostelería: mapa de sala editable, combinados y extras guiados con precio por opción, pantallas de cocina y barra por familias, QR de mesa con analítica de escaneos y cierre de caja y stock descontado. Cada ticket simplificado genera su registro Verifactu y su QR (obligatorio en octubre de 2028 para todos, según anunció Hacienda el 5 de octubre de 2026, pendiente de publicación en el BOE). Incluye fichaje del personal con terminal RFID en la barra que funciona sin conexión, app móvil, calendarios por turno, horas extra día a día y vacaciones. Plan Almacén con TPV [[p:almacen_tpv]]/mes sin IVA con [[n:almacen_usuarios]] usuarios y fichaje para [[n:almacen_fichajes]] personas.",
+    plan: "almacen_tpv",
+    offerDescription: "Plan Almacén con TPV: TPV con caja y 2 comanderos, cocina, stock, facturación con Verifactu, [[n:almacen_usuarios]] usuarios y fichaje para [[n:almacen_fichajes]] personas, [[p:almacen_tpv]]/mes sin IVA. Fichaje adicional [[p:fichaje]]/persona/mes.",
     featureList: [
       "Salas y mesas persistentes con editor de mapa de sala",
       "Mesas virtuales para abrir mesas sobre la marcha",
@@ -491,7 +491,7 @@ const faqSchema = faqPage(faqs);
 // Fechas visibles (LandingMeta) y del JSON-LD (WebPage.datePublished / dateModified).
 // Publicación = primer commit de la página; actualización = último cambio de contenido.
 const PAGE_PUBLISHED = "2026-09-10";
-const PAGE_UPDATED = "2026-10-22";
+const PAGE_UPDATED = "2026-11-25";
 ---
 
 <Base
@@ -641,7 +641,7 @@ const PAGE_UPDATED = "2026-10-22";
             con Verifactu y fichaje del personal.
           </p>
           <p class="leading-relaxed mb-0 text-dark/65">
-            En Drenpos todo eso va en el <strong>plan Tienda y Hostelería, por [[p:tienda]]/mes sin IVA</strong>: mapa de sala, combinados y extras guiados, pantallas de
+            En Drenpos todo eso va en el <strong>plan Almacén con TPV, por [[p:almacen_tpv]]/mes sin IVA</strong>: mapa de sala, combinados y extras guiados, pantallas de
             cocina y barra, QR de mesa con analítica, cierre de caja con el stock
             descontado, Verifactu en cada ticket y fichaje con llavero en la
             propia barra.
@@ -934,8 +934,8 @@ const PAGE_UPDATED = "2026-10-22";
           en suscripción va de 0 a 175 € al mes, y algunos cobran además una
           comisión por cada pago con tarjeta o la pantalla de cocina aparte.
           Una licencia sin cuota ronda los 499 a 550 € de pago único, con los
-          módulos por separado. Drenpos cuesta [[p:tienda]]/mes sin IVA con TPV,
-          facturación con Verifactu y fichaje para ocho personas.
+          módulos por separado. Drenpos cuesta [[p:almacen_tpv]]/mes sin IVA con TPV,
+          stock, facturación con Verifactu y fichaje para [[n:almacen_fichajes]] personas.
         </p>
       </div>
 
@@ -993,7 +993,7 @@ const PAGE_UPDATED = "2026-10-22";
             </p>
             <p class="text-sm leading-relaxed mb-0 text-dark/72">
               En Drenpos no hay coste por pantalla de cocina ni por número de
-              tickets. El plan Tienda y Hostelería trae [[n:tienda_usuarios]] usuarios y [[n:tienda_fichajes]] personas con fichaje; a
+              tickets. El plan Almacén con TPV trae [[n:almacen_usuarios]] usuarios y [[n:almacen_fichajes]] personas con fichaje; a
               partir de ahí, cada persona más que ficha suma [[p:fichaje]]/mes y cada usuario más del sistema, [[p:usuario]]/mes. El terminal de fichaje, si lo
               quieres, parte de [[p:terminal]] sin IVA en un único pago. Hacemos las
               cuentas con tres locales tipo en
@@ -1160,8 +1160,7 @@ const PAGE_UPDATED = "2026-10-22";
           <div class="rounded-3xl p-8 lg:p-12 text-center text-white bg-dark" data-aos="fade-up-sm">
             <h2 class="h3 font-bold mb-3 text-white">¿Lo vemos con la carta de tu bar?</h2>
             <p class="mb-6 max-w-xl mx-auto text-white/75">
-              El <strong>plan Tienda y Hostelería cuesta [[p:tienda]]/mes (sin IVA)</strong>, incluye el
-              TPV con 1 caja y 2 comanderos y viene con 3 usuarios: mesas y mapa de sala, flujo de combinados, pantallas de cocina y barra, QR de mesa con analítica, cierre de caja y facturación con Verifactu. Si además quieres control de stock o tienes varios locales, el <strong>plan Almacén con TPV son [[p:almacen_tpv]]/mes</strong>. El plan trae fichaje para 8 personas y cada una
+              El <strong>plan Almacén con TPV cuesta [[p:almacen_tpv]]/mes (sin IVA)</strong>: [[p:almacen]] del plan y [[p:tpv]] del TPV, con 1 caja y 2 comanderos y [[n:almacen_usuarios]] usuarios. Lleva mesas y mapa de sala, flujo de combinados, pantallas de cocina y barra, QR de mesa con analítica, cierre de caja, el stock con consumos y facturación con Verifactu. Cada caja o comandero de más son <strong>[[p:caja]]/mes</strong>. El plan trae fichaje para [[n:almacen_fichajes]] personas y cada una
               más suma <strong>[[p:fichaje]]/mes</strong>.
             </p>
             <ul class="flex flex-wrap gap-4 justify-center mb-6">

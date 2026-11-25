@@ -35,7 +35,7 @@ list:
   - title: ¿Drenpos tiene plano de almacén y ruta de picking?
     description: "Sí, en el módulo de Inventario. Dibujas el plano de cada planta con estanterías, paredes y puntos clave como el inicio de ruta o el punto de dejada de carga, y gestionas los huecos desde el propio plano. Con eso el sistema calcula un orden de recorrido fijo de las ubicaciones, y el asistente de picking y las oleadas te dan las líneas en ese orden para no volver sobre tus pasos."
   - title: ¿Cuánto cuesta un TPV para un bar con Drenpos?
-    description: "El plan Tienda y Hostelería cuesta [[p:tienda]]/mes sin IVA e incluye el TPV con 1 caja y 2 comanderos, mapa de sala, pantallas de cocina y barra, QR de mesa, facturación con Verifactu, 3 usuarios y fichaje para 8 personas. Si además quieres control de stock (consumos, lotes, caducidades) o tienes varios locales, el plan Almacén con TPV son [[p:almacen_tpv]]/mes. Sin permanencia. Funciona en el navegador de la tablet o el ordenador que ya tengas; aparte suele hacer falta la impresora de tickets, y el datáfono es el de tu banco. [Ver cuánto cuesta un TPV para bar](/software-bares-restaurantes#cuanto-cuesta)."
+    description: "El plan Almacén con TPV cuesta [[p:almacen_tpv]]/mes sin IVA ([[p:almacen]] del plan y [[p:tpv]] del TPV). Incluye el TPV con 1 caja y 2 comanderos, mapa de sala, pantallas de cocina y barra, QR de mesa, el stock de bebida y producto con consumos, lotes y caducidades, facturación con Verifactu, [[n:almacen_usuarios]] usuarios y fichaje para [[n:almacen_fichajes]] personas. Cada caja o comandero de más son [[p:caja]]/mes. Sin permanencia. Funciona en el navegador de la tablet o el ordenador que ya tengas; aparte suele hacer falta la impresora de tickets, y el datáfono es el de tu banco. [Ver cuánto cuesta un TPV para bar](/software-bares-restaurantes#cuanto-cuesta)."
   - title: ¿Cumple con Verifactu y la AEAT?
     description: Sí. Gestionamos facturación con series por periodo, registros inalterables y firma. Además, preparamos el envío a AEAT (cuando aplique) para garantizar trazabilidad y veracidad de los datos.
   - title: ¿Drenpos genera el documento de control del transporte (DeCA)?
@@ -55,7 +55,7 @@ list:
   - title: ¿Qué soporte ofrecéis?
     description: Soporte cercano en español con respuesta habitual ≤ 24h laborables y acompañamiento en el arranque. También resolvemos dudas de configuración y mejores prácticas.
   - title: ¿Cómo funcionan los precios?
-    description: "Cuatro planes al mes, sin IVA: Facturación [[p:facturacion]], Tienda y Hostelería [[p:tienda]], Almacén [[p:almacen]] y Producción [[p:produccion]]. Cada uno trae sus usuarios y las personas que fichan, y lo demás se añade si hace falta. Pagando el año, [[n:anual_descuento]] % de descuento. Sin permanencia y con las actualizaciones incluidas. Tienes el detalle en la página de precios."
+    description: "Tres planes al mes, sin IVA: Facturación [[p:facturacion]], Almacén [[p:almacen]] y Producción [[p:produccion]]. Cada uno trae sus usuarios y las personas que fichan, y lo demás se añade si hace falta: el TPV para tienda o bar, por ejemplo, son [[p:tpv]] más. Pagando el año, [[n:anual_descuento]] % de descuento. Sin permanencia y con las actualizaciones incluidas. Tienes el detalle en la página de precios."
   - title: ¿Hay demo o prueba?
     description: Sí, ofrecemos demo guiada para evaluar encaje y resolver dudas de procesos, datos y trazabilidad. Si te interesa, solicita una demo desde el botón de la página.
 ---

@@ -33,16 +33,9 @@ const planes = [
       "[[n:facturacion_usuarios]] usuarios y [[n:facturacion_fichajes]] personas que fichan, facturación con Verifactu, DeCA, OCR de facturas de proveedor, remesas SEPA, informes y envío por email y WhatsApp.",
   },
   {
-    nombre: "Tienda y Hostelería",
-    precio: decimal(valor("tienda")),
-    para: "Tiendas, bares y restaurantes que cobran en caja.",
-    incluye:
-      "[[n:tienda_usuarios]] usuarios y [[n:tienda_fichajes]] personas que fichan, todo lo del plan Facturación y el TPV de tienda y de hostelería con mapa de sala, comanderos, pantallas de cocina y QR en las mesas.",
-  },
-  {
     nombre: "Almacén",
     precio: decimal(valor("almacen")),
-    para: "Distribuidores y negocios con almacén.",
+    para: "Distribuidores, tiendas y bares con stock. Con el TPV, [[p:almacen_tpv]] al mes.",
     incluye:
       "[[n:almacen_usuarios]] usuarios y [[n:almacen_fichajes]] personas que fichan, todo lo del plan Facturación y el inventario completo: lotes, caducidades, ubicaciones, plano, picking con pistola, propuesta de compra y palets SSCC.",
   },
@@ -59,11 +52,11 @@ const planes = [
 const faqs = [
   {
     q: "¿Cuánto cuesta Drenpos?",
-    a: "Hay cuatro planes, sin IVA: Facturación a [[p:facturacion]] al mes, Tienda y Hostelería a [[p:tienda]], Almacén a [[p:almacen]] y Producción a [[p:produccion]]. Cada uno trae sus usuarios y las personas que pueden fichar. Si pagas el año, tienes un [[n:anual_descuento]] % de descuento. No hay permanencia.",
+    a: "Hay tres planes, sin IVA: Facturación a [[p:facturacion]] al mes, Almacén a [[p:almacen]] y Producción a [[p:produccion]]. Para una tienda o un bar, Almacén con el TPV: [[p:almacen_tpv]] al mes. Cada uno trae sus usuarios y las personas que pueden fichar. Si pagas el año, tienes un [[n:anual_descuento]] % de descuento. No hay permanencia.",
   },
   {
     q: "¿Qué plan me conviene?",
-    a: "Si solo facturas, Facturación. Si cobras en caja, en una tienda o en un bar, Tienda y Hostelería. Si tienes almacén y necesitas lotes, caducidades o ubicaciones, Almacén, y si además vendes en mostrador le añades el TPV. Si fabricas, Producción. Si no lo tienes claro, escríbenos y lo vemos contigo.",
+    a: "Si solo facturas, Facturación. Si tienes stock, sea un almacén, una tienda o un bar, Almacén, y si cobras en caja le añades el TPV por [[p:tpv]] al mes. Si fabricas, Producción. Si no lo tienes claro, escríbenos y lo vemos contigo.",
   },
   {
     q: "¿Qué puedo añadir a mi plan?",
@@ -99,7 +92,7 @@ const faqs = [
   },
   {
     q: "¿El soporte está incluido?",
-    a: "Sí, por email en todos los planes, y también por teléfono y WhatsApp a partir de Tienda y Hostelería. Si necesitas que te respondamos en menos de 4 horas, existe el soporte prioritario.",
+    a: "Sí, por email en todos los planes, y también por teléfono y WhatsApp a partir de Almacén. Si necesitas que te respondamos en menos de 4 horas, existe el soporte prioritario.",
   },
   {
     q: "¿Puedo verlo antes de contratar?",
@@ -115,7 +108,7 @@ const offersSchema = {
     name: "Drenpos ERP",
     path: PATH,
     description:
-      "Programa de gestión para pymes y autónomos en España: facturación con Verifactu y DeCA, TPV para tienda y hostelería, almacén con lotes y ubicaciones, producción y control horario. Cuatro planes y módulos opcionales, sin permanencia.",
+      "Programa de gestión para pymes y autónomos en España: facturación con Verifactu y DeCA, TPV para tienda y hostelería, almacén con lotes y ubicaciones, producción y control horario. Tres planes y módulos opcionales como el TPV, sin permanencia.",
   }),
   operatingSystem: "Web, iOS, Android (PWA)",
   inLanguage: "es-ES",
@@ -187,7 +180,7 @@ const faqSchema = faqPage(faqs);
         <div class="lg:col-9 text-center" data-aos="fade-up-sm">
           <p class="text-lg leading-relaxed mb-10" style="color: rgba(16,25,40,0.72);">
             Hay un plan para cada tipo de negocio: <strong>Facturación</strong>,
-            <strong>Tienda y Hostelería</strong>, <strong>Almacén</strong> y
+            <strong>Almacén</strong> (con el TPV si tienes tienda o bar) y
             <strong>Producción</strong>. Cada uno trae los usuarios y las personas
             que fichan, y lo que no necesites no lo pagas. Comerciales, agencias de
             transporte, conectores o el asistente de IA se añaden aparte si te hacen

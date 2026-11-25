@@ -63,7 +63,7 @@ Los dos se pagan por suscripción sin permanencia y funcionan en el navegador, s
 | Picking con pistola y ruta | Escáner para enviar y recibir; picking no consta | Sí, con orden de ruta según el plano |
 | Caducidades y FEFO | No consta | Sí |
 | Stock mínimo y propuesta de compra | No consta | Sí |
-| TPV tienda | Sí, 25 €/tienda/mes | Sí, incluido en Tienda y Hostelería; opcional en Almacén ([[p:tpv]]) |
+| TPV tienda | Sí, 25 €/tienda/mes | Sí, se añade al plan Almacén por [[p:tpv]] |
 | TPV hostelería (mesas, cocina, QR) | No consta | Sí |
 | Control horario | Sí, 1,50 €/empleado/mes | Sí, incluido en el plan ([[p:fichaje]]/empleado extra) con terminal RFID propio |
 | Vacaciones, turnos rotativos, calendarios | Vacaciones sí; turnos no consta | Sí |
@@ -77,7 +77,7 @@ Los dos se pagan por suscripción sin permanencia y funcionan en el navegador, s
 | Integraciones | Shopify, WooCommerce, PrestaShop, Amazon, +300 bancos, Zapier | WooCommerce, Faire, Holded, agencias de transporte |
 | Conexión con IA (MCP) | Sí | Sí, [[p:mcp]]/empresa/mes |
 | Despliegue en servidor propio | No | Sí |
-| Soporte | Chat y teléfono; prioritario en planes altos | Correo; teléfono desde Tienda y Hostelería |
+| Soporte | Chat y teléfono; prioritario en planes altos | Correo; teléfono desde Almacén |
 
 ## Contabilidad: aquí gana Holded
 
@@ -100,7 +100,7 @@ A 20 de octubre de 2026 y sin IVA, el plan Básico de Holded cuesta 29 euros al 
 | Usuario adicional | 10 € | [[p:usuario]] |
 | Contabilidad completa | Estándar 59 € (4 usuarios) | No disponible |
 
-Las dos columnas no compran lo mismo. Holded incluye la contabilidad y Drenpos no. En Drenpos los fichajes van en todos los planes, el TPV viene dentro de Tienda y Hostelería y en Almacén se añade como módulo; en Holded el inventario, el TPV, el control horario y las nóminas son complementos, y el TPV de hostelería no consta. Lo que debería decidir es qué necesita tu operativa, y los [precios de Drenpos](/pricing) están publicados plan por plan.
+Las dos columnas no compran lo mismo. Holded incluye la contabilidad y Drenpos no. En Drenpos los fichajes van en todos los planes, el TPV se añade al plan Almacén como módulo; en Holded el inventario, el TPV, el control horario y las nóminas son complementos, y el TPV de hostelería no consta. Lo que debería decidir es qué necesita tu operativa, y los [precios de Drenpos](/pricing) están publicados plan por plan.
 
 ## Lo que Holded hace mejor
 

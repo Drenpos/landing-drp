@@ -195,7 +195,7 @@
     {
       "ruta": "/pricing",
       "titulo": "Precios",
-      "llms": "Planes Facturación, Tienda y Hostelería, Almacén y Producción, y módulos opcionales"
+      "llms": "Planes Facturación, Almacén (con TPV para tienda y hostelería) y Producción, y módulos opcionales"
     },
     {
       "ruta": "/modulos",

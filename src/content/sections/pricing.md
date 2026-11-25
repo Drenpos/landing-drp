@@ -1,6 +1,6 @@
 ---
 title: "Elige el plan según lo que haga tu negocio"
-description: "Cuatro planes. Cada uno trae sus usuarios y las personas que pueden fichar. Sin permanencia, y si pagas el año entero tienes un [[n:anual_descuento]] % de descuento."
+description: "Tres planes. Cada uno trae sus usuarios y las personas que pueden fichar. Sin permanencia, y si pagas el año entero tienes un [[n:anual_descuento]] % de descuento."
 badge: "Precios"
 
 help_cta:
@@ -45,30 +45,8 @@ plans:
       enable: true
       label: "Empezar"
       link: "https://contract.drenpos.com/auth"
-  - title: "Tienda y Hostelería"
-    description: "Para tiendas, bares y restaurantes que cobran en caja y tienen gente fichando por turnos."
-    price_prefix: ""
-    price_suffix: " €"
-    price_monthly: "[[n:tienda]]"
-    price_yearly: "[[n:tienda_anual]]"
-    price_description_monthly: "/mes"
-    price_description_yearly: "/mes, pagando el año"
-    features:
-      - "[[n:tienda_usuarios]] usuarios y [[n:tienda_fichajes]] personas que fichan"
-      - Todo lo del plan Facturación
-      - "TPV de tienda: lector de códigos, tallas y colores, cierre de caja"
-      - "TPV de hostelería: mapa de sala, comanderos, cocina y barra"
-      - QR en las mesas
-      - Fichaje por turnos con vacaciones y calendarios
-    badge:
-      enable: false
-      label: "Recomendado"
-    button:
-      enable: true
-      label: "Empezar"
-      link: "https://contract.drenpos.com/auth"
   - title: "Almacén"
-    description: "Para distribuidores y negocios que necesitan saber qué tienen, dónde está y qué caduca."
+    description: "Para distribuidores, tiendas y bares que necesitan saber qué tienen, dónde está y qué caduca. Si cobras en caja, le añades el TPV."
     price_prefix: ""
     price_suffix: " €"
     price_monthly: "[[n:almacen]]"
@@ -82,7 +60,7 @@ plans:
       - Picking, recepciones y traslados con pistola o con el móvil
       - Stock mínimo y propuesta de compra
       - Palets con etiqueta SSCC y depósito de terceros
-      - Si también vendes en mostrador, el TPV se añade por [[p:tpv]]/mes
+      - "¿Tienda o bar? El TPV de tienda y hostelería se añade por [[p:tpv]]/mes: [[p:almacen_tpv]] en total"
     badge:
       enable: true
       label: "El más usado"

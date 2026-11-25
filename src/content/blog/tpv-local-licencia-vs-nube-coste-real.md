@@ -3,7 +3,7 @@ title: "TPV con licencia en tu PC o en la nube: qué incluye cada uno"
 meta_title: "TPV local o en la nube: qué incluye cada uno (2026)"
 description: "TPV con licencia en tu PC o en la nube: qué incluye cada uno en actualizaciones, Verifactu, copias, soporte y fichajes, y cómo lo resuelve Drenpos en local."
 date: 2026-10-20
-updated: 2026-10-23
+updated: 2026-11-25
 image: "/images/blog/tpv-bares-restaurantes-como-elegir-2026/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -36,7 +36,7 @@ faq:
   - question: "¿Qué pasa si se corta internet con un TPV en la nube?"
     answer: "Depende del TPV. Algunos siguen cobrando sin conexión y sincronizan después; otros se paran. Es la pregunta que hay que hacer antes de contratar cualquier TPV en la nube, y es la única ventaja real que conserva el local frente a la nube: no depende de la línea."
   - question: "¿Cuánto cuesta el TPV de Drenpos?"
-    answer: "En la nube, el plan Tienda y Hostelería cuesta [[n:tienda]] euros al mes con caja, comanderos, pantallas de cocina, QR en las mesas, facturación con Verifactu y 8 personas fichando, sin IVA y sin permanencia. En el servidor del cliente, a presupuesto según usuarios, hardware e integraciones, con actualizaciones automáticas, copias y supervisión incluidas."
+    answer: "En la nube, el plan Almacén con TPV cuesta [[n:almacen_tpv]] euros al mes con caja, comanderos, pantallas de cocina, QR en las mesas, stock, facturación con Verifactu y [[n:almacen_fichajes]] personas fichando, sin IVA y sin permanencia. En el servidor del cliente, a presupuesto según usuarios, hardware e integraciones, con actualizaciones automáticas, copias y supervisión incluidas."
 ---
 
 Un TPV con licencia instalada en tu PC incluye el programa y poco más: soporte, actualizaciones (también la de Verifactu), instalación y copias de seguridad se pagan aparte o quedan a tu cargo. Uno en la nube suele llevar todo eso en la cuota mensual, así que se comparan por lo que incluyen y no por el precio de entrada.
@@ -69,16 +69,16 @@ Nadie esconde nada, todo esto está publicado en las webs de cada fabricante. Lo
 
 He hecho el ejercicio con un bar de barrio: una caja, una impresora de cocina y una comandera, sin averías graves y con los precios que publica cada uno.
 
-| Concepto | Licencia local (Doscar como ejemplo) | Nube con comisión (Square) | Nube con cuota (Drenpos Tienda y Hostelería) |
+| Concepto | Licencia local (Doscar como ejemplo) | Nube con comisión (Square) | Nube con cuota (Drenpos Almacén con TPV) |
 | --- | --- | --- | --- |
-| Programa | 164,95 € una vez | 0 € | [[p:tienda]]/mes = [[p:tienda×36]] |
+| Programa | 164,95 € una vez | 0 € | [[p:almacen_tpv]]/mes = [[p:almacen_tpv×36]] |
 | Instalación | 300 a 600 € (distribuidor) | 0 € (lo haces tú) | Según el local |
 | Soporte 3 años | 297 € (Básico) a 1.080 € (Avanzado) | Incluido (prioritario en Plus, 59 €/mes) | Incluido |
 | Actualización Verifactu | Según contrato de soporte | Incluida | Incluida |
 | Copias de seguridad | A tu cargo | Incluidas | Incluidas, diarias |
 | Comisión por cobro con tarjeta | La de tu banco | 1,25 % + 0,05 € por operación: con 10.000 €/mes en tarjeta, unos 4.700 € en 3 años | La de tu banco |
 | Control horario de 5 empleados | No incluido | Square Team gratis (básico) | Incluido (8 fichajes) |
-| Total 3 años | 760 a 1.850 € + hardware + tu tiempo | 4.700 € en comisiones + hardware | [[p:tienda×36]] ([[p:tienda_ano×3]] con pago anual) + instalación + hardware |
+| Total 3 años | 760 a 1.850 € + hardware + tu tiempo | 4.700 € en comisiones + hardware | [[p:almacen_tpv×36]] ([[p:almacen_tpv×36×factor_anual]] con pago anual) + instalación + hardware |
 
 Con la licencia bien comprada y sin ningún susto, el local puede quedarse igual o unos cientos de euros por debajo a tres años. Las cuentas cambian cuando pasa algo que no sale en la tabla. Por ejemplo, el día que se rompe el ordenador de la barra y no había copia, o cuando toca pagar la versión de Verifactu, o cuando abres un segundo local y el programa no sabe juntar los dos.
 
@@ -107,7 +107,7 @@ Eso sí, no es para un bar de barrio. Está pensado para la empresa que no puede
 
 ## Cuánto cuesta el TPV de Drenpos
 
-En la nube, el plan Tienda y Hostelería cuesta [[p:tienda]] al mes, sin IVA y sin permanencia. Lleva caja, comanderos, pantallas de cocina, QR en las mesas, facturación con Verifactu y 8 personas fichando, con 3 usuarios. Es un único módulo de TPV que sirve igual para una tienda de ropa que para una cafetería. Si te hace falta otra caja u otro comandero, son [[p:caja]] al mes cada uno.
+En la nube, el plan Almacén con TPV cuesta [[p:almacen_tpv]] al mes, sin IVA y sin permanencia. Lleva caja, comanderos, pantallas de cocina, QR en las mesas, el stock, facturación con Verifactu y [[n:almacen_fichajes]] personas fichando, con [[n:almacen_usuarios]] usuarios. Es un único módulo de TPV que sirve igual para una tienda de ropa que para una cafetería. Si te hace falta otra caja u otro comandero, son [[p:caja]] al mes cada uno.
 
 En el servidor del cliente va a presupuesto según usuarios, hardware e integraciones, con actualizaciones automáticas, copias y supervisión incluidas. La puesta en marcha, en los dos casos, depende del local.
 
@@ -115,7 +115,7 @@ En el servidor del cliente va a presupuesto según usuarios, hardware e integrac
 
 | Tu caso | Lo que te conviene |
 | --- | --- |
-| Bar, cafetería o tienda con una caja, sin informático de confianza | Nube con todo dentro: actualizaciones, copias, soporte y fichajes. En Drenpos, el plan Tienda y Hostelería ([qué incluye](/pricing)) |
+| Bar, cafetería o tienda con una caja, sin informático de confianza | Nube con todo dentro: actualizaciones, copias, soporte y fichajes. En Drenpos, el plan Almacén con TPV ([qué incluye](/pricing)) |
 | Cobras casi todo con tarjeta y vendes poco | Square o SumUp gratis con comisión puede salir bien por debajo de 3.000 €/mes en tarjeta; por encima, lo que pagas en comisión pasa a ser más que una cuota mensual |
 | Ya tienes la licencia y funciona | No la cambies por cambiar. Vuelve a mirarlo cuando te cobren la actualización de Verifactu o necesites carta digital, multisede o fichajes, y compara entonces lo que incluye cada opción |
 | Empresa con datos que no pueden salir, varios puestos o nave sin buena conexión | Local gestionado. Drenpos a presupuesto, o Odoo on-premise con partner ([comparativa](/blog/drenpos-vs-odoo)) |

@@ -73,7 +73,7 @@ Ninguno lleva contabilidad completa: SimplyGest hace asientos básicos y Drenpos
 | Ubicaciones internas y plano | No consta | No consta | Sí |
 | Picking con pistola | No consta | No consta | Sí |
 | Caducidades y FEFO | No consta | No consta | Sí |
-| TPV tienda | Sí, táctil (+20 €) | Sí, online (complemento hasta Premium; incluido desde Ultimate) | Sí, incluido en Tienda y Hostelería; opcional en Almacén |
+| TPV tienda | Sí, táctil (+20 €) | Sí, online (complemento hasta Premium; incluido desde Ultimate) | Sí, se añade al plan Almacén por [[p:tpv]] |
 | TPV hostelería | Hostelería en lista de sectores; sala y cocina no constan | No consta | Sí: sala, cocina, barra, QR |
 | Control horario | Sí, con app (+20 €) | Sí, incluido desde Pro | Sí, incluido, con terminal RFID |
 | Producción | Sí, módulo | No consta | Sí: órdenes, fases, coste real |
@@ -84,7 +84,7 @@ Ninguno lleva contabilidad completa: SimplyGest hace asientos básicos y Drenpos
 | API y conectores | Weblinker, bancos, TicketBAI | API, webhooks, Zapier, PrestaShop, WooCommerce, Shopify | WooCommerce, Faire, Holded, agencias |
 | IA | OCR | OCR | MCP con el asistente que uses |
 | Despliegue | Windows, datos en tu equipo | Nube | Navegador o servidor propio |
-| Soporte | 30 días incluidos; después contratos de 36 o 45 €/mes | Correo y chat según plan; línea 900 en planes altos | Correo; teléfono desde Tienda y Hostelería |
+| Soporte | 30 días incluidos; después contratos de 36 o 45 €/mes | Correo y chat según plan; línea 900 en planes altos | Correo; teléfono desde Almacén |
 
 ## Precios de cada uno
 

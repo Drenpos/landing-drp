@@ -35,7 +35,7 @@ faq:
   - question: "¿Qué es mejor para un cargador, una plataforma aparte o el DeCA desde el ERP?"
     answer: "Si ya haces los albaranes en un programa, lo normal es generar el DeCA desde ahí, porque los datos de los que responde el cargador (sus datos, los del transportista, origen, destino, mercancía y peso) ya están en el albarán. Una plataforma aparte obliga a volver a teclearlos o a pagar una integración."
   - question: "¿Cuánto cuesta el DeCA en Drenpos?"
-    answer: "Va incluido en el módulo Financiero sin coste extra, y ese módulo está en todos los planes de Drenpos: Facturación [[n:facturacion]] euros al mes, Tienda y Hostelería [[n:tienda]], Almacén [[n:almacen]] y Producción [[n:produccion]], sin IVA y sin pago por documento. Se genera desde el albarán de venta."
+    answer: "Va incluido en el módulo Financiero sin coste extra, y ese módulo está en todos los planes de Drenpos: Facturación [[n:facturacion]] euros al mes, Almacén [[n:almacen]] y Producción [[n:produccion]], sin IVA y sin pago por documento. Se genera desde el albarán de venta."
   - question: "¿Sirve cualquier generador de PDF con QR?"
     answer: "No. La URL tiene que empezar por https, descargar el PDF directamente sin pedir credenciales ni pulsar botones, y no puede caducar antes de que termine el servicio. Además el PDF debe llevar en sus metadatos la fecha y hora de creación y de modificación. Fenadismer ha avisado de herramientas en el mercado que no cumplen todos los requisitos."
 ---
@@ -200,7 +200,7 @@ Si ya haces los albaranes en un programa, lo normal es generar el DeCA desde ah�
 
 ### ¿Cuánto cuesta el DeCA en Drenpos?
 
-Va incluido en el módulo Financiero sin coste extra, y ese módulo está en todos los planes de Drenpos: Facturación [[n:facturacion]] euros al mes, Tienda y Hostelería [[n:tienda]], Almacén [[n:almacen]] y Producción [[n:produccion]], sin IVA y sin pago por documento. Se genera desde el albarán de venta.
+Va incluido en el módulo Financiero sin coste extra, y ese módulo está en todos los planes de Drenpos: Facturación [[n:facturacion]] euros al mes, Almacén [[n:almacen]] y Producción [[n:produccion]], sin IVA y sin pago por documento. Se genera desde el albarán de venta.
 
 ### ¿Sirve cualquier generador de PDF con QR?
 

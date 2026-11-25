@@ -1,7 +1,6 @@
 ---
 import { abs, AUTOR } from "@/lib/site";
-import { decimal, valor } from "@/lib/precios";
-import { breadcrumb, faqPage, softwareApp } from "@/lib/schema";
+import { breadcrumb, faqPage, oferta, softwareApp } from "@/lib/schema";
 import JsonLd from "@/components/JsonLd.astro";
 export const prerender = true;
 import Base from "@/layouts/Base.astro";
@@ -281,16 +280,8 @@ const productSchema = {
       "Cierre de caja y facturación Verifactu",
     ],
   }),
-  // Almacén + TPV no es un plan de precios.json: oferta montada a mano.
   operatingSystem: "Web, iOS, Android (PWA)",
-  offers: {
-    "@type": "Offer",
-    price: decimal(valor("almacen_tpv")),
-    priceCurrency: "EUR",
-    valueAddedTaxIncluded: false,
-    description: "Plan Almacén con TPV, [[p:almacen_tpv]]/mes (sin IVA).",
-    url: abs("/pricing"),
-  },
+  offers: oferta("almacen_tpv"),
 };
 const faqSchema = faqPage(faqs);
 

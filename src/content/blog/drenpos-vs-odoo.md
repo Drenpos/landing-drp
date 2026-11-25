@@ -76,7 +76,7 @@ Los dos tienen almacén avanzado con lotes, ubicaciones, pistola y FEFO, TPV de 
 | Conexión con IA (MCP) | No consta oficial (módulos de terceros) | Sí, [[p:mcp]]/empresa/mes |
 | Versiones | Una versión mayor al año, 3 años de soporte; migración en Odoo.sh y servidor propio | Una sola versión para todos, sin migraciones |
 | Despliegue | Online, Odoo.sh u on-premise (este solo en Personalizado) | Nube o servidor propio |
-| Soporte | Correo ilimitado, lunes a viernes; implantación no incluida | Correo; teléfono desde Tienda y Hostelería; puesta en marcha con nuestro equipo |
+| Soporte | Correo ilimitado, lunes a viernes; implantación no incluida | Correo; teléfono desde Almacén; puesta en marcha con nuestro equipo |
 
 ## Precios
 

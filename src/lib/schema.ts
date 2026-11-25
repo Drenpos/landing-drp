@@ -54,8 +54,17 @@ export function faqPage(faqs: Pregunta[]): Nodo {
   };
 }
 
+/** Planes de precios.json más el plan Almacén con el TPV añadido (tiendas y hostelería). */
+export type ClaveOferta = ClavePlan | "almacen_tpv";
+
+function nombreOferta(plan: ClaveOferta): string {
+  return plan === "almacen_tpv"
+    ? `${P.planes.almacen.nombre} con TPV`
+    : P.planes[plan].nombre;
+}
+
 /** Oferta de un plan, con el precio sacado de precios.json. */
-export function oferta(plan: ClavePlan, description?: string): Nodo {
+export function oferta(plan: ClaveOferta, description?: string): Nodo {
   return {
     "@type": "Offer",
     price: decimal(valor(plan)),
@@ -63,7 +72,7 @@ export function oferta(plan: ClavePlan, description?: string): Nodo {
     valueAddedTaxIncluded: false,
     description:
       description ??
-      `Plan ${P.planes[plan].nombre}, [[p:${plan}]] al mes sin IVA.`,
+      `Plan ${nombreOferta(plan)}, [[p:${plan}]] al mes sin IVA.`,
     url: abs("/pricing"),
   };
 }
@@ -73,7 +82,7 @@ export interface App {
   path: string;
   description: string;
   featureList?: string[];
-  plan?: ClavePlan;
+  plan?: ClaveOferta;
   offerDescription?: string;
 }
 
