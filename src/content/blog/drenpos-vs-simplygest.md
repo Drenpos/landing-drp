@@ -3,7 +3,7 @@ title: "Drenpos o SimplyGest: comparativa para pymes con almacén (2026)"
 meta_title: "Drenpos vs SimplyGest: comparativa para pymes (2026)"
 description: "Drenpos o SimplyGest Desktop y Cloud según sus webs a 20/10/2026: lotes, TPV, control horario, Verifactu, pago único o cuota y para quién encaja cada uno."
 date: 2026-10-20
-updated: 2026-10-23
+updated: 2026-11-26
 image: "/images/blog/erp-para-pymes-vs-excel/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -81,7 +81,7 @@ Ninguno lleva contabilidad completa: SimplyGest hace asientos básicos y Drenpos
 | Contabilidad | Asientos básicos | Asientos básicos | No: reporte y ZIP para la gestoría |
 | DeCA desde el albarán | No consta | No consta | Sí, incluido |
 | App móvil | Solo de fichaje | Sí, nativa | PWA |
-| API y conectores | Weblinker, bancos, TicketBAI | API, webhooks, Zapier, PrestaShop, WooCommerce, Shopify | WooCommerce, Faire, Holded, agencias |
+| API y conectores | Weblinker, bancos, TicketBAI | API, webhooks, Zapier, PrestaShop, WooCommerce, Shopify | API pública de solo lectura, WooCommerce, Faire, Holded, agencias |
 | IA | OCR | OCR | MCP con el asistente que uses |
 | Despliegue | Windows, datos en tu equipo | Nube | Navegador o servidor propio |
 | Soporte | 30 días incluidos; después contratos de 36 o 45 €/mes | Correo y chat según plan; línea 900 en planes altos | Correo; teléfono desde Almacén |

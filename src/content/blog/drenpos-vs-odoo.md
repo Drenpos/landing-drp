@@ -3,7 +3,7 @@ title: "Drenpos o Odoo: comparativa para pymes con almacén (2026)"
 meta_title: "Drenpos vs Odoo: comparativa para pymes 2026"
 description: "Odoo y Drenpos comparados con sus webs a 20 de octubre de 2026: almacén, producción, TPV, precio por usuario, implantación y qué empresa encaja en cada uno."
 date: 2026-10-20
-updated: 2026-10-22
+updated: 2026-11-26
 image: "/images/blog/erp-para-pymes-vs-excel/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -72,7 +72,7 @@ Los dos tienen almacén avanzado con lotes, ubicaciones, pistola y FEFO, TPV de 
 | DeCA desde el albarán | No consta | Sí, incluido |
 | CRM, web, ecommerce, proyectos, marketing | Sí, todo | CRM ligero; sin web ni proyectos |
 | App móvil | Nativa y PWA | PWA |
-| API externa | Solo en el plan Personalizado (27,90 €/usuario) | Solo para integraciones acordadas |
+| API externa | Solo en el plan Personalizado (27,90 €/usuario) | API pública de solo lectura en todos los planes: básica incluida, Pro [[p:api_pro]] y Empresa [[p:api_empresa]] al mes |
 | Conexión con IA (MCP) | No consta oficial (módulos de terceros) | Sí, [[p:mcp]]/empresa/mes |
 | Versiones | Una versión mayor al año, 3 años de soporte; migración en Odoo.sh y servidor propio | Una sola versión para todos, sin migraciones |
 | Despliegue | Online, Odoo.sh u on-premise (este solo en Personalizado) | Nube o servidor propio |
@@ -114,7 +114,7 @@ Y hay un solo interlocutor. Quien desarrolla el producto es quien lo pone en mar
 
 ## Lo que Drenpos no hace (y Odoo sí)
 
-Nosotros no llevamos contabilidad, ni web, ni tienda online. Tampoco tenemos CRM completo, proyectos, calidad, mantenimiento, marketing, nóminas en otros países, API abierta ni TPV en modo sin conexión. Si quieres que el ERP sea también tu web y tu contabilidad, Odoo encaja mejor.
+Nosotros no llevamos contabilidad, ni web, ni tienda online. Tampoco tenemos CRM completo, proyectos, calidad, mantenimiento, marketing, nóminas en otros países, una API que escriba datos (la nuestra es de solo lectura) ni TPV en modo sin conexión. Si quieres que el ERP sea también tu web y tu contabilidad, Odoo encaja mejor.
 
 ## Cuál elegir
 

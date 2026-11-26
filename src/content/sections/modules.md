@@ -158,6 +158,31 @@ modules:
       - "Solo consulta: no cambia nada en el sistema"
       - "Un precio por empresa, para todos los usuarios"
 
+  - name: "Serigrafía y rotulación"
+    description: "Para talleres de serigrafía, DTF, bordado, vinilo, rótulos, lonas e imprenta. Se añade a cualquier plan; la parte textil necesita el Inventario (plan Almacén) y en el plan Producción ya va incluido."
+    price_monthly: "[[p:serigrafia]]"
+    price_yearly: "[[p:serigrafia×factor_anual]]"
+    included_in:
+      - "Producción"
+    features:
+      - "Calculadora de rotulación por m², perímetro, horas o unidad, con merma y plantillas"
+      - "Orden de serigrafía con tallas, colores, marcajes por zona y nombres pegados desde Excel"
+      - "Pide al proveedor solo las prendas que faltan"
+      - "Taller en tableta: empezar, pausa y terminar, con el tiempo de cada fase"
+      - "Albarán de lo hecho con entregas parciales por talla"
+
+  - name: "API pública"
+    description: "Para conectar tus programas (una web, un Power BI, el ERP de la central) con Drenpos. La básica va incluida en cualquier plan; Pro y Empresa dan más llamadas y más claves."
+    price_monthly: "Desde 0 €"
+    price_yearly: "Desde 0 €"
+    included_in: []
+    features:
+      - "Básica, incluida: 10.000 llamadas al mes y 3 claves"
+      - "Pro: [[p:api_pro]]/mes, 100.000 llamadas y 10 claves"
+      - "Empresa: [[p:api_empresa]]/mes, 1.000.000 de llamadas y 50 claves"
+      - "Solo lectura: contactos, artículos, stock por almacén y facturas"
+      - "Cada clave con los permisos de su usuario, caducidad e IPs permitidas"
+
   - name: "Soporte prioritario"
     description: "Opcional. Respuesta en 4 horas laborables y teléfono directo."
     price_monthly: "[[p:soporte]]"

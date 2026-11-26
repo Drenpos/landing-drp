@@ -3,7 +3,7 @@ title: "Drenpos o Holded: comparativa para pymes con almacén (2026)"
 meta_title: "Drenpos vs Holded: comparativa para pymes 2026"
 description: "Drenpos o Holded para pymes con almacén: contabilidad, inventario, TPV, fichajes y precios según sus webs a 20/10/2026, y en qué casos encaja cada uno."
 date: 2026-10-20
-updated: 2026-10-23
+updated: 2026-11-26
 image: "/images/blog/erp-para-pymes-vs-excel/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -73,7 +73,7 @@ Los dos se pagan por suscripción sin permanencia y funcionan en el navegador, s
 | CRM | Completo (embudos, oportunidades) | Ligero: actividades y tareas en la ficha |
 | Proyectos y tareas | Sí | No |
 | App móvil nativa | Sí | Web adaptada al móvil (PWA), no nativa |
-| API pública | Sí, con tope diario según plan | Solo para integraciones acordadas |
+| API pública | Sí, con tope diario según plan | Sí, de solo lectura: básica incluida (10.000 llamadas al mes), Pro [[p:api_pro]] y Empresa [[p:api_empresa]] al mes |
 | Integraciones | Shopify, WooCommerce, PrestaShop, Amazon, +300 bancos, Zapier | WooCommerce, Faire, Holded, agencias de transporte |
 | Conexión con IA (MCP) | Sí | Sí, [[p:mcp]]/empresa/mes |
 | Despliegue en servidor propio | No | Sí |
@@ -120,7 +120,7 @@ Para un obrador o un taller, la producción lleva coste real y trazabilidad desd
 
 ## Lo que Drenpos no hace (y Holded sí)
 
-No hacemos contabilidad, nóminas ni proyectos. No tenemos app nativa, ni conectores con Shopify y Amazon, ni una API pública abierta. Si alguna de esas cosas es imprescindible para ti, Holded es la elección o, por lo menos, una de las dos patas.
+No hacemos contabilidad, nóminas ni proyectos. No tenemos app nativa, ni conectores con Shopify y Amazon. Nuestra API pública es por ahora de solo lectura, sin webhooks. Si alguna de esas cosas es imprescindible para ti, Holded es la elección o, por lo menos, una de las dos patas.
 
 ## Cuál elegir
 

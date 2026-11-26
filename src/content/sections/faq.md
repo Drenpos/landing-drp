@@ -47,7 +47,7 @@ list:
   - title: ¿Puedo importar mis datos actuales?
     description: Sí. Ofrecemos un servicio adicional para la importación de datos desde otros sistemas.
   - title: ¿Se integra con otras herramientas?
-    description: "Sí. Hay un conector con Holded (gratis en todos los planes) y un conector MCP para consultar tus datos desde ChatGPT o Claude ([[p:mcp]]/mes por empresa sin IVA). Además ofrecemos exportaciones a Excel. Si necesitas otra integración, la valoramos en la implantación para que no frene el proyecto."
+    description: "Sí. Hay un conector con Holded (gratis en todos los planes) y un conector MCP para consultar tus datos desde ChatGPT o Claude ([[p:mcp]]/mes por empresa sin IVA). Para conectar tus propios programas hay una API pública de solo lectura (contactos, artículos, stock y facturas): la básica va incluida en cualquier plan y, si necesitas más llamadas, Pro cuesta [[p:api_pro]]/mes y Empresa [[p:api_empresa]]/mes, sin IVA. Además ofrecemos exportaciones a Excel. Si necesitas otra integración, la valoramos en la implantación para que no frene el proyecto."
   - title: ¿Dónde se alojan los datos y qué copias hacéis?
     description: Alojamos en la UE y realizamos copias de seguridad diarias. Monitorizamos disponibilidad para minimizar paradas y mantener la integridad de la información.
   - title: ¿Podemos definir usuarios, roles y permisos?

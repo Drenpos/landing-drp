@@ -3,7 +3,7 @@ title: "Drenpos o STEL Order: comparativa para pymes (2026)"
 meta_title: "Drenpos vs STEL Order: comparativa para pymes 2026"
 description: "Drenpos o STEL Order según sus webs a 20/10/2026: app móvil y SAT frente a almacén con lotes y ubicaciones, TPV, fichajes, precios y cuándo encaja cada uno."
 date: 2026-10-20
-updated: 2026-11-06
+updated: 2026-11-26
 image: "/images/blog/erp-para-pymes-vs-excel/cover.jpg"
 author:
   name: "Alonso Bermejo Pérez"
@@ -71,7 +71,7 @@ Los dos están en la nube, no tienen permanencia y trabajan con Verifactu, remes
 | Contabilidad | No: traspaso contable | No: reporte y ZIP para la gestoría |
 | Conciliación bancaria | Sí | Sí (cobros y pagos; remesas SEPA) |
 | DeCA desde el albarán | No consta | Sí, incluido |
-| API y conectores | API; WooCommerce (plugin), Shopify y PrestaShop por API | WooCommerce, Faire, Holded, agencias de transporte |
+| API y conectores | API; WooCommerce (plugin), Shopify y PrestaShop por API | API pública de solo lectura, WooCommerce, Faire, Holded, agencias de transporte |
 | IA | STEL Assistant (agentes propios) | MCP con ChatGPT, Claude o el que uses |
 | Despliegue | Solo nube | Nube o servidor propio |
 | Soporte | Chat de 8 a 23 h, teléfono de 8 a 19 h | Correo; teléfono desde Almacén |

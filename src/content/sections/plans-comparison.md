@@ -74,9 +74,13 @@ modules:
         facturacion: false
         almacen: false
         produccion: true
+      - name: "Serigrafía y rotulación"
+        facturacion: "+[[p:serigrafia]]/mes (solo rotulación)"
+        almacen: "+[[p:serigrafia]]/mes"
+        produccion: true
 
 notes:
-  - "Opcional en cualquier plan: comerciales y comisiones, agencias de transporte, conectores con Holded, WooCommerce y Faire, y el conector con ChatGPT o Claude"
+  - "Opcional en cualquier plan: comerciales y comisiones, agencias de transporte, conectores con Holded, WooCommerce y Faire, el conector con ChatGPT o Claude y la API pública (básica incluida; Pro [[p:api_pro]]/mes y Empresa [[p:api_empresa]]/mes)"
   - "Usuario de más: [[p:usuario]]/mes. Persona de más que ficha: [[p:fichaje]]/mes. Caja o comandero de más: [[p:caja]]/mes"
   - "Si solo quieres el control horario, mira Drenpos Equipo en la página de control horario"
   - "Cualquier plan se puede instalar en el servidor de tu empresa; lo estudiamos y te pasamos una propuesta"
